@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //BASIC MOVEMENT VARIABLES
-    private float moveSpeed = 6f;
+    private float moveSpeed = 10f;
     public float horizontalMove = 0f;
     public bool facingRight = true;
     public bool isAlting = false;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Knockback Variables
     private Vector3 hitLoc;
-    public float kbSpeed = 1;
+    public float kbSpeed = 0.75f;
     public float kbDur = 1;
     public bool isKBed;
     

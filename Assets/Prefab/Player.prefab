@@ -432,6 +432,8 @@ MonoBehaviour:
   startDashTime: 0
   direction: {x: 0, y: 0, z: 0}
   altForce: 0
+  GunAltSound: {fileID: 0}
+  GunAlt: {fileID: 0}
 --- !u!1 &1030203828
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +845,7 @@ Transform:
   m_Children:
   - {fileID: 821028529}
   m_Father: {fileID: 3726116736402147882}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!212 &1668988633
 SpriteRenderer:
@@ -989,6 +991,8 @@ MonoBehaviour:
   timeTillAlt: 80
   timestamp: 0
   fireBall: {fileID: 6339640274177304179, guid: 3aeb0223cf7483649a1c54fc8becc5a7, type: 3}
+  GunAltSound: {fileID: 0}
+  GunAlt: {fileID: 0}
 --- !u!1 &1821131363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,12 +1296,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2600166346267091786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -0.14249963, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalPosition: {x: -3.8299997, y: -0.16500472, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3726116736402147882}
-  m_RootOrder: 1
+  m_Father: {fileID: 3726116736655217413}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1516113460836550256
 SpriteRenderer:
@@ -1401,7 +1405,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3726116736655217413}
-  - {fileID: 210888671446625982}
   - {fileID: 1668988631}
   m_Father: {fileID: 8206075540257416576}
   m_RootOrder: 2
@@ -1474,7 +1477,8 @@ Transform:
   m_LocalPosition: {x: 0.913, y: -0.126, z: 0}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 210888671446625982}
   m_Father: {fileID: 3726116736402147882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1867,6 +1871,7 @@ MonoBehaviour:
   isAlting: 0
   kbSpeed: 15
   kbDur: 0.25
+  isKBed: 0
   animator: {fileID: 948621413}
   jumpingNow: 0
   incomingDamage: 0.25
@@ -1906,6 +1911,7 @@ MonoBehaviour:
   Tommy: 1
   Shotgun: 1
   Flamethrower: 1
+  UIScript: {fileID: 0}
 --- !u!50 &3726116736307325436
 Rigidbody2D:
   serializedVersion: 4

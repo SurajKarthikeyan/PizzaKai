@@ -64,6 +64,7 @@ public class CameraFollow : MonoBehaviour
 
     void FollowPlayer()
     {
+        //Think of a better way to find boundaries, find is kinda slow
         if (GameObject.Find("Boundary"))
         {
             //changes the camera's position depending on where the player is in the boundary box
