@@ -29,6 +29,33 @@ public class Pathfinding
 
     #region NonMonobehavior
 
+    /**
+     *Function that takes the main "FindPath" and returns a list of Vector3's so an object can follow it
+     *Probably use this version because I dont know how you're gonna make something path without actual coordinates lmao
+     */
+    public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition) 
+    {
+        grid.GetXY(startWorldPosition, out int startX, out int startY);
+        grid.GetXY(endWorldPosition, out int endX, out int  endY);
+
+        List<PathNode> path = FindPath(startX, startY, endX, endY);
+
+        if(path == null) 
+        {
+            return null;
+        }
+        else 
+        {
+            List<Vector3> vectorPath = new List<Vector3>();
+
+            foreach(PathNode pathNode in path) 
+            {
+                vectorPath.Add(new Vector3(pathNode.x, pathNode.y) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * 0.5f);
+            }
+            return vectorPath;
+        }
+    }
+
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY) 
     {
         PathNode startNode = grid.GetGridObject(startX, startY);
@@ -66,7 +93,11 @@ public class Pathfinding
             foreach(PathNode neighbourNode in GetNeighbourList(currentNode)) 
             {
                 if (closedList.Contains(neighbourNode)) continue;
-
+                if (!neighbourNode.isWalkable)
+                {
+                    closedList.Add(neighbourNode);
+                    continue;
+                }
                 int tentativeGCost = currentNode.gCost + CalculateHCost(neighbourNode, neighbourNode);
                 if(tentativeGCost < neighbourNode.gCost) 
                 {

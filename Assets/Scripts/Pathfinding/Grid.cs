@@ -132,6 +132,8 @@ public class Grid<TGridObject>
     public int GetWidth() { return width; }
 
     public int GetHeight() { return height; }
+
+    public float GetCellSize() { return cellSize; }
     #endregion
 
 }

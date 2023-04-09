@@ -1,4 +1,5 @@
 using CodeMonkey.Utils;
+using CodeMonkey;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class Testing : MonoBehaviour
 {
 
     private Pathfinding pathfinding;
+    
     private void Start()
     {
         pathfinding = new Pathfinding(10,10);
@@ -17,6 +19,7 @@ public class Testing : MonoBehaviour
         if(Input.GetMouseButtonDown(0)) 
         {
             Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
+            Debug.Log(mouseWorldPosition);
             pathfinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
             List<PathNode> path = pathfinding.FindPath(0, 0, x, y);
             if(path != null) 
@@ -31,4 +34,6 @@ public class Testing : MonoBehaviour
 
         }
     }
+
+
 }

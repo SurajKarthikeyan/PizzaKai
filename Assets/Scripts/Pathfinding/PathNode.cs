@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class PathNode
     public int x;
     public int y;
 
+    public bool isWalkable;
     public int gCost;
     public int hCost;
     public int fCost;
@@ -21,6 +23,7 @@ public class PathNode
         this.y = y;
         this.x = x;
         this.grid = grid;
+        isWalkable = true;
     }
     public void CalculateFCost() 
     {
