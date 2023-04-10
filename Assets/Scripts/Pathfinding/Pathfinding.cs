@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Pathfinding
+public class Pathfinding : MonoBehaviour
 {
 
     #region VARIABLES
@@ -12,6 +13,7 @@ public class Pathfinding
     private Grid<PathNode> grid;
     private List<PathNode> openList;
     private List<PathNode> closedList;
+    private Pathfinding pathFinding;
     #endregion
     /// <summary>
     /// Constructor for Pathfinding Class
@@ -25,7 +27,24 @@ public class Pathfinding
         grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
     }
 
+    #region  MoboBehavior
 
+
+    private void Start()
+    {
+        float startTime = Time.realtimeSinceStartup;
+        pathFinding = new Pathfinding(20, 20);
+        int testPathCount = 5;
+
+        for (int i = 0; i < testPathCount; i++)
+        {
+            pathFinding.FindPath(0, 0, 19, 19);
+        }
+        
+        Debug.Log("Time: " + ((Time.realtimeSinceStartup - startTime) * 1000f));
+    }
+
+    #endregion
 
     #region NonMonobehavior
 
