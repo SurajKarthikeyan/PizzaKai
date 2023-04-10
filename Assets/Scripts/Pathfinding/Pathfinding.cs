@@ -33,7 +33,7 @@ public class Pathfinding
      *Function that takes the main "FindPath" and returns a list of Vector3's so an object can follow it
      *Probably use this version because I dont know how you're gonna make something path without actual coordinates lmao
      */
-    public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition) 
+    public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition)  
     {
         grid.GetXY(startWorldPosition, out int startX, out int startY);
         grid.GetXY(endWorldPosition, out int endX, out int  endY);
