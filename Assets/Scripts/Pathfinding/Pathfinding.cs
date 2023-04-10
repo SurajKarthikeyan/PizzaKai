@@ -39,9 +39,9 @@ public class Pathfinding : MonoBehaviour
         for (int i = 0; i < testPathCount; i++)
         {
             pathFinding.FindPath(0, 0, 19, 19);
+            Debug.Log("Time: " + ((Time.realtimeSinceStartup - startTime) * 1000f));
         }
         
-        Debug.Log("Time: " + ((Time.realtimeSinceStartup - startTime) * 1000f));
     }
 
     #endregion
