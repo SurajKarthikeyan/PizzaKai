@@ -150,10 +150,10 @@ public class UICode : MonoBehaviour
 
         if (tommy.activeSelf == true)
         {
-            altTime = tommyScript.timeTillAlt;
-            timestamp = tommyScript.timestamp;
-            ammoMax = shootingTommy.ammoCountMax;
-            ammoCur = shootingTommy.ammoCountCurrent;
+            altTime = tommyScript.gunScriptableObject.timeTillAlt;
+            timestamp = tommyScript.gunScriptableObject.timestamp;
+            ammoMax = shootingTommy.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingTommy.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(true);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(false);
@@ -161,10 +161,10 @@ public class UICode : MonoBehaviour
 
         if (shotgun.activeSelf == true)
         {
-            altTime = shotgunScript.timeTillAlt;
-            timestamp = shotgunScript.timestamp;
-            ammoMax = shootingShotgun.ammoCountMax;
-            ammoCur = shootingShotgun.ammoCountCurrent;
+            altTime = shotgunScript.gunScriptableObject.timeTillAlt;
+            timestamp = shotgunScript.gunScriptableObject.timestamp;
+            ammoMax = shootingShotgun.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingShotgun.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(true);
             ammoFlame.SetActive(false);
@@ -172,10 +172,10 @@ public class UICode : MonoBehaviour
 
         if (flamethrower.activeSelf == true)
         {
-            altTime = flamethrowerScript.timeTillAlt;
-            timestamp = flamethrowerScript.timestamp;
-            ammoMax = shootingFlamethrower.ammoCountMax;
-            ammoCur = shootingFlamethrower.ammoCountCurrent;
+            altTime = flamethrowerScript.gunScriptableObject.timeTillAlt;
+            timestamp = flamethrowerScript.gunScriptableObject.timestamp;
+            ammoMax = shootingFlamethrower.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingFlamethrower.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(true);

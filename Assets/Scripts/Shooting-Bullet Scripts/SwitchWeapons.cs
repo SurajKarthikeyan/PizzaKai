@@ -29,11 +29,11 @@ public class SwitchWeapons : MonoBehaviour
     {
         if (!UIScript.isPaused && !UIScript.isDying)
         {
-            if (FindObjectOfType<Shooting>().reloading == true)
+            if (FindObjectOfType<Shooting>().gunScriptableObject.reloading == true)
             {
                 notReloading = false;
             }
-            if (FindObjectOfType<Shooting>().reloading == false)
+            if (FindObjectOfType<Shooting>().gunScriptableObject.reloading == false)
             {
                 notReloading = true;
             }

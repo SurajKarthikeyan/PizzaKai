@@ -53,17 +53,19 @@ public class Flip : MonoBehaviour
 
         if (UIScript.tommy.activeSelf == true)
         {
-            rotZ = tommy.rotZ;
+            rotZ = tommy.gunScriptableObject.rotZ;
         }
 
         if (UIScript.shotgun.activeSelf == true)
         {
-            rotZ = shotgun.rotZ;
+            //Change to shotgunscriptable object
+            rotZ = shotgun.gunScriptableObject.rotZ;
         }
 
         if (UIScript.flamethrower.activeSelf == true)
         {
-            rotZ = flamethrower.rotZ;
+            //Change to flamethrowerscriptable object
+            rotZ = flamethrower.gunScriptableObject.rotZ;
         }
 
     }

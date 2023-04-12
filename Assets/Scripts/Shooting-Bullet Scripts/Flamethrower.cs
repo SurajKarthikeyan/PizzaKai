@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Flamethrower : Shooting
 {
-    public bool canAlt = true;
-    public float timeTillAlt;
-    public float timestamp;
+
     public GameObject fireBall;
-
-    public AudioSource GunAltSound;
-    public AudioClip GunAlt;
-
-    
     // Start is called before the first frame update
     override public void Start()
     {
@@ -22,25 +15,26 @@ public class Flamethrower : Shooting
     // Update is called once per frame
     override public void Update()
     {
-
+        //Change to flamethrowerScriptableObject
         if (!UIScript.isPaused && !UIScript.isDying)
         {
-            if (!canAlt)
+            if (!gunScriptableObject.canAlt)
             {
-                timestamp += Time.deltaTime;
-                if (timestamp > timeTillAlt)
+                gunScriptableObject.timestamp += Time.deltaTime;
+                if (gunScriptableObject.timestamp > gunScriptableObject.timeTillAlt)
                 {
-                    canAlt = true;
-                    timestamp = 0;
+                    gunScriptableObject.canAlt = true;
+                    gunScriptableObject.timestamp = 0;
                 }
             }
             base.Update();
 
-            if (Input.GetMouseButton(1) && canAlt == true)
+            if (Input.GetMouseButton(1) && gunScriptableObject.canAlt == true)
             {
                 GunAltSound.Play();
-                canAlt = false;
-                Instantiate(fireBall, bulletTransform, Quaternion.identity);
+                gunScriptableObject.canAlt = false;
+                //change to flamethrowerscriptableobject
+                Instantiate(fireBall, gunScriptableObject.bulletTransform, Quaternion.identity);
             }
         }
         
