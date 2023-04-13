@@ -17,6 +17,7 @@ public class GunScriptableObject : ScriptableObject {
     public float ammoCountCurrent;
     public float ammoCountMax;
     public float reloadTimer;
+    public float damageMultiplier = 1;
 
     
 
