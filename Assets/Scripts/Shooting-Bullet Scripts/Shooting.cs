@@ -13,6 +13,9 @@ public class Shooting : MonoBehaviour
     public Animator AnimGunLeft;
     public Animator AnimPlayer;
 
+    // To detect Mouse presses
+    private bool heldDown = false;
+
 
     //Sound
     public AudioSource GunFire;
@@ -160,12 +163,19 @@ public class Shooting : MonoBehaviour
 
                 //counts down ammo
                 gunScriptableObject.ammoCountCurrent = gunScriptableObject.ammoCountCurrent - 1;
+                //Debug.Log("playing shooting");
+
+                if (heldDown == false) heldDown = true;
             }
-            else
+            if(heldDown = true && Input.GetMouseButtonUp(0))
             {
+                
                 AnimGunRight.SetBool("Fire", false);
                 AnimGunLeft.SetBool("Fire", false);
                 AnimPlayer.SetBool("Fire", false);
+                //Debug.Log("not playing shooting");
+                heldDown = false;
+                
             }
 
             if (Input.GetKey("r"))
