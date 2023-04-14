@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class TommyGun : Shooting
 {
-    public bool canAlt = true;
-    public float timeTillAlt;
-    public float timestamp;
-    public List<SpriteRenderer> visibleEnemies = new List<SpriteRenderer>();
-
-    public AudioSource GunAltSound;
-    public AudioClip GunAlt;
-    public UICode UI;
-
     // Start is called before the first frame update
     override public void Start()
     {
@@ -27,32 +18,27 @@ public class TommyGun : Shooting
         if (!UI.isPaused && !UI.isDying)
         {
             FindEnemies();
-            if (!canAlt)
+            if (!gunScriptableObject.canAlt)
             {
-                timestamp += Time.deltaTime;
-                if (timestamp > timeTillAlt)
+                gunScriptableObject.timestamp += Time.deltaTime;
+                if (gunScriptableObject.timestamp > gunScriptableObject.timeTillAlt)
                 {
-                    canAlt = true;
-                    timestamp = 0;
+                    gunScriptableObject.canAlt = true;
+                    gunScriptableObject.timestamp = 0;
                 }
             }
 
             base.Update();
 
-            if (Input.GetMouseButton(1) && canAlt == true)
+            if (Input.GetMouseButton(1) && gunScriptableObject.canAlt == true)
             {
                 GunAltSound.Play();
-                canAlt = false;
+                gunScriptableObject.canAlt = false;
                 StartCoroutine(cameraScript.Shake());
                 StartCoroutine(UI.tommyAltFlash());
 
 
-                if (Input.GetMouseButton(0) && canFire)
-                {
-
-                    Debug.Log("Playing Sound");
-                }
-
+                
                 for (int i = 0; i < visibleEnemies.Count; i++)
                 {
                     if (visibleEnemies[i].GetComponent<Breadstick>() != null)
@@ -72,6 +58,7 @@ public class TommyGun : Shooting
 
 
             }
+            
         }
         
     }
