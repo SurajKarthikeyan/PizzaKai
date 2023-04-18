@@ -7,12 +7,14 @@ public class SwitchWeapons : MonoBehaviour
     public GameObject gun1;
     public GameObject gun2;
     public GameObject gun3;
+    public GameObject gun4;
 
     public bool notReloading;
 
     public bool Tommy;
     public bool Shotgun;
     public bool Flamethrower;
+    public bool Sniper;
 
     public UICode UIScript;
     
@@ -20,8 +22,10 @@ public class SwitchWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Tommy = true;
         Shotgun = false;
         Flamethrower = false;
+        Sniper = false;
     }
 
     // Update is called once per frame
@@ -42,6 +46,7 @@ public class SwitchWeapons : MonoBehaviour
             {
                 gun2.SetActive(false);
                 gun3.SetActive(false);
+                gun4.SetActive(false);
                 gun1.SetActive(true);
             }
 
@@ -49,6 +54,7 @@ public class SwitchWeapons : MonoBehaviour
             {
                 gun1.SetActive(false);
                 gun3.SetActive(false);
+                gun4.SetActive(false);
                 gun2.SetActive(true);
             }
 
@@ -57,7 +63,15 @@ public class SwitchWeapons : MonoBehaviour
             {
                 gun1.SetActive(false);
                 gun2.SetActive(false);
+                gun4.SetActive(false);
                 gun3.SetActive(true);
+            }
+            if (Input.GetKeyDown("" + 4) && notReloading == true && Sniper == true && UIScript.isFlashing == false)
+            {
+                gun1.SetActive(false);
+                gun2.SetActive(false);
+                gun3.SetActive(false);
+                gun4.SetActive(true);
             }
         }
         

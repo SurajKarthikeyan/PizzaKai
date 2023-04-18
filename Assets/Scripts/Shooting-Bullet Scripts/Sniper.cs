@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Sniper : Shooting
 {
+
+    private Camera mainCamera;
+
+    private float mainFOV;
+    private float sniperFOV = 10f;
     // Start is called before the first frame update
     override public void Start()
     {
         base.Start();
-
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        mainFOV = mainCamera.fieldOfView;
     }
 
     // Update is called once per frame
@@ -17,7 +23,7 @@ public class Sniper : Shooting
 
         if (!UI.isPaused && !UI.isDying)
         {
-            FindEnemies();
+            
             if (!gunScriptableObject.canAlt)
             {
                 gunScriptableObject.timestamp += Time.deltaTime;
@@ -30,59 +36,30 @@ public class Sniper : Shooting
 
             base.Update();
 
-            if (Input.GetMouseButton(1) && gunScriptableObject.canAlt == true)
+            if (Input.GetMouseButton(1))
             {
-                GunAltSound.Play();
-                gunScriptableObject.canAlt = false;
-                StartCoroutine(cameraScript.Shake());
-                StartCoroutine(UI.tommyAltFlash());
-
-
-
-                for (int i = 0; i < visibleEnemies.Count; i++)
+                if (gunScriptableObject.canAlt)
                 {
-                    if (visibleEnemies[i].GetComponent<Breadstick>() != null)
-                    {
-                        visibleEnemies[i].GetComponent<Breadstick>().currentHP = visibleEnemies[i].GetComponent<Breadstick>().currentHP - 5;
-                    }
-                    if (visibleEnemies[i].GetComponent<ChickenWing>() != null)
-                    {
-                        visibleEnemies[i].GetComponent<ChickenWing>().currentHP = visibleEnemies[i].GetComponent<ChickenWing>().currentHP - 5;
-                    }
-                    if (visibleEnemies[i].GetComponent<DeepDish>() != null)
-                    {
-                        visibleEnemies[i].GetComponent<DeepDish>().currentHP = visibleEnemies[i].GetComponent<DeepDish>().currentHP - 5;
-                    }
+                    GunAltSound.Play();
+                    mainCamera.fieldOfView = sniperFOV;
+                    gunScriptableObject.canAlt = false;
+                    Debug.Log("Sniper Aim");
+
+                    
+                }
+                else
+                {
+                    Debug.Log("Exiting Aim");
+                    mainCamera.fieldOfView = mainFOV;
+                    gunScriptableObject.canAlt = true;
                 }
 
-
-
             }
 
         }
 
     }
-    //Find and store all sprite renders on screen and adds them to a list.
-    public void FindEnemies()
-    {//retrieve all renderers in the scene
-        SpriteRenderer[] sceneObjects = FindObjectsOfType<SpriteRenderer>();
+    
 
-        //Store only visible renderers that have the EnemyBasic script
-        visibleEnemies.Clear();
-        for (int i = 0; i < sceneObjects.Length; i++)
-        {
-            if ((sceneObjects[i]).isVisible && (sceneObjects[i]).GetComponent<EnemyBasic>())
-            {
-                visibleEnemies.Add(sceneObjects[i]);
-            }
-        }
-
-    }
-
-    //checks whether object is within camera frustrum basically it's line of sight
-    bool IsVisible(Renderer renderer)
-    {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        return (GeometryUtility.TestPlanesAABB(planes, renderer.bounds)) ? true : false;
-    }
+    
 }
