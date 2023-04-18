@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2145b7d035163ac4c9cecae8485e0380, type: 3}
+  m_Name: SniperScriptableObject
+  m_EditorClassIdentifier: 
+  mousePos: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 1991449090420892426, guid: 864ee4868713c94478c6035d63f804b2, type: 3}
+  bulletTransform: {x: 0, y: 0, z: 0}
+  canFire: 1
+  reloading: 0
+  timer: 0
+  timeBetweenFiring: 0
+  ammoCountCurrent: 1
+  ammoCountMax: 1
+  reloadTimer: 3
+  damageMultiplier: 1
+  rotZ: 0
+  canAlt: 1
+  timeTillAlt: 0
+  timestamp: 0
+  GunShoot: {fileID: 0}
+  GunReload: {fileID: 0}
+  GunAlt: {fileID: 0}
