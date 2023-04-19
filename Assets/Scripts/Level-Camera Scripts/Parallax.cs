@@ -22,7 +22,7 @@ public class Parallax : MonoBehaviour
     {
         Vector3 movement = CameraMovement;
         if (movement == Vector3.zero) return;
-        _targetPosition = new Vector3(transform.position.x + movement.x * ParallaxAmount, transform.position.y, transform.position.z);
+        _targetPosition = new Vector3(transform.position.x + movement.x * ParallaxAmount, transform.position.y + movement.y, transform.position.z + movement.z);
         transform.position = _targetPosition;
     }
 
