@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2145b7d035163ac4c9cecae8485e0380, type: 3}
   m_Name: SniperScriptableObject
   m_EditorClassIdentifier: 
-  mousePos: {x: -56.95152, y: -63.30034, z: -1}
+  mousePos: {x: -44.749275, y: -60.95232, z: -1}
   bullet: {fileID: 1991449090420892426, guid: 864ee4868713c94478c6035d63f804b2, type: 3}
-  bulletTransform: {x: -54.6476, y: -63.464115, z: 0}
+  bulletTransform: {x: -45.895187, y: -62.55211, z: 0}
   canFire: 1
   reloading: 0
   timer: 0
@@ -23,9 +23,9 @@ MonoBehaviour:
   ammoCountMax: 1
   reloadTimer: 3
   damageMultiplier: 1
-  rotZ: 179.92336
-  canAlt: 1
-  timeTillAlt: 0
+  rotZ: 38.749065
+  canAlt: 0
+  timeTillAlt: 1
   timestamp: 0
   GunShoot: {fileID: 8300000, guid: 2de6967478fbdea4eaa78b34de77159b, type: 3}
   GunReload: {fileID: 8300000, guid: 72a4337a9574ae3499177f3c8309a951, type: 3}

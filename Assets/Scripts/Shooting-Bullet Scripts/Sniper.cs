@@ -59,11 +59,12 @@ public class Sniper : Shooting
     
     private IEnumerator SwitchFOV()
     {
-        
+        //Needs UI indicator where the alt fire is for most guns for the aiming mode. 
         if (aimState == AimState.regularFOV)
         {
             
             mainCamera.orthographicSize = sniperFOV;
+            Cursor.visible = true;
             yield return new WaitForSeconds(2);
             aimState = AimState.ADSFOV;
             Debug.Log("Sniper Aim");
@@ -72,6 +73,7 @@ public class Sniper : Shooting
         {
             
             mainCamera.orthographicSize = mainFOV;
+            Cursor.visible = false;
             yield return new WaitForSeconds(2);
             aimState = AimState.regularFOV;
             Debug.Log("Exiting Aim");
