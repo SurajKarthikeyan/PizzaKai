@@ -25,7 +25,7 @@ public class SwitchWeapons : MonoBehaviour
         Tommy = true;
         Shotgun = false;
         Flamethrower = false;
-        Sniper = false;
+        Sniper = true;
     }
 
     // Update is called once per frame

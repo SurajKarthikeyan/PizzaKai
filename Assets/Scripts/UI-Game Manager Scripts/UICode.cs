@@ -50,20 +50,24 @@ public class UICode : MonoBehaviour
     public GameObject ammoTommy;
     public GameObject ammoShotgun;
     public GameObject ammoFlame;
+    public GameObject ammoSniper;
 
     public GameObject tommy;
     public GameObject shotgun;
     public GameObject flamethrower;
+    public GameObject sniper;
     public GameObject tommyFlash;
     public Image tommyFlashImage;
 
     public Shooting shootingTommy;
     public Shooting shootingShotgun;
     public Shooting shootingFlamethrower;
+    public Shooting shootingSniper;
 
     public TommyGun tommyScript;
     public Shotgun shotgunScript;
     public Flamethrower flamethrowerScript;
+    public Sniper sniperScript;
 
     public bool isFlashing = false;
     public bool isDying = false;
@@ -157,6 +161,7 @@ public class UICode : MonoBehaviour
             ammoTommy.SetActive(true);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(false);
+            ammoSniper.SetActive(false);
         }
 
         if (shotgun.activeSelf == true)
@@ -168,6 +173,7 @@ public class UICode : MonoBehaviour
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(true);
             ammoFlame.SetActive(false);
+            ammoSniper.SetActive(false);
         }
 
         if (flamethrower.activeSelf == true)
@@ -179,6 +185,18 @@ public class UICode : MonoBehaviour
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(true);
+            ammoSniper.SetActive(false);
+        }
+        if (sniper.activeSelf == true)
+        {
+            altTime = sniperScript.gunScriptableObject.timeTillAlt;
+            timestamp = sniperScript.gunScriptableObject.timestamp;
+            ammoMax = sniperScript.gunScriptableObject.ammoCountMax;
+            ammoCur = sniperScript.gunScriptableObject.ammoCountCurrent;
+            ammoTommy.SetActive(false);
+            ammoShotgun.SetActive(false);
+            ammoFlame.SetActive(false);
+            ammoSniper.SetActive(true);
         }
 
     }

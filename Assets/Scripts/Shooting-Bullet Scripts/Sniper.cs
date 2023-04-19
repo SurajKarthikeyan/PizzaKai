@@ -9,12 +9,22 @@ public class Sniper : Shooting
 
     private float mainFOV;
     private float sniperFOV = 10f;
+
+    private enum AimState
+    {
+        regularFOV, 
+        ADSFOV
+    };
+
+
+    AimState aimState;
     // Start is called before the first frame update
     override public void Start()
     {
         base.Start();
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        mainFOV = mainCamera.fieldOfView;
+        mainFOV = mainCamera.orthographicSize;
+        aimState = AimState.regularFOV;
     }
 
     // Update is called once per frame
@@ -23,43 +33,51 @@ public class Sniper : Shooting
 
         if (!UI.isPaused && !UI.isDying)
         {
+
             
-            if (!gunScriptableObject.canAlt)
-            {
-                gunScriptableObject.timestamp += Time.deltaTime;
-                if (gunScriptableObject.timestamp > gunScriptableObject.timeTillAlt)
-                {
-                    gunScriptableObject.canAlt = true;
-                    gunScriptableObject.timestamp = 0;
-                }
-            }
+            //if (aimState == AimState.regularFOV)
+            //{
+            //    gunScriptableObject.timestamp += Time.deltaTime;
+            //    if (gunScriptableObject.timestamp > gunScriptableObject.timeTillAlt)
+            //    {
+            //        gunScriptableObject.canAlt = false;
+            //        gunScriptableObject.timestamp = 0;
+            //    }
+            //}
 
             base.Update();
 
             if (Input.GetMouseButton(1))
             {
-                if (gunScriptableObject.canAlt)
-                {
-                    GunAltSound.Play();
-                    mainCamera.fieldOfView = sniperFOV;
-                    gunScriptableObject.canAlt = false;
-                    Debug.Log("Sniper Aim");
-
-                    
-                }
-                else
-                {
-                    Debug.Log("Exiting Aim");
-                    mainCamera.fieldOfView = mainFOV;
-                    gunScriptableObject.canAlt = true;
-                }
-
+                GunAltSound.Play();
+                StartCoroutine(SwitchFOV());
             }
 
         }
 
     }
     
+    private IEnumerator SwitchFOV()
+    {
+        
+        if (aimState == AimState.regularFOV)
+        {
+            
+            mainCamera.orthographicSize = sniperFOV;
+            yield return new WaitForSeconds(2);
+            aimState = AimState.ADSFOV;
+            Debug.Log("Sniper Aim");
+        }
+        else
+        {
+            
+            mainCamera.orthographicSize = mainFOV;
+            yield return new WaitForSeconds(2);
+            aimState = AimState.regularFOV;
+            Debug.Log("Exiting Aim");
+        }
+        
 
+    }
     
 }
