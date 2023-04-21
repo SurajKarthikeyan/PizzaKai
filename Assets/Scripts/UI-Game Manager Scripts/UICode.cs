@@ -50,20 +50,24 @@ public class UICode : MonoBehaviour
     public GameObject ammoTommy;
     public GameObject ammoShotgun;
     public GameObject ammoFlame;
+    public GameObject ammoSniper;
 
     public GameObject tommy;
     public GameObject shotgun;
     public GameObject flamethrower;
+    public GameObject sniper;
     public GameObject tommyFlash;
     public Image tommyFlashImage;
 
     public Shooting shootingTommy;
     public Shooting shootingShotgun;
     public Shooting shootingFlamethrower;
+    public Shooting shootingSniper;
 
     public TommyGun tommyScript;
     public Shotgun shotgunScript;
     public Flamethrower flamethrowerScript;
+    public Sniper sniperScript;
 
     public bool isFlashing = false;
     public bool isDying = false;
@@ -150,35 +154,49 @@ public class UICode : MonoBehaviour
 
         if (tommy.activeSelf == true)
         {
-            altTime = tommyScript.timeTillAlt;
-            timestamp = tommyScript.timestamp;
-            ammoMax = shootingTommy.ammoCountMax;
-            ammoCur = shootingTommy.ammoCountCurrent;
+            altTime = tommyScript.gunScriptableObject.timeTillAlt;
+            timestamp = tommyScript.gunScriptableObject.timestamp;
+            ammoMax = shootingTommy.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingTommy.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(true);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(false);
+            ammoSniper.SetActive(false);
         }
 
         if (shotgun.activeSelf == true)
         {
-            altTime = shotgunScript.timeTillAlt;
-            timestamp = shotgunScript.timestamp;
-            ammoMax = shootingShotgun.ammoCountMax;
-            ammoCur = shootingShotgun.ammoCountCurrent;
+            altTime = shotgunScript.gunScriptableObject.timeTillAlt;
+            timestamp = shotgunScript.gunScriptableObject.timestamp;
+            ammoMax = shootingShotgun.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingShotgun.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(true);
             ammoFlame.SetActive(false);
+            ammoSniper.SetActive(false);
         }
 
         if (flamethrower.activeSelf == true)
         {
-            altTime = flamethrowerScript.timeTillAlt;
-            timestamp = flamethrowerScript.timestamp;
-            ammoMax = shootingFlamethrower.ammoCountMax;
-            ammoCur = shootingFlamethrower.ammoCountCurrent;
+            altTime = flamethrowerScript.gunScriptableObject.timeTillAlt;
+            timestamp = flamethrowerScript.gunScriptableObject.timestamp;
+            ammoMax = shootingFlamethrower.gunScriptableObject.ammoCountMax;
+            ammoCur = shootingFlamethrower.gunScriptableObject.ammoCountCurrent;
             ammoTommy.SetActive(false);
             ammoShotgun.SetActive(false);
             ammoFlame.SetActive(true);
+            ammoSniper.SetActive(false);
+        }
+        if (sniper.activeSelf == true)
+        {
+            altTime = sniperScript.gunScriptableObject.timeTillAlt;
+            timestamp = sniperScript.gunScriptableObject.timestamp;
+            ammoMax = sniperScript.gunScriptableObject.ammoCountMax;
+            ammoCur = sniperScript.gunScriptableObject.ammoCountCurrent;
+            ammoTommy.SetActive(false);
+            ammoShotgun.SetActive(false);
+            ammoFlame.SetActive(false);
+            ammoSniper.SetActive(true);
         }
 
     }

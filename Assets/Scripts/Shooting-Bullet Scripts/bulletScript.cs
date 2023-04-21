@@ -10,7 +10,7 @@ public class bulletScript : MonoBehaviour
     public Rigidbody2D rb;
     public float force;
     public float destroyTime;
-    public int damage;
+    public float damage;
     public float spread;
     public float distance;
 

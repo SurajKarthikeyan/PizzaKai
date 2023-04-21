@@ -171,7 +171,7 @@ public class EnemyBasic : MonoBehaviour
         // Debug.Log("Was hit");
         if (collision.gameObject.tag == "PlayerBullet" || collision.gameObject.tag == "PlayerFireBullet")
         {
-            currentHP = currentHP - collision.gameObject.GetComponent<bulletScript>().damage;
+            currentHP = currentHP - (int)collision.gameObject.GetComponent<bulletScript>().damage;
             Destroy(collision.gameObject);
 
             hitState = true;

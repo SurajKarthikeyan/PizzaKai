@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Shotgun : Shooting
 {
-    public bool canAlt = true;
-    public float timeTillAlt;
-    public float timestamp;
+    
     
     //public Rigidbody2D rb;
     public float altTime;
@@ -14,13 +12,10 @@ public class Shotgun : Shooting
     public Vector3 direction;
     public float altForce;
 
-    public AudioSource GunAltSound;
-    public AudioClip GunAlt;
-
-    
 
     private float pushPower = 4f;
-
+    
+    
 
     // Start is called before the first frame update
     override public void Start()
@@ -32,24 +27,24 @@ public class Shotgun : Shooting
     // Update is called once per frame
     override public void Update()
     {
-
+        //Change to shotgunScriptableObject
         if(!UIScript.isPaused && !UIScript.isDying)
         {
             base.Update();
-            if (!canAlt)
+            if (!gunScriptableObject.canAlt)
             {
-                timestamp += Time.deltaTime;
-                if (timestamp > timeTillAlt)
+                gunScriptableObject.timestamp += Time.deltaTime;
+                if (gunScriptableObject.timestamp > gunScriptableObject.timeTillAlt)
                 {
-                    canAlt = true;
-                    timestamp = 0;
+                    gunScriptableObject.canAlt = true;
+                    gunScriptableObject.timestamp = 0;
                 }
             }
 
-            if (Input.GetMouseButton(1) && canAlt == true)
+            if (Input.GetMouseButton(1) && gunScriptableObject.canAlt == true)
             {
                 GunAltSound.Play();
-                canAlt = false;
+                gunScriptableObject.canAlt = false;
                 player.isAlting = true;
                 StartCoroutine(cameraScript.Shake());
                 StartCoroutine(altFire());

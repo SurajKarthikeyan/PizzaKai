@@ -4,46 +4,47 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+
+    public GunScriptableObject gunScriptableObject;
+
     private Camera mainCam;
-    private Vector3 mousePos;
-    public GameObject bullet;
-    public Vector3 bulletTransform;
-    public bool canFire;
-    public bool reloading = false;
-    public float timer;
-    public float timeBetweenFiring;
-    public float ammoCountCurrent;
-    public float ammoCountMax;
-    public float reloadTimer;
-
-    //needed for screen shake
-    public CameraFollow cameraScript;
-
-    //I put this here so I could access it in the Flip
-    public float rotZ;
 
     public Animator AnimGunRight;
     public Animator AnimGunLeft;
     public Animator AnimPlayer;
-    public PlayerMovement player;
+
+    // To detect Mouse presses
+    private bool heldDown = false;
+
 
     //Sound
     public AudioSource GunFire;
-    public AudioClip GunShoot;
     public AudioSource GunReloading;
-    public AudioClip GunReload;
+    public AudioSource GunAltSound;
+    
+
+    //needed for screen shake
+    public CameraFollow cameraScript;
+
+    public PlayerMovement player;
 
     //Pause and flipping
     public UICode UIScript;
     public Flip flip;
-    
+
+    public List<SpriteRenderer> visibleEnemies = new List<SpriteRenderer>();
+
+    public UICode UI;
+
+
     // Start is called before the first frame update
     virtual public void Start()
     {
-        
-        ammoCountCurrent = ammoCountMax;
+
+        gunScriptableObject.ammoCountCurrent = gunScriptableObject.ammoCountMax;
         //finds camera
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        gunScriptableObject.canFire = true;
     }
 
     // Update is called once per frame
@@ -53,33 +54,33 @@ public class Shooting : MonoBehaviour
         if (!UIScript.isPaused && !UIScript.isDying)
         {
             //sets vector 3 to mouse position to track where they are aiming
-            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            gunScriptableObject.mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 rotation = mousePos - transform.position;
+            Vector3 rotation = gunScriptableObject.mousePos - transform.position;
 
             //Helps track rotation
-            rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            gunScriptableObject.rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             
-            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+            transform.rotation = Quaternion.Euler(0, 0, gunScriptableObject.rotZ);
 
             //Debug.Log(transform.rotation);
 
-            if (reloading)
+            if (gunScriptableObject.reloading)
                 return;
 
-            if (!canFire)
+            if (!gunScriptableObject.canFire)
             {
-                timer += Time.deltaTime;
-                if (timer > timeBetweenFiring)
+                gunScriptableObject.timer += Time.deltaTime;
+                if (gunScriptableObject.timer > gunScriptableObject.timeBetweenFiring)
                 {
-                    canFire = true;
-                    timer = 0;
+                    gunScriptableObject.canFire = true;
+                    gunScriptableObject.timer = 0;
 
                 }
             }
 
             //activates reload;
-            if (ammoCountCurrent <= 0)
+            if (gunScriptableObject.ammoCountCurrent <= 0)
             {
                 StartCoroutine(Reload());
                 GunReloading.Play();
@@ -91,13 +92,17 @@ public class Shooting : MonoBehaviour
                 {
 
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.shotgunFirepointLeft.transform.position.x, flip.shotgunFirepointLeft.transform.position.y, flip.shotgunFirepointLeft.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointLeft.transform.position.x, 
+                        flip.shotgunFirepointLeft.transform.position.y, 
+                        flip.shotgunFirepointLeft.transform.position.z);
                 }
                 if (flip.shotgunRight.activeSelf == true)
                 {
-                    
+
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.shotgunFirepointRight.transform.position.x, flip.shotgunFirepointRight.transform.position.y, flip.shotgunFirepointRight.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointRight.transform.position.x, 
+                        flip.shotgunFirepointRight.transform.position.y, 
+                        flip.shotgunFirepointRight.transform.position.z);
                 }
             }
 
@@ -107,13 +112,17 @@ public class Shooting : MonoBehaviour
                 {
 
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.tommyFirepointLeft.transform.position.x, flip.tommyFirepointLeft.transform.position.y, flip.tommyFirepointLeft.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointLeft.transform.position.x, 
+                        flip.tommyFirepointLeft.transform.position.y, 
+                        flip.tommyFirepointLeft.transform.position.z);
                 }
                 if (flip.shotgunRight.activeSelf == true)
                 {
 
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.tommyFirepointRight.transform.position.x, flip.tommyFirepointRight.transform.position.y, flip.tommyFirepointRight.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointRight.transform.position.x, 
+                        flip.tommyFirepointRight.transform.position.y, 
+                        flip.tommyFirepointRight.transform.position.z);
                 }
             }
 
@@ -123,39 +132,50 @@ public class Shooting : MonoBehaviour
                 {
 
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.flameFirepointLeft.transform.position.x, flip.flameFirepointLeft.transform.position.y, flip.flameFirepointLeft.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointLeft.transform.position.x, 
+                        flip.flameFirepointLeft.transform.position.y, 
+                        flip.flameFirepointLeft.transform.position.z);
                 }
                 if (flip.shotgunRight.activeSelf == true)
                 {
 
                     //make left firepoint the main firepoint
-                    bulletTransform = new Vector3(flip.flameFirepointRight.transform.position.x, flip.flameFirepointRight.transform.position.y, flip.flameFirepointRight.transform.position.z);
+                    gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointRight.transform.position.x, 
+                        flip.flameFirepointRight.transform.position.y, 
+                        flip.flameFirepointRight.transform.position.z);
                 }
             }
 
             //Click mouse button to fire
-            if (Input.GetMouseButton(0) && canFire)
+            if (Input.GetMouseButton(0) && gunScriptableObject.canFire)
             {
                 AnimGunRight.SetBool("Fire", true);
                 AnimGunLeft.SetBool("Fire", true);
                 AnimPlayer.SetBool("Fire", true);
-                canFire = false;
+                gunScriptableObject.canFire = false;
                 //Debug.Log("Shot bullet");
                 //this causes this screen to shake when you shoot
                 StartCoroutine(cameraScript.Shake());
-                Instantiate(bullet, bulletTransform, Quaternion.identity);
+                Instantiate(gunScriptableObject.bullet, gunScriptableObject.bulletTransform, Quaternion.identity);
                 GunFire.Play();
                 //Debug.Log("Playing Sound");
 
 
                 //counts down ammo
-                ammoCountCurrent = ammoCountCurrent - 1;
+                gunScriptableObject.ammoCountCurrent = gunScriptableObject.ammoCountCurrent - 1;
+                //Debug.Log("playing shooting");
+
+                if (heldDown == false) heldDown = true;
             }
-            else
+            if(heldDown = true && Input.GetMouseButtonUp(0))
             {
+                
                 AnimGunRight.SetBool("Fire", false);
                 AnimGunLeft.SetBool("Fire", false);
                 AnimPlayer.SetBool("Fire", false);
+                //Debug.Log("not playing shooting");
+                heldDown = false;
+                
             }
 
             if (Input.GetKey("r"))
@@ -171,16 +191,16 @@ public class Shooting : MonoBehaviour
     }
     virtual public IEnumerator Reload()
     {
-        reloading = true;
+        gunScriptableObject.reloading = true;
         AnimGunRight.SetBool("Reload", true);
         AnimGunLeft.SetBool("Reload", true);
-        canFire = false;
-        yield return new WaitForSeconds(reloadTimer);
-        ammoCountCurrent = ammoCountMax;
-        reloading = false;
+        gunScriptableObject.canFire = false;
+        yield return new WaitForSeconds(gunScriptableObject.reloadTimer);
+        gunScriptableObject.ammoCountCurrent = gunScriptableObject.ammoCountMax;
+        gunScriptableObject.reloading = false;
         AnimGunRight.SetBool("Reload", false);
         AnimGunLeft.SetBool("Reload", false);
-        canFire = true;
+        gunScriptableObject.canFire = true;
         
     }
 }
