@@ -7,11 +7,11 @@ using UnityEngine;
 public class Testing : MonoBehaviour
 {
 
-    private Pathfinding pathfinding;
+    private PathfindingOG pathfindingOg;
     
     private void Start()
     {
-        pathfinding = new Pathfinding(10,10);
+        pathfindingOg = new PathfindingOG(10,10);
     }
 
     private void Update()
@@ -20,8 +20,8 @@ public class Testing : MonoBehaviour
         {
             Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
             Debug.Log(mouseWorldPosition);
-            pathfinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
-            List<PathNode> path = pathfinding.FindPath(0, 0, x, y);
+            pathfindingOg.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
+            List<PathNode> path = pathfindingOg.FindPath(0, 0, x, y);
             if(path != null) 
             {
                 for(int i = 0; i< path.Count - 1 ;  i++) 
