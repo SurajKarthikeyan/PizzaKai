@@ -32,6 +32,7 @@ public class Breadstick : EnemyBasic
             {
                 for (int i = 0; i < stickSplit; i++)
                 {
+                    
                     GameObject stickGO = Instantiate<GameObject>(gameObject);
                     Breadstick stick = stickGO.GetComponent<Breadstick>();
                     stickGO.transform.position = new Vector3(transform.position.x + (i - 0), transform.position.y, transform.position.z);
@@ -61,6 +62,7 @@ public class Breadstick : EnemyBasic
             }
             BreadDead.Play();
             Destroy(gameObject);
+            //Debug.Log("Killed breadstick and size is " + size + " and pointer " + this);
         }
 
         if (hitState && Time.time > hitTime) hitState = false;

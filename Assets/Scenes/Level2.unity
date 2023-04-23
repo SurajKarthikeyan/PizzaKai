@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &35925475 stripped
@@ -245,6 +253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &41868799
@@ -302,6 +318,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &60628354
@@ -334,7 +362,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &60628356
 AudioSource:
@@ -487,6 +515,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &96526851
@@ -859,6 +895,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &107384769
@@ -916,6 +964,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &121023670
@@ -973,6 +1033,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &123139654 stripped
@@ -1010,7 +1078,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &148093889
 AudioSource:
@@ -1205,6 +1273,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &203755701 stripped
@@ -5157,6 +5237,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &331879595
@@ -5488,6 +5580,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &369508365
@@ -5520,7 +5620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &369508367
 AudioSource:
@@ -5628,134 +5728,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7228773726619069323, guid: 0232774903cdc453db66828c48640e32, type: 3}
   m_PrefabInstance: {fileID: 107384769}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &394387409
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 394387410}
-  - component: {fileID: 394387411}
-  m_Layer: 0
-  m_Name: DeepDishPlaceholder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &394387410
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394387409}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1903406027}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &394387411
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394387409}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bcdd944085211aa43840a1a869f6577e, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &398147007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7228773726619069323, guid: 0232774903cdc453db66828c48640e32, type: 3}
@@ -5816,6 +5788,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &408867121
@@ -40128,7 +40112,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &490059065
 AudioSource:
@@ -40433,6 +40417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeepDish
       objectReference: {fileID: 0}
+    - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7148419337918994598, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -40662,6 +40650,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &570559482
@@ -40719,6 +40715,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &571449198 stripped
@@ -40867,6 +40875,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &604631354
@@ -41057,6 +41073,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &633796493
@@ -41114,6 +41142,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &641436030
@@ -41171,6 +41211,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &645309370 stripped
@@ -42278,6 +42330,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &807944866
@@ -42335,6 +42399,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &811367918
@@ -42474,6 +42546,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &821508070
@@ -42840,6 +42920,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &861970071 stripped
@@ -42994,6 +43082,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &939145740
@@ -43087,134 +43183,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &957843636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 957843637}
-  - component: {fileID: 957843638}
-  m_Layer: 0
-  m_Name: DeepDish
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &957843637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957843636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1903406027}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &957843638
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957843636}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b83f090b8a1adee4a9977d5980bc6793, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.778
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &967250963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
@@ -44434,6 +44402,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1210886217
@@ -44700,6 +44676,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1270769317
@@ -44833,6 +44817,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1333148665
@@ -45071,6 +45063,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &1365047681
@@ -45165,6 +45169,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1381906415
@@ -45222,6 +45234,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1392840665
@@ -45426,6 +45446,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1400049765
@@ -49840,6 +49868,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1412421713
@@ -50454,6 +50490,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1471524787 stripped
@@ -50516,6 +50564,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1549347428
@@ -50669,6 +50725,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1605095278 stripped
@@ -50736,6 +50804,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     - target: {fileID: 7228773726619069326, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: m_Mass
       value: 1.1732142
@@ -51124,6 +51204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 248297412}
     m_Modifications:
+    - target: {fileID: 1599926709, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_RootOrder
       value: 49
@@ -51171,6 +51255,38 @@ PrefabInstance:
     - target: {fileID: 8271343615121380462, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_Name
       value: DemoBreadstick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_GravityScale
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
@@ -51310,6 +51426,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1733969108 stripped
@@ -51427,6 +51555,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1793630651
@@ -51484,6 +51620,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1812926699
@@ -51669,6 +51813,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &1833367590
@@ -51725,6 +51881,18 @@ PrefabInstance:
     - target: {fileID: 8271343615121380462, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_Name
       value: DemoBreadstick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
+    - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
@@ -51783,6 +51951,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1867112978
@@ -51815,7 +51991,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1867112980
 AudioSource:
@@ -52306,13 +52482,11 @@ Transform:
   - {fileID: 559849358}
   - {fileID: 301079690}
   - {fileID: 435074295}
-  - {fileID: 957843637}
   - {fileID: 490059064}
   - {fileID: 1982846846}
   - {fileID: 1867112979}
   - {fileID: 369508366}
   - {fileID: 60628355}
-  - {fileID: 394387410}
   - {fileID: 2067816138}
   - {fileID: 148093888}
   m_Father: {fileID: 96526860}
@@ -52389,6 +52563,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1928372578
@@ -52446,6 +52628,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1934654385
@@ -52919,6 +53109,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &1974160570
@@ -52976,6 +53178,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &1982846845
@@ -53008,7 +53222,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1982846847
 AudioSource:
@@ -53166,6 +53380,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &2067816137
@@ -53198,7 +53424,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903406027}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2067816139
 AudioSource:
@@ -53351,6 +53577,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &2091804473
@@ -53408,6 +53646,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &2095501911
@@ -53465,6 +53711,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &2097179796 stripped
