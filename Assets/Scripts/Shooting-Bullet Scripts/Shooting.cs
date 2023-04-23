@@ -158,7 +158,7 @@ public class Shooting : MonoBehaviour
                 //Debug.Log("Shot bullet");
                 //this causes this screen to shake when you shoot
                 //StartCoroutine(cameraScript.Shake());
-                cameraShake.shakeDuration = 0.2f;
+                cameraShake.shakeDuration = 0.2f; //This causes the shake (new script)
                 Instantiate(gunScriptableObject.bullet, gunScriptableObject.bulletTransform, Quaternion.identity);
                 GunFire.Play();
                 //Debug.Log("Playing Sound");
@@ -170,7 +170,16 @@ public class Shooting : MonoBehaviour
 
                 if (heldDown == false) heldDown = true;
             }
-            if(heldDown = true && Input.GetMouseButtonUp(0))
+
+            /*
+            if(!gunScriptableObject.canFire)
+            {
+                AnimGunRight.SetBool("Fire", false);
+                AnimGunLeft.SetBool("Fire", false);
+                AnimPlayer.SetBool("Fire", false);
+            }
+            */
+            else if(Input.GetMouseButtonUp(0) || gunScriptableObject.ammoCountCurrent <= 0)
             {
                 
                 AnimGunRight.SetBool("Fire", false);
