@@ -25,6 +25,7 @@ public class Shooting : MonoBehaviour
 
     //needed for screen shake
     public CameraFollow cameraScript;
+    public CameraShake cameraShake;
 
     public PlayerMovement player;
 
@@ -45,6 +46,7 @@ public class Shooting : MonoBehaviour
         //finds camera
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         gunScriptableObject.canFire = true;
+        cameraShake= mainCam.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -155,7 +157,8 @@ public class Shooting : MonoBehaviour
                 gunScriptableObject.canFire = false;
                 //Debug.Log("Shot bullet");
                 //this causes this screen to shake when you shoot
-                StartCoroutine(cameraScript.Shake());
+                //StartCoroutine(cameraScript.Shake());
+                cameraShake.shakeDuration = 0.2f;
                 Instantiate(gunScriptableObject.bullet, gunScriptableObject.bulletTransform, Quaternion.identity);
                 GunFire.Play();
                 //Debug.Log("Playing Sound");
