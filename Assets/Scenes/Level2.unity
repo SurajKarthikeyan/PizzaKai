@@ -717,6 +717,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 72c70ba53be4bef47b8df10b68585ccd, type: 2}
     - target: {fileID: 6658677836132579167, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: gun4
+      value: 
+      objectReference: {fileID: 1891087640}
+    - target: {fileID: 6658677836132579167, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: Sniper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658677836132579167, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: UIScript
       value: 
       objectReference: {fileID: 1903406022}
@@ -51214,15 +51222,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.754337
+      value: 26.44
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1965942
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 9.16
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51256,6 +51264,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoBreadstick
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -51269,25 +51278,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+=======
+    - target: {fileID: 8271343615121380463, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_GravityScale
       value: 20
+=======
+      propertyPath: m_CollisionDetection
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1671530464 stripped
