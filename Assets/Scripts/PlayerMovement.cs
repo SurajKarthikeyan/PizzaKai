@@ -306,8 +306,16 @@ public class PlayerMovement : MonoBehaviour
             isKBed = true;
             rigid.velocity = Vector2.zero;
             StartCoroutine(Knockback());
-
-            incomingDamage = collision.gameObject.GetComponent<EnemyBasic>().enemyDamage;
+            if (collision.gameObject.GetComponent<EnemyBasic>() != null)
+            {
+                incomingDamage = collision.gameObject.GetComponent<EnemyBasic>().enemyDamage;
+            }
+            else
+            {
+                incomingDamage = 0.25f;
+            }
+            
+            
             UIScript.LoseHealth(incomingDamage);
             StartCoroutine(damageCool());
             
