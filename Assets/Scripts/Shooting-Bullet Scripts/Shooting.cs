@@ -46,6 +46,7 @@ public class Shooting : MonoBehaviour
         //finds camera
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         gunScriptableObject.canFire = true;
+        gunScriptableObject.reloading = false;
         cameraShake= mainCam.GetComponent<CameraShake>();
     }
 

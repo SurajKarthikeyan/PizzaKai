@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5219901646902708577}
   - component: {fileID: 5219901646902708576}
   - component: {fileID: 5219901646902708591}
-  - component: {fileID: 9199483285851275880}
   m_Layer: 0
   m_Name: Shotgun Pickup
   m_TagString: Shotgun
@@ -126,32 +125,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9277992, y: 0.30627155}
   m_EdgeRadius: 0
---- !u!114 &9199483285851275880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219901646902708579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a76ec9031445429b87328575e5e1996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorials:
-  - (You got the shotgun!)
-  - (You can switch to your shotgun by pressing 2. You can fire a spreadshot by left
-    clicking. Using the Alternate Fire by right clicking of the shotgun will propel
-    you in the opposite direction of where you are aiming.)
-  - (You can use this Shotgun Propulsion to get to new areas previously out of reach.
-    The propulsion will be stronger if the cursor is further away from the player.
-    Try it out by right clicking!)
-  canSkip: 0
-  firstImportant: 0
-  textBox: {fileID: 0}
-  tutText: {fileID: 0}
-  key: 324
-  alwaysKey: 100
-  skipKey: 115
-  enemyRestrict: {fileID: 0}
-  isSpawned: 1

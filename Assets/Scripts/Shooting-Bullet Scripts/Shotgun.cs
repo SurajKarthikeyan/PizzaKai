@@ -13,7 +13,7 @@ public class Shotgun : Shooting
     public float altForce;
 
 
-    private float pushPower = 4f;
+    private float pushPower = 15f;
     
     
 

@@ -76,6 +76,7 @@ public class UICode : MonoBehaviour
     void Start()
     {
         tommy.SetActive(true);
+        ammoTommy.SetActive(true);
         shotgun.SetActive(false);
         flamethrower.SetActive(false);
 
@@ -164,7 +165,7 @@ public class UICode : MonoBehaviour
             ammoSniper.SetActive(false);
         }
 
-        if (shotgun.activeSelf == true)
+        else if (shotgun.activeSelf == true)
         {
             altTime = shotgunScript.gunScriptableObject.timeTillAlt;
             timestamp = shotgunScript.gunScriptableObject.timestamp;
@@ -176,7 +177,7 @@ public class UICode : MonoBehaviour
             ammoSniper.SetActive(false);
         }
 
-        if (flamethrower.activeSelf == true)
+        else if (flamethrower.activeSelf == true)
         {
             altTime = flamethrowerScript.gunScriptableObject.timeTillAlt;
             timestamp = flamethrowerScript.gunScriptableObject.timestamp;
@@ -187,7 +188,7 @@ public class UICode : MonoBehaviour
             ammoFlame.SetActive(true);
             ammoSniper.SetActive(false);
         }
-        if (sniper.activeSelf == true)
+        else if (sniper.activeSelf == true)
         {
             altTime = sniperScript.gunScriptableObject.timeTillAlt;
             timestamp = sniperScript.gunScriptableObject.timestamp;
