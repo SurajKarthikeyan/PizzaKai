@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
@@ -23,18 +24,12 @@ public class DoorScript : MonoBehaviour
         {
             if (gameObject.tag == "Level 1 Door")
             {
-                if (player.level1Key == true)
-                {
-                    Destroy(gameObject);
-                }
+                SceneManager.LoadScene("Level2");
             }
 
             if (gameObject.tag == "Level 2 Door")
             {
-                if (player.level2Key == true)
-                {
-                    Destroy(gameObject);
-                }
+                SceneManager.LoadScene("MainMenu");
             }
 
         }

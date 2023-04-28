@@ -9,21 +9,7 @@ public class GunDamageUpgrade : MonoBehaviour
     private float realUpgradePercentage;
     private GameObject gunSOBullet;
     // Start is called before the first frame update
-    void Start()
-    {
-        gunSOBullet = gunSO.bullet;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //If the player collides with the object, for now it's just the J Key
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            UpgradeDamage();
-            Destroy(gameObject);
-        }
-    }
+    
 
     void UpgradeDamage()
     {
@@ -43,5 +29,14 @@ public class GunDamageUpgrade : MonoBehaviour
             gunSOBullet.GetComponent<FlameShot>().damage *= gunSO.damageMultiplier;
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            UpgradeDamage();
+            Destroy(gameObject);
+        }
     }
 }

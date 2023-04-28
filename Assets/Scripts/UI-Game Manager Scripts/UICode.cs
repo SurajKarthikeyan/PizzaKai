@@ -76,7 +76,7 @@ public class UICode : MonoBehaviour
     void Start()
     {
         tommy.SetActive(true);
-        ammoTommy.SetActive(true);
+        Cursor.visible = false;
         shotgun.SetActive(false);
         flamethrower.SetActive(false);
 
