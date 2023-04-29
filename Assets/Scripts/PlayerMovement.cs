@@ -248,7 +248,15 @@ public class PlayerMovement : MonoBehaviour
         //makes it so the player does not fall during dodge
         rigid.gravityScale = 0f;
         //dodge in the direction the character is facing
-        rigid.velocity = new Vector2(flip.newScaleX * dodgeForce, 0f);
+        if (Input.GetKey(KeyCode.D))
+        {
+            rigid.velocity = new Vector2(dodgeForce, 0f);
+        }
+        else 
+        {
+            rigid.velocity = new Vector2(-dodgeForce, 0f);
+        }
+
         //there is no trail renderer attached right now, but if one is attached it will emit while dodging
         trail.emitting = true;
         
