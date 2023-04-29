@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f11a26ada7c78e34097eb6e28eb3d619
+guid: dad3210d962a95f4699a7f36ef02d044
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,10 +67,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,122 +101,47 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PizzakaiMainCharacterTGReload1
+      name: don_jump_shoot_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 162
-        width: 57
-        height: 26
+        x: 0
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40069c045d75b95429e3b2d62ea26cc0
-      internalID: -121449199
+      spriteID: 705036ace3830a14db4d83bfee8da3a4
+      internalID: 469819138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PizzakaiMainCharacterTGReload2
+      name: don_jump_shoot_1
       rect:
         serializedVersion: 2
-        x: 167
-        y: 162
-        width: 57
-        height: 26
-      alignment: 9
-      pivot: {x: 0.49286905, y: 0.6172544}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf6264dc6c3f69d4db6b0ec64ccc11fb
-      internalID: -1663090313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PizzakaiMainCharacterTGReload3
-      rect:
-        serializedVersion: 2
-        x: 295
-        y: 159
-        width: 57
-        height: 29
+        x: 150
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db65bf5ea217eee449c1c5dda9ffc4d8
-      internalID: 1447949245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PizzakaiMainCharacterTGReload4
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 18
-        width: 57
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02b3a4685904cf04899014180af531f0
-      internalID: -1687434571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PizzakaiMainCharacterTGReload5
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 31
-        width: 57
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75e6bb70af5e165439dd2f8554f27b03
-      internalID: 1787926067
+      spriteID: 9504247eb6261e54190c556d0a17a009
+      internalID: -1006557829
       vertices: []
       indices: 
       edges: []
@@ -232,11 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PizzakaiMainCharacterTGReload5: 1787926067
-      PizzakaiMainCharacterTGReload2: -1663090313
-      PizzakaiMainCharacterTGReload1: -121449199
-      PizzakaiMainCharacterTGReload3: 1447949245
-      PizzakaiMainCharacterTGReload4: -1687434571
+      don_jump_shoot_1: -1006557829
+      don_jump_shoot_0: 469819138
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
