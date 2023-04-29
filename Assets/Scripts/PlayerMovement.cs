@@ -80,10 +80,10 @@ public class PlayerMovement : MonoBehaviour
         if (!UIScript.isPaused && !UIScript.isDying)
         {
             //Flashes player on damage hit
-            spriteRender.color = isKBed ? Color.red : Color.white;
+            if(isKBed) StartCoroutine(DamageFlash());
             if (!isKBed)
             {
-                spriteRender.color = invulnerable ? Color.yellow : Color.white;
+                //spriteRender.color = invulnerable ? Color.yellow : Color.white;
             }
 
             //stops player from moving while dodging
@@ -342,6 +342,18 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(damageCool());
         }
         
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        spriteRender.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        spriteRender.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        spriteRender.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        spriteRender.color = Color.white;
+        yield return new WaitForSeconds(.1f);
     }
 
 }
