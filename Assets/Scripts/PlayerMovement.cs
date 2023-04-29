@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         originalGravity = rigid.gravityScale;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
