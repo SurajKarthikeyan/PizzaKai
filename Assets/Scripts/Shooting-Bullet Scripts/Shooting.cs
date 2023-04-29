@@ -196,6 +196,9 @@ public class Shooting : MonoBehaviour
                 //Debug.Log("R pressed");
                 GunReloading.Play();
                 StartCoroutine(Reload());
+                AnimGunRight.SetBool("Fire", false);
+                AnimGunLeft.SetBool("Fire", false);
+                AnimPlayer.SetBool("Fire", false);
             }
         }
         
