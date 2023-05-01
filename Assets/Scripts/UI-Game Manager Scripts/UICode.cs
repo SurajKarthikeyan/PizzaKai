@@ -72,6 +72,8 @@ public class UICode : MonoBehaviour
     public bool isFlashing = false;
     public bool isDying = false;
 
+    private Camera Camera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +92,8 @@ public class UICode : MonoBehaviour
 
         pizzaArm = GameObject.FindWithTag("PlayerArm");
         animatorGun = pizzaArm.GetComponent<Animator>();
+
+        Camera = GetComponentInChildren<Camera>();
 
         //pizzaArmLeft = GameObject.FindWithTag("PlayerArmLeft");
         //animatorGunLeft = pizzaArmLeft.GetComponent<Animator>();
@@ -127,14 +131,16 @@ public class UICode : MonoBehaviour
             player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.isKBed = false;
             isDying = true;
-            mainPlayer.layer = 10;
+            //mainPlayer.layer = 10;
             PlayerDeath.Play();
             animator.Play("PlayerDeath");
             animatorGun.Play("GunOff");
             //animatorGunLeft.Play("GunOff");
-            Time.timeScale = 0.25f;
-            Invoke(nameof(RespawnDelay), 0.6f);
+            //Time.timeScale = 0.25f;
+            StartCoroutine(deathExplosion());
+        
             healthSlider.value = 1;
+            
         }
 
         
@@ -253,6 +259,14 @@ public class UICode : MonoBehaviour
         isFlashing = false;
     }
 
+    public IEnumerator deathExplosion()
+    {
+        yield return new WaitForSeconds(0.55f);
+        CameraShake shake = Camera.GetComponent<CameraShake>();
+        shake.shakeDuration = 0.5f;
+        yield return new WaitForSeconds(0.55f);
+        Invoke(nameof(RespawnDelay), 0.6f);
+    }
 
 
     
