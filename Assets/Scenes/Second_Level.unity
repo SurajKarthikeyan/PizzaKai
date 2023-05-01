@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &28377381 stripped
@@ -381,6 +389,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &86814642 stripped
@@ -589,15 +601,15 @@ PrefabInstance:
       objectReference: {fileID: 1903406022}
     - target: {fileID: 8206075540257416576, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.32
+      value: -8.9
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.08
+      value: -5.11
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_LocalPosition.z
@@ -762,6 +774,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &101629591 stripped
@@ -1029,7 +1045,7 @@ RectTransform:
   - {fileID: 493175974}
   - {fileID: 811367919}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1113,7 +1129,7 @@ Transform:
   - {fileID: 1813953265}
   - {fileID: 1516705076}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &254236685
 PrefabInstance:
@@ -1130,6 +1146,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
+      propertyPath: DeepDishShot
+      value: 
+      objectReference: {fileID: 604631356}
     - target: {fileID: 7148419337918994598, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1240,6 +1260,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &255800949 stripped
@@ -1512,6 +1540,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -1616,7 +1648,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1682,6 +1714,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &332167403 stripped
@@ -1886,6 +1922,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &346095619 stripped
@@ -2178,6 +2222,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &373618142 stripped
@@ -2244,6 +2296,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &377353023 stripped
@@ -2310,6 +2370,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &404792393 stripped
@@ -64709,7 +64773,7 @@ RectTransform:
   - {fileID: 1654975377}
   - {fileID: 1392840666}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -64976,9 +65040,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1903406021}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65209,6 +65277,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &598683767 stripped
@@ -68453,6 +68529,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &673497785 stripped
@@ -68599,6 +68683,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &706520544 stripped
@@ -68741,6 +68833,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -68771,9 +68867,13 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 1.270934
       objectReference: {fileID: 0}
+    - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1903406021}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69066,6 +69166,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &787565968 stripped
@@ -69550,6 +69658,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &882995348 stripped
@@ -69587,7 +69703,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &925299406
 MonoBehaviour:
@@ -69750,6 +69866,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
+      propertyPath: DeepDishShot
+      value: 
+      objectReference: {fileID: 604631356}
     - target: {fileID: 7148419337918994598, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -70111,6 +70231,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1095424517 stripped
@@ -70389,6 +70513,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1122885601 stripped
@@ -70396,17 +70524,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
   m_PrefabInstance: {fileID: 1122885600}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1132112708 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6658677836132579167, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35925475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb1d044009975e4bb1c524c97709636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1145299303
 GameObject:
   m_ObjectHideFlags: 0
@@ -70542,6 +70659,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -70612,6 +70733,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1174800203 stripped
@@ -70882,6 +71007,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1232354239 stripped
@@ -71024,6 +71157,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1246114398 stripped
@@ -71166,6 +71307,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1289554928 stripped
@@ -71192,9 +71337,13 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.5392796
       objectReference: {fileID: 0}
+    - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1903406021}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71254,9 +71403,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
+      propertyPath: DeepDishShot
+      value: 
+      objectReference: {fileID: 604631356}
+    - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: guaranteedDrop
       value: 
-      objectReference: {fileID: 1323468650}
+      objectReference: {fileID: 6133658855620907984, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
     - target: {fileID: 7148419337918994598, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -71307,76 +71460,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7148419337918994598, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
   m_PrefabInstance: {fileID: 1314373216}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1323468649
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6133658855620907984, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_Name
-      value: ftpickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907984, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907985, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: switchWeapons
-      value: 
-      objectReference: {fileID: 1132112708}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 336.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133658855620907987, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
---- !u!1 &1323468650 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6133658855620907984, guid: 679b7548405a147bc9dba467f57a587b, type: 3}
-  m_PrefabInstance: {fileID: 1323468649}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1339084898
 PrefabInstance:
@@ -71499,6 +71582,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1359707542 stripped
@@ -71563,7 +71650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1362352022
 MonoBehaviour:
@@ -71799,7 +71886,7 @@ Transform:
   - {fileID: 278433940}
   - {fileID: 1601132753}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1435361726
 PrefabInstance:
@@ -71860,6 +71947,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1435361727 stripped
@@ -71886,6 +71977,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 1.7585933
       objectReference: {fileID: 0}
+    - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1903406021}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -75531,6 +75626,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1473895947 stripped
@@ -75632,7 +75731,7 @@ RectTransform:
   m_Children:
   - {fileID: 1241393619}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -75698,6 +75797,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1516705076 stripped
@@ -76886,6 +76993,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1585321542 stripped
@@ -77014,6 +77129,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1599520420 stripped
@@ -77142,6 +77261,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1623125496 stripped
@@ -77215,7 +77342,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649153115
 GameObject:
@@ -77575,6 +77702,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1664006930 stripped
@@ -77641,6 +77776,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1678240857 stripped
@@ -77895,7 +78038,7 @@ Transform:
   - {fileID: 363348945}
   - {fileID: 821508071}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1780411933
 PrefabInstance:
@@ -77956,6 +78099,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -78026,6 +78173,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1790493366 stripped
@@ -78220,6 +78371,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1813953265 stripped
@@ -78286,6 +78441,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 1
@@ -78493,6 +78652,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1852494489 stripped
@@ -78687,6 +78854,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1872703348 stripped
@@ -78713,6 +78884,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 1.7647434
       objectReference: {fileID: 0}
+    - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1903406021}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -78818,6 +78993,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1877561064 stripped
@@ -78930,7 +79113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1891087640 stripped
 GameObject:
@@ -79789,6 +79972,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1977411183 stripped
@@ -79983,6 +80170,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1995808150 stripped
@@ -80049,6 +80240,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &2024785233 stripped
@@ -80115,6 +80314,10 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+      propertyPath: BreadDead
+      value: 
+      objectReference: {fileID: 148093889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &2057179377 stripped
@@ -80309,6 +80512,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &2070878581 stripped
@@ -80375,6 +80586,14 @@ PrefabInstance:
       propertyPath: inRoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: ChickenRun
+      value: 
+      objectReference: {fileID: 301079691}
+    - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
+      propertyPath: MolotovThrow
+      value: 
+      objectReference: {fileID: 435074296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &2079347926 stripped
