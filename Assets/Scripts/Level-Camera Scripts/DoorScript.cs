@@ -24,7 +24,7 @@ public class DoorScript : MonoBehaviour
         {
             if (gameObject.tag == "Level 1 Door")
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Second_Level");
             }
 
             if (gameObject.tag == "Level 2 Door")
