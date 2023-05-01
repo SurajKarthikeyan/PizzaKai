@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SwitchWeapons : MonoBehaviour
 {
@@ -23,7 +24,15 @@ public class SwitchWeapons : MonoBehaviour
     void Start()
     {
         Tommy = true;
-        Shotgun = false;
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Shotgun = true;
+        }
+        else
+        {
+            Shotgun = false;
+        }
+        
         Flamethrower = false;
         //Sniper = true;
     }
