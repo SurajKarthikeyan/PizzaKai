@@ -13,7 +13,7 @@ public class Shotgun : Shooting
     public float altForce;
 
 
-    private float pushPower = 8f;
+    private float pushPower = 16f;
     
     
 
@@ -56,11 +56,8 @@ public class Shotgun : Shooting
 
     public IEnumerator altFire()
     {
-        Vector3 dir = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 dir = Vector3.Normalize(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-        player.rigid.AddForce(dir * pushPower, ForceMode2D.Force);
-
-        // as alternative:
         player.rigid.velocity = dir * pushPower;
         yield return new WaitForSeconds(altTime);
     }
