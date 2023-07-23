@@ -61,14 +61,14 @@ public class ChickenWing : EnemyBasic
             if (playerPos.x >= enemyPos.x - scareRadius && playerPos.x <= enemyPos.x)
             {
                 //Debug.Log("Player in from left");
-                rigid.velocity = Vector2.right * speed;
+                r2d.velocity = Vector2.right * speed;
                 enemyPos = transform.position;
                 Moving = 1;
             }
             if (playerPos.x <= enemyPos.x + scareRadius && playerPos.x >= enemyPos.x)
             {
                 //Debug.Log("Player in from right");
-                rigid.velocity = Vector2.left * speed;
+                r2d.velocity = Vector2.left * speed;
                 enemyPos = transform.position;
                 Moving = -1;
             }
@@ -81,7 +81,7 @@ public class ChickenWing : EnemyBasic
 
             if ((playerPos.x <= enemyPos.x - scareRadius) || (playerPos.x >= detRadius + enemyPos.x))
             {
-                rigid.velocity = new Vector2(0, 0);
+                r2d.velocity = new Vector2(0, 0);
                 enemyPos = transform.position;
             }
             if ((playerPos.x >= enemyPos.x - detRadius) && (playerPos.x <= detRadius + enemyPos.x))

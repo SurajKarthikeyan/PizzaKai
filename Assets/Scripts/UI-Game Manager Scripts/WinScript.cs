@@ -9,21 +9,15 @@ public class WinScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        for (int i=0; i < enemiesToDie.Count; i++)
-        {
-            if (enemiesToDie[i] == null)
-            {
-                enemiesToDie.RemoveAt(i);
-            }
-            return;
-        }
+        // Removes all enemies that are null or have been destroyed. It's
+        // probably sufficient to just use enemy => !enemy, but this way makes
+        // it clearer.
+        enemiesToDie.RemoveAll(enemy => enemy.IsNullOrUnityNull());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (enemiesToDie.Count != 0) return;
-
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player") && enemiesToDie.Count <= 0)
         {
             Time.timeScale = 0;
             winCanvas.SetActive(true);

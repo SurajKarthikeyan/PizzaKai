@@ -70,7 +70,7 @@ public class Breadstick : EnemyBasic
 
         if (jumping && Time.time > jumpTime)
         {
-            rigid.gravityScale = gravStore;
+            r2d.gravityScale = gravStore;
             jumping = false;
             jumpTime = Time.time + jumpCooldown;
         }

@@ -56,7 +56,7 @@ public class DeepDish : EnemyBasic
                 fireRight = false;
                 Idle = -1;
                 Moving = 0;
-                rigid.velocity = Vector2.zero;
+                r2d.velocity = Vector2.zero;
                 enemyPos = transform.position;
                 bltPointToUse = bulletPoints[0];
             }
@@ -66,7 +66,7 @@ public class DeepDish : EnemyBasic
                 fireRight = true;
                 Idle = 1;
                 Moving = 0;
-                rigid.velocity = Vector2.zero;
+                r2d.velocity = Vector2.zero;
                 enemyPos = transform.position;
                 bltPointToUse = bulletPoints[1];
             }
