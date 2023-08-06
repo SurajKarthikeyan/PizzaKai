@@ -584,9 +584,12 @@ public static class UnityObjectExt
     /// warning.</param>
     /// <returns>True if gameObject has the specified component or if the
     /// component is already specified.</returns>
-    public static bool AutofillComponent<T>(this Component self, ref T component,
-        string name, bool doError = true)
-        where T : Component
+    public static bool AutofillComponent<T>(
+        this Component self,
+        ref T component,
+        string name,
+        bool doError = true
+        ) where T : Component
     {
         if (component)
             return true;
@@ -597,7 +600,7 @@ public static class UnityObjectExt
     }
 
     /// <summary>
-    /// Checks if self's GameObject has the specified component.
+    /// Checks if self has the specified component.
     /// </summary>
     /// <typeparam name="T">Type of component to get.</typeparam>
     /// <param name="gameObject">Component whose GameObject will be used to
@@ -609,8 +612,12 @@ public static class UnityObjectExt
     /// warning.</param>
     /// <returns>True if gameObject has the specified component or if the
     /// component is already specified.</returns>
-    public static bool AutofillComponent<T>(this GameObject gameObject,
-        ref T component, string name, bool doError = true) where T : Component
+    public static bool AutofillComponent<T>(
+        this GameObject gameObject,
+        ref T component,
+        string name,
+        bool doError = true
+        ) where T : Component
     {
         if (component)
             return true;
@@ -619,7 +626,54 @@ public static class UnityObjectExt
             return gameObject.RequireComponent(out component, name, doError);
         }
     }
+
+    /// <inheritdoc cref="AutofillComponent{T}(Component, ref T, string,
+    /// bool)"/>
+    public static bool AutofillComponent<T>(
+        this Component self,
+        ref T component,
+        bool doError = true
+        ) where T : Component
+    {
+        return self.AutofillComponent(
+            ref component,
+            typeof(T).ToString(),
+            doError
+        );
+    }
+
+    /// <inheritdoc cref="AutofillComponent{T}(GameObject, ref T, string,
+    /// bool)"/>
+    public static bool AutofillComponent<T>(
+        this GameObject self,
+        ref T component,
+        bool doError = true
+        ) where T : Component
+    {
+        return self.AutofillComponent(
+            ref component,
+            typeof(T).ToString(),
+            doError
+        );
+    }
     #endregion
+    #endregion
+
+    #region Instantiation
+    /// <summary>
+    /// Instantiates the gameobject belonging to reference, then returns the
+    /// instantiated reference.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="reference">The prefab or other reference to instantiate.
+    /// This will be unchanged.</param>
+    /// <returns>The newly instantiated component of type <typeparamref
+    /// name="T"/>.</returns>
+    public static T InstantiateComponent<T>(this T reference) where T : Component
+    {
+        GameObject.Instantiate(reference.gameObject).RequireComponent(out T instance);
+        return instance;
+    }
     #endregion
 
     #region Other

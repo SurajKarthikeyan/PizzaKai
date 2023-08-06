@@ -43,6 +43,12 @@ public class Character : MonoBehaviour
 
     #region Properties
     /// <summary>
+    /// Determines whether or not the character is a player based on the
+    /// existence of a <see cref="PlayerMoveModule"/>.
+    /// </summary>
+    public bool IsPlayer { get; private set; }
+
+    /// <summary>
     /// The current HP of the character. Setting this value also calls <see
     /// cref="EventManager.onCharacterDeath"/> if the character's health drops
     /// below 0.
@@ -69,13 +75,15 @@ public class Character : MonoBehaviour
     #region Instantiation
     private void Awake()
     {
-        Modules = GetComponentsInChildren<Module>().ToList();
+        GetComponentsInChildren<Module>(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 
         this.RequireComponent(out r2d);
         this.RequireComponent(out c2d);
 
         damageInvulnerability = new(GameManager.Instance.damageTickRate);
+
+        IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
     }
     #endregion
     

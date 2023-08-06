@@ -25,6 +25,8 @@ public abstract class SimultaneousController : MonoBehaviour
     [SerializeField]
     protected bool autorun;
 
+    private bool firstRun = true;
+
     [Tooltip("The delay, in seconds, between starting one " +
         "SimultaneousControl and starting the next.")]
     [SerializeField]
@@ -40,12 +42,12 @@ public abstract class SimultaneousController : MonoBehaviour
 
     [HorizontalLine]
     [Tooltip("If set to true, enables manual editing of the controls field.")]
-    [InfoBox("Unity doesn't play nicely with fields of abstract classes. " +
-        "Use at your own risk.", EInfoBoxType.Warning)]
     [SerializeField]
     private bool manualControl;
 
     [Tooltip("The controls belonging to this controller.")]
+    [InfoBox("Unity doesn't play nicely with fields of abstract classes " +
+        "(which Controls is). Use at your own risk.", EInfoBoxType.Warning)]
     [EnableIf(nameof(manualControl))]
     [SerializeField]
     protected SimultaneousControl[] controls;
@@ -55,8 +57,15 @@ public abstract class SimultaneousController : MonoBehaviour
     /// <summary>
     /// Starts the controller, allowing it to do whatever it needs to do.
     /// </summary>
-    public virtual void StartController()
+    public void StartController()
     {
+        if (firstRun)
+        {
+            controls = CreateControlsList();
+            firstRun = false;
+        }
+
+        RefreshControls();
         StartCoroutine(RunController());
     }
     #endregion
@@ -68,15 +77,19 @@ public abstract class SimultaneousController : MonoBehaviour
         if (!manualControl)
         {
             controls = CreateControlsList();
+            firstRun = false;
         }
 
+        if (autorun) StartController();
+    }
+
+    public void RefreshControls()
+    {
         foreach (var control in controls)
         {
             control.Controller = this;
             control.Instantiate();
         }
-
-        if (autorun) StartController();
     }
 
     /// <summary>
@@ -152,9 +165,11 @@ public abstract class SimultaneousController : MonoBehaviour
         // The right index.
         int ri = 0;
 
+        int max = Mathf.Min(maxSimultaneous, controls.Length);
+
         while (ri < controls.Length)
         {
-            while (ri - li < maxSimultaneous)
+            while (ri - li < max)
             {
                 // Grows ri until we have the required number of typewriters
                 // running.

@@ -73,9 +73,50 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
         get
         {
-            // This is fairly cheap to run, and (most of the time) runs in O(1).
+            // The function only regenerates the internal dictionary if a
+            // difference has been found.
             GenerateInternalDict();
             return internalDict;
+        }
+    }
+    #endregion
+
+    #region Input Checking
+    /// <summary>
+    /// Checks if the <see cref="keyValuePairs"/> are valid.
+    /// </summary>
+    public UnityDictionaryErrorCode ValidateKVPs()
+    {
+        UnityDictionaryErrorCode code = UnityDictionaryErrorCode.None;
+
+        if (keyValuePairs.Count != keyValuePairs.Distinct(inspectorKVPKeyComparer).Count())
+        {
+            code |= UnityDictionaryErrorCode.DuplicateKeys;
+        }
+
+        if (typeof(TKey).IsClass)
+        {
+            if (keyValuePairs.Any(kvp => kvp.Key == null))
+            {
+                code |= UnityDictionaryErrorCode.NullKeys;
+            }
+        }
+
+        return code;
+    }
+
+    private static readonly InspectorKVPKeyComparer inspectorKVPKeyComparer = new();
+
+    private class InspectorKVPKeyComparer : IEqualityComparer<InspectorKeyValuePair>
+    {
+        public bool Equals(InspectorKeyValuePair x, InspectorKeyValuePair y)
+        {
+            return x.Key.Equals(y.Key);
+        }
+
+        public int GetHashCode(InspectorKeyValuePair obj)
+        {
+            return obj.GetHashCode();
         }
     }
     #endregion
@@ -111,13 +152,6 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
             internalDict[keyValue.Key] = keyValue.Value;
         }
     }
-
-    private void UpdateKeyValuePairs()
-    {
-        keyValuePairs = BufferedDict.
-            Select(kvp => new InspectorKeyValuePair(kvp)).
-            ToList();
-    }
     #endregion
 
     #region IDictionary Implementation
@@ -138,13 +172,30 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
         set
         {
             ((IDictionary<TKey, TValue>)BufferedDict)[key] = value;
-            UpdateKeyValuePairs();
+
+#if UNITY_EDITOR
+            // This code only runs in the editor as that is the only time when
+            // keyValuePairs is modifiable.
+            int i = keyValuePairs.FindIndex(kvp => kvp.Key.Equals(key));
+
+            if (i >= 0)
+                keyValuePairs[i] = new(keyValuePairs[i].Key, value);
+            else
+                keyValuePairs.Add(new(key, value));
+
+            // Recompute the hash so internalDict doesn't get rebuilt.
+            prevKVPsHash = keyValuePairs.GetHashCode();
+#endif
         }
     }
 
     public void Add(TKey key, TValue value)
     {
         ((IDictionary<TKey, TValue>)BufferedDict).Add(key, value);
+
+#if UNITY_EDITOR
+        keyValuePairs.Add(new(key, value));
+#endif
     }
 
     public bool ContainsKey(TKey key)
@@ -155,7 +206,14 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     public bool Remove(TKey key)
     {
         bool removed = ((IDictionary<TKey, TValue>)BufferedDict).Remove(key);
-        UpdateKeyValuePairs();
+
+#if UNITY_EDITOR
+        // We only need to manage the keyValuePairs in the editor. When the game
+        // is compiled, keyValuePairs can no longer be edited.
+        if (removed)
+            keyValuePairs.RemoveAll(kvp => kvp.Key.Equals(key));
+#endif
+
         return removed;
     }
 
@@ -167,13 +225,19 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     public void Add(KeyValuePair<TKey, TValue> item)
     {
         ((ICollection<KeyValuePair<TKey, TValue>>)BufferedDict).Add(item);
-        UpdateKeyValuePairs();
+
+#if UNITY_EDITOR
+        keyValuePairs.Add(new(item));
+#endif
     }
 
     public void Clear()
     {
         ((ICollection<KeyValuePair<TKey, TValue>>)BufferedDict).Clear();
-        UpdateKeyValuePairs();
+
+#if UNITY_EDITOR
+        keyValuePairs.Clear();
+#endif
     }
 
     public bool Contains(KeyValuePair<TKey, TValue> item)
@@ -184,13 +248,17 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
     {
         ((ICollection<KeyValuePair<TKey, TValue>>)BufferedDict).CopyTo(array, arrayIndex);
-        UpdateKeyValuePairs();
     }
 
     public bool Remove(KeyValuePair<TKey, TValue> item)
     {
         bool removed = ((ICollection<KeyValuePair<TKey, TValue>>)BufferedDict).Remove(item);
-        UpdateKeyValuePairs();
+
+#if UNITY_EDITOR
+        if (removed)
+            keyValuePairs.RemoveAll(kvp => kvp.Key.Equals(item.Key));
+#endif
+
         return removed;
     }
 
@@ -205,3 +273,22 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     }
     #endregion
 }
+
+#region Enums
+[Flags]
+public enum UnityDictionaryErrorCode
+{
+    /// <summary>
+    /// <see cref="keyValuePairs"/> has been successfully validated.
+    /// </summary>
+    None = 0,
+    /// <summary>
+    /// <see cref="keyValuePairs"/> has at least 2 duplicate keys.
+    /// </summary>
+    DuplicateKeys = 1,
+    /// <summary>
+    /// <see cref="keyValuePairs"/> has at least 1 null key.
+    /// </summary>
+    NullKeys = 2
+}
+#endregion

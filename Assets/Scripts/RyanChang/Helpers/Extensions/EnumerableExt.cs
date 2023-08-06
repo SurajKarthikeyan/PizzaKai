@@ -108,4 +108,58 @@ public static class EnumerableExt
         }
     }
     #endregion
+
+    #region Dictionary
+    /// <summary>
+    /// Initializes an internal list in <paramref name="dictionary"/>.
+    /// </summary>
+    /// <typeparam name="K">Key type.</typeparam>
+    /// <typeparam name="T">List member object type.</typeparam>
+    /// <param name="dictionary">The dictionary of lists.</param>
+    /// <param name="key">The key for <paramref name="dictionary"/>.</typeparam>
+    public static void InitializeListInDictList<K, T>(
+        this IDictionary<K, List<T>> dictionary, K key)
+    {
+        if (!dictionary.ContainsKey(key))
+            dictionary[key] = new();
+        else
+            dictionary[key] ??= new();
+    }
+
+    /// <summary>
+    /// Adds <paramref name="obj"/> to an internal list in a dictionary of lists
+    /// <paramref name="dictionary"/>.
+    /// </summary>
+    /// <typeparam name="K">Key type.</typeparam>
+    /// <typeparam name="T">Object to add type.</typeparam>
+    /// <param name="dictionary">The dictionary of lists.</param>
+    /// <param name="key">The key that targets the list to add to.</typeparam>
+    /// <param name="obj">The object to add to the list.</param>
+    public static void AddToDictList<K, T>(
+        this IDictionary<K, List<T>> dictionary, K key, T obj)
+    {
+        dictionary.InitializeListInDictList(key);
+
+        dictionary[key].Add(obj);
+    }
+
+    /// <summary>
+    /// Adds or replaces <paramref name="obj"/> to an internal list in a
+    /// dictionary of lists <paramref name="dictionary"/>. See <see
+    /// cref="AddOrReplace{T}(IList{T}, T, int)"/>.
+    /// </summary>
+    /// <typeparam name="K">Key type.</typeparam>
+    /// <typeparam name="T">Object to add type.</typeparam>
+    /// <param name="dictionary">The dictionary of lists.</param>
+    /// <param name="key">The key that targets the list to add to.</typeparam>
+    /// <param name="obj">The object to add to the list.</param>
+    /// <param name="index">Index to add the object at.</param>
+    public static void AddOrReplaceToDictList<K, T>(
+        this IDictionary<K, List<T>> dictionary, K key, T obj, int index)
+    {
+        dictionary.InitializeListInDictList(key);
+
+        dictionary[key].AddOrReplace(obj, index);
+    }
+    #endregion
 }

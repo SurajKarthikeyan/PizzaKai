@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &36612095
@@ -255,7 +255,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &41868799
@@ -320,11 +320,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &66222143
@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &96526851
@@ -577,11 +577,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &107384769
@@ -646,11 +646,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &121023670
@@ -715,18 +715,13 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &123139654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
   m_PrefabInstance: {fileID: 1928372578}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &148093889 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 148093889, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &173242081
 GameObject:
@@ -832,11 +827,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &200265241
@@ -7151,11 +7146,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!82 &301079691 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 301079691, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &320091920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
@@ -7223,11 +7213,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &331879595
@@ -7566,7 +7556,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &370859565 stripped
@@ -7646,11 +7636,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &408867121
@@ -7694,11 +7684,6 @@ RectTransform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
   m_PrefabInstance: {fileID: 2091804473}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &435074296 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 435074296, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &480119454
 GameObject:
@@ -64775,7 +64760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &484712458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65043,7 +65028,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &570559482
@@ -65108,11 +65093,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &571449198 stripped
@@ -65192,14 +65177,9 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
---- !u!82 &604631356 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 604631356, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &620978100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
@@ -65267,11 +65247,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &632053866
@@ -65296,7 +65276,7 @@ PrefabInstance:
     - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: respawn
       value: 
-      objectReference: {fileID: 1903406021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -65405,11 +65385,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &641436030
@@ -65474,11 +65454,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &645309370 stripped
@@ -66689,11 +66669,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &807944866
@@ -66758,7 +66738,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &811367918
@@ -66905,7 +66885,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &821508070
@@ -67279,7 +67259,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &861970071 stripped
@@ -67441,7 +67421,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &939145740
@@ -67791,7 +67771,7 @@ PrefabInstance:
     - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: respawn
       value: 
-      objectReference: {fileID: 1903406021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -69617,7 +69597,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &1212871999 stripped
@@ -69839,7 +69819,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1270769317
@@ -69980,7 +69960,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1333148665
@@ -70226,11 +70206,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1 &1365047681
@@ -70332,7 +70312,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1381906415
@@ -70397,7 +70377,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1392840665
@@ -70609,7 +70589,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1400049765
@@ -75095,7 +75075,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1412421713
@@ -75717,11 +75697,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1471524787 stripped
@@ -75892,7 +75872,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1549347428
@@ -76053,11 +76033,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1605095278 stripped
@@ -76132,11 +76112,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069326, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: m_Mass
       value: 1.1732142
@@ -76347,7 +76327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218250fff99889d4c8f9142de7f85183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIScript: {fileID: 1903406022}
+  UIScript: {fileID: 0}
 --- !u!114 &1654975379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76540,7 +76520,7 @@ PrefabInstance:
     - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: respawn
       value: 
-      objectReference: {fileID: 1903406021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -76653,7 +76633,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380466, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -76707,7 +76687,7 @@ PrefabInstance:
     - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: respawn
       value: 
-      objectReference: {fileID: 1903406021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -76968,11 +76948,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &1733969108 stripped
@@ -77097,7 +77077,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1793630651
@@ -77162,7 +77142,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1816562416
@@ -77227,11 +77207,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &1833367590
@@ -77296,7 +77276,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     - target: {fileID: 8271343615121380467, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: inRoom
       value: 0
@@ -77365,7 +77345,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1879699325
@@ -77485,28 +77465,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271343615121380460, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
   m_PrefabInstance: {fileID: 1493415388}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1903406021 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1903406021, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10d7581afc1d9b4a8646540e591c5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1903406022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1903406022, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 96526851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1905715262
 GameObject:
   m_ObjectHideFlags: 0
@@ -77641,7 +77599,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &1928372578
@@ -77706,7 +77664,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1 &1934654385
@@ -78171,11 +78129,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &1974160570
@@ -78240,11 +78198,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!4 &2000722081 stripped
@@ -78278,7 +78236,7 @@ PrefabInstance:
     - target: {fileID: 2852471472949455859, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: respawn
       value: 
-      objectReference: {fileID: 1903406021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2852471472949455868, guid: 50da33c664de4704d9dac1dc594200e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -78387,13 +78345,70 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
+--- !u!1001 &2067089479
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196742206444863517, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
 --- !u!1001 &2070584153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78456,11 +78471,11 @@ PrefabInstance:
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: ChickenRun
       value: 
-      objectReference: {fileID: 301079691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069324, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: MolotovThrow
       value: 
-      objectReference: {fileID: 435074296}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0232774903cdc453db66828c48640e32, type: 3}
 --- !u!1001 &2091804473
@@ -78525,7 +78540,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!1001 &2095501911
@@ -78590,7 +78605,7 @@ PrefabInstance:
     - target: {fileID: 8271343615121380464, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
       propertyPath: BreadDead
       value: 
-      objectReference: {fileID: 148093889}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
 --- !u!4 &2097179796 stripped
@@ -78632,7 +78647,7 @@ PrefabInstance:
     - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: DeepDishShot
       value: 
-      objectReference: {fileID: 604631356}
+      objectReference: {fileID: 0}
     - target: {fileID: 7148419337918994597, guid: 35c1368f5d3de4c2ca52d77ffba315a1, type: 3}
       propertyPath: guaranteedDrop
       value: 

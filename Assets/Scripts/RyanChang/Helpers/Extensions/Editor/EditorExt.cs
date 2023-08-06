@@ -19,7 +19,7 @@ public static class EditorExt
 
     #region Reflection
     /// <summary>
-    /// Gets the 
+    /// Gets the proper object using reflection.
     /// </summary>
     /// <param name="property"></param>
     /// <returns></returns>

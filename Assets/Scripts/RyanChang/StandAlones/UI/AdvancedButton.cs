@@ -1,0 +1,45 @@
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+/// <summary>
+/// A button that can invoke a greater variety of UnityEvents.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
+public class AdvancedButton : Button
+{
+    #region Unity Events
+    public UnityEvent onPointerEnter = new();
+    public UnityEvent onPointerExit = new();
+    public UnityEvent onSelect = new();
+    public UnityEvent onDeselect = new();
+    #endregion
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        base.OnPointerEnter(eventData);
+        onPointerEnter.Invoke();
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+        onPointerExit.Invoke();
+    }
+
+    public override void OnSelect(BaseEventData eventData)
+    {
+        base.OnSelect(eventData);
+        onSelect.Invoke();
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        base.OnDeselect(eventData);
+        onDeselect.Invoke();
+    }
+}
