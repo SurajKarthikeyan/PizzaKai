@@ -61,14 +61,20 @@ public class WeaponMasterModule : Module
     /// <param name="target">Where to aim the weapons.</param>
     public void AimAt(Vector2 target)
     {
+        Debug.DrawLine(target, transform.position, Color.blue);
+
         // Do some basic trig to get the weapons pointed at the target.
-        Vector2 disp = target - transform.position.ToVector2();
+        Vector2 disp = target - (Vector2)transform.position;
+        float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
         Vector3 eulerAngles = new(
             transform.localEulerAngles.x,
             transform.localEulerAngles.y,
-            Mathf.Atan2(disp.y, disp.x)
+            zRot
         );
         transform.localEulerAngles = eulerAngles;
+
+        // Send data to the flip module.
+        Master.SetLookAngle(zRot);
     }
 
     /// <summary>

@@ -85,22 +85,36 @@ public class CharacterMovementModule : Module
     {
         // Here we move the character. First get the speed the character is
         // moving at and compare it to the maximal speed.
-        Vector2 speed = Master.r2d.velocity.Abs();
+        Vector2 speed = Master.r2d.velocity;
+
+        // Used to make the comparison.
+        Vector2 compare = new(
+            inputtedMovement.x.Sign() * speed.x,
+            inputtedMovement.y.Sign() * speed.y
+        );
 
         Vector2 force = new();
 
-        if (speed.x < maxMoveSpeed.x)
+        if (inputtedMovement.x.Approx(0) && !speed.x.Approx(0))
+        {
+            // Apply a backwards force to stop the player.
+            force.x = -speed.x * Mathf.Clamp01(moveAcceleration.x);
+        }
+        else if (compare.x < maxMoveSpeed.x)
         {
             // The horizontal speed is less than the max horizontal speed. Allow
             // character to move.
-            force.x = Mathf.Clamp(inputtedMovement.x, -1, 1) *
-                moveAcceleration.x;
+            force.x = inputtedMovement.x * moveAcceleration.x;
         }
-        if (speed.y < maxMoveSpeed.y)
+        if (inputtedMovement.y.Approx(0) && !speed.y.Approx(0))
+        {
+            // Ditto.
+            force.y = -speed.y * Mathf.Clamp01(moveAcceleration.y);
+        }
+        else if (compare.y < maxMoveSpeed.y)
         {
             // Ditto for max vertical speed.
-            force.y = Mathf.Clamp(inputtedMovement.y, -1, 1) *
-                moveAcceleration.y;
+            force.y = inputtedMovement.y * moveAcceleration.y;
         }
 
         // Note: This is the "correct" way to change the velocity of a

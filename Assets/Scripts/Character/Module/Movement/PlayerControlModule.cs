@@ -45,6 +45,7 @@ public class PlayerControlModule : Module
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
         );
+        movementController.inputtedMovement.Normalize();
 
         movementController.inputtedJump = Input.GetButtonDown("Jump");
     }

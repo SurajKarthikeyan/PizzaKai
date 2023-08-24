@@ -283,7 +283,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2741532492343462805}
-  - component: {fileID: 1566744871942449173}
   - component: {fileID: 6874168942830066409}
   m_Layer: 0
   m_Name: Tommygun
@@ -310,32 +309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1566744871942449173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2741532492343462794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9aa0071316c894ba4709cf290a5384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunScriptableObject: {fileID: 0}
-  AnimGunRight: {fileID: 1566744871564542801}
-  AnimGunLeft: {fileID: 1566744870868696935}
-  AnimPlayer: {fileID: 0}
-  GunFire: {fileID: 0}
-  GunReloading: {fileID: 0}
-  GunAltSound: {fileID: 0}
-  cameraScript: {fileID: 0}
-  cameraShake: {fileID: 0}
-  player: {fileID: 0}
-  UIScript: {fileID: 0}
-  flip: {fileID: 0}
-  visibleEnemies: []
-  UI: {fileID: 0}
 --- !u!114 &6874168942830066409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,10 +321,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2741532492258955962}
+  weaponStatus: 0
   weaponAnimator: {fileID: 1566744871564542801}
   animFiringBool: Fire
   animReloadingBool: Reload
+  firePoint: {fileID: 2741532492258955962}
+  autofire: 1
+  firingDelay:
+    maxTime: 1
+    elapsed: 0
+  ammoCount: 10
+  currentAmmo: 0
+  reloadDelay:
+    maxTime: 1
+    elapsed: 0
 --- !u!1 &3579121097500353269
 GameObject:
   m_ObjectHideFlags: 0

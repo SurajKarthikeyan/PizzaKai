@@ -12,7 +12,7 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(DefaultFlipModule))]
 public class Character : MonoBehaviour
 {
     #region Variables
@@ -35,6 +35,9 @@ public class Character : MonoBehaviour
 
     [ReadOnly]
     public Collider2D c2d;
+
+    [ReadOnly]
+    public DefaultFlipModule flipModule;
 
     private Duration damageInvulnerability;
     #endregion
@@ -75,30 +78,50 @@ public class Character : MonoBehaviour
     #region Instantiation
     private void Awake()
     {
+        SetVars();
+
+        damageInvulnerability = new(GameManager.Instance.damageTickRate);
+    }
+
+    // private void OnValidate()
+    // {
+    //     SetVars();
+    // }
+
+    private void SetVars()
+    {
         GetComponentsInChildren<Module>(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 
         this.RequireComponent(out r2d);
         this.RequireComponent(out c2d);
 
-        damageInvulnerability = new(GameManager.Instance.damageTickRate);
+        this.RequireComponent(out flipModule);
 
         IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
     }
     #endregion
-    
+
     #region Main Loop
-    
+
     #endregion
-    
-    #region Public Methods
+
+    #region MonoBehavior Methods
     private void Update()
     {
         // Required to get this to work properly.
         damageInvulnerability.IncrementUpdate();
     }
     #endregion
-    
+
+    #region Flipping Methods
+    /// <inheritdoc cref="DefaultFlipModule.SetFacingAngle(float)"/>
+    public void SetLookAngle(float theta)
+    {
+        flipModule.SetFacingAngle(theta);
+    }
+    #endregion
+
     #region Health Methods
     /// <summary>
     /// Take <paramref name="damage"/> amount of damage.

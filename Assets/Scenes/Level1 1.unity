@@ -443,6 +443,22 @@ PrefabInstance:
       propertyPath: tommyFlashImage
       value: 
       objectReference: {fileID: 1241393620}
+    - target: {fileID: 1047264176143246634, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061556619110042102, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726116736307325435, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
+    - target: {fileID: 7353365169726603418, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -499,7 +515,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 96526851}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 580ce556218887d4381a3654495d4b57, type: 3}
   m_Name: 
@@ -510,7 +526,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 96526851}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1eb1d044009975e4bb1c524c97709636, type: 3}
   m_Name: 
