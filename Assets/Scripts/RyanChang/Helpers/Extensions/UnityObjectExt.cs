@@ -543,7 +543,7 @@ public static class UnityObjectExt
                 {
                     // However, we seem to already have another manager in self.
                     // Delete this manager.
-                    Debug.LogError($"Found another instance of {typeof(T)}. " +
+                    Debug.LogWarning($"Found another instance of {typeof(T)}. " +
                         "Deleting...");
 
                     GameObject.Destroy(tempManager.gameObject);
@@ -672,6 +672,46 @@ public static class UnityObjectExt
     public static T InstantiateComponent<T>(this T reference) where T : Component
     {
         GameObject.Instantiate(reference.gameObject).RequireComponent(out T instance);
+        return instance;
+    }
+
+    /// <inheritdoc cref="InstantiateComponent{T}(T)"/>
+    /// <inheritdoc cref="UnityEngine.Object.Instantiate(UnityEngine.Object, Transform, bool)"/>
+    public static T InstantiateComponent<T>(this T reference, Transform parent,
+        bool instantiateInWorldSpace) where T : Component
+    {
+        GameObject.Instantiate(
+            reference.gameObject,
+            parent,
+            instantiateInWorldSpace
+        ).RequireComponent(out T instance);
+        return instance;
+    }
+
+    /// <inheritdoc cref="InstantiateComponent{T}(T)"/>
+    /// <inheritdoc cref="UnityEngine.Object.Instantiate(UnityEngine.Object, Vector3, Quaternion)"/>
+    public static T InstantiateComponent<T>(this T reference, Vector3 position,
+        Quaternion rotation) where T : Component
+    {
+        GameObject.Instantiate(
+            reference.gameObject,
+            position,
+            rotation
+        ).RequireComponent(out T instance);
+        return instance;
+    }
+
+    /// <inheritdoc cref="InstantiateComponent{T}(T)"/>
+    /// <inheritdoc cref="UnityEngine.Object.Instantiate(UnityEngine.Object, Vector3, Quaternion, Transform)"/>
+    public static T InstantiateComponent<T>(this T reference, Vector3 position,
+        Quaternion rotation, Transform parent) where T : Component
+    {
+        GameObject.Instantiate(
+            reference.gameObject,
+            position,
+            rotation,
+            parent
+        ).RequireComponent(out T instance);
         return instance;
     }
     #endregion

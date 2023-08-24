@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ using UnityEngine;
 public class TypewriterController : SimultaneousController
 {
     #region Variables
+    [HorizontalLine]
     [Tooltip("The delay, in seconds, between each character.")]
     public Range characterDelay = new(0.05f);
 

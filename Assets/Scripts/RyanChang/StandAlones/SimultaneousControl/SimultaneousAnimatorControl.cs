@@ -83,4 +83,9 @@ public class SimultaneousAnimatorControl : SimultaneousControl
         yield return new WaitUntil(() =>
             animator.GetCurrentAnimatorStateInfo(0).IsName("Exit"));
     }
+
+    public override void ResetControl()
+    {
+        // Do nothing.
+    }
 }

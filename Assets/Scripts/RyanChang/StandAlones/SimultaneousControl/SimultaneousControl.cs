@@ -19,6 +19,11 @@ public abstract class SimultaneousControl : MonoBehaviour
     public abstract void Instantiate();
 
     /// <summary>
+    /// Resets the control.
+    /// </summary>
+    public abstract void ResetControl();
+
+    /// <summary>
     /// Performs the action set by this control.
     /// </summary>
     public abstract IEnumerator DoAction();

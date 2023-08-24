@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -50,6 +51,43 @@ public static class EnumerableExt
             dict[key] = new();
 
         return dict[key];
+    }
+
+    /// <summary>
+    /// Returns true if <paramref name="index"/> is a valid indexer into
+    /// <paramref name="collection"/>. If <paramref name="collection"/> is null
+    /// or empty, returns false.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="collection">The collection to evaluate.</param>
+    /// <param name="index">The index to evaluate.</param>
+    /// <returns>True if <paramref name="index"/> is a valid indexer into
+    /// <paramref name="collection"/>, false otherwise.</returns>
+    public static bool IndexInRange<T>(this IEnumerable<T> collection,
+        int index)
+    {
+        if (collection == null)
+            return false;
+
+        return index >= 0 && index < collection.Count();
+    }
+
+    /// <summary>
+    /// Returns true if <paramref name="index"/> is a valid indexer into
+    /// <paramref name="array"/>. If <paramref name="array"/> is null
+    /// or empty, returns false.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="array">The array to evaluate.</param>
+    /// <param name="index">The index to evaluate.</param>
+    /// <returns>True if <paramref name="index"/> is a valid indexer into
+    /// <paramref name="array"/>, false otherwise.</returns>
+    public static bool IndexInRange<T>(this T[] array, int index)
+    {
+        if (array == null)
+            return false;
+
+        return index >= 0 && index < array.Length;
     }
 
     #region List

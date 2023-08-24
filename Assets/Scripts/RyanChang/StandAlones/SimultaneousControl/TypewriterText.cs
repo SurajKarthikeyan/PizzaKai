@@ -42,6 +42,11 @@ public class TypewriterText : SimultaneousControl
         text.text = "";
     }
 
+    public override void ResetControl()
+    {
+        text.text = "";
+    }
+
     public override IEnumerator DoAction()
     {
         Range delay = overrideCharacterDelay ? characterDelayOverride :

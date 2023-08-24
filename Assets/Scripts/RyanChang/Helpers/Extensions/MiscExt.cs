@@ -1,5 +1,11 @@
-﻿/// <summary>
-/// Contains methods pertaining to miscellaneous things.
+﻿using System;
+/// <summary>
+/// Contains methods pertaining to miscellaneous things, usually low level
+/// things that don't fit anywhere else.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
 /// </summary>
 public static class MiscExt
 {
@@ -15,5 +21,44 @@ public static class MiscExt
         T t = a;
         a = b;
         b = t;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static bool IsNumber(this object value)
+    {
+        return value is sbyte
+            || value is byte
+            || value is short
+            || value is ushort
+            || value is int
+            || value is uint
+            || value is long
+            || value is ulong
+            || value is float
+            || value is double
+            || value is decimal;
+    }
+
+    /// <summary>
+    /// Detects if there is any difference between <paramref name="target"/> and
+    /// <paramref name="newValue"/>. If there is, set the value of <paramref
+    /// name="target"/> to <paramref name="newValue"/>.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="target"></param>
+    /// <param name="newValue"></param>
+    /// <returns>If <paramref name="target"/> and <paramref name="newValue"/>
+    /// are different.</returns>
+    public static bool DetectChange<T>(ref T target, T newValue) where T : IEquatable<T>
+    {
+        if (target.Equals(newValue))
+            return false;
+
+        target = newValue;
+        return true;
     }
 }

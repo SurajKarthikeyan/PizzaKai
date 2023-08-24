@@ -15,6 +15,8 @@ public class AdvancedButton : Button
     #region Unity Events
     public UnityEvent onPointerEnter = new();
     public UnityEvent onPointerExit = new();
+    public UnityEvent onPointerDown = new();
+    public UnityEvent onPointerUp = new();
     public UnityEvent onSelect = new();
     public UnityEvent onDeselect = new();
     #endregion
@@ -29,6 +31,18 @@ public class AdvancedButton : Button
     {
         base.OnPointerExit(eventData);
         onPointerExit.Invoke();
+    }
+
+    public override void OnPointerDown(PointerEventData eventData)
+    {
+        base.OnPointerDown(eventData);
+        onPointerDown.Invoke();
+    }
+
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        base.OnPointerUp(eventData);
+        onPointerUp.Invoke();
     }
 
     public override void OnSelect(BaseEventData eventData)

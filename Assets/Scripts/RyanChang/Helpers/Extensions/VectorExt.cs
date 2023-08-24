@@ -495,8 +495,8 @@ public static class VectorExt
         return new Vector2(cos * oldX - sin * oldY, sin * oldX + cos * oldY);
     }
     #endregion
-    
-    
+
+
     #region Distance
     /// <summary>
     /// Gets the taxicab distance between two vectors.

@@ -89,6 +89,11 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
         UnityDictionaryErrorCode code = UnityDictionaryErrorCode.None;
 
+        if (keyValuePairs == null)
+        {
+            return code;
+        }
+
         if (keyValuePairs.Count != keyValuePairs.Distinct(inspectorKVPKeyComparer).Count())
         {
             code |= UnityDictionaryErrorCode.DuplicateKeys;
