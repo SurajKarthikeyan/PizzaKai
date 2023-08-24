@@ -33,11 +33,19 @@ public class Duration
     /// </summary>
     /// <param name="deltaTime">How much to increment <see cref="elapsed"/>
     /// by.</param>
+    /// <param name="resetIfDone">If true, resets the duration</param>
     /// <returns>The new value of <see cref="IsDone"/>.</returns>
-    public bool Increment(float deltaTime)
+    public bool Increment(float deltaTime, bool resetIfDone)
     {
         elapsed += deltaTime;
         elapsed = Mathf.Clamp(elapsed, 0, maxTime);
+
+        if (IsDone && resetIfDone)
+        {
+            Reset();
+            return true;
+        }
+
         return IsDone;
     }
 
@@ -45,24 +53,24 @@ public class Duration
     /// Increments <see cref="elapsed"/> by <see cref="Time.deltaTime"/>. Use
     /// this in Update() functions.
     /// </summary>
-    /// <returns>The new value of <see cref="IsDone"/>.</returns>
-    public bool IncrementUpdate()
+    /// <inheritdoc cref="Increment(float, bool)"/>
+    public bool IncrementUpdate(bool resetIfDone)
     {
-        return Increment(Time.deltaTime);
+        return Increment(Time.deltaTime, resetIfDone);
     }
 
     /// <summary>
     /// Increments <see cref="elapsed"/> by <see cref="Time.fixedDeltaTime"/>. Use
     /// this in FixedUpdate() functions.
     /// </summary>
-    /// <returns>The new value of <see cref="IsDone"/>.</returns>
-    public bool IncrementFixedUpdate()
+    /// <inheritdoc cref="Increment(float, bool)"/>
+    public bool IncrementFixedUpdate(bool resetIfDone)
     {
-        return Increment(Time.fixedDeltaTime);
+        return Increment(Time.fixedDeltaTime, resetIfDone);
     }
 
     /// <summary>
-    /// Attempts to reset the value of <see cref="elapsed"/>.
+    /// Resets the value of <see cref="elapsed"/>, if the duration is done.
     /// </summary>
     /// <returns>The value of <see cref="IsDone"/>.</returns>
     public bool Reset()
@@ -70,6 +78,22 @@ public class Duration
         if (IsDone)
         {
             elapsed = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Sets the value of <see cref="elapsed"/> to <see cref="maxTime"/>, if the
+    /// duration is not done.
+    /// </summary>
+    /// <returns>True on success, false otherwise.</returns>
+    public bool Finish()
+    {
+        if (!IsDone)
+        {
+            elapsed = maxTime;
             return true;
         }
 

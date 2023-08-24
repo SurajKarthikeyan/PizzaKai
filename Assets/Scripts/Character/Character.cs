@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         // Required to get this to work properly.
-        damageInvulnerability.IncrementUpdate();
+        damageInvulnerability.IncrementUpdate(false);
     }
     #endregion
 

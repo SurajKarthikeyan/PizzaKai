@@ -58,11 +58,17 @@ public class WeaponMasterModule : Module
             // Do player aiming.
             Vector2 mousePos = Input.mousePosition;
             AimAt(Camera.main.ScreenToWorldPoint(mousePos));
+
+            if (Input.GetMouseButton(0))
+            {
+                // Firing.
+                TryFire();
+            }
         }
     }
     #endregion
 
-    #region Public Methods
+    #region Aiming
     /// <summary>
     /// Aims the weapons at <paramref name="target"/>.
     /// </summary>
@@ -84,7 +90,16 @@ public class WeaponMasterModule : Module
         // Send data to the flip module.
         Master.SetLookAngle(zRot);
     }
+    #endregion
 
+    #region Firing
+    public bool TryFire()
+    {
+        return CurrentWeapon.TryFireWeapon();
+    }
+    #endregion
+
+    #region Weapon Switching
     /// <summary>
     /// Switches to the next weapon.
     /// </summary>
@@ -97,13 +112,11 @@ public class WeaponMasterModule : Module
     }
     #endregion
 
-    #region Helper Methods
     private void EnableCurrentWeapon()
     {
         weapons.ForEach(weap => weap.gameObject.SetActive(false));
 
         CurrentWeapon.gameObject.SetActive(true);
     }
-    #endregion
     #endregion
 }

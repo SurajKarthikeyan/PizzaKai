@@ -194,7 +194,7 @@ public class CharacterMovementModule : Module
         }
 
         // Handle jumping.
-        jumpCooldown.IncrementFixedUpdate();
+        jumpCooldown.IncrementFixedUpdate(false);
 
         if (inputtedJump && CanJump())
         {
@@ -203,6 +203,8 @@ public class CharacterMovementModule : Module
             Master.r2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             groundedStatus = GroundedStatus.AirbornFromJump;
+
+            jumpCooldown.Reset();
         }
         else if (TouchingGround)
         {
