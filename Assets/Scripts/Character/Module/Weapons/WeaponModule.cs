@@ -161,8 +161,9 @@ public class WeaponModule : Module
 
         switch (inputState)
         {
-            case WeaponInputState.FiringStart:
+            case WeaponInputState.Idle:
                 return firingDelay.IsDone;
+            case WeaponInputState.FiringStart:
             case WeaponInputState.FiringHeld:
                 // If autofire is disabled, then do not allow the weapon to
                 // be fired.
