@@ -64,6 +64,12 @@ public class WeaponMasterModule : Module
                 // Firing.
                 TryFire();
             }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                //Reload Current Weapon
+                Debug.Log("Reloading");
+                CurrentWeapon.ReloadWeapon();
+            }
         }
     }
     #endregion
