@@ -3,7 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
-/// Controls weapon switching, aiming, etc.
+/// Controls weapon switching, aiming, etc for the player.
 /// 
 /// <br/>
 /// 
@@ -12,12 +12,20 @@ using UnityEngine;
 public class WeaponMasterModule : Module
 {
     #region Variables
+    [Header("Weapon Settings")]
     [Tooltip("The weapons available to the weapon master.")]
     public List<WeaponModule> weapons;
 
     [Tooltip("Which weapon is the character holding?")]
-    [ReadOnly]
     public int weaponIndex;
+
+    [Header("Animation Settings")]
+    public Animator characterAnimator;
+
+    [Tooltip("Animator Parameter - Fire")]
+    [AnimatorParam(nameof(characterAnimator), AnimatorControllerParameterType.Bool)]
+    [SerializeField]
+    private string animParamFire;
     #endregion
 
     #region Properties

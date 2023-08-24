@@ -2432,6 +2432,8 @@ MonoBehaviour:
   weapons:
   - {fileID: 5394122764986162006}
   weaponIndex: 0
+  characterAnimator: {fileID: 948621413}
+  animParamFire: Fire
 --- !u!1 &8051615513655403815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,8 +2654,30 @@ MonoBehaviour:
     maxTime: 0.5
     elapsed: 0
   groundCheck: {fileID: 1061556619110042102}
+  characterAnimator: {fileID: 948621413}
+  positiveAnimParamOnly: 1
+  animParamSpeedX: RightLeftMovement
+  animParamSpeedY: 
+  animParamJump: Jumping
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
+  touchingGroundColliders:
+  - {fileID: 0}
+  groundCheckCF2D:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundedStatus: 0
 --- !u!114 &8206075540257416579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2743,7 +2767,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8206075540257416582}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
+  m_Material: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
