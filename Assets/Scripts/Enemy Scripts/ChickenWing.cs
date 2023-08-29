@@ -18,9 +18,8 @@ public class ChickenWing : EnemyBasic
     public float scareRadius = 3f;
 
     //chicken audio
-    public AudioSource ChickenRun;
     public AudioClip ChickenScared;
-    public AudioSource MolotovThrow;
+
     public AudioClip MolotovToss;
     public float Counter;
 
@@ -56,7 +55,7 @@ public class ChickenWing : EnemyBasic
 
             isFleeing = true;
 
-            if (!ChickenRun.isPlaying) ChickenRun.Play();
+            if (!AudioDictionary.aDict.chickenSource.isPlaying) AudioDictionary.aDict.PlayAudioClip("chickenRun", AudioDictionary.Source.Chicken);  //flag this. bad check but will hold for now
 
             if (playerPos.x >= enemyPos.x - scareRadius && playerPos.x <= enemyPos.x)
             {
@@ -109,7 +108,7 @@ public class ChickenWing : EnemyBasic
     public void ThrowMolotov()
     {
         if (thrownProj || isFleeing) return;
-        MolotovThrow.Play();
+        AudioDictionary.aDict.PlayAudioClip("molotovToss", AudioDictionary.Source.Molotov);
         GameObject chickMolv = Instantiate<GameObject>(chickenProj);
         chickMolv.transform.position = projSpawnPt;
         float molvLength = chickMolv.GetComponent<ChickenMolotov>().arcLength;

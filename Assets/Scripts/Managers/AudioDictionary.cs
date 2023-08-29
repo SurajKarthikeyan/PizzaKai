@@ -9,7 +9,12 @@ public class AudioDictionary : MonoBehaviour
     // An enuemrator that is there to differentiate states of which source is being used
     public enum Source 
     {
-        Test
+        Test,
+        Player,
+        Bread,
+        Chicken,
+        Molotov,
+        Deepdish
     };
     public Source source;
     //Please ensure the length of these two lists are identical. It is a must to not have an index out of bounds error
@@ -23,11 +28,21 @@ public class AudioDictionary : MonoBehaviour
 
     [Header("Audio Sources")]
     [Tooltip("Audio Source for testing")]
-    [SerializeField] public AudioSource testSource;  
-
+    [SerializeField] public AudioSource testSource;
+    [Tooltip("Audio Source for the player")]
+    [SerializeField] public AudioSource playerSource;
+    [Tooltip("Audio Source for the bread")]
+    [SerializeField] public AudioSource breadSource;
+    [Tooltip("Audio Source for the chicken")]
+    [SerializeField] public AudioSource chickenSource;
+    [Tooltip("Audio Source for the molotov")]
+    [SerializeField] public AudioSource molotovSource;
+    [Tooltip("Audio Source for the molotov")]
+    [SerializeField] public AudioSource deepDishSource;
+    
+    
     public static AudioDictionary aDict;
-
-    private AudioSource currentAudioSource;
+    
     #endregion
 
     #region UnityMethods
@@ -71,6 +86,26 @@ public class AudioDictionary : MonoBehaviour
             case Source.Test:
                 testSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
                 testSource.Play();
+                break;
+            case Source.Player:
+                playerSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
+                playerSource.Play();
+                break;
+            case Source.Bread:
+                breadSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
+                breadSource.Play();
+                break;
+            case Source.Chicken:
+                chickenSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
+                chickenSource.Play();
+                break;
+            case Source.Molotov:
+                molotovSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
+                molotovSource.Play();
+                break;
+            case Source.Deepdish:
+                deepDishSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
+                deepDishSource.Play();
                 break;
         }
     }
