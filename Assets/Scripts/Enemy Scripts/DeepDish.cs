@@ -14,9 +14,7 @@ public class DeepDish : EnemyBasic
     private float shotAtTime;
     private Transform bltPointToUse;
     public bool fireRight;
-
-    public AudioSource DeepDishShot;
-    public AudioClip DeepDishShotgun;
+    
 
     public override void Update()
     {
@@ -33,12 +31,12 @@ public class DeepDish : EnemyBasic
         if (canFire == true && fireRight)
         {
             Fired = 1;
-            DeepDishShot.Play();
+            AudioDictionary.aDict.PlayAudioClip("deepDishShot", AudioDictionary.Source.Deepdish);
         }
         else if (canFire == true && !fireRight)
         {
             Fired = -1;
-            DeepDishShot.Play();
+            AudioDictionary.aDict.PlayAudioClip("deepDishShot", AudioDictionary.Source.Deepdish);
         }
         ShootShot();
 

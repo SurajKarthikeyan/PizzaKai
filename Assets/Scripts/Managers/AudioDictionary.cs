@@ -39,8 +39,8 @@ public class AudioDictionary : MonoBehaviour
     [SerializeField] public AudioSource molotovSource;
     [Tooltip("Audio Source for the molotov")]
     [SerializeField] public AudioSource deepDishSource;
-    
-    
+
+
     public static AudioDictionary aDict;
     
     #endregion
