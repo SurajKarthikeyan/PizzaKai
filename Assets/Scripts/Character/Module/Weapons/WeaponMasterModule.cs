@@ -64,11 +64,19 @@ public class WeaponMasterModule : Module
                 // Firing.
                 TryFire();
             }
+            else if (Input.GetMouseButton(1))
+            {
+                //Alt fire
+                TryAltFire();
+            }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 //Reload Current Weapon
-                Debug.Log("Reloading");
-                CurrentWeapon.ReloadWeapon();
+                TryReload();
+            }
+            else if (Input.mouseScrollDelta.y > 0)
+            {
+                NextWeapon();
             }
         }
     }
@@ -102,6 +110,17 @@ public class WeaponMasterModule : Module
     public bool TryFire()
     {
         return CurrentWeapon.TryFireWeapon();
+    }
+    public void TryAltFire()
+    {
+        CurrentWeapon.AltFire();
+    }
+    #endregion
+
+    #region Reloading
+    public void TryReload()
+    {
+        CurrentWeapon.ReloadWeapon();
     }
     #endregion
 

@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2741532492343462805}
-  - component: {fileID: 6874168942830066409}
+  - component: {fileID: 1760646953299787125}
   m_Layer: 0
   m_Name: Tommygun
   m_TagString: Untagged
@@ -309,7 +309,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6874168942830066409
+--- !u!114 &1760646953299787125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,23 +318,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2741532492343462794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cc36dd84854980429bd207a3d806b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStatus: 0
+  inputState: 0
   weaponAnimator: {fileID: 1566744871564542801}
   animFiringBool: Fire
   animReloadingBool: Reload
   firePoint: {fileID: 2741532492258955962}
   autofire: 1
   firingDelay:
-    maxTime: 1
+    maxTime: 0.1
     elapsed: 0
   ammoCount: 10
   currentAmmo: 0
   reloadDelay:
     maxTime: 1
     elapsed: 0
+  bullet: {fileID: 6782259933850723437, guid: 864ee4868713c94478c6035d63f804b2, type: 3}
 --- !u!1 &3579121097500353269
 GameObject:
   m_ObjectHideFlags: 0

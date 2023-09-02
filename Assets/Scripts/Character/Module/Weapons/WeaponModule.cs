@@ -6,7 +6,7 @@ using NaughtyAttributes;
 /// 
 /// <br/>
 /// 
-/// Authors: Ryan Chang (2023)
+/// Authors: Ryan Chang, Zane O'Dell (2023)
 /// </summary>
 public class WeaponModule : Module
 {
@@ -31,7 +31,11 @@ public class WeaponModule : Module
         /// <summary>
         /// When the Reload input is provided to the weapon.
         /// </summary>
-        Reloading
+        Reloading,
+        /// <summary>
+        /// When the alt fire input is provided to the weapon
+        /// </summary>
+        Alting
     }
     #endregion
 
@@ -92,9 +96,9 @@ public class WeaponModule : Module
 
     #region Init
     /// <summary>
-    /// Test to make sure that the shooting works
+    /// Initializes Ammo count
     /// </summary>
-    private void Start()
+    protected void Start()
     {
         currentAmmo = ammoCount;
     }
@@ -121,7 +125,8 @@ public class WeaponModule : Module
         {
             if (reloadDelay.IncrementUpdate(true))
             {
-
+                inputState = WeaponInputState.Idle;
+                //reloadDelay.Reset();
             }
         }
     }
@@ -156,8 +161,6 @@ public class WeaponModule : Module
             currentAmmo -= 1;
         }
 
-        Debug.Log("Current Ammo:" + currentAmmo.ToString());
-
         // Set animations.
         if (weaponAnimator && !string.IsNullOrWhiteSpace(animFiringBool))
         {
@@ -174,7 +177,11 @@ public class WeaponModule : Module
     private bool CheckCanFire()
     {
         if (OutOfAmmo)
+        {
+            ReloadWeapon();
             return false;
+        }
+            
 
         switch (inputState)
         {
@@ -198,6 +205,15 @@ public class WeaponModule : Module
         //Spawned projectile, need to look into refactoring bullets themselves
         Instantiate(bullet, firePoint.position, Quaternion.identity);
     }
+
+    /// <summary>
+    /// Handles the alt fire for each of the weapons
+    /// </summary>
+    public virtual void AltFire()
+    {
+        Debug.Log("Doing alt fire");
+    }
+    
     #endregion
 
     #region Weapon Reloading
@@ -206,14 +222,23 @@ public class WeaponModule : Module
     /// </summary>
     public void ReloadWeapon()
     {
-        RefillAmmo();
-
-        // Set animations.
-        if (weaponAnimator && !string.IsNullOrWhiteSpace(animReloadingBool))
+        inputState = WeaponInputState.Reloading;
+        if (inputState == WeaponInputState.Reloading)
         {
-            //Setting it to true for now as I believe you can always reload no matter what. Will need to change if that is not the case. 
-            weaponAnimator.SetBool(animReloadingBool, true);
+            reloadDelay.Reset();
+            RefillAmmo();
+
+
+
+            // Set animations.
+            if (weaponAnimator && !string.IsNullOrWhiteSpace(animReloadingBool))
+            {
+                //TODO Fix this, the animation does not play 
+                weaponAnimator.SetBool(animReloadingBool, inputState == WeaponInputState.Reloading);
+            }
         }
+
+        
     }
 
     /// <summary>
