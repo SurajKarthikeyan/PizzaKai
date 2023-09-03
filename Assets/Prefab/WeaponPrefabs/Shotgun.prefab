@@ -388,7 +388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4342418669924086011}
-  - component: {fileID: 4342418669407275861}
+  - component: {fileID: 1214464832145560964}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -414,7 +414,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4342418669407275861
+--- !u!114 &1214464832145560964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -423,24 +423,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4342418669924086010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 112b85a151c73c94cbf88ac439703708, type: 3}
+  m_Script: {fileID: 11500000, guid: 97cc6803b8b9711439faa414ea46ec03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunScriptableObject: {fileID: 0}
-  AnimGunRight: {fileID: 4342418669316601403}
-  AnimGunLeft: {fileID: 4342418668238935989}
-  AnimPlayer: {fileID: 0}
-  GunFire: {fileID: 0}
-  GunReloading: {fileID: 0}
-  GunAltSound: {fileID: 0}
-  cameraScript: {fileID: 0}
-  cameraShake: {fileID: 0}
+  inputState: 0
+  weaponAnimator: {fileID: 0}
+  animFiringBool: 
+  animReloadingBool: 
+  firePoint: {fileID: 0}
+  autofire: 1
+  firingDelay:
+    maxTime: 1
+    elapsed: 0
+  ammoCount: 10
+  currentAmmo: 0
+  reloadDelay:
+    maxTime: 1
+    elapsed: 0
+  bullet: {fileID: 0}
   player: {fileID: 0}
-  UIScript: {fileID: 0}
-  flip: {fileID: 0}
-  visibleEnemies: []
-  UI: {fileID: 0}
   altTime: 0
-  startDashTime: 0
-  direction: {x: 0, y: 0, z: 0}
-  altForce: 0

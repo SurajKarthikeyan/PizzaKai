@@ -113,7 +113,10 @@ public class WeaponMasterModule : Module
     }
     public void TryAltFire()
     {
-        CurrentWeapon.AltFire();
+        if (CurrentWeapon.altFireDelay.IsDone)
+        {
+            CurrentWeapon.AltFire();
+        }
     }
     #endregion
 

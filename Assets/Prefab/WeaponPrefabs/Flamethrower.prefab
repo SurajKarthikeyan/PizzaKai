@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2770841202751872595}
-  - component: {fileID: 7173385150190640522}
+  - component: {fileID: 168762525088147260}
   m_Layer: 0
   m_Name: Flamethrower
   m_TagString: Untagged
@@ -203,7 +203,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7173385150190640522
+--- !u!114 &168762525088147260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,23 +212,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2770841202751872594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d4d53afb80ed147943ac9dfc76a6d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2df5cff713091d6448706056621e7201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunScriptableObject: {fileID: 0}
-  AnimGunRight: {fileID: 2770841203617395344}
-  AnimGunLeft: {fileID: 2770841202823174467}
-  AnimPlayer: {fileID: 0}
-  GunFire: {fileID: 0}
-  GunReloading: {fileID: 0}
-  GunAltSound: {fileID: 0}
-  cameraScript: {fileID: 0}
-  player: {fileID: 0}
-  UIScript: {fileID: 0}
-  flip: {fileID: 0}
-  visibleEnemies: []
-  UI: {fileID: 0}
-  fireBall: {fileID: 6339640274177304179, guid: 3aeb0223cf7483649a1c54fc8becc5a7, type: 3}
+  inputState: 0
+  weaponAnimator: {fileID: 2770841203617395344}
+  animFiringBool: Fire
+  animReloadingBool: Reload
+  firePoint: {fileID: 2770841202015864618}
+  autofire: 1
+  firingDelay:
+    maxTime: 0.05
+    elapsed: 0
+  altFireDelay:
+    maxTime: 80
+    elapsed: 0
+  ammoCount: 80
+  currentAmmo: 0
+  reloadDelay:
+    maxTime: 2
+    elapsed: 0
+  bullet: {fileID: 141357925656780269, guid: 2e0d49bae67a8d748bc854e00305eee6, type: 3}
 --- !u!1 &2770841202823174469
 GameObject:
   m_ObjectHideFlags: 0

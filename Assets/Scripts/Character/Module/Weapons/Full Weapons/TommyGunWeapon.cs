@@ -30,11 +30,18 @@ public class TommyGunWeapon : WeaponModule
     private void Start()
     {
         base.Start();
+        weaponName = WeaponAudioStrings.TommyName;
         //Sets the image for the tommy flash to be clear
         tommyFlashImage.color = new Color(1, 1, 1, 0);
 
         //Left shifts the layer num  to represent layer number by a single bit in the 32-bit integer
         layerMask = 1 << enemyLayerNum;
+    }
+
+    protected override void FireProjectile()
+    {
+        base.FireProjectile();
+        AudioDictionary.aDict.PlayAudioClip("tommyShoot", AudioDictionary.Source.Player);
     }
 
     /// <summary>
