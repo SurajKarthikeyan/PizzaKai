@@ -1,33 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Linq;
-using UnityEngine.UIElements;
+using NaughtyAttributes;
 
 /// <summary>
 /// Represents the Tommy Gun, child class of WeaponModule
 /// 
 /// Primarily used for player character
+/// 
+/// <br/>
+/// 
+/// Authors: Zane O'Dell (2023)
 /// </summary>
 public class TommyGunWeapon : WeaponModule
 {
+    #region Variables
+    [Header("Alt Fire Settings")]
+    [Tooltip("Point from which tommy flash starts")]
     public Transform playerTransform;
 
+    [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 5;
 
+    [Tooltip("Tommy flash UI image")]
     public UnityEngine.UI.Image tommyFlashImage;
 
-    private bool isFlashing;
-
-    private List<Collider2D> visibleEnemies = new List<Collider2D>();
-
+    [Tooltip("Camera script used for camera shake")] 
     public CameraFollow cameraScript;
 
+    [Tooltip("Enemy layer mask")]
+    [SerializeField]
+    [ReadOnly]
     private int enemyLayerNum = 10;
     private int layerMask;
 
-    private void Start()
+    private List<Collider2D> visibleEnemies = new();
+    #endregion
+
+    #region Init
+    // Start is called before the first frame update
+    protected override void Start()
     {
         base.Start();
         weaponName = WeaponAudioStrings.TommyName;
@@ -37,30 +50,21 @@ public class TommyGunWeapon : WeaponModule
         //Left shifts the layer num  to represent layer number by a single bit in the 32-bit integer
         layerMask = 1 << enemyLayerNum;
     }
+    #endregion
 
-    protected override void FireProjectile()
-    {
-        base.FireProjectile();
-        AudioDictionary.aDict.PlayAudioClip("tommyShoot", AudioDictionary.Source.Player);
-    }
-
+    #region Methods
     /// <summary>
     /// Overrides the alt fire function of weapon module - Tommy Flash
     /// </summary>
     override public void AltFire()
     {
         base.AltFire();
-        Debug.Log("TommyGunAlt");
-
-        //Play the proper sound for the gun alt, handled by singleton audio dict
-        //Have a boolean and respective logic saying whether or not you can alt, set bool to false here
 
         // Probably fix the camera shake, but leave it here for now.
         StartCoroutine(cameraScript.Shake());
         StartCoroutine(tommyAltFlash());
 
         FindEnemies();
-
 
         //TODO: GetComponent is expensive, maybe look into optimizing this. 
         foreach (Collider2D enemy in visibleEnemies)
@@ -69,10 +73,11 @@ public class TommyGunWeapon : WeaponModule
         }
     }
 
-    //Find and store all sprite renders on screen and adds them to a list.
+    /// <summary>
+    /// Finds all colliders on the enemy layer within a certain range
+    /// </summary>
     public void FindEnemies()
     {
-        //retrieve all visible enemies in a radius from player
         visibleEnemies.Clear();
 
         /**
@@ -81,15 +86,14 @@ public class TommyGunWeapon : WeaponModule
          * Using circle will mean we will hit enemies off-screen, which poses a design problem. 
          */
         visibleEnemies = Physics2D.OverlapCircleAll(playerTransform.position, 10, layerMask).ToList();
-
-        Debug.Log(visibleEnemies.Count);
-
     }
 
+    /// <summary>
+    /// Flashes the tommy alt image on the screen to replicate the flash bang effect
+    /// </summary>
+    /// <returns>WaitForSeconds in between the various alpha values</returns>
     public IEnumerator tommyAltFlash()
     {
-        //isFlashing = true;
-        
         tommyFlashImage.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(0.2f);
         tommyFlashImage.color = new Color(1, 1, 1, 0.8f);
@@ -101,6 +105,6 @@ public class TommyGunWeapon : WeaponModule
         tommyFlashImage.color = new Color(1, 1, 1, 0.2f);
         yield return new WaitForSeconds(0.2f);
         tommyFlashImage.color = new Color(1, 1, 1, 0);
-        //isFlashing = false;
     }
+    #endregion
 }

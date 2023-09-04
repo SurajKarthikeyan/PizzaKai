@@ -11,7 +11,7 @@ using NaughtyAttributes;
 public class WeaponModule : Module
 {
 
-    #region Static Weapon Classes
+    #region Static Classes
 
     /// <summary>
     /// Class holding strings for playing weapon audio clips
@@ -28,6 +28,7 @@ public class WeaponModule : Module
         public static readonly string Reload = "Reload";
     }
     #endregion
+
     #region Enums
     /// <summary>
     /// Describes the current input status of the weapon.
@@ -129,7 +130,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Initializes Ammo count
     /// </summary>
-    protected void Start()
+    protected virtual void Start()
     {
         currentAmmo = ammoCount;
     }
@@ -144,6 +145,9 @@ public class WeaponModule : Module
 
     #region Methods
     #region Main Loop
+    /// <summary>
+    /// Update is called every frame
+    /// </summary>
     private void Update()
     {
         inputSetThisFrame = false;
@@ -181,6 +185,7 @@ public class WeaponModule : Module
 
             switch (inputState)
             {
+                //If the player is already firing, then we go to the firing start state, otherwise we start firing
                 case WeaponInputState.FiringStart:
                     inputState = WeaponInputState.FiringHeld;
                     break;
@@ -223,8 +228,7 @@ public class WeaponModule : Module
                 return firingDelay.IsDone;
             case WeaponInputState.FiringStart:
             case WeaponInputState.FiringHeld:
-                // If autofire is disabled, then do not allow the weapon to
-                // be fired.
+                // If autofire is disabled, then do not allow the weapon to be fired
                 return firingDelay.IsDone && autofire;
             default:
                 return false;
@@ -234,7 +238,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Actually fires the weapon.
     /// </summary>
-    protected virtual void FireProjectile()
+    protected void FireProjectile()
     {
         //Spawned projectile, need to look into refactoring bullets themselves
         if (weaponAction != WeaponAudioStrings.Shoot) weaponAction = WeaponAudioStrings.Shoot;
@@ -291,6 +295,9 @@ public class WeaponModule : Module
 
     #region Weapon Audio
 
+    /// <summary>
+    /// Plays the audio clips corresponding to the current weapon
+    /// </summary>
     private void PlayAudio()
     {
         AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);

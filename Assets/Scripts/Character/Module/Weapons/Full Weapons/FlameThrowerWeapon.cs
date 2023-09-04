@@ -1,25 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Represents the Flamethrower, child class of WeaponModule
+/// 
+/// Primarily used for player character
+/// 
+/// <br/>
+/// 
+/// Authors: Zane O'Dell (2023)
+/// </summary>
 public class FlameThrowerWeapon : WeaponModule
 {
-    public GameObject bigBullet;
+    #region Variables
+    [Header("Alt Fire Settings")]
+    [Tooltip("Fireball used for alt fire")]
+    public GameObject altFireball;
+    #endregion
 
+    #region Init
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         base.Start();
         weaponName = WeaponAudioStrings.FlamethrowerName;
     }
+    #endregion
 
+    #region Methods
+    /// <summary>
+    /// Overrides the alt fire function of weapon module - Flame Shot
+    /// </summary>
     override public void AltFire()
     {
-        
         base.AltFire();
-        Debug.Log("Flamethrower Alt fire");
-        Instantiate(bigBullet, firePoint.position, Quaternion.identity);
-        //Play the proper sound for the gun alt, handled by singleton audio dict
-        //AudioDictionary.aDict.PlayAudioClip("shotgunAlt", AudioDictionary.Source.Player);
+        Instantiate(altFireball, firePoint.position, Quaternion.identity);
     }
+    #endregion
 }
