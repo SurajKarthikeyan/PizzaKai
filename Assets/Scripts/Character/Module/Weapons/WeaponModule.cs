@@ -76,9 +76,27 @@ public class WeaponModule : Module
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animFiringBool;
 
+    [Tooltip("The name of the animation parameter that controls alt firing.")]
+    [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
+    public string animAltingBool;
+
     [Tooltip("The name of the animation parameter that controls reloading.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animReloadingBool;
+
+    [Header("Audio Source")]
+    [Tooltip("Audio source for the weapon.")]
+    public AudioSource weaponAudio;
+
+    [Tooltip("The audio clip to play when the weapon is fired.")]
+    public AudioClip firingClip;
+
+    [Tooltip("The audio clip to play when the weapon is alt firing.")]
+    public AudioClip altingClip;
+
+    [Tooltip("The audio clip to play when the weapon is reloading.")]
+    public AudioClip reloadClip;
+
 
     [Header("Firing Settings")]
     [Tooltip("The point where the projectiles originate from.")]
@@ -138,9 +156,69 @@ public class WeaponModule : Module
 
     #region Parameters
     /// <summary>
-    /// True if <see cref="currentAmmo"/> is zero.
+    /// True if <see cref="currentAmmo"/> is zero and if the input state is not reloading.
     /// </summary>
-    public bool OutOfAmmo => currentAmmo <= 0;
+    public bool OutOfAmmo => currentAmmo <= 0 &&
+        InputState != WeaponInputState.Reloading;
+
+    public WeaponInputState InputState
+    {
+        get => inputState;
+        set
+        {
+            inputState = value;
+
+            if (weaponAnimator)
+            {
+                if (!string.IsNullOrEmpty(animReloadingBool))
+                {
+                    weaponAnimator.SetBool(
+                        animReloadingBool,
+                        InputState == WeaponInputState.Reloading
+                    );
+                }
+
+                if (!string.IsNullOrEmpty(animFiringBool))
+                {
+                    weaponAnimator.SetBool(
+                        animFiringBool,
+                        InputState == WeaponInputState.FiringStart ||
+                        InputState == WeaponInputState.FiringHeld
+                    );
+                }
+
+                if (!string.IsNullOrEmpty(animAltingBool))
+                {
+                    weaponAnimator.SetBool(
+                        animAltingBool,
+                        InputState == WeaponInputState.Alting
+                    );
+                }
+            }
+
+            if (weaponAudio)
+            {
+                if (firingClip &&
+                    (InputState == WeaponInputState.FiringStart ||
+                    InputState == WeaponInputState.FiringHeld))
+                {
+                    weaponAudio.PlayOneShot(firingClip);
+                }
+
+                if (reloadClip &&
+                    InputState == WeaponInputState.Reloading)
+                {
+                    weaponAudio.PlayOneShot(reloadClip);
+                }
+
+                if (altingClip &&
+                    InputState == WeaponInputState.Alting)
+                {
+                    weaponAudio.PlayOneShot(altingClip);
+                }
+            }
+        }
+    }
     #endregion
 
     #region Methods
@@ -155,15 +233,14 @@ public class WeaponModule : Module
         // Always increment firing delay.
         firingDelay.IncrementUpdate(false);
 
-        if (!altFireDelay.IsDone) altFireDelay.IncrementUpdate(false); 
+        if (!altFireDelay.IsDone) altFireDelay.IncrementUpdate(false);
 
         // Determine if reload has completed.
-        if (inputState == WeaponInputState.Reloading)
+        if (InputState == WeaponInputState.Reloading)
         {
             if (reloadDelay.IncrementUpdate(true))
             {
-                inputState = WeaponInputState.Idle;
-                //reloadDelay.Reset();
+                InputState = WeaponInputState.Idle;
             }
         }
     }
@@ -176,21 +253,21 @@ public class WeaponModule : Module
     /// <returns>True if firing was successful, false otherwise.</returns>
     public bool TryFireWeapon()
     {
-        
+
         bool canFire = CheckCanFire();
 
         if (canFire)
         {
             firingDelay.Reset();
 
-            switch (inputState)
+            switch (InputState)
             {
                 //If the player is already firing, then we go to the firing start state, otherwise we start firing
                 case WeaponInputState.FiringStart:
-                    inputState = WeaponInputState.FiringHeld;
+                    InputState = WeaponInputState.FiringHeld;
                     break;
                 default:
-                    inputState = WeaponInputState.FiringStart;
+                    InputState = WeaponInputState.FiringStart;
                     break;
             }
 
@@ -220,9 +297,9 @@ public class WeaponModule : Module
             ReloadWeapon();
             return false;
         }
-            
 
-        switch (inputState)
+
+        switch (InputState)
         {
             case WeaponInputState.Idle:
                 return firingDelay.IsDone;
@@ -255,7 +332,7 @@ public class WeaponModule : Module
         PlayAudio();
         Debug.Log("Doing alt fire");
     }
-    
+
     #endregion
 
     #region Weapon Reloading
@@ -264,24 +341,17 @@ public class WeaponModule : Module
     /// </summary>
     public void ReloadWeapon()
     {
-        inputState = WeaponInputState.Reloading;
-        if (weaponAction != WeaponAudioStrings.Reload) weaponAction = WeaponAudioStrings.Reload;
-        if (inputState == WeaponInputState.Reloading)
+        InputState = WeaponInputState.Reloading;
+        weaponAction = WeaponAudioStrings.Reload;
+
+        if (InputState == WeaponInputState.Reloading)
         {
             reloadDelay.Reset();
             RefillAmmo();
-
-
-            // Set animations.
-            if (weaponAnimator && !string.IsNullOrWhiteSpace(animReloadingBool))
-            {
-                //TODO Fix this, the animation does not play 
-                weaponAnimator.SetBool(animReloadingBool, inputState == WeaponInputState.Reloading);
-            }
         }
 
         PlayAudio();
-        
+
     }
 
     /// <summary>
