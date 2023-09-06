@@ -202,13 +202,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!UIScript.isPaused && !UIScript.isDying)
         {
-            if (isDodging || isAlting || isKBed)
+            if (!isDodging && !isAlting && !isKBed)
             {
-                //do nothing
-            }
-            else
-            {
-                //this is what makes the player move. When it is commented out, shotgun script works better, but not quite up to snuff
                 rigid.velocity = new Vector2(horizontalMove * moveSpeed, rigid.velocity.y);
             }
         }
