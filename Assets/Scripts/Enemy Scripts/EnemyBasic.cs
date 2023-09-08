@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBasic : MonoBehaviour
+public abstract class EnemyBasic : MonoBehaviour
 {
+    #region Enums
+    public enum EnemyState
+    {
+        NotActive,
+        Active,
+        Hit,
+        Dead
+    }
+
+    #endregion
+
+    #region Variables
     // Health and Death
     public int currentHP;
     public int maxHP;
@@ -34,7 +46,7 @@ public class EnemyBasic : MonoBehaviour
     // Dropping Pickups
     public GameObject guaranteedDrop;
     public GameObject healthDrop;
-    [Range(0,1)]
+    [Range(0, 1)]
     public float dropChance;
 
     // Animations
@@ -45,12 +57,13 @@ public class EnemyBasic : MonoBehaviour
 
     // Enemy's Position, rigid and sRend
     protected Vector3 enemyPos;
-    protected Rigidbody2D rigid;
+    protected Rigidbody2D r2d;
     protected SpriteRenderer sRend;
 
     // References to the Player
     protected GameObject player;
     protected Vector3 playerPos;
+    #endregion
 
     // Start is called before the first frame update
     virtual public void Start()
@@ -60,20 +73,20 @@ public class EnemyBasic : MonoBehaviour
 
         enemyPos = transform.position;
         if (!sticked) originalPos = enemyPos;
-        rigid = GetComponent<Rigidbody2D>();
+        r2d = GetComponent<Rigidbody2D>();
         sRend = GetComponent<SpriteRenderer>();
-        gravStore = rigid.gravityScale;
+        gravStore = r2d.gravityScale;
 
         player = GameObject.Find("Player");
         playerPos = player.transform.position;
-        
+
     }
 
     // Update is called once per frame
     virtual public void Update()
     {
         // Handles Death and Drops
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             deathState = true;
 
@@ -102,7 +115,7 @@ public class EnemyBasic : MonoBehaviour
         // Handles JumpDuration and Resetting Jump
         if (jumping && Time.time > jumpTime)
         {
-            rigid.gravityScale = gravStore;
+            r2d.gravityScale = gravStore;
             jumping = false;
             jumpTime = Time.time + jumpCooldown;
         }
@@ -113,7 +126,7 @@ public class EnemyBasic : MonoBehaviour
         EnemyAnim.SetFloat("Idle", Idle);
         playerPos = player.transform.position;
         EnemyMovement();
-        
+
     }
 
     // Basic Enemy Movement, used by Breadstick and DeepDish
@@ -126,7 +139,7 @@ public class EnemyBasic : MonoBehaviour
         {
             jumping = true;
             jumpTime = Time.time + jumpDuration;
-            Invoke("EnemyJump",0.15f);
+            Invoke("EnemyJump", 0.15f);
         }
         // If Jumping conditions not met, move normally
         else if ((playerPos.x >= enemyPos.x - detRadius) && (playerPos.x <= detRadius + enemyPos.x))
@@ -136,7 +149,7 @@ public class EnemyBasic : MonoBehaviour
             if (playerPos.x >= enemyPos.x - detRadius && playerPos.x <= enemyPos.x)
             {
                 //Debug.Log("Player in from left");
-                rigid.velocity = Vector2.left * speed;
+                r2d.velocity = Vector2.left * speed;
                 enemyPos = transform.position;
                 Moving = -1;
                 Idle = 0;
@@ -144,7 +157,7 @@ public class EnemyBasic : MonoBehaviour
             if (playerPos.x <= enemyPos.x + detRadius && playerPos.x >= enemyPos.x)
             {
                 //Debug.Log("Player in from right");
-                rigid.velocity = Vector2.right * speed;
+                r2d.velocity = Vector2.right * speed;
                 enemyPos = transform.position;
                 Moving = 1;
                 Idle = 0;
@@ -153,7 +166,7 @@ public class EnemyBasic : MonoBehaviour
         // Otherwise, stay idle
         else if ((playerPos.x <= enemyPos.x - detRadius) || (playerPos.x >= detRadius + enemyPos.x))
         {
-            rigid.velocity = new Vector2(0, 0);
+            r2d.velocity = new Vector2(0, 0);
             enemyPos = transform.position;
             Moving = 0;
         }
@@ -161,8 +174,8 @@ public class EnemyBasic : MonoBehaviour
 
     virtual public void EnemyJump()
     {
-        rigid.velocity = new Vector2(0, jumpSpeed);
-        rigid.gravityScale = 0;
+        r2d.velocity = new Vector2(0, jumpSpeed);
+        r2d.gravityScale = 0;
     }
 
     // Makes sure can only be hit by player bullets, deals damage
