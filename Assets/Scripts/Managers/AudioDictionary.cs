@@ -37,8 +37,6 @@ public class AudioDictionary : MonoBehaviour
     #region UnityMethods
     private void Start()
     {
-        audioDict = new UnityDictionary<string, AudioClip>();
-
         if(aDict == null)
         {
             aDict = this;

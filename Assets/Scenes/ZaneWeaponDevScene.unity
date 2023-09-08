@@ -488,6 +488,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: audioDictionary.keyValuePairs.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[0].key
       value: test
       objectReference: {fileID: 0}
@@ -521,7 +525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[8].key
-      value: tommyReload
+      value: tommyAlt
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[9].key
@@ -529,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[10].key
-      value: shotgunReload
+      value: shotgunShoot
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[11].key
@@ -586,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[8].value
       value: 
-      objectReference: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
+      objectReference: {fileID: 8300000, guid: 87e171d9ac7446f41937546e879348bb, type: 3}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[9].value
       value: 
