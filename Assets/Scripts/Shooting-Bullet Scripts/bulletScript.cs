@@ -82,7 +82,7 @@ public class bulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Box" || collision.gameObject.tag == "Burniing Box")
+        if (collision.gameObject.tag == "Box" || collision.gameObject.tag == "Burning Box")
         {
             Destroy(gameObject);
         }

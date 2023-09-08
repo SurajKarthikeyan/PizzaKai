@@ -9,14 +9,11 @@ public class FirePillar : MonoBehaviour
     public bool Flame;
 
     public Animator EnemyFlame;
-    public AudioSource flameAudio;
 
     private void Awake()
     {
-        flameAudio = GameObject.Find("FlameAudio").GetComponent<AudioSource>();
         EnemyFlame.SetBool("Flame", Flame);
         Flame = true;
-        flameAudio.Play();
         startTime = Time.time;
     }
 

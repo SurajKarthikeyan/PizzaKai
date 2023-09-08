@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// <br/>
 /// 
-/// Authors: Ryan Chang (2023)
+/// Authors: Ryan Chang, Zane O'Dell (2023)
 /// </summary>
 public class WeaponMasterModule : Module
 {
@@ -44,6 +44,9 @@ public class WeaponMasterModule : Module
         SetComponents();
     }
 
+    /// <summary>
+    /// Sets components for master module
+    /// </summary>
     private void SetComponents()
     {
         GetComponentsInChildren(true, weapons);
@@ -63,6 +66,26 @@ public class WeaponMasterModule : Module
             {
                 // Firing.
                 TryFire();
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                //Alt fire
+                TryAltFire();
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                //Reload Current Weapon
+                TryReload();
+            }
+
+            //Next two if blocks cycle through weapons
+            else if (Input.mouseScrollDelta.y > 0)
+            {
+                NextWeapon();
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                PrevWeapon();
             }
         }
     }
@@ -93,9 +116,34 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Firing
+    /// <summary>
+    /// Tries to fire the weapon
+    /// </summary>
+    /// <returns>true if able to fire, false if unable</returns>
     public bool TryFire()
     {
         return CurrentWeapon.TryFireWeapon();
+    }
+
+    /// <summary>
+    /// Tries to alt fire the weapon
+    /// </summary>
+    public void TryAltFire()
+    {
+        if (CurrentWeapon.altFireDelay.IsDone)
+        {
+            CurrentWeapon.AltFire();
+        }
+    }
+    #endregion
+
+    #region Reloading
+    /// <summary>
+    /// Tries to reload the weapon
+    /// </summary>
+    public void TryReload()
+    {
+        CurrentWeapon.ReloadWeapon();
     }
     #endregion
 
@@ -110,13 +158,35 @@ public class WeaponMasterModule : Module
 
         EnableCurrentWeapon();
     }
-    #endregion
 
+    /// <summary>
+    /// Switches to the previous weapon.
+    /// </summary>
+    public void PrevWeapon()
+    {
+        if (weaponIndex > 0)
+        {
+            weaponIndex--;
+        }
+        else
+        {
+            weaponIndex = weapons.Count - 1;
+        }
+        weaponIndex %= weapons.Count;
+
+        EnableCurrentWeapon();
+    }
+
+    /// <summary>
+    /// Enables current weapon the player has selected.
+    /// </summary>
     private void EnableCurrentWeapon()
     {
         weapons.ForEach(weap => weap.gameObject.SetActive(false));
 
         CurrentWeapon.gameObject.SetActive(true);
     }
+    #endregion
+
     #endregion
 }

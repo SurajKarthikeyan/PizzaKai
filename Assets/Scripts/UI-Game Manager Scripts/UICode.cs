@@ -28,7 +28,6 @@ public class UICode : MonoBehaviour
     
     public RespawnScript respawn;
 
-    public AudioSource PlayerDeath;
     public AudioClip PizzaDeath;
 
     public Animator animator;
@@ -132,7 +131,7 @@ public class UICode : MonoBehaviour
             player.isKBed = false;
             isDying = true;
             //mainPlayer.layer = 10;
-            PlayerDeath.Play();
+            AudioDictionary.aDict.PlayAudioClip("playerDeath", AudioDictionary.Source.Player);
             animator.Play("PlayerDeath");
             animatorGun.Play("GunOff");
             //animatorGunLeft.Play("GunOff");
