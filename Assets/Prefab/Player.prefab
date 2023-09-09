@@ -434,29 +434,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d440acdc9bfea4d9fc3166beb4e496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioDict:
+    keyValuePairs:
+    - key: test
+      value: {fileID: 8300000, guid: 4705b902fbc17744194e1bd6dcea40aa, type: 3}
+    - key: playerDeath
+      value: {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
+    - key: breadDead
+      value: {fileID: 8300000, guid: daa6e3e7722e80d4f86575aad020e4d8, type: 3}
+    - key: chickenRun
+      value: {fileID: 8300000, guid: 3b3aee9fdfd00ab468cf90180ff397ed, type: 3}
+    - key: molotovToss
+      value: {fileID: 8300000, guid: 03c98ac747a6d6548b69b9ac48edd83d, type: 3}
+    - key: molotovBreak
+      value: {fileID: 8300000, guid: 15a501faa18bc0f42952e143944b8d23, type: 3}
+    - key: deepDishShot
+      value: {fileID: 8300000, guid: b83f090b8a1adee4a9977d5980bc6793, type: 3}
+    - key: tommyShoot
+      value: {fileID: 8300000, guid: a01257a7920e3df4187750b2ba665ed2, type: 3}
+    - key: tommyAlt
+      value: {fileID: 8300000, guid: 87e171d9ac7446f41937546e879348bb, type: 3}
+    - key: tommyReload
+      value: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
+    - key: shotgunShoot
+      value: {fileID: 8300000, guid: f3a34ddaff110554f91d16d6b2f60ad6, type: 3}
+    - key: shotgunAlt
+      value: {fileID: 8300000, guid: c2c87ce0694ff37499540099430b2753, type: 3}
+    - key: shotgunReload
+      value: {fileID: 8300000, guid: f959677c08ec700419883c73f10dcf5d, type: 3}
+    - key: flamethrowerShoot
+      value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
+    - key: flamethrowerAlt
+      value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
+    - key: flamethrowerReload
+      value: {fileID: 8300000, guid: 38ff50a954ef3a84da845f03f0c5345d, type: 3}
   source: 0
-  aClipKeys:
-  - test
-  - playerDeath
-  - breadDead
-  - chickenRun
-  - molotovToss
-  - molotovBreak
-  - deepDishShot
-  aClipValues:
-  - {fileID: 8300000, guid: 4705b902fbc17744194e1bd6dcea40aa, type: 3}
-  - {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
-  - {fileID: 8300000, guid: daa6e3e7722e80d4f86575aad020e4d8, type: 3}
-  - {fileID: 8300000, guid: 3b3aee9fdfd00ab468cf90180ff397ed, type: 3}
-  - {fileID: 8300000, guid: 03c98ac747a6d6548b69b9ac48edd83d, type: 3}
-  - {fileID: 8300000, guid: 15a501faa18bc0f42952e143944b8d23, type: 3}
-  - {fileID: 8300000, guid: b83f090b8a1adee4a9977d5980bc6793, type: 3}
   testSource: {fileID: 971485528}
   playerSource: {fileID: 1634522347}
   breadSource: {fileID: 710488355}
   chickenSource: {fileID: 1003133323}
   molotovSource: {fileID: 1555972949}
-  deepDishSource: {fileID: 0}
+  deepDishSource: {fileID: 1829618956}
 --- !u!1 &1555972947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,12 +2055,12 @@ MonoBehaviour:
   tommyFlash: {fileID: 0}
   tommyFlashImage: {fileID: 0}
   shootingTommy: {fileID: 0}
-  shootingShotgun: {fileID: 122065691}
-  shootingFlamethrower: {fileID: 5042055405554501292}
+  shootingShotgun: {fileID: 0}
+  shootingFlamethrower: {fileID: 0}
   shootingSniper: {fileID: 0}
   tommyScript: {fileID: 0}
-  shotgunScript: {fileID: 122065691}
-  flamethrowerScript: {fileID: 5042055405554501292}
+  shotgunScript: {fileID: 0}
+  flamethrowerScript: {fileID: 0}
   sniperScript: {fileID: 0}
   isFlashing: 0
   isDying: 0
@@ -2788,9 +2806,9 @@ MonoBehaviour:
   newScale: {x: 0, y: 0, z: 0}
   newScaleX: 0
   player: {fileID: 8206075540257416579}
-  shotgun: {fileID: 122065691}
+  shotgun: {fileID: 0}
   tommy: {fileID: 0}
-  flamethrower: {fileID: 5042055405554501292}
+  flamethrower: {fileID: 0}
   tommyLeft: {fileID: 1668988630}
   tommyRight: {fileID: 2600166346267091786}
   tommyFirepointRight: {fileID: 3726116736655217412}
@@ -3270,7 +3288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 5394122764986162006}
+  - {fileID: 995613533016112330}
+  - {fileID: 3213876410492947914}
+  - {fileID: 2604085519130311706}
   weaponIndex: 0
   characterAnimator: {fileID: 948621413}
   animParamFire: Fire
@@ -3651,6 +3671,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.002
       objectReference: {fileID: 0}
+    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: cameraScript
+      value: 
+      objectReference: {fileID: 3413369618218320337}
+    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 8206075540257416576}
+    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: altFireDelay.maxTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2741532492258955962, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.06200006
@@ -3723,6 +3755,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1566744870868696937, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
   m_PrefabInstance: {fileID: 1566744871420658111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &995613533016112330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+  m_PrefabInstance: {fileID: 1566744871420658111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3726116736402147893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc36dd84854980429bd207a3d806b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2600166346267091786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3579121097500353269, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
@@ -3743,17 +3786,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2741532492258955963, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
   m_PrefabInstance: {fileID: 1566744871420658111}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5394122764986162006 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6874168942830066409, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-  m_PrefabInstance: {fileID: 1566744871420658111}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3726116736402147893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2770841203435297574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3761,6 +3793,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7754860285980378560}
     m_Modifications:
+    - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: altFireDelay.maxTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: m_Name
       value: Flamethrower
@@ -3877,15 +3913,15 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2770841202823174469, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
   m_PrefabInstance: {fileID: 2770841203435297574}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5042055405554501292 stripped
+--- !u!114 &2604085519130311706 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
   m_PrefabInstance: {fileID: 2770841203435297574}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758217588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d4d53afb80ed147943ac9dfc76a6d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2df5cff713091d6448706056621e7201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4342418669529012302
@@ -3895,6 +3931,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7754860285980378560}
     m_Modifications:
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: -6018481526313655432, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 3726116736307325436}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 142466953}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: animFiringBool
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: weaponAnimator
+      value: 
+      objectReference: {fileID: 502197877}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: animReloadingBool
+      value: Reload
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669407275861, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: flip
       value: 
@@ -3973,25 +4033,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
---- !u!114 &122065691 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4342418669407275861, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
-  m_PrefabInstance: {fileID: 4342418669529012302}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966027444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 112b85a151c73c94cbf88ac439703708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &142466952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4342418669661374406, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 4342418669529012302}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &142466953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4342418669661374407, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 4342418669529012302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465551814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4342418669355325832, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 4342418669529012302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &502197877 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4342418669316601403, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 4342418669529012302}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &893394009 stripped
@@ -4014,6 +4073,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4342418668238935991, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 4342418669529012302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3213876410492947914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 4342418669529012302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966027444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cc6803b8b9711439faa414ea46ec03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4585397521812948692
 PrefabInstance:
   m_ObjectHideFlags: 0
