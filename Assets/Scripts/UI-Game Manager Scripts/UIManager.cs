@@ -1,83 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using NaughtyAttributes;
 
+/// <summary>
+/// Manager class that manages UI interactions and information displaying
+/// 
+/// <br/>
+/// 
+/// Authors: Zane O'Dell (2023)
+/// </summary>
 public class UIManager : MonoBehaviour
 {
+    #region Variables
+    [Header("UI Text Fields and Sliders")]
+    [Tooltip("Text used to show current weapon ammo")]
     public Text ammoCount;
-    public Slider healthSlider;
-    public Slider dashSlider;
-    public Slider altSlider;
-    //public float ammoCur;
-    //public float ammoMax;
-    //public float healthCur; Can get these two fields from the player health script via public reference
-    //public float healthMax = 1;
 
-    //this is for the BurningScript. I needed to put it somewhere else so that it could be referenced and changed by the burning script
-    public bool boxBurning = false;
+    [Tooltip("Slider used to show the player health")]
+    public Slider healthSlider;
+
+    [Tooltip("Slider used to show the player's dash cooldown")]
+    public Slider dashSlider;
+
+    [Tooltip("Slider used to show the player's dash cooldown")]
+    public Slider altSlider;
+
+    [Header("UI and game screens/elements")]
+    [Tooltip("Boolean representing whether the game is paused or not")]
     public bool isPaused = false;
 
-    public CharacterMovementModule player;
+    [Tooltip("GameObject representing the pause menu")] 
+    public GameObject pauseMenu;
 
+    [Tooltip("GameObject containing the tommy ammo UI element")]
+    public GameObject tommyAmmoUI;
+
+    [Tooltip("GameObject containing the shotgun ammo UI element")]
+    public GameObject shotgunAmmoUI;
+
+    [Tooltip("GameObject containing the flamethrower ammo UI element")]
+    public GameObject flameAmmoUI;
+
+    [Tooltip("Slider used to show the player's dash cooldown")]
     public RespawnScript respawn;
 
+    [Header("UI relevant player information")]
+    [Tooltip("Script containing UI relevant player information")]
+    public CharacterMovementModule player;
+
+    [Tooltip("Weapon master module to use for UI")]
     public WeaponMasterModule weaponMaster;
 
     private WeaponModule currWeapon;
 
-    public GameObject pauseMenu;
-
-    //public float altTime;
-    //public float timestamp;
-
-
-    public GameObject tommyAmmoUI;
-    public GameObject shotgunAmmoUI;
-    public GameObject flameAmmoUI;
-
-    //public TommyGunWeapon tommyScript;
-    //public ShotGunWeapon shotgunScript;
-    //public FlameThrowerWeapon flamethrowerScript;
-
-    public bool isDying = false;
-
-    //public Camera camera;
-
     private List<GameObject> ammoUIList = new List<GameObject>();
-
-    private GameObject currAmmoUI;
-
-    
-
-    //private Duration altDuration = new(1f);
+    #endregion
 
     #region Instance
     /// <summary>
-    /// The static reference to an EventManager instance.
+    /// The static reference to a UIManager instance.
     /// </summary>
     private static UIManager instance;
 
     /// <summary>
-    /// The static reference to an EventManager instance.
+    /// The static reference to a UIManager instance.
     /// </summary>
     public static UIManager Instance => instance;
     #endregion
 
-    #region Properties
-    //public GameObject CurrentAmmoUI
-    //{
-    //    get { return currAmmoUI; }
-
-    //    set
-    //    {
-            
-    //    }
-    //}
-    #endregion
-
+    #region Init
+    //Awake is called before Start
     private void Awake()
     {
         this.InstantiateSingleton(ref instance, false);
@@ -88,7 +82,7 @@ public class UIManager : MonoBehaviour
     {
         //Set the ammo UI according to the current weapon in the weaponmaster, way below will be changed
 
-        ammoUIList.AddRange(new List<GameObject> { tommyAmmoUI, shotgunAmmoUI, flameAmmoUI});
+        ammoUIList.AddRange(new List<GameObject> { tommyAmmoUI, shotgunAmmoUI, flameAmmoUI });
 
         Time.timeScale = 1;
 
@@ -96,7 +90,9 @@ public class UIManager : MonoBehaviour
 
         currWeapon = weaponMaster.CurrentWeapon;
     }
+    #endregion
 
+    #region Main Loop
     // Update is called once per frame
     void Update()
     {
@@ -122,7 +118,6 @@ public class UIManager : MonoBehaviour
                 }
             }
 
-
             //Alt fire slider
             if (currWeapon.altFireDelay.IsDone)
             {
@@ -134,6 +129,7 @@ public class UIManager : MonoBehaviour
             }
 
 
+            //TODO: Set the healthSlider.value to (current player health/max player health)
             //Input stuff here is for testing.
             if (Input.GetKeyDown(KeyCode.J))
             {
@@ -145,19 +141,14 @@ public class UIManager : MonoBehaviour
                 healthSlider.value -= .1f;
             }
 
-            //ammoCount.text = ammoCur.ToString() + "/" + ammoMax.ToString();
             ammoCount.text = currWeapon.currentAmmo.ToString() + "/" + currWeapon.ammoCount.ToString();
-
-            /**The UIManager should not be responsible for killing the player
-             * The part of this code actually handling the player death should be in a different script
-             * The stuff handling the UI should be here, with it either being called by the other script or
-             * having the UI call the other script to initiate player death**/
-
-            //Set the healthSlider.value to (current player health/max player health)
 
             if (healthSlider.value == 0)
             {
-                //All of this needs to be in the player script, not the UI
+                /**The UIManager should not be responsible for killing the player
+             * The part of this code actually handling the player death should be in a different script
+             * The stuff handling the UI should be here, with it either being called by the other script or
+             * having the UI call the other script to initiate player death**/
                 //player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 //player.isKBed = false;
                 //isDying = true;
@@ -179,7 +170,9 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Methods
     /**This function should not be here, it should be in a script that handles either player movement
      * or game events. **/
 
@@ -193,7 +186,7 @@ public class UIManager : MonoBehaviour
 
     //Should be fine, might just need cleanup but will double check
 
-    //the dash needs to refill based on the dodgeCooldown in the playerMovement script, which atm is 2f
+    //the dash needs to refill based on time passed in, right now it's "hard coding" two seconds
     public IEnumerator dashFill()
     {
         dashSlider.value = 0f;
@@ -208,7 +201,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    //Also I think will just need cleanup, but we will see
+    //This should also be with the player
     //public IEnumerator deathExplosion()
     //{
     //    yield return new WaitForSeconds(0.55f);
@@ -218,7 +211,10 @@ public class UIManager : MonoBehaviour
     //    Invoke(nameof(RespawnDelay), 0.6f);
     //}
 
-
+    /// <summary>
+    /// Sets the active ammo UI element for the gun
+    /// </summary>
+    /// <param name="ammoUI">UI ammo element to set</param>
     private void SetActiveAmmo(GameObject ammoUI)
     {
         foreach (GameObject ammo in ammoUIList)
@@ -227,7 +223,9 @@ public class UIManager : MonoBehaviour
             ammoUI.SetActive(true);
         }
     }
-
+    /// <summary>
+    /// Pauses and unpauses the game
+    /// </summary>
     private void PauseGame()
     {
         if (pauseMenu.activeSelf == true)
@@ -246,6 +244,5 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
-
+    #endregion
 }
