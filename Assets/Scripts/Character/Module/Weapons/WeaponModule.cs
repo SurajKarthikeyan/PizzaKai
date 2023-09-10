@@ -10,7 +10,6 @@ using NaughtyAttributes;
 /// </summary>
 public class WeaponModule : Module
 {
-
     #region Static Classes
 
     /// <summary>
@@ -125,6 +124,9 @@ public class WeaponModule : Module
     [Tooltip("Bullet that this weapon uses")]
     public bulletScript bullet;
 
+    [Tooltip("Updated bullet spawn this weapon uses.")]
+    public WeaponSpawn bulletSpawn;
+
     [Header("Audio Settings")]
     [Tooltip("Prefix used to help get proper audio clip from audio dict")]
     [ReadOnly]
@@ -141,6 +143,7 @@ public class WeaponModule : Module
     /// this frame.
     /// </summary>
     private bool inputSetThisFrame;
+    private int burstCount;
     #endregion
     #endregion
 
@@ -253,7 +256,6 @@ public class WeaponModule : Module
     /// <returns>True if firing was successful, false otherwise.</returns>
     public bool TryFireWeapon()
     {
-
         bool canFire = CheckCanFire();
 
         if (canFire)
@@ -286,6 +288,8 @@ public class WeaponModule : Module
         return canFire;
     }
 
+    public void ResetBurst() => burstCount = 0;
+
     /// <summary>
     /// Checks if the weapon can fire.
     /// </summary>
@@ -297,7 +301,6 @@ public class WeaponModule : Module
             ReloadWeapon();
             return false;
         }
-
 
         switch (InputState)
         {
@@ -318,8 +321,13 @@ public class WeaponModule : Module
     protected void FireProjectile()
     {
         //Spawned projectile, need to look into refactoring bullets themselves
-        if (weaponAction != WeaponAudioStrings.Shoot) weaponAction = WeaponAudioStrings.Shoot;
-        Instantiate(bullet, firePoint.position, Quaternion.identity);
+        weaponAction = WeaponAudioStrings.Shoot;
+
+        var bulletInst = bulletSpawn.InstantiateComponent(
+            firePoint.position,
+            firePoint.rotation
+        );
+        bulletInst.Fire(this, autofire ? ++burstCount : 1);
     }
 
     /// <summary>
