@@ -30,12 +30,12 @@ public class Shooting : MonoBehaviour
     public PlayerMovement player;
 
     //Pause and flipping
-    public UICode UIScript;
+    public UIManager UIScript;
     public Flip flip;
 
     public List<SpriteRenderer> visibleEnemies = new List<SpriteRenderer>();
 
-    public UICode UI;
+    public UIManager UI;
 
 
     // Start is called before the first frame update
@@ -89,65 +89,65 @@ public class Shooting : MonoBehaviour
                 GunReloading.Play();
             }
 
-            if (UIScript.shotgun.activeSelf == true)
-            {
-                if (flip.shotgunLeft.activeSelf == true)
-                {
+            //if (UIScript.shotgun.activeSelf == true)
+            //{
+            //    if (flip.shotgunLeft.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointLeft.transform.position.x, 
-                        flip.shotgunFirepointLeft.transform.position.y, 
-                        flip.shotgunFirepointLeft.transform.position.z);
-                }
-                if (flip.shotgunRight.activeSelf == true)
-                {
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointLeft.transform.position.x, 
+            //            flip.shotgunFirepointLeft.transform.position.y, 
+            //            flip.shotgunFirepointLeft.transform.position.z);
+            //    }
+            //    if (flip.shotgunRight.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointRight.transform.position.x, 
-                        flip.shotgunFirepointRight.transform.position.y, 
-                        flip.shotgunFirepointRight.transform.position.z);
-                }
-            }
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.shotgunFirepointRight.transform.position.x, 
+            //            flip.shotgunFirepointRight.transform.position.y, 
+            //            flip.shotgunFirepointRight.transform.position.z);
+            //    }
+            //}
 
-            if (UIScript.tommy.activeSelf == true)
-            {
-                if (flip.tommyLeft.activeSelf == true)
-                {
+            //if (UIScript.tommy.activeSelf == true)
+            //{
+            //    if (flip.tommyLeft.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointLeft.transform.position.x, 
-                        flip.tommyFirepointLeft.transform.position.y, 
-                        flip.tommyFirepointLeft.transform.position.z);
-                }
-                if (flip.shotgunRight.activeSelf == true)
-                {
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointLeft.transform.position.x, 
+            //            flip.tommyFirepointLeft.transform.position.y, 
+            //            flip.tommyFirepointLeft.transform.position.z);
+            //    }
+            //    if (flip.shotgunRight.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointRight.transform.position.x, 
-                        flip.tommyFirepointRight.transform.position.y, 
-                        flip.tommyFirepointRight.transform.position.z);
-                }
-            }
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.tommyFirepointRight.transform.position.x, 
+            //            flip.tommyFirepointRight.transform.position.y, 
+            //            flip.tommyFirepointRight.transform.position.z);
+            //    }
+            //}
 
-            if (UIScript.flamethrower.activeSelf == true)
-            {
-                if (flip.flameLeft.activeSelf == true)
-                {
+            //if (UIScript.flamethrower.activeSelf == true)
+            //{
+            //    if (flip.flameLeft.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointLeft.transform.position.x, 
-                        flip.flameFirepointLeft.transform.position.y, 
-                        flip.flameFirepointLeft.transform.position.z);
-                }
-                if (flip.shotgunRight.activeSelf == true)
-                {
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointLeft.transform.position.x, 
+            //            flip.flameFirepointLeft.transform.position.y, 
+            //            flip.flameFirepointLeft.transform.position.z);
+            //    }
+            //    if (flip.shotgunRight.activeSelf == true)
+            //    {
 
-                    //make left firepoint the main firepoint
-                    gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointRight.transform.position.x, 
-                        flip.flameFirepointRight.transform.position.y, 
-                        flip.flameFirepointRight.transform.position.z);
-                }
-            }
+            //        //make left firepoint the main firepoint
+            //        gunScriptableObject.bulletTransform = new Vector3(flip.flameFirepointRight.transform.position.x, 
+            //            flip.flameFirepointRight.transform.position.y, 
+            //            flip.flameFirepointRight.transform.position.z);
+            //    }
+            //}
 
             //Click mouse button to fire
             if (Input.GetMouseButton(0) && gunScriptableObject.canFire)

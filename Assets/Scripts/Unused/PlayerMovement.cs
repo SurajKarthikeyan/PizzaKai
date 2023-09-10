@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     public float incomingDamage;
 
     public Flip flip;
-    public UICode UIScript;
+    public UIManager UIScript;
 
     public SpriteRenderer spriteRender;
 
@@ -320,7 +320,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             
-            UIScript.LoseHealth(incomingDamage);
+            //UIScript.LoseHealth(incomingDamage);
             StartCoroutine(damageCool());
             
             //Debug.Log("Damage taken");
@@ -334,7 +334,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "EnemyProjectile" && invulnerable == false)
         {
             incomingDamage = 0.25f;
-            UIScript.LoseHealth(incomingDamage);
+            //UIScript.LoseHealth(incomingDamage);
             StartCoroutine(damageCool());
         }
         

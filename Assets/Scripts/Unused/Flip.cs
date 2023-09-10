@@ -32,7 +32,7 @@ public class Flip : MonoBehaviour
     public GameObject flameFirepointRight;
     public GameObject flameFirepointLeft;
 
-    public UICode UIScript;
+    public UIManager UIScript;
 
     
 
@@ -51,22 +51,22 @@ public class Flip : MonoBehaviour
         newScaleX = newScale.x;
         FlipSprite();
 
-        if (UIScript.tommy.activeSelf == true)
-        {
-            rotZ = tommy.gunScriptableObject.rotZ;
-        }
+        //if (UIScript.tommy.activeSelf == true)
+        //{
+        //    rotZ = tommy.gunScriptableObject.rotZ;
+        //}
 
-        if (UIScript.shotgun.activeSelf == true)
-        {
-            //Change to shotgunscriptable object
-            rotZ = shotgun.gunScriptableObject.rotZ;
-        }
+        //if (UIScript.shotgun.activeSelf == true)
+        //{
+        //    //Change to shotgunscriptable object
+        //    rotZ = shotgun.gunScriptableObject.rotZ;
+        //}
 
-        if (UIScript.flamethrower.activeSelf == true)
-        {
-            //Change to flamethrowerscriptable object
-            rotZ = flamethrower.gunScriptableObject.rotZ;
-        }
+        //if (UIScript.flamethrower.activeSelf == true)
+        //{
+        //    //Change to flamethrowerscriptable object
+        //    rotZ = flamethrower.gunScriptableObject.rotZ;
+        //}
 
     }
 
@@ -81,7 +81,7 @@ public class Flip : MonoBehaviour
 
             if (tommyLeft.activeSelf == true)
             {
-                UIScript.tommy.transform.position = new Vector3(UIScript.tommy.transform.position.x - .864f, UIScript.tommy.transform.position.y - .027f, 0f);
+                //UIScript.tommy.transform.position = new Vector3(UIScript.tommy.transform.position.x - .864f, UIScript.tommy.transform.position.y - .027f, 0f);
 
                 tommyLeft.SetActive(false);
                 tommyRight.SetActive(true);
@@ -90,7 +90,7 @@ public class Flip : MonoBehaviour
             }
             else if (tommyRight.activeSelf == true)
             {
-                UIScript.tommy.transform.position = new Vector3(UIScript.tommy.transform.position.x + .864f, UIScript.tommy.transform.position.y + .027f, 0f);
+                //UIScript.tommy.transform.position = new Vector3(UIScript.tommy.transform.position.x + .864f, UIScript.tommy.transform.position.y + .027f, 0f);
                 tommyRight.SetActive(false);
                 tommyLeft.SetActive(true);
                 tommyFirepointLeft.SetActive(true);
@@ -99,7 +99,7 @@ public class Flip : MonoBehaviour
 
             if (shotgunLeft.activeSelf == true)
             {
-                UIScript.shotgun.transform.position = new Vector3(UIScript.shotgun.transform.position.x - .864f, UIScript.shotgun.transform.position.y - .027f, 0f);
+                //UIScript.shotgun.transform.position = new Vector3(UIScript.shotgun.transform.position.x - .864f, UIScript.shotgun.transform.position.y - .027f, 0f);
                 
                 shotgunLeft.SetActive(false);
                 shotgunRight.SetActive(true);
@@ -109,7 +109,7 @@ public class Flip : MonoBehaviour
             }
             else if (shotgunRight.activeSelf == true)
             {
-                UIScript.shotgun.transform.position = new Vector3(UIScript.shotgun.transform.position.x + .864f, UIScript.shotgun.transform.position.y + .027f, 0f);
+                //UIScript.shotgun.transform.position = new Vector3(UIScript.shotgun.transform.position.x + .864f, UIScript.shotgun.transform.position.y + .027f, 0f);
                 
                 shotgunRight.SetActive(false);
                 shotgunLeft.SetActive(true);
@@ -119,7 +119,7 @@ public class Flip : MonoBehaviour
 
             if (flameLeft.activeSelf == true)
             {
-                UIScript.flamethrower.transform.position = new Vector3(UIScript.flamethrower.transform.position.x - .864f, UIScript.flamethrower.transform.position.y - .027f, 0f);
+                //UIScript.flamethrower.transform.position = new Vector3(UIScript.flamethrower.transform.position.x - .864f, UIScript.flamethrower.transform.position.y - .027f, 0f);
 
                 flameLeft.SetActive(false);
                 flameRight.SetActive(true);
@@ -129,7 +129,7 @@ public class Flip : MonoBehaviour
             }
             else if (flameRight.activeSelf == true)
             {
-                UIScript.flamethrower.transform.position = new Vector3(UIScript.flamethrower.transform.position.x + .864f, UIScript.flamethrower.transform.position.y + .027f, 0f);
+                //UIScript.flamethrower.transform.position = new Vector3(UIScript.flamethrower.transform.position.x + .864f, UIScript.flamethrower.transform.position.y + .027f, 0f);
 
                 flameRight.SetActive(false);
                 flameLeft.SetActive(true);

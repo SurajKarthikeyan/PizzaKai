@@ -35,7 +35,7 @@ public class TommyGun : Shooting
                 GunAltSound.Play();
                 gunScriptableObject.canAlt = false;
                 StartCoroutine(cameraScript.Shake());
-                StartCoroutine(UI.tommyAltFlash());
+                //StartCoroutine(UI.tommyAltFlash());
 
 
                 

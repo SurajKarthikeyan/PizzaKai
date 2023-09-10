@@ -17,7 +17,7 @@ public class SwitchWeapons : MonoBehaviour
     public bool Flamethrower;
     public bool Sniper;
 
-    public UICode UIScript;
+    public UIManager UIScript;
     
 
     // Start is called before the first frame update
@@ -51,30 +51,30 @@ public class SwitchWeapons : MonoBehaviour
                 notReloading = true;
             }
 
-            if (Input.GetKeyDown("" + 1) && notReloading == true && Tommy == true && UIScript.isFlashing == false)
-            {
-                gun2.SetActive(false);
-                gun3.SetActive(false);
-                //gun4.SetActive(false);
-                gun1.SetActive(true);
-            }
+            //if (Input.GetKeyDown("" + 1) && notReloading == true && Tommy == true && UIScript.isFlashing == false)
+            //{
+            //    gun2.SetActive(false);
+            //    gun3.SetActive(false);
+            //    //gun4.SetActive(false);
+            //    gun1.SetActive(true);
+            //}
 
-            if (Input.GetKeyDown("" + 2) && notReloading == true && Shotgun == true && UIScript.isFlashing == false)
-            {
-                gun1.SetActive(false);
-                gun3.SetActive(false);
-                //gun4.SetActive(false);
-                gun2.SetActive(true);
-            }
+            //if (Input.GetKeyDown("" + 2) && notReloading == true && Shotgun == true && UIScript.isFlashing == false)
+            //{
+            //    gun1.SetActive(false);
+            //    gun3.SetActive(false);
+            //    //gun4.SetActive(false);
+            //    gun2.SetActive(true);
+            //}
 
 
-            if (Input.GetKeyDown("" + 3) && notReloading == true && Flamethrower == true && UIScript.isFlashing == false)
-            {
-                gun1.SetActive(false);
-                gun2.SetActive(false);
-                //gun4.SetActive(false);
-                gun3.SetActive(true);
-            }
+            //if (Input.GetKeyDown("" + 3) && notReloading == true && Flamethrower == true && UIScript.isFlashing == false)
+            //{
+            //    gun1.SetActive(false);
+            //    gun2.SetActive(false);
+            //    //gun4.SetActive(false);
+            //    gun3.SetActive(true);
+            //}
             //if (Input.GetKeyDown("" + 4) && notReloading == true && Sniper == true && UIScript.isFlashing == false)
             //{
             //    gun1.SetActive(false);

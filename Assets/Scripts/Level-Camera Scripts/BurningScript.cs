@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BurningScript : MonoBehaviour
 {
-    public UICode UI;
+    public UIManager UI;
     GameObject[] boxes;
     public SpriteRenderer spriteRender;
     private bool flameBulletHit = false;

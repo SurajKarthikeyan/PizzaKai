@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     
-    private UICode UI;
+    private UIManager UI;
     private GameObject cameraRef;
     private GameObject playerRef;
     private PlayerMovement player;
@@ -15,7 +15,7 @@ public class Pickup : MonoBehaviour
     {
         cameraRef = GameObject.Find("Main Camera");
         playerRef = GameObject.Find("Player");
-        UI = cameraRef.GetComponent<UICode>();
+        UI = cameraRef.GetComponent<UIManager>();
         player = playerRef.GetComponent<PlayerMovement>();
 
         switchWeapons = playerRef.GetComponent<SwitchWeapons>();
@@ -32,7 +32,7 @@ public class Pickup : MonoBehaviour
             }
 
             if (gameObject.tag == "HealthPickup") {
-                UI.GainHealth(.25f);
+                //UI.GainHealth(.25f);
                 Destroy(gameObject);
             }
             //for any other pickups follow the same if statement above with the proper tags

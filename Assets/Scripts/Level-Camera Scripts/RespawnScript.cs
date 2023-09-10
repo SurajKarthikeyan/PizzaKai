@@ -8,7 +8,7 @@ public class RespawnScript : MonoBehaviour
     public GameObject player;
     public GameObject respawnPoint;
 
-    public UICode UIScript;
+    public UIManager UIScript;
     // Start is called before the first frame update
     void Start()
     {
