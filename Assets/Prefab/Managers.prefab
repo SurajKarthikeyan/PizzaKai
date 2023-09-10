@@ -208,7 +208,64 @@ MonoBehaviour:
   visualizer:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
     traceContainer: {fileID: 641946367239505754}
-  traceContainer: {fileID: 641946367239505754}
+--- !u!1 &4266495603451537799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8485758540099607936}
+  - component: {fileID: 6801951824201767935}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8485758540099607936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266495603451537799}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2929617964724522076}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6801951824201767935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266495603451537799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: {fileID: 0}
+  healthSlider: {fileID: 0}
+  dashSlider: {fileID: 0}
+  altSlider: {fileID: 0}
+  boxBurning: 0
+  isPaused: 0
+  player: {fileID: 0}
+  respawn: {fileID: 0}
+  weaponMaster: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  tommyAmmoUI: {fileID: 0}
+  shotgunAmmoUI: {fileID: 0}
+  flameAmmoUI: {fileID: 0}
+  isDying: 0
 --- !u!1 &4804208627070533326
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +534,6 @@ MonoBehaviour:
   visualizer:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
     traceContainer: {fileID: 2465597817352902440}
-  traceContainer: {fileID: 2465597817352902440}
   tilemaps:
   - {fileID: 0}
   - {fileID: 0}
@@ -614,6 +670,7 @@ Transform:
   - {fileID: 6684122959457783575}
   - {fileID: 7991122063614555219}
   - {fileID: 1579096460888423920}
+  - {fileID: 8485758540099607936}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

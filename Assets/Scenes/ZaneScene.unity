@@ -77139,64 +77139,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
---- !u!1 &1808802910
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1808802911}
-  - component: {fileID: 1808802912}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1808802911
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808802910}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2067089480}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1808802912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808802910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoCount: {fileID: 683930727}
-  healthSlider: {fileID: 939145742}
-  dashSlider: {fileID: 1934654387}
-  altSlider: {fileID: 1549347430}
-  boxBurning: 0
-  isPaused: 0
-  player: {fileID: 1737610973}
-  respawn: {fileID: 986415048}
-  weaponMaster: {fileID: 1742187618}
-  pauseMenu: {fileID: 484712457}
-  tommyAmmoUI: {fileID: 1698775275}
-  shotgunAmmoUI: {fileID: 1051611744}
-  flameAmmoUI: {fileID: 1879699325}
-  isDying: 0
 --- !u!1001 &1816562416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78455,17 +78397,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1737610973}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 986415048}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: altSlider
+      value: 
+      objectReference: {fileID: 1549347430}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: ammoCount
+      value: 
+      objectReference: {fileID: 683930727}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 484712457}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: dashSlider
+      value: 
+      objectReference: {fileID: 1934654387}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: flameAmmoUI
+      value: 
+      objectReference: {fileID: 1879699325}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: tommyAmmoUI
+      value: 
+      objectReference: {fileID: 1698775275}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 939145742}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: weaponMaster
+      value: 
+      objectReference: {fileID: 1742187618}
+    - target: {fileID: 6801951824201767935, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: shotgunAmmoUI
+      value: 
+      objectReference: {fileID: 1051611744}
+    - target: {fileID: 8485758540099607936, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9196742206444863517, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
---- !u!4 &2067089480 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
-  m_PrefabInstance: {fileID: 2067089479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2070584153
 PrefabInstance:
   m_ObjectHideFlags: 0
