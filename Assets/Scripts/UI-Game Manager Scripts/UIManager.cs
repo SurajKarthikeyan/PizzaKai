@@ -50,6 +50,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("Script containing UI relevant player information")]
     public CharacterMovementModule player;
 
+    [Tooltip("bool telling if player is dying. (this needs to go/be fixed)")]
+    public bool isDying;
+
     [Tooltip("Weapon master module to use for UI")]
     public WeaponMasterModule weaponMaster;
 
