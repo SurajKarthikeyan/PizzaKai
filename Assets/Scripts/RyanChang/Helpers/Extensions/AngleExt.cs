@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -118,42 +119,9 @@ public static class AngleExt
 
         return theta;
     }
-
-    /// <summary>
-    /// Returns an angle with a side. True is right side and false is left.
-    /// <br/><br/>
-    /// For example:<br/>
-    /// theta = 120 returns 60 and false<br/>
-    /// theta = 186 returns -6 and false<br/>
-    /// theta = 16 returns 16 and true<br/>
-    /// theta = 291 returns -69 and true
-    /// </summary>
-    /// <param name="theta"></param>
-    /// <returns></returns>
-    public static Tuple<float, bool> AsPlusMinus90AndSide(this float theta)
-    {
-        theta = theta.AsPlusMinus180();
-
-        if ((theta >= 0 && theta <= 90) || (theta < 0 && theta > -90))
-        {
-            //Right side
-            return new Tuple<float, bool>(theta, true);
-        }
-        else
-        {
-            if (theta >= 0)
-                theta = 180 - theta;
-            else
-            {
-                theta += 180;
-                theta *= -1;
-            }
-
-            return new Tuple<float, bool>(theta, false);
-        }
-    }
     #endregion
 
+    #region Comparisons
     /// <summary>
     /// Returns true if both angles represents the same angle
     /// </summary>
@@ -166,13 +134,14 @@ public static class AngleExt
     }
 
     /// <summary>
-    /// Returns true if angle is between theta1 and theta2, that is, angle lies in the
-    /// smallest arc formed by theta1 and theta2
+    /// Returns true if angle is between theta1 and theta2, that is, angle lies
+    /// in the smallest arc formed by theta1 and theta2.
     /// </summary>
     /// <param name="angle">The angle to evaluate</param>
     /// <param name="theta1"></param>
     /// <param name="theta2"></param>
-    /// <returns>An angle between -180 and 180.</returns>
+    /// <returns>True if <paramref name="angle"/> lies between the smallest arc
+    /// formed by theta1 and theta2..</returns>
     public static bool AngleIsBetween(this float angle, float theta1, float theta2)
     {
         float min = Mathf.Min(theta1, theta2);
@@ -184,7 +153,9 @@ public static class AngleExt
 
         return min.GetDeltaTheta(angle) >= 0 && max.GetDeltaTheta(angle) <= 0;
     }
+    #endregion
 
+    #region Alterations
     /// <summary>
     /// Returns angle if it falls within the smallest arc formed by theta1 and theta2.
     /// Else, returns either theta1 or theta2.
@@ -214,7 +185,9 @@ public static class AngleExt
                 return angle;
         }
     }
+    #endregion
 
+    #region Delta Theta
     /// <summary>
     /// Gets the direction of travel from actualTheta to targetTheta.
     /// If return value is -1, turn clockwise.
@@ -262,5 +235,39 @@ public static class AngleExt
     public static float GetDeltaTheta(this float actualTheta, float targetTheta)
     {
         return Mathf.DeltaAngle(actualTheta, targetTheta);
+    }
+    #endregion
+
+    /// <summary>
+    /// Returns the conversion factor to convert from the unit that is not
+    /// <paramref name="convertFrom"/> to <paramref name="convertTo"/>.
+    /// </summary>
+    /// <param name="convertFrom">The units to convert from.</param>
+    /// <param name="convertTo">The units to convert to.</param>
+    /// <returns></returns>
+    public static float GetConversionFactor(this FloatAngle.Units convertFrom,
+        FloatAngle.Units convertTo)
+    {
+        if (convertFrom == convertTo)
+            return 1f;
+
+        return convertTo switch
+        {
+            FloatAngle.Units.Degrees => Mathf.Rad2Deg,
+            FloatAngle.Units.Radians => Mathf.Deg2Rad,
+            _ => float.NaN
+        };
+    }
+
+    /// <summary>
+    /// Converts <paramref name="angle"/> to the specified units.
+    /// </summary>
+    /// <param name="angle">The angle.</param>
+    /// <returns></returns>
+    /// <inheritdoc cref="GetConversionFactor(FloatAngle.Units, FloatAngle.Units)"/>
+    public static float ConvertToUnit(this float angle,
+        FloatAngle.Units convertFrom, FloatAngle.Units convertTo)
+    {
+        return angle * convertFrom.GetConversionFactor(convertTo);
     }
 }

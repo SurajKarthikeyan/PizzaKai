@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +19,8 @@ public class EnemyControlModule : Module
     public CharacterMovementModule movement;
 
     public PathfindingAgent pathAgent;
+
+    // public Arc sightline = new(-160, 160, 10);
     #endregion
 
     #region Instantiation

@@ -46,10 +46,7 @@ public class LayersManager : MonoBehaviour
         {
             get
             {
-                if (name == null)
-                {
-                    name = LayerMask.LayerToName(layer);
-                }
+                name ??= LayerMask.LayerToName(layer);
 
                 return name;
             }

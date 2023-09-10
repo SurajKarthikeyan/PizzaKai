@@ -74,21 +74,16 @@ public static class EnumerableExt
     }
 
     /// <summary>
-    /// Returns true if <paramref name="index"/> is a valid indexer into
-    /// <paramref name="array"/>. If <paramref name="array"/> is null
-    /// or empty, returns false.
+    /// Swaps the values in the collection at <paramref name="indexA"/> and
+    /// <paramref name="indexB"/>.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="array">The array to evaluate.</param>
-    /// <param name="index">The index to evaluate.</param>
-    /// <returns>True if <paramref name="index"/> is a valid indexer into
-    /// <paramref name="array"/>, false otherwise.</returns>
-    public static bool IndexInRange<T>(this T[] array, int index)
+    /// <param name="collection">The list/array to operate on.</param>
+    /// <param name="indexA"></param>
+    /// <param name="indexB"></param>
+    public static void Swap<T>(this IList<T> collection, int indexA, int indexB)
     {
-        if (array == null)
-            return false;
-
-        return index >= 0 && index < array.Length;
+        (collection[indexB], collection[indexA]) =
+            (collection[indexA], collection[indexB]);
     }
 
     #region List

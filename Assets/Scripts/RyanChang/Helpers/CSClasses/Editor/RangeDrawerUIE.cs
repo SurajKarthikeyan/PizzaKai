@@ -15,8 +15,8 @@ public class RangeDrawerUIE : PropertyDrawer
         {
             Range range = GetRangeObject(property);
 
-            // Using BeginProperty / EndProperty on the parent property means that
-            // prefab override logic works on the entire property.
+            // Using BeginProperty / EndProperty on the parent property means
+            // that prefab override logic works on the entire property.
             EditorGUI.BeginProperty(position, label, property);
 
             // Define heights
