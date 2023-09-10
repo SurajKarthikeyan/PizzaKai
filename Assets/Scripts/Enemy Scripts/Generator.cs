@@ -22,7 +22,11 @@ public class Generator : EnemyBasic
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
     public override void Update()
     {
-        return;
+        if (currentHP <= 0)
+        {
+            deathState = true;
+            OnDeath();
+        }
     }
 
     // Handles taking damage if the generator is vulnerable
@@ -48,6 +52,14 @@ public class Generator : EnemyBasic
         isVulnerable = true;
         yield return new WaitForSeconds(vulnerableTime);
         isVulnerable = false;
+    }
+
+    private void OnDeath()
+    {
+        // Play Death Animation
+        // Instantiate alternative sprite
+        Destroy(this.gameObject);
+        
     }
     #endregion
     
