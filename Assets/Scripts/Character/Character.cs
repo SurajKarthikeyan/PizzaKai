@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// A character is an enemy or a player, and contains references to variables
@@ -66,12 +67,23 @@ public class Character : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
+                onCharacterDeath.Invoke();
                 EventManager.Instance.onCharacterDeath.Invoke(this);
             }
         }
     }
 
     public List<Module> Modules { get; private set; } = new();
+    #endregion
+
+    // These are local events that can be captured by child Modules. By
+    // convention, please make sure to invoke these before related events in
+    // EventManager.
+    #region Local Events
+    /// <summary>
+    /// Called on character death.
+    /// </summary>
+    public readonly UnityEvent onCharacterDeath = new();
     #endregion
 
     #region Methods
@@ -100,10 +112,6 @@ public class Character : MonoBehaviour
 
         IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
     }
-    #endregion
-
-    #region Main Loop
-
     #endregion
 
     #region MonoBehavior Methods

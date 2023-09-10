@@ -18,8 +18,7 @@ public class Spawner : MonoBehaviour
     [Tooltip("Spawn radius")]
     public float spawnRadius;
 
-    public Vector3 startForce;
-    public float forceDeviation;
+    public float maxStartForce;
 
     public float startRotation;
     public float rotationDeviation;
@@ -99,6 +98,11 @@ public class Spawner : MonoBehaviour
                     -rotationDeviation, rotationDeviation), 0
                     )
             );
+        }
+
+        if (enemyObj.HasComponent(out Rigidbody2D r2d))
+        {
+            r2d.AddForce(RNGExt.WithinCircle(Mathf.Abs(maxStartForce)));
         }
 
         objectsSpawned.Add(enemyObj);

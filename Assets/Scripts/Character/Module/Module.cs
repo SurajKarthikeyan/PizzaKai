@@ -40,7 +40,13 @@ public class Module : MonoBehaviour
     public void LinkToMaster(Character master)
     {
         Master = master;
+        OnLinked();
     }
+
+    /// <summary>
+    /// Called once <see cref="Master"/> is set.
+    /// </summary>
+    protected virtual void OnLinked() { }
     #endregion
 
     #region Helper Methods

@@ -35,7 +35,7 @@ public class Range
     // [Header("Option 4: Specify forces with Perlin Noise")]
     public float perlinCrawlSpeed = 0.1f;
     private Vector2 crawlPos = RNGExt.RandomVector2(1000);
-    private Vector2 crawlDir = RNGExt.OnUnitCircle();
+    private Vector2 crawlDir = RNGExt.OnCircle();
 
     // [Header("Common to Options 2 and 3")]
     [Tooltip("Modifies the base range to include a multiplication followed by an addition.")]
@@ -73,7 +73,7 @@ public class Range
         scalarMin = value;
         rangePattern = RangePattern.Single;
         crawlPos = RNGExt.RandomVector2(1000);
-        crawlDir = RNGExt.OnUnitCircle();
+        crawlDir = RNGExt.OnCircle();
     }
 
     /// <summary>
@@ -88,7 +88,7 @@ public class Range
         scalarMin = min;
         rangePattern = RangePattern.Linear;
         crawlPos = RNGExt.RandomVector2(1000);
-        crawlDir = RNGExt.OnUnitCircle();
+        crawlDir = RNGExt.OnCircle();
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public class Range
     {
         rangePattern = pattern;
         crawlPos = RNGExt.RandomVector2(1000);
-        crawlDir = RNGExt.OnUnitCircle();
+        crawlDir = RNGExt.OnCircle();
     }
 
     /// <summary>

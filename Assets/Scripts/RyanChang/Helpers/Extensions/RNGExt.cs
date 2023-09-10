@@ -176,12 +176,24 @@ public static class RNGExt
     }
 
     /// <summary>
-    /// Gets a point on the unit circle.
+    /// Gets a point on the perimeter of a circle.
     /// </summary>
-    /// <returns>A point on the unit circle.</returns>
-    public static Vector2 OnUnitCircle()
+    /// <param name="radius">The radius of the circle.</param>
+    /// <returns>A point on the circle.</returns>
+    public static Vector2 OnCircle(float radius = 1)
     {
-        return Quaternion.Euler(RandomFloat(0, 360), 0, 0) * Vector2.up;
+        return Quaternion.Euler(RandomFloat(0, 360), 0, 0)
+            * new Vector2(0, radius);
+    }
+
+    /// <summary>
+    /// Gets a point within a circle.
+    /// </summary>
+    /// <param name="radius">The radius of the circle.</param>
+    /// <returns>A point within the circle.</returns>
+    public static Vector2 WithinCircle(float radius = 1)
+    {
+        return RandomFloat(radius) * OnCircle();
     }
     #endregion
 

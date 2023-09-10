@@ -30,8 +30,9 @@ public class EnemyControlModule : Module
         this.RequireComponent(out pathAgent);
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        // For now, just have them chase the player.
         pathAgent.SetTarget(
             GameObject.FindObjectOfType<PlayerControlModule>().transform
         );
