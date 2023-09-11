@@ -22,13 +22,5 @@ using UnityEngine;
 /// </summary>
 public class AnimEventForwarderModule : Module
 {
-    public void CallGunshotEvent(int subweaponIndex)
-    {
-        Master.onGunshotEvent.Invoke(subweaponIndex);
-    }
-
-    public void CallReloadEvent(int subweaponIndex)
-    {
-        Master.onReloadEvent.Invoke(subweaponIndex);
-    }
+    public void PlayClip(AudioClip clip) => Master.PlayClip(clip);
 }

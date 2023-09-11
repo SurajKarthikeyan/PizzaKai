@@ -87,16 +87,6 @@ public class Character : MonoBehaviour
     /// Called on character death.
     /// </summary>
     public readonly UnityEvent onCharacterDeathEvent = new();
-
-    /// <summary>
-    /// Called from the animator, when a gunshot event is called.
-    /// </summary>
-    public readonly UnityEvent<int> onGunshotEvent = new();
-
-    /// <summary>
-    /// Called from the animator, when a reload event is called.
-    /// </summary>
-    public readonly UnityEvent<int> onReloadEvent = new();
     #endregion
 
     #region Methods
