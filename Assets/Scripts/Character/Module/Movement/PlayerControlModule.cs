@@ -47,7 +47,7 @@ public class PlayerControlModule : Module
         );
         movementController.inputtedMovement.Normalize();
 
-        movementController.inputtedJump = Input.GetButtonDown("Jump");
+        movementController.inputtedJump = Input.GetButton("Jump");
     }
     #endregion
 }

@@ -210,6 +210,8 @@ public class CharacterMovementModule : Module
         jumpCooldown.IncrementFixedUpdate(false);
         coyoteTimer.IncrementFixedUpdate(false);
 
+        print($"{inputtedJump} | {CanJump()}");
+
         if (inputtedJump && CanJump())
         {
             // Since a jump is only performed for one fixed update, it must be
@@ -288,7 +290,7 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            (TouchingGround || !coyoteTimer.IsDone);
+            (TouchingGround);
     }
     #endregion
     #endregion
