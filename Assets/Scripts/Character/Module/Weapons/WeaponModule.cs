@@ -52,13 +52,6 @@ public class WeaponModule : Module
         [AnimatorParam(nameof(fakeAnimator), AnimatorControllerParameterType.Bool)]
         public string animReloadingBool;
 
-        [Header("Audio")]
-        [Tooltip("The audio clip to play when the weapon is fired.")]
-        public AudioClip firingClip;
-
-        [Tooltip("The audio clip to play when the weapon is reloading.")]
-        public AudioClip reloadClip;
-
 
         [Header("Firing Settings")]
         [Tooltip("Updated bullet spawn this weapon uses.")]
@@ -69,6 +62,7 @@ public class WeaponModule : Module
 
         [Tooltip("How long to wait between rounds fired.")]
         public Duration firingDelay = new(1f);
+        
 
         [Header("Ammo/Reloading Settings")]
         [Tooltip("The number of bullets/projectiles/etc per clip/mag/whatever.")]
