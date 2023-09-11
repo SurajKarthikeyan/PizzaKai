@@ -60,7 +60,7 @@ public class Character : MonoBehaviour
     public int HP
     {
         get => hp;
-        set
+        private set
         {
             hp = value;
 

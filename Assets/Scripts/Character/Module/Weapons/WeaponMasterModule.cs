@@ -67,23 +67,27 @@ public class WeaponMasterModule : Module
                 // Firing.
                 TryFire();
             }
-            else if (Input.GetMouseButton(1))
+            else
+            {
+                CurrentWeapon.ResetBurst();
+            }
+            if (Input.GetMouseButton(1))
             {
                 //Alt fire
                 TryAltFire();
             }
-            else if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 //Reload Current Weapon
                 TryReload();
             }
 
             //Next two if blocks cycle through weapons
-            else if (Input.mouseScrollDelta.y > 0)
+            if (Input.mouseScrollDelta.y > 0)
             {
                 NextWeapon();
             }
-            else if (Input.mouseScrollDelta.y < 0)
+            if (Input.mouseScrollDelta.y < 0)
             {
                 PrevWeapon();
             }

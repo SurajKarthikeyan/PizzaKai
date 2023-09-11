@@ -10,13 +10,12 @@ using NaughtyAttributes;
 /// </summary>
 public class WeaponModule : Module
 {
-
     #region Static Classes
 
     /// <summary>
     /// Class holding strings for playing weapon audio clips
     /// </summary>
-    public static class WeaponAudioStrings
+    public readonly struct WeaponAudioStrings
     {
         //Strings for the weapon names
         public static readonly string TommyName = "tommy";
@@ -125,6 +124,9 @@ public class WeaponModule : Module
     [Tooltip("Bullet that this weapon uses")]
     public bulletScript bullet;
 
+    [Tooltip("Updated bullet spawn this weapon uses.")]
+    public WeaponSpawn bulletSpawn;
+
     [Header("Audio Settings")]
     [Tooltip("Prefix used to help get proper audio clip from audio dict")]
     [ReadOnly]
@@ -141,6 +143,7 @@ public class WeaponModule : Module
     /// this frame.
     /// </summary>
     private bool inputSetThisFrame;
+    private int burstCount;
     #endregion
     #endregion
 
@@ -219,6 +222,8 @@ public class WeaponModule : Module
             }
         }
     }
+
+    public int BurstCount => burstCount;
     #endregion
 
     #region Methods
@@ -253,7 +258,6 @@ public class WeaponModule : Module
     /// <returns>True if firing was successful, false otherwise.</returns>
     public bool TryFireWeapon()
     {
-
         bool canFire = CheckCanFire();
 
         if (canFire)
@@ -262,7 +266,8 @@ public class WeaponModule : Module
 
             switch (InputState)
             {
-                //If the player is already firing, then we go to the firing start state, otherwise we start firing
+                // If the player is already firing, then we go to the firing
+                // start state, otherwise we start firing.
                 case WeaponInputState.FiringStart:
                     InputState = WeaponInputState.FiringHeld;
                     break;
@@ -286,6 +291,8 @@ public class WeaponModule : Module
         return canFire;
     }
 
+    public void ResetBurst() => burstCount = 0;
+
     /// <summary>
     /// Checks if the weapon can fire.
     /// </summary>
@@ -297,7 +304,6 @@ public class WeaponModule : Module
             ReloadWeapon();
             return false;
         }
-
 
         switch (InputState)
         {
@@ -318,8 +324,9 @@ public class WeaponModule : Module
     protected void FireProjectile()
     {
         //Spawned projectile, need to look into refactoring bullets themselves
-        if (weaponAction != WeaponAudioStrings.Shoot) weaponAction = WeaponAudioStrings.Shoot;
-        Instantiate(bullet, firePoint.position, Quaternion.identity);
+        weaponAction = WeaponAudioStrings.Shoot;
+
+        bulletSpawn.Spawn(this).Fire(this);
     }
 
     /// <summary>
@@ -327,7 +334,7 @@ public class WeaponModule : Module
     /// </summary>
     public virtual void AltFire()
     {
-        if (weaponAction != WeaponAudioStrings.Alt) weaponAction = WeaponAudioStrings.Alt;
+        weaponAction = WeaponAudioStrings.Alt;
         altFireDelay.Reset();
         PlayAudio();
         Debug.Log("Doing alt fire");
