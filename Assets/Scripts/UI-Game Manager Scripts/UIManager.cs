@@ -13,6 +13,19 @@ using UnityEngine.UI;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
+
+    #region Instance
+    /// <summary>
+    /// The static reference to a UIManager instance.
+    /// </summary>
+    private static UIManager instance;
+
+    /// <summary>
+    /// The static reference to a UIManager instance.
+    /// </summary>
+    public static UIManager Instance => instance;
+    #endregion
+
     #region Variables
     [Header("UI Text Fields and Sliders")]
     [Tooltip("Text used to show current weapon ammo")]
@@ -48,7 +61,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UI relevant player information")]
     [Tooltip("Script containing UI relevant player information")]
-    public CharacterMovementModule player;
+    public Character player;
 
     [Tooltip("bool telling if player is dying. (this needs to go/be fixed)")]
     public bool isDying;
@@ -58,19 +71,7 @@ public class UIManager : MonoBehaviour
 
     private WeaponModule currWeapon;
 
-    private List<GameObject> ammoUIList = new List<GameObject>();
-    #endregion
-
-    #region Instance
-    /// <summary>
-    /// The static reference to a UIManager instance.
-    /// </summary>
-    private static UIManager instance;
-
-    /// <summary>
-    /// The static reference to a UIManager instance.
-    /// </summary>
-    public static UIManager Instance => instance;
+    private readonly List<GameObject> ammoUIList = new();
     #endregion
 
     #region Init
@@ -132,17 +133,9 @@ public class UIManager : MonoBehaviour
             }
 
 
-            //TODO: Set the healthSlider.value to (current player health/max player health)
-            //Input stuff here is for testing.
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                healthSlider.value += .1f;
-            }
+            //Sets ammo count and health
 
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                healthSlider.value -= .1f;
-            }
+            healthSlider.value = (float)player.HP / (float)player.maxHP;
 
             ammoCount.text = currWeapon.currentAmmo.ToString() + "/" + currWeapon.ammoCount.ToString();
 
@@ -190,7 +183,7 @@ public class UIManager : MonoBehaviour
     //Should be fine, might just need cleanup but will double check
 
     //the dash needs to refill based on time passed in, right now it's "hard coding" two seconds
-    public IEnumerator dashFill()
+    public IEnumerator DashFill()
     {
         dashSlider.value = 0f;
         yield return new WaitForSeconds(.5f);
@@ -222,7 +215,7 @@ public class UIManager : MonoBehaviour
     {
         foreach (GameObject ammo in ammoUIList)
         {
-            ammo.gameObject.SetActive(false);
+            ammo.SetActive(false);
             ammoUI.SetActive(true);
         }
     }

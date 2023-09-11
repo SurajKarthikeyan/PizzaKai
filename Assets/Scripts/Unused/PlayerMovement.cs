@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
         //enemy layer
         gameObject.layer = 10;
-        StartCoroutine(UIScript.dashFill());
+        StartCoroutine(UIScript.DashFill());
         //saves gravity value before we change it
         
         //makes it so the player does not fall during dodge

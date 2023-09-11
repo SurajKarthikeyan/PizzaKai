@@ -26,7 +26,7 @@ public class LayersManager : MonoBehaviour
 
     private void Start()
     {
-        this.InstantiateSingleton(ref instance);
+        
     }
 
     #region Structs
@@ -162,12 +162,13 @@ public class LayersManager : MonoBehaviour
 
     public static readonly DefinedLayer Background = new("Background");
 
-    private IEnumerable<Collider2D> platformColliders;
+    public IEnumerable<Collider2D> platformColliders;
     #endregion
 
     #region Instantiation
     private void Awake()
     {
+        this.InstantiateSingleton(ref instance);
         platformColliders = GameObject.FindObjectsOfType<Collider2D>()
             .Where(c => c.gameObject.layer == Platform);
     }
@@ -211,7 +212,10 @@ public class LayersManager : MonoBehaviour
     {
         foreach (var platformCollider in platformColliders)
         {
-            Physics2D.IgnoreCollision(platformCollider, collider, ignore);
+            if (platformCollider != null) 
+            {
+                Physics2D.IgnoreCollision(platformCollider, collider, ignore);
+            }
         }
     }
     #endregion
