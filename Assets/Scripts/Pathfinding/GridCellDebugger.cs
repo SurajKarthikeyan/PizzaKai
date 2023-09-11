@@ -30,6 +30,10 @@ public class GridCellDebugger : MonoBehaviour
 
     [SerializeField]
     [ReadOnly]
+    private bool hasVertex;
+
+    [SerializeField]
+    [ReadOnly]
     private Vertex<Vector3Int> vertex;
 
     private void OnDrawGizmos()
@@ -47,15 +51,17 @@ public class GridCellDebugger : MonoBehaviour
         DebugExt.DrawCrossBounds(bounds);
 
 
-        try
+        if (pathManager.Pathfinding.HasVertex(currentCoordinates))
         {
             vertex = pathManager.Pathfinding[currentCoordinates];
             currentNodes = vertex.Nodes;
+            hasVertex = true;
         }
-        catch (KeyNotFoundException)
+        else
         {
             vertex = null;
             currentNodes = null;
+            hasVertex = false;
         }
     }
 }

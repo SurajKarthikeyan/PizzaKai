@@ -31,7 +31,7 @@ public static class GraphExtensions
             if (currV.GetVisited(g)) continue;
             currV.SetVisited(g, true);
 
-            foreach (var adjP in currV.adjacent)
+            foreach (var adjP in currV.Adjacent)
             {
                 Vertex<Vector3> adjV = graph.Vertices[adjP.Key];
 

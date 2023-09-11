@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static PathMarker;
@@ -393,6 +394,8 @@ public class PathfindingManager : MonoBehaviour
         var startV = GetClosestNeighbor(start, Guid.Empty);
         var endV = GetClosestNeighbor(end, startV.sectionID);
 
+        Debug.Assert(startV.sectionID != Guid.Empty);
+        Debug.Assert(endV.sectionID != Guid.Empty);
         Debug.Assert(startV.sectionID == endV.sectionID);
         Debug.Assert(Pathfinding.VerticesConnected(startV, endV));
 
@@ -446,54 +449,74 @@ public class PathfindingManager : MonoBehaviour
     /// found.</returns>
     public Vertex3Int GetClosestNeighbor(Vector3Int position, Guid section)
     {
-        // First see if position contains what we are looking for.
-        if (Pathfinding.TryGetVertex(position, out var vertex) &&
-            (section == Guid.Empty || section == vertex.sectionID))
+        if (section == Guid.Empty)
         {
-            return vertex;
-        }
-
-        List<Vertex3Int> selected = new();
-
-        for (int i = 1; i < neighborCheckMaxDistance; i++)
-        {
-            for (int t = 0; t <= i; t++)
-            {
-                // We only need to check up to 8 vertexes here.
-                foreach (var offset in TFOffsets(t, i))
-                {
-                    Vector3Int pos = offset + position;
-
-                    if (Pathfinding.TryGetVertex(pos, out var v) &&
-                        (section == Guid.Empty || section == v.sectionID))
-                    {
-                        selected.Add(v);
-                    }
-                }
-
-                if (selected.Count > 0)
-                {
-                    return selected.RandomSelectOne();
-                }
-            }
-        }
-
-        // Didn't find anything. Try expensive Linq.
-        IEnumerable<Vertex3Int> linqSelect = section == Guid.Empty ?
-            Pathfinding.Values :
-            Pathfinding.Values.Where(v => v.sectionID == section);
-
-        if (linqSelect.Any())
-        {
-            return linqSelect.Aggregate((v1, v2) =>
-                v1.id.TaxicabDistance(position) <
-                v2.id.TaxicabDistance(position) ?
-                v1 : v2);
+            return Pathfinding.Values
+                .Aggregate((v1, v2) =>
+                    v1.id.TaxicabDistance(position) <
+                    v2.id.TaxicabDistance(position) ?
+                    v1 : v2
+                );
         }
         else
         {
-            return null;
+            return Pathfinding.Values
+                .Where(v => v.sectionID == section)
+                .Aggregate((v1, v2) =>
+                    v1.id.TaxicabDistance(position) <
+                    v2.id.TaxicabDistance(position) ?
+                    v1 : v2
+                );
         }
+
+        // // First see if position contains what we are looking for.
+        // if (Pathfinding.TryGetVertex(position, out var vertex) &&
+        //     (section == Guid.Empty || section == vertex.sectionID))
+        // {
+        //     return vertex;
+        // }
+
+        // List<Vertex3Int> selected = new();
+
+        // for (int i = 1; i < neighborCheckMaxDistance; i++)
+        // {
+        //     for (int t = 0; t <= i; t++)
+        //     {
+        //         // We only need to check up to 8 vertexes here.
+        //         foreach (var offset in TFOffsets(t, i))
+        //         {
+        //             Vector3Int pos = offset + position;
+
+        //             if (Pathfinding.TryGetVertex(pos, out var v) &&
+        //                 (section == Guid.Empty || section == v.sectionID))
+        //             {
+        //                 selected.Add(v);
+        //             }
+        //         }
+
+        //         if (selected.Count > 0)
+        //         {
+        //             return selected.RandomSelectOne();
+        //         }
+        //     }
+        // }
+
+        // // Didn't find anything. Try expensive Linq.
+        // IEnumerable<Vertex3Int> linqSelect = section == Guid.Empty ?
+        //     Pathfinding.Values :
+        //     Pathfinding.Values.Where(v => v.sectionID == section);
+
+        // if (linqSelect.Any())
+        // {
+        //     return linqSelect.Aggregate((v1, v2) =>
+        //         v1.id.TaxicabDistance(position) <
+        //         v2.id.TaxicabDistance(position) ?
+        //         v1 : v2);
+        // }
+        // else
+        // {
+        //     return null;
+        // }
     }
 
     private IEnumerable<Vector3Int> TFOffsets(int t, int i)

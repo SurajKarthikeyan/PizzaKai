@@ -110,6 +110,8 @@ GameObject:
   - component: {fileID: 6952910189470967440}
   - component: {fileID: 6005603097827248697}
   - component: {fileID: 6567529876943034998}
+  - component: {fileID: 1432511590390559198}
+  - component: {fileID: 3535031957061877574}
   m_Layer: 10
   m_Name: DeepDish_PF
   m_TagString: Enemy
@@ -259,11 +261,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 10, y: 0}
   moveAcceleration: {x: 1, y: 0}
-  coyoteTimer:
-    maxTime: 0.5
-    elapsed: 0
   jumpForce: 12
   jumpCooldown:
+    maxTime: 0.5
+    elapsed: 0
+  coyoteTimer:
     maxTime: 0.5
     elapsed: 0
   groundCheck: {fileID: 2874237959366981942}
@@ -340,6 +342,36 @@ MonoBehaviour:
     - selection: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
       probability: 1
   maxForce: 2
+--- !u!114 &1432511590390559198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148419337918994584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59fa785db5f392638e99ada759d57fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+--- !u!114 &3535031957061877574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148419337918994584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed79411bebbcda2f3ba6704bfcbc943a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  r2d: {fileID: 0}
+  c2d: {fileID: 0}
+  flipModule: {fileID: 0}
+  defaultAudioSource: {fileID: 0}
 --- !u!1 &8284640034908451773
 GameObject:
   m_ObjectHideFlags: 0

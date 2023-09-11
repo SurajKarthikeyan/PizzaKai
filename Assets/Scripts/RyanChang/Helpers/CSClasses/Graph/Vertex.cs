@@ -24,7 +24,9 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     /// <summary>
     /// Dictionary of outgoing edges. <id, graph weight>.
     /// </summary>
-    public UnityDictionary<T, float> adjacent = new();
+    private ConcurrentDictionary<T, float> adjacent = new();
+
+    private UnityDictionary<T, float> adjacentSerialized = new();
 
     /// <summary>
     /// Used in the search algorithms. Key is the ID of the thing using the
@@ -72,7 +74,7 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     /// <summary>
     /// Degree of this vertex (number of outgoing edges).
     /// </summary>
-    public int Degree => adjacent.Count;
+    public int Degree => Adjacent.Count;
 
     public List<PathNode> Nodes
     {
@@ -85,6 +87,15 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
         {
             nodes ??= new();
             nodes = value;
+        }
+    }
+
+    public ConcurrentDictionary<T, float> Adjacent
+    {
+        get
+        {
+            adjacent ??= new();
+            return adjacent;
         }
     }
     #endregion
@@ -115,13 +126,13 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     #region Adjacent
     /// <summary>
     /// Gets an IEnumerable whose members are the adjacent vertices that are
-    /// specified in <see cref="adjacent"/>.
+    /// specified in <see cref="Adjacent"/>.
     /// </summary>
     /// <param name="graph">The graph this vertex belongs to.</param>
     /// <returns></returns>
     public IEnumerable<Vertex<T>> AdjacentVertices(Graph<T> graph)
     {
-        foreach (var adjID in adjacent.Keys)
+        foreach (var adjID in Adjacent.Keys)
         {
             yield return graph.GetVertex(adjID);
         }
@@ -129,13 +140,13 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
 
     /// <summary>
     /// Gets an IEnumerable whose members are the adjacent edges that are
-    /// specified in <see cref="adjacent"/>.
+    /// specified in <see cref="Adjacent"/>.
     /// </summary>
     /// <param name="graph">The graph this vertex belongs to.</param>
     /// <returns></returns>
     public IEnumerable<GraphEdge<T>> AdjacentEdges(Graph<T> graph)
     {
-        foreach (var adjKVP in adjacent)
+        foreach (var adjKVP in Adjacent)
         {
             yield return new(this, graph.GetVertex(adjKVP.Key), adjKVP.Value);
         }
@@ -225,11 +236,13 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     #region ISerializationCallbackReceiver Implementation
     public void OnBeforeSerialize()
     {
+        adjacentSerialized = new(Adjacent);
         sectionIDSerialized = sectionID.ToString();
     }
 
     public void OnAfterDeserialize()
     {
+        adjacent = adjacentSerialized == null ? new() : new(adjacentSerialized);
         sectionID = Guid.Parse(sectionIDSerialized);
         visited ??= new();
         aggregateCosts ??= new();
