@@ -42,7 +42,7 @@ public class SimpleProjectile : WeaponSpawn
     /// <summary>
     /// Defines the forward vector.
     /// </summary>
-    private Vector3 Forwards => transform.forward;
+    private Vector3 Forwards => transform.right;
     #endregion
 
     protected override void Fire(int burstIndex)
@@ -116,8 +116,8 @@ public class SimpleProjectile : WeaponSpawn
 
                         // Make the projectile go in the collision normal
                         // direction.
-                        transform.forward = Vector3.Reflect(
-                            transform.forward,
+                        transform.right = Vector3.Reflect(
+                            Forwards,
                             hit.normal.ToVector3()
                         );
                     }

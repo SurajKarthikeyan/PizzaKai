@@ -210,8 +210,6 @@ public class CharacterMovementModule : Module
         jumpCooldown.IncrementFixedUpdate(false);
         coyoteTimer.IncrementFixedUpdate(false);
 
-        print($"{inputtedJump} | {CanJump()}");
-
         if (inputtedJump && CanJump())
         {
             // Since a jump is only performed for one fixed update, it must be

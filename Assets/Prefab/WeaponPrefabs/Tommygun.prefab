@@ -328,8 +328,6 @@ MonoBehaviour:
     key: 
     animFiringBool: Fire
     animReloadingBool: Reload
-    firingClip: {fileID: 8300000, guid: a01257a7920e3df4187750b2ba665ed2, type: 3}
-    reloadClip: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
     bulletSpawn: {fileID: 0}
     firePoint: {fileID: 0}
     firingDelay:
@@ -344,30 +342,23 @@ MonoBehaviour:
   animFiringBool: Fire
   animAltingBool: 
   animReloadingBool: Reload
-  weaponAudio: {fileID: 4629331206116993892}
-  firingClip: {fileID: 0}
-  altingClip: {fileID: 0}
-  reloadClip: {fileID: 0}
-  ammoGraphic: {fileID: 0}
+  ammoGraphic: {fileID: 21300000, guid: 868f866114cc36d4d81aea997640a1d2, type: 3}
   firePoint: {fileID: 2741532492258955962}
   autofire: 1
   firingDelay:
     maxTime: 0.1
     elapsed: 0
   altFireDelay:
-    maxTime: 1
+    maxTime: 20
     elapsed: 0
   ammoCount: 10
   currentAmmo: 0
   reloadDelay:
     maxTime: 1
     elapsed: 0
-  bullet: {fileID: 6782259933850723437, guid: 864ee4868713c94478c6035d63f804b2, type: 3}
-  bulletSpawn: {fileID: 0}
-  playerTransform: {fileID: 0}
+  bulletSpawn: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
   altFireDamage: 5
   tommyFlashImage: {fileID: 0}
-  cameraScript: {fileID: 0}
   enemyLayerNum: 10
 --- !u!82 &4629331206116993892
 AudioSource:

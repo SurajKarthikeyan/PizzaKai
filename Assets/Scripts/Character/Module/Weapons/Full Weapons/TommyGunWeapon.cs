@@ -17,17 +17,11 @@ public class TommyGunWeapon : WeaponModule
 {
     #region Variables
     [Header("Alt Fire Settings")]
-    [Tooltip("Point from which tommy flash starts")]
-    public Transform playerTransform;
-
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 5;
 
     [Tooltip("Tommy flash UI image")]
     public UnityEngine.UI.Image tommyFlashImage;
-
-    [Tooltip("Camera script used for camera shake")] 
-    public CameraFollow cameraScript;
 
     [Tooltip("Enemy layer mask")]
     [SerializeField]
@@ -60,7 +54,7 @@ public class TommyGunWeapon : WeaponModule
         base.AltFire();
 
         // Probably fix the camera shake, but leave it here for now.
-        StartCoroutine(cameraScript.Shake());
+        EventManager.Instance.onCameraShake.Invoke(null);
         StartCoroutine(tommyAltFlash());
 
         FindEnemies();
@@ -84,7 +78,7 @@ public class TommyGunWeapon : WeaponModule
          * Also do we want to use overlap rectangle? Overlap circle is better performance-wise but screen is rectangular. 
          * Using circle will mean we will hit enemies off-screen, which poses a design problem. 
          */
-        visibleEnemies = Physics2D.OverlapCircleAll(playerTransform.position, 10, layerMask).ToList();
+        visibleEnemies = Physics2D.OverlapCircleAll(Master.transform.position, 10, layerMask).ToList();
     }
 
     /// <summary>

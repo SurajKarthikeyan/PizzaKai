@@ -51,5 +51,14 @@ public class EventManager : MonoBehaviour
     /// T2 = The new (current) weapon.
     /// </summary>
     public UnityEvent<WeaponMasterModule, WeaponModule, WeaponModule> onWeaponSwitch = new();
+
+    /// <summary>
+    /// Called when we want a camera shake.
+    /// 
+    /// <br/>
+    /// 
+    /// T0 = Curve for the camera shake.
+    /// </summary>
+    public UnityEvent<AnimationCurve> onCameraShake = new();
     #endregion
 }
