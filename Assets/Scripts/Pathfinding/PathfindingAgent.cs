@@ -45,9 +45,6 @@ public class PathfindingAgent : MonoBehaviour
     [Tooltip("How high can this thing jump?")]
     public int maxJumpHeight = 4;
 
-    [Tooltip("Prefab that acts as a visual for start and end points.")]
-    public SpriteRenderer poiReference;
-
     [SerializeField]
     private Tracer<Vector3Int> visualizer;
 
@@ -129,35 +126,32 @@ public class PathfindingAgent : MonoBehaviour
     #region Navigation
     /// <summary>
     /// Requests that a path be generate from the agent's current position to
-    /// <see cref="target"/>. Fails to make the request if another request is
-    /// already pending.
+    /// <see cref="target"/>. If another request is pending, stop that request
+    /// first.
     /// </summary>
     /// <param name="target">Where to navigate this agent.</param>
-    /// <returns>True on success, false on failure.</returns>
-    public bool SetTarget(TargetToken target)
+    public void SetTarget(TargetToken target)
     {
         // Requesting a new path while one is already being generated may not be
         // desirable.
         if (State != NavigationState.Idle)
-            return false;
+            StopCurrentNavigation();
 
         State = NavigationState.WaitingForPath;
 
         PathAgentManager.Instance.Schedule(this, target);
-
-        return true;
     }
 
     /// <inheritdoc cref="SetTarget(TargetToken)"/>
-    public bool SetTarget(Transform target)
+    public void SetTarget(Transform target)
     {
-        return SetTarget(new TargetToken(target));
+        SetTarget(new TargetToken(target));
     }
 
     /// <inheritdoc cref="SetTarget(TargetToken)"/>
-    public bool SetTarget(Vector3 target)
+    public void SetTarget(Vector3 target)
     {
-        return SetTarget(new TargetToken(target));
+        SetTarget(new TargetToken(target));
     }
 
     /// <summary>
@@ -166,7 +160,9 @@ public class PathfindingAgent : MonoBehaviour
     /// </summary>
     public void StopCurrentNavigation()
     {
-        
+        StopCoroutine(navigationCR);
+        navigationCR = null;
+        State = NavigationState.Idle;
     }
 
     /// <summary>

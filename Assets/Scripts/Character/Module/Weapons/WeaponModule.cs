@@ -75,6 +75,7 @@ public class WeaponModule : Module
         public int ammoCount = 10;
 
         [Tooltip("How much ammo is currently in the weapon?")]
+        [AllowNesting]
         [ReadOnly]
         public int currentAmmo;
 
@@ -143,21 +144,6 @@ public class WeaponModule : Module
     [Tooltip("The name of the animation parameter that controls reloading.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animReloadingBool;
-
-    [Header("Audio Source")]
-    [Tooltip("Audio source for the weapon.")]
-    public AudioSource weaponAudio;
-
-    [Tooltip("The audio clip to play when the weapon is fired.")]
-    public AudioClip firingClip;
-
-    [Tooltip("The audio clip to play when the weapon is alt firing.")]
-    public AudioClip altingClip;
-
-    [Tooltip("The audio clip to play when the weapon is reloading.")]
-    public AudioClip reloadClip;
-
-
     [Header("UI")]
     [Tooltip("The graphic to use for the ammo in the UI.")]
     public Sprite ammoGraphic;
@@ -186,9 +172,6 @@ public class WeaponModule : Module
 
     [Tooltip("How long is the reload?")]
     public Duration reloadDelay = new(1f);
-
-    [Tooltip("Bullet that this weapon uses")]
-    public bulletScript bullet;
 
     [Tooltip("Updated bullet spawn this weapon uses.")]
     public WeaponSpawn bulletSpawn;
@@ -259,28 +242,6 @@ public class WeaponModule : Module
                         animAltingBool,
                         InputState == WeaponInputState.Alting
                     );
-                }
-            }
-
-            if (weaponAudio)
-            {
-                if (firingClip &&
-                    (InputState == WeaponInputState.FiringStart ||
-                    InputState == WeaponInputState.FiringHeld))
-                {
-                    weaponAudio.PlayOneShot(firingClip);
-                }
-
-                if (reloadClip &&
-                    InputState == WeaponInputState.Reloading)
-                {
-                    weaponAudio.PlayOneShot(reloadClip);
-                }
-
-                if (altingClip &&
-                    InputState == WeaponInputState.Alting)
-                {
-                    weaponAudio.PlayOneShot(altingClip);
                 }
             }
         }

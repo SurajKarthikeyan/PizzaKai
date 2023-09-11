@@ -1,5 +1,4 @@
-using System;
-using UnityEditor.IMGUI.Controls;
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -16,8 +15,10 @@ using UnityEngine;
 public class EnemyControlModule : Module
 {
     #region Variables
+    [ReadOnly]
     public CharacterMovementModule movement;
 
+    [ReadOnly]
     public PathfindingAgent pathAgent;
 
     // public Arc sightline = new(-160, 160, 10);
@@ -25,6 +26,16 @@ public class EnemyControlModule : Module
 
     #region Instantiation
     private void Awake()
+    {
+        SetVars();
+    }
+
+    private void OnValidate()
+    {
+        SetVars();
+    }
+
+    private void SetVars()
     {
         this.RequireComponent(out movement);
         this.RequireComponent(out pathAgent);

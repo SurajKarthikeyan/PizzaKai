@@ -19,7 +19,7 @@ public class Duration
 
     public Duration(float duration)
     {
-        this.maxTime = duration;
+        maxTime = duration;
     }
 
     /// <summary>
@@ -60,8 +60,8 @@ public class Duration
     }
 
     /// <summary>
-    /// Increments <see cref="elapsed"/> by <see cref="Time.fixedDeltaTime"/>. Use
-    /// this in FixedUpdate() functions.
+    /// Increments <see cref="elapsed"/> by <see cref="Time.fixedDeltaTime"/>.
+    /// Use this in FixedUpdate() functions.
     /// </summary>
     /// <inheritdoc cref="Increment(float, bool)"/>
     public bool IncrementFixedUpdate(bool resetIfDone)
@@ -70,14 +70,16 @@ public class Duration
     }
 
     /// <summary>
-    /// Resets the value of <see cref="elapsed"/>, if the duration is done.
+    /// Resets the value of <see cref="elapsed"/>, if the duration is done. This
+    /// doesn't do anything if the timer is not done, however.
     /// </summary>
-    /// <returns>The value of <see cref="IsDone"/>.</returns>
+    /// <returns>True if <see cref="IsDone"/> was true when the function was
+    /// ran. False otherwise.</returns>
     public bool Reset()
     {
         if (IsDone)
         {
-            elapsed = 0;
+            Clear();
             return true;
         }
 
@@ -85,10 +87,17 @@ public class Duration
     }
 
     /// <summary>
+    /// Resets the value of <see cref="elapsed"/> to zero, regardless of whether
+    /// or not the timer is done.
+    /// </summary>
+    public void Clear() => elapsed = 0;
+
+    /// <summary>
     /// Sets the value of <see cref="elapsed"/> to <see cref="maxTime"/>, if the
     /// duration is not done.
     /// </summary>
-    /// <returns>True on success, false otherwise.</returns>
+    /// <returns>False if <see cref="IsDone"/> is already true, true
+    /// otherwise.</returns>
     public bool Finish()
     {
         if (!IsDone)

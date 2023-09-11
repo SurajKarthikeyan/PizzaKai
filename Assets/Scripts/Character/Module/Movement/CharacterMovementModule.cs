@@ -54,6 +54,10 @@ public class CharacterMovementModule : Module
 
     public Duration jumpCooldown = new(0.5f);
 
+    [Tooltip("How long after leaving the ground is this character still " +
+        "considered to be grounded?")]
+    public Duration coyoteTimer = new(0.5f);
+
     [Tooltip("The collider responsible for checking if the character is " +
         "grounded.")]
     public Collider2D groundCheck;
@@ -113,7 +117,8 @@ public class CharacterMovementModule : Module
     /// <summary>
     /// True if the character's <see cref="groundCheck"/> is touching at least
     /// one collider with a layer contained in the layermask <see
-    /// cref="GameManager.canJumpLayers"/>.
+    /// cref="GameManager.canJumpLayers"/>. The coyote timer is NOT factored
+    /// into this.
     /// </summary>
     public bool TouchingGround => groundCheck.OverlapCollider(
         groundCheckCF2D, touchingGroundColliders
@@ -203,6 +208,7 @@ public class CharacterMovementModule : Module
 
         // Handle jumping.
         jumpCooldown.IncrementFixedUpdate(false);
+        coyoteTimer.IncrementFixedUpdate(false);
 
         if (inputtedJump && CanJump())
         {
@@ -212,11 +218,13 @@ public class CharacterMovementModule : Module
 
             groundedStatus = GroundedStatus.AirbornFromJump;
 
-            jumpCooldown.Reset();
+            coyoteTimer.Clear();
+            jumpCooldown.Clear();
         }
         else if (TouchingGround)
         {
             groundedStatus = GroundedStatus.Grounded;
+            coyoteTimer.Clear();
         }
         else if (groundedStatus != GroundedStatus.AirbornFromJump)
         {
@@ -279,7 +287,8 @@ public class CharacterMovementModule : Module
     #region Helper Methods
     private bool CanJump()
     {
-        return jumpCooldown.IsDone && TouchingGround;
+        return jumpCooldown.IsDone &&
+            (TouchingGround || !coyoteTimer.IsDone);
     }
     #endregion
     #endregion
