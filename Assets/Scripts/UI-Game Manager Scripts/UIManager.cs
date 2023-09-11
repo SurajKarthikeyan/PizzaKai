@@ -69,9 +69,11 @@ public class UIManager : MonoBehaviour
     [Tooltip("Weapon master module to use for UI")]
     public WeaponMasterModule weaponMaster;
 
-    private WeaponModule currWeapon;
+    [Tooltip("Image of the ammo type.")]
+    [SerializeField]
+    private Image ammoUI;
 
-    private readonly List<GameObject> ammoUIList = new();
+    private WeaponModule currWeapon;
     #endregion
 
     #region Init
@@ -84,10 +86,6 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Set the ammo UI according to the current weapon in the weaponmaster, way below will be changed
-
-        ammoUIList.AddRange(new List<GameObject> { tommyAmmoUI, shotgunAmmoUI, flameAmmoUI });
-
         Time.timeScale = 1;
 
         pauseMenu.SetActive(false);
@@ -108,18 +106,7 @@ public class UIManager : MonoBehaviour
             {
                 currWeapon = weaponMaster.CurrentWeapon;
                 //Sets weapon UI when weapon is re-cached
-                switch (currWeapon.weaponName)
-                {
-                    case "shotgun":
-                        SetActiveAmmo(shotgunAmmoUI);
-                        break;
-                    case "flamethrower":
-                        SetActiveAmmo(flameAmmoUI);
-                        break;
-                    default:
-                        SetActiveAmmo(tommyAmmoUI);
-                        break;
-                }
+                ammoUI.sprite = currWeapon.ammoGraphic;
             }
 
             //Alt fire slider
@@ -191,18 +178,6 @@ public class UIManager : MonoBehaviour
     //    Invoke(nameof(RespawnDelay), 0.6f);
     //}
 
-    /// <summary>
-    /// Sets the active ammo UI element for the gun
-    /// </summary>
-    /// <param name="ammoUI">UI ammo element to set</param>
-    private void SetActiveAmmo(GameObject ammoUI)
-    {
-        foreach (GameObject ammo in ammoUIList)
-        {
-            ammo.SetActive(false);
-            ammoUI.SetActive(true);
-        }
-    }
     /// <summary>
     /// Pauses and unpauses the game
     /// </summary>
