@@ -1825,8 +1825,6 @@ GameObject:
   - component: {fileID: 4966353288910445277}
   - component: {fileID: 2756958706004794599}
   - component: {fileID: 3413369618218320337}
-  - component: {fileID: 1047264176143246634}
-  - component: {fileID: 8019257334451026239}
   - component: {fileID: 372884706165202640}
   - component: {fileID: 2004946441184968110}
   m_Layer: 0
@@ -1922,7 +1920,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2407071942407806261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a2fca412d5cdd642a7cbeecd7b5fc97, type: 3}
   m_Name: 
@@ -2007,47 +2005,6 @@ MonoBehaviour:
   Tommy: {fileID: 3726116736402147893}
   Shotgun: {fileID: 966027444}
   Flamethrower: {fileID: 1758217588}
---- !u!114 &1047264176143246634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2407071942407806261}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoCount: {fileID: 0}
-  healthSlider: {fileID: 0}
-  dashSlider: {fileID: 0}
-  altSlider: {fileID: 0}
-  isPaused: 0
-  pauseMenu: {fileID: 0}
-  tommyAmmoUI: {fileID: 0}
-  shotgunAmmoUI: {fileID: 0}
-  flameAmmoUI: {fileID: 0}
-  respawn: {fileID: 8019257334451026239}
-  player: {fileID: 0}
-  isDying: 0
-  weaponMaster: {fileID: 0}
-  ammoUI: {fileID: 0}
---- !u!114 &8019257334451026239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2407071942407806261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10d7581afc1d9b4a8646540e591c5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 8206075540257416582}
-  respawnPoint: {fileID: 0}
-  UIScript: {fileID: 1047264176143246634}
 --- !u!82 &372884706165202640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2774,7 +2731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newScale: {x: 0, y: 0, z: 0}
   newScaleX: 0
-  player: {fileID: 8206075540257416579}
+  player: {fileID: 0}
   shotgun: {fileID: 0}
   tommy: {fileID: 0}
   flamethrower: {fileID: 0}
@@ -3403,8 +3360,6 @@ GameObject:
   - component: {fileID: 3001001883117665674}
   - component: {fileID: 7683567989710588384}
   - component: {fileID: 8325340303788835984}
-  - component: {fileID: 8206075540257416579}
-  - component: {fileID: 6658677836132579167}
   - component: {fileID: 3726116736307325436}
   - component: {fileID: 3726116736307325435}
   - component: {fileID: 4215817023096108082}
@@ -3485,6 +3440,9 @@ MonoBehaviour:
   jumpCooldown:
     maxTime: 0.5
     elapsed: 0
+  coyoteTimer:
+    maxTime: 0.5
+    elapsed: 0
   groundCheck: {fileID: 1061556619110042102}
   characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 1
@@ -3510,65 +3468,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundedStatus: 0
---- !u!114 &8206075540257416579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8206075540257416582}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580ce556218887d4381a3654495d4b57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalMove: 0
-  facingRight: 1
-  isAlting: 0
-  kbSpeed: 15
-  kbDur: 0.25
-  isKBed: 0
-  animator: {fileID: 948621413}
-  jumpingNow: 0
-  incomingDamage: 0.25
-  flip: {fileID: 7353365169726603418}
-  UIScript: {fileID: 0}
-  spriteRender: {fileID: 1661574810468894446}
-  rigid: {fileID: 3726116736307325436}
-  level1Key: 0
-  level2Key: 0
-  trail: {fileID: 2114585735}
-  groundCheck: {fileID: 8718301541588657159}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 264
-  jumpLayer:
-    serializedVersion: 2
-    m_Bits: 328
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &6658677836132579167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8206075540257416582}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb1d044009975e4bb1c524c97709636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun1: {fileID: 3726116736402147893}
-  gun2: {fileID: 966027444}
-  gun3: {fileID: 1758217588}
-  notReloading: 0
-  Tommy: 1
-  Shotgun: 1
-  Flamethrower: 1
-  Sniper: 0
-  UIScript: {fileID: 0}
 --- !u!50 &3726116736307325436
 Rigidbody2D:
   serializedVersion: 4
@@ -3646,7 +3545,7 @@ PrefabInstance:
     - target: {fileID: 1566744871942449173, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 8206075540257416579}
+      objectReference: {fileID: 0}
     - target: {fileID: 1566744871942449173, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: AnimPlayer
       value: 
@@ -3860,7 +3759,7 @@ PrefabInstance:
     - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 8206075540257416579}
+      objectReference: {fileID: 0}
     - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: AnimPlayer
       value: 
@@ -3946,7 +3845,7 @@ PrefabInstance:
     - target: {fileID: 4342418669407275861, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 8206075540257416579}
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669407275861, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: AnimPlayer
       value: 
@@ -4082,7 +3981,7 @@ PrefabInstance:
     - target: {fileID: 5643556437105941198, guid: 021c3c0e3264c9c4ab1d97f1a680d8b9, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 8206075540257416579}
+      objectReference: {fileID: 0}
     - target: {fileID: 5643556437105941198, guid: 021c3c0e3264c9c4ab1d97f1a680d8b9, type: 3}
       propertyPath: AnimPlayer
       value: 

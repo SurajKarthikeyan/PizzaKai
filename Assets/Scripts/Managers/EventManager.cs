@@ -40,5 +40,16 @@ public class EventManager : MonoBehaviour
     /// Called when a character dies.
     /// </summary>
     public CharacterEvent onCharacterDeath = new();
+
+    /// <summary>
+    /// Called when a weapon is switched.
+    /// 
+    /// <br/>
+    /// 
+    /// T0 = The weapon's master module that caused the switching.
+    /// T1 = The old weapon.
+    /// T2 = The new (current) weapon.
+    /// </summary>
+    public UnityEvent<WeaponMasterModule, WeaponModule, WeaponModule> onWeaponSwitch = new();
     #endregion
 }

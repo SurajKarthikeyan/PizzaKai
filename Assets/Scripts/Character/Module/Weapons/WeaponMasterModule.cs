@@ -29,6 +29,8 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Properties
+    public bool HasWeapon => !weapons.IsNullOrEmpty();
+
     public WeaponModule CurrentWeapon => weapons[weaponIndex];
     #endregion
 
@@ -157,10 +159,7 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void NextWeapon()
     {
-        weaponIndex++;
-        weaponIndex %= weapons.Count;
-
-        EnableCurrentWeapon();
+        NthWeapon(weaponIndex + 1);
     }
 
     /// <summary>
@@ -168,27 +167,22 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void PrevWeapon()
     {
-        if (weaponIndex > 0)
-        {
-            weaponIndex--;
-        }
-        else
-        {
-            weaponIndex = weapons.Count - 1;
-        }
-        weaponIndex %= weapons.Count;
-
-        EnableCurrentWeapon();
+        NthWeapon(weaponIndex - 1);
     }
 
     /// <summary>
-    /// Enables current weapon the player has selected.
+    /// Switches to the nth weapon, wrapping if necessary.
     /// </summary>
-    private void EnableCurrentWeapon()
+    /// <param name="n"></param>
+    public void NthWeapon(int n)
     {
-        weapons.ForEach(weap => weap.gameObject.SetActive(false));
+        n = weapons.BoundToLength(n);
 
+        var oldWeapon = CurrentWeapon;
+        weapons.ForEach(w => w.gameObject.SetActive(false));
         CurrentWeapon.gameObject.SetActive(true);
+
+        EventManager.Instance.onWeaponSwitch.Invoke(this, oldWeapon, CurrentWeapon);
     }
     #endregion
 

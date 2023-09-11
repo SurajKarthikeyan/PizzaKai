@@ -41,21 +41,6 @@ public class UIManager : MonoBehaviour
     public Slider altSlider;
 
     [Header("UI and game screens/elements")]
-    [Tooltip("Boolean representing whether the game is paused or not")]
-    public bool isPaused = false;
-
-    [Tooltip("GameObject representing the pause menu")] 
-    public GameObject pauseMenu;
-
-    [Tooltip("GameObject containing the tommy ammo UI element")]
-    public GameObject tommyAmmoUI;
-
-    [Tooltip("GameObject containing the shotgun ammo UI element")]
-    public GameObject shotgunAmmoUI;
-
-    [Tooltip("GameObject containing the flamethrower ammo UI element")]
-    public GameObject flameAmmoUI;
-
     [Tooltip("Slider used to show the player's dash cooldown")]
     public RespawnScript respawn;
 
@@ -63,17 +48,12 @@ public class UIManager : MonoBehaviour
     [Tooltip("Script containing UI relevant player information")]
     public Character player;
 
-    [Tooltip("bool telling if player is dying. (this needs to go/be fixed)")]
-    public bool isDying;
-
     [Tooltip("Weapon master module to use for UI")]
     public WeaponMasterModule weaponMaster;
 
     [Tooltip("Image of the ammo type.")]
     [SerializeField]
     private Image ammoUI;
-
-    private WeaponModule currWeapon;
     #endregion
 
     #region Init
@@ -81,62 +61,78 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         this.InstantiateSingleton(ref instance, false);
+
+        if (!player)
+        {
+            GameObject.FindGameObjectWithTag("Player")
+                .RequireComponent(out player);
+        }
+
+        if (!weaponMaster)
+        {
+            player.RequireComponentInChildren(out weaponMaster);
+        }
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Time.timeScale = 1;
-
-        pauseMenu.SetActive(false);
-
-        currWeapon = weaponMaster.CurrentWeapon;
     }
     #endregion
 
     #region Main Loop
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Check if instance is not null, if it is not, do update stuff
-        if (instance != null)
-        {
-            //Caching the current weapon
-            if (weaponMaster.CurrentWeapon != currWeapon)
-            {
-                currWeapon = weaponMaster.CurrentWeapon;
-                //Sets weapon UI when weapon is re-cached
-                ammoUI.sprite = currWeapon.ammoGraphic;
-            }
+        // Update graphic.
+        ammoUI.sprite = weaponMaster.CurrentWeapon.ammoGraphic;
 
-            //Alt fire slider
-            if (currWeapon.altFireDelay.IsDone)
-            {
-                altSlider.value = 1f;
-            }
-            else
-            {
-                altSlider.value = currWeapon.altFireDelay.elapsed / currWeapon.altFireDelay.maxTime;
-            }
-
-
-            //Sets ammo count and health
-
-            healthSlider.value = (float)player.HP / (float)player.maxHP;
-
-            ammoCount.text = currWeapon.currentAmmo.ToString() + "/" + currWeapon.ammoCount.ToString();
-
-            if (healthSlider.value == 0)
-            {
-                healthSlider.value = 1;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PauseGame();
-            }
-        }
+        altSlider.value = weaponMaster.CurrentWeapon.altFireDelay.Percent;
     }
+
+    
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     //Check if instance is not null, if it is not, do update stuff
+    //     if (instance != null)
+    //     {
+    //         //Caching the current weapon
+    //         if (weaponMaster.CurrentWeapon != currWeapon)
+    //         {
+    //             currWeapon = weaponMaster.CurrentWeapon;
+    //             //Sets weapon UI when weapon is re-cached
+    //             ammoUI.sprite = currWeapon.ammoGraphic;
+    //         }
+
+    //         //Alt fire slider
+    //         if (currWeapon.altFireDelay.IsDone)
+    //         {
+    //             altSlider.value = 1f;
+    //         }
+    //         else
+    //         {
+    //             altSlider.value = currWeapon.altFireDelay.elapsed / currWeapon.altFireDelay.maxTime;
+    //         }
+
+
+    //         //Sets ammo count and health
+
+    //         healthSlider.value = (float)player.HP / (float)player.maxHP;
+
+    //         ammoCount.text = currWeapon.currentAmmo.ToString() + "/" + currWeapon.ammoCount.ToString();
+
+    //         if (healthSlider.value == 0)
+    //         {
+    //             healthSlider.value = 1;
+    //         }
+
+    //         if (Input.GetKeyDown(KeyCode.Escape))
+    //         {
+    //             PauseGame();
+    //         }
+    //     }
+    // }
     #endregion
 
     #region Methods
@@ -168,36 +164,36 @@ public class UIManager : MonoBehaviour
     }
 
 
-    //This should also be with the player
-    //public IEnumerator deathExplosion()
-    //{
-    //    yield return new WaitForSeconds(0.55f);
-    //    CameraShake shake = camera.GetComponent<CameraShake>();
-    //    shake.shakeDuration = 0.5f;
-    //    yield return new WaitForSeconds(0.55f);
-    //    Invoke(nameof(RespawnDelay), 0.6f);
-    //}
+    // //This should also be with the player
+    // //public IEnumerator deathExplosion()
+    // //{
+    // //    yield return new WaitForSeconds(0.55f);
+    // //    CameraShake shake = camera.GetComponent<CameraShake>();
+    // //    shake.shakeDuration = 0.5f;
+    // //    yield return new WaitForSeconds(0.55f);
+    // //    Invoke(nameof(RespawnDelay), 0.6f);
+    // //}
 
-    /// <summary>
-    /// Pauses and unpauses the game
-    /// </summary>
-    private void PauseGame()
-    {
-        if (pauseMenu.activeSelf == true)
-        {
-            //Unpauses game
-            pauseMenu.SetActive(false);
-            isPaused = false;
-            Time.timeScale = 1;
-        }
-        else if (pauseMenu.activeSelf == false)
-        {
-            //Pauses game
-            pauseMenu.SetActive(true);
-            isPaused = true;
-            Time.timeScale = 0;
-        }
+    // /// <summary>
+    // /// Pauses and unpauses the game
+    // /// </summary>
+    // private void PauseGame()
+    // {
+    //     if (pauseMenu.activeSelf == true)
+    //     {
+    //         //Unpauses game
+    //         pauseMenu.SetActive(false);
+    //         isPaused = false;
+    //         Time.timeScale = 1;
+    //     }
+    //     else if (pauseMenu.activeSelf == false)
+    //     {
+    //         //Pauses game
+    //         pauseMenu.SetActive(true);
+    //         isPaused = true;
+    //         Time.timeScale = 0;
+    //     }
 
-    }
+    // }
     #endregion
 }

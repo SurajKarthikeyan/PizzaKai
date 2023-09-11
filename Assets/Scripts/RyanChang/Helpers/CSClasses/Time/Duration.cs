@@ -28,6 +28,11 @@ public class Duration
     public bool IsDone => elapsed >= maxTime;
 
     /// <summary>
+    /// What percentage is this duration done by?
+    /// </summary>
+    public float Percent => IsDone ? 1 : elapsed / maxTime;
+
+    /// <summary>
     /// Increments <see cref="elapsed"/> by the specified <paramref
     /// name="deltaTime"/>.
     /// </summary>
