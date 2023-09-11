@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102768215337682573}
   - component: {fileID: 859241716677527053}
-  - component: {fileID: 1820865533147646225}
-  - component: {fileID: 1187384396300405265}
-  - component: {fileID: 4826526143850362419}
+  - component: {fileID: 2250207329409129135}
   m_Layer: 9
   m_Name: DeepDishBullet
   m_TagString: EnemyProjectile
@@ -87,28 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1820865533147646225
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991449090420892426}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!114 &1187384396300405265
+--- !u!114 &2250207329409129135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,27 +94,80 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991449090420892426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4c4a9b5e8d8421289f1c6a6eacc241, type: 3}
+  m_Script: {fileID: 11500000, guid: 32de2cf3421dedf85bdfa55b181f60f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  destroyTime: 0.3
-  force: 20
-  spread: 20
-  shotDir: {x: 0, y: 0, z: 0}
---- !u!70 &4826526143850362419
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991449090420892426}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.12, y: 0.07}
-  m_Direction: 1
+  count: 1
+  damage:
+    rangePattern: 0
+    singleValue: 14
+    scalarMin: 14
+    scalarMax: 14
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
+  speed:
+    rangePattern: 0
+    singleValue: 10
+    scalarMin: 10
+    scalarMax: 10
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
+  range:
+    rangePattern: 0
+    singleValue: 20
+    scalarMin: 20
+    scalarMax: 20
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
+  spread:
+    rangePattern: 1
+    singleValue: 0
+    scalarMin: -5
+    scalarMax: 5
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
+  spreadRampUp: 1.05
+  ricochets: 0
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0

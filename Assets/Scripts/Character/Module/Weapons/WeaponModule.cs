@@ -15,7 +15,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Class holding strings for playing weapon audio clips
     /// </summary>
-    public static class WeaponAudioStrings
+    public readonly struct WeaponAudioStrings
     {
         //Strings for the weapon names
         public static readonly string TommyName = "tommy";
@@ -222,6 +222,8 @@ public class WeaponModule : Module
             }
         }
     }
+
+    public int BurstCount => burstCount;
     #endregion
 
     #region Methods
@@ -264,7 +266,8 @@ public class WeaponModule : Module
 
             switch (InputState)
             {
-                //If the player is already firing, then we go to the firing start state, otherwise we start firing
+                // If the player is already firing, then we go to the firing
+                // start state, otherwise we start firing.
                 case WeaponInputState.FiringStart:
                     InputState = WeaponInputState.FiringHeld;
                     break;
@@ -323,11 +326,7 @@ public class WeaponModule : Module
         //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;
 
-        var bulletInst = bulletSpawn.InstantiateComponent(
-            firePoint.position,
-            firePoint.rotation
-        );
-        bulletInst.Fire(this, autofire ? ++burstCount : 1);
+        bulletSpawn.Spawn(this).Fire(this);
     }
 
     /// <summary>
@@ -335,7 +334,7 @@ public class WeaponModule : Module
     /// </summary>
     public virtual void AltFire()
     {
-        if (weaponAction != WeaponAudioStrings.Alt) weaponAction = WeaponAudioStrings.Alt;
+        weaponAction = WeaponAudioStrings.Alt;
         altFireDelay.Reset();
         PlayAudio();
         Debug.Log("Doing alt fire");

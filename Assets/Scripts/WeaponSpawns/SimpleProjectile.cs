@@ -4,8 +4,8 @@ using UnityEngine;
 public class SimpleProjectile : WeaponSpawn
 {
     #region Variables
-    [Tooltip("Number of projectiles to spawn.")]
-    public int count = 1;
+    [Tooltip("Amount of damage to deal. This will be rounded to an int.")]
+    public Range damage = new(14);
 
     [Tooltip("How fast does this projectile travel, in units per second.")]
     public Range speed = new(10);
@@ -26,6 +26,9 @@ public class SimpleProjectile : WeaponSpawn
     [Tooltip("How many ricochets does this projectile have?")]
     public int ricochets = 0;
 
+    [Tooltip("Layer mask for this projectile (what this can collide with).")]
+    public LayerMask collisionMask;
+
     private int currentRicochets = 0;
 
     private float deltaDistance = 0;
@@ -33,6 +36,13 @@ public class SimpleProjectile : WeaponSpawn
     private float maxLifetime;
 
     private float currentLifetime;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Defines the forward vector.
+    /// </summary>
+    private Vector3 Forwards => transform.forward;
     #endregion
 
     protected override void Fire(int burstIndex)
@@ -51,8 +61,19 @@ public class SimpleProjectile : WeaponSpawn
         StartCoroutine(Fire_CR());
     }
 
+    /// <summary>
+    /// This will be shared across all projectiles.
+    /// </summary>
+    private static readonly RaycastHit2D[] hits = new RaycastHit2D[16];
+
     private IEnumerator Fire_CR()
     {
+        ContactFilter2D contactFilter = new()
+        {
+            layerMask = collisionMask,
+            useLayerMask = true
+        };
+
         while (enabled && currentLifetime < maxLifetime)
         {
             yield return new WaitForFixedUpdate();
@@ -60,7 +81,68 @@ public class SimpleProjectile : WeaponSpawn
             currentLifetime += Time.fixedDeltaTime;
 
             // Do the raycast things.
-            
+            int totalHits = Physics2D.Raycast(
+                transform.position,
+                Forwards,
+                contactFilter,
+                hits,
+                deltaDistance
+            );
+
+            bool hitThing = false;
+            bool needsDestroy = false;
+
+            for (int i = 0; i < totalHits; i++)
+            {
+                var hit = hits[i];
+
+                if (hit.collider)
+                {
+                    hitThing = true;
+                    var collider = hit.collider;
+
+                    if (collider.gameObject.HasComponent(out Character character))
+                    {
+                        // Deal damage.
+                        character.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
+                    }
+
+                    if (currentRicochets < ricochets)
+                    {
+                        // Handle ricochets. Position projectile very close to
+                        // the hit point, but not quite there.
+                        Vector2 diff = hit.point - transform.position.ToVector2();
+                        transform.position += diff.ToVector3() * 0.95f;
+
+                        // Make the projectile go in the collision normal
+                        // direction.
+                        transform.forward = Vector3.Reflect(
+                            transform.forward,
+                            hit.normal.ToVector3()
+                        );
+                    }
+                    else
+                    {
+                        // No more ricochets.
+                        needsDestroy = true;
+                        break;
+                    }
+                }
+            }
+
+            if (needsDestroy)
+            {
+                // Break from loop.
+                break;
+            }
+
+            if (!hitThing)
+            {
+                // Hit nothing. Continue on.
+                transform.position += Forwards * deltaDistance;
+            }
         }
+
+        // Handle any destruction thingies here.
     }
 }
