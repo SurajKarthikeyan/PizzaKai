@@ -43,7 +43,6 @@ public class TommyGunWeapon : WeaponModule
     protected override void Start()
     {
         base.Start();
-        weaponName = WeaponAudioStrings.TommyName;
         //Sets the image for the tommy flash to be clear
         tommyFlashImage.color = new Color(1, 1, 1, 0);
 

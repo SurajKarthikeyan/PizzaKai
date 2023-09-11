@@ -23,7 +23,6 @@ public class FlameThrowerWeapon : WeaponModule
     protected override void Start()
     {
         base.Start();
-        weaponName = WeaponAudioStrings.FlamethrowerName;
     }
     #endregion
 

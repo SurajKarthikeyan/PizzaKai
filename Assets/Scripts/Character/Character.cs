@@ -40,6 +40,9 @@ public class Character : MonoBehaviour
     [ReadOnly]
     public DefaultFlipModule flipModule;
 
+    [ReadOnly]
+    public AudioSource defaultAudioSource;
+
     private Duration damageInvulnerability;
     #endregion
 
@@ -67,7 +70,7 @@ public class Character : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
-                onCharacterDeath.Invoke();
+                onCharacterDeathEvent.Invoke();
                 EventManager.Instance.onCharacterDeath.Invoke(this);
             }
         }
@@ -83,7 +86,17 @@ public class Character : MonoBehaviour
     /// <summary>
     /// Called on character death.
     /// </summary>
-    public readonly UnityEvent onCharacterDeath = new();
+    public readonly UnityEvent onCharacterDeathEvent = new();
+
+    /// <summary>
+    /// Called from the animator, when a gunshot event is called.
+    /// </summary>
+    public readonly UnityEvent<int> onGunshotEvent = new();
+
+    /// <summary>
+    /// Called from the animator, when a reload event is called.
+    /// </summary>
+    public readonly UnityEvent<int> onReloadEvent = new();
     #endregion
 
     #region Methods
@@ -102,13 +115,18 @@ public class Character : MonoBehaviour
 
     private void SetVars()
     {
-        GetComponentsInChildren<Module>(true, Modules);
+        GetComponentsInChildren(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 
         this.RequireComponent(out r2d);
         this.RequireComponent(out c2d);
 
         this.RequireComponent(out flipModule);
+
+        if (!this.AutofillComponent(ref defaultAudioSource))
+        {
+            defaultAudioSource.spatialBlend = 1;
+        }
 
         IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
     }
@@ -146,6 +164,18 @@ public class Character : MonoBehaviour
         }
 
         return false;
+    }
+    #endregion
+
+    #region Audio Methods
+    /// <summary>
+    /// Plays the specified audio clip using the <see
+    /// cref="defaultAudioSource"./>
+    /// </summary>
+    /// <param name="clip">The specified audio clip.</param>
+    public void PlayClip(AudioClip clip)
+    {
+        defaultAudioSource.PlayOneShot(clip);
     }
     #endregion
     #endregion

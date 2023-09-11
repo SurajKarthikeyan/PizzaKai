@@ -18,9 +18,6 @@ public class ShotGunWeapon : WeaponModule
     [Tooltip("Power with which the player is sent flying")]
     [SerializeField]
     private float pushPower = 10f;
-
-    [Tooltip("Rigidbody of player to use for alt fire")]
-    public Rigidbody2D player;
     #endregion
 
     #region Init
@@ -28,7 +25,6 @@ public class ShotGunWeapon : WeaponModule
     protected override void Start()
     {
         base.Start();
-        weaponName = WeaponAudioStrings.ShotgunName;
     }
     #endregion
 
@@ -49,7 +45,7 @@ public class ShotGunWeapon : WeaponModule
     {
         //Gets the player mouse position and sends the player in the opposite direction
         Vector3 dir = Vector3.Normalize(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        player.velocity = dir * pushPower;
+        Master.r2d.velocity = dir * pushPower;
     }
     #endregion
 }

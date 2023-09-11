@@ -17,7 +17,7 @@ public class ItemDropModule : Module
 
     protected override void OnLinked()
     {
-        Master.onCharacterDeath.AddListener(DropItems);
+        Master.onCharacterDeathEvent.AddListener(DropItems);
     }
 
     private void DropItems()

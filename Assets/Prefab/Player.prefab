@@ -438,8 +438,6 @@ MonoBehaviour:
     keyValuePairs:
     - key: test
       value: {fileID: 8300000, guid: 4705b902fbc17744194e1bd6dcea40aa, type: 3}
-    - key: playerDeath
-      value: {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
     - key: breadDead
       value: {fileID: 8300000, guid: daa6e3e7722e80d4f86575aad020e4d8, type: 3}
     - key: chickenRun
@@ -2021,49 +2019,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoCount: {fileID: 0}
+  ammoCount: {fileID: 0}
   healthSlider: {fileID: 0}
   dashSlider: {fileID: 0}
   altSlider: {fileID: 0}
-  ammoCur: 0
-  ammoMax: 0
-  healthCur: 0
-  healthMax: 0
-  healthLoss: 0
-  boxBurning: 0
   isPaused: 0
-  tommyEquipped: 1
-  shotgunEquipped: 0
-  flameEquipped: 0
-  player: {fileID: 8206075540257416579}
-  respawn: {fileID: 8019257334451026239}
-  PizzaDeath: {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
-  animator: {fileID: 0}
-  animatorGun: {fileID: 0}
   pauseMenu: {fileID: 0}
-  altTime: 0
-  timestamp: 0
-  mainPlayer: {fileID: 8206075540257416582}
-  ammoTommy: {fileID: 0}
-  ammoShotgun: {fileID: 0}
-  ammoFlame: {fileID: 0}
-  ammoSniper: {fileID: 0}
-  tommy: {fileID: 3726116736402147893}
-  shotgun: {fileID: 966027444}
-  flamethrower: {fileID: 1758217588}
-  sniper: {fileID: 4775707881260859269}
-  tommyFlash: {fileID: 0}
-  tommyFlashImage: {fileID: 0}
-  shootingTommy: {fileID: 0}
-  shootingShotgun: {fileID: 0}
-  shootingFlamethrower: {fileID: 0}
-  shootingSniper: {fileID: 0}
-  tommyScript: {fileID: 0}
-  shotgunScript: {fileID: 0}
-  flamethrowerScript: {fileID: 0}
-  sniperScript: {fileID: 0}
-  isFlashing: 0
+  tommyAmmoUI: {fileID: 0}
+  shotgunAmmoUI: {fileID: 0}
+  flameAmmoUI: {fileID: 0}
+  respawn: {fileID: 8019257334451026239}
+  player: {fileID: 0}
   isDying: 0
+  weaponMaster: {fileID: 0}
 --- !u!114 &8019257334451026239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,6 +3407,7 @@ GameObject:
   - component: {fileID: 3726116736307325436}
   - component: {fileID: 3726116736307325435}
   - component: {fileID: 4215817023096108082}
+  - component: {fileID: 3465743125688903498}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -3482,6 +3451,7 @@ MonoBehaviour:
   r2d: {fileID: 3726116736307325436}
   c2d: {fileID: 3726116736307325435}
   flipModule: {fileID: 0}
+  defaultAudioSource: {fileID: 0}
 --- !u!114 &7683567989710588384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3648,6 +3618,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalScale: {x: 0, y: 0, z: 0}
+--- !u!114 &3465743125688903498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206075540257416582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8455be72828a7bbb7a808b6527cb9955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
 --- !u!1001 &1566744871420658111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4169,11 +4152,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021c3c0e3264c9c4ab1d97f1a680d8b9, type: 3}
---- !u!1 &4775707881260859269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9071414872205965649, guid: 021c3c0e3264c9c4ab1d97f1a680d8b9, type: 3}
-  m_PrefabInstance: {fileID: 4585397521812948692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4775707881260859290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9071414872205965646, guid: 021c3c0e3264c9c4ab1d97f1a680d8b9, type: 3}

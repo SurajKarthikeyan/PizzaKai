@@ -148,23 +148,7 @@ public class UIManager : MonoBehaviour
 
             if (healthSlider.value == 0)
             {
-                /**The UIManager should not be responsible for killing the player
-             * The part of this code actually handling the player death should be in a different script
-             * The stuff handling the UI should be here, with it either being called by the other script or
-             * having the UI call the other script to initiate player death**/
-                //player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                //player.isKBed = false;
-                //isDying = true;
-                ////mainPlayer.layer = 10;
-                //AudioDictionary.aDict.PlayAudioClip("playerDeath", AudioDictionary.Source.Player);
-                //animator.Play("PlayerDeath");
-                //animatorGun.Play("GunOff");
-                ////animatorGunLeft.Play("GunOff");
-                ////Time.timeScale = 0.25f;
-                //StartCoroutine(deathExplosion());
-
                 healthSlider.value = 1;
-
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
