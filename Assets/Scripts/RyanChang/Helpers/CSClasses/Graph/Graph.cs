@@ -438,11 +438,14 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             yield return currV;
 
-            foreach (var adjP in currV.Adjacent)
+            lock (currV.Adjacent)
             {
-                Vertex<T> adjV = Vertices[adjP.Key];
+                foreach (var adjP in currV.Adjacent)
+                {
+                    Vertex<T> adjV = Vertices[adjP.Key];
 
-                q.Enqueue(adjV);
+                    q.Enqueue(adjV);
+                } 
             }
         }
 
@@ -644,7 +647,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             foreach (var rm in toRemove)
             {
-                vertex.Adjacent.TryRemove(rm.Key, out _);
+                vertex.Adjacent.Remove(rm.Key);
             }
         }
     }

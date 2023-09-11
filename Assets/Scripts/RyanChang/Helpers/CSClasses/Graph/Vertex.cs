@@ -24,9 +24,7 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     /// <summary>
     /// Dictionary of outgoing edges. <id, graph weight>.
     /// </summary>
-    private ConcurrentDictionary<T, float> adjacent = new();
-
-    private UnityDictionary<T, float> adjacentSerialized = new();
+    private UnityDictionary<T, float> adjacent = new();
 
     /// <summary>
     /// Used in the search algorithms. Key is the ID of the thing using the
@@ -90,12 +88,15 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
         }
     }
 
-    public ConcurrentDictionary<T, float> Adjacent
+    public UnityDictionary<T, float> Adjacent
     {
         get
         {
-            adjacent ??= new();
-            return adjacent;
+            lock (adjacent)
+            {
+                adjacent ??= new();
+                return adjacent; 
+            }
         }
     }
     #endregion
@@ -236,13 +237,11 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     #region ISerializationCallbackReceiver Implementation
     public void OnBeforeSerialize()
     {
-        adjacentSerialized = new(Adjacent);
         sectionIDSerialized = sectionID.ToString();
     }
 
     public void OnAfterDeserialize()
     {
-        adjacent = adjacentSerialized == null ? new() : new(adjacentSerialized);
         sectionID = Guid.Parse(sectionIDSerialized);
         visited ??= new();
         aggregateCosts ??= new();
