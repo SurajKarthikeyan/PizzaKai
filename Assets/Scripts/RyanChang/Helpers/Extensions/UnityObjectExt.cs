@@ -241,12 +241,8 @@ public static class UnityObjectExt
 
     #region Autoadd
     #region Add If Missing
-    /// <summary>
-    /// Adds component if not found in gameObject
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="gameObject"></param>
-    /// <returns>True if the gameobject has the component</returns>
+    /// <returns>The component that was added.</returns>
+    /// <inheritdoc cref="AddComponentIfMissing{T}(GameObject, out T)"/>
     public static T AddComponentIfMissing<T>(this GameObject gameObject)
         where T : Component
     {
@@ -261,20 +257,22 @@ public static class UnityObjectExt
     }
 
     /// <summary>
-    /// Adds component if not found in gameObject
+    /// Adds a component of type T if none are found in <paramref
+    /// name="target"/>.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="gameObject"></param>
+    /// <param name="target">The gameobject to add the component to.</param>
     /// <param name="component">Either the newly added component or an existing
     /// one.</param>
-    /// <returns>True if the gameobject has the component</returns>
-    public static bool AddComponentIfMissing<T>(this GameObject gameObject,
+    /// <returns>True if the gameobject has the component, false if it had to be
+    /// added.</returns>
+    public static bool AddComponentIfMissing<T>(this GameObject target,
         out T component) where T : Component
     {
-        T thing = gameObject.GetComponent<T>();
+        T thing = target.GetComponent<T>();
         if (thing.IsNullOrUnityNull())
         {
-            component = gameObject.AddComponent<T>();
+            component = target.AddComponent<T>();
             return false;
         }
         else

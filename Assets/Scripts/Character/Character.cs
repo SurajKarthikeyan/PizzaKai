@@ -113,7 +113,7 @@ public class Character : MonoBehaviour
 
         this.RequireComponent(out flipModule);
 
-        if (!this.AutofillComponent(ref defaultAudioSource))
+        if (!gameObject.AddComponentIfMissing(out defaultAudioSource))
         {
             defaultAudioSource.spatialBlend = 1;
         }
