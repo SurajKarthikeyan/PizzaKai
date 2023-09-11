@@ -80,7 +80,7 @@ public class PathAgentManager : MonoBehaviour
     public void Schedule(PathfindingAgent agent, TargetToken target)
     {
         var current = agent.GridPosition;
-        StartCoroutine(WaitForTask_CR(agent, null,
+        StartCoroutine(WaitForTask_CR(agent, target,
             new(
                 agent,
                 current,
@@ -90,28 +90,28 @@ public class PathAgentManager : MonoBehaviour
     }
 
     private IEnumerator WaitForTask_CR(PathfindingAgent agent,
-        Transform targetTransform, AgentThread thread)
+        TargetToken token, AgentThread thread)
     {
         Path<Vector3Int> path = null;
-        // // Tasks are managed by C#'s ThreadPool, so you can create as many as
-        // // you want (I think).
-        // var task = Task.Run(() => thread.ThreadProcess(out path));
+        // Tasks are managed by C#'s ThreadPool, so you can create as many as
+        // you want (I think).
+        var task = Task.Run(() => thread.ThreadProcess(out path));
 
-        // yield return new WaitUntil(() => task.IsCompleted);
+        yield return new WaitUntil(() => task.IsCompleted);
 
-        // if (!task.IsCompletedSuccessfully)
-        // {
-        //     throw task.Exception;
-        // }
-        // else
-        // {
-        //     agent.AcceptPath(path, targetTransform);
-        // }
+        if (!task.IsCompletedSuccessfully)
+        {
+            throw task.Exception;
+        }
+        else
+        {
+            agent.AcceptPath(path, token);
+        }
 
-        // Test on main thread to better view errors n' such.
-        thread.ThreadProcess(out path);
-        agent.AcceptPath(path, targetTransform);
-        yield return new WaitForEndOfFrame();
+        // // Test on main thread to better view errors n' such.
+        // thread.ThreadProcess(out path);
+        // agent.AcceptPath(path, targetTransform);
+        // yield return new WaitForEndOfFrame();
     }
     #endregion
 }
