@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyBasic : MonoBehaviour
@@ -104,7 +102,7 @@ public abstract class EnemyBasic : MonoBehaviour
                     hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
                 }
             }
-
+            //LayersManager.Instance
             Destroy(this.gameObject);
         }
 

@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -229,6 +230,50 @@ public class CharacterMovementModule : Module
                 groundedStatus == GroundedStatus.AirbornFromJump);
         }
     }
+
+    public void Dodge()
+    {
+        //Can be done using durations
+        //{
+        //    //since this gets called when the player is dodging, canDodge is now false and isDodging is now true
+        //    canDodge = false;
+        //    isDodging = true;
+        //    invulnerable = true;
+
+        //    //enemy layer
+        //    gameObject.layer = 10;
+        //    StartCoroutine(UIScript.DashFill());
+        //    //saves gravity value before we change it
+
+        //    //makes it so the player does not fall during dodge
+        //    rigid.gravityScale = 0f;
+        //    //dodge in the direction the character is facing
+        //    if (Input.GetKey(KeyCode.D))
+        //    {
+        //        rigid.velocity = new Vector2(dodgeForce, 0f);
+        //    }
+        //    else
+        //    {
+        //        rigid.velocity = new Vector2(-dodgeForce, 0f);
+        //    }
+
+        //    //there is no trail renderer attached right now, but if one is attached it will emit while dodging
+        //    trail.emitting = true;
+
+        //    yield return new WaitForSeconds(dodgeTime);
+        //    //turns trail off when dodging stops
+        //    trail.emitting = false;
+        //    //sets gravity back to OG setting
+        //    rigid.gravityScale = originalGravity;
+        //    isDodging = false;
+        //    invulnerable = false;
+        //    //player layer
+        //    gameObject.layer = 7;
+        //    yield return new WaitForSeconds(dodgeCoolDown);
+        //    canDodge = true;
+        //}
+    }
+
     #endregion
 
     #region Helper Methods

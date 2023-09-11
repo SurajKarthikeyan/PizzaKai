@@ -104,7 +104,7 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         SetVars();
-
+        HP = maxHP;
         damageInvulnerability = new(GameManager.Instance.damageTickRate);
     }
 
