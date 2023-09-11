@@ -2020,7 +2020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoCount: {fileID: 0}
-  ammoCount: {fileID: 0}
   healthSlider: {fileID: 0}
   dashSlider: {fileID: 0}
   altSlider: {fileID: 0}
@@ -2033,6 +2032,7 @@ MonoBehaviour:
   player: {fileID: 0}
   isDying: 0
   weaponMaster: {fileID: 0}
+  ammoUI: {fileID: 0}
 --- !u!114 &8019257334451026239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,6 +3240,7 @@ Transform:
   - {fileID: 3726116736402147882}
   - {fileID: 966027445}
   - {fileID: 1758217589}
+  - {fileID: 4775707881260859290}
   m_Father: {fileID: 8206075540257416576}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3677,18 +3678,6 @@ PrefabInstance:
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalPosition.x

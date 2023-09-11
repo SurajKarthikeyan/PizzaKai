@@ -301,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 2741532492343462794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.114, y: 0.218, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2741532492258955962}
@@ -323,6 +323,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputState: 0
+  firingModes:
+  - name: Primary
+    key: 
+    animFiringBool: Fire
+    animReloadingBool: Reload
+    firingClip: {fileID: 8300000, guid: a01257a7920e3df4187750b2ba665ed2, type: 3}
+    reloadClip: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
+    bulletSpawn: {fileID: 0}
+    firePoint: {fileID: 0}
+    firingDelay:
+      maxTime: 0
+      elapsed: 0
+    ammoCount: 0
+    currentAmmo: 0
+    reloadDelay:
+      maxTime: 0
+      elapsed: 0
   weaponAnimator: {fileID: 1566744871564542801}
   animFiringBool: Fire
   animAltingBool: 
@@ -331,6 +348,7 @@ MonoBehaviour:
   firingClip: {fileID: 0}
   altingClip: {fileID: 0}
   reloadClip: {fileID: 0}
+  ammoGraphic: {fileID: 0}
   firePoint: {fileID: 2741532492258955962}
   autofire: 1
   firingDelay:
@@ -346,8 +364,6 @@ MonoBehaviour:
     elapsed: 0
   bullet: {fileID: 6782259933850723437, guid: 864ee4868713c94478c6035d63f804b2, type: 3}
   bulletSpawn: {fileID: 0}
-  weaponName: 
-  weaponAction: 
   playerTransform: {fileID: 0}
   altFireDamage: 5
   tommyFlashImage: {fileID: 0}
