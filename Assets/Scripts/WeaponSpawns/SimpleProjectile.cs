@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SimpleProjectile : WeaponSpawn
+public class SimpleProjectile : MaskedWeaponSpawn
 {
     #region Variables
     [Tooltip("Amount of damage to deal. This will be rounded to an int.")]
@@ -25,9 +25,6 @@ public class SimpleProjectile : WeaponSpawn
 
     [Tooltip("How many ricochets does this projectile have?")]
     public int ricochets = 0;
-
-    [Tooltip("Layer mask for this projectile (what this can collide with).")]
-    public LayerMask collisionMask;
 
     [Tooltip("[Optional] What to spawn on death?")]
     public GameObject spawnOnDeath;

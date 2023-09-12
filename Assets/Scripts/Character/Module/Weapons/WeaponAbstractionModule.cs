@@ -34,7 +34,8 @@ public class WeaponAbstractionModule : Module, IWeapon
 
     public void ReloadWeapon()
     {
-        CurrentWeapon.ReloadWeapon();
+        // Only primary can reload.
+        Primary.ReloadWeapon();
     }
 
     public void ResetBurst()

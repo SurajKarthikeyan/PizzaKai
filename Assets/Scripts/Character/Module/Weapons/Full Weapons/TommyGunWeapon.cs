@@ -20,8 +20,8 @@ public class TommyGunWeapon : WeaponModule
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 5;
 
-    [Tooltip("Tommy flash UI image")]
-    public UnityEngine.UI.Image tommyFlashImage;
+    [Tooltip("Image to display when flashbanged.")]
+    public UnityEngine.UI.Image flashbandOverlay;
 
     [Tooltip("Enemy layer mask")]
     [SerializeField]
@@ -38,7 +38,7 @@ public class TommyGunWeapon : WeaponModule
     {
         base.Start();
         //Sets the image for the tommy flash to be clear
-        tommyFlashImage.color = new Color(1, 1, 1, 0);
+        flashbandOverlay.color = new Color(1, 1, 1, 0);
 
         //Left shifts the layer num  to represent layer number by a single bit in the 32-bit integer
         layerMask = 1 << enemyLayerNum;
@@ -82,22 +82,25 @@ public class TommyGunWeapon : WeaponModule
     }
 
     /// <summary>
-    /// Flashes the tommy alt image on the screen to replicate the flash bang effect
+    /// Flashes the flash bang image on the screen to replicate the flash bang
+    /// effect.
     /// </summary>
     /// <returns>WaitForSeconds in between the various alpha values</returns>
-    public IEnumerator tommyAltFlash()
+    public IEnumerator TommyAltFlash()
     {
-        tommyFlashImage.color = new Color(1, 1, 1, 1);
+        flashbandOverlay.enabled = true;
+        flashbandOverlay.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(0.2f);
-        tommyFlashImage.color = new Color(1, 1, 1, 0.8f);
+        flashbandOverlay.color = new Color(1, 1, 1, 0.8f);
         yield return new WaitForSeconds(0.2f);
-        tommyFlashImage.color = new Color(1, 1, 1, 0.6f);
+        flashbandOverlay.color = new Color(1, 1, 1, 0.6f);
         yield return new WaitForSeconds(0.2f);
-        tommyFlashImage.color = new Color(1, 1, 1, 0.4f);
+        flashbandOverlay.color = new Color(1, 1, 1, 0.4f);
         yield return new WaitForSeconds(0.2f);
-        tommyFlashImage.color = new Color(1, 1, 1, 0.2f);
+        flashbandOverlay.color = new Color(1, 1, 1, 0.2f);
         yield return new WaitForSeconds(0.2f);
-        tommyFlashImage.color = new Color(1, 1, 1, 0);
+        flashbandOverlay.color = new Color(1, 1, 1, 0);
+        flashbandOverlay.enabled = false;
     }
     #endregion
 }
