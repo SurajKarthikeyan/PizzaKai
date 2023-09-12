@@ -41,6 +41,18 @@ public static class TransformExt
     }
 
     /// <summary>
+    /// Sets the position and rotation of <paramref name="target"/> to match
+    /// those of <paramref name="other"/>.
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="other"></param>
+    public static void MatchOther(this Transform target, Transform other)
+    {
+        target.position = other.position;
+        target.rotation = other.rotation;
+    }
+
+    /// <summary>
     /// Orphans this transform, setting the parent to null while preserving
     /// world position, rotation, and scale.
     /// </summary>

@@ -29,6 +29,9 @@ public class SimpleProjectile : WeaponSpawn
     [Tooltip("Layer mask for this projectile (what this can collide with).")]
     public LayerMask collisionMask;
 
+    [Tooltip("[Optional] What to spawn on death?")]
+    public GameObject spawnOnDeath;
+
     private int currentRicochets = 0;
 
     private float deltaDistance = 0;
@@ -144,5 +147,13 @@ public class SimpleProjectile : WeaponSpawn
         }
 
         // Handle any destruction thingies here.
+        if (spawnOnDeath)
+        {
+            var inst = Instantiate(spawnOnDeath);
+            inst.transform.MatchOther(transform);
+            inst.SetActive(true);
+        }
+
+        Destroy(gameObject);
     }
 }
