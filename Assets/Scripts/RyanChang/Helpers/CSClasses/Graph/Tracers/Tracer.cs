@@ -40,6 +40,9 @@ public class Tracer<T> where T : IEquatable<T>
     /// cref="Vector3"/>.</param>
     public void Trace(ITraceable<T> target, ConvertToVector3 converter)
     {
+        if (!tracerData || !traceContainer)
+            return;
+
         this.converter = converter;
         this.target = target;
 

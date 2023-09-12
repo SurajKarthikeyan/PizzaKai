@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 /// <summary>
 /// Performs the movement of characters. Another script is required to actually
@@ -60,6 +61,7 @@ public class CharacterMovementModule : Module
 
     [Tooltip("The collider responsible for checking if the character is " +
         "grounded.")]
+    [Required]
     public Collider2D groundCheck;
 
     [Header("Animation Settings")]
