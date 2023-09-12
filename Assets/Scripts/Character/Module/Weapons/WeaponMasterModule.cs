@@ -14,7 +14,7 @@ public class WeaponMasterModule : Module
     #region Variables
     [Header("Weapon Settings")]
     [Tooltip("The weapons available to the weapon master.")]
-    public List<WeaponModule> weapons;
+    public List<WeaponAbstractionModule> weapons;
 
     [Tooltip("Which weapon is the character holding?")]
     public int weaponIndex;
@@ -31,7 +31,7 @@ public class WeaponMasterModule : Module
     #region Properties
     public bool HasWeapon => !weapons.IsNullOrEmpty();
 
-    public WeaponModule CurrentWeapon => weapons[weaponIndex];
+    public WeaponAbstractionModule CurrentWeapon => weapons[weaponIndex];
     #endregion
 
     #region Methods
@@ -64,20 +64,10 @@ public class WeaponMasterModule : Module
             Vector2 mousePos = Input.mousePosition;
             AimAt(Camera.main.ScreenToWorldPoint(mousePos));
 
-            if (Input.GetMouseButton(0))
-            {
-                // Firing.
-                TryFire();
-            }
-            else
-            {
-                CurrentWeapon.ResetBurst();
-            }
-            if (Input.GetMouseButton(1))
-            {
-                //Alt fire
-                TryAltFire();
-            }
+            // Parse mouse inputs.
+            ParseMouseInput(0);
+            ParseMouseInput(1);
+            
             if (Input.GetKeyDown(KeyCode.R))
             {
                 //Reload Current Weapon
@@ -93,6 +83,20 @@ public class WeaponMasterModule : Module
             {
                 PrevWeapon();
             }
+        }
+    }
+
+    private void ParseMouseInput(int mouseBtn)
+    {
+        CurrentWeapon.subweaponIndex = mouseBtn;
+
+        if (Input.GetMouseButton(mouseBtn))
+        {
+            CurrentWeapon.TryFireWeapon();
+        }
+        else
+        {
+            CurrentWeapon.ResetBurst();
         }
     }
     #endregion
@@ -118,28 +122,6 @@ public class WeaponMasterModule : Module
 
         // Send data to the flip module.
         Master.SetLookAngle(zRot);
-    }
-    #endregion
-
-    #region Firing
-    /// <summary>
-    /// Tries to fire the weapon
-    /// </summary>
-    /// <returns>true if able to fire, false if unable</returns>
-    public bool TryFire()
-    {
-        return CurrentWeapon.TryFireWeapon();
-    }
-
-    /// <summary>
-    /// Tries to alt fire the weapon
-    /// </summary>
-    public void TryAltFire()
-    {
-        if (CurrentWeapon.altFireDelay.IsDone)
-        {
-            CurrentWeapon.AltFire();
-        }
     }
     #endregion
 

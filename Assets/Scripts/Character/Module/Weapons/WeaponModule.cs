@@ -9,77 +9,8 @@ using System;
 /// 
 /// Authors: Ryan Chang, Zane O'Dell (2023)
 /// </summary>
-public class WeaponModule : Module
+public class WeaponModule : Module, IWeapon
 {
-    #region Classes
-    /// <summary>
-    /// A weapon mode splits the behaviors of the alt and normal firing modes
-    /// into two separate objects. This will allow for the addition of cleaner
-    /// code, as well as an arbitrary number of future alt fires.
-    ///
-    /// <br/>
-    ///
-    /// Authors: Ryan Chang (2023)
-    /// </summary>
-    [System.Serializable]
-    public class WeaponMode
-    {
-        [Header("General")]
-        [Tooltip("Name of this mode.")]
-        [OnValueChanged(nameof(UpdateFakeKey))]
-        public string name;
-
-        private void UpdateFakeKey()
-        {
-            key = name;
-        }
-
-        [SerializeField]
-        [HideInInspector]
-        private string key;
-
-        /// <summary>
-        /// Used to make the animator show up.
-        /// </summary>
-        private Animator fakeAnimator;
-
-        [Header("Animation")]
-        [Tooltip("The name of the animation parameter that controls firing.")]
-        [AnimatorParam(nameof(fakeAnimator), AnimatorControllerParameterType.Bool)]
-        public string animFiringBool;
-
-        [Tooltip("The name of the animation parameter that controls reloading.")]
-        [AnimatorParam(nameof(fakeAnimator), AnimatorControllerParameterType.Bool)]
-        public string animReloadingBool;
-
-
-        [Header("Firing Settings")]
-        [Tooltip("Updated bullet spawn this weapon uses.")]
-        public WeaponSpawn bulletSpawn;
-
-        [Tooltip("The point where the projectiles originate from.")]
-        public Transform firePoint;
-
-        [Tooltip("How long to wait between rounds fired.")]
-        public Duration firingDelay = new(1f);
-        
-
-        [Header("Ammo/Reloading Settings")]
-        [Tooltip("The number of bullets/projectiles/etc per clip/mag/whatever.")]
-        public int ammoCount = 10;
-
-        [Tooltip("How much ammo is currently in the weapon?")]
-        [AllowNesting]
-        [ReadOnly]
-        public int currentAmmo;
-
-        [Tooltip("How long is the reload?")]
-        public Duration reloadDelay = new(1f);
-
-        public void SetAnimatorPreview(Animator anim) => fakeAnimator = anim;
-    }
-    #endregion
-
     #region Enums
     /// <summary>
     /// Describes the current input status of the weapon.
@@ -119,9 +50,9 @@ public class WeaponModule : Module
     [SerializeField]
     private WeaponInputState inputState;
 
-    [Tooltip("The defined subweapons.")]
-    [SerializeField]
-    private WeaponMode[] firingModes;
+    [Tooltip("Set to true to disallow reloading (as alts only have a cooldown).")]
+    public bool isAlt;
+
 
     [Header("Animation")]
     [Tooltip("The animator for the weapon")]
@@ -130,10 +61,6 @@ public class WeaponModule : Module
     [Tooltip("The name of the animation parameter that controls firing.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animFiringBool;
-
-    [Tooltip("The name of the animation parameter that controls alt firing.")]
-    [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
-    public string animAltingBool;
 
     [Tooltip("The name of the animation parameter that controls reloading.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
@@ -153,18 +80,18 @@ public class WeaponModule : Module
     [Tooltip("How long to wait between rounds fired.")]
     public Duration firingDelay = new(1f);
 
-    [Tooltip("How long to wait between alt fires")]
-    public Duration altFireDelay = new(1f);
-
     [Header("Ammo/Reloading Settings")]
     [Tooltip("The number of bullets/projectiles/etc per clip/mag/whatever.")]
+    [HideIf(nameof(isAlt))]
     public int ammoCount = 10;
 
     [Tooltip("How much ammo is currently in the weapon?")]
+    [HideIf(nameof(isAlt))]
     [ReadOnly]
     public int currentAmmo;
 
     [Tooltip("How long is the reload?")]
+    [HideIf(nameof(isAlt))]
     public Duration reloadDelay = new(1f);
 
     [Tooltip("Updated bullet spawn this weapon uses.")]
@@ -183,17 +110,6 @@ public class WeaponModule : Module
     protected virtual void Start()
     {
         currentAmmo = ammoCount;
-    }
-
-    private void OnValidate()
-    {
-        if (!firingModes.IsNullOrEmpty())
-        {
-            foreach (var mode in firingModes)
-            {
-                mode.SetAnimatorPreview(weaponAnimator);
-            }
-        }
     }
     #endregion
 
@@ -229,18 +145,13 @@ public class WeaponModule : Module
                         InputState == WeaponInputState.FiringHeld
                     );
                 }
-
-                if (!string.IsNullOrEmpty(animAltingBool))
-                {
-                    weaponAnimator.SetBool(
-                        animAltingBool,
-                        InputState == WeaponInputState.Alting
-                    );
-                }
             }
         }
     }
 
+    /// <summary>
+    /// How many shots were fired in this current burst?
+    /// </summary>
     public int BurstCount => burstCount;
     #endregion
 
@@ -253,8 +164,6 @@ public class WeaponModule : Module
     {
         // Always increment firing delay.
         firingDelay.IncrementUpdate(false);
-
-        if (!altFireDelay.IsDone) altFireDelay.IncrementUpdate(false);
 
         // Determine if reload has completed.
         if (InputState == WeaponInputState.Reloading)
@@ -280,21 +189,24 @@ public class WeaponModule : Module
         {
             firingDelay.Reset();
 
-            switch (InputState)
+            InputState = InputState switch
             {
                 // If the player is already firing, then we go to the firing
                 // start state, otherwise we start firing.
-                case WeaponInputState.FiringStart:
-                    InputState = WeaponInputState.FiringHeld;
-                    break;
-                default:
-                    InputState = WeaponInputState.FiringStart;
-                    break;
-            }
+                WeaponInputState.FiringStart => WeaponInputState.FiringHeld,
+                _ => WeaponInputState.FiringStart,
+            };
 
             // Actually fire now.
             FireProjectile();
-            currentAmmo -= 1;
+
+            if (isAlt)
+            {
+                currentAmmo = 1;
+                ammoCount = 1;
+            }
+            else
+                currentAmmo -= 1;
         }
 
         // Set animations.
@@ -314,7 +226,7 @@ public class WeaponModule : Module
     /// <returns>True if the weapon can fire, false otherwise.</returns>
     private bool CheckCanFire()
     {
-        if (OutOfAmmo)
+        if (!isAlt && OutOfAmmo)
         {
             ReloadWeapon();
             return false;
@@ -326,7 +238,8 @@ public class WeaponModule : Module
                 return firingDelay.IsDone;
             case WeaponInputState.FiringStart:
             case WeaponInputState.FiringHeld:
-                // If autofire is disabled, then do not allow the weapon to be fired
+                // If autofire is disabled, then do not allow the weapon to be
+                // fired.
                 return firingDelay.IsDone && autofire;
             default:
                 return false;
@@ -338,19 +251,9 @@ public class WeaponModule : Module
     /// </summary>
     protected void FireProjectile()
     {
-        //Spawned projectile, need to look into refactoring bullets themselves
+        // Spawns the projectile and then tells it to start moving.
         bulletSpawn.Spawn(this).Fire(this);
     }
-
-    /// <summary>
-    /// Handles the alt fire for each of the weapons
-    /// </summary>
-    public virtual void AltFire()
-    {
-        altFireDelay.Reset();
-        Debug.Log("Doing alt fire");
-    }
-
     #endregion
 
     #region Weapon Reloading
@@ -359,21 +262,16 @@ public class WeaponModule : Module
     /// </summary>
     public void ReloadWeapon()
     {
-        InputState = WeaponInputState.Reloading;
-
-        if (InputState == WeaponInputState.Reloading)
+        if (!isAlt)
         {
-            reloadDelay.Reset();
-            RefillAmmo();
-        }
-    }
+            InputState = WeaponInputState.Reloading;
 
-    /// <summary>
-    /// Refills the current weapon's current ammo count
-    /// </summary>
-    private void RefillAmmo()
-    {
-        currentAmmo = ammoCount;
+            if (InputState == WeaponInputState.Reloading)
+            {
+                reloadDelay.Reset();
+                currentAmmo = ammoCount;
+            }
+        }
     }
     #endregion
     #endregion

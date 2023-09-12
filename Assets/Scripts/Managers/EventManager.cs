@@ -50,7 +50,7 @@ public class EventManager : MonoBehaviour
     /// T1 = The old weapon.
     /// T2 = The new (current) weapon.
     /// </summary>
-    public UnityEvent<WeaponMasterModule, WeaponModule, WeaponModule> onWeaponSwitch = new();
+    public UnityEvent<WeaponMasterModule, IWeapon, IWeapon> onWeaponSwitch = new();
 
     /// <summary>
     /// Called when we want a camera shake.

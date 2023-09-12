@@ -46,25 +46,25 @@ public class TommyGunWeapon : WeaponModule
     #endregion
 
     #region Methods
-    /// <summary>
-    /// Overrides the alt fire function of weapon module - Tommy Flash
-    /// </summary>
-    override public void AltFire()
-    {
-        base.AltFire();
+    // /// <summary>
+    // /// Overrides the alt fire function of weapon module - Tommy Flash
+    // /// </summary>
+    // override public void AltFire()
+    // {
+    //     base.AltFire();
 
-        // Probably fix the camera shake, but leave it here for now.
-        EventManager.Instance.onCameraShake.Invoke(null);
-        StartCoroutine(tommyAltFlash());
+    //     // Probably fix the camera shake, but leave it here for now.
+    //     EventManager.Instance.onCameraShake.Invoke(null);
+    //     StartCoroutine(tommyAltFlash());
 
-        FindEnemies();
+    //     FindEnemies();
 
-        //TODO: GetComponent is expensive, maybe look into optimizing this. 
-        foreach (Collider2D enemy in visibleEnemies)
-        {
-            enemy.GetComponent<EnemyBasic>().currentHP -= altFireDamage;
-        }
-    }
+    //     //TODO: GetComponent is expensive, maybe look into optimizing this. 
+    //     foreach (Collider2D enemy in visibleEnemies)
+    //     {
+    //         enemy.GetComponent<EnemyBasic>().currentHP -= altFireDamage;
+    //     }
+    // }
 
     /// <summary>
     /// Finds all colliders on the enemy layer within a certain range

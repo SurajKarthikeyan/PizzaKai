@@ -84,11 +84,11 @@ public class UIManager : MonoBehaviour
         var weap = weaponMaster.CurrentWeapon;
 
         // Update graphics. Primary ammo first.
-        ammoUI.sprite = weap.ammoGraphic;
-        ammoCount.text = $"{weap.currentAmmo}/{weap.ammoCount}";
+        ammoUI.sprite = weap.Primary.ammoGraphic;
+        ammoCount.text = $"{weap.Primary.currentAmmo}/{weap.Primary.ammoCount}";
 
         // Alt recharge.
-        altSlider.value = weap.altFireDelay.Percent;
+        altSlider.value = weap.Alt.firingDelay.Percent;
 
         // Dash recharge.
     }

@@ -195,8 +195,8 @@ Transform:
   m_GameObject: {fileID: 2770841202751872594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.103, y: 0.21, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2770841202015864618}
   - {fileID: 2770841203617395347}
@@ -221,26 +221,21 @@ MonoBehaviour:
   animFiringBool: Fire
   animAltingBool: 
   animReloadingBool: Reload
-  weaponAudio: {fileID: -4290196451385335238}
-  firingClip: {fileID: 0}
-  altingClip: {fileID: 0}
-  reloadClip: {fileID: 0}
+  ammoGraphic: {fileID: 0}
   firePoint: {fileID: 2770841202015864618}
   autofire: 1
   firingDelay:
     maxTime: 0.05
     elapsed: 0
   altFireDelay:
-    maxTime: 80
+    maxTime: 5
     elapsed: 0
   ammoCount: 80
   currentAmmo: 0
   reloadDelay:
     maxTime: 2
     elapsed: 0
-  bullet: {fileID: 141357925656780269, guid: 2e0d49bae67a8d748bc854e00305eee6, type: 3}
-  weaponName: 
-  weaponAction: 
+  bulletSpawn: {fileID: 0}
   altFireball: {fileID: 0}
 --- !u!82 &-4290196451385335238
 AudioSource:

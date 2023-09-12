@@ -27,13 +27,13 @@ public class FlameThrowerWeapon : WeaponModule
     #endregion
 
     #region Methods
-    /// <summary>
-    /// Overrides the alt fire function of weapon module - Flame Shot
-    /// </summary>
-    override public void AltFire()
-    {
-        base.AltFire();
-        Instantiate(altFireball, firePoint.position, Quaternion.identity);
-    }
+    // /// <summary>
+    // /// Overrides the alt fire function of weapon module - Flame Shot
+    // /// </summary>
+    // override public void AltFire()
+    // {
+    //     base.AltFire();
+    //     Instantiate(altFireball, firePoint.position, Quaternion.identity);
+    // }
     #endregion
 }

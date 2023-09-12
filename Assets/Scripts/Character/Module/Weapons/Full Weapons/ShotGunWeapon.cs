@@ -29,14 +29,14 @@ public class ShotGunWeapon : WeaponModule
     #endregion
 
     #region Methods
-    /// <summary>
-    /// Overrides the alt fire function of weapon module - Shotgun Movement Blast
-    /// </summary>
-    override public void AltFire()
-    {
-        base.AltFire();
-        PushPlayer();
-    }
+    // /// <summary>
+    // /// Overrides the alt fire function of weapon module - Shotgun Movement Blast
+    // /// </summary>
+    // override public void AltFire()
+    // {
+    //     base.AltFire();
+    //     PushPlayer();
+    // }
 
     /// <summary>
     /// Sends the player flying as part of the alt fire
