@@ -24,6 +24,8 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     /// <summary>
     /// Dictionary of outgoing edges. <id, graph weight>.
     /// </summary>
+    [SerializeField]
+    [HideInInspector]
     private UnityDictionary<T, float> adjacent = new();
 
     /// <summary>

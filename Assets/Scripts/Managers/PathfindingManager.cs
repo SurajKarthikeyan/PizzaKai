@@ -394,10 +394,12 @@ public class PathfindingManager : MonoBehaviour
         var startV = GetClosestNeighbor(start, Guid.Empty);
         var endV = GetClosestNeighbor(end, startV.sectionID);
 
-        Debug.Assert(startV.sectionID != Guid.Empty);
-        Debug.Assert(endV.sectionID != Guid.Empty);
-        Debug.Assert(startV.sectionID == endV.sectionID);
-        Debug.Assert(Pathfinding.VerticesConnected(startV, endV));
+        string msg = $"Assert failed: {startV.sectionID}, {endV.sectionID}";
+
+        Debug.Assert(startV.sectionID != Guid.Empty, msg);
+        Debug.Assert(endV.sectionID != Guid.Empty, msg);
+        Debug.Assert(startV.sectionID == endV.sectionID, msg);
+        Debug.Assert(Pathfinding.VerticesConnected(startV, endV), msg);
 
         return Pathfinding.AStarSearch(startV.id, endV.id);
     }
