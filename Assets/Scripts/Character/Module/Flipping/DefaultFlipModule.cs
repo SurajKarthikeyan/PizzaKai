@@ -9,6 +9,8 @@ public class DefaultFlipModule : Module
     protected Vector3 originalScale;
     #endregion
 
+    public int Flipped { get; private set; }
+
     #region Methods
     #region Instantiation
     private void Start()
@@ -41,11 +43,13 @@ public class DefaultFlipModule : Module
         {
             // Consider the character to be looking to the right.
             scale.x = originalScale.x;
+            Flipped = 1;
         }
         else if (theta.AngleIsBetween(95, 265))
         {
             // Consider the character to be looking to the left.
             scale.x = -originalScale.x;
+            Flipped = -1;
         }
 
         Master.transform.localScale = scale;
