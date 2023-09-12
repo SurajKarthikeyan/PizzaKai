@@ -170,7 +170,8 @@ public class LayersManager : MonoBehaviour
     {
         this.InstantiateSingleton(ref instance);
         platformColliders = GameObject.FindObjectsOfType<Collider2D>()
-            .Where(c => c.gameObject.layer == Platform);
+            .Where(c => c.gameObject.layer == Platform)
+            .ToList();
     }
     #endregion
 

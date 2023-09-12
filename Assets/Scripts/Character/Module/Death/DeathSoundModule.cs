@@ -8,19 +8,12 @@ using UnityEngine;
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class GeneralDeathModule : Module
+public class DeathSoundModule : DeathModule
 {
     [SerializeField]
     private AudioClip deathSound;
 
-    protected override void OnLinked()
-    {
-        base.OnLinked();
-
-        Master.onCharacterDeathEvent.AddListener(PlayDeathSound);
-    }
-
-    private void PlayDeathSound()
+    protected override void OnDeath()
     {
         if (deathSound)
         {

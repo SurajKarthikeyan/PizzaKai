@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class ItemDropModule : Module
+public class ItemDropModule : DeathModule
 {
     public MultiSelector<GameObject> dropTable;
 
@@ -15,12 +15,7 @@ public class ItemDropModule : Module
         "spawned objects?")]
     public float maxForce = 2;
 
-    protected override void OnLinked()
-    {
-        Master.onCharacterDeathEvent.AddListener(DropItems);
-    }
-
-    private void DropItems()
+    protected override void OnDeath()
     {
         foreach (var item in dropTable.DoSelection())
         {

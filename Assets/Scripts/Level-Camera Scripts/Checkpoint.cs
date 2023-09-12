@@ -31,4 +31,15 @@ public class Checkpoint : MonoBehaviour
         }
     }
     #endregion
+
+    #region MonoBehavior Methods
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.HasComponentInChildren(out RespawnModule respawner))
+        {
+            respawner.lastRespawnPoint = this;
+            AssociatedRespawner = respawner;
+        }
+    }
+    #endregion
 }

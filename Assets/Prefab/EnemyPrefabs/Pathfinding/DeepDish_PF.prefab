@@ -93,6 +93,57 @@ Transform:
   m_Father: {fileID: 7148419337918994598}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4712196601133868059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281689598598042121}
+  - component: {fileID: 3423575882808354424}
+  m_Layer: 0
+  m_Name: OnDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &281689598598042121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712196601133868059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7148419337918994598}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3423575882808354424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712196601133868059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f8375e61b610969a9fa4060cd04f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+    elements:
+    - selection: {fileID: 5219901646902708579, guid: 581745f8aec2c4deb9079a04a3160714, type: 3}
+      probability: 1
+    - selection: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
+      probability: 1
+  maxForce: 2
 --- !u!1 &7148419337918994584
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +160,6 @@ GameObject:
   - component: {fileID: 3758572798800157418}
   - component: {fileID: 6952910189470967440}
   - component: {fileID: 6005603097827248697}
-  - component: {fileID: 6567529876943034998}
   - component: {fileID: 1432511590390559198}
   - component: {fileID: 3535031957061877574}
   m_Layer: 10
@@ -135,6 +185,7 @@ Transform:
   - {fileID: 478194314}
   - {fileID: 1015743088280132465}
   - {fileID: 697807852616869315}
+  - {fileID: 281689598598042121}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -323,25 +374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 3758572798800157418}
   pathAgent: {fileID: 6952910189470967440}
---- !u!114 &6567529876943034998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148419337918994584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f8375e61b610969a9fa4060cd04f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropTable:
-    elements:
-    - selection: {fileID: 5219901646902708579, guid: 581745f8aec2c4deb9079a04a3160714, type: 3}
-      probability: 1
-    - selection: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
-      probability: 1
-  maxForce: 2
 --- !u!114 &1432511590390559198
 MonoBehaviour:
   m_ObjectHideFlags: 0
