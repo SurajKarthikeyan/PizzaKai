@@ -45,7 +45,7 @@ public class EnemyControlModule : Module
     {
         // For now, just have them chase the player.
         pathAgent.SetTarget(
-            GameObject.FindObjectOfType<PlayerControlModule>().transform
+            FindObjectOfType<PlayerControlModule>().transform
         );
     }
     #endregion
@@ -53,7 +53,9 @@ public class EnemyControlModule : Module
     #region Main Logic
     public void AcceptToken(TargetToken token)
     {
-        movement.inputtedMovement = token.GetHeading(transform.position).normalized;
+        var heading = token.GetHeading(transform.position).normalized;
+        movement.inputtedMovement = heading;
+        Master.SetLookAngle(Mathf.Atan2(heading.y, heading.x));
     }
     #endregion
 }

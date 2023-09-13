@@ -7,6 +7,9 @@ public class DefaultFlipModule : Module
     [ReadOnly]
     [SerializeField]
     protected Vector3 originalScale;
+
+    [SerializeField]
+    private bool negate;
     #endregion
 
     public int Flipped { get; private set; }
@@ -37,21 +40,22 @@ public class DefaultFlipModule : Module
     /// right.</param>
     public void SetFacingAngle(float theta)
     {
-        Vector3 scale = Master.transform.localScale;
-
         if (theta.AngleIsBetween(-85, 85))
         {
             // Consider the character to be looking to the right.
-            scale.x = originalScale.x;
             Flipped = 1;
         }
         else if (theta.AngleIsBetween(95, 265))
         {
             // Consider the character to be looking to the left.
-            scale.x = -originalScale.x;
             Flipped = -1;
         }
 
+        // The negate.
+        Flipped *= negate ? -1 : 1;
+
+        Vector3 scale = Master.transform.localScale;
+        scale.x = originalScale.x * Flipped;
         Master.transform.localScale = scale;
     }
     #endregion

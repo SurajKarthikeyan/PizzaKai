@@ -3353,7 +3353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed79411bebbcda2f3ba6704bfcbc943a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 20
+  maxHP: 100
+  knockbackMultiplier: 1
   r2d: {fileID: 3726116736307325436}
   c2d: {fileID: 3726116736307325435}
   flipModule: {fileID: 0}
