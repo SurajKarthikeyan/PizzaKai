@@ -41,6 +41,18 @@ public static class TransformExt
     }
 
     /// <summary>
+    /// Sets the local position, rotation, and scale of the transform to their
+    /// "default" values, while also setting the parent.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="newParent"></param>
+    public static void Localize(this Transform transform, Transform newParent)
+    {
+        transform.parent = newParent;
+        transform.Localize();
+    }
+
+    /// <summary>
     /// Sets the position and rotation of <paramref name="target"/> to match
     /// those of <paramref name="other"/>.
     /// </summary>

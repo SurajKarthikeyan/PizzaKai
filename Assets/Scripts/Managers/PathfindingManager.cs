@@ -361,7 +361,8 @@ public class PathfindingManager : MonoBehaviour
         // Visualize graph.
         visualizer.Trace(
             Pathfinding,
-            (vector) => vector.Value + grid.GetCellCenterWorld(Vector3Int.zero)
+            (vector) => vector.Value + grid.GetCellCenterWorld(Vector3Int.zero),
+            "Pathfinding Manager"
         );
     }
 

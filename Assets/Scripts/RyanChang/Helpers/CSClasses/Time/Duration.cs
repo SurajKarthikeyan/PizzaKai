@@ -47,7 +47,7 @@ public class Duration
 
         if (IsDone && resetIfDone)
         {
-            Reset();
+            ResetIfDone();
             return true;
         }
 
@@ -80,11 +80,11 @@ public class Duration
     /// </summary>
     /// <returns>True if <see cref="IsDone"/> was true when the function was
     /// ran. False otherwise.</returns>
-    public bool Reset()
+    public bool ResetIfDone()
     {
         if (IsDone)
         {
-            Clear();
+            Reset();
             return true;
         }
 
@@ -95,7 +95,7 @@ public class Duration
     /// Resets the value of <see cref="elapsed"/> to zero, regardless of whether
     /// or not the timer is done.
     /// </summary>
-    public void Clear() => elapsed = 0;
+    public void Reset() => elapsed = 0;
 
     /// <summary>
     /// Sets the value of <see cref="elapsed"/> to <see cref="maxTime"/>, if the

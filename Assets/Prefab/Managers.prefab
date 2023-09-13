@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90304616028005885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.395298, y: 32.99, z: -0.07022524}
+  m_LocalPosition: {x: 18.395298, y: 32.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6530172311146704495}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7784499906894257050
 MonoBehaviour:
@@ -109,6 +109,8 @@ MonoBehaviour:
             traversability: 0
       tilemapName: '[None]'
       tilemapID: -1
+    adjacent:
+      keyValuePairs: []
     heuristic: 0
     sectionIDSerialized: 00000000-0000-0000-0000-000000000000
 --- !u!1 &273376947848292268
@@ -1067,7 +1069,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 641946367239505754}
   - {fileID: 724326791692406145}
   - {fileID: 4224618791517262811}
   m_Father: {fileID: 7991122063614555219}
@@ -1089,7 +1090,7 @@ MonoBehaviour:
   endMarker: {fileID: 4224618791517262811}
   visualizer:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
-    traceContainer: {fileID: 641946367239505754}
+    middleContainer: {fileID: 0}
 --- !u!1 &4256989117803116783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,12 +1306,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4804208627070533326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 124.54, y: 5.71, z: -0.32877928}
+  m_LocalPosition: {x: 124.54, y: 5.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6530172311146704495}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4430163670436545165
 MonoBehaviour:
@@ -1389,6 +1390,8 @@ MonoBehaviour:
             traversability: 0
       tilemapName: '[None]'
       tilemapID: -1
+    adjacent:
+      keyValuePairs: []
     heuristic: 0
     sectionIDSerialized: 00000000-0000-0000-0000-000000000000
 --- !u!1 &4850785513823333467
@@ -1517,37 +1520,6 @@ MonoBehaviour:
   onCameraShake:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &5261991092239272410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 641946367239505754}
-  m_Layer: 0
-  m_Name: Traces Container
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &641946367239505754
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5261991092239272410}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6530172311146704495}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5292082377900197977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1770,7 @@ GameObject:
   - component: {fileID: 2465597817352902440}
   m_Layer: 0
   m_Name: Traces Container
-  m_TagString: Untagged
+  m_TagString: TraceContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1814,7 +1786,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7424314148657093920}
   m_Father: {fileID: 7991122063614555219}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2473,7 +2446,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   visualizer:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
-    traceContainer: {fileID: 2465597817352902440}
+    middleContainer: {fileID: 7424314148657093920}
   tilemaps:
   - {fileID: 0}
   - {fileID: 0}
@@ -2620,6 +2593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc1e74b99929b5e5bf190f4ebd530b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformColliders: []
 --- !u!1 &8642312558735607411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +2770,37 @@ MonoBehaviour:
   canJumpLayers:
     serializedVersion: 2
     m_Bits: 328
+--- !u!1 &9159598778839065561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7424314148657093920}
+  m_Layer: 0
+  m_Name: Pathfinding Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7424314148657093920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159598778839065561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2465597817352902440}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9196742206444863517
 GameObject:
   m_ObjectHideFlags: 0

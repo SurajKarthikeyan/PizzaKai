@@ -39,7 +39,8 @@ public class PathfiningTesting : MonoBehaviour
         Grid grid = PathfindingManager.Instance.grid;
         visualizer.Trace(
             path,
-            (vertex) => vertex.Value + grid.GetCellCenterWorld(Vector3Int.zero)
+            (vertex) => vertex.Value + grid.GetCellCenterWorld(Vector3Int.zero),
+            $"Pathfinding Testing {gameObject.name}"
         );
     }
     #endregion

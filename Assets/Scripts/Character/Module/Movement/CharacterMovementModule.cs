@@ -173,7 +173,7 @@ public class CharacterMovementModule : Module
             // character to move.
             force.x = inputtedMovement.x * moveAcceleration.x;
         }
-        
+
         if (compare.y < maxMoveSpeed.y)
         {
             // Ditto for max vertical speed.
@@ -213,13 +213,13 @@ public class CharacterMovementModule : Module
 
             groundedStatus = GroundedStatus.AirbornFromJump;
 
-            coyoteTimer.Clear();
-            jumpCooldown.Clear();
+            coyoteTimer.Reset();
+            jumpCooldown.Reset();
         }
         else if (TouchingGround)
         {
             groundedStatus = GroundedStatus.Grounded;
-            coyoteTimer.Clear();
+            coyoteTimer.Reset();
         }
         else if (groundedStatus != GroundedStatus.AirbornFromJump)
         {

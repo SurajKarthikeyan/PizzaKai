@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -23,7 +25,17 @@ public class EnemyControlModule : Module
 
     // public Arc sightline = new(-160, 160, 10);
 
+    [Tooltip("How long to wait before recomputing the path " +
+        "(after arrival at target)?")]
+    [SerializeField]
+    private Range pathRecomputationDelay = new(2, 5);
+
+    [Tooltip("Delay for recalculating the movement vectors.")]
+    [SerializeField]
+    private Range targetTokenRefreshDelay = new(0.5f, 2);
+
     private Transform currentTarget;
+    private IEnumerator tokenRefreshCR;
     #endregion
 
     #region Property
@@ -74,6 +86,25 @@ public class EnemyControlModule : Module
         movement.inputtedMovement = heading;
         movement.inputtedJump = heading.y > 0;
         Master.SetLookAngle(Mathf.Atan2(heading.y, heading.x));
+    }
+
+    public void ArrivedAtDestination()
+    {
+        StartCoroutine(AnotherTarget_CR());
+    }
+    #endregion
+
+    #region Helpers
+    private IEnumerator AnotherTarget_CR()
+    {
+        do
+        {
+            yield return new WaitForSeconds(pathRecomputationDelay.Evaluate());
+        } while (transform.position.TaxicabDistance(CurrentTarget.position) < 2);
+
+        pathAgent.SetTarget(
+            currentTarget
+        );
     }
     #endregion
 

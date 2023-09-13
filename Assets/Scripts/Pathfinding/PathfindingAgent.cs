@@ -52,13 +52,16 @@ public class PathfindingAgent : MonoBehaviour
     [SerializeField]
     private float aiUpdateRate = 2f;
 
+    [Tooltip("After how long after arriving at the previous node is this " +
+        "agent considered stuck?")]
+    private Duration stuckTimer = new(8);
+
     [Header("Debug")]
     [SerializeField]
     private TargetToken nextToken;
 
     private Coroutine navigationCR;
     private Coroutine checkTargetDistanceCR;
-
     #endregion
 
     #region Properties
@@ -83,6 +86,7 @@ public class PathfindingAgent : MonoBehaviour
     public Vector3Int GridPosition => PathfindingManager.Instance
         .WorldToCell(WorldPosition);
 
+    public Vertex<Vector3Int> NextNode { get; private set; }
     #endregion
 
     #region MonoBehavior Functions
@@ -101,18 +105,14 @@ public class PathfindingAgent : MonoBehaviour
         PathAgentManager.Instance.ActiveAgents.Remove(this);
     }
 
-    private void Start()
+    private void Update()
     {
-        // // For testing
-        // transform.position = RandomSpawnPosition();
-        // var poiInst = poiReference.InstantiateComponent();
-        // poiInst.transform.parent = transform;
-        // poiInst.transform.position = transform.position;
-        // poiInst.color = Color.green;
+        if (State == NavigationState.NavigatingToDestination)
+        {
+            stuckTimer.IncrementUpdate(false);
 
-        // SetTarget(
-        //     RandomSpawnGrid()
-        // );
+            print($"{GridPosition} | {NextNode} | {GridPosition == NextNode.id}");
+        }
     }
 
     private Vector3 RandomSpawnPosition()
@@ -141,6 +141,8 @@ public class PathfindingAgent : MonoBehaviour
         // desirable.
         if (State != NavigationState.Idle)
             StopCurrentNavigation();
+
+        stuckTimer.Reset();
 
         State = NavigationState.WaitingForPath;
 
@@ -181,10 +183,11 @@ public class PathfindingAgent : MonoBehaviour
         if (enabled)
         {
             CurrentPath = path;
-            // visualizer.Trace(
-            //     CurrentPath,
-            //     (vector) => PathfindingManager.Instance.CellToWorld(vector.Value)
-            // );
+            visualizer.Trace(
+                CurrentPath,
+                (vector) => PathfindingManager.Instance.CellToWorld(vector.Value),
+                $"Agent {gameObject.name}"
+            );
             navigationCR = StartCoroutine(Navigation_CR(token));
         }
         else
@@ -195,19 +198,37 @@ public class PathfindingAgent : MonoBehaviour
     {
         State = NavigationState.NavigatingToDestination;
         checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
-        var next = CurrentPath.Start;
+        NextNode = CurrentPath.Start;
 
-        while (next != CurrentPath.End)
+        while (NextNode != CurrentPath.End)
         {
-            next = CurrentPath.Next(next);
-            nextToken = new(next.Value);
+            NextNode = CurrentPath.Next(NextNode);
+            nextToken = new(NextNode.Value);
             enemyControl.AcceptToken(nextToken);
 
-            yield return new WaitUntil(() => GridPosition == next.Value);
+            int cnt = 0;
+            while (!CheckAlongPath())
+            {
+                cnt++;
+                float waitTime = Mathf.Min(
+                    aiUpdateRate,
+                    cnt * Time.deltaTime
+                );
+
+                yield return new WaitForSecondsRealtime(waitTime);
+            }
+
+            print($"Arrived at {NextNode}");
+            stuckTimer.Reset();
+            StopCoroutine(checkTargetDistanceCR);
+            checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         }
 
+        NextNode = null;
         State = NavigationState.ArrivedAtDestination;
+        enemyControl.ArrivedAtDestination();
         visualizer.Clear();
+        StopCoroutine(checkTargetDistanceCR);
     }
 
     private IEnumerator CheckTargetDistance_CR(TargetToken token)
@@ -225,7 +246,8 @@ public class PathfindingAgent : MonoBehaviour
             // same time.
             yield return new WaitForSecondsRealtime(aiUpdateRate);
 
-            if (Vector3.Distance(originalTargetPosition, token.Target) > 1)
+            if (Vector3.Distance(originalTargetPosition, token.Target) > 1 ||
+                stuckTimer.IsDone)
             {
                 // Restart navigation.
                 if (enemyControl.CurrentTarget)
@@ -234,7 +256,32 @@ public class PathfindingAgent : MonoBehaviour
                     SetTarget(enemyControl.CurrentTarget);
                 }
             }
+            else
+            {
+                // Resend the token again.
+                enemyControl.AcceptToken(token);
+            }
         }
+    }
+
+    /// <summary>
+    /// Check if we've arrived at a later node down the path.
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckAlongPath()
+    {
+        var currentGridPos = GridPosition;
+        foreach (var node in CurrentPath.GetVertices(NextNode))
+        {
+            if (node.id == currentGridPos)
+            {
+                // Found the node we need to be on.
+                NextNode = node;
+                return true;
+            }
+        }
+
+        return false;
     }
     #endregion
 }

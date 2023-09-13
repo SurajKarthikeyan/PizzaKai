@@ -187,7 +187,7 @@ public class WeaponModule : Module, IWeapon
 
         if (canFire)
         {
-            firingDelay.Reset();
+            firingDelay.ResetIfDone();
 
             InputState = InputState switch
             {
@@ -268,7 +268,7 @@ public class WeaponModule : Module, IWeapon
 
             if (InputState == WeaponInputState.Reloading)
             {
-                reloadDelay.Reset();
+                reloadDelay.ResetIfDone();
                 currentAmmo = ammoCount;
             }
         }
