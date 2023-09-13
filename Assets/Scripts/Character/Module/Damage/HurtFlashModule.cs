@@ -18,6 +18,7 @@ public class HurtFlashModule : Module
         this.RequireComponent(out spriteRenderer);
         originalColor = spriteRenderer.color;
         Master.onCharacterHurtEvent.AddListener((_) => DoHurt());
+        Master.onCharacterDeathEvent.AddListener(ResetColor);
     }
 
     public void DoHurt()
@@ -29,6 +30,16 @@ public class HurtFlashModule : Module
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(GameManager.Instance.damageTickRate / 2);
+        spriteRenderer.color = originalColor;
+    }
+
+    /// <summary>
+    /// Resets <see cref="spriteRenderer"/> color to <see cref="originalColor"/>
+    /// in preparation for destruction.
+    /// </summary>
+    private void ResetColor()
+    {
+        StopAllCoroutines();
         spriteRenderer.color = originalColor;
     }
     #endregion

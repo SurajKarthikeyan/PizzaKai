@@ -28,6 +28,8 @@ public class BreadstickDeathModule : DeathModule
     [Tooltip("How much force is the child bread sticks subjected to? " +
         "Independent of mass.")]
     public float ejectionForce;
+
+    private const float SIZE_CHANGE = 0.75f;
     #endregion
 
     protected override void OnDeath()
@@ -44,11 +46,11 @@ public class BreadstickDeathModule : DeathModule
                 breadInst.transform.MatchOther(transform);
 
                 breadInst.RequireComponentInChildren(out BreadstickDeathModule breb);
-                breb.Master.maxHP = Mathf.CeilToInt(Master.maxHP / 2f);
+                breb.Master.maxHP = Mathf.CeilToInt(Master.maxHP * SIZE_CHANGE);
                 breb.size = size - 1;
                 breb.pastSplits = pastSplits + 1;
                 // breb.Master.r2d.mass = Master.r2d.mass / 2f;
-                breb.Master.transform.localScale = Master.transform.localScale / 2f;
+                breb.Master.transform.localScale = Master.transform.localScale * SIZE_CHANGE;
 
                 // Now add force.
                 force = force.RotateVector2(deltaTheta);
