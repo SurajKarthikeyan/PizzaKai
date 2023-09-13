@@ -153,28 +153,28 @@ public class CharacterMovementModule : Module
             !inputtedMovement.y.Approx(0) && inputtedMovement.y < 0
         );
 
+        // Cap negative downwards movement at 0.
+        inputtedMovement.y = Mathf.Max(0, inputtedMovement.y);
+
         // Now to calculate movement. First get the speed the character is
         // moving at and compare it to the maximal speed.
-        Vector2 speed = Master.r2d.velocity;
-
-        // Used to make the comparison.
-        Vector2 compare = speed.Abs();
+        Vector2 velocity = Master.r2d.velocity;
 
         Vector2 force = new();
 
-        if (inputtedMovement.x.Approx(0) && !speed.x.Approx(0))
+        if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0))
         {
             // Apply a backwards force to stop the player.
-            force.x = -speed.x * Mathf.Clamp01(moveAcceleration.x);
+            force.x = -velocity.x * Mathf.Clamp01(moveAcceleration.x);
         }
-        else if (compare.x < maxMoveSpeed.x)
+        else if (CanMoveInDirection(inputtedMovement.x, velocity.x, maxMoveSpeed.x))
         {
             // The horizontal speed is less than the max horizontal speed. Allow
             // character to move.
             force.x = inputtedMovement.x * moveAcceleration.x;
         }
 
-        if (compare.y < maxMoveSpeed.y)
+        if (CanMoveInDirection(inputtedMovement.y, velocity.y, maxMoveSpeed.y))
         {
             // Ditto for max vertical speed.
             force.y = inputtedMovement.y * moveAcceleration.y;
@@ -189,7 +189,7 @@ public class CharacterMovementModule : Module
         // Walk animation.
         if (characterAnimator)
         {
-            Vector2 paramVal = positiveAnimParamOnly ? speed.Abs() : speed;
+            Vector2 paramVal = positiveAnimParamOnly ? velocity.Abs() : velocity;
             if (!string.IsNullOrWhiteSpace(animParamSpeedX))
             {
                 characterAnimator.SetFloat(animParamSpeedX, paramVal.x);
@@ -283,7 +283,19 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            (TouchingGround);
+            TouchingGround;
+    }
+
+    private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
+    {
+        if (input.Sign() != velocity.Sign())
+        {
+            // Try to slow down. Always allow this.
+            return true;
+        }
+
+        // Check if moving slower than max speed.
+        return Mathf.Abs(velocity) < maxSpeed;
     }
     #endregion
     #endregion
