@@ -121,7 +121,7 @@ public class PathfindingAgent : MonoBehaviour
     /// <inheritdoc cref="SetTarget(TargetToken, int)"/>
     public void SetTarget(TargetToken target)
     {
-        SetTarget(target, 9);
+        SetTarget(target, 0);
     }
 
     /// <summary>
@@ -130,9 +130,9 @@ public class PathfindingAgent : MonoBehaviour
     /// first.
     /// </summary>
     /// <param name="target">Where to navigate this agent.</param>
-    /// <param name="recoverAttemptsLeft">On caught exception, how many times do
-    /// we try restarting the navigation before we give up?</param>
-    public void SetTarget(TargetToken target, int recoverAttemptsLeft)
+    /// <param name="recoverAttempts">On caught exception, how many times
+    /// have we tried restarting?</param>
+    public void SetTarget(TargetToken target, int recoverAttempts)
     {
         // Requesting a new path while one is already being generated may not be
         // desirable.
@@ -145,7 +145,7 @@ public class PathfindingAgent : MonoBehaviour
 
         if (target.GridTarget == GridPosition)
         {
-            // We've already arrived. This avoid a StartIsEndVertexException.
+            // We've already arrived. This avoids a StartIsEndVertexException.
             ArrivedAtDestination();
             return;
         }
@@ -154,20 +154,27 @@ public class PathfindingAgent : MonoBehaviour
         {
             PathAgentManager.Instance.Schedule(this, target);
         }
-        catch (System.Exception e)
+        catch (PathfindingException e)
         {
             Debug.LogError(e);
             print("Attempting to recover");
 
-            StartCoroutine(RecoverFromError_CR(target, recoverAttemptsLeft));
+            StartCoroutine(RecoverFromError_CR(target, recoverAttempts));
         }
     }
 
     private IEnumerator RecoverFromError_CR(TargetToken token,
-        int recoverAttemptsLeft)
+        int recoverAttempts)
     {
-        yield return new WaitForSeconds(10f);
-        SetTarget(token);
+        if (recoverAttempts > 0)
+        {
+            yield return new WaitForSeconds(recoverAttempts);
+            SetTarget(token);
+        }
+        else
+        {
+            Debug.LogError("Unable to recover. Used up all recover attempts.");
+        }
     }
 
     /// <inheritdoc cref="SetTarget(TargetToken)"/>
