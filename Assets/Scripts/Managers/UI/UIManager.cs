@@ -49,7 +49,10 @@ public class UIManager : MonoBehaviour
     [Tooltip("Script containing UI relevant player information")]
     public Character player;
 
-    [Tooltip("Weapon master module to use for UI")]
+    [Tooltip("Player controller to use with the AI.")]
+    public PlayerControlModule playerController;
+
+    [Tooltip("Weapon master module to use for UI.")]
     public WeaponMasterModule weaponMaster;
     #endregion
 
@@ -68,6 +71,11 @@ public class UIManager : MonoBehaviour
         if (!weaponMaster)
         {
             player.RequireComponentInChildren(out weaponMaster);
+        }
+
+        if (!playerController)
+        {
+            player.RequireComponentInChildren(out playerController);
         }
     }
 
@@ -93,7 +101,8 @@ public class UIManager : MonoBehaviour
             altSlider.value = weap.Alt.firingDelay.Percent;
         }
 
-        // Dash recharge.
+        // // Dash recharge.
+        // playerController
     }
     #endregion
 
