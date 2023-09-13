@@ -45,9 +45,18 @@ public class PlayerControlModule : Module
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
         );
-        movementController.inputtedMovement.Normalize();
 
         movementController.inputtedJump = Input.GetButton("Jump");
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movementController.inputtedDash =
+                movementController.inputtedMovement;
+        }
+        else
+        {
+            movementController.inputtedDash = Vector2.zero;
+        }
     }
     #endregion
 }

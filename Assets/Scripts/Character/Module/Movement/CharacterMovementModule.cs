@@ -33,6 +33,12 @@ public class CharacterMovementModule : Module
         /// </summary>
         AirbornFromFall
     }
+
+    public enum MovementStatus
+    {
+        Normal,
+        Dashing
+    }
     #endregion
 
     #region Variables
@@ -58,6 +64,15 @@ public class CharacterMovementModule : Module
     [Tooltip("How long after leaving the ground is this character still " +
         "considered to be grounded?")]
     public Duration coyoteTimer = new(0.5f);
+
+    [Tooltip("Speed of dashing.")]
+    public float dashSpeed = 20;
+
+    [Tooltip("The cooldown for dashing.")]
+    public Duration dashCooldown = new(2);
+
+    [Tooltip("The duration of dashing.")]
+    public Duration dashTimer = new(0.2f);
 
     [Tooltip("The collider responsible for checking if the character is " +
         "grounded.")]
@@ -92,14 +107,17 @@ public class CharacterMovementModule : Module
     [Header("Inputs")]
     [Tooltip("The inputted movement of this character. The x component " +
         "controls the horizontal movement and the vertical component " +
-        "controls the vertical movement. All components are clamped " +
-        "between -1 and 1.")]
+        "controls the vertical movement. Will be normalized.")]
     [ReadOnly]
     public Vector2 inputtedMovement;
 
     [Tooltip("If true, the input to jump has been pressed.")]
     [ReadOnly]
     public bool inputtedJump;
+
+    [Tooltip("The inputted dash. Will be normalized.")]
+    [ReadOnly]
+    public Vector2 inputtedDash;
 
     [Header("Grounded Checks")]
     [ReadOnly]
@@ -112,6 +130,11 @@ public class CharacterMovementModule : Module
 
     [ReadOnly]
     public GroundedStatus groundedStatus;
+
+    [ReadOnly]
+    public MovementStatus movementStatus;
+
+    private Vector2 lockedDashInput;
     #endregion
     #endregion
 
@@ -131,6 +154,8 @@ public class CharacterMovementModule : Module
     #region Instantiation
     private void Start()
     {
+        dashTimer.Finish();
+
         // Make sure max speed is positive.
         maxMoveSpeed = maxMoveSpeed.Abs();
 
@@ -146,20 +171,33 @@ public class CharacterMovementModule : Module
     #region Main Loop
     private void FixedUpdate()
     {
-        // Here we move the character. First, toggle collisions with one-way
-        // platforms if down is pressed.
+        // Set up variables first.
+        inputtedMovement.Normalize();
+        Vector2 velocity = Master.r2d.velocity;
+
+        UpdateOWPCollision();
+        UpdateWalk(velocity);
+        UpdateDash();
+        UpdateJumping();
+    }
+
+    #region One Way Collision
+    /// <summary>
+    /// Update One Way Platform Collision.
+    /// </summary>
+    private void UpdateOWPCollision()
+    {
+        // Toggle collisions with one-way platforms if down is pressed.
         LayersManager.Instance.IgnoreCollisionsWithPlatforms(
             Master.c2d,
             !inputtedMovement.y.Approx(0) && inputtedMovement.y < 0
         );
+    }
+    #endregion
 
-        // // Cap negative downwards movement at 0.
-        // inputtedMovement.y = Mathf.Max(0, inputtedMovement.y);
-
-        // Now to calculate movement. First get the speed the character is
-        // moving at and compare it to the maximal speed.
-        Vector2 velocity = Master.r2d.velocity;
-
+    #region Walk
+    private void UpdateWalk(Vector2 velocity)
+    {
         Vector2 force = new();
 
         if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0))
@@ -186,6 +224,12 @@ public class CharacterMovementModule : Module
         // character.
         Master.r2d.AddForce(force);
 
+        // Handle animations.
+        UpdateWalkAnim(velocity);
+    }
+
+    private void UpdateWalkAnim(Vector2 velocity)
+    {
         // Walk animation.
         if (characterAnimator)
         {
@@ -200,7 +244,12 @@ public class CharacterMovementModule : Module
                 characterAnimator.SetFloat(animParamSpeedY, paramVal.y);
             }
         }
+    }
+    #endregion
 
+    #region Jumping
+    private void UpdateJumping()
+    {
         // Handle jumping.
         jumpCooldown.IncrementFixedUpdate(false);
         coyoteTimer.IncrementFixedUpdate(false);
@@ -226,6 +275,12 @@ public class CharacterMovementModule : Module
             groundedStatus = GroundedStatus.AirbornFromFall;
         }
 
+        // Handle animation.
+        UpdateJumpAnim();
+    }
+
+    private void UpdateJumpAnim()
+    {
         // Jump animation.
         if (!string.IsNullOrWhiteSpace(animParamJump) && characterAnimator)
         {
@@ -233,50 +288,48 @@ public class CharacterMovementModule : Module
                 groundedStatus == GroundedStatus.AirbornFromJump);
         }
     }
+    #endregion
 
-    public void Dodge()
+    #region Dash
+    private void UpdateDash()
     {
-        //Can be done using durations
-        //{
-        //    //since this gets called when the player is dodging, canDodge is now false and isDodging is now true
-        //    canDodge = false;
-        //    isDodging = true;
-        //    invulnerable = true;
+        dashCooldown.IncrementFixedUpdate(false);
 
-        //    //enemy layer
-        //    gameObject.layer = 10;
-        //    StartCoroutine(UIScript.DashFill());
-        //    //saves gravity value before we change it
+        if (movementStatus == MovementStatus.Dashing)
+        {
+            if (dashTimer.IncrementFixedUpdate(false))
+            {
+                // We are dashing.
+                Master.r2d.velocity = lockedDashInput * dashSpeed;
+                return;
+            }
+            else
+            {
+                // Is dash time done? (do NOT reset DashTimer)
+                Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+                movementStatus = MovementStatus.Normal;
+            }
+        }
 
-        //    //makes it so the player does not fall during dodge
-        //    rigid.gravityScale = 0f;
-        //    //dodge in the direction the character is facing
-        //    if (Input.GetKey(KeyCode.D))
-        //    {
-        //        rigid.velocity = new Vector2(dodgeForce, 0f);
-        //    }
-        //    else
-        //    {
-        //        rigid.velocity = new Vector2(-dodgeForce, 0f);
-        //    }
+        if (!inputtedDash.ApproxZero() && dashCooldown.IsDone)
+        {
+            // Do dash here.
+            dashCooldown.Reset();
+            inputtedDash.Normalize();
 
-        //    //there is no trail renderer attached right now, but if one is attached it will emit while dodging
-        //    trail.emitting = true;
+            // Now do dash.
+            dashTimer.Reset();
+            lockedDashInput = inputtedDash;
+            movementStatus = MovementStatus.Dashing;
 
-        //    yield return new WaitForSeconds(dodgeTime);
-        //    //turns trail off when dodging stops
-        //    trail.emitting = false;
-        //    //sets gravity back to OG setting
-        //    rigid.gravityScale = originalGravity;
-        //    isDodging = false;
-        //    invulnerable = false;
-        //    //player layer
-        //    gameObject.layer = 7;
-        //    yield return new WaitForSeconds(dodgeCoolDown);
-        //    canDodge = true;
-        //}
+            // Switch to a kinematic collider so the player is forced in one
+            // direction. Also shoves all enemies out of the way.
+            Master.r2d.bodyType = RigidbodyType2D.Kinematic;
+            Master.r2d.velocity = inputtedDash * dashSpeed;
+        }
     }
 
+    #endregion
     #endregion
 
     #region Helper Methods

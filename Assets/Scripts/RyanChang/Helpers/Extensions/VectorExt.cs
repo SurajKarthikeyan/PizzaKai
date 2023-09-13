@@ -57,10 +57,14 @@ public static class VectorExt
     /// </summary>
     /// <param name="v">The Vector3 to convert.</param>
     /// <returns>The converted Vector3Int.</returns>
-    public static Vector3Int ToVector3Int(this Vector3 v)
+    public static Vector3Int ToVector3Int(this Vector3 v,
+        NumericalExt.RoundMode mode = NumericalExt.RoundMode.NearestInt)
     {
-        return new(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y),
-            Mathf.RoundToInt(v.z));
+        return new(
+            v.x.Round(mode),
+            v.y.Round(mode),
+            v.z.Round(mode)
+        );
     }
 
     /// <summary>
@@ -68,9 +72,13 @@ public static class VectorExt
     /// </summary>
     /// <param name="v">The Vector2 to convert.</param>
     /// <returns>The converted Vector2Int.</returns>
-    public static Vector2Int ToVector2Int(this Vector2 v)
+    public static Vector2Int ToVector2Int(this Vector2 v,
+    NumericalExt.RoundMode mode = NumericalExt.RoundMode.NearestInt)
     {
-        return new(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y));
+        return new(
+            v.x.Round(mode),
+            v.y.Round(mode)
+        );
     }
 
     /// <summary>
@@ -200,7 +208,7 @@ public static class VectorExt
     {
         return Mathf.Min(v.x, v.y, v.z);
     }
-    
+
     /// <summary>
     /// Returns a vector that is the minimum component of all other vectors.
     /// </summary>
@@ -284,7 +292,7 @@ public static class VectorExt
     {
         return Mathf.Max(v.x, v.y, v.z);
     }
-    
+
     /// <summary>
     /// Returns a vector that is the maximum component of all other vectors.
     /// </summary>

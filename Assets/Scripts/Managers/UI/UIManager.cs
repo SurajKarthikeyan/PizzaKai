@@ -96,13 +96,17 @@ public class UIManager : MonoBehaviour
             // Update graphics. Primary ammo first.
             ammoUI.sprite = weap.Primary.ammoGraphic;
             ammoCount.text = $"{weap.Primary.currentAmmo}/{weap.Primary.ammoCount}";
-    
+
             // Alt recharge.
-            altSlider.value = weap.Alt.firingDelay.Percent;
+            altSlider.wholeNumbers = true;
+            altSlider.maxValue = weap.Alt.firingDelay.maxTime;
+            altSlider.value = weap.Alt.firingDelay.elapsed;
         }
 
-        // // Dash recharge.
-        // playerController
+        // Dash recharge.
+        dashSlider.wholeNumbers = true;
+        dashSlider.maxValue = playerController.movementController.dashCooldown.maxTime;
+        dashSlider.value = playerController.movementController.dashCooldown.elapsed;
     }
     #endregion
 
