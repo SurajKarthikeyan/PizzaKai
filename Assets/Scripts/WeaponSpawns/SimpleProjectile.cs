@@ -7,6 +7,9 @@ public class SimpleProjectile : MaskedWeaponSpawn
     [Tooltip("Amount of damage to deal. This will be rounded to an int.")]
     public Range damage = new(14);
 
+    [Tooltip("Amount of knockback applied.")]
+    public Range knockback = new(1);
+
     [Tooltip("How fast does this projectile travel, in units per second.")]
     public Range speed = new(10);
 
@@ -104,7 +107,10 @@ public class SimpleProjectile : MaskedWeaponSpawn
                     if (collider.gameObject.HasComponent(out Character character))
                     {
                         // Deal damage.
-                        character.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
+                        character.TakeDamage(
+                            Mathf.RoundToInt(damage.Evaluate()),
+                            Forwards * knockback.Evaluate()
+                        );
                     }
 
                     if (currentRicochets < ricochets)

@@ -13,10 +13,23 @@ public class DamageArea : DamageSource
 {
     private void OnTriggerStay2D(Collider2D other)
     {
+        TryDoDamage(other);
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        TryDoDamage(other.collider);
+    }
+
+    private void TryDoDamage(Collider2D other)
+    {
         if (targetableLayers.ContainsLayer(other.gameObject.layer) &&
             other.HasComponent(out Character character))
         {
-            character.TakeDamage(damage);
+            character.TakeDamage(
+                damage,
+                RNGExt.OnCircle(1)
+            );
         }
     }
 }

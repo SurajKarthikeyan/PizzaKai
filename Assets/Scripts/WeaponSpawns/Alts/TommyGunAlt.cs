@@ -17,6 +17,9 @@ public class TommyGunAlt : MaskedWeaponSpawn
     [Tooltip("Damage this alt does.")]
     public int damage;
 
+    [Tooltip("Amount of knockback applied.")]
+    public float knockback = 1;
+
     [Tooltip("Radius of effect.")]
     public float radius = 10;
 
@@ -28,7 +31,7 @@ public class TommyGunAlt : MaskedWeaponSpawn
         {
             useLayerMask = true,
             layerMask = collisionMask
-        };        
+        };
 
         int hitCount = Physics2D.OverlapCircle(
             transform.position.ToVector2(),
@@ -45,7 +48,10 @@ public class TommyGunAlt : MaskedWeaponSpawn
             {
                 // It's fine to use GetComponent (which HasComponent calls)
                 // here, as we aren't calling it every frame.
-                character.TakeDamage(damage);
+                character.TakeDamage(
+                    damage,
+                    transform.position.InverseSquare(character.transform.position)
+                );
             }
         }
     }

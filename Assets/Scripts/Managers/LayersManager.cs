@@ -71,11 +71,11 @@ public class LayersManager : MonoBehaviour
             this.layer = layer;
         }
 
-        public DefinedLayer(string name)
-        {
-            this.name = name;
-            this.layer = -1;
-        }
+        // public DefinedLayer(string name)
+        // {
+        //     this.name = name;
+        //     this.layer = -1;
+        // }
 
         public DefinedLayer(int layer)
         {
@@ -134,33 +134,33 @@ public class LayersManager : MonoBehaviour
     #region Variables
     public static readonly DefinedLayer Invalid = new("[Invalid]", -1);
 
-    public static readonly DefinedLayer Default = new("Default");
+    public static readonly DefinedLayer Default = new("Default", 0);
 
-    public static readonly DefinedLayer TransparentFX = new("TransparentFX");
+    public static readonly DefinedLayer TransparentFX = new("TransparentFX", 1);
 
-    public static readonly DefinedLayer IgnoreRaycast = new("Ignore Raycast");
+    public static readonly DefinedLayer IgnoreRaycast = new("Ignore Raycast", 2);
 
-    public static readonly DefinedLayer Ground = new("Ground");
+    public static readonly DefinedLayer Ground = new("Ground", 3);
 
-    public static readonly DefinedLayer Water = new("Water");
+    public static readonly DefinedLayer Water = new("Water", 4);
 
-    public static readonly DefinedLayer UI = new("UI");
+    public static readonly DefinedLayer UI = new("UI", 5);
 
-    public static readonly DefinedLayer Platform = new("Platform");
+    public static readonly DefinedLayer Platform = new("Platform", 6);
 
-    public static readonly DefinedLayer Player = new("Player");
+    public static readonly DefinedLayer Player = new("Player", 7);
 
-    public static readonly DefinedLayer Box = new("Box");
+    public static readonly DefinedLayer Box = new("Box", 8);
 
-    public static readonly DefinedLayer EnemyProjectile = new("EnemyProjectile");
+    public static readonly DefinedLayer EnemyProjectile = new("EnemyProjectile", 9);
 
-    public static readonly DefinedLayer Enemy = new("Enemy");
+    public static readonly DefinedLayer Enemy = new("Enemy", 10);
 
-    public static readonly DefinedLayer Breadstick = new("Breadstick");
+    public static readonly DefinedLayer Breadstick = new("Breadstick", 11);
 
-    public static readonly DefinedLayer Boundary = new("Boundary");
+    public static readonly DefinedLayer Boundary = new("Boundary", 12);
 
-    public static readonly DefinedLayer Background = new("Background");
+    public static readonly DefinedLayer Background = new("Background", 13);
 
     public IEnumerable<Collider2D> platformColliders;
     #endregion
