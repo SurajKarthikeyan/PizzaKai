@@ -828,8 +828,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         else if (Count < 2)
             throw new PathfindingException("Cannot make graph with less than 2 vertices");
         else if (startID.Equals(endID))
-            throw new PathfindingException("Start and end vertices cannot " +
-                $"be the same value ({startID})");
+            throw new StartIsEndVertexException(startID, "Cannot build graph.");
 
         var endV = Vertices[endID];
         var startV = Vertices[startID];
@@ -881,10 +880,10 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             var currentID = currentV.id;
 
             if (!float.IsFinite(currentPQE.priority))
-                throw new DisjointGraphException("Graph disjoint detected.");
+                throw new RanOutOfVerticesException(currentID, endID);
 
             // Current cost of traversal, from startV to currentV.
-            float currentCostTotal = totalCosts[currentID];
+            float currentCostTotal;
 
             try
             {

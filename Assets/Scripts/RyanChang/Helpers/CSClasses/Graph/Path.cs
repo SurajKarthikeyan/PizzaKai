@@ -186,11 +186,11 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     {
         var next = from;
 
-        do
+        while (next != to)
         {
             yield return next;
             next = Next(next);
-        } while (next != to);
+        }
 
         yield return to;
     }

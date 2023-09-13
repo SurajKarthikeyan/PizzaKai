@@ -349,7 +349,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8271343615121380462}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
+  m_Material: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cca1267e3f0c3ea85b4e1d10509507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: {x: 10, y: 0}
-  moveAcceleration: {x: 1, y: 0}
+  maxMoveSpeed: {x: 20, y: 0}
+  moveAcceleration: {x: 80, y: 0}
   jumpForce: 5
   jumpCooldown:
     maxTime: 1
@@ -437,7 +437,8 @@ MonoBehaviour:
   maxJumpHeight: 4
   visualizer:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
-    traceContainer: {fileID: 721225356376175917}
+    middleContainer: {fileID: 0}
+  aiUpdateRate: 2
 --- !u!114 &3106762852846360976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +453,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 781715727454080735}
   pathAgent: {fileID: 6732848358386649181}
+  pathRecomputationDelay:
+    rangePattern: 1
+    singleValue: 3.5
+    scalarMin: 2
+    scalarMax: 5
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
+  targetTokenRefreshDelay:
+    rangePattern: 1
+    singleValue: 1.25
+    scalarMin: 0.5
+    scalarMax: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifer:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 0
+    fixedSelectionInInspector: 0
 --- !u!114 &1424864307832461346
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ public class PathfindingAgent : MonoBehaviour
 
     [Tooltip("After how long after arriving at the previous node is this " +
         "agent considered stuck?")]
+    [SerializeField]
     private Duration stuckTimer = new(8);
 
     [Header("Debug")]
@@ -111,31 +112,27 @@ public class PathfindingAgent : MonoBehaviour
         {
             stuckTimer.IncrementUpdate(false);
 
-            print($"{GridPosition} | {NextNode} | {GridPosition == NextNode.id}");
+            // print($"{GridPosition} | {NextNode} | {GridPosition == NextNode.id}");
         }
-    }
-
-    private Vector3 RandomSpawnPosition()
-    {
-        return PathfindingManager.Instance.CellToWorld(
-            RandomSpawnGrid()
-        );
-    }
-
-    private Vector3Int RandomSpawnGrid()
-    {
-        return PathfindingManager.Instance.CellBounds.RandomPointIn();
     }
     #endregion
 
     #region Navigation
+    /// <inheritdoc cref="SetTarget(TargetToken, int)"/>
+    public void SetTarget(TargetToken target)
+    {
+        SetTarget(target, 9);
+    }
+
     /// <summary>
     /// Requests that a path be generate from the agent's current position to
     /// <see cref="target"/>. If another request is pending, stop that request
     /// first.
     /// </summary>
     /// <param name="target">Where to navigate this agent.</param>
-    public void SetTarget(TargetToken target)
+    /// <param name="recoverAttemptsLeft">On caught exception, how many times do
+    /// we try restarting the navigation before we give up?</param>
+    public void SetTarget(TargetToken target, int recoverAttemptsLeft)
     {
         // Requesting a new path while one is already being generated may not be
         // desirable.
@@ -146,7 +143,31 @@ public class PathfindingAgent : MonoBehaviour
 
         State = NavigationState.WaitingForPath;
 
-        PathAgentManager.Instance.Schedule(this, target);
+        if (target.GridTarget == GridPosition)
+        {
+            // We've already arrived. This avoid a StartIsEndVertexException.
+            ArrivedAtDestination();
+            return;
+        }
+
+        try
+        {
+            PathAgentManager.Instance.Schedule(this, target);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError(e);
+            print("Attempting to recover");
+
+            StartCoroutine(RecoverFromError_CR(target, recoverAttemptsLeft));
+        }
+    }
+
+    private IEnumerator RecoverFromError_CR(TargetToken token,
+        int recoverAttemptsLeft)
+    {
+        yield return new WaitForSeconds(10f);
+        SetTarget(token);
     }
 
     /// <inheritdoc cref="SetTarget(TargetToken)"/>
@@ -200,6 +221,8 @@ public class PathfindingAgent : MonoBehaviour
 
     private IEnumerator Navigation_CR(TargetToken token)
     {
+        yield return new WaitUntil(() => enemyControl);
+
         State = NavigationState.NavigatingToDestination;
         checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         NextNode = CurrentPath.Start;
@@ -228,11 +251,21 @@ public class PathfindingAgent : MonoBehaviour
             checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         }
 
+        ArrivedAtDestination();
+    }
+
+    private void ArrivedAtDestination()
+    {
         NextNode = null;
         State = NavigationState.ArrivedAtDestination;
         enemyControl.ArrivedAtDestination();
         visualizer.Clear();
-        StopCoroutine(checkTargetDistanceCR);
+
+        if (checkTargetDistanceCR != null)
+        {
+            StopCoroutine(checkTargetDistanceCR);
+            checkTargetDistanceCR = null;
+        }
     }
 
     private IEnumerator CheckTargetDistance_CR(TargetToken token)
@@ -254,7 +287,11 @@ public class PathfindingAgent : MonoBehaviour
                 stuckTimer.IsDone)
             {
                 // Restart navigation.
-                if (enemyControl.CurrentTarget)
+                if (enemyControl.CurrentTarget &&
+                    !PathfindingManager.Instance.InSameCell(
+                        enemyControl.CurrentTarget.position,
+                        enemyControl.transform.position
+                    ))
                 {
                     print("Restarting nav");
                     SetTarget(enemyControl.CurrentTarget);

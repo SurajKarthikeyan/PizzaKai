@@ -128,8 +128,8 @@ public class WeaponMasterModule : Module
         Master.SetLookAngle(zRot);
 
         var scale = transform.localScale;
-        scale.x = Master.flipModule.Flipped;
-        scale.y = Master.flipModule.Flipped;
+        scale.x = Master.flipModule.FlipMultiplier;
+        scale.y = Master.flipModule.FlipMultiplier;
         transform.localScale = scale;
 
         Vector3 eulerAngles = new(

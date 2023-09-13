@@ -392,11 +392,17 @@ public class PathfindingManager : MonoBehaviour
     /// <inheritdoc cref="AStarSearch(Vector3, Vector3)"/>
     public Path<Vector3Int> AStarSearch(Vector3Int start, Vector3Int end)
     {
+        if (start == end)
+             throw new StartIsEndVertexException(start, "Cannot create graph");
+
         var startV = GetClosestNeighbor(start, Guid.Empty);
         var endV = GetClosestNeighbor(end, startV.sectionID);
 
-        string msg = $"Assert failed: {startV.sectionID}, {endV.sectionID}";
+        string msg = "Assert failed: " +
+            $"[{startV} section {startV.sectionID}], " +
+            $"[{endV} section {endV.sectionID}]";
 
+        Debug.Assert(startV != endV, msg);
         Debug.Assert(startV.sectionID != Guid.Empty, msg);
         Debug.Assert(endV.sectionID != Guid.Empty, msg);
         Debug.Assert(startV.sectionID == endV.sectionID, msg);
@@ -415,6 +421,28 @@ public class PathfindingManager : MonoBehaviour
     public Vector3Int WorldToCell(Vector3 worldPosition)
     {
         return grid.WorldToCell(worldPosition);
+    }
+
+    /// <summary>
+    /// Returns true if all <paramref name="vectors"/> lie on the same grid
+    /// cell.
+    /// </summary>
+    /// <param name="vectors"></param>
+    /// <returns></returns>
+    public bool InSameCell(params Vector3[] vectors)
+    {
+        if (vectors.Length < 2)
+            return true;
+
+        Vector3 og = vectors[0];
+
+        foreach (var vector in vectors.Skip(1))
+        {
+            if (og != vector)
+                return false;
+        }
+
+        return true;
     }
     #endregion
 

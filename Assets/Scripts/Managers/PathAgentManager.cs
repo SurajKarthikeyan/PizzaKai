@@ -58,6 +58,11 @@ public class PathAgentManager : MonoBehaviour
         ActiveAgents = new();
     }
 
+    #region Variables
+    [Tooltip("If true, then use multithreading. Disable this if you want " +
+        "to test pathfinding.")]
+    public bool useThreads = true;
+    #endregion
 
     #region Properties
     /// <summary>
@@ -93,25 +98,30 @@ public class PathAgentManager : MonoBehaviour
         TargetToken token, AgentThread thread)
     {
         Path<Vector3Int> path = null;
-        // Tasks are managed by C#'s ThreadPool, so you can create as many as
-        // you want (I think).
-        var task = Task.Run(() => thread.ThreadProcess(out path));
-
-        yield return new WaitUntil(() => task.IsCompleted);
-
-        if (!task.IsCompletedSuccessfully)
+        if (useThreads)
         {
-            throw task.Exception;
+            // Tasks are managed by C#'s ThreadPool, so you can create as many as
+            // you want (I think).
+            var task = Task.Run(() => thread.ThreadProcess(out path));
+    
+            yield return new WaitUntil(() => task.IsCompleted);
+    
+            if (!task.IsCompletedSuccessfully)
+            {
+                throw task.Exception;
+            }
+            else
+            {
+                agent.AcceptPath(path, token);
+            }
         }
         else
         {
+            // Test on main thread to better view errors n' such.
+            thread.ThreadProcess(out path);
             agent.AcceptPath(path, token);
+            yield return new WaitForEndOfFrame();
         }
-
-        // // Test on main thread to better view errors n' such.
-        // thread.ThreadProcess(out path);
-        // agent.AcceptPath(path, targetTransform);
-        // yield return new WaitForEndOfFrame();
     }
     #endregion
 }
