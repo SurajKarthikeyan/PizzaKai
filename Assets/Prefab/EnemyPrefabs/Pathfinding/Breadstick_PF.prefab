@@ -349,7 +349,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8271343615121380462}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
+  m_Material: {fileID: 6200000, guid: 4fb8915c3b0cf44ae9c543c8c0b5c813, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -439,6 +439,9 @@ MonoBehaviour:
     tracerData: {fileID: 3832268183459930522, guid: fcc2854d89e193beeb7380d4b5122961, type: 3}
     middleContainer: {fileID: 0}
   aiUpdateRate: 2
+  stuckTimer:
+    maxTime: 8
+    elapsed: 0
 --- !u!114 &3106762852846360976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScale: {x: 0, y: 0, z: 0}
   negate: 1
+  flipped: 0
 --- !u!114 &7221592686072740797
 MonoBehaviour:
   m_ObjectHideFlags: 0
