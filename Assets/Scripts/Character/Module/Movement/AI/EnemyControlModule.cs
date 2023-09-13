@@ -85,7 +85,9 @@ public class EnemyControlModule : Module
         var heading = token.GetHeading(transform.position).normalized;
         movement.inputtedMovement = heading;
         movement.inputtedJump = heading.y > 0;
-        Master.SetLookAngle(Mathf.Atan2(heading.y, heading.x));
+
+        if (!heading.x.Approx(0, 0.1f))
+            Master.SetLookAngle(heading.x > 0 ? 0 : 180);
     }
 
     public void ArrivedAtDestination()
