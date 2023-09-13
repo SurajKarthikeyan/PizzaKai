@@ -8,18 +8,18 @@ public class ExplosionManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> explosionsList;
 
-    private static ExplosionManager exManager;
+    private static ExplosionManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        exManager = this;
+        instance = this;
 
     }
 
     public static GameObject SelectExplosion(Vector2 spawnPoint)
     {
-        GameObject explosionChoice = exManager.explosionsList[Random.Range(0, exManager.explosionsList.Count)];
+        GameObject explosionChoice = instance.explosionsList[Random.Range(0, instance.explosionsList.Count)];
         explosionChoice.transform.position = spawnPoint;
         return explosionChoice;
     }
