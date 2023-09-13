@@ -153,8 +153,8 @@ public class CharacterMovementModule : Module
             !inputtedMovement.y.Approx(0) && inputtedMovement.y < 0
         );
 
-        // Cap negative downwards movement at 0.
-        inputtedMovement.y = Mathf.Max(0, inputtedMovement.y);
+        // // Cap negative downwards movement at 0.
+        // inputtedMovement.y = Mathf.Max(0, inputtedMovement.y);
 
         // Now to calculate movement. First get the speed the character is
         // moving at and compare it to the maximal speed.

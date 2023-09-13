@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 6469671622897192128}
   - component: {fileID: 9048956417405623910}
   - component: {fileID: 6730253625020552532}
+  - component: {fileID: 3164326940028143684}
   m_Layer: 0
   m_Name: OnDeath
   m_TagString: Untagged
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32143a7c91d3e451cb4f3ec1f2c52bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.1
+  delay: 0.2
 --- !u!114 &9048956417405623910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +159,24 @@ MonoBehaviour:
     - selection: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
       probability: 0.1
   maxForce: 2
+--- !u!114 &3164326940028143684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399829122827810351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f01cfcddd97ea6649c0fded734fe439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.1
+  breadstickPrefab: {fileID: 7221592686072740797}
+  size: 3
+  pastSplits: 0
+  stickSplit: 2
+  ejectionForce: 5
 --- !u!1 &5125792877056094674
 GameObject:
   m_ObjectHideFlags: 0
