@@ -21,8 +21,11 @@ public class Multishot : WeaponSpawn
             {
                 // Spawn shots.
                 var spawned = shot.toSpawn.InstantiateComponent();
+                spawned.transform.MatchOther(transform);
                 spawned.Fire(firedBy);
             }
         }
+
+        Destroy(gameObject);
     }
 }

@@ -56,12 +56,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
+      propertyPath: range.scalarMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
+      propertyPath: range.scalarMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
+      propertyPath: speed.scalarMin
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
       propertyPath: spread.scalarMax
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
       propertyPath: spread.scalarMin
-      value: -30
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
       propertyPath: range.singleValue
@@ -70,6 +82,14 @@ PrefabInstance:
     - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
       propertyPath: speed.singleValue
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
+      propertyPath: range.rangePattern
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295751152287849656, guid: 1438d267a832d5044a4c717032185539, type: 3}
+      propertyPath: speed.rangePattern
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1438d267a832d5044a4c717032185539, type: 3}

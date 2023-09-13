@@ -167,9 +167,13 @@ public class PathfindingAgent : MonoBehaviour
     /// </summary>
     public void StopCurrentNavigation()
     {
-        StopCoroutine(navigationCR);
-        StopCoroutine(checkTargetDistanceCR);
+        if (navigationCR != null)
+        {
+            StopCoroutine(navigationCR);
+            StopCoroutine(checkTargetDistanceCR);
+        }
         navigationCR = null;
+        checkTargetDistanceCR = null;
         State = NavigationState.Idle;
     }
 

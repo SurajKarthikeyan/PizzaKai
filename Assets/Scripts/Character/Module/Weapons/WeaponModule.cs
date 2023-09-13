@@ -32,11 +32,7 @@ public class WeaponModule : Module, IWeapon
         /// <summary>
         /// When the Reload input is provided to the weapon.
         /// </summary>
-        Reloading,
-        /// <summary>
-        /// When the alt fire input is provided to the weapon
-        /// </summary>
-        Alting
+        Reloading
     }
 
     #endregion
@@ -150,6 +146,13 @@ public class WeaponModule : Module, IWeapon
                     );
                 }
             }
+
+            switch (inputState)
+            {
+                case WeaponInputState.Idle:
+                    burstCount = 1;
+                    break;
+            }
         }
     }
 
@@ -180,6 +183,7 @@ public class WeaponModule : Module, IWeapon
         {
             if (reloadDelay.IncrementUpdate(true))
             {
+                currentAmmo = ammoCount;
                 InputState = WeaponInputState.Idle;
             }
         }
@@ -207,6 +211,15 @@ public class WeaponModule : Module, IWeapon
                 _ => WeaponInputState.FiringStart,
             };
 
+            if (InputState == WeaponInputState.FiringHeld && autofire)
+            {
+                burstCount++;
+            }
+            else
+            {
+                burstCount = 1;
+            }
+
             // Actually fire now.
             FireProjectile();
 
@@ -228,7 +241,12 @@ public class WeaponModule : Module, IWeapon
         return canFire;
     }
 
-    public void ResetBurst() => burstCount = 0;
+    public void ResetBurst()
+    {
+        if (InputState != WeaponInputState.Reloading &&
+            InputState != WeaponInputState.Idle)
+            InputState = WeaponInputState.Idle;
+    }
 
     /// <summary>
     /// Checks if the weapon can fire.
