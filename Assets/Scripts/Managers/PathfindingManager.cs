@@ -10,7 +10,7 @@ using static PathNode;
 using Vertex3Int = Vertex<UnityEngine.Vector3Int>;
 
 /// <summary>
-/// Manager script that handles the creation and maintenance of the navigation
+/// Manager aript that handles the creation and maintenance of the navigation
 /// graph.
 ///
 /// <br/>
@@ -424,10 +424,10 @@ public class PathfindingManager : MonoBehaviour
     /// <param name="selector">The function used to determine what vertices to
     /// select.</param>
     /// <returns></returns>
-    public IEnumerable<Vertex<Vector3Int>> FilterVertices(
-        Func<Vertex<Vector3Int>, bool> selector)
+    public IEnumerable<Vertex3Int> FilterVertices(
+        Func<Vertex3Int, bool> selector)
     {
-        List<Vertex<Vector3Int>> output = new();
+        List<Vertex3Int> output = new();
 
         foreach (var key in Pathfinding.Keys)
         {
@@ -471,6 +471,7 @@ public class PathfindingManager : MonoBehaviour
                 );
         }
 
+        // Old, better performing code. Use again once it works.
         // // First see if position contains what we are looking for.
         // if (Pathfinding.TryGetVertex(position, out var vertex) &&
         //     (section == Guid.Empty || section == vertex.sectionID))

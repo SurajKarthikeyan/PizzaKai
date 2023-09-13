@@ -48,12 +48,17 @@ public class PathfindingAgent : MonoBehaviour
     [SerializeField]
     private Tracer<Vector3Int> visualizer;
 
+    [Tooltip("How often to check for navigation updates?")]
+    [SerializeField]
+    private float aiUpdateRate = 2f;
+
     [Header("Debug")]
     [SerializeField]
     private TargetToken nextToken;
 
     private Coroutine navigationCR;
     private Coroutine checkTargetDistanceCR;
+
     #endregion
 
     #region Properties
@@ -161,6 +166,7 @@ public class PathfindingAgent : MonoBehaviour
     public void StopCurrentNavigation()
     {
         StopCoroutine(navigationCR);
+        StopCoroutine(checkTargetDistanceCR);
         navigationCR = null;
         State = NavigationState.Idle;
     }
@@ -175,10 +181,10 @@ public class PathfindingAgent : MonoBehaviour
         if (enabled)
         {
             CurrentPath = path;
-            visualizer.Trace(
-                CurrentPath,
-                (vector) => PathfindingManager.Instance.CellToWorld(vector.Value)
-            );
+            // visualizer.Trace(
+            //     CurrentPath,
+            //     (vector) => PathfindingManager.Instance.CellToWorld(vector.Value)
+            // );
             navigationCR = StartCoroutine(Navigation_CR(token));
         }
         else
@@ -207,13 +213,26 @@ public class PathfindingAgent : MonoBehaviour
     private IEnumerator CheckTargetDistance_CR(TargetToken token)
     {
         Vector3 originalTargetPosition = token.Target;
-        while (navigationCR != null)
+
+        // Makes sure the updates are staggered, rather than occurring all at
+        // once.
+        Range updateOffset = new(-aiUpdateRate, aiUpdateRate);
+        yield return new WaitForSecondsRealtime(updateOffset.Evaluate());
+
+        while (enabled)
         {
-            yield return new WaitForSecondsRealtime(0.5f);
-    
+            // Would want to batch this somehow so this doesn't all run at the
+            // same time.
+            yield return new WaitForSecondsRealtime(aiUpdateRate);
+
             if (Vector3.Distance(originalTargetPosition, token.Target) > 1)
             {
                 // Restart navigation.
+                if (enemyControl.CurrentTarget)
+                {
+                    print("Restarting nav");
+                    SetTarget(enemyControl.CurrentTarget);
+                }
             }
         }
     }

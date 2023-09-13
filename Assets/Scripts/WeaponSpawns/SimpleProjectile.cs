@@ -36,6 +36,8 @@ public class SimpleProjectile : MaskedWeaponSpawn
 
     private float deltaDistance = 0;
 
+    private Duration lifetime;
+
     private float maxLifetime;
 
     private float currentLifetime;
@@ -55,8 +57,7 @@ public class SimpleProjectile : MaskedWeaponSpawn
         transform.Rotate(new Vector3(0, 0, actualSpread));
 
         // Calculate lifetime;
-        maxLifetime = range.Select() / speed.Select();
-        currentLifetime = 0;
+        lifetime = new(range.Select() / speed.Select());
 
         // Calculate delta distance.
         deltaDistance = speed.Select() * Time.fixedDeltaTime;
@@ -67,7 +68,7 @@ public class SimpleProjectile : MaskedWeaponSpawn
     /// <summary>
     /// This will be shared across all projectiles.
     /// </summary>
-    private static readonly RaycastHit2D[] hits = new RaycastHit2D[16];
+    private static readonly RaycastHit2D[] hits = new RaycastHit2D[4];
 
     private IEnumerator Fire_CR()
     {
@@ -77,11 +78,9 @@ public class SimpleProjectile : MaskedWeaponSpawn
             useLayerMask = true
         };
 
-        while (enabled && currentLifetime < maxLifetime)
+        while (enabled && !lifetime.IncrementFixedUpdate(false))
         {
             yield return new WaitForFixedUpdate();
-
-            currentLifetime += Time.fixedDeltaTime;
 
             // Do the raycast things.
             int totalHits = Physics2D.Raycast(

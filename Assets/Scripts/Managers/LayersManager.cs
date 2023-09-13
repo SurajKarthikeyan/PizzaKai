@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -24,19 +27,14 @@ public class LayersManager : MonoBehaviour
     public static LayersManager Instance => instance;
     #endregion
 
-    private void Start()
-    {
-        
-    }
-
     #region Structs
-    [System.Serializable]
+    [Serializable]
     public struct DefinedLayer : IEquatable<DefinedLayer>, ISerializationCallbackReceiver
     {
         #region Variables
         [SerializeField]
         private string name;
-        
+
         [SerializeField]
         private int layer;
         #endregion
@@ -132,6 +130,7 @@ public class LayersManager : MonoBehaviour
     #endregion
 
     #region Variables
+    #region Defined Layers
     public static readonly DefinedLayer Invalid = new("[Invalid]", -1);
 
     public static readonly DefinedLayer Default = new("Default", 0);
@@ -162,7 +161,13 @@ public class LayersManager : MonoBehaviour
 
     public static readonly DefinedLayer Background = new("Background", 13);
 
-    public IEnumerable<Collider2D> platformColliders;
+    #endregion
+
+    public List<Collider2D> platformColliders;
+
+    private HashSet<Collider2D> ignorePlatformColliders = new();
+
+    private IEnumerator csipc_CR;
     #endregion
 
     #region Instantiation
@@ -172,6 +177,17 @@ public class LayersManager : MonoBehaviour
         platformColliders = GameObject.FindObjectsOfType<Collider2D>()
             .Where(c => c.gameObject.layer == Platform)
             .ToList();
+
+        ignorePlatformColliders = new();
+    }
+
+    private void OnEnable()
+    {
+        if (csipc_CR != null)
+        {
+            csipc_CR = ClearStaleIPC_CR();
+            StartCoroutine(csipc_CR);
+        }
     }
     #endregion
 
@@ -211,12 +227,43 @@ public class LayersManager : MonoBehaviour
     public void IgnoreCollisionsWithPlatforms(Collider2D collider,
         bool ignore)
     {
+        // Add to the platforms.
+        if (ignore)
+        {
+            if (ignorePlatformColliders.Contains(collider))
+                return;
+            
+            ignorePlatformColliders.Add(collider);
+        }
+        else
+        {
+            ignorePlatformColliders.Remove(collider);
+        }
+
         foreach (var platformCollider in platformColliders)
         {
-            if (platformCollider != null) 
+            if (platformCollider != null)
             {
                 Physics2D.IgnoreCollision(platformCollider, collider, ignore);
             }
+        }
+    }
+    #endregion
+
+    #region Helpers
+    /// <summary>
+    /// Periodically clears null/destroyed colliders from the <see
+    /// cref="ignorePlatformColliders"/>.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ClearStaleIPC_CR()
+    {
+        while (enabled)
+        {
+            yield return new WaitForSecondsRealtime(30);
+
+            ignorePlatformColliders
+                .RemoveWhere(c => !c);
         }
     }
     #endregion

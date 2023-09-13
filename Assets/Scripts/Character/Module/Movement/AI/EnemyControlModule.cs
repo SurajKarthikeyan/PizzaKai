@@ -22,6 +22,25 @@ public class EnemyControlModule : Module
     public PathfindingAgent pathAgent;
 
     // public Arc sightline = new(-160, 160, 10);
+
+    private Transform currentTarget;
+    #endregion
+
+    #region Property
+    public Transform CurrentTarget
+    {
+        get => currentTarget;
+        set
+        {
+            if (currentTarget != value)
+            {
+                currentTarget = value;
+                pathAgent.SetTarget(
+                    currentTarget
+                );
+            }
+        }
+    }
     #endregion
 
     #region Instantiation
@@ -44,9 +63,7 @@ public class EnemyControlModule : Module
     private void OnEnable()
     {
         // For now, just have them chase the player.
-        pathAgent.SetTarget(
-            FindObjectOfType<PlayerControlModule>().transform
-        );
+        CurrentTarget = FindObjectOfType<PlayerControlModule>().transform;
     }
     #endregion
 
@@ -55,7 +72,19 @@ public class EnemyControlModule : Module
     {
         var heading = token.GetHeading(transform.position).normalized;
         movement.inputtedMovement = heading;
+        movement.inputtedJump = heading.y > 0;
         Master.SetLookAngle(Mathf.Atan2(heading.y, heading.x));
+    }
+    #endregion
+
+    #region Debug
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(
+            transform.position + Vector3.up,
+            movement.inputtedMovement.ToVector3()
+        );
     }
     #endregion
 }

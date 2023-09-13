@@ -331,14 +331,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!70 &4246352360575742689
 CapsuleCollider2D:
@@ -390,9 +390,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 10, y: 0}
   moveAcceleration: {x: 1, y: 0}
-  jumpForce: 12
+  jumpForce: 5
   jumpCooldown:
-    maxTime: 0.5
+    maxTime: 1
     elapsed: 0
   coyoteTimer:
     maxTime: 0.5

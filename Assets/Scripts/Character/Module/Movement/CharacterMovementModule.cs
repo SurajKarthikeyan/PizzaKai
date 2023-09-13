@@ -158,10 +158,7 @@ public class CharacterMovementModule : Module
         Vector2 speed = Master.r2d.velocity;
 
         // Used to make the comparison.
-        Vector2 compare = new(
-            inputtedMovement.x.Sign() * speed.x,
-            inputtedMovement.y.Sign() * speed.y
-        );
+        Vector2 compare = speed.Abs();
 
         Vector2 force = new();
 
@@ -176,12 +173,8 @@ public class CharacterMovementModule : Module
             // character to move.
             force.x = inputtedMovement.x * moveAcceleration.x;
         }
-        if (inputtedMovement.y.Approx(0) && !speed.y.Approx(0))
-        {
-            // Ditto.
-            force.y = -speed.y * Mathf.Clamp01(moveAcceleration.y);
-        }
-        else if (compare.y < maxMoveSpeed.y)
+        
+        if (compare.y < maxMoveSpeed.y)
         {
             // Ditto for max vertical speed.
             force.y = inputtedMovement.y * moveAcceleration.y;
