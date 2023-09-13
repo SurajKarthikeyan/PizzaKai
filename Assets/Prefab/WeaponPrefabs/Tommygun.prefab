@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Tommy Gun Alt
   inputState: 0
   isAlt: 1
   weaponAnimator: {fileID: 1566744871564542801}
@@ -384,10 +385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c1965d61cf491b5b63e3285359c7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Tommy Gun
   subweapons:
   - {fileID: 3109729225999284492}
   - {fileID: 8799047693189447007}
-  subweaponIndex: 0
 --- !u!1 &3053910928708832842
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Tommy Gun Primary
   inputState: 0
   isAlt: 0
   weaponAnimator: {fileID: 1566744871564542801}

@@ -426,35 +426,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: '[UNUSED]'
   inputState: 0
-  firingModes:
-  - name: Primary
-    key: 
-    animFiringBool: 
-    animReloadingBool: 
-    firingClip: {fileID: 0}
-    reloadClip: {fileID: 0}
-    bulletSpawn: {fileID: 0}
-    firePoint: {fileID: 4342418669661374407}
-    firingDelay:
-      maxTime: 0
-      elapsed: 0
-    ammoCount: 10
-    currentAmmo: 0
-    reloadDelay:
-      maxTime: 1
-      elapsed: 0
+  isAlt: 0
   weaponAnimator: {fileID: 0}
   animFiringBool: 
-  animAltingBool: 
   animReloadingBool: 
   ammoGraphic: {fileID: 0}
   firePoint: {fileID: 0}
   autofire: 1
   firingDelay:
-    maxTime: 1
-    elapsed: 0
-  altFireDelay:
     maxTime: 1
     elapsed: 0
   ammoCount: 10

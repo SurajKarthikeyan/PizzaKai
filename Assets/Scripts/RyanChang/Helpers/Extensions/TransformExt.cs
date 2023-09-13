@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -96,6 +97,23 @@ public static class TransformExt
                 Object.DestroyImmediate(child.gameObject);
             else
                 Object.Destroy(child.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Returns an iteration containing the transform's parent, grandparent,
+    /// etc, etc.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <returns></returns>
+    public static IEnumerable<Transform> Parents(this Transform transform)
+    {
+        Transform parent = transform.parent;
+
+        while (parent != null)
+        {
+            yield return parent;
+            parent = parent.parent;
         }
     }
     #endregion

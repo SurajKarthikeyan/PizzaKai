@@ -32,7 +32,18 @@ public class Module : MonoBehaviour
     #endregion
 
     #region Helper Methods
-
+    protected virtual void OnTransformParentChanged()
+    {
+        // Check if we are in a character now.
+        foreach (var parent in transform.Parents())
+        {
+            if (parent.HasComponent(out Character character))
+            {
+                character.AddModule(this);
+                return;
+            }
+        }
+    }
     #endregion
     #endregion
 }

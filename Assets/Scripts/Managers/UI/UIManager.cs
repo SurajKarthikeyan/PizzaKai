@@ -81,14 +81,17 @@ public class UIManager : MonoBehaviour
     #region Main Loop
     private void Update()
     {
-        var weap = weaponMaster.CurrentWeapon;
-
-        // Update graphics. Primary ammo first.
-        ammoUI.sprite = weap.Primary.ammoGraphic;
-        ammoCount.text = $"{weap.Primary.currentAmmo}/{weap.Primary.ammoCount}";
-
-        // Alt recharge.
-        altSlider.value = weap.Alt.firingDelay.Percent;
+        if (weaponMaster.HasWeapon)
+        {
+            var weap = weaponMaster.CurrentWeapon;
+    
+            // Update graphics. Primary ammo first.
+            ammoUI.sprite = weap.Primary.ammoGraphic;
+            ammoCount.text = $"{weap.Primary.currentAmmo}/{weap.Primary.ammoCount}";
+    
+            // Alt recharge.
+            altSlider.value = weap.Alt.firingDelay.Percent;
+        }
 
         // Dash recharge.
     }

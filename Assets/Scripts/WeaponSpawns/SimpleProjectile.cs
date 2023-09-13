@@ -50,10 +50,10 @@ public class SimpleProjectile : MaskedWeaponSpawn
     private Vector3 Forwards => transform.right;
     #endregion
 
-    protected override void Fire(int burstIndex)
+    protected override void FireInternal()
     {
         // Apply initial spread.
-        float actualSpread = spread.Select() * (spreadRampUp * burstIndex);
+        float actualSpread = spread.Select() * (spreadRampUp * firedBy.burstIndex);
         transform.Rotate(new Vector3(0, 0, actualSpread));
 
         // Calculate lifetime;

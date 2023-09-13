@@ -25,7 +25,7 @@ public class TommyGunAlt : MaskedWeaponSpawn
 
     private static readonly List<Collider2D> hits = new();
 
-    protected override void Fire(int burstIndex)
+    protected override void FireInternal()
     {
         ContactFilter2D filter = new()
         {

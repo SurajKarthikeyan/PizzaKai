@@ -150,6 +150,18 @@ public class Character : MonoBehaviour
     }
     #endregion
 
+    #region Modules
+    /// <summary>
+    /// Adds and links a module.
+    /// </summary>
+    /// <param name="module"></param>
+    public void AddModule(Module module)
+    {
+        Modules.Add(module);
+        module.LinkToMaster(this);
+    }
+    #endregion
+
     #region MonoBehavior Methods
     private void Update()
     {

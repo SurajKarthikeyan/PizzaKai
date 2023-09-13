@@ -45,6 +45,10 @@ public class WeaponModule : Module, IWeapon
     #region User Settings
     /// <inheritdoc cref="WeaponInputState"/>
     [Header("Global")]
+    [Tooltip("The name of the weapon.")]
+    [SerializeField]
+    private string weaponName;
+
     [Tooltip("Describes the current status of the weapon.")]
     [ReadOnly]
     [SerializeField]
@@ -153,6 +157,12 @@ public class WeaponModule : Module, IWeapon
     /// How many shots were fired in this current burst?
     /// </summary>
     public int BurstCount => burstCount;
+
+    public string WeaponName
+    {
+        get => weaponName;
+        set => weaponName = value;
+    }
     #endregion
 
     #region Methods
@@ -228,7 +238,7 @@ public class WeaponModule : Module, IWeapon
     {
         if (!isAlt && OutOfAmmo)
         {
-            ReloadWeapon();
+            TryReloadWeapon();
             return false;
         }
 
@@ -252,7 +262,7 @@ public class WeaponModule : Module, IWeapon
     protected void FireProjectile()
     {
         // Spawns the projectile and then tells it to start moving.
-        bulletSpawn.Spawn(this).Fire(this);
+        bulletSpawn.Spawn(this);
     }
     #endregion
 
@@ -260,18 +270,21 @@ public class WeaponModule : Module, IWeapon
     /// <summary>
     /// Complete process of reloading
     /// </summary>
-    public void ReloadWeapon()
+    public bool TryReloadWeapon()
     {
         if (!isAlt)
         {
             InputState = WeaponInputState.Reloading;
-
-            if (InputState == WeaponInputState.Reloading)
-            {
-                reloadDelay.ResetIfDone();
-                currentAmmo = ammoCount;
-            }
         }
+
+        return false;
+    }
+    #endregion
+
+    #region Utility
+    public void SetActive(bool active)
+    {
+        gameObject.SetActive(active);
     }
     #endregion
     #endregion

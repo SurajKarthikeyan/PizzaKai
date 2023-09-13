@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class WeaponMasterModule : Module
     #region Variables
     [Header("Weapon Settings")]
     [Tooltip("The weapons available to the weapon master.")]
+    [ReadOnly]
     public List<WeaponAbstractionModule> weapons;
 
     [Tooltip("Which weapon is the character holding?")]
@@ -32,6 +34,11 @@ public class WeaponMasterModule : Module
     public bool HasWeapon => !weapons.IsNullOrEmpty();
 
     public WeaponAbstractionModule CurrentWeapon => weapons[weaponIndex];
+
+    /// <summary>
+    /// What was the last mouse button to be pressed?
+    /// </summary>
+    public int LastMouseBtnClick { get; private set; }
     #endregion
 
     #region Methods
@@ -88,15 +95,18 @@ public class WeaponMasterModule : Module
 
     private void ParseMouseInput(int mouseBtn)
     {
-        CurrentWeapon.subweaponIndex = mouseBtn;
-
-        if (Input.GetMouseButton(mouseBtn))
+        if (HasWeapon)
         {
-            CurrentWeapon.TryFireWeapon();
-        }
-        else
-        {
-            CurrentWeapon.ResetBurst();
+            LastMouseBtnClick = mouseBtn;
+    
+            if (Input.GetMouseButton(mouseBtn))
+            {
+                CurrentWeapon.TryFireWeapon();
+            }
+            else
+            {
+                CurrentWeapon.ResetBurst();
+            }
         }
     }
     #endregion
@@ -138,7 +148,7 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void TryReload()
     {
-        CurrentWeapon.ReloadWeapon();
+        CurrentWeapon.TryReloadWeapon();
     }
     #endregion
 
@@ -168,10 +178,26 @@ public class WeaponMasterModule : Module
         n = weapons.BoundToLength(n);
 
         var oldWeapon = CurrentWeapon;
-        weapons.ForEach(w => w.gameObject.SetActive(false));
-        CurrentWeapon.gameObject.SetActive(true);
+        weapons.ForEach(w => w.SetActive(false));
+        CurrentWeapon.SetActive(true);
 
         EventManager.Instance.onWeaponSwitch.Invoke(this, oldWeapon, CurrentWeapon);
+    }
+    #endregion
+
+    #region Adding
+    /// <summary>
+    /// Adds a weapon if a weapon of the same name doesn't already exist in <see
+    /// cref="weapons"/>.
+    /// </summary>
+    /// <param name="weapon">The weapon to add.</param>
+    public void AddWeapon(WeaponAbstractionModule weapon)
+    {
+        if (!weapons.Exists(w => w.WeaponName == weapon.WeaponName))
+        {
+            weapon.transform.Localize(transform);
+            weapons.Add(weapon);
+        }
     }
     #endregion
 

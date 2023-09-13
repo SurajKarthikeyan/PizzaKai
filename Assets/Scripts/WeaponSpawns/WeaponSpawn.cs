@@ -17,12 +17,25 @@ public abstract class WeaponSpawn : MonoBehaviour
 
         public readonly string tag;
 
+        /// <summary>
+        /// Applies only to automatic weapons (non-auto weapons have this set to
+        /// 1). This signifies that this is the nth bullet of the current burst,
+        /// starting from 1.
+        /// </summary>
+        public readonly int burstIndex;
+
         public readonly bool IsPlayer => tag == "Player";
 
-        public FiredByIdentifier(Character character)
+        /// <summary>
+        /// Creates a new identifier, in case the character is destroyed before
+        /// the bullet actually hits something.
+        /// </summary>
+        /// <param name="weapon"></param>
+        public FiredByIdentifier(WeaponModule weapon)
         {
-            layer = new(character.gameObject.layer);
-            tag = character.gameObject.tag;
+            layer = new(weapon.Master.gameObject.layer);
+            tag = weapon.Master.gameObject.tag;
+            burstIndex = weapon.BurstCount;
         }
     }
     #endregion
@@ -36,35 +49,43 @@ public abstract class WeaponSpawn : MonoBehaviour
 
     #region Methods
     /// <summary>
-    /// Creates an instance of the weapon spawn.
+    /// Creates an instance of the weapon spawn and fires it.
     /// </summary>
-    /// <param name="weaponModule"></param>
+    /// <param name="weapon"></param>
     /// <returns></returns>
-    public WeaponSpawn Spawn(WeaponModule weaponModule)
+    public WeaponSpawn Spawn(WeaponModule weapon)
     {
-        return this.InstantiateComponent(
-            weaponModule.firePoint.position,
-            weaponModule.firePoint.rotation
+        var spawned = this.InstantiateComponent(
+            weapon.firePoint.position,
+            weapon.firePoint.rotation
         );
+
+        spawned.Fire(weapon);
+        return spawned;
     }
 
     /// <summary>
-    /// Fires this weapon spawn thing.
+    /// Fires the bullet from the weapon.
     /// </summary>
-    /// <param name="weapon">The weapon that spawned this.</param>
-    /// 
-    public virtual void Fire(WeaponModule weapon)
+    /// <param name="weapon">The weapon that fires this bullet.</param>
+    public void Fire(WeaponModule weapon)
     {
-        firedBy = new(weapon.Master);
-        Fire(weapon.BurstCount);
+        Fire(new FiredByIdentifier(weapon));
     }
 
     /// <summary>
-    /// Fires this weapon spawn thing.
+    /// Fires the bullet using a stored identifier.
     /// </summary>
-    /// <param name="burstIndex">Applies only to automatic weapons (non-auto
-    /// weapons have this set to 1). This signifies that this is the nth bullet
-    /// of the current burst, starting from 1.</param>
-    protected abstract void Fire(int burstIndex);
+    /// <param name="weapon">The weapon that fires this bullet.</param>
+    public void Fire(FiredByIdentifier id)
+    {
+        firedBy = id;
+        FireInternal();
+    }
+
+    /// <summary>
+    /// Actually does the firing.
+    /// </summary>
+    protected abstract void FireInternal();
     #endregion
 }

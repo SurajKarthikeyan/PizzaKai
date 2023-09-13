@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5219901646902708590}
   - component: {fileID: 5219901646902708577}
-  - component: {fileID: 5219901646902708576}
   - component: {fileID: 5219901646902708591}
+  - component: {fileID: 6763435888267005560}
   m_Layer: 0
   m_Name: Shotgun Pickup
   m_TagString: Shotgun
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5219901646902708579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.09, y: -8.92, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5219901646902708576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219901646902708579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975061d6a38e5b644a63dcd2ff105f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  switchWeapons: {fileID: 0}
 --- !u!61 &5219901646902708591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +112,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9277992, y: 0.30627155}
   m_EdgeRadius: 0
+--- !u!114 &6763435888267005560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219901646902708579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd72703662182ac3aeb0d13e77bd7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
+  weaponPrefab: {fileID: 5073972817406986401, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}

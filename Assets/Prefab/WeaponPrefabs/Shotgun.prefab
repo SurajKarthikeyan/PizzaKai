@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Shotgun Alt
   inputState: 0
   isAlt: 1
   weaponAnimator: {fileID: 4342418669316601403}
@@ -489,10 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c1965d61cf491b5b63e3285359c7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Shotgun
   subweapons:
   - {fileID: 1578115796038891848}
   - {fileID: 5425164932690667244}
-  subweaponIndex: 0
 --- !u!1 &7208440272969961590
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71217dc0b10e0a7ac9b49d7727a53a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Shotgun Primary
   inputState: 0
   isAlt: 0
   weaponAnimator: {fileID: 4342418669316601403}
@@ -546,11 +548,11 @@ MonoBehaviour:
   firePoint: {fileID: 4342418669661374407}
   autofire: 0
   firingDelay:
-    maxTime: 1.5
+    maxTime: 0.5
     elapsed: 0
   ammoCount: 8
   currentAmmo: 0
   reloadDelay:
-    maxTime: 5
+    maxTime: 4
     elapsed: 0
   bulletSpawn: {fileID: 960968674241033640, guid: 9e63501ae2bb91c38993ca908c8775e0, type: 3}

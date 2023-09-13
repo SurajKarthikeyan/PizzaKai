@@ -12,23 +12,17 @@ public class Multishot : WeaponSpawn
 
     public Shot[] shots;
 
-    public override void Fire(WeaponModule weapon)
+    protected override void FireInternal()
     {
-        base.Fire(weapon);
-
         foreach (var shot in shots)
         {
             int amount = Mathf.RoundToInt(shot.amount.Evaluate());
             for (int i = 0; i < amount; i++)
             {
                 // Spawn shots.
-                shot.toSpawn.Spawn(weapon).Fire(weapon);
+                var spawned = shot.toSpawn.InstantiateComponent();
+                spawned.Fire(firedBy);
             }
         }
-    }
-
-    protected override void Fire(int burstIndex)
-    {
-        throw new System.NotImplementedException();
     }
 }

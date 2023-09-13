@@ -216,19 +216,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df5cff713091d6448706056621e7201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Degreaser
   inputState: 0
+  isAlt: 0
   weaponAnimator: {fileID: 2770841203617395344}
   animFiringBool: Fire
-  animAltingBool: 
   animReloadingBool: Reload
   ammoGraphic: {fileID: 0}
   firePoint: {fileID: 2770841202015864618}
   autofire: 1
   firingDelay:
     maxTime: 0.05
-    elapsed: 0
-  altFireDelay:
-    maxTime: 5
     elapsed: 0
   ammoCount: 80
   currentAmmo: 0
