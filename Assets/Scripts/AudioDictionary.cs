@@ -10,27 +10,15 @@ public class AudioDictionary : MonoBehaviour
     public enum Source 
     {
         Test,
-        Player,
-        Bread,
-        Chicken,
-        Molotov,
-        Deepdish
+        Gun
     };
     public UnityDictionary<string, AudioClip> audioDict;
     public Source source;
     [Header("Audio Sources")]
     [Tooltip("Audio Source for testing")]
     [SerializeField] public AudioSource testSource;
-    [Tooltip("Audio Source for the player")]
-    [SerializeField] public AudioSource playerSource;
-    [Tooltip("Audio Source for the bread")]
-    [SerializeField] public AudioSource breadSource;
-    [Tooltip("Audio Source for the chicken")]
-    [SerializeField] public AudioSource chickenSource;
-    [Tooltip("Audio Source for the molotov")]
-    [SerializeField] public AudioSource molotovSource;
-    [Tooltip("Audio Source for the molotov")]
-    [SerializeField] public AudioSource deepDishSource;
+    [Tooltip("Audio Source for shooting weapon [Generalized]")] 
+    [SerializeField] public AudioSource gunSource;
     public static AudioDictionary aDict;
     #endregion
 
@@ -59,25 +47,9 @@ public class AudioDictionary : MonoBehaviour
                 testSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
                 testSource.Play();
                 break;
-            case Source.Player:
-                playerSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
-                playerSource.Play();
-                break;
-            case Source.Bread:
-                breadSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
-                breadSource.Play();
-                break;
-            case Source.Chicken:
-                chickenSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
-                chickenSource.Play();
-                break;
-            case Source.Molotov:
-                molotovSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
-                molotovSource.Play();
-                break;
-            case Source.Deepdish:
-                deepDishSource.clip = tempClip; // assign and play specific clip to specific source according to parameter
-                deepDishSource.Play();
+            case Source.Gun:
+                gunSource.clip = tempClip;
+                gunSource.Play();
                 break;
         }
     }
