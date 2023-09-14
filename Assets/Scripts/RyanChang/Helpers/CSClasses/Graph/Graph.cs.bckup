@@ -1,0 +1,798 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
+
+/// <summary>
+/// A weighted, undirected graph data structure using adjacency map.
+/// </summary>
+/// <typeparam name="T">Any IEquatable type.</typeparam>
+[System.Serializable]
+public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
+    IEnumerable<GraphEdge<T>>, ITraceable<T>
+    where T : IEquatable<T>
+{
+    #region Enums
+    public enum EnumerationMethod
+    {
+        /// <summary>
+        /// https://en.wikipedia.org/wiki/Breadth-first_search
+        /// </summary>
+        BreathFirst,
+        /// <summary>
+        /// https://en.wikipedia.org/wiki/Depth-first_search
+        /// </summary>
+        DepthFirst
+    }
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Selects the method of enumeration
+    /// </summary>
+    public EnumerationMethod EnumMethod { get; private set; }
+
+    /// <summary>
+    /// The root vertex. This determines where graph enumeration will begin.
+    /// </summary>
+    public Vertex<T> Root { get; private set; }
+
+    /// <summary>
+    /// Dictionary of vertices, <id, vertex>.
+    /// </summary>
+    public Dictionary<T, Vertex<T>> Vertices { get; set; }
+
+    public ICollection<T> Keys => Vertices.Keys;
+
+    public ICollection<Vertex<T>> Values => Vertices.Values;
+
+    public int Count => Vertices.Count;
+
+    public Vertex<T> this[T key]
+    {
+        get => Vertices[key];
+        set => Vertices[key] = value;
+    }
+    #endregion
+
+    [SerializeField]
+    // [HideInInspector]
+    private UnityDictionary<T, Vertex<T>> serializedVertices;
+
+
+    #region Constructors
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    public Graph()
+    {
+        Vertices = new Dictionary<T, Vertex<T>>();
+    }
+
+    /// <summary>
+    /// Creates a graph.
+    /// </summary>
+    /// <param name="vertices">Vertices to assign to the graph.</param>
+    public Graph(Dictionary<T, Vertex<T>> vertices)
+    {
+        this.Vertices = vertices;
+        Root = vertices.Values.First();
+    }
+
+    /// <summary>
+    /// Constructs a new graph from a path. See AStarSearch.
+    /// </summary>
+    /// <param name="path">A dictionary, where the second vertex is what precedes the first vertex.</param>
+    public Graph(Dictionary<Vertex<T>, Vertex<T>> path)
+    {
+        Vertices = new Dictionary<T, Vertex<T>>();
+        foreach (var first in path.Keys)
+        {
+            Add(path[first].id, first.id);
+        }
+    }
+    #endregion
+
+    #region Methods
+    #region Addition of Vertices
+    /// <summary>
+    /// Adds a new vertex directly, without any connections.
+    /// </summary>
+    /// <param name="newVertex">The new vertex to add.</param>
+    public void Add(Vertex<T> newVertex)
+    {
+        Vertices[newVertex.id] = newVertex;
+
+        if (Root == null)
+        {
+            Root = newVertex;
+        }
+    }
+
+    /// <summary>
+    /// Adds an edge to the graph between <paramref name="fromVertex"/> and
+    /// <paramref name="toVertex"/>.
+    /// </summary>
+    /// <param name="fromVertex">The starting vertex.</param>
+    /// <param name="toVertex">The ending vertex.</param>
+    /// <param name="weight">Weight of edge.</param>
+    public void Add(Vertex<T> fromVertex, Vertex<T> toVertex, float weight = 0)
+    {
+        T fromId = fromVertex.id;
+        T toId = toVertex.id;
+
+        if (!Vertices.ContainsKey(fromId))
+        {
+            Add(fromVertex);
+        }
+
+        if (!Vertices.ContainsKey(toId))
+        {
+            Add(toVertex);
+        }
+
+        Vertices[fromId].adjacent[toId] = weight;
+    }
+
+    /// <summary>
+    /// Creates a single vertex with no connections and no heuristic.
+    /// </summary>
+    /// <inheritdoc cref="Add(T, Vertex{T}.Heuristic)"/>
+    public Vertex<T> Add(T newId)
+    {
+        var newV = new Vertex<T>(newId);
+        Add(newV);
+        return newV;
+    }
+
+    /// <summary>
+    /// Creates a single vertex with no connections.
+    /// </summary>
+    /// <param name="newId">The new id to add.</param>
+    /// <param name="heuristic">Heuristic to use for A*.</param>
+    /// <returns>The created vertex.</returns>
+    public Vertex<T> Add(T newId, float heuristic)
+    {
+        var newV = new Vertex<T>(newId, heuristic);
+        Add(newV);
+        return newV;
+    }
+
+    /// <summary>
+    /// Adds an edge to the graph between fromId and toId. Inserts the vertices
+    /// as needed.
+    /// </summary>
+    /// <param name="fromId">The starting vertex.</param>
+    /// <param name="toId">The ending vertex.</param>
+    /// <param name="weight">Weight of edge.</param>
+    /// <returns>A tuple containing the created vertices in the order of
+    /// (<paramref name="fromId"/>, <paramref name="toId"/>).</param>
+    public Tuple<Vertex<T>, Vertex<T>> Add(T fromId, T toId, float weight = 0)
+    {
+        Vertex<T> fromV, toV;
+
+        if (!Vertices.TryGetValue(fromId, out fromV))
+        {
+            fromV = Add(fromId);
+        }
+        if (!Vertices.TryGetValue(toId, out toV))
+        {
+            toV = Add(toId);
+        }
+
+        Vertices[fromId].adjacent[toId] = weight;
+
+        return new(fromV, toV);
+    }
+
+    /// <param name="fromHeuristic">Heuristic for <paramref
+    /// name="fromId"/>.</param>
+    /// <param name="toHeuristic">Heuristic for <paramref name="toId"/>.</param>
+    /// <inheritdoc cref="Add(T, T, float)"/>
+    public Tuple<Vertex<T>, Vertex<T>> Add(T fromId, T toId, float weight,
+            float fromHeuristic, float toHeuristic)
+    {
+        Vertex<T> fromV, toV;
+
+        if (!Vertices.TryGetValue(fromId, out fromV))
+        {
+            fromV = Add(fromId);
+        }
+        if (!Vertices.TryGetValue(toId, out toV))
+        {
+            toV = Add(toId);
+        }
+
+        Vertices[fromId].adjacent[toId] = weight;
+
+        return new(fromV, toV);
+    }
+    #endregion
+
+    #region Visiting
+    /// <summary>
+    /// Resets the visited boolean for each vertex in the graph.
+    /// </summary>
+    /// <param name="id">The visit id for the vertex.</param>
+    public void ResetVisitedVertices(Guid id)
+    {
+        foreach (var vertex in Vertices)
+        {
+            vertex.Value.ResetVisited(id);
+        }
+    }
+
+    public void ResetAggregateCostVertices(Guid id)
+    {
+        foreach (var vertex in Vertices)
+        {
+            vertex.Value.ResetAggregateCost(id);
+        }
+    }
+    #endregion
+
+    #region Getters/Setters
+    /// <summary>
+    /// Checks if this graph has a vertex at <paramref name="key"/>.
+    /// </summary>
+    /// <param name="key">The coordinates of the supposed vertex.</param>
+    /// <returns>True if there is a vertex there, else false.</returns>
+    public bool HasVertex(T key)
+    {
+        return Vertices.ContainsKey(key);
+    }
+
+    /// <summary>
+    /// Gets a vertex by its key.
+    /// </summary>
+    /// <param name="key">key of the vertex.</param>
+    /// <returns>A vertex if one exists at the key specified, else null.</returns>
+    public Vertex<T> GetVertex(T key)
+    {
+        return Vertices.TryGetValue(key, out var vertex) ? vertex : null;
+    }
+
+    /// <summary>
+    /// Attempts to get the vertex by its key.
+    /// </summary>
+    /// <param name="key">key of the vertex.</param>
+    /// <param name="vertex">The vertex, if one exists.</param>
+    /// <returns>True if value was found, false otherwise.</returns>
+    public bool TryGetVertex(T key, out Vertex<T> vertex)
+    {
+        return Vertices.TryGetValue(key, out vertex);
+    }
+
+    /// <summary>
+    /// Attempts to get the vertex by its key, then attempts to cast it into the
+    /// specified vertex type.
+    /// </summary>
+    /// <inheritdoc cref="TryGetVertex(T, out Vertex{T})"/>
+    public bool TryGetVertex<TVertex>(T key, out TVertex vertex)
+        where TVertex : Vertex<T>
+    {
+        vertex = GetVertex(key) as TVertex;
+        return vertex != null;
+    }
+
+    /// <summary>
+    /// Determines if an edge exists between fromID and toID.
+    /// </summary>
+    /// <param name="fromID">ID to come from.</param>
+    /// <param name="toID">ID to go to.</param>
+    /// <returns>True if there exists an edge between fromID and toID, else false.</returns>
+    public bool HasEdge(T fromID, T toID)
+    {
+        if (HasVertex(fromID) && HasVertex(toID))
+        {
+            var fromV = Vertices[fromID];
+            if (fromV.adjacent.ContainsKey(toID))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Gets the edge weight from <paramref name="fromID"/> to <paramref
+    /// name="toID"/>.
+    /// </summary>
+    /// <param name="fromID">Coordinates of the beginning vertex.</param>
+    /// <param name="toID">Coordinates of the end vertex.</param>
+    /// <returns>A tuple <from vertex, to vertex, edge weight> if such an edge
+    /// exists, else null.</returns>
+    public GraphEdge<T> GetEdge(T fromID, T toID)
+    {
+        if (HasVertex(fromID) && HasVertex(toID))
+        {
+            var fromV = Vertices[fromID];
+            var toV = Vertices[toID];
+            if (fromV.adjacent.ContainsKey(toID))
+            {
+                return new(fromV, toV, fromV.adjacent[toID]);
+            }
+        }
+
+        return new(null, null, float.NaN);
+    }
+
+    /// <summary>
+    /// Gets the edge weight from fromID to toID.
+    /// </summary>
+    /// <param name="from">The beginning vertex.</param>
+    /// <param name="to">The end vertex.</param>
+    /// <returns>A tuple <from vertex, to vertex, edge weight> if such an edge
+    /// exists, else null.</returns>
+    public GraphEdge<T> GetEdge(Vertex<T> from, Vertex<T> to)
+    {
+        if (HasVertex(from.id) && HasVertex(to.id))
+        {
+            if (from.adjacent.ContainsKey(to.id))
+            {
+                return new(from, to, from.adjacent[to.id]);
+            }
+        }
+
+        return new(null, null, float.NaN);
+    }
+
+    /// <summary>
+    /// Sets the new enumeration method and root.
+    /// </summary>
+    /// <param name="enumerationMethod">New method of enumeration.</param>
+    /// <param name="root">New root node.</param>
+    /// <returns>A tuple containing the original enumeration method and root.</returns>
+    public Tuple<EnumerationMethod, Vertex<T>> SetEnumeration(EnumerationMethod enumerationMethod, Vertex<T> root)
+    {
+        Tuple<EnumerationMethod, Vertex<T>> og = new(this.EnumMethod, this.Root);
+
+        this.EnumMethod = enumerationMethod;
+        this.Root = root;
+
+        return og;
+    }
+
+    /// <summary>
+    /// Using the <paramref name="enumerationMethod"/> and <paramref name="root"/> vertex,
+    /// do an iteration of the graph.
+    /// </summary>
+    /// <returns>An IEnumerator over a <see cref="Vertex{T}"/>.</returns>
+    public IEnumerator<Vertex<T>> GetEnumerator()
+    {
+        return EnumMethod switch
+        {
+            EnumerationMethod.BreathFirst => BFS_Vertex(Root),
+            _ => DFS_Vertex(Root)
+        };
+    }
+
+    /// <returns>An IEnumerator over a <see cref="GraphEdge{T}"/>.</returns>
+    /// <inheritdoc cref="GetEnumerator"/>
+    IEnumerator<GraphEdge<T>> IEnumerable<GraphEdge<T>>.GetEnumerator()
+    {
+        return EnumMethod switch
+        {
+            EnumerationMethod.BreathFirst => BFS_Edge(Root),
+            _ => DFS_Edge(Root)
+        };
+    }
+
+    /// <summary>
+    /// Using the <paramref name="enumerationMethod"/> and <paramref name="root"/> vertex,
+    /// do an iteration of the graph.
+    /// </summary>
+    /// <returns>An IEnumerator that is a vertex.</returns>
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+    #endregion
+
+    #region Traversal
+    #region DFS
+    /// <summary>
+    /// Breath first traversal. See
+    /// https://en.wikipedia.org/wiki/Breadth-first_search.
+    /// </summary>
+    /// <param name="start">Where to start traversal.</param>
+    /// <returns>An IEnumerator over <see cref="Vertex{T}"/>.</returns>
+    private IEnumerator<Vertex<T>> BFS_Vertex(Vertex<T> start, bool includeAll = false)
+    {
+        Guid g = Guid.NewGuid();
+        // Breadth first traversal
+        Queue<Vertex<T>> q = new();
+        q.Enqueue(start);
+
+        while (q.Count > 0)
+        {
+            Vertex<T> currV = q.Dequeue();
+
+            if (currV.GetVisited(g))
+            {
+                if (includeAll && q.Count <= 0)
+                {
+                    // If empty, search for an unvisited vertex and add that to
+                    // the collection.
+                    var unvisited = Values.FirstOrDefault(v => !v.GetVisited(g));
+
+                    if (unvisited != null)
+                        q.Enqueue(unvisited);
+                }
+
+                continue;
+            }
+
+            currV.SetVisited(g, true);
+
+            yield return currV;
+
+            foreach (var adjP in currV.adjacent)
+            {
+                Vertex<T> adjV = Vertices[adjP.Key];
+
+                q.Enqueue(adjV);
+            }
+        }
+
+        ResetVisitedVertices(g);
+    }
+
+    /// <returns>An IEnumerator over <see cref="GraphEdge{T}"/>.</returns>
+    /// <inheritdoc cref="BFS_Vertex(Vertex{T}, bool)"/>
+    private IEnumerator<GraphEdge<T>> BFS_Edge(Vertex<T> start, bool includeAll = false)
+    {
+        Guid g = Guid.NewGuid();
+        // Breadth first traversal
+        Queue<Vertex<T>> q = new();
+        q.Enqueue(start);
+
+        while (q.Count > 0 || includeAll)
+        {
+            if (q.Count <= 0)
+            {
+                // Empty. Try to find another vertex.
+                if (includeAll)
+                {
+                    // If empty, search for an unvisited vertex and add that to
+                    // the collection.
+                    var unvisited = Values.FirstOrDefault(v => !v.GetVisited(g));
+
+                    if (unvisited != null)
+                    {
+                        q.Enqueue(unvisited);
+                    }
+                    else
+                    {
+                        // Cannot find another vertex.
+                        break;
+                    }
+                }
+                else
+                {
+                    throw new Exception("Should not be thrown");
+                }
+            }
+
+            Vertex<T> currV = q.Dequeue();
+
+            if (currV.GetVisited(g))
+            {
+                continue;
+            }
+
+            currV.SetVisited(g, true);
+
+            foreach (var adjP in currV.adjacent)
+            {
+                Vertex<T> adjV = Vertices[adjP.Key];
+
+                yield return new(currV, adjV, adjP.Value);
+
+                q.Enqueue(adjV);
+            }
+        }
+
+        ResetVisitedVertices(g);
+    }
+    #endregion
+
+    #region BFS
+    /// <summary>
+    /// Depth first traversal. See
+    /// https://en.wikipedia.org/wiki/Depth-first_search.
+    /// </summary>
+    /// <inheritdoc cref="BFS_Vertex(Vertex{T})"/>
+    public IEnumerator<Vertex<T>> DFS_Vertex(Vertex<T> start, bool includeAll = false)
+    {
+        Guid g = Guid.NewGuid();
+        // Depth first traversal
+        Stack<Vertex<T>> s = new Stack<Vertex<T>>();
+        s.Push(start);
+
+        while (s.Count > 0)
+        {
+            Vertex<T> currV = s.Pop();
+
+            if (currV.GetVisited(g))
+            {
+                if (includeAll && s.Count <= 0)
+                {
+                    // If empty, search for an unvisited vertex and add that to
+                    // the collection.
+                    var unvisited = Values.FirstOrDefault(v => !v.GetVisited(g));
+
+                    if (unvisited != null)
+                        s.Push(unvisited);
+                }
+
+                continue;
+            }
+
+            currV.SetVisited(g, true);
+
+            yield return currV;
+
+            foreach (var adjP in currV.adjacent)
+            {
+                Vertex<T> adjV = Vertices[adjP.Key];
+
+                s.Push(adjV);
+            }
+        }
+
+        ResetVisitedVertices(g);
+    }
+
+    /// <summary>
+    /// Depth first traversal. See
+    /// https://en.wikipedia.org/wiki/Depth-first_search.
+    /// </summary>
+    /// <inheritdoc cref="BFS_Edge(Vertex{T})"/>
+    public IEnumerator<GraphEdge<T>> DFS_Edge(Vertex<T> start, bool includeAll = false)
+    {
+        Guid g = Guid.NewGuid();
+        // Depth first traversal
+        Stack<Vertex<T>> s = new Stack<Vertex<T>>();
+        s.Push(start);
+
+        while (s.Count > 0)
+        {
+            Vertex<T> currV = s.Pop();
+
+            if (currV.GetVisited(g))
+            {
+                if (includeAll && s.Count <= 0)
+                {
+                    // If empty, search for an unvisited vertex and add that to
+                    // the collection.
+                    var unvisited = Values.FirstOrDefault(v => !v.GetVisited(g));
+
+                    if (unvisited != null)
+                        s.Push(unvisited);
+                }
+
+                continue;
+            }
+
+            currV.SetVisited(g, true);
+
+            foreach (var adjP in currV.adjacent)
+            {
+                Vertex<T> adjV = Vertices[adjP.Key];
+
+                yield return new(currV, adjV, adjP.Value);
+
+                s.Push(adjV);
+            }
+        }
+
+        ResetVisitedVertices(g);
+    }
+    #endregion
+
+    /// <summary>
+    /// Removes all vertices without any outgoing paths.
+    /// </summary>
+    public void TrimVertices()
+    {
+        var toRemove = Vertices
+            .Where(kvp => kvp.Value.Degree <= 0)
+            .Select(kvp => kvp.Key)
+            .ToList();
+
+        foreach (var rm in toRemove)
+        {
+            Vertices.Remove(rm);
+        }
+    }
+
+    /// <summary>
+    /// Get a list of all vertices that are affordable to traverse to with a
+    /// fixed cost maxCost.
+    /// </summary>
+    /// <param name="root">Where to start the iteration.</param>
+    /// <param name="maxCost">Maximum cost of traversal.</param>
+    /// <returns></returns>
+    public IEnumerable<Vertex<T>> AffordableVertices(Vertex<T> root, float maxCost)
+    {
+        Guid g = Guid.NewGuid();
+        // Breadth first traversal
+        List<Vertex<T>> elements = new();
+        Queue<Vertex<T>> q = new();
+        q.Enqueue(root);
+
+        while (q.Count > 0)
+        {
+            Vertex<T> currV = q.Dequeue();
+
+            // if (currV.GetVisited(g)) continue;
+            // currV.SetVisited(g, true);
+
+            if (currV.GetAggregateCost(g) > maxCost) continue;
+            elements.Add(currV);
+
+            foreach (var adjP in currV.adjacent)
+            {
+                Vertex<T> adjV = Vertices[adjP.Key];
+
+                if (!adjV.GetVisited(g))
+                {
+                    float adjCost = adjV.heuristic + currV.GetAggregateCost(g);
+                    adjV.SetAggregateCost(g, adjCost);
+                    adjV.SetVisited(g, true);
+                    q.Enqueue(adjV);
+                }
+            }
+        }
+
+        ResetVisitedVertices(g);
+        return elements;
+    }
+
+    /// <summary>
+    /// Get a list of all Ts that are affordable to traverse to with a
+    /// fixed cost maxCost.
+    /// </summary>
+    /// <param name="root">Where to start the iteration.</param>
+    /// <param name="maxCost">Maximum cost of traversal.</param>
+    /// <returns></returns>
+    public IEnumerable<T> AffordableVertices(T root, float maxCost)
+    {
+        return AffordableVertices(GetVertex(root), maxCost).
+            Select(t => t.id);
+    }
+
+    #region AStar
+    /// <summary>
+    /// Performs an A* search of the graph. Assumes graph is fully connected.
+    /// </summary>
+    /// <param name="startID">What coordinate to start at?</param>
+    /// <param name="endID">What coordinate to end at?</param>
+    /// <param name="cost">The cost of the traversal.</param>
+    /// <returns>The path from startID to endID.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">If startID and/or endID
+    /// don't exists within the graph.</exception>
+    public Path<T> AStarSearch(T startID, T endID,
+        out float cost)
+    {
+        if (!HasVertex(startID))
+            throw new ArgumentOutOfRangeException(
+                nameof(startID),
+                startID,
+                "The graph does not contain the specified value for startID."
+            );
+        else if (!HasVertex(endID))
+            throw new ArgumentOutOfRangeException(
+                nameof(endID),
+                endID,
+                "The graph does not contain the specified value for endID."
+            );
+        else if (Count < 2)
+            throw new Exception("Cannot make graph with less than 2 vertices");
+
+        PrioritySet<Vertex<T>, float> unvisited = new();
+        Dictionary<Vertex<T>, Vertex<T>> path = new();
+
+        foreach (var vKVP in Vertices)
+        {
+            unvisited.Enqueue(
+                vKVP.Value,
+                vKVP.Key.Equals(startID) ? 0f : float.PositiveInfinity
+            );
+        }
+
+        // G scores are the shortest paths from startV. The keys are the vertex
+        // IDs can can be reached from startV, and the values are the cost it
+        // takes to get there.
+        Dictionary<T, float> totalCosts = new Dictionary<T, float>();
+
+        totalCosts[startID] = 0;
+
+        var endV = Vertices[endID];
+        var startV = Vertices[startID];
+
+        while (unvisited.Count > 0)
+        {
+            var currentPQE = unvisited.DequeueElement();
+            // Current vertex.
+            var currentV = currentPQE.value;
+            // Current ID of vertex.
+            var currentID = currentV.id;
+            // Current cost of traversal, from startV to currentV.
+            if (!totalCosts.TryGetValue(currentID, out float currentCostTotal))
+            {
+                Debug.LogError("Cannot find total cost for CurrentV!");
+                continue;
+            }
+
+            if (currentID.Equals(endID))
+            {
+                // Found end
+                cost = totalCosts[endID];
+                return new(path, endV, startV, this);
+            }
+
+            foreach (var adjKVP in currentV.adjacent)
+            {
+                // Adjacent ID of vertex.
+                T adjID = adjKVP.Key;
+                // Adjacent vertex.
+                Vertex<T> adjV = Vertices[adjID];
+                // Cost required to move from currentV to adjV.
+                float adjCostSingle = adjKVP.Value + adjV.heuristic;
+
+
+                // Try to calculate a adjacent cost, from startV to adjV.
+                // ogAdjCostTotal is the original cost from startV to adjV, as
+                // specified in totalCosts. newAdjS is the new cost, calculated
+                // by adding [the cost from moving from startV to currentV] and
+                // [the cost from moving from currentV to adjV].
+                float ogAdjCostTotal = totalCosts.GetValueOrDefault(adjID,
+                    float.PositiveInfinity);
+                float newAdjCostTotal = currentCostTotal + adjCostSingle;
+
+                if (newAdjCostTotal < ogAdjCostTotal)
+                {
+                    // Found a better path.
+                    totalCosts[adjID] = newAdjCostTotal;
+                    unvisited.Update(
+                        new(adjV, ogAdjCostTotal),
+                        adjV,
+                        newAdjCostTotal
+                    );
+                    path[currentV] = adjV;
+                }
+            }
+        }
+
+        throw new CannotFindPathException("Graph is disconnected.");
+    }
+
+    /// <inheritdoc cref="AStarSearch(T, T, out float)"/>
+    public Path<T> AStarSearch(T startID, T endID)
+    {
+        return AStarSearch(startID, endID, out _);
+    }
+    #endregion
+    #endregion
+    #endregion
+
+    #region ITraceable Implementation
+    public IEnumerator<GraphEdge<T>> GetTraces() => BFS_Edge(Root, true);
+    #endregion
+
+    #region ISerializationCallbackReceiver Implementation
+    public void OnBeforeSerialize()
+    {
+        serializedVertices = new(Vertices);
+    }
+
+    public void OnAfterDeserialize()
+    {
+        Vertices = new(serializedVertices);
+    }
+    #endregion
+}
