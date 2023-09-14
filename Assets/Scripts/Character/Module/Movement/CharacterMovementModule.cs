@@ -1,7 +1,5 @@
 using NaughtyAttributes;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 /// <summary>
 /// Performs the movement of characters. Another script is required to actually

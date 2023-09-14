@@ -68,7 +68,7 @@ public abstract class WeaponSpawn : MonoBehaviour
     /// Fires the bullet from the weapon.
     /// </summary>
     /// <param name="weapon">The weapon that fires this bullet.</param>
-    public void Fire(WeaponModule weapon)
+    public virtual void Fire(WeaponModule weapon)
     {
         Fire(new FiredByIdentifier(weapon));
     }

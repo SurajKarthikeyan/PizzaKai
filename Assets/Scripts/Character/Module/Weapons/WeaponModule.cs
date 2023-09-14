@@ -65,7 +65,10 @@ public class WeaponModule : Module, IWeapon
     [Tooltip("The name of the animation parameter that controls reloading.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animReloadingBool;
+
+
     [Header("UI")]
+    [HideIf(nameof(isAlt))]
     [Tooltip("The graphic to use for the ammo in the UI.")]
     public Sprite ammoGraphic;
 
