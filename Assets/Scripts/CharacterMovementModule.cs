@@ -32,6 +32,12 @@ public class CharacterMovementModule : Module
         /// </summary>
         AirbornFromFall
     }
+
+    public enum MovementStatus
+    {
+        Normal,
+        Dashing
+    }
     #endregion
 
     #region Variables
@@ -54,8 +60,22 @@ public class CharacterMovementModule : Module
 
     public Duration jumpCooldown = new(0.5f);
 
+    [Tooltip("How long after leaving the ground is this character still " +
+        "considered to be grounded?")]
+    public Duration coyoteTimer = new(0.5f);
+
+    [Tooltip("Speed of dashing.")]
+    public float dashSpeed = 20;
+
+    [Tooltip("The cooldown for dashing.")]
+    public Duration dashCooldown = new(2);
+
+    [Tooltip("The duration of dashing.")]
+    public Duration dashTimer = new(0.2f);
+
     [Tooltip("The collider responsible for checking if the character is " +
         "grounded.")]
+    [Required]
     public Collider2D groundCheck;
 
     [Header("Animation Settings")]
@@ -86,14 +106,17 @@ public class CharacterMovementModule : Module
     [Header("Inputs")]
     [Tooltip("The inputted movement of this character. The x component " +
         "controls the horizontal movement and the vertical component " +
-        "controls the vertical movement. All components are clamped " +
-        "between -1 and 1.")]
+        "controls the vertical movement. Will be normalized.")]
     [ReadOnly]
     public Vector2 inputtedMovement;
 
     [Tooltip("If true, the input to jump has been pressed.")]
     [ReadOnly]
     public bool inputtedJump;
+
+    [Tooltip("The inputted dash. Will be normalized.")]
+    [ReadOnly]
+    public Vector2 inputtedDash;
 
     [Header("Grounded Checks")]
     [ReadOnly]
@@ -106,6 +129,11 @@ public class CharacterMovementModule : Module
 
     [ReadOnly]
     public GroundedStatus groundedStatus;
+
+    [ReadOnly]
+    public MovementStatus movementStatus;
+
+    private Vector2 lockedDashInput;
     #endregion
     #endregion
 
@@ -113,7 +141,8 @@ public class CharacterMovementModule : Module
     /// <summary>
     /// True if the character's <see cref="groundCheck"/> is touching at least
     /// one collider with a layer contained in the layermask <see
-    /// cref="GameManager.canJumpLayers"/>.
+    /// cref="GameManager.canJumpLayers"/>. The coyote timer is NOT factored
+    /// into this.
     /// </summary>
     public bool TouchingGround => groundCheck.OverlapCollider(
         groundCheckCF2D, touchingGroundColliders
@@ -124,9 +153,10 @@ public class CharacterMovementModule : Module
     #region Instantiation
     private void Start()
     {
+        dashTimer.Finish();
+
         // Make sure max speed is positive.
         maxMoveSpeed = maxMoveSpeed.Abs();
-
         // Set the contact filter for the grounded check.
         groundCheckCF2D = new()
         {
@@ -139,42 +169,46 @@ public class CharacterMovementModule : Module
     #region Main Loop
     private void FixedUpdate()
     {
-        // Here we move the character. First, toggle collisions with one-way
-        // platforms if down is pressed.
+        // Set up variables first.
+        inputtedMovement.Normalize();
+        Vector2 velocity = Master.r2d.velocity;
+        UpdateOWPCollision();
+        UpdateWalk(velocity);
+        UpdateDash();
+        UpdateJumping();
+    }
+
+    #region One Way Collision
+    /// <summary>
+    /// Update One Way Platform Collision.
+    /// </summary>
+    private void UpdateOWPCollision()
+    {
+        // Toggle collisions with one-way platforms if down is pressed.
         LayersManager.Instance.IgnoreCollisionsWithPlatforms(
             Master.c2d,
             !inputtedMovement.y.Approx(0) && inputtedMovement.y < 0
         );
+    }
+    #endregion
 
-        // Now to calculate movement. First get the speed the character is
-        // moving at and compare it to the maximal speed.
-        Vector2 speed = Master.r2d.velocity;
-
-        // Used to make the comparison.
-        Vector2 compare = new(
-            inputtedMovement.x.Sign() * speed.x,
-            inputtedMovement.y.Sign() * speed.y
-        );
-
+    #region Walk
+    private void UpdateWalk(Vector2 velocity)
+    {
         Vector2 force = new();
-
-        if (inputtedMovement.x.Approx(0) && !speed.x.Approx(0))
+        if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0))
         {
             // Apply a backwards force to stop the player.
-            force.x = -speed.x * Mathf.Clamp01(moveAcceleration.x);
+            force.x = -velocity.x * Mathf.Clamp01(moveAcceleration.x);
         }
-        else if (compare.x < maxMoveSpeed.x)
+        else if (CanMoveInDirection(inputtedMovement.x, velocity.x, maxMoveSpeed.x))
         {
             // The horizontal speed is less than the max horizontal speed. Allow
             // character to move.
             force.x = inputtedMovement.x * moveAcceleration.x;
         }
-        if (inputtedMovement.y.Approx(0) && !speed.y.Approx(0))
-        {
-            // Ditto.
-            force.y = -speed.y * Mathf.Clamp01(moveAcceleration.y);
-        }
-        else if (compare.y < maxMoveSpeed.y)
+
+        if (CanMoveInDirection(inputtedMovement.y, velocity.y, maxMoveSpeed.y))
         {
             // Ditto for max vertical speed.
             force.y = inputtedMovement.y * moveAcceleration.y;
@@ -186,10 +220,16 @@ public class CharacterMovementModule : Module
         // character.
         Master.r2d.AddForce(force);
 
+        // Handle animations.
+        UpdateWalkAnim(velocity);
+    }
+
+    private void UpdateWalkAnim(Vector2 velocity)
+    {
         // Walk animation.
         if (characterAnimator)
         {
-            Vector2 paramVal = positiveAnimParamOnly ? speed.Abs() : speed;
+            Vector2 paramVal = positiveAnimParamOnly ? velocity.Abs() : velocity;
             if (!string.IsNullOrWhiteSpace(animParamSpeedX))
             {
                 characterAnimator.SetFloat(animParamSpeedX, paramVal.x);
@@ -200,9 +240,15 @@ public class CharacterMovementModule : Module
                 characterAnimator.SetFloat(animParamSpeedY, paramVal.y);
             }
         }
+    }
+    #endregion
 
+    #region Jumping
+    private void UpdateJumping()
+    {
         // Handle jumping.
         jumpCooldown.IncrementFixedUpdate(false);
+        coyoteTimer.IncrementFixedUpdate(false);
 
         if (inputtedJump && CanJump())
         {
@@ -212,17 +258,25 @@ public class CharacterMovementModule : Module
 
             groundedStatus = GroundedStatus.AirbornFromJump;
 
+            coyoteTimer.Reset();
             jumpCooldown.Reset();
         }
         else if (TouchingGround)
         {
             groundedStatus = GroundedStatus.Grounded;
+            coyoteTimer.Reset();
         }
         else if (groundedStatus != GroundedStatus.AirbornFromJump)
         {
             groundedStatus = GroundedStatus.AirbornFromFall;
         }
 
+        // Handle animation.
+        UpdateJumpAnim();
+    }
+
+    private void UpdateJumpAnim()
+    {
         // Jump animation.
         if (!string.IsNullOrWhiteSpace(animParamJump) && characterAnimator)
         {
@@ -230,56 +284,67 @@ public class CharacterMovementModule : Module
                 groundedStatus == GroundedStatus.AirbornFromJump);
         }
     }
+    #endregion
 
-    public void Dodge()
+    #region Dash
+    private void UpdateDash()
     {
-        //Can be done using durations
-        //{
-        //    //since this gets called when the player is dodging, canDodge is now false and isDodging is now true
-        //    canDodge = false;
-        //    isDodging = true;
-        //    invulnerable = true;
+        dashCooldown.IncrementFixedUpdate(false);
 
-        //    //enemy layer
-        //    gameObject.layer = 10;
-        //    StartCoroutine(UIScript.DashFill());
-        //    //saves gravity value before we change it
+        if (movementStatus == MovementStatus.Dashing)
+        {
+            if (dashTimer.IncrementFixedUpdate(false))
+            {
+                // We are dashing.
+                Master.r2d.velocity = lockedDashInput * dashSpeed;
+                return;
+            }
+            else
+            {
+                // Is dash time done? (do NOT reset DashTimer)
+                Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+                movementStatus = MovementStatus.Normal;
+            }
+        }
 
-        //    //makes it so the player does not fall during dodge
-        //    rigid.gravityScale = 0f;
-        //    //dodge in the direction the character is facing
-        //    if (Input.GetKey(KeyCode.D))
-        //    {
-        //        rigid.velocity = new Vector2(dodgeForce, 0f);
-        //    }
-        //    else
-        //    {
-        //        rigid.velocity = new Vector2(-dodgeForce, 0f);
-        //    }
+        if (!inputtedDash.ApproxZero() && dashCooldown.IsDone)
+        {
+            // Do dash here.
+            dashCooldown.Reset();
+            inputtedDash.Normalize();
 
-        //    //there is no trail renderer attached right now, but if one is attached it will emit while dodging
-        //    trail.emitting = true;
+            // Now do dash.
+            dashTimer.Reset();
+            lockedDashInput = inputtedDash;
+            movementStatus = MovementStatus.Dashing;
 
-        //    yield return new WaitForSeconds(dodgeTime);
-        //    //turns trail off when dodging stops
-        //    trail.emitting = false;
-        //    //sets gravity back to OG setting
-        //    rigid.gravityScale = originalGravity;
-        //    isDodging = false;
-        //    invulnerable = false;
-        //    //player layer
-        //    gameObject.layer = 7;
-        //    yield return new WaitForSeconds(dodgeCoolDown);
-        //    canDodge = true;
-        //}
+            // Switch to a kinematic collider so the player is forced in one
+            // direction. Also shoves all enemies out of the way.
+            Master.r2d.bodyType = RigidbodyType2D.Kinematic;
+            Master.r2d.velocity = inputtedDash * dashSpeed;
+        }
     }
 
+    #endregion
     #endregion
 
     #region Helper Methods
     private bool CanJump()
     {
-        return jumpCooldown.IsDone && TouchingGround;
+        return jumpCooldown.IsDone &&
+            TouchingGround;
+    }
+
+    private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
+    {
+        if (input.Sign() != velocity.Sign())
+        {
+            // Try to slow down. Always allow this.
+            return true;
+        }
+
+        // Check if moving slower than max speed.
+        return Mathf.Abs(velocity) < maxSpeed;
     }
     #endregion
     #endregion
