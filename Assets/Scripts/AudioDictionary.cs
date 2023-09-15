@@ -11,7 +11,7 @@ using UnityEngine;
 ///
 ///
 ///
-/// Authors: Suraj Karthikeyan (2023)
+/// Authors: (Main) Suraj Karthikeyan (2023)
 /// </summary>
 public class AudioDictionary : MonoBehaviour
 {
