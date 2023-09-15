@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
+/// <summary>
+/// Class to store and handle playing of Audio in the game
+/// Two main methods; PlayAudioClip & PlayAudioClipRemote
+/// One handles it with local(to this GO) Audio Sources
+/// Remote handles it with a passed in Source via a parameter
+///
+///
+///
+/// Authors: Suraj Karthikeyan (2023)
+/// </summary>
 public class AudioDictionary : MonoBehaviour
 {
     #region Vars
