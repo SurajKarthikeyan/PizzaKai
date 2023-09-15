@@ -10,7 +10,8 @@ public class AudioDictionary : MonoBehaviour
     public enum Source 
     {
         Test,
-        Gun
+        Gun,
+        Player,
     };
     public UnityDictionary<string, AudioClip> audioDict;
     public Source source;
@@ -19,6 +20,8 @@ public class AudioDictionary : MonoBehaviour
     [SerializeField] public AudioSource testSource;
     [Tooltip("Audio Source for shooting weapon [Generalized]")] 
     [SerializeField] public AudioSource gunSource;
+    [Tooltip("Audio Source for general player SFX")] 
+    [SerializeField] public AudioSource playerSource;
     public static AudioDictionary aDict;
     #endregion
 
@@ -51,11 +54,15 @@ public class AudioDictionary : MonoBehaviour
                 gunSource.clip = tempClip;
                 gunSource.Play();
                 break;
+            case Source.Player:
+                playerSource.clip = tempClip;
+                playerSource.Play();
+                break;
         }
     }
     
     /// <summary>
-    /// Non Local version of Play Audio clip. Instead of using a audio clip attached this this GO, it uses one passed in
+    /// Non Local version of Play Audio clip. Instead of using a audio source attached this this GO, it uses one passed in
     /// by reference by another GO
     /// </summary>
     /// <param name="clipKey"></param>
