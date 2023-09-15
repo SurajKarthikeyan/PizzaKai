@@ -8,8 +8,6 @@ public class Breadstick : EnemyBasic
     public float sizeScale = 0.5f;
     public int stickSplit = 2;
 
-    public AudioSource BreadDead;
-
     // Start is called before the first frame update
     override public void Start()
     {
@@ -32,7 +30,7 @@ public class Breadstick : EnemyBasic
             {
                 for (int i = 0; i < stickSplit; i++)
                 {
-                    
+
                     GameObject stickGO = Instantiate<GameObject>(gameObject);
                     Breadstick stick = stickGO.GetComponent<Breadstick>();
                     stickGO.transform.position = new Vector3(transform.position.x + (i - 0), transform.position.y, transform.position.z);
@@ -40,7 +38,6 @@ public class Breadstick : EnemyBasic
                     stick.sticked = true;
                     stick.originalPos = originalPos + new Vector3(i, 0, 0);
                     stick.size--;
-                    BreadDead.Play();
                 }
             }
             else
@@ -60,7 +57,6 @@ public class Breadstick : EnemyBasic
                     }
                 }
             }
-            BreadDead.Play();
             Destroy(gameObject);
             //Debug.Log("Killed breadstick and size is " + size + " and pointer " + this);
         }
