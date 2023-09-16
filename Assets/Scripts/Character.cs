@@ -43,6 +43,8 @@ public class Character : MonoBehaviour
 
     private Duration damageInvulnerability;
 
+    public Duration playerDamageInvulnerability;
+
     [SerializeField] private RespawnScript respawn;
     #endregion
 
@@ -121,6 +123,7 @@ public class Character : MonoBehaviour
     {
         // Required to get this to work properly.
         damageInvulnerability.IncrementUpdate(false);
+        playerDamageInvulnerability.IncrementUpdate(false);
     }
     #endregion
 
@@ -144,6 +147,10 @@ public class Character : MonoBehaviour
         if (damageInvulnerability.IsDone)
         {
             HP -= damage;
+            if (IsPlayer)
+            {
+                PlayerKnockback();
+            }
             return true;
         }
 
@@ -159,6 +166,12 @@ public class Character : MonoBehaviour
     {
         respawn.RespawnPlayer();
         HP = maxHP;
+    }
+
+    private void PlayerKnockback()
+    {
+        Vector2 knockbackVector = new Vector2(r2d.velocity.x, r2d.velocity.y).normalized;
+        r2d.velocity *= knockbackVector;
     }
     #endregion
     #endregion

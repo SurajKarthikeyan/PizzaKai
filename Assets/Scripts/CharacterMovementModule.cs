@@ -283,6 +283,12 @@ public class CharacterMovementModule : Module
     {
         dashCooldown.IncrementFixedUpdate(false);
 
+        //To make the dash be completely horizontal when doing it in the air
+        if (dashCooldown.elapsed >= 0.2f)
+        {
+            Master.r2d.gravityScale = 3f;
+        }
+
         if (movementStatus == MovementStatus.Dashing)
         {
             if (dashTimer.IncrementFixedUpdate(false))
@@ -295,12 +301,15 @@ public class CharacterMovementModule : Module
             {
                 // Is dash time done? (do NOT reset DashTimer)
                 Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+                
                 movementStatus = MovementStatus.Normal;
             }
+            
         }
 
         if (inputtedDash && dashCooldown.IsDone)
         {
+            
             // Do dash here.
             dashCooldown.Reset();
             inputtedMovement.Normalize();
@@ -308,6 +317,7 @@ public class CharacterMovementModule : Module
             // Now do dash.
             dashTimer.Reset();
             lockedDashInput = inputtedMovement;
+            Master.r2d.gravityScale = 0;
             movementStatus = MovementStatus.Dashing;
 
             // Switch to a kinematic collider so the player is forced in one
