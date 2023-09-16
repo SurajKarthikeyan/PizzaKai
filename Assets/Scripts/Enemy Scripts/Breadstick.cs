@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,12 +11,17 @@ public class Breadstick : EnemyBasic
     public float sizeScale = 0.5f;
     public int stickSplit = 2;
 
+    public AudioSource breadDead;
+
+    public AudioSource breadAttack;
     // Start is called before the first frame update
     override public void Start()
     {
         transform.localScale = Vector3.one * size * sizeScale;
       
         base.Start();
+        breadDead.clip = AudioDictionary.aDict.audioDict["breadDead"];
+        breadAttack.clip = AudioDictionary.aDict.audioDict["breadAttack"];
     }
 
     public override void Update()
@@ -28,6 +34,7 @@ public class Breadstick : EnemyBasic
 
         if (currentHP <= 0)
         {
+            breadDead.Play();
             if (size > 1)
             {
                 for (int i = 0; i < stickSplit; i++)
@@ -78,6 +85,12 @@ public class Breadstick : EnemyBasic
 
         playerPos = player.transform.position;
         EnemyMovement();
+    }
+
+    public override void OnCollisionEnter2D(Collision2D col)
+    {
+        base.OnCollisionEnter2D(col);
+        breadAttack.Play();
     }
 
 

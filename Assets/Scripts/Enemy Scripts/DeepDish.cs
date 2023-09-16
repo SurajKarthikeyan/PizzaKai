@@ -16,7 +16,12 @@ public class DeepDish : EnemyBasic
     public bool fireRight;
 
     public AudioSource DeepDishShot;
-    public AudioClip DeepDishShotgun;
+
+    public override void Start()
+    {
+        base.Start();
+        DeepDishShot.clip = AudioDictionary.aDict.audioDict["deepDishShot"];
+    }
 
     public override void Update()
     {

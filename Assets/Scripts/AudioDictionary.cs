@@ -36,7 +36,7 @@ public class AudioDictionary : MonoBehaviour
     #endregion
 
     #region UnityMethods
-    private void Start()
+    private void Awake()
     {
         if(aDict == null)
         {
