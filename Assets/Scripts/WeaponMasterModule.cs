@@ -107,15 +107,21 @@ public class WeaponMasterModule : Module
         // Do some basic trig to get the weapons pointed at the target.
         Vector2 disp = target - (Vector2)transform.position;
         float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
-        Vector3 eulerAngles = new(
-            transform.localEulerAngles.x,
-            transform.localEulerAngles.y,
-            zRot
-        );
-        transform.localEulerAngles = eulerAngles;
 
         // Send data to the flip module.
         Master.SetLookAngle(zRot);
+        var scale = transform.localScale;
+        scale.x = Master.flipModule.FlipMultiplier;
+        scale.y = Master.flipModule.FlipMultiplier;
+        transform.localScale = scale;
+
+        Vector3 eulerAngles = new(
+            0,
+            0,
+            zRot
+        );
+
+        transform.eulerAngles = eulerAngles;
     }
     #endregion
 
