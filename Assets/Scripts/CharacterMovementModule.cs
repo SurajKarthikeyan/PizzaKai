@@ -172,7 +172,7 @@ public class CharacterMovementModule : Module
         // Set up variables first.
         inputtedMovement.Normalize();
         Vector2 velocity = Master.r2d.velocity;
-        UpdateOWPCollision();
+        //UpdateOWPCollision();
         UpdateWalk(velocity);
         UpdateDash();
         UpdateJumping();
