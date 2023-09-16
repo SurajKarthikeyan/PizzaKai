@@ -32,10 +32,13 @@ public class Generator : EnemyBasic
     // Handles taking damage if the generator is vulnerable
     public override void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (isVulnerable)   // checks if vulnerability is allowed
         {
+            //Play good audio
             base.OnTriggerEnter2D(collision);
         }
+        // Play bad metallic audio
     }
     #endregion
 

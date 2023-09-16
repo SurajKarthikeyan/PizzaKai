@@ -134,6 +134,8 @@ public class CharacterMovementModule : Module
     public MovementStatus movementStatus;
 
     private Vector2 lockedDashInput;
+    private static readonly int RightLeftMovement = Animator.StringToHash("RightLeftMovement");
+
     #endregion
     #endregion
 
@@ -226,20 +228,7 @@ public class CharacterMovementModule : Module
 
     private void UpdateWalkAnim(Vector2 velocity)
     {
-        // Walk animation.
-        if (characterAnimator)
-        {
-            Vector2 paramVal = positiveAnimParamOnly ? velocity.Abs() : velocity;
-            if (!string.IsNullOrWhiteSpace(animParamSpeedX))
-            {
-                characterAnimator.SetFloat(animParamSpeedX, paramVal.x);
-            }
-
-            if (!string.IsNullOrWhiteSpace(animParamSpeedY))
-            {
-                characterAnimator.SetFloat(animParamSpeedY, paramVal.y);
-            }
-        }
+        characterAnimator.SetFloat(RightLeftMovement, velocity.magnitude);
     }
     #endregion
 
