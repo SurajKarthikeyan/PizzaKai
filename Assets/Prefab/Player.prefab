@@ -3418,7 +3418,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -3482,20 +3482,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87618cd6f0814479110d9243d2ba55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: {x: 10, y: 0}
-  moveAcceleration: {x: 1, y: 0}
+  maxMoveSpeed: {x: 5, y: 0}
+  moveAcceleration: {x: 0.5, y: 1}
   jumpForce: 12
   jumpCooldown:
     maxTime: 0.5
     elapsed: 0
-  groundCheck: {fileID: 0}
-  characterAnimator: {fileID: 0}
+  coyoteTimer:
+    maxTime: 0.5
+    elapsed: 0
+  dashSpeed: 15
+  dashCooldown:
+    maxTime: 2
+    elapsed: 0
+  dashTimer:
+    maxTime: 0.2
+    elapsed: 0
+  groundCheck: {fileID: 3726116736307325435}
+  characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 0
-  animParamSpeedX: 
+  animParamSpeedX: RightLeftMovement
   animParamSpeedY: 
-  animParamJump: 
+  animParamJump: Jumping
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
+  inputtedDash: 0
   touchingGroundColliders:
   - {fileID: 0}
   groundCheckCF2D:
@@ -3513,6 +3524,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundedStatus: 0
+  movementStatus: 0
 --- !u!114 &3245470669006060296
 MonoBehaviour:
   m_ObjectHideFlags: 0

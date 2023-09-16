@@ -116,7 +116,7 @@ public class CharacterMovementModule : Module
 
     [Tooltip("The inputted dash. Will be normalized.")]
     [ReadOnly]
-    public Vector2 inputtedDash;
+    public bool inputtedDash;
 
     [Header("Grounded Checks")]
     [ReadOnly]
@@ -218,7 +218,7 @@ public class CharacterMovementModule : Module
         // rigidbody. Directly setting the velocity often leads to weird
         // results, such as the shotgun not being able to properly move the
         // character.
-        Master.r2d.AddForce(force);
+        Master.r2d.AddForce(force, ForceMode2D.Impulse);
 
         // Handle animations.
         UpdateWalkAnim(velocity);
@@ -307,21 +307,21 @@ public class CharacterMovementModule : Module
             }
         }
 
-        if (!inputtedDash.ApproxZero() && dashCooldown.IsDone)
+        if (inputtedDash && dashCooldown.IsDone)
         {
             // Do dash here.
             dashCooldown.Reset();
-            inputtedDash.Normalize();
+            inputtedMovement.Normalize();
 
             // Now do dash.
             dashTimer.Reset();
-            lockedDashInput = inputtedDash;
+            lockedDashInput = inputtedMovement;
             movementStatus = MovementStatus.Dashing;
 
             // Switch to a kinematic collider so the player is forced in one
             // direction. Also shoves all enemies out of the way.
             Master.r2d.bodyType = RigidbodyType2D.Kinematic;
-            Master.r2d.velocity = inputtedDash * dashSpeed;
+            Master.r2d.velocity = inputtedMovement * dashSpeed;
         }
     }
 

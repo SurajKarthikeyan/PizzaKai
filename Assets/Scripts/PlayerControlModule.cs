@@ -48,6 +48,8 @@ public class PlayerControlModule : Module
         movementController.inputtedMovement.Normalize();
 
         movementController.inputtedJump = Input.GetButtonDown("Jump");
+
+        movementController.inputtedDash = Input.GetKeyDown(KeyCode.LeftShift);
     }
     #endregion
 }
