@@ -210,7 +210,7 @@ public class UICode : MonoBehaviour
 
     public void RespawnDelay()
     {
-        respawn.respawnPlayer();
+        respawn.RespawnPlayer();
         animator.Play("PizzaGuy_Idle");
         animatorGun.Play("Idle");
         Time.timeScale = 1;

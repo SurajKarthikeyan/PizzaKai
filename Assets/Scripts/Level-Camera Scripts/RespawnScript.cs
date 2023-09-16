@@ -8,7 +8,6 @@ public class RespawnScript : MonoBehaviour
     public GameObject player;
     public GameObject respawnPoint;
 
-    public UICode UIScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +20,8 @@ public class RespawnScript : MonoBehaviour
         
     }
 
-    public void respawnPlayer ()
+    public void RespawnPlayer()
     {
-        UIScript.isDying = false;
         player.layer = 7;
         player.transform.position = respawnPoint.transform.position;
         

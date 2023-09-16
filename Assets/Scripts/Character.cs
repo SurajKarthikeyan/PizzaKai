@@ -42,6 +42,8 @@ public class Character : MonoBehaviour
     public DefaultFlipModule flipModule;
 
     private Duration damageInvulnerability;
+
+    [SerializeField] private RespawnScript respawn;
     #endregion
 
     #endregion
@@ -68,8 +70,7 @@ public class Character : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
-                onCharacterDeath.Invoke();
-                EventManager.Instance.onCharacterDeath.Invoke(this);
+                Die();
             }
         }
     }
@@ -152,6 +153,12 @@ public class Character : MonoBehaviour
     public void HealPlayer(int healthIncrease)
     {
         HP += healthIncrease;
+    }
+
+    private void Die()
+    {
+        respawn.RespawnPlayer();
+        HP = maxHP;
     }
     #endregion
     #endregion
