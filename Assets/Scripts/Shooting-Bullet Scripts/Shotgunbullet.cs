@@ -24,11 +24,11 @@ public class Shotgunbullet : bulletScript
 
     void CloneMe()
     {
-        Debug.Log("1");
+        
         if (firstProjectile == true)
         {
             //makes a bunch of extra bullets. If we need more, add more instantiates.
-            Debug.Log("2");
+          
             Instantiate(this.gameObject);
             Instantiate(this.gameObject);
             Instantiate(this.gameObject);
@@ -36,7 +36,7 @@ public class Shotgunbullet : bulletScript
             Instantiate(this.gameObject);
             
         }
-        Debug.Log("3");
+    
     }
 
     //checks to see if there are more than 1 bullet

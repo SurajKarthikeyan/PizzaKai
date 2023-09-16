@@ -73,6 +73,9 @@ public class CharacterMovementModule : Module
     [Tooltip("The duration of dashing.")]
     public Duration dashTimer = new(0.2f);
 
+    [HideInInspector]
+    public bool shotgunPushed;
+
     [Tooltip("The collider responsible for checking if the character is " +
         "grounded.")]
     [Required]
@@ -196,7 +199,7 @@ public class CharacterMovementModule : Module
     private void UpdateWalk(Vector2 velocity)
     {
         Vector2 force = new();
-        if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0))
+        if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0) && !shotgunPushed)
         {
             // Apply a backwards force to stop the player.
             force.x = -velocity.x * Mathf.Clamp01(moveAcceleration.x);
