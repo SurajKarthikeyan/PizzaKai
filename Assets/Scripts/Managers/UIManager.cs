@@ -159,6 +159,10 @@ public class UIManager : MonoBehaviour
                 healthSlider.value = 1;
 
             }
+            if(!player.GetComponent<CharacterMovementModule>().dashCooldown.IsDone)
+            {
+                DashFill();
+            }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -182,18 +186,11 @@ public class UIManager : MonoBehaviour
 
     //Should be fine, might just need cleanup but will double check
 
-    //the dash needs to refill based on time passed in, right now it's "hard coding" two seconds
-    public IEnumerator DashFill()
+    
+    public void DashFill()
     {
-        dashSlider.value = 0f;
-        yield return new WaitForSeconds(.5f);
-        dashSlider.value = 0.25f;
-        yield return new WaitForSeconds(.5f);
-        dashSlider.value = 0.5f;
-        yield return new WaitForSeconds(.5f);
-        dashSlider.value = 0.75f;
-        yield return new WaitForSeconds(.5f);
-        dashSlider.value = 1f;
+        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashCooldown.maxTime,
+            player.GetComponent<CharacterMovementModule>().dashCooldown.elapsed);
     }
 
 
