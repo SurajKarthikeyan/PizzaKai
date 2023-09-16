@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Breadstick : EnemyBasic
 {
@@ -77,4 +79,6 @@ public class Breadstick : EnemyBasic
         playerPos = player.transform.position;
         EnemyMovement();
     }
+
+
 }

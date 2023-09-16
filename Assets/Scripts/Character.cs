@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -146,6 +147,11 @@ public class Character : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void HealPlayer(int healthIncrease)
+    {
+        HP += healthIncrease;
     }
     #endregion
     #endregion
