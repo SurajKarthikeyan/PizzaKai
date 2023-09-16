@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Breadstick : EnemyBasic
 {
@@ -76,5 +78,13 @@ public class Breadstick : EnemyBasic
 
         playerPos = player.transform.position;
         EnemyMovement();
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            player.GetComponent<Character>().TakeDamage(5);
+        }
     }
 }

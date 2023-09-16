@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     private GameObject cameraRef;
     private GameObject playerRef;
     private PlayerMovement player;
+    [SerializeField] private int healthIncrease;
     public SwitchWeapons switchWeapons;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class Pickup : MonoBehaviour
         playerRef = GameObject.Find("Player");
         UI = cameraRef.GetComponent<UICode>();
         player = playerRef.GetComponent<PlayerMovement>();
-
+        
         switchWeapons = playerRef.GetComponent<SwitchWeapons>();
     }
 
@@ -31,8 +32,9 @@ public class Pickup : MonoBehaviour
                 return;
             }
 
-            if (gameObject.tag == "HealthPickup") {
-                UI.GainHealth(.25f);
+            if (gameObject.tag == "HealthPickup")
+            {
+                playerRef.GetComponent<Character>().HealPlayer(healthIncrease);
                 Destroy(gameObject);
             }
             //for any other pickups follow the same if statement above with the proper tags

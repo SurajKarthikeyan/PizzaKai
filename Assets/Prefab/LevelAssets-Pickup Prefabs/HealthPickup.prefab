@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975061d6a38e5b644a63dcd2ff105f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthIncrease: 5
+  switchWeapons: {fileID: 0}
 --- !u!61 &4882631454360775178
 BoxCollider2D:
   m_ObjectHideFlags: 0

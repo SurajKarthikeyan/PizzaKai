@@ -169,7 +169,7 @@ public class EnemyBasic : MonoBehaviour
     virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         // Debug.Log("Was hit");
-        if (collision.gameObject.tag == "PlayerBullet" || collision.gameObject.tag == "PlayerFireBullet")
+        if (collision.gameObject.CompareTag("PlayerBullet") || collision.gameObject.CompareTag("PlayerFireBullet"))
         {
             currentHP = currentHP - (int)collision.gameObject.GetComponent<bulletScript>().damage;
             Destroy(collision.gameObject);
@@ -177,6 +177,7 @@ public class EnemyBasic : MonoBehaviour
             hitState = true;
             hitTime = Time.time + hitDur;
         }
+        
     }
 
     // Handles Enemy being inRoom or not for detection purposes.
