@@ -199,7 +199,7 @@ public class EnemyBasic : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<Character>().TakeDamage(5);
+            col.gameObject.GetComponent<Character>().TakeDamage(5);
         }
     }
 

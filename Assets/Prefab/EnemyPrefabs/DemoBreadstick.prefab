@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8271343615121380460}
   - component: {fileID: 8271343615121380463}
   - component: {fileID: 8271343615121380466}
-  - component: {fileID: 8271343615121380467}
   - component: {fileID: 8271343615121380464}
   - component: {fileID: 5140613757828590973}
   - component: {fileID: 4246352360575742689}
@@ -111,33 +110,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8271343615121380467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271343615121380462}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d77ae64b82ce414590773b36d34d909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHP: 10
-  maxHP: 10
-  deathState: 0
-  detRadius: 6
-  speed: 2
-  enemyDamage: 0.25
-  jumpDuration: 0.5
-  jumpSpeed: 1
-  jumpCooldown: 2
-  guaranteedDrop: {fileID: 0}
-  healthDrop: {fileID: 0}
-  dropChance: 0
-  EnemyAnim: {fileID: 0}
-  Moving: 0
-  Fired: 0
 --- !u!114 &8271343615121380464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +128,8 @@ MonoBehaviour:
   detRadius: 10
   speed: 2
   enemyDamage: 0.25
+  inRoom: 0
+  boundChild: {fileID: 0}
   jumpDuration: 0.4
   jumpSpeed: 10
   jumpCooldown: 2
@@ -165,6 +139,7 @@ MonoBehaviour:
   EnemyAnim: {fileID: 5140613757828590973}
   Moving: 0
   Fired: 0
+  Idle: 0
   size: 2
   sizeScale: 1.25
   stickSplit: 2

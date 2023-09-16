@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChickenWing : EnemyBasic
@@ -19,10 +20,16 @@ public class ChickenWing : EnemyBasic
 
     //chicken audio
     public AudioSource ChickenRun;
-    public AudioClip ChickenScared;
     public AudioSource MolotovThrow;
-    public AudioClip MolotovToss;
     public float Counter;
+
+
+    public override void Start()
+    {
+        base.Start();
+        ChickenRun.clip = AudioDictionary.aDict.audioDict["chickenRun"];
+        MolotovThrow.clip = AudioDictionary.aDict.audioDict["molotovToss"];
+    }
 
     override public void Update()
     {
