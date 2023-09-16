@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForkyOven : MonoBehaviour
 {
-    [SerializeField] private UICode UI;
+
     [SerializeField] private Generator[] generators;
 
     private void OnTriggerEnter2D(Collider2D collision)
