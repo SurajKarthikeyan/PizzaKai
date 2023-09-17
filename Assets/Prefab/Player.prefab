@@ -2019,7 +2019,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8206075540257416582}
   respawnPoint: {fileID: 0}
-  UIScript: {fileID: 0}
 --- !u!82 &372884706165202640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3393,7 +3392,7 @@ Transform:
   m_GameObject: {fileID: 8206075540257416582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -49.66, y: -9.98, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7641898171592512580}
@@ -3454,6 +3453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalScale: {x: 0, y: 0, z: 0}
+  negate: 0
+  flipped: 0
 --- !u!114 &8853080664221168347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,6 +3471,10 @@ MonoBehaviour:
   r2d: {fileID: 0}
   c2d: {fileID: 0}
   flipModule: {fileID: 0}
+  playerDamageInvulnerability:
+    maxTime: 0
+    elapsed: 0
+  respawn: {fileID: 0}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3498,6 +3503,7 @@ MonoBehaviour:
   dashTimer:
     maxTime: 0.2
     elapsed: 0
+  shotgunPushed: 0
   groundCheck: {fileID: 3726116736307325435}
   characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 0

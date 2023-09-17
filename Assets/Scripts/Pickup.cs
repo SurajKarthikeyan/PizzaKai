@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    
-    private UICode UI;
+
     private GameObject cameraRef;
     private GameObject playerRef;
     private PlayerMovement player;
+
+    public GameObject shotgun;
+
+    public GameObject flamethrower;
+
+    public GameObject weaponMaster;
+
     [SerializeField] private int healthIncrease;
-    public SwitchWeapons switchWeapons;
     // Start is called before the first frame update
     void Start()
     {
         cameraRef = GameObject.Find("Main Camera");
         playerRef = GameObject.Find("Player");
-        UI = cameraRef.GetComponent<UICode>();
         player = playerRef.GetComponent<PlayerMovement>();
-        
-        switchWeapons = playerRef.GetComponent<SwitchWeapons>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class Pickup : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if(gameObject.GetComponent<Tutorial>() != null)
+            if (gameObject.GetComponent<Tutorial>() != null)
             {
                 return;
             }
@@ -55,18 +57,23 @@ public class Pickup : MonoBehaviour
 
             if (gameObject.tag == "Shotgun")
             {
-                
-                Destroy(gameObject);
-                switchWeapons.Shotgun = true;
-            }
-
-            if (gameObject.tag == "Flamethrower")
-            {
 
                 Destroy(gameObject);
-                switchWeapons.Flamethrower = true;
+                shotgun.transform.parent = weaponMaster.transform;
+                shotgun.transform.position = weaponMaster.transform.position + new Vector3(-0.122f, 0.216f, 0);
+                shotgun.SetActive(false);
+                weaponMaster.GetComponent<WeaponMasterModule>().weapons.Add(shotgun.GetComponent<ShotGunWeapon>());
+
+
+                if (gameObject.tag == "Flamethrower")
+                {
+
+                    Destroy(gameObject);
+                    GameObject flameGO = Instantiate(flamethrower);
+                    flameGO.transform.parent = weaponMaster.transform;
+                }
             }
         }
-    }
 
+    }
 }
