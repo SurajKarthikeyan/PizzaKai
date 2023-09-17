@@ -19,6 +19,7 @@ public class ConveyorBeltScript : MonoBehaviour
     {
         if (col2D.ClosestPoint(new Vector2(transform.position.x, transform.position.y + 2)).y.ToString("0.00") == collision.GetContact(0).point.y.ToString("0.00"))
         {
+
             collision.gameObject.transform.position += Vector3.right * conveyorSpeed * Time.deltaTime;
         }
     }

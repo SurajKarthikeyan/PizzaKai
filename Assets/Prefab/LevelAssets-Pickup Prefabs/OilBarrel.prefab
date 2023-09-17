@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 970517308491692918}
   - component: {fileID: 1706672590204929173}
   - component: {fileID: 5395050642720521562}
+  - component: {fileID: 2628542111691346077}
   m_Layer: 8
   m_Name: OilBarrel
   m_TagString: Box
@@ -97,7 +98,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 970517308491692874}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -126,7 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627e054cb278246b786e2dababc5a562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
   spriteRender: {fileID: 970517308491692875}
   burning: {fileID: 1706672590204929173}
   burns: 0
@@ -162,3 +162,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c1555e7da99a248a4ecaa1a52d4d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2628542111691346077
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970517308491692874}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 999999
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

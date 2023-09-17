@@ -9,7 +9,7 @@ public class ForkyOven : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
+
         //If the player enters the oven, kill the player
         if(collision.gameObject.tag == "Player")
         {
@@ -18,9 +18,10 @@ public class ForkyOven : MonoBehaviour
         }
         else
         {
-            Debug.Log("TEST");
+
             if(collision.gameObject.GetComponent<OilBarrel>() != null)
             {
+                Debug.Log("TEST");
                 foreach(Generator generator in generators)
                 {
                     if(generator != null)

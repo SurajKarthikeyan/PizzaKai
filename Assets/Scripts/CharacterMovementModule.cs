@@ -321,9 +321,6 @@ public class CharacterMovementModule : Module
             Master.r2d.gravityScale = 0;
             movementStatus = MovementStatus.Dashing;
 
-            // Switch to a kinematic collider so the player is forced in one
-            // direction. Also shoves all enemies out of the way.
-            Master.r2d.bodyType = RigidbodyType2D.Kinematic;
             Master.r2d.velocity = inputtedMovement * dashSpeed;
         }
     }

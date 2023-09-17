@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BurningScript : MonoBehaviour
 {
-    public UICode UI;
+
     GameObject[] boxes;
     public SpriteRenderer spriteRender;
     private bool flameBulletHit = false;
@@ -56,7 +56,6 @@ public class BurningScript : MonoBehaviour
                 {
                     //then set burning close to true
                     burningClose = true;
-                    Debug.Log("I feel a burning box!");
 
 
 
@@ -106,7 +105,6 @@ public class BurningScript : MonoBehaviour
             burningME = true;
         }
         
-        Debug.Log("I AM a burning box!");
     }
 
     
