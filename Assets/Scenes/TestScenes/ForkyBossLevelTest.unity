@@ -132129,9 +132129,9 @@ GameObject:
   - component: {fileID: 974300517}
   - component: {fileID: 974300516}
   - component: {fileID: 974300515}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Crate
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132220,7 +132220,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974300514}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -139369,6 +139369,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2074215629878164063, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: canJumpLayers.m_Bits
+      value: 329
+      objectReference: {fileID: 0}
     - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -142325,6 +142329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt
       objectReference: {fileID: 0}
+    - target: {fileID: 1440533379178733821, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
 --- !u!1 &2076170074
@@ -142674,6 +142682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8853080664221168347, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 664779576}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
 --- !u!96 &2084624964 stripped

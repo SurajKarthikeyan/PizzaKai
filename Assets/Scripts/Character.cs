@@ -115,6 +115,8 @@ public class Character : MonoBehaviour
         this.RequireComponent(out flipModule);
 
         IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
+
+        respawn = GameObject.Find("StartingRespawnPoint").GetComponent<RespawnScript>();
     }
     #endregion
 
