@@ -137762,6 +137762,119 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7228773726619069323, guid: 0232774903cdc453db66828c48640e32, type: 3}
   m_PrefabInstance: {fileID: 1576813016}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1620892211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: altFireDelay.maxTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_Name
+      value: Flamethrower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202751872595, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174466, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174466, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174469, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174469, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841203617395346, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: flip
+      value: 
+      objectReference: {fileID: 7353365169726603418, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+    - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: AnimPlayer
+      value: 
+      objectReference: {fileID: 948621413, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
 --- !u!1001 &1629099880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139694,11 +139807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4926999
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28110003
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.z

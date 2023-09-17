@@ -63,15 +63,15 @@ public class Pickup : MonoBehaviour
                 shotgun.transform.position = weaponMaster.transform.position + new Vector3(-0.122f, 0.216f, 0);
                 shotgun.SetActive(false);
                 weaponMaster.GetComponent<WeaponMasterModule>().weapons.Add(shotgun.GetComponent<ShotGunWeapon>());
+            }
 
-
-                if (gameObject.tag == "Flamethrower")
-                {
-
-                    Destroy(gameObject);
-                    GameObject flameGO = Instantiate(flamethrower);
-                    flameGO.transform.parent = weaponMaster.transform;
-                }
+            if (gameObject.tag == "Flamethrower")
+            {
+                Destroy(gameObject);
+                flamethrower.transform.parent = weaponMaster.transform;
+                flamethrower.transform.position = weaponMaster.transform.position + new Vector3(-0.1029999f, 0.21f, 0);
+                flamethrower.SetActive(false);
+                weaponMaster.GetComponent<WeaponMasterModule>().weapons.Add(flamethrower.GetComponent<FlameThrowerWeapon>());
             }
         }
 
