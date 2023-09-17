@@ -124435,7 +124435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2084624958}
   respawnPoint: {fileID: 137195979}
-  UIScript: {fileID: 137195980}
 --- !u!114 &137195983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126943,7 +126942,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193241940}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -139043,7 +139042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069323, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9
+      value: -3.08
       objectReference: {fileID: 0}
     - target: {fileID: 7228773726619069323, guid: 0232774903cdc453db66828c48640e32, type: 3}
       propertyPath: m_LocalPosition.z
