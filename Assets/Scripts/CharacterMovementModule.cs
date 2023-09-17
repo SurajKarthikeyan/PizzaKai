@@ -293,16 +293,17 @@ public class CharacterMovementModule : Module
         {
             if (dashTimer.IncrementFixedUpdate(false))
             {
-                // We are dashing.
-                Master.r2d.velocity = lockedDashInput * dashSpeed;
-                return;
+                // Is dash time done? (do NOT reset DashTimer)
+                Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+
+                movementStatus = MovementStatus.Normal;
             }
             else
             {
-                // Is dash time done? (do NOT reset DashTimer)
-                Master.r2d.bodyType = RigidbodyType2D.Dynamic;
                 
-                movementStatus = MovementStatus.Normal;
+                // We are dashing.
+                Master.r2d.velocity = lockedDashInput * dashSpeed;
+                return;
             }
             
         }
