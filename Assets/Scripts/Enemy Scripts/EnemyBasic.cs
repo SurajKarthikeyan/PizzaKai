@@ -18,7 +18,7 @@ public class EnemyBasic : MonoBehaviour
     // Player Detection Radius, Movement Speed and Damage to Deal
     public float detRadius = 10f;
     public float speed = 2;
-    public float enemyDamage = 0.25f;
+    public int enemyDamage = 5;
     public bool inRoom = false;
     public GameObject boundChild;
     protected Vector3 originalPos;
@@ -202,7 +202,7 @@ public class EnemyBasic : MonoBehaviour
             Character player = col.gameObject.GetComponent<Character>();
             if (player.playerDamageInvulnerability.IsDone)
             {
-                player.TakeDamage(5);
+                player.TakeDamage(enemyDamage);
                 player.playerDamageInvulnerability.Reset();
             }
             
