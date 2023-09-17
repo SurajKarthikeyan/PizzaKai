@@ -19,15 +19,7 @@ public class ConveyorBeltScript : MonoBehaviour
     {
         if (col2D.ClosestPoint(new Vector2(transform.position.x, transform.position.y + 2)).y.ToString("0.00") == collision.GetContact(0).point.y.ToString("0.00"))
         {
-            //print("On Top");
-            Rigidbody2D rigid2D = collision.gameObject.GetComponent<Rigidbody2D>();
-            float velX = rigid2D.velocity.x;
-            if (Mathf.Abs(velX) < Mathf.Abs(velX) + Mathf.Abs(conveyorSpeed) && Mathf.Abs(velX) > Mathf.Abs(velX) - Mathf.Abs(conveyorSpeed))
-            {
-                
-                rigid2D.AddForce (new Vector2(conveyorSpeed, 0), ForceMode2D.Force);
-            }
-            //print(rigid2D.velocity);
+            collision.gameObject.transform.position += Vector3.right * conveyorSpeed * Time.deltaTime;
         }
     }
     
