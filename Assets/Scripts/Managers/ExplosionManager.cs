@@ -14,7 +14,6 @@ public class ExplosionManager : MonoBehaviour
     void Start()
     {
         instance = this;
-
     }
 
     public static GameObject SelectExplosion(Vector2 spawnPoint)

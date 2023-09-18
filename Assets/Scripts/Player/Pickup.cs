@@ -5,9 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
 
-    private GameObject cameraRef;
     private GameObject playerRef;
-    private PlayerMovement player;
 
     public GameObject shotgun;
 
@@ -19,9 +17,7 @@ public class Pickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cameraRef = GameObject.Find("Main Camera");
         playerRef = GameObject.Find("Player");
-        player = playerRef.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -44,14 +40,12 @@ public class Pickup : MonoBehaviour
             if (gameObject.tag == "Level1 Key")
             {
                 //player gets key
-                player.level1Key = true;
                 Destroy(gameObject);
             }
 
             if (gameObject.tag == "Level2 Key")
             {
                 //player gets key
-                player.level2Key = true;
                 Destroy(gameObject);
             }
 

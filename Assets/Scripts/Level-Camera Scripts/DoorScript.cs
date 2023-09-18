@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
     // Start is called before the first frame update
     void Start()
     {

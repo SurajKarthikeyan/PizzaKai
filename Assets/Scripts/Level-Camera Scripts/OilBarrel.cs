@@ -12,6 +12,7 @@ public class OilBarrel : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(ExplosionManager.SelectExplosion(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)));
+        Vector2 explosionPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        Instantiate(ExplosionManager.SelectExplosion(explosionPos));
     }
 }

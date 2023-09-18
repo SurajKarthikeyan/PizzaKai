@@ -337,7 +337,6 @@ public class WeaponModule : Module
         weaponAction = WeaponAudioStrings.Alt;
         altFireDelay.Reset();
         PlayAudio();
-        Debug.Log("Doing alt fire");
     }
 
     #endregion
