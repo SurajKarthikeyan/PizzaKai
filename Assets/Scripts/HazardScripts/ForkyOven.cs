@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ForkyOven : MonoBehaviour
 {
+    #region Vars
 
     [SerializeField] private Generator[] generators;
+    [SerializeField] private Alarm alarm;
+
+    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,6 +30,7 @@ public class ForkyOven : MonoBehaviour
                 {
                     if(generator != null)
                     {
+                        alarm.AlarmSystem();
                         generator.SetVulnerability();
                     }
                 }

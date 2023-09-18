@@ -110,6 +110,8 @@ public class Forky : MonoBehaviour
                     {
                         //Spawn number of boxes in range
                         //Within function, calculate pick a box to be an oil barrel if bool is true
+                        
+                        AudioDictionary.aDict.PlayAudioClipRemote("forkLift",forkyAudioSource);
                         actionTaken = true;
                         enemySpawnDuration.Reset();
                         boxSpawnDuration.Reset();
