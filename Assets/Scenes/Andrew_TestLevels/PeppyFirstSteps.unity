@@ -124349,50 +124349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf8ada3063db5c48a997bc652ecd951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoCount: {fileID: 0}
-  healthSlider: {fileID: 0}
-  dashSlider: {fileID: 0}
-  altSlider: {fileID: 0}
-  ammoCur: 0
-  ammoMax: 0
-  healthCur: 0
-  healthMax: 1
-  healthLoss: 0
-  boxBurning: 0
-  isPaused: 0
-  tommyEquipped: 0
-  shotgunEquipped: 0
-  flameEquipped: 0
-  player: {fileID: 0}
-  respawn: {fileID: 137195982}
-  PlayerDeath: {fileID: 0}
-  PizzaDeath: {fileID: 0}
-  animator: {fileID: 0}
-  animatorGun: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  altTime: 0
-  timestamp: 0
-  mainPlayer: {fileID: 0}
-  ammoTommy: {fileID: 0}
-  ammoShotgun: {fileID: 0}
-  ammoFlame: {fileID: 0}
-  ammoSniper: {fileID: 0}
-  tommy: {fileID: 0}
-  shotgun: {fileID: 0}
-  flamethrower: {fileID: 0}
-  sniper: {fileID: 0}
-  tommyFlash: {fileID: 0}
-  tommyFlashImage: {fileID: 0}
-  shootingTommy: {fileID: 0}
-  shootingShotgun: {fileID: 0}
-  shootingFlamethrower: {fileID: 0}
-  shootingSniper: {fileID: 0}
-  tommyScript: {fileID: 0}
-  shotgunScript: {fileID: 0}
-  flamethrowerScript: {fileID: 0}
-  sniperScript: {fileID: 0}
-  isFlashing: 0
-  isDying: 0
 --- !u!4 &137195981
 Transform:
   m_ObjectHideFlags: 0
@@ -124646,7 +124602,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137195979}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &137195987
 Camera:
   m_ObjectHideFlags: 0

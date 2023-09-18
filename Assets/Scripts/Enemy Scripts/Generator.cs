@@ -10,13 +10,14 @@ public class Generator : EnemyBasic
     [SerializeField] private bool isVulnerable;
     [Tooltip("Int variable to set the duration of the vulnerability in a coroutine")]
     [SerializeField] private int vulnerableTime;
+    [SerializeField] private AudioSource generatorSource;
     #endregion
 
     #region  UnityMethods
     public override void Start()
     {
         base.Start();
-        isVulnerable = false;
+        //isVulnerable = false;
     }
 
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
@@ -35,10 +36,13 @@ public class Generator : EnemyBasic
         
         if (isVulnerable)   // checks if vulnerability is allowed
         {
-            //Play good audio
+            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageGood", generatorSource);
             base.OnTriggerEnter2D(collision);
         }
-        // Play bad metallic audio
+        else
+        {
+            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageBad", generatorSource);
+        }
     }
     #endregion
 

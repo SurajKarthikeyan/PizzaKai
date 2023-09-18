@@ -127025,6 +127025,7 @@ MonoBehaviour:
   Idle: 0
   isVulnerable: 0
   vulnerableTime: 3
+  generatorSource: {fileID: 0}
 --- !u!212 &287888028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127267,6 +127268,7 @@ MonoBehaviour:
   Idle: 0
   isVulnerable: 0
   vulnerableTime: 3
+  generatorSource: {fileID: 0}
 --- !u!212 &391720895
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128527,6 +128529,7 @@ MonoBehaviour:
   Idle: 0
   isVulnerable: 0
   vulnerableTime: 3
+  generatorSource: {fileID: 0}
 --- !u!212 &564391720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -145118,7 +145121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[2].key
@@ -145178,6 +145181,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[16].key
+      value: generatorDamageGood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[17].key
+      value: generatorDamageBad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[18].key
       value: flamethrowerReload
       objectReference: {fileID: 0}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
@@ -145234,6 +145245,14 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
     - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: audioDict.keyValuePairs.Array.data[16].value
+      value: 
+      objectReference: {fileID: 8300000, guid: 55cb8457969cd0e4393520122afe7a22, type: 3}
+    - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[17].value
+      value: 
+      objectReference: {fileID: 8300000, guid: e20af868dbaa0d340adf50fe142e6518, type: 3}
+    - target: {fileID: 1431714020, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[18].value
       value: 
       objectReference: {fileID: 8300000, guid: 38ff50a954ef3a84da845f03f0c5345d, type: 3}
     - target: {fileID: 1562710009, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
