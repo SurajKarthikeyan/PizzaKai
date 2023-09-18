@@ -17,7 +17,7 @@ public class Generator : EnemyBasic
     public override void Start()
     {
         base.Start();
-        //isVulnerable = false;
+        isVulnerable = false;
     }
 
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
@@ -65,6 +65,7 @@ public class Generator : EnemyBasic
     {
         // Play Death Animation
         // Instantiate alternative sprite
+        AudioDictionary.aDict.PlayAudioClipRemote("generatorDead", generatorSource);
         Destroy(this.gameObject);
         
     }
