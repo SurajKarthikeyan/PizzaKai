@@ -42,8 +42,8 @@ public class PlayerControlModule : Module
     private void Update()
     {
         movementController.inputtedMovement = new(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
+            Input.GetAxisRaw("Horizontal"), 0
+            //Input.GetAxisRaw("Vertical")
         );
         movementController.inputtedMovement.Normalize();
 
