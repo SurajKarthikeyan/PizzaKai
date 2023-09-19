@@ -34,6 +34,8 @@ public class Forky : MonoBehaviour
 
     private int maxBoxHeight = 4;
 
+    private float oilChance = 0;
+
     private bool containsOil = false;
 
     private bool actionTaken = false;
@@ -115,8 +117,20 @@ public class Forky : MonoBehaviour
             yield return new WaitForSeconds(boxSpawnDuration);
             int boxNum = Random.Range(minBoxHeight, maxBoxHeight);
             //Spawn boxes with potential oil barrel
-            print("spawning boxes");
-            crateSpawner.SpawnCrate(boxNum, true);
+
+            bool oil = Random.Range(0, 101) <= oilChance;
+
+            crateSpawner.SpawnCrate(boxNum, oil);
+
+            if(!oil)
+            {
+                oilChance += 25;
+            }
+            else
+            {
+                oilChance = 0;
+            }
+
             AudioDictionary.aDict.PlayAudioClipRemote("forkLift", forkyAudioSource);
         }
         actionTaken = false;
