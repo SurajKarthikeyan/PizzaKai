@@ -190,7 +190,7 @@ public class WeaponMasterModule : Module
     /// <summary>
     /// Enables current weapon the player has selected.
     /// </summary>
-    private void EnableCurrentWeapon()
+    public void EnableCurrentWeapon()
     {
         weapons.ForEach(weap => weap.gameObject.SetActive(false));
 
