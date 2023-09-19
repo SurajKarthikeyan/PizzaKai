@@ -124406,7 +124406,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1445139321, guid: dfafa0e75efa8b040a9b645031348a5c, type: 3}
       - {fileID: 1320293804, guid: dfafa0e75efa8b040a9b645031348a5c, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: -1, z: 0}
@@ -130145,6 +130145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2828876007469774445, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: m_BodyType
       value: 1
@@ -142350,6 +142354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2828876007469774445, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: m_BodyType
       value: 1
@@ -144817,6 +144825,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2828876007469774445, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: m_BodyType
       value: 1
