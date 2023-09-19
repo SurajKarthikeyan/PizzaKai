@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -73,6 +74,7 @@ public class Forky : MonoBehaviour
         if (IsDead)
         {
             //Play Death Animation once and destroy object
+            SceneManager.LoadScene("MainMenu");
         }
 
         //Logic for when the boss is alive
