@@ -440,6 +440,8 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: 4705b902fbc17744194e1bd6dcea40aa, type: 3}
     - key: playerDeath
       value: {fileID: 8300000, guid: 4bfb18184fdb74d48878504b78272b22, type: 3}
+    - key: breadAttack
+      value: {fileID: 8300000, guid: 073436a55b84e624e84f30f4232a40f2, type: 3}
     - key: breadDead
       value: {fileID: 8300000, guid: daa6e3e7722e80d4f86575aad020e4d8, type: 3}
     - key: chickenRun
@@ -466,8 +468,16 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
     - key: flamethrowerAlt
       value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
-    - key: flamethrowerReload
-      value: {fileID: 8300000, guid: 38ff50a954ef3a84da845f03f0c5345d, type: 3}
+    - key: generatorDamageGood
+      value: {fileID: 8300000, guid: 55cb8457969cd0e4393520122afe7a22, type: 3}
+    - key: generatorDamageBad
+      value: {fileID: 8300000, guid: e349fee8dab84a94e9c4870759546b16, type: 3}
+    - key: forkLift
+      value: {fileID: 8300000, guid: 64c9a9241eb95be4e9150620adbbd593, type: 3}
+    - key: alarmWarehouse
+      value: {fileID: 8300000, guid: 7e4fe6991c75b964895398c9a2d3a9fe, type: 3}
+    - key: generatorDead
+      value: {fileID: 8300000, guid: c414642b4d2d0a44b9b2f357afabb990, type: 3}
   source: 0
   testSource: {fileID: 971485528}
   gunSource: {fileID: 0}
@@ -1833,7 +1843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1264708670744078055
 Transform:
   m_ObjectHideFlags: 0
@@ -2656,7 +2666,7 @@ GameObject:
   - component: {fileID: 948621413}
   m_Layer: 7
   m_Name: PlayerSprite
-  m_TagString: Untagged
+  m_TagString: PlayerSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3404,8 +3414,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0.35}
-  m_Size: {x: 0.5, y: 0.7}
+  m_Offset: {x: -0.003828676, y: 0.22676209}
+  m_Size: {x: 0.32078126, y: 0.44404224}
   m_Direction: 0
 --- !u!114 &4215817023096108082
 MonoBehaviour:
@@ -3519,6 +3529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7754860285980378560}
     m_Modifications:
+    - target: {fileID: 1566744870868696937, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
     - target: {fileID: 1566744871942449173, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: flip
       value: 
@@ -3610,6 +3624,10 @@ PrefabInstance:
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579121097500353269, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
       objectReference: {fileID: 0}
     - target: {fileID: 6874168942830066409, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: bullet
@@ -3721,9 +3739,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174466, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174466, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.119
+      objectReference: {fileID: 0}
     - target: {fileID: 2770841202823174469, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841202823174469, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770841203617395346, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
       objectReference: {fileID: 0}
     - target: {fileID: 7173385150190640522, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: flip
@@ -3791,6 +3825,10 @@ PrefabInstance:
       propertyPath: animReloadingBool
       value: Reload
       objectReference: {fileID: 0}
+    - target: {fileID: 4342418668238935991, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669407275861, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: flip
       value: 
@@ -3803,6 +3841,10 @@ PrefabInstance:
       propertyPath: AnimPlayer
       value: 
       objectReference: {fileID: 948621413}
+    - target: {fileID: 4342418669709362199, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_TagString
+      value: PlayerArm
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086010, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_Name
       value: Shotgun
