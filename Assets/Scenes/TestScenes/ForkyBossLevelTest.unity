@@ -142256,7 +142256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692874, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628542111691346077, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_GravityScale
@@ -146283,7 +146283,7 @@ PrefabInstance:
     - target: {fileID: 8206075540257416579, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: flip
       value: 
-      objectReference: {fileID: 2084624966}
+      objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416579, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: trail
       value: 
@@ -146324,17 +146324,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1661574810468894446, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
   m_PrefabInstance: {fileID: 2084624957}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2084624966 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7353365169726603418, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 2084624957}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff75651f38624ca9ba9a359e4ce3d4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &2084624967 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 948621413, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
