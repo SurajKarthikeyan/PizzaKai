@@ -25,7 +25,6 @@ public class ForkyOven : MonoBehaviour
 
             if(collision.gameObject.GetComponent<OilBarrel>() != null)
             {
-                Debug.Log("TEST");
                 foreach(Generator generator in generators)
                 {
                     if(generator != null)
