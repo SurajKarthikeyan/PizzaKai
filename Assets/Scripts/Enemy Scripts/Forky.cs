@@ -116,7 +116,7 @@ public class Forky : MonoBehaviour
             int boxNum = Random.Range(minBoxHeight, maxBoxHeight);
             //Spawn boxes with potential oil barrel
             print("spawning boxes");
-            crateSpawner.SpawnCrate(0);
+            crateSpawner.SpawnCrate(boxNum, true);
             AudioDictionary.aDict.PlayAudioClipRemote("forkLift", forkyAudioSource);
         }
         actionTaken = false;
