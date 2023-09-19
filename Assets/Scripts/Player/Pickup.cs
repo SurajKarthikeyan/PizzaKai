@@ -55,8 +55,12 @@ public class Pickup : MonoBehaviour
                 Destroy(gameObject);
                 shotgun.transform.parent = weaponMaster.transform;
                 shotgun.transform.position = weaponMaster.transform.position + new Vector3(-0.122f, 0.216f, 0);
-                shotgun.SetActive(false);
-                weaponMaster.GetComponent<WeaponMasterModule>().weapons.Add(shotgun.GetComponent<ShotGunWeapon>());
+                WeaponMasterModule weaponMasterScript = weaponMaster.GetComponent<WeaponMasterModule>();
+                weaponMasterScript.weapons.Add(shotgun.GetComponent<ShotGunWeapon>());
+                weaponMasterScript.weaponIndex = weaponMasterScript.weapons.Count - 1;
+                weaponMasterScript.EnableCurrentWeapon();
+                shotgun.SetActive(true);
+                
             }
 
             if (gameObject.tag == "Flamethrower")
@@ -64,8 +68,11 @@ public class Pickup : MonoBehaviour
                 Destroy(gameObject);
                 flamethrower.transform.parent = weaponMaster.transform;
                 flamethrower.transform.position = weaponMaster.transform.position + new Vector3(-0.1029999f, 0.21f, 0);
-                flamethrower.SetActive(false);
-                weaponMaster.GetComponent<WeaponMasterModule>().weapons.Add(flamethrower.GetComponent<FlameThrowerWeapon>());
+                WeaponMasterModule weaponMasterScript = weaponMaster.GetComponent<WeaponMasterModule>();
+                weaponMasterScript.weapons.Add(flamethrower.GetComponent<FlameThrowerWeapon>());
+                weaponMasterScript.weaponIndex = weaponMasterScript.weapons.Count - 1;
+                weaponMasterScript.EnableCurrentWeapon();
+                flamethrower.SetActive(true);
             }
         }
 
