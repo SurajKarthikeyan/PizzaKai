@@ -28,6 +28,8 @@ public class Forky : MonoBehaviour
 
     private float maxEnemySpawnTime = 9f;
 
+    private int maxEnemyCount = 2;
+
     private int minBoxHeight = 1;
 
     private int maxBoxHeight = 4;
@@ -40,11 +42,8 @@ public class Forky : MonoBehaviour
 
     public GameObject enemySpawnPoint;
 
-    public GameObject crate;
-
     //Crate generator script reference
-
-    public GameObject oilBarrel;
+    ForkyCrateSpawner crateSpawner;
 
     public GameObject breadstick;
 
@@ -61,7 +60,7 @@ public class Forky : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        crateSpawner = GetComponent<ForkyCrateSpawner>();
     }
     #endregion
 
@@ -94,21 +93,6 @@ public class Forky : MonoBehaviour
     #endregion
 
     #region Methods
-    /// <summary>
-    /// Calculates rates of probability for actions taken and objects spawned.
-    /// </summary>
-    void CalculateRates()
-    {
-        //Resetting action taken
-        actionTaken = false;
-
-        //Setting the time for both actions within the interval specified.
-        //enemySpawnDuration.maxTime = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
-        //boxSpawnDuration.maxTime = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
-
-
-    }
-
     IEnumerator IntervalSpawner(bool spawnEnemies)
     {
         actionTaken = true;
@@ -116,7 +100,7 @@ public class Forky : MonoBehaviour
         {
             float enemySpawnDuration = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
             yield return new WaitForSeconds(enemySpawnDuration);
-            int enemyNum = Random.Range(1, 3);
+            int enemyNum = Random.Range(1, maxEnemyCount);
             while (enemyNum >= 0)
             {
                 Instantiate(breadstick, enemySpawnPoint.transform.position, Quaternion.identity);
@@ -132,6 +116,7 @@ public class Forky : MonoBehaviour
             int boxNum = Random.Range(minBoxHeight, maxBoxHeight);
             //Spawn boxes with potential oil barrel
             print("spawning boxes");
+            crateSpawner.SpawnCrate(0);
             AudioDictionary.aDict.PlayAudioClipRemote("forkLift", forkyAudioSource);
         }
         actionTaken = false;
@@ -141,6 +126,10 @@ public class Forky : MonoBehaviour
     {
         //Changing dependent variables for spawning logic and remove the generator
         generators.Remove(generator);
+        if (generators.Count == 1)
+        {
+            maxEnemyCount++;
+        }
         maxBoxSpawnTime -= 1;
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;
