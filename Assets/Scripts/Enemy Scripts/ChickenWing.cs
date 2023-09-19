@@ -37,12 +37,14 @@ public class ChickenWing : EnemyBasic
         if (Time.time >= threwAtTime + throwCooldown) thrownProj = false;
 
         // Chicken uses InRoom in BaseUpdate
-        if (inRoom == false)
+       /* if (inRoom == false)
         {
             transform.position = originalPos;
             return;
         }
+       */
         base.Update();
+        EnemyMovement();
         
     }
     override public void EnemyMovement()

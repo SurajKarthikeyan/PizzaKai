@@ -25,11 +25,12 @@ public class DeepDish : EnemyBasic
 
     public override void Update()
     {
-        if (inRoom == false)
+        /*if (inRoom == false)
         {
             transform.position = originalPos;
             return;
         }
+        */
 
         base.Update();
 
