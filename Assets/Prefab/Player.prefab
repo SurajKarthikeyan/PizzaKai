@@ -478,6 +478,8 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: 7e4fe6991c75b964895398c9a2d3a9fe, type: 3}
     - key: generatorDead
       value: {fileID: 8300000, guid: c414642b4d2d0a44b9b2f357afabb990, type: 3}
+    - key: flamethrowerReload
+      value: {fileID: 8300000, guid: 38ff50a954ef3a84da845f03f0c5345d, type: 3}
   source: 0
   testSource: {fileID: 971485528}
   gunSource: {fileID: 0}
@@ -3353,6 +3355,7 @@ GameObject:
   - component: {fileID: 8853080664221168347}
   - component: {fileID: 6979568082248114104}
   - component: {fileID: 3245470669006060296}
+  - component: {fileID: 5795101736780082403}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -3449,7 +3452,7 @@ MonoBehaviour:
   c2d: {fileID: 0}
   flipModule: {fileID: 0}
   playerDamageInvulnerability:
-    maxTime: 0
+    maxTime: 1
     elapsed: 0
   respawn: {fileID: 0}
 --- !u!114 &6979568082248114104
@@ -3522,6 +3525,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 6979568082248114104}
   weaponMaster: {fileID: 4442014443317022540}
+--- !u!114 &5795101736780082403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206075540257416582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConversionMode: 0
 --- !u!1001 &1566744871420658111
 PrefabInstance:
   m_ObjectHideFlags: 0
