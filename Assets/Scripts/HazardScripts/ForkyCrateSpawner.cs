@@ -5,11 +5,11 @@ using UnityEngine;
 public class ForkyCrateSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] cratePrefabs;
-    [SerializeField] private Vector3 spawnPos;
+    [SerializeField] private GameObject spawnPos;
 
     public void SpawnCrate(int numCrates = 1, bool hasOil = false)
     {
         GameObject crateGO = Instantiate<GameObject>(cratePrefabs[numCrates]);
-        crateGO.transform.position = spawnPos;
+        crateGO.transform.position = spawnPos.transform.position;
     }
 }
