@@ -137809,6 +137809,7 @@ GameObject:
   - component: {fileID: 1805521505}
   - component: {fileID: 1805521504}
   - component: {fileID: 1805521503}
+  - component: {fileID: 1805521506}
   m_Layer: 3
   m_Name: Platform_Top
   m_TagString: Ground
@@ -137842,7 +137843,7 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -139224,6 +139225,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!251 &1805521506
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805521501}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 90
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1865609680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139516,6 +139536,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.119
       objectReference: {fileID: 0}
+    - target: {fileID: 2407071942407806261, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2600166346267091786, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_TagString
       value: PlayerArm
@@ -139639,7 +139663,7 @@ PrefabInstance:
     - target: {fileID: 8206075540257416579, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: flip
       value: 
-      objectReference: {fileID: 2084624966}
+      objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416579, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: trail
       value: 
@@ -139676,17 +139700,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1661574810468894446, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
   m_PrefabInstance: {fileID: 2084624957}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2084624966 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7353365169726603418, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-  m_PrefabInstance: {fileID: 2084624957}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff75651f38624ca9ba9a359e4ce3d4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &2084624967 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 948621413, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
