@@ -142212,11 +142212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692872, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.02
+      value: 3.14
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692872, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.31
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692872, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_LocalPosition.z
@@ -145296,9 +145296,9 @@ MonoBehaviour:
   oilBarrel: {fileID: 2110502170}
   breadstick: {fileID: 278085191}
   generators:
-  - {fileID: 287888024}
-  - {fileID: 391720891}
-  - {fileID: 564391716}
+  - {fileID: 1927484688}
+  - {fileID: 2032399272}
+  - {fileID: 1663187434}
 --- !u!212 &1903842572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146515,7 +146515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308236357086459573, guid: 8f75305bf57ad3f4889761c65776e372, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 6308236357086459573, guid: 8f75305bf57ad3f4889761c65776e372, type: 3}
       propertyPath: m_LocalPosition.z
@@ -146555,7 +146555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308236357086459583, guid: 8f75305bf57ad3f4889761c65776e372, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f75305bf57ad3f4889761c65776e372, type: 3}

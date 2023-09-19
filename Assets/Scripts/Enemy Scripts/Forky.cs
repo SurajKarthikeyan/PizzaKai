@@ -20,10 +20,6 @@ public class Forky : MonoBehaviour
 
     public Animator forkyAnimator;
 
-    private Duration enemySpawnDuration;
-
-    private Duration boxSpawnDuration;
-
     private float minBoxSpawnTime = 5f;
 
     private float maxBoxSpawnTime = 7f;
@@ -32,9 +28,9 @@ public class Forky : MonoBehaviour
 
     private float maxEnemySpawnTime = 9f;
 
-    private float minBoxHeight = 1f;
+    private int minBoxHeight = 1;
 
-    private float maxBoxHeight = 4f;
+    private int maxBoxHeight = 4;
 
     private bool containsOil = false;
 
@@ -65,8 +61,7 @@ public class Forky : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemySpawnDuration = new(Random.Range(minEnemySpawnTime, maxEnemySpawnTime));
-        boxSpawnDuration = new(Random.Range(minBoxSpawnTime, maxBoxSpawnTime));
+        
     }
     #endregion
 
@@ -80,50 +75,19 @@ public class Forky : MonoBehaviour
         }
 
         //Logic for when the boss is alive
-        else
+        else if (!actionTaken)
         {
-            //Instantiate boxes at appropriate height and interval (interval function below)
-            if (enemySpawnDuration.IsDone || boxSpawnDuration.IsDone)
+            float enemySpawnChance = Random.Range(0, 1f);
+            if (enemySpawnChance <= .25f)
             {
-                if (actionTaken)
-                {
-                    //If we have taken an action, we reset timers for next action
-                    CalculateRates();
-                }
-                else
-                {
-                    //Block for when we are taking an action, spawning boxes or enemies
-                    if (enemySpawnDuration.IsDone)
-                    {
-                        //Spawn number of enemies selected within range
-                        int enemyNum = Random.Range(1, 3);
-                        int spawnCount = 0;
-                        while (spawnCount < enemyNum)
-                        {
-                            Instantiate(breadstick, enemySpawnPoint.transform.position, Quaternion.identity);
-                        }
-                        actionTaken = true;
-                        enemySpawnDuration.Reset();
-                        boxSpawnDuration.Reset();
-                    }
-                    else if (boxSpawnDuration.IsDone)
-                    {
-                        //Spawn number of boxes in range
-                        //Within function, calculate pick a box to be an oil barrel if bool is true
-                        
-                        AudioDictionary.aDict.PlayAudioClipRemote("forkLift",forkyAudioSource);
-                        actionTaken = true;
-                        enemySpawnDuration.Reset();
-                        boxSpawnDuration.Reset();
-                    }
-                    
-                    
-                }
-
+                //Start coroutine for spawning enemies after a certain amount of time
+                StartCoroutine(IntervalSpawner(true));
             }
-            //Need to fix this system. If you replace true with false Unity crashes. L.
-            enemySpawnDuration.IncrementUpdate(true);
-            boxSpawnDuration.IncrementUpdate(true);
+            else
+            {
+                //Start coroutine for spawning boxes
+                StartCoroutine(IntervalSpawner(false));
+            }
 
         }
     }
@@ -139,10 +103,38 @@ public class Forky : MonoBehaviour
         actionTaken = false;
 
         //Setting the time for both actions within the interval specified.
-        enemySpawnDuration.maxTime = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
-        boxSpawnDuration.maxTime = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
+        //enemySpawnDuration.maxTime = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
+        //boxSpawnDuration.maxTime = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
 
 
+    }
+
+    IEnumerator IntervalSpawner(bool spawnEnemies)
+    {
+        actionTaken = true;
+        if (spawnEnemies)
+        {
+            float enemySpawnDuration = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
+            yield return new WaitForSeconds(enemySpawnDuration);
+            int enemyNum = Random.Range(1, 3);
+            while (enemyNum >= 0)
+            {
+                Instantiate(breadstick, enemySpawnPoint.transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(1f);
+                enemyNum--;
+            }
+
+        }
+        else
+        {
+            float boxSpawnDuration = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
+            yield return new WaitForSeconds(boxSpawnDuration);
+            int boxNum = Random.Range(minBoxHeight, maxBoxHeight);
+            //Spawn boxes with potential oil barrel
+            print("spawning boxes");
+            AudioDictionary.aDict.PlayAudioClipRemote("forkLift", forkyAudioSource);
+        }
+        actionTaken = false;
     }
 
     public void NextPhase(GameObject generator)
