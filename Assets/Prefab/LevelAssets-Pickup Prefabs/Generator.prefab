@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 2828876007469774445}
   - component: {fileID: 590096159254537214}
   - component: {fileID: 2718355526405057590}
+  - component: {fileID: 853089388}
   m_Layer: 16
   m_Name: Generator
   m_TagString: Untagged
@@ -168,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 0
-  maxHP: 3
+  maxHP: 10
   deathState: 0
   detRadius: 0
   speed: 0
@@ -186,11 +187,11 @@ MonoBehaviour:
   Fired: 0
   Idle: 0
   isVulnerable: 0
-  vulnerableTime: 25
+  vulnerableTime: 2
   generatorSource: {fileID: 2718355526405057590}
   shakyGen: {fileID: 1557664402147165447}
-  generatorAnimator: {fileID: 0}
-  explisionGO: {fileID: 3846609746406069671, guid: 7fe5e87816fe25041ad3975808c93b4f, type: 3}
+  generatorAnimator: {fileID: 8009002610368944023}
+  explosionGO: {fileID: 0}
 --- !u!50 &2828876007469774445
 Rigidbody2D:
   serializedVersion: 4
@@ -334,3 +335,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &853089388
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556730011733145478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2703d1a01263c744989e78e3d8b55242, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
