@@ -15,6 +15,9 @@ public class BossManager : MonoBehaviour
     private GameObject bossCam;
 
     public static BossManager instance;
+
+    public int interpolationFramesCount = 60; // Number of frames to completely interpolate between the 2 positions
+    int elapsedFrames = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,8 +33,7 @@ public class BossManager : MonoBehaviour
         bossCam = bossCamParent.transform.GetChild(0).gameObject;
     }
 
-    public int interpolationFramesCount = 60; // Number of frames to completely interpolate between the 2 positions
-    int elapsedFrames = 0;
+  
 
     void Update()
     {

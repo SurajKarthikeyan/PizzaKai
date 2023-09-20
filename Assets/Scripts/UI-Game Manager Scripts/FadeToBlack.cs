@@ -15,7 +15,7 @@ public class FadeToBlack : MonoBehaviour
 
     private void Start()
     {
-        if (fadeIn)
+        if (!fadeIn)
         {
             blackness.color = new Color(0, 0, 0, 1f);
         }
