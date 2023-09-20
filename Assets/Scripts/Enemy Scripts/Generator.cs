@@ -16,6 +16,7 @@ public class Generator : EnemyBasic
     [SerializeField] private Animator generatorAnimator;
     [SerializeField] private GameObject explosionGO;
     private static readonly int IsVulnerable = Animator.StringToHash("isVulnerable");
+    private Forky forky;
 
     #endregion
 
@@ -24,6 +25,7 @@ public class Generator : EnemyBasic
     {
         base.Start();
         isVulnerable = false;
+        forky = GameObject.Find("Forky").GetComponent<Forky>();
     }
 
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
@@ -78,6 +80,7 @@ public class Generator : EnemyBasic
         // Instantiate alternative sprite
         AudioDictionary.aDict.PlayAudioClipRemote("generatorDead", generatorSource);
         Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(this.gameObject.transform.position, 180f));
+        forky.NextPhase();
         Destroy(this.gameObject);
         
     }

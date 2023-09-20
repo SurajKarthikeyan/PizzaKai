@@ -19,8 +19,8 @@ public class ForkyCrateSpawner : MonoBehaviour
             Vector3 tempPos = new Vector3(randCrate.transform.position.x, randCrate.transform.position.y);
             Destroy(randCrate);
             GameObject oilCrateGO = Instantiate<GameObject>(oilCrate);
-            oilCrateGO.transform.position = randCrate.transform.position;
             oilCrateGO.transform.SetParent(crateGO.transform);
+            oilCrateGO.transform.position = randCrate.transform.position;
             
         }
     }
