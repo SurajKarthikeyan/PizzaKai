@@ -11,10 +11,6 @@ public class AnimationManager : MonoBehaviour
     #region Vars
 
     public static AnimationManager animManager;
-    [SerializeField] private Animator bodyAnimator;
-    [SerializeField] private Animator faceAnimator;
-    [SerializeField] private Animator trashAnimator;
-
     #endregion
 
 
@@ -38,8 +34,7 @@ public class AnimationManager : MonoBehaviour
 
 
     #region PrivateMethods
-
-
+    
 
     #endregion
 
@@ -55,16 +50,16 @@ public class AnimationManager : MonoBehaviour
     {
         if (face)
         {
-            faceAnimator.SetBool(animationName, true);
+            //faceAnimator.SetBool(animationName, true);
             yield return new WaitForSeconds(waitTime);
-            faceAnimator.SetBool(animationName, false);
+            //faceAnimator.SetBool(animationName, false);
         }
 
         else
         {
-            bodyAnimator.SetBool(animationName, true);
+            //bodyAnimator.SetBool(animationName, true);
             yield return new WaitForSeconds(waitTime);
-            bodyAnimator.SetBool(animationName, false);
+            //bodyAnimator.SetBool(animationName, false);
         }
     }
 

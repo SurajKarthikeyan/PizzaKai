@@ -81,7 +81,7 @@ public class Forky : MonoBehaviour
         else if (!actionTaken)
         {
             float enemySpawnChance = Random.Range(0, 1f);
-            if (enemySpawnChance <= .25f)
+            if (enemySpawnChance <= -1f) // was 0.25f
             {
                 //Start coroutine for spawning enemies after a certain amount of time
                 StartCoroutine(IntervalSpawner(true));
@@ -122,7 +122,7 @@ public class Forky : MonoBehaviour
 
             bool oil = Random.Range(0, 101) <= oilChance;
 
-            crateSpawner.SpawnCrate(boxNum, oil);
+            crateSpawner.SpawnCrate(boxNum, true);  // change this back to oil instead of true dingus
 
             if(!oil)
             {

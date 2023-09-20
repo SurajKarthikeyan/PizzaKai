@@ -11,6 +11,10 @@ public class Generator : EnemyBasic
     [Tooltip("Int variable to set the duration of the vulnerability in a coroutine")]
     [SerializeField] private int vulnerableTime;
     [SerializeField] private AudioSource generatorSource;
+    [SerializeField] private ShakyGenerator shakyGen;
+    [SerializeField] private Animator generatorAnimator;
+    private static readonly int IsVulnerable = Animator.StringToHash("isVulnerable");
+
     #endregion
 
     #region  UnityMethods
@@ -50,7 +54,10 @@ public class Generator : EnemyBasic
     // Function to start set the generator to be vulnerable
     public void SetVulnerability()
     {
+        generatorAnimator.SetBool(IsVulnerable, true);
         StartCoroutine(VulnerabilityWait());
+        shakyGen.startShaking(vulnerableTime);
+        // Works, need to change sprite now
     }
 
     //Enumerator to set a length of time that it is vulnerable for
@@ -59,6 +66,8 @@ public class Generator : EnemyBasic
         isVulnerable = true;
         yield return new WaitForSeconds(vulnerableTime);
         isVulnerable = false;
+        generatorAnimator.SetBool(IsVulnerable, false);
+
     }
 
     private void OnDeath()
