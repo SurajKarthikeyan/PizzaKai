@@ -21,7 +21,7 @@ public class MenuButtons : MonoBehaviour
 
     public void PlayButtonPress()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("PeppyFirstSteps");
         Time.timeScale = 1;
     }
 

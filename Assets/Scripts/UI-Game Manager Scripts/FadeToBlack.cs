@@ -13,6 +13,14 @@ public class FadeToBlack : MonoBehaviour
     bool fadeDone;
     public string nextScene;
 
+    private void Start()
+    {
+        if (fadeIn)
+        {
+            blackness.color = new Color(0, 0, 0, 1f);
+        }
+    }
+
     private void Update()
     {
         if (contact == true && !fadeDone)
@@ -42,7 +50,7 @@ public class FadeToBlack : MonoBehaviour
     }
     public void FadingOut()
     {
-        blackness.color -= new Color(0, 0, 0, Time.deltaTime);
+        blackness.color -= new Color(0, 0, 0, Time.deltaTime / 4);
         if (blackness.color.a <= 0)
         {
             fadeDone = true;
