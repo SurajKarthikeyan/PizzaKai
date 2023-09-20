@@ -21,7 +21,6 @@ public class ForkyCrateSpawner : MonoBehaviour
             GameObject oilCrateGO = Instantiate<GameObject>(oilCrate);
             oilCrateGO.transform.SetParent(crateGO.transform);
             oilCrateGO.transform.position = randCrate.transform.position;
-            
         }
     }
 }

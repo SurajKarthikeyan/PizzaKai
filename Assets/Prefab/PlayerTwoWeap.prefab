@@ -76,8 +76,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003828676, y: 0.22676209}
-  m_Size: {x: 0.32078126, y: 0.44404224}
+  m_Offset: {x: -0.0413733, y: 0.33421734}
+  m_Size: {x: 0.35962045, y: 0.6537741}
   m_Direction: 0
 --- !u!114 &5622900668386144491
 MonoBehaviour:
@@ -963,7 +963,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 22
   m_Sprite: {fileID: 138391640, guid: 577ba7bd29fac3941ae657a5169ae214, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1871,8 +1871,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0.09}
-  m_Size: {x: 0.45, y: 0.19}
+  m_Offset: {x: -0.05080352, y: 0.09132242}
+  m_Size: {x: 0.2532158, y: 0.18735528}
   m_Direction: 1
 --- !u!1 &7912015748761742140
 GameObject:
@@ -3529,6 +3529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2240493763340484889}
     m_Modifications:
+    - target: {fileID: 50774348178933711, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: m_SortingOrder
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 1566744870868696937, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_TagString
       value: PlayerArm
@@ -3655,12 +3659,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2240493763340484889}
     m_Modifications:
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5133199831857769765}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 6519409644402487336}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: animFiringBool
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: weaponAnimator
+      value: 
+      objectReference: {fileID: 6519409644040782292}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: animReloadingBool
+      value: Reload
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086010, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
@@ -3708,6 +3744,16 @@ PrefabInstance:
 --- !u!4 &6519409643569284884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 7366418128914184175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6519409644040782292 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4342418669316601403, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 7366418128914184175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6519409644402487336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4342418669661374407, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 7366418128914184175}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8565955441439335019 stripped

@@ -13,7 +13,6 @@ public class ForkyOven : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         //If the player enters the oven, kill the player
         if(collision.gameObject.tag == "Player")
         {

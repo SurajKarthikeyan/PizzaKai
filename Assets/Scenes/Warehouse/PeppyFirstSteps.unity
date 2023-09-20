@@ -126511,7 +126511,7 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 6782259933850723437, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
+      objectReference: {fileID: -6018481526313655432, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: player
       value: 
@@ -126536,6 +126536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 4342418669924086010, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -126558,7 +126562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2
+      value: -8.1
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -140060,6 +140064,10 @@ PrefabInstance:
       propertyPath: tommyFlashImage
       value: 
       objectReference: {fileID: 1574256534}
+    - target: {fileID: 2407071942407806261, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8019257334451026239, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: respawnPoint
       value: 
@@ -140112,6 +140120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8853080664221168347, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 2084624960}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
 --- !u!114 &2084624958 stripped
