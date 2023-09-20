@@ -16,7 +16,6 @@ public class ShakyGenerator : MonoBehaviour
     private void Start()
     {
         normalPos = gameObject.transform.position;
-        //startShaking(5f);
     }
     void FixedUpdate()
     {
