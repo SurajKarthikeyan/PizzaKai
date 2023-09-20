@@ -11,6 +11,8 @@ public class Generator : EnemyBasic
     [Tooltip("Int variable to set the duration of the vulnerability in a coroutine")]
     [SerializeField] private int vulnerableTime;
     [SerializeField] private AudioSource generatorSource;
+
+    private Forky forky;
     #endregion
 
     #region  UnityMethods
@@ -18,6 +20,7 @@ public class Generator : EnemyBasic
     {
         base.Start();
         isVulnerable = false;
+        forky = GameObject.Find("Forky").GetComponent<Forky>();
     }
 
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
@@ -66,6 +69,7 @@ public class Generator : EnemyBasic
         // Play Death Animation
         // Instantiate alternative sprite
         AudioDictionary.aDict.PlayAudioClipRemote("generatorDead", generatorSource);
+        forky.NextPhase(this.gameObject);
         Destroy(this.gameObject);
         
     }
