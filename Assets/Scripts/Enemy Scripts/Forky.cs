@@ -146,6 +146,10 @@ public class Forky : MonoBehaviour
         {
             maxEnemyCount++;
         }
+        else if(generators.Count == 0)
+        {
+            IsDead = true;
+        }
         maxBoxSpawnTime -= 1;
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;
