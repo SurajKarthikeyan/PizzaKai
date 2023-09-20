@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
     public RespawnScript respawn;
-    public Collider2D coll;
+    private Collider2D coll;
 
     public Animator Checkpoint;
     public bool Activated;

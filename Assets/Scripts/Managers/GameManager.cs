@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
+        if (instance == null)
+        {
+            this.InstantiateSingleton(ref instance);
+        }
+        
     }
 }

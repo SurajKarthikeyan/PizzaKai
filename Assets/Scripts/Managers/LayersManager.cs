@@ -168,9 +168,13 @@ public class LayersManager : MonoBehaviour
     #region Instantiation
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
-        platformColliders = GameObject.FindObjectsOfType<Collider2D>()
-            .Where(c => c.gameObject.layer == Platform);
+        if (instance == null)
+        {
+            this.InstantiateSingleton(ref instance);
+            platformColliders = GameObject.FindObjectsOfType<Collider2D>()
+                .Where(c => c.gameObject.layer == Platform);
+        }
+        
     }
     #endregion
 

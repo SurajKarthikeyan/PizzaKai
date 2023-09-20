@@ -177,4 +177,12 @@ public class Character : MonoBehaviour
     }
     #endregion
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Checkpoint")
+        {
+            respawn.respawnPoint = collision.gameObject;
+        }
+    }
 }
