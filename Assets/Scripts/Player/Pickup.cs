@@ -57,6 +57,10 @@ public class Pickup : MonoBehaviour
                 shotgun.transform.position = weaponMaster.transform.position + new Vector3(-0.122f, 0.216f, 0);
                 WeaponMasterModule weaponMasterScript = weaponMaster.GetComponent<WeaponMasterModule>();
                 weaponMasterScript.weapons.Add(shotgun.GetComponent<ShotGunWeapon>());
+                if (collision.GetComponent<Character>().GetComponent<DefaultFlipModule>().FlipMultiplier == -1)
+                {
+                    shotgun.transform.Rotate(0, 180f, 0);
+                }
                 weaponMasterScript.weaponIndex = weaponMasterScript.weapons.Count - 1;
                 weaponMasterScript.EnableCurrentWeapon();
                 shotgun.SetActive(true);
@@ -70,6 +74,10 @@ public class Pickup : MonoBehaviour
                 flamethrower.transform.position = weaponMaster.transform.position + new Vector3(-0.1029999f, 0.21f, 0);
                 WeaponMasterModule weaponMasterScript = weaponMaster.GetComponent<WeaponMasterModule>();
                 weaponMasterScript.weapons.Add(flamethrower.GetComponent<FlameThrowerWeapon>());
+                if (collision.GetComponent<Character>().GetComponent<DefaultFlipModule>().FlipMultiplier == -1)
+                {
+                    flamethrower.transform.Rotate(0, 180f, 0);
+                }
                 weaponMasterScript.weaponIndex = weaponMasterScript.weapons.Count - 1;
                 weaponMasterScript.EnableCurrentWeapon();
                 flamethrower.SetActive(true);
