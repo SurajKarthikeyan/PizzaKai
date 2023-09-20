@@ -185,7 +185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2770841202751872595
 Transform:
   m_ObjectHideFlags: 0
@@ -193,10 +193,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2770841202751872594}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.103, y: 0.21, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2770841202015864618}
   - {fileID: 2770841203617395347}
@@ -231,7 +231,7 @@ MonoBehaviour:
     maxTime: 0.05
     elapsed: 0
   altFireDelay:
-    maxTime: 80
+    maxTime: 5
     elapsed: 0
   ammoCount: 80
   currentAmmo: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 2770841202823174467}
   m_Layer: 7
   m_Name: PlayerFlameLeftArm
-  m_TagString: Untagged
+  m_TagString: PlayerArm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2770841202823174469}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0.4578, y: 0.235, z: 0}
+  m_LocalPosition: {x: 0.502, y: 0.119, z: 0}
   m_LocalScale: {x: 1.6722741, y: 1.6930268, z: 1.63}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 2770841203617395344}
   m_Layer: 7
   m_Name: PlayerFlameRightArm
-  m_TagString: Untagged
+  m_TagString: PlayerArm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
