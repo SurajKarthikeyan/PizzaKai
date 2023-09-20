@@ -16,6 +16,9 @@ public class Generator : EnemyBasic
     [SerializeField] private ShakyGenerator shakyGen;
     [SerializeField] private Animator generatorAnimator;
     [SerializeField] private GameObject explosionGO;
+    
+    [Tooltip("Manually transfer the keys from AudioDict to here. Its shit but IDK how to do it as of now")] // Note, you were too drunk
+    [SerializeField] private List<string> explosionKeyList;
     private static readonly int IsVulnerable = Animator.StringToHash("isVulnerable");
     private Forky forky;
 
@@ -79,7 +82,10 @@ public class Generator : EnemyBasic
     {
         // Play Death Animation
         // Instantiate alternative sprite
-        AudioDictionary.aDict.PlayAudioClip("generatorDead", AudioDictionary.Source.Generator);
+        string key = explosionKeyList[Random.Range(0, explosionKeyList.Count)];
+        Debug.Log(key);
+        AudioDictionary.aDict.PlayAudioClip(key, AudioDictionary.Source.Generator);
+        // how do I handle randomization without having to re-code this?
         Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(this.gameObject.transform.position, 180f));
         forky.NextPhase();
         Destroy(this.gameObject);

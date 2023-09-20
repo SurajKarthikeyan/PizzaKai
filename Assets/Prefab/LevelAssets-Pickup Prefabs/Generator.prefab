@@ -192,6 +192,11 @@ MonoBehaviour:
   shakyGen: {fileID: 1557664402147165447}
   generatorAnimator: {fileID: 8009002610368944023}
   explosionGO: {fileID: 0}
+  explosionKeyList:
+  - explosionClose
+  - explosionDistortion
+  - explosionBalanced
+  - explosionLow
 --- !u!50 &2828876007469774445
 Rigidbody2D:
   serializedVersion: 4
