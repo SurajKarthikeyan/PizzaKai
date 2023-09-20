@@ -50,7 +50,7 @@ public class Forky : MonoBehaviour
 
     public GameObject breadstick;
 
-    public List<GameObject> generators = new List<GameObject>();
+    int generators = 3;
     #endregion
 
     #region Properties
@@ -141,15 +141,13 @@ public class Forky : MonoBehaviour
     public void NextPhase(GameObject generator)
     {
         //Changing dependent variables for spawning logic and remove the generator
-        generators.Remove(generator);
-        if (generators.Count == 1)
-        {
-            maxEnemyCount++;
-        }
-        else if(generators.Count == 0)
+        generators -= 1;
+
+        if(generators == 0)
         {
             IsDead = true;
         }
+
         maxBoxSpawnTime -= 1;
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;
