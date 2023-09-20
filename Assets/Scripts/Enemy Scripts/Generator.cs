@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Generator : EnemyBasic
 {
@@ -13,6 +14,7 @@ public class Generator : EnemyBasic
     [SerializeField] private AudioSource generatorSource;
     [SerializeField] private ShakyGenerator shakyGen;
     [SerializeField] private Animator generatorAnimator;
+    [SerializeField] private GameObject explosionGO;
     private static readonly int IsVulnerable = Animator.StringToHash("isVulnerable");
 
     #endregion
@@ -75,6 +77,7 @@ public class Generator : EnemyBasic
         // Play Death Animation
         // Instantiate alternative sprite
         AudioDictionary.aDict.PlayAudioClipRemote("generatorDead", generatorSource);
+        Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(this.gameObject.transform.position, 180f));
         Destroy(this.gameObject);
         
     }

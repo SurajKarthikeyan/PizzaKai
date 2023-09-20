@@ -13,6 +13,6 @@ public class OilBarrel : MonoBehaviour
     private void OnDestroy()
     {
         Vector2 explosionPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-        Instantiate(ExplosionManager.SelectExplosion(explosionPos, -90));
+        Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(explosionPos, -90));
     }
 }
