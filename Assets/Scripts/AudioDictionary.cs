@@ -22,6 +22,7 @@ public class AudioDictionary : MonoBehaviour
         Test,
         Gun,
         Player,
+        Generator,
     };
     public UnityDictionary<string, AudioClip> audioDict;
     public Source source;
@@ -32,6 +33,8 @@ public class AudioDictionary : MonoBehaviour
     [SerializeField] public AudioSource gunSource;
     [Tooltip("Audio Source for general player SFX")] 
     [SerializeField] public AudioSource playerSource;
+    [Tooltip("Audio Source for general player SFX")] 
+    [SerializeField] public AudioSource generatorSource;
     public static AudioDictionary aDict;
     #endregion
 
@@ -67,6 +70,10 @@ public class AudioDictionary : MonoBehaviour
             case Source.Player:
                 playerSource.clip = tempClip;
                 playerSource.Play();
+                break;
+            case Source.Generator:
+                generatorSource.clip = tempClip;
+                generatorSource.Play();
                 break;
         }
     }

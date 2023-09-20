@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -78,7 +79,7 @@ public class Generator : EnemyBasic
     {
         // Play Death Animation
         // Instantiate alternative sprite
-        AudioDictionary.aDict.PlayAudioClipRemote("generatorDead", generatorSource);
+        AudioDictionary.aDict.PlayAudioClip("generatorDead", AudioDictionary.Source.Generator);
         Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(this.gameObject.transform.position, 180f));
         forky.NextPhase();
         Destroy(this.gameObject);
