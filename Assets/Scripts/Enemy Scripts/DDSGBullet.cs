@@ -6,7 +6,7 @@ public class DDSGBullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float destroyTime = 0.3f;
-    // public int damage = 1;
+    public int damage = 5;
     public float force = 1;
     public float spread = 1;
     public Vector3 shotDir;
@@ -67,6 +67,10 @@ public class DDSGBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Ground")
         {
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<Character>().TakeDamage(damage);
+            }
             Destroy(this.gameObject);
         }
     }

@@ -17,7 +17,7 @@ public class bulletScript : MonoBehaviour
     // Start is called before the first frame update
     virtual public void Start()
     {
-        spread = spread / Vector3.Distance(this.transform.position, mousePos);
+        //spread = spread / Vector3.Distance(this.transform.position, mousePos);
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         //Gets position of mouse to figure out where it is firing and rotates the bullet in the right direction
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
