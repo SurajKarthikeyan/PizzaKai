@@ -166,7 +166,7 @@ public class Character : MonoBehaviour
 
     private void Die()
     {
-        //respawn.RespawnPlayer();
+        respawn.RespawnPlayer();
         HP = maxHP;
     }
 
