@@ -2,39 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Author Matthew DeBoer
+
 public class PlatformScript : MonoBehaviour
 {
     Collider2D playerCol;
 
-    //a really scuff way to not repeatedly call the coroutine
-    bool waitNow = false;
+    bool onPlatform = false;
 
+    //having this script handle all of the player will make it so you can't spam 'S' to repeatedly call DropDown() even when not on a platform
+    //otherwise the script handling player movement would have to check if its on a platform.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             playerCol = collision.collider;
+            onPlatform = true;
         }
     }
 
-    //this is going to need to be changed to allow AI to drop through as well.
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.S) && !waitNow)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine("OffOnCollider");
-            waitNow = true;
+            onPlatform = false;
         }
-       
     }
 
-    private IEnumerator OffOnCollider()
+
+    private void Update()
     {
-        playerCol.enabled = false;
+        //for the player
+        if (Input.GetKeyDown(KeyCode.S) && onPlatform)
+        {
+            StartCoroutine(OffOnCollider(playerCol.gameObject));
+        }
+    }
 
-        yield return new WaitForSeconds(0.2f);
+    //this is what other things (probably enemies) that need to drop thorugh platforms will call
+    public void DropDown(GameObject target)
+    {
+        StartCoroutine(OffOnCollider(target));
+    }
 
-        playerCol.enabled = true;
-        waitNow = false;
+    private IEnumerator OffOnCollider(GameObject dropper)
+    {
+        //hold the original layer index
+        int tempHolder = dropper.layer;
+        dropper.layer = LayerMask.NameToLayer("OneWayPlatform");
+
+        yield return new WaitForSeconds(0.3f);
+
+        //return to original layer
+        dropper.layer = tempHolder;
     }
 }
