@@ -442,7 +442,7 @@ MonoBehaviour:
     maxTime: 1
     elapsed: 0
   altFireDelay:
-    maxTime: 1
+    maxTime: 3
     elapsed: 0
   ammoCount: 10
   currentAmmo: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   bullet: {fileID: -6018481526313655432, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
   weaponName: 
   weaponAction: 
-  pushPower: 15
+  pushPower: 15.5
   player: {fileID: 0}
 --- !u!82 &-4717194129262909025
 AudioSource:
