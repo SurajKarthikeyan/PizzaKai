@@ -117,12 +117,12 @@ public class Forky : MonoBehaviour
         {
             float boxSpawnDuration = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
             yield return new WaitForSeconds(boxSpawnDuration);
-            int boxNum = Random.Range(minBoxHeight, maxBoxHeight);
+            int boxNum = Random.Range(minBoxHeight, maxBoxHeight + 1);
             //Spawn boxes with potential oil barrel
 
             bool oil = Random.Range(0, 101) <= oilChance;
 
-            crateSpawner.SpawnCrate(boxNum, true);
+            crateSpawner.SpawnCrate(boxNum, oil);
 
             if(!oil)
             {
