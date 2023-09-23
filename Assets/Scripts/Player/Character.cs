@@ -44,6 +44,9 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Duration damageInvulnerability;
 
+    [SerializeField]
+    private float playerDamageInvulnerability = 1f;
+
 
     [SerializeField] private RespawnScript respawn;
     #endregion
@@ -99,7 +102,7 @@ public class Character : MonoBehaviour
         damageInvulnerability = new(GameManager.Instance.damageTickRate);
         if (gameObject.tag == "Player")
         {
-            damageInvulnerability.maxTime = 2f;
+            damageInvulnerability.maxTime = playerDamageInvulnerability;
         }
     }
 
