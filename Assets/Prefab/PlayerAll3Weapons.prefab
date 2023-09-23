@@ -697,8 +697,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030130792, y: 0.08999999}
-  m_Size: {x: 0.2098295, y: 0.19000022}
+  m_Offset: {x: -0.030130792, y: 0.087582625}
+  m_Size: {x: 0.20982952, y: 0.19483502}
   m_Direction: 1
 --- !u!1 &1820642846021726181
 GameObject:
@@ -3331,9 +3331,10 @@ MonoBehaviour:
   r2d: {fileID: 0}
   c2d: {fileID: 0}
   flipModule: {fileID: 0}
-  playerDamageInvulnerability:
+  damageInvulnerability:
     maxTime: 0
     elapsed: 0
+  playerDamageInvulnerability: 1
   respawn: {fileID: 8019257334451026239}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
