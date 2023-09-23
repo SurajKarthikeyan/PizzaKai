@@ -197,15 +197,11 @@ public class EnemyBasic : MonoBehaviour
     
     virtual public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.tag == "Player")
         {
             Character player = col.gameObject.GetComponent<Character>();
-            if (player.playerDamageInvulnerability.IsDone)
-            {
-                player.TakeDamage(enemyDamage);
-                player.playerDamageInvulnerability.Reset();
-            }
-            
+            player.TakeDamage(enemyDamage);
+  
         }
     }
 

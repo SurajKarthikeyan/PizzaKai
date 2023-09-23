@@ -41,9 +41,12 @@ public class Character : MonoBehaviour
     [ReadOnly]
     public DefaultFlipModule flipModule;
 
+    [SerializeField]
     private Duration damageInvulnerability;
 
-    public Duration playerDamageInvulnerability;
+    [SerializeField]
+    private float playerDamageInvulnerability = 1f;
+
 
     [SerializeField] private RespawnScript respawn;
     #endregion
@@ -97,6 +100,10 @@ public class Character : MonoBehaviour
         SetVars();
         HP = maxHP;
         damageInvulnerability = new(GameManager.Instance.damageTickRate);
+        if (gameObject.tag == "Player")
+        {
+            damageInvulnerability.maxTime = playerDamageInvulnerability;
+        }
     }
 
     // private void OnValidate()
@@ -125,7 +132,6 @@ public class Character : MonoBehaviour
     {
         // Required to get this to work properly.
         damageInvulnerability.IncrementUpdate(false);
-        playerDamageInvulnerability.IncrementUpdate(false);
     }
     #endregion
 
@@ -153,6 +159,7 @@ public class Character : MonoBehaviour
             {
                 PlayerKnockback();
             }
+            damageInvulnerability.Reset();
             return true;
         }
 

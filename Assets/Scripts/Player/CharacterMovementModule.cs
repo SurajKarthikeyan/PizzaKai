@@ -49,6 +49,8 @@ public class CharacterMovementModule : Module
         "and vertical directions.")]
     public Vector2 maxMoveSpeed = new(10f, 0);
 
+    private Vector2 nonDashMoveSpeed = new Vector2(0, 0);
+
     [InfoBox("NOTE: moveAcceleration.y is NOT the jump force! Jumping is " +
         "controlled by jumpForce.")]
     [Tooltip("The move acceleration for this character in both horizontal " +
@@ -282,20 +284,14 @@ public class CharacterMovementModule : Module
     private void UpdateDash()
     {
         dashCooldown.IncrementFixedUpdate(false);
-
-        //To make the dash be completely horizontal when doing it in the air
-        if (dashCooldown.elapsed >= 0.2f)
-        {
-            Master.r2d.gravityScale = 3f;
-        }
-
         if (movementStatus == MovementStatus.Dashing)
         {
             if (dashTimer.IncrementFixedUpdate(false))
             {
                 // Is dash time done? (do NOT reset DashTimer)
                 Master.r2d.bodyType = RigidbodyType2D.Dynamic;
-
+                Master.r2d.gravityScale = 3f;
+                Master.r2d.velocity = lockedDashInput;
                 movementStatus = MovementStatus.Normal;
             }
             else
@@ -310,8 +306,9 @@ public class CharacterMovementModule : Module
 
         if (inputtedDash && dashCooldown.IsDone)
         {
-            
+
             // Do dash here.
+            nonDashMoveSpeed = Master.r2d.velocity;
             dashCooldown.Reset();
             inputtedMovement.Normalize();
 
