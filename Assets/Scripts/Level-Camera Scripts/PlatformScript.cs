@@ -10,6 +10,7 @@ public class PlatformScript : MonoBehaviour
     Collider2D playerCol;
 
     bool onPlatform = false;
+    bool wait = false;
 
     //having this script handle all of the player will make it so you can't spam 'S' to repeatedly call DropDown() even when not on a platform
     //otherwise the script handling player movement would have to check if its on a platform.
@@ -34,8 +35,9 @@ public class PlatformScript : MonoBehaviour
     private void Update()
     {
         //for the player
-        if (Input.GetKeyDown(KeyCode.S) && onPlatform)
+        if (Input.GetKeyDown(KeyCode.S) && onPlatform && !wait)
         {
+            wait = true;
             StartCoroutine(OffOnCollider(playerCol.gameObject));
         }
     }
@@ -56,5 +58,6 @@ public class PlatformScript : MonoBehaviour
 
         //return to original layer
         dropper.layer = tempHolder;
+        wait = false;
     }
 }
