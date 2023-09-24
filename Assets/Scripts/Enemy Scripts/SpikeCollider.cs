@@ -7,7 +7,7 @@ public class SpikeCollider : MonoBehaviour
 
     private bool isKnockedBack = false;
 
-    private GameObject player;
+    private Rigidbody2D player;
 
     public float knockbackDuration = 1f;
 
@@ -17,7 +17,7 @@ public class SpikeCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -25,19 +25,14 @@ public class SpikeCollider : MonoBehaviour
     {
         if (isKnockedBack)
         {
-            player.transform.position += 15 *Vector3.up * Time.deltaTime;
-            knockBackElapsed += Time.deltaTime;
-            if (knockBackElapsed >= knockbackDuration)
-            {
-                isKnockedBack = false;
-                knockBackElapsed = 0f;
-            }
+            player.velocity += Vector2.up * 15f;
+            isKnockedBack = false;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject == player.gameObject)
         {
             player.GetComponent<Character>().TakeDamage(5);
             isKnockedBack=true;
