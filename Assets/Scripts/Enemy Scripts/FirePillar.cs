@@ -26,4 +26,12 @@ public class FirePillar : MonoBehaviour
 
         //if (Time.time <= startTime + flameDur) Flame = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Character>().TakeDamage(5);
+        }
+    }
 }
