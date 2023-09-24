@@ -19,6 +19,8 @@ public class Forky : MonoBehaviour
 
     public AudioSource forkyAudioSource;
 
+    public AudioSource walkieTalkieSource;
+    
     public Animator forkyAnimator;
 
     private float minBoxSpawnTime = 5f;
@@ -107,6 +109,17 @@ public class Forky : MonoBehaviour
             float enemySpawnDuration = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
             yield return new WaitForSeconds(enemySpawnDuration);
             int enemyNum = Random.Range(1, maxEnemyCount);
+            float chance = Random.Range(0f, 1f);
+            // Play Radio SFX
+            if (chance < 0.5f)
+            {
+                AudioDictionary.aDict.PlayAudioClipRemote("forkyRadio", walkieTalkieSource);
+            }
+
+            else
+            {
+                AudioDictionary.aDict.PlayAudioClipRemote("forkyRadio1", walkieTalkieSource);
+            }
             while (enemyNum >= 0)
             {
                 Instantiate(breadstick, enemySpawnPoint.transform.position, Quaternion.identity);
