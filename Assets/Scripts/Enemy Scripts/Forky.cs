@@ -124,7 +124,7 @@ public class Forky : MonoBehaviour
 
             bool oil = Random.Range(0, 101) <= oilChance;
 
-            crateSpawner.SpawnCrate(boxNum, true);
+            crateSpawner.SpawnCrate(boxNum, oil);
 
             if(!oil)
             {
