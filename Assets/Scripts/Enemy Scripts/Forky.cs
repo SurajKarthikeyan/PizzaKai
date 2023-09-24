@@ -50,6 +50,8 @@ public class Forky : MonoBehaviour
 
     public GameObject breadstick;
 
+    [SerializeField] private ConveyorBeltScript conveyorBelt;
+
     int generators = 3;
     #endregion
 
@@ -140,6 +142,7 @@ public class Forky : MonoBehaviour
 
     public void NextPhase()
     {
+
         //Changing dependent variables for spawning logic and remove the generator
         generators -= 1;
 
@@ -152,6 +155,9 @@ public class Forky : MonoBehaviour
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;
         minEnemySpawnTime -= 1;
+
+        //Add or subtract 1 to the conveyor speed depending on if the conveyorbelt has a negative or positive speed
+        conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
     }
     #endregion
 }
