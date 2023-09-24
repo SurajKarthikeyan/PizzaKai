@@ -49,32 +49,10 @@ public class ShotGunWeapon : WeaponModule
     {
         //Gets the player mouse position and sends the player in the opposite direction
         Vector3 dir = Vector3.Normalize(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        StartCoroutine("ShotgunAltInfluence");
+        player.gameObject.GetComponent<CharacterMovementModule>().ShotgunAltActive();
         player.velocity = dir * pushPower;
     }
     #endregion
-    #region Enums
-    //Determines how long the alt fire's movement wil have influence over the player
-    //Created so that the alt fire function normally when the player is not moving
-    private IEnumerator ShotgunAltInfluence()
-    {
-        player.GetComponent<CharacterMovementModule>().shotgunPushed = true;
-
-        //wait for an amont of seconds to determine if grounded
-        yield return new WaitForSeconds(0.25f);
-        //if grounded end alt fire influence
-        if (player.GetComponent<CharacterMovementModule>().TouchingGround)
-        {
-            player.GetComponent<CharacterMovementModule>().shotgunPushed = false;
-        }
-        //if not grounded wait another amount of seconds to disable influence
-        else
-        {
-            yield return new WaitForSeconds(0.75f);
-            player.GetComponent<CharacterMovementModule>().shotgunPushed = false;
-        }
-
-    }
-    #endregion
+ 
 
 }

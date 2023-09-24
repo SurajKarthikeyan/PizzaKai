@@ -345,4 +345,33 @@ public class CharacterMovementModule : Module
     }
     #endregion
     #endregion
+    //moved from the shotgun script to here to prevent a weird sliding bug, should probably be moved elsewhere in the future
+
+    //Determines how long the alt fire's movement wil have influence over the player
+    //Created so that the alt fire function normally when the player is not moving
+    public IEnumerator ShotgunAltInfluence()
+    {
+        shotgunPushed = true;
+
+        //wait for an amont of seconds to determine if grounded
+        yield return new WaitForSeconds(0.25f);
+        //if grounded end alt fire influence
+        if (TouchingGround)
+        {
+            shotgunPushed = false;
+        }
+        //if not grounded wait another amount of seconds to disable influence
+        else
+        {
+            yield return new WaitForSeconds(0.75f);
+            shotgunPushed = false;
+        }
+
+    }
+
+    //if moving the ShotgunAltInfluence() above to another script, take this as well
+    public void ShotgunAltActive()
+    {
+        StartCoroutine(ShotgunAltInfluence());
+    }
 }
