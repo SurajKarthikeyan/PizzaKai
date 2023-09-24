@@ -54,7 +54,7 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Main Loop
-    private void Update()
+    public  void Update()
     {
         if (Master.IsPlayer)
         {

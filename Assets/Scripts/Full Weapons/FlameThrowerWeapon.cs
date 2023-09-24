@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -16,6 +18,7 @@ public class FlameThrowerWeapon : WeaponModule
     [Header("Alt Fire Settings")]
     [Tooltip("Fireball used for alt fire")]
     public GameObject altFireball;
+    public AudioSource flameSource;
     #endregion
 
     #region Init
@@ -24,6 +27,15 @@ public class FlameThrowerWeapon : WeaponModule
     {
         base.Start();
         weaponName = WeaponAudioStrings.FlamethrowerName;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (Input.GetMouseButtonUp(0))
+        {
+            OnMouseUp();
+        }
     }
     #endregion
 
@@ -36,5 +48,33 @@ public class FlameThrowerWeapon : WeaponModule
         base.AltFire();
         Instantiate(altFireball, firePoint.position, Quaternion.identity);
     }
+
+    override public void ReloadWeapon()
+    {
+        InputState = WeaponInputState.Reloading;
+        weaponAction = WeaponAudioStrings.Reload;
+
+        if (InputState == WeaponInputState.Reloading)
+        {
+            reloadDelay.Reset();
+            RefillAmmo();
+        }
+        OnMouseUp();
+        PlayAudio();
+    }
+
+    override public void PlayAudio()
+    {
+        if (!flameSource.isPlaying)
+        {
+            AudioDictionary.aDict.PlayAudioClipRemote(weaponName + weaponAction, flameSource);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        flameSource.Stop();
+    }
+
     #endregion
 }

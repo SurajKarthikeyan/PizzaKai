@@ -231,7 +231,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Update is called every frame
     /// </summary>
-    private void Update()
+    public virtual void Update()
     {
         inputSetThisFrame = false;
 
@@ -345,7 +345,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Complete process of reloading
     /// </summary>
-    public void ReloadWeapon()
+    public virtual void ReloadWeapon()
     {
         InputState = WeaponInputState.Reloading;
         weaponAction = WeaponAudioStrings.Reload;
@@ -355,7 +355,7 @@ public class WeaponModule : Module
             reloadDelay.Reset();
             RefillAmmo();
         }
-
+        
         PlayAudio();
 
     }
@@ -363,7 +363,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Refills the current weapon's current ammo count
     /// </summary>
-    private void RefillAmmo()
+    public void RefillAmmo()
     {
         currentAmmo = ammoCount;
     }
@@ -374,7 +374,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Plays the audio clips corresponding to the current weapon
     /// </summary>
-    private void PlayAudio()
+    public virtual void PlayAudio()
     {
         AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);
     }
