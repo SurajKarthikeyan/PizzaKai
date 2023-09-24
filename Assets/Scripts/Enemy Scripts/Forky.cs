@@ -58,7 +58,6 @@ public class Forky : MonoBehaviour
     #endregion
 
     #region Properties
-    //C# property. Acts as a "getter" of sorts. Returns true when count <= 0, false otherwise
     public bool IsDead = false;
 
     #endregion
