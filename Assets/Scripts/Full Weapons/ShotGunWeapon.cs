@@ -49,7 +49,7 @@ public class ShotGunWeapon : WeaponModule
     {
         //Gets the player mouse position and sends the player in the opposite direction
         Vector3 dir = Vector3.Normalize(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        player.gameObject.GetComponent<CharacterMovementModule>().ShotgunAltActive();
+        // player.gameObject.GetComponent<CharacterMovementModule>().ShotgunAltActive();
         player.velocity = dir * pushPower;
     }
     #endregion

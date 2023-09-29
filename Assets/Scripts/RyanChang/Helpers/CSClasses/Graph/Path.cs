@@ -13,6 +13,12 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     public Graph<T> Graph { get; private set; }
 
     /// <summary>
+    /// The total number of nodes in the path, from <see cref="Start"/> to <see
+    /// cref="End"/>.
+    /// </summary>
+    public int Count { get; private set; }
+
+    /// <summary>
     /// Creates a new path.
     /// </summary>
     public Path(Vertex<T> start, Vertex<T> end,
@@ -27,10 +33,14 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         this.Start = start;
         this.End = end;
 
+        Count = 0;
+
         Vertex<T> next = end;
 
         while (next != start)
         {
+            Count++;
+
             var prev = next;
             try
             {
@@ -49,6 +59,10 @@ public class Path<T> : IEnumerable<Vertex<T>>,
                 if (totalCosts[prev.id] < totalCosts[other.id])
                 {
                     path[next] = prev;
+                }
+                else
+                {
+                    path[next] = other;
                 }
             }
             else
@@ -172,11 +186,11 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     {
         var next = from;
 
-        do
+        while (next != to)
         {
             yield return next;
             next = Next(next);
-        } while (next != to);
+        }
 
         yield return to;
     }
@@ -217,26 +231,6 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         }
 
         return null;
-    }
-
-    /// <summary>
-    /// Gets the length of the entire path, from <see cref="Start"/> to <see
-    /// cref="End"/>.
-    /// </summary>
-    /// <returns></returns>
-    public int GetLength()
-    {
-        int len = 0;
-
-        Vertex<T> next = Start;
-
-        while (next != End)
-        {
-            next = Next(next);
-            len++;
-        }
-
-        return len;
     }
 
     /// <summary>

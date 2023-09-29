@@ -7,12 +7,28 @@
 [System.Serializable]
 public class MonoSelector<T>
 {
+    #region Variables
     [Tooltip("The elements to select from.")]
     [SerializeField]
     private SelectorElement<T>[] elements;
+    #endregion
 
+    #region Constructors
+    public MonoSelector()
+    {
+        elements = new SelectorElement<T>[0];
+    }
+
+    public MonoSelector(params SelectorElement<T>[] elements)
+    {
+        this.elements = elements;
+    }
+    #endregion
+
+    #region Methods
     public T DoSelection()
     {
         return elements.RandomSelectOne(x => x.probability).selection;
     }
+    #endregion
 }

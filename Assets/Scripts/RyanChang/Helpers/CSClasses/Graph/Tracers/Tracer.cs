@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -29,7 +28,9 @@ public class Tracer<T> where T : IEquatable<T>
     public ITraceable<T> target;
 
     [SerializeField]
-    private Transform traceContainer;
+    [ReadOnly]
+    [AllowNesting]
+    private Transform middleContainer;
     #endregion
 
     #region Instantiation
@@ -37,11 +38,26 @@ public class Tracer<T> where T : IEquatable<T>
     /// Traces the tracer.
     /// </summary>
     /// <param name="target">What to trace?</param>
-    /// <param name="traceContainer">Where to put the traces.</param>
     /// <param name="converter">Converts from <see cref="T"/> to a <see
     /// cref="Vector3"/>.</param>
-    public void Trace(ITraceable<T> target, ConvertToVector3 converter)
+    public void Trace(ITraceable<T> target, ConvertToVector3 converter, string name)
     {
+        if (!tracerData)
+        {
+            tracerData = Resources.Load<GraphPathTracerData>(
+                "Pathfinding/Visual/DefaultTracerData"
+            );
+        }
+
+        Transform superContainer =
+            GameObject.FindGameObjectWithTag("TraceContainer").transform;
+
+        if (!middleContainer)
+        {
+            middleContainer = new GameObject(name).transform;
+            middleContainer.Localize(superContainer);
+        }
+
         this.converter = converter;
         this.target = target;
 
@@ -70,15 +86,14 @@ public class Tracer<T> where T : IEquatable<T>
             }
         }
 
-        subcontainer.transform.SetParent(traceContainer);
-        subcontainer.transform.Localize();
+        subcontainer.transform.Localize(middleContainer);
     }
 
     public void Clear()
     {
-        if (traceContainer)
+        if (middleContainer)
         {
-            traceContainer.DestroyAllChildren(true);
+            middleContainer.DestroyAllChildren(true);
         }
     }
 
