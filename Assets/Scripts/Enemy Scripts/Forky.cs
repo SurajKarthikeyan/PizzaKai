@@ -17,35 +17,42 @@ public class Forky : MonoBehaviour
 {
     #region Variables
 
+    [Header("Audio Settings")]
+    [Tooltip("Audio Source for forky")]
     public AudioSource forkyAudioSource;
-
+    [Tooltip("Audio Source for forky walkie talkie")]
     public AudioSource walkieTalkieSource;
-    
-    public Animator forkyAnimator;
 
+    //Spawn interval settings
+
+    //Minimum time for box to spawn
     private float minBoxSpawnTime = 5f;
 
+    //Maximum time for box to spawn
     private float maxBoxSpawnTime = 7f;
 
+    //Minimum time for a series of enemies to spawn
     private float minEnemySpawnTime = 6f;
-
+    //Maximum time for a series of enemies to spawn
     private float maxEnemySpawnTime = 9f;
 
+    //Maximum number of enemies spawned at a time
     private int maxEnemyCount = 2;
 
+    //Minimum height of boxes spawned at any given time
     private int minBoxHeight = 1;
 
+    //Maximum height of boxes spawned at any given time
     private int maxBoxHeight = 4;
 
+    //Chance of oil spawning
     private float oilChance = 0;
-
-    private bool containsOil = false;
-
+    //Has an action been taken by Forky yet?
     private bool actionTaken = false;
 
-    public GameObject boxSpawnPoint;
+    [Header("EnemySpawnTransform")]
 
-    public GameObject enemySpawnPoint;
+    public Transform enemySpawnPoint;
 
     //Crate generator script reference
     ForkyCrateSpawner crateSpawner;
@@ -55,11 +62,8 @@ public class Forky : MonoBehaviour
     [SerializeField] private ConveyorBeltScript conveyorBelt;
 
     int generators = 3;
-    #endregion
 
-    #region Properties
     public bool IsDead = false;
-
     #endregion
 
     #region Init
@@ -77,6 +81,7 @@ public class Forky : MonoBehaviour
         if (IsDead)
         {
             //Play Death Animation once and destroy object
+            //Going to Main Menu is temporary
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -100,16 +105,24 @@ public class Forky : MonoBehaviour
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Coroutine that continually runs and spawns enemies and boxes 
+    /// </summary>
+    /// <param name="spawnEnemies">Bool to decide whether eneimes or boxes are spawned</param>
+    /// <returns></returns>
     IEnumerator IntervalSpawner(bool spawnEnemies)
     {
+        //We say an action has been taken, spawning boxes or enemies
         actionTaken = true;
         if (spawnEnemies)
         {
+            //Next lines are responsible for calculating the duration and number of enemies to spawn
             float enemySpawnDuration = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
             yield return new WaitForSeconds(enemySpawnDuration);
             int enemyNum = Random.Range(1, maxEnemyCount);
             float chance = Random.Range(0f, 1f);
-            // Play Radio SFX
+
+            // Play one of two Radio SFX
             if (chance < 0.5f)
             {
                 AudioDictionary.aDict.PlayAudioClipRemote("forkyRadio", walkieTalkieSource);
@@ -119,9 +132,11 @@ public class Forky : MonoBehaviour
             {
                 AudioDictionary.aDict.PlayAudioClipRemote("forkyRadio1", walkieTalkieSource);
             }
+
+            //Spawns enemies in intervals of 1 second
             while (enemyNum >= 0)
             {
-                Instantiate(breadstick, enemySpawnPoint.transform.position, Quaternion.identity);
+                Instantiate(breadstick, enemySpawnPoint.position, Quaternion.identity);
                 yield return new WaitForSeconds(1f);
                 enemyNum--;
             }
@@ -129,6 +144,7 @@ public class Forky : MonoBehaviour
         }
         else
         {
+            //Calculates interval and number of boxes to spawn
             float boxSpawnDuration = Random.Range(minBoxSpawnTime, maxBoxSpawnTime);
             yield return new WaitForSeconds(boxSpawnDuration);
             int boxNum = Random.Range(minBoxHeight, maxBoxHeight + 1);
@@ -136,8 +152,10 @@ public class Forky : MonoBehaviour
 
             bool oil = Random.Range(0, 101) <= oilChance;
 
+            //Spawns number of crates
             crateSpawner.SpawnCrate(boxNum, oil);
 
+            //Increases oil chance if it is not spawned, of if spawned reset chance
             if(!oil)
             {
                 oilChance += 25;
@@ -152,6 +170,9 @@ public class Forky : MonoBehaviour
         actionTaken = false;
     }
 
+    /// <summary>
+    /// A function that sets variables
+    /// </summary>
     public void NextPhase()
     {
 
@@ -161,6 +182,7 @@ public class Forky : MonoBehaviour
         if(generators == 0)
         {
             IsDead = true;
+            conveyorBelt.conveyorSpeed = 0;
         }
 
         maxBoxSpawnTime -= 1;
