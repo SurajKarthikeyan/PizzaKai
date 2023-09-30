@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,14 +44,8 @@ public class UIManager : MonoBehaviour
     [Tooltip("GameObject representing the pause menu")] 
     public GameObject pauseMenu;
 
-    [Tooltip("GameObject containing the tommy ammo UI element")]
-    public GameObject tommyAmmoUI;
-
-    [Tooltip("GameObject containing the shotgun ammo UI element")]
-    public GameObject shotgunAmmoUI;
-
-    [Tooltip("GameObject containing the flamethrower ammo UI element")]
-    public GameObject flameAmmoUI;
+    [Tooltip("Image containing the ammo UI element")]
+    public Image ammoUI;
 
     [Tooltip("Slider used to show the player's dash cooldown")]
     public RespawnScript respawn;
@@ -70,8 +61,6 @@ public class UIManager : MonoBehaviour
     public WeaponMasterModule weaponMaster;
 
     private WeaponModule currWeapon;
-
-    private readonly List<GameObject> ammoUIList = new();
     #endregion
 
     #region Init
@@ -84,15 +73,15 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Set the ammo UI according to the current weapon in the weaponmaster, way below will be changed
-
-        ammoUIList.AddRange(new List<GameObject> { tommyAmmoUI, shotgunAmmoUI, flameAmmoUI });
+        //Sets current scene variables
 
         Time.timeScale = 1;
 
         pauseMenu.SetActive(false);
 
         currWeapon = weaponMaster.CurrentWeapon;
+
+        ammoUI.sprite = currWeapon.weaponUIImage;
     }
     #endregion
 
@@ -108,18 +97,7 @@ public class UIManager : MonoBehaviour
             {
                 currWeapon = weaponMaster.CurrentWeapon;
                 //Sets weapon UI when weapon is re-cached
-                switch (currWeapon.weaponName)
-                {
-                    case "shotgun":
-                        SetActiveAmmo(shotgunAmmoUI);
-                        break;
-                    case "flamethrower":
-                        SetActiveAmmo(flameAmmoUI);
-                        break;
-                    default:
-                        SetActiveAmmo(tommyAmmoUI);
-                        break;
-                }
+                ammoUI.sprite = currWeapon.weaponUIImage;
             }
 
             //Alt fire slider
@@ -141,23 +119,7 @@ public class UIManager : MonoBehaviour
 
             if (healthSlider.value == 0)
             {
-                /**The UIManager should not be responsible for killing the player
-             * The part of this code actually handling the player death should be in a different script
-             * The stuff handling the UI should be here, with it either being called by the other script or
-             * having the UI call the other script to initiate player death**/
-                //player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                //player.isKBed = false;
-                //isDying = true;
-                ////mainPlayer.layer = 10;
-                //AudioDictionary.aDict.PlayAudioClip("playerDeath", AudioDictionary.Source.Player);
-                //animator.Play("PlayerDeath");
-                //animatorGun.Play("GunOff");
-                ////animatorGunLeft.Play("GunOff");
-                ////Time.timeScale = 0.25f;
-                //StartCoroutine(deathExplosion());
-
                 healthSlider.value = 1;
-
             }
             if(!player.GetComponent<CharacterMovementModule>().dashCooldown.IsDone)
             {
@@ -173,49 +135,17 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Methods
-    /**This function should not be here, it should be in a script that handles either player movement
-     * or game events. **/
-
-    //public void RespawnDelay()
-    //{
-    //    respawn.respawnPlayer();
-    //    animator.Play("PizzaGuy_Idle");
-    //    animatorGun.Play("Idle");
-    //    Time.timeScale = 1;
-    //}
-
-    //Should be fine, might just need cleanup but will double check
-
     
+    /// <summary>
+    /// Fills the dash meter
+    /// </summary>
     public void DashFill()
     {
+        //Fills the dash slider over times
         dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashCooldown.maxTime,
             player.GetComponent<CharacterMovementModule>().dashCooldown.elapsed);
     }
 
-
-    //This should also be with the player
-    //public IEnumerator deathExplosion()
-    //{
-    //    yield return new WaitForSeconds(0.55f);
-    //    CameraShake shake = camera.GetComponent<CameraShake>();
-    //    shake.shakeDuration = 0.5f;
-    //    yield return new WaitForSeconds(0.55f);
-    //    Invoke(nameof(RespawnDelay), 0.6f);
-    //}
-
-    /// <summary>
-    /// Sets the active ammo UI element for the gun
-    /// </summary>
-    /// <param name="ammoUI">UI ammo element to set</param>
-    private void SetActiveAmmo(GameObject ammoUI)
-    {
-        foreach (GameObject ammo in ammoUIList)
-        {
-            ammo.SetActive(false);
-            ammoUI.SetActive(true);
-        }
-    }
     /// <summary>
     /// Pauses and unpauses the game
     /// </summary>
