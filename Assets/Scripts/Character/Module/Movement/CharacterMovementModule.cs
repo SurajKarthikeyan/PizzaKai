@@ -200,8 +200,9 @@ public class CharacterMovementModule : Module
 
         if (inputtedMovement.x.Approx(0) && !velocity.x.Approx(0))
         {
-            // Apply a backwards force to stop the player.
-            force.x = -velocity.x * Mathf.Clamp01(moveAcceleration.x);
+            // Apply a backwards force to stop the player. The 0.8f is just to
+            // avoid slingshots.
+            force.x = -velocity.x * 0.8f * moveAcceleration.x;
         }
         else if (CanMoveInDirection(inputtedMovement.x, velocity.x, maxMoveSpeed.x))
         {
@@ -220,6 +221,9 @@ public class CharacterMovementModule : Module
         // rigidbody. Directly setting the velocity often leads to weird
         // results, such as the shotgun not being able to properly move the
         // character.
+        //
+        // Another note: ForceMode2D.Impulse is only for instantaneous changes in
+        // force. For continuous force, use ForceMode2D.Force.
         Master.r2d.AddForce(force);
 
         // Handle animations.

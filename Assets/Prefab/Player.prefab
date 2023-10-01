@@ -1695,8 +1695,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039579794, y: 0.09591559}
-  m_Size: {x: 0.259199, y: 0.17816909}
+  m_Offset: {x: -0.039579794, y: 0.092815354}
+  m_Size: {x: 0.2591991, y: 0.18436977}
   m_Direction: 1
 --- !u!1 &1820642846021726181
 GameObject:
@@ -1975,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1264708670744078055
 Transform:
   m_ObjectHideFlags: 0
@@ -2171,7 +2171,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 32cbb4ca49a8f5041b45f65417d11975, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 385c24d7fbef3654fb01bd51783d0c5b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -3524,8 +3524,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 5a05bfcb10e8c0e4da63ebcc23179ef4, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -3539,7 +3539,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8206075540257416582}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3581,7 +3581,7 @@ MonoBehaviour:
     maxTime: 0
     elapsed: 0
   playerDamageInvulnerability: 1
-  respawn: {fileID: 0}
+  respawn: {fileID: 8019257334451026239}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3595,7 +3595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 5, y: 0}
-  moveAcceleration: {x: 0.5, y: 1}
+  moveAcceleration: {x: 5, y: 1}
   jumpForce: 12
   jumpCooldown:
     maxTime: 0.5

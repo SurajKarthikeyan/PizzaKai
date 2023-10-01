@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 //Author Matthew DeBoer
-
+[Obsolete("Replaced by LayerManager")]
 public class PlatformScript : MonoBehaviour
 {
     Collider2D playerCol;
@@ -52,7 +53,7 @@ public class PlatformScript : MonoBehaviour
     {
         //hold the original layer index
         int tempHolder = dropper.layer;
-        dropper.layer = LayerMask.NameToLayer("OneWayPlatform");
+        dropper.layer = LayersManager.Platform;
 
         yield return new WaitForSeconds(0.3f);
 
