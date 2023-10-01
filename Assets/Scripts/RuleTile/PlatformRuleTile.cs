@@ -140,11 +140,11 @@ public class PlatformRuleTile : RuleTile<PlatformRuleTile.Neighbor>
         switch (neighbor)
         {
             case TilingRuleOutput.Neighbor.NotThis:
-                return !(other is PlatformRuleTile);
+                return other is not PlatformRuleTile;
             case TilingRuleOutput.Neighbor.This:
                 return other is PlatformRuleTile;
             case Neighbor.Other:
-                return other != null && !(other is PlatformRuleTile);
+                return other != null && other is not PlatformRuleTile;
             case Neighbor.ThisStrict:
                 return other == this
                     || (other is PlatformRuleTile prt

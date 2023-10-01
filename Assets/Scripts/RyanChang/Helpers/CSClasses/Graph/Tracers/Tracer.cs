@@ -49,8 +49,7 @@ public class Tracer<T> where T : IEquatable<T>
             );
         }
 
-        Transform superContainer =
-            GameObject.FindGameObjectWithTag("TraceContainer").transform;
+        Transform superContainer = GameObject.FindGameObjectWithTag("TraceContainer").transform;
 
         if (!middleContainer)
         {

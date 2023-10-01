@@ -33,6 +33,7 @@ public static class TransformExt
     /// <summary>
     /// Sets the local position, rotation, and scale of the transform to their
     /// "default" values.
+    /// </summary>
     /// <param name="transform"></param>
     public static void Localize(this Transform transform)
     {
