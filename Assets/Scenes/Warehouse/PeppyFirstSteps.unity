@@ -140703,10 +140703,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2084624978, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 372884706165202640, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -140734,6 +140730,10 @@ PrefabInstance:
     - target: {fileID: 2407071942407806261, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979568082248114104, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+      propertyPath: moveAcceleration.x
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8019257334451026239, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
       propertyPath: respawnPoint

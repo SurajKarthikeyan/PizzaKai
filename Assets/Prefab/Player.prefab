@@ -3577,9 +3577,10 @@ MonoBehaviour:
   r2d: {fileID: 0}
   c2d: {fileID: 0}
   flipModule: {fileID: 0}
-  playerDamageInvulnerability:
+  damageInvulnerability:
     maxTime: 0
     elapsed: 0
+  playerDamageInvulnerability: 1
   respawn: {fileID: 0}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
@@ -3609,7 +3610,6 @@ MonoBehaviour:
   dashTimer:
     maxTime: 0.2
     elapsed: 0
-  shotgunPushed: 0
   groundCheck: {fileID: 1061556619110042102}
   characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 0
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   animParamJump: Jumping
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
-  inputtedDash: 0
+  inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
   groundCheckCF2D:
@@ -3661,7 +3661,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 32cbb4ca49a8f5041b45f65417d11975, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
