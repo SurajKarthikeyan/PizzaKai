@@ -20,7 +20,7 @@ public class EnumDictionary<TEnum, TValue> :
     /// The dictionary explicitly used by the editor.
     /// </summary>
     [SerializeField]
-    private UnityDictionary<TEnum, TValue> editorDict;
+    private UnityDictionary<TEnum, TValue> editorDict = new();
 
     #region Helper Methods
     /// <summary>

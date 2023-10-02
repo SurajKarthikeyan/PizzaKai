@@ -25,6 +25,9 @@ TagManager:
   - PlayerSprite
   - PlayerArm
   - PlayerArmLeft
+  - LeftPlatform
+  - RightPlatform
+  - TraceContainer
   layers:
   - Default
   - TransparentFX
@@ -32,7 +35,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - OneWayPlatform
+  - Platform
   - Player
   - Box
   - EnemyProjectile
@@ -40,7 +43,7 @@ TagManager:
   - Breadstick
   - Boundary
   - Background
-  - UpNoDownPlat
+  - 
   - Oven
   - Destroyables
   - BoxStackBackground

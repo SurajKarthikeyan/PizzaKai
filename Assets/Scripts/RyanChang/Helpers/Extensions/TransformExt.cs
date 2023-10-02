@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -32,12 +33,37 @@ public static class TransformExt
     /// <summary>
     /// Sets the local position, rotation, and scale of the transform to their
     /// "default" values.
+    /// </summary>
     /// <param name="transform"></param>
     public static void Localize(this Transform transform)
     {
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.one;
+    }
+
+    /// <summary>
+    /// Sets the local position, rotation, and scale of the transform to their
+    /// "default" values, while also setting the parent.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="newParent"></param>
+    public static void Localize(this Transform transform, Transform newParent)
+    {
+        transform.parent = newParent;
+        transform.Localize();
+    }
+
+    /// <summary>
+    /// Sets the position and rotation of <paramref name="target"/> to match
+    /// those of <paramref name="other"/>.
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="other"></param>
+    public static void MatchOther(this Transform target, Transform other)
+    {
+        target.position = other.position;
+        target.rotation = other.rotation;
     }
 
     /// <summary>
@@ -72,6 +98,23 @@ public static class TransformExt
                 Object.DestroyImmediate(child.gameObject);
             else
                 Object.Destroy(child.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Returns an iteration containing the transform's parent, grandparent,
+    /// etc, etc.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <returns></returns>
+    public static IEnumerable<Transform> Parents(this Transform transform)
+    {
+        Transform parent = transform.parent;
+
+        while (parent != null)
+        {
+            yield return parent;
+            parent = parent.parent;
         }
     }
     #endregion
