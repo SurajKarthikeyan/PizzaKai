@@ -4,6 +4,7 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using static PathMarker;
 using static PathNode;
@@ -48,8 +49,10 @@ public class PathfindingManager : MonoBehaviour
     [Tooltip("The tilemaps contained by grid.")]
     public List<Tilemap> tilemaps;
 
-    [Tooltip("Scriptable object to store the data.")]
-    public PathfindingData data;
+    /// <summary>
+    /// Scriptable object to store the data.
+    /// </summary>
+    private PathfindingData data;
 
     [Header("Maximum Iterations")]
     [Tooltip("How far to check upwards for platforms (in tiles)?")]
@@ -73,11 +76,31 @@ public class PathfindingManager : MonoBehaviour
     #endregion
 
     #region Properties
+    /// <inheritdoc cref="data"/>
+    private PathfindingData Data
+    {
+        get
+        {
+#if UNITY_EDITOR
+            if (!data)
+            {
+                data = ScriptableObject.CreateInstance<PathfindingData>();
+
+                string path = SceneManager.GetActiveScene().name;
+                path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
+                path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+                AssetDatabase.CreateAsset(data, path);
+                AssetDatabase.SaveAssets();
+            }
+#endif
+            return data;
+        }
+    }
+
     /// <summary>
     /// The pathfinding graph.
     /// </summary>
-    public Graph<Vector3Int> Pathfinding => data.pathData;
-
+    public Graph<Vector3Int> Pathfinding => Data.pathData;
     public BoundsInt CellBounds { get; private set; }
     #endregion
 
@@ -112,12 +135,7 @@ public class PathfindingManager : MonoBehaviour
             .Reverse()
             .ToList();
 
-        if (!data)
-        {
-            throw new ArgumentException("Must include data.");
-        }
-
-        data.pathData = new();
+        Data.pathData = new();
 
         // First, initialize all the path nodes.
         InitializeNodes();
@@ -144,8 +162,7 @@ public class PathfindingManager : MonoBehaviour
         Pathfinding.DetectSections(true);
 
         // Save data.
-        data.pathData = Pathfinding;
-        UnityEditor.EditorUtility.SetDirty(data);
+        UnityEditor.EditorUtility.SetDirty(Data);
 
         print("Done");
     }
@@ -393,7 +410,7 @@ public class PathfindingManager : MonoBehaviour
     public Path<Vector3Int> AStarSearch(Vector3Int start, Vector3Int end)
     {
         if (start == end)
-             throw new StartIsEndVertexException(start, "Cannot create graph");
+            throw new StartIsEndVertexException(start, "Cannot create graph");
 
         var startV = GetClosestNeighbor(start, Guid.Empty);
         var endV = GetClosestNeighbor(end, startV.sectionID);
