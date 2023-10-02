@@ -57,10 +57,14 @@ public static class VectorExt
     /// </summary>
     /// <param name="v">The Vector3 to convert.</param>
     /// <returns>The converted Vector3Int.</returns>
-    public static Vector3Int ToVector3Int(this Vector3 v)
+    public static Vector3Int ToVector3Int(this Vector3 v,
+        NumericalExt.RoundMode mode = NumericalExt.RoundMode.NearestInt)
     {
-        return new(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y),
-            Mathf.RoundToInt(v.z));
+        return new(
+            v.x.Round(mode),
+            v.y.Round(mode),
+            v.z.Round(mode)
+        );
     }
 
     /// <summary>
@@ -68,9 +72,13 @@ public static class VectorExt
     /// </summary>
     /// <param name="v">The Vector2 to convert.</param>
     /// <returns>The converted Vector2Int.</returns>
-    public static Vector2Int ToVector2Int(this Vector2 v)
+    public static Vector2Int ToVector2Int(this Vector2 v,
+    NumericalExt.RoundMode mode = NumericalExt.RoundMode.NearestInt)
     {
-        return new(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y));
+        return new(
+            v.x.Round(mode),
+            v.y.Round(mode)
+        );
     }
 
     /// <summary>
@@ -200,7 +208,7 @@ public static class VectorExt
     {
         return Mathf.Min(v.x, v.y, v.z);
     }
-    
+
     /// <summary>
     /// Returns a vector that is the minimum component of all other vectors.
     /// </summary>
@@ -284,7 +292,7 @@ public static class VectorExt
     {
         return Mathf.Max(v.x, v.y, v.z);
     }
-    
+
     /// <summary>
     /// Returns a vector that is the maximum component of all other vectors.
     /// </summary>
@@ -582,7 +590,6 @@ public static class VectorExt
     }
     #endregion
 
-
     #region Distance
     /// <summary>
     /// Gets the taxicab distance between two vectors.
@@ -626,6 +633,45 @@ public static class VectorExt
     public static int TaxicabDistance(this Vector3Int v1, Vector3Int v2)
     {
         return (v1 - v2).Abs().SumComponents();
+    }
+    #endregion
+
+    #region Inverse Square
+    /// <summary>
+    /// Computes the force vector resulting from the inverse square law.
+    /// </summary>
+    /// <param name="origin">The starting point (where the explosion began, for
+    /// example).</param>
+    /// <param name="target">The testing point.</param>
+    /// <returns>The force vector, centered on the origin.</returns>
+    public static Vector2 InverseSquare(this Vector2 origin, Vector2 target)
+    {
+        return InverseSquare(target - origin);
+    }
+
+    /// <summary>
+    /// Computes the force vector resulting from the inverse square law.
+    /// </summary>
+    /// <param name="difference">The difference between the starting point
+    /// (where the explosion began, for example) and the testing point.</param>
+    /// <returns>The force vector, centered on the origin.</returns>
+    public static Vector2 InverseSquare(this Vector2 difference)
+    {
+        var s = difference.sqrMagnitude;
+        return difference / s;
+    }
+
+    /// <inheritdoc cref="InverseSquare(Vector2, Vector2)"/>
+    public static Vector3 InverseSquare(this Vector3 origin, Vector3 target)
+    {
+        return InverseSquare(target - origin);
+    }
+
+    /// <inheritdoc cref="InverseSquare(Vector2)"/>
+    public static Vector3 InverseSquare(this Vector3 difference)
+    {
+        var s = difference.sqrMagnitude;
+        return difference / s;
     }
     #endregion
 

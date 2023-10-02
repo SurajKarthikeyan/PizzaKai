@@ -24,11 +24,6 @@ public class LayersManager : MonoBehaviour
     public static LayersManager Instance => instance;
     #endregion
 
-    private void Start()
-    {
-        
-    }
-
     #region Structs
     [System.Serializable]
     public struct DefinedLayer : IEquatable<DefinedLayer>, ISerializationCallbackReceiver
@@ -168,13 +163,10 @@ public class LayersManager : MonoBehaviour
     #region Instantiation
     private void Awake()
     {
-        if (instance == null)
-        {
-            this.InstantiateSingleton(ref instance);
-            platformColliders = GameObject.FindObjectsOfType<Collider2D>()
-                .Where(c => c.gameObject.layer == Platform);
-        }
-        
+        this.InstantiateSingleton(ref instance);
+        platformColliders = GameObject.FindObjectsOfType<Collider2D>()
+            .Where(c => c.gameObject.layer == Platform)
+            .ToList();
     }
     #endregion
 

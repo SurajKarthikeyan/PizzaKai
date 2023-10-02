@@ -10,14 +10,15 @@ using System.Linq;
 public static class EnumerableExt
 {
     /// <summary>
-    /// Returns true if the IEnumerable is null or contains no elements.
+    /// Returns true if <paramref name="collection"/> is null or contains no
+    /// elements.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="enumerable">IEnumerable to check.</param>
+    /// <param name="collection">Collection to check.</param>
     /// <returns></returns>
-    public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
+    public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
     {
-        return enumerable == null || !enumerable.Any();
+        return collection == null || collection.Count <= 0;
     }
 
     /// <summary>
@@ -54,6 +55,7 @@ public static class EnumerableExt
         return dict[key];
     }
 
+    #region Index
     /// <summary>
     /// Returns true if <paramref name="index"/> is a valid indexer into
     /// <paramref name="collection"/>. If <paramref name="collection"/> is null
@@ -72,6 +74,31 @@ public static class EnumerableExt
 
         return index >= 0 && index < collection.Count();
     }
+
+    /// <summary>
+    /// Ensures that <paramref name="index"/> ranges from 0 to <paramref
+    /// name="collection"/> count. If it lies outside of that bound, then wrap
+    /// it.
+    /// </summary>
+    public static int BoundToLength(this ICollection collection, int index)
+    {
+        return collection.Count.BoundToLength(index);
+    }
+
+    /// <summary>
+    /// Ensures that <paramref name="index"/> ranges from 0 to <paramref
+    /// name="length"/>. If it lies outside of that bound, then wrap it.
+    /// </summary>
+    public static int BoundToLength(this int length, int index)
+    {
+        while (index < 0)
+            index += length;
+
+        index %= length;
+
+        return index;
+    }
+    #endregion
 
     /// <summary>
     /// Swaps the values in the collection at <paramref name="indexA"/> and

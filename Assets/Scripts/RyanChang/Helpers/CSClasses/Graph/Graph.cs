@@ -132,7 +132,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             Add(to);
         }
 
-        from.adjacent[toID] = weight;
+        from.Adjacent[toID] = weight;
     }
 
     /// <summary>
@@ -181,7 +181,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             toV = Add(toId);
         }
 
-        Vertices[fromId].adjacent[toId] = weight;
+        Vertices[fromId].Adjacent[toId] = weight;
 
         return new(fromV, toV);
     }
@@ -204,7 +204,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             toV = Add(toId);
         }
 
-        Vertices[fromId].adjacent[toId] = weight;
+        Vertices[fromId].Adjacent[toId] = weight;
 
         return new(fromV, toV);
     }
@@ -287,7 +287,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         if (HasVertex(fromID) && HasVertex(toID))
         {
             var fromV = Vertices[fromID];
-            if (fromV.adjacent.ContainsKey(toID))
+            if (fromV.Adjacent.ContainsKey(toID))
             {
                 return true;
             }
@@ -310,9 +310,9 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         {
             var fromV = Vertices[fromID];
             var toV = Vertices[toID];
-            if (fromV.adjacent.ContainsKey(toID))
+            if (fromV.Adjacent.ContainsKey(toID))
             {
-                return new(fromV, toV, fromV.adjacent[toID]);
+                return new(fromV, toV, fromV.Adjacent[toID]);
             }
         }
 
@@ -330,9 +330,9 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     {
         if (HasVertex(from.id) && HasVertex(to.id))
         {
-            if (from.adjacent.ContainsKey(to.id))
+            if (from.Adjacent.ContainsKey(to.id))
             {
-                return new(from, to, from.adjacent[to.id]);
+                return new(from, to, from.Adjacent[to.id]);
             }
         }
 
@@ -438,11 +438,14 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             yield return currV;
 
-            foreach (var adjP in currV.adjacent)
+            lock (currV.Adjacent)
             {
-                Vertex<T> adjV = Vertices[adjP.Key];
+                foreach (var adjP in currV.Adjacent)
+                {
+                    Vertex<T> adjV = Vertices[adjP.Key];
 
-                q.Enqueue(adjV);
+                    q.Enqueue(adjV);
+                } 
             }
         }
 
@@ -495,7 +498,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             currV.SetVisited(g, true);
 
-            foreach (var adjP in currV.adjacent)
+            foreach (var adjP in currV.Adjacent)
             {
                 Vertex<T> adjV = Vertices[adjP.Key];
 
@@ -546,7 +549,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             yield return currV;
 
-            foreach (var adjP in currV.adjacent)
+            foreach (var adjP in currV.Adjacent)
             {
                 Vertex<T> adjV = Vertices[adjP.Key];
 
@@ -590,7 +593,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             currV.SetVisited(g, true);
 
-            foreach (var adjP in currV.adjacent)
+            foreach (var adjP in currV.Adjacent)
             {
                 Vertex<T> adjV = Vertices[adjP.Key];
 
@@ -638,13 +641,13 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     {
         foreach (var vertex in Values)
         {
-            var toRemove = vertex.adjacent
+            var toRemove = vertex.Adjacent
                 .Where(a => a.Key.Equals(vertex.id) && a.Value == 0)
                 .ToList();      // Important! Needs a copy.
 
             foreach (var rm in toRemove)
             {
-                vertex.adjacent.Remove(rm);
+                vertex.Adjacent.Remove(rm.Key);
             }
         }
     }
@@ -715,8 +718,11 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     {
         var old = SetEnumeration(EnumerationMethod.BreathFirst, start);
 
+        List<Vertex<T>> visited = new();
+
         foreach (var current in this)
         {
+            visited.Add(current);
             if (current == end)
             {
                 SetEnumeration(old);
@@ -766,7 +772,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             if (currV.GetAggregateCost(g) > maxCost) continue;
             elements.Add(currV);
 
-            foreach (var adjP in currV.adjacent)
+            foreach (var adjP in currV.Adjacent)
             {
                 Vertex<T> adjV = Vertices[adjP.Key];
 
@@ -822,8 +828,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         else if (Count < 2)
             throw new PathfindingException("Cannot make graph with less than 2 vertices");
         else if (startID.Equals(endID))
-            throw new PathfindingException("Start and end vertices cannot " +
-                $"be the same value ({startID})");
+            throw new StartIsEndVertexException(startID, "Cannot build graph.");
 
         var endV = Vertices[endID];
         var startV = Vertices[startID];
@@ -835,7 +840,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
                 $"{startV.sectionID} to section {endV.sectionID}."
             );
         }
-
+        
         PriorityQueue<Vertex<T>> unvisited = new();
 
         foreach (var v in Values)
@@ -847,9 +852,10 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         // These are the shortest paths from startV. The keys are the vertex IDs
         // can can be reached from startV, and the values are the cost it takes
         // to get there.
-        Dictionary<T, float> totalCosts = new();
-
-        totalCosts[startID] = 0;
+        Dictionary<T, float> totalCosts = new()
+        {
+            [startID] = 0
+        };
         cost = 0;
 
         // The backwards path, with keys starting at endV and values "pointing"
@@ -865,9 +871,6 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         // GUID for visitation.
         Guid visitID = Guid.NewGuid();
 
-        // testing
-        Vertex<T> prevV = null;
-
         while (unvisited.Count > 0)
         {
             var currentPQE = unvisited.DequeueElement();
@@ -877,10 +880,10 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             var currentID = currentV.id;
 
             if (!float.IsFinite(currentPQE.priority))
-                throw new DisjointGraphException("Graph disjoint detected.");
+                throw new RanOutOfVerticesException(currentID, endID);
 
             // Current cost of traversal, from startV to currentV.
-            float currentCostTotal = totalCosts[currentID];
+            float currentCostTotal;
 
             try
             {
@@ -900,8 +903,6 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
             currentV.SetVisited(visitID, true);
 
-            prevV = currentV;
-
             if (currentID.Equals(endID))
             {
                 // Found end. Break to go to return.
@@ -909,7 +910,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
                 break;
             }
 
-            foreach (var adjKVP in currentV.adjacent)
+            foreach (var adjKVP in currentV.Adjacent)
             {
                 // Adjacent ID of vertex.
                 T adjID = adjKVP.Key;
