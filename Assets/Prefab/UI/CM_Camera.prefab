@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3713069838657419861}
   - component: {fileID: 7524738371606959033}
+  - component: {fileID: 7128363914055414159}
   m_Layer: 0
   m_Name: CM_FollowPlayer
   m_TagString: Untagged
@@ -71,6 +72,20 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 287833654090064755}
+--- !u!114 &7128363914055414159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725204059117474297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9abae49d7982b9448d0e3e155421e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vCam: {fileID: 7524738371606959033}
+  pcm: {fileID: 0}
 --- !u!1 &3147912659787599546
 GameObject:
   m_ObjectHideFlags: 0
