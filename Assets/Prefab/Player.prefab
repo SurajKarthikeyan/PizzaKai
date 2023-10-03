@@ -3596,6 +3596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 5, y: 0}
   moveAcceleration: {x: 25, y: 1}
+  decelerationPercentage: 0.95
   jumpForce: 12
   jumpCooldown:
     maxTime: 0.5
@@ -3612,7 +3613,7 @@ MonoBehaviour:
     elapsed: 0
   groundCheck: {fileID: 1061556619110042102}
   characterAnimator: {fileID: 948621413}
-  positiveAnimParamOnly: 0
+  positiveAnimParamOnly: 1
   animParamSpeedX: RightLeftMovement
   animParamSpeedY: 
   animParamJump: Jumping

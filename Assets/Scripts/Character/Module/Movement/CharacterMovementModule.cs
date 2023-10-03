@@ -54,6 +54,11 @@ public class CharacterMovementModule : Module
         "and vertical directions.")]
     public Vector2 moveAcceleration = new(1f, 0);
 
+    [Tooltip("What percentage of the moveAcceleration will the character " +
+        "decelerate?")]
+    [Range(0, 0.95f)]
+    public float decelerationPercentage = 0.95f;
+
     [Tooltip("The upward force produced by jumping.")]
     public float jumpForce = 12f;
 
@@ -202,7 +207,7 @@ public class CharacterMovementModule : Module
         {
             // Apply a backwards force to stop the player. The 0.8f is just to
             // avoid slingshots.
-            force.x = -velocity.x * 0.8f * moveAcceleration.x;
+            force.x = -velocity.x * decelerationPercentage * moveAcceleration.x;
         }
         else if (CanMoveInDirection(inputtedMovement.x, velocity.x, maxMoveSpeed.x))
         {
