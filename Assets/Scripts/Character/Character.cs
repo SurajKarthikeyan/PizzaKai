@@ -41,7 +41,7 @@ public class Character : MonoBehaviour
     public DefaultFlipModule flipModule;
 
     [SerializeField]
-    private MultiDuration damageInvulnerability;
+    private Duration damageInvulnerability;
 
     [SerializeField]
     private float playerDamageInvulnerability = 1f;
@@ -77,6 +77,7 @@ public class Character : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
+                EventManager.Instance.onCharacterDeath.Invoke(this);
                 Die();
             }
         }
@@ -114,7 +115,6 @@ public class Character : MonoBehaviour
     {
         SetVars();
         HP = maxHP;
-        damageInvulnerability = new();
     }
 
     // private void OnValidate()
@@ -142,7 +142,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         // Required to get this to work properly.
-        damageInvulnerability.IncrementUpdate();
+        damageInvulnerability.IncrementUpdate(false);
     }
     #endregion
 
@@ -161,7 +161,11 @@ public class Character : MonoBehaviour
     /// <param name="damage">How much damage to take.</param>
     public void TakeDamage(int damage)
     {
-        HP -= damage;
+        if (damageInvulnerability.IsDone)
+        {
+            HP -= damage;
+            damageInvulnerability.Reset();
+        }
 
         if (IsPlayer)
         {
@@ -177,27 +181,6 @@ public class Character : MonoBehaviour
     {
         TakeDamage(damage);
         r2d.AddForce(knockback * knockbackMultiplier, ForceMode2D.Impulse);
-    }
-
-    /// <summary>
-    /// Take damage from a continuous source, properly utilizing
-    /// invulnerability.
-    /// </summary>
-    /// <param name="damage">How much damage to take.</param>
-    /// <param name="knockback">How much knockback to apply.</param>
-    /// <param name="damageKey">The type of damage, to be used with
-    /// invulnerability.</param>
-    public void TakeConstantDamage(int damage, Vector2 knockback, string damageKey)
-    {
-        if (damageInvulnerability.IsDone(damageKey))
-        {
-            TakeDamage(damage, knockback);
-        }
-
-        damageInvulnerability.InsertDelay(
-            damageKey,
-            GameManager.Instance.damageTickRate
-        );
     }
 
     public void HealPlayer(int healthIncrease)

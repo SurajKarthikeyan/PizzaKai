@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WinScript : MonoBehaviour
@@ -7,16 +8,21 @@ public class WinScript : MonoBehaviour
     public GameObject winCanvas;
     public List<GameObject> enemiesToDie;
 
+    private void Start()
+    {
+        EventManager.Instance.onCharacterDeath.AddListener(CharacterDeath);
+    }
+
+    private void CharacterDeath(Character character)
+    {
+        enemiesToDie.Remove(character.gameObject);
+    }
+
     private void LateUpdate()
     {
-        for (int i=0; i < enemiesToDie.Count; i++)
-        {
-            if (enemiesToDie[i] == null)
-            {
-                enemiesToDie.RemoveAt(i);
-            }
-            return;
-        }
+        enemiesToDie = enemiesToDie
+            .Where(e => e)      // Null check
+            .ToList();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
