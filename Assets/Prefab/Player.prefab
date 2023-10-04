@@ -3678,9 +3678,10 @@ MonoBehaviour:
   c2d: {fileID: 0}
   flipModule: {fileID: 0}
   damageInvulnerability:
-    maxTime: 0
+    maxTime: 1
     elapsed: 0
   playerDamageInvulnerability: 1
+  knockbackMultiplier: 1
   respawn: {fileID: 8019257334451026239}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
@@ -3875,6 +3876,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.002
       objectReference: {fileID: 0}
+    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
     - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: cameraScript
       value: 
