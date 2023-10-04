@@ -59,7 +59,9 @@ public class BossManager : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //Interpolate camera position to boss camera, swap active cameras.
-            lerpCam = true;
+            //lerpCam = true;
+            mainCam.SetActive(false);
+            bossCamParent.SetActive(true);
             //Set bossStart to true
             bossStart = true;
         }
