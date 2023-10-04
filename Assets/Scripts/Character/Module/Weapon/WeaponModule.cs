@@ -123,7 +123,7 @@ public class WeaponModule : Module
     public Duration reloadDelay = new(1f);
 
     [Tooltip("Bullet that this weapon uses")]
-    public bulletScript bullet;
+    public WeaponSpawn bullet;
 
     //[Tooltip("Updated bullet spawn this weapon uses.")]
     //public bulletScript bulletSpawn;
