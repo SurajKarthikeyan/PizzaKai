@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -40,10 +41,13 @@ public class Character : MonoBehaviour
     public DefaultFlipModule flipModule;
 
     [SerializeField]
-    private Duration damageInvulnerability;
+    private MultiDuration damageInvulnerability;
 
     [SerializeField]
     private float playerDamageInvulnerability = 1f;
+
+    [SerializeField]
+    private float knockbackMultiplier = 1;
 
 
     [SerializeField] private RespawnScript respawn;
@@ -110,11 +114,7 @@ public class Character : MonoBehaviour
     {
         SetVars();
         HP = maxHP;
-        damageInvulnerability = new(GameManager.Instance.damageTickRate);
-        if (gameObject.tag == "Player")
-        {
-            damageInvulnerability.maxTime = playerDamageInvulnerability;
-        }
+        damageInvulnerability = new();
     }
 
     // private void OnValidate()
@@ -142,7 +142,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         // Required to get this to work properly.
-        damageInvulnerability.IncrementUpdate(false);
+        damageInvulnerability.IncrementUpdate();
     }
     #endregion
 
@@ -159,22 +159,45 @@ public class Character : MonoBehaviour
     /// Take <paramref name="damage"/> amount of damage.
     /// </summary>
     /// <param name="damage">How much damage to take.</param>
-    /// <returns>True if damage is successfully applied, false otherwise (such
-    /// as when the character is invulnerable).</returns>
-    public bool TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        if (damageInvulnerability.IsDone)
+        HP -= damage;
+
+        if (IsPlayer)
         {
-            HP -= damage;
-            if (IsPlayer)
-            {
-                PlayerKnockback();
-            }
-            damageInvulnerability.Reset();
-            return true;
+            PlayerKnockback();
+        }
+    }
+
+    /// <summary>
+    /// Take damage with knockback.
+    /// </summary>
+    /// <inheritdoc cref="TakeConstantDamage(int, Vector2, string)"/>
+    public void TakeDamage(int damage, Vector2 knockback)
+    {
+        TakeDamage(damage);
+        r2d.AddForce(knockback * knockbackMultiplier, ForceMode2D.Impulse);
+    }
+
+    /// <summary>
+    /// Take damage from a continuous source, properly utilizing
+    /// invulnerability.
+    /// </summary>
+    /// <param name="damage">How much damage to take.</param>
+    /// <param name="knockback">How much knockback to apply.</param>
+    /// <param name="damageKey">The type of damage, to be used with
+    /// invulnerability.</param>
+    public void TakeConstantDamage(int damage, Vector2 knockback, string damageKey)
+    {
+        if (damageInvulnerability.IsDone(damageKey))
+        {
+            TakeDamage(damage, knockback);
         }
 
-        return false;
+        damageInvulnerability.InsertDelay(
+            damageKey,
+            GameManager.Instance.damageTickRate
+        );
     }
 
     public void HealPlayer(int healthIncrease)
