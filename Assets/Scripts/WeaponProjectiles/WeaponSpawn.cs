@@ -61,6 +61,8 @@ public abstract class WeaponSpawn : MonoBehaviour
             weapon.firePoint.rotation
         );
 
+        spawned.gameObject.SetActive(true);
+
         firedBy = weapon;
         FireInternal();
         return spawned;

@@ -330,7 +330,7 @@ public class WeaponModule : Module
         //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;
 
-        Instantiate(bullet, firePoint.position, Quaternion.identity);
+        bullet.Spawn(this);
     }
 
     /// <summary>

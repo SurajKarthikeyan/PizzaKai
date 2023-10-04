@@ -41,6 +41,8 @@ public class SimpleProjectile : MaskedWeaponSpawn
     private float maxLifetime;
 
     private float currentLifetime;
+
+    private ContactFilter2D contactFilter;
     #endregion
 
     #region Properties
@@ -62,7 +64,11 @@ public class SimpleProjectile : MaskedWeaponSpawn
         // Calculate delta distance.
         deltaDistance = speed.Select() * Time.fixedDeltaTime;
 
-        StartCoroutine(Fire_CR());
+        contactFilter = new()
+        {
+            layerMask = collisionMask,
+            useLayerMask = true
+        };
     }
 
     /// <summary>
@@ -70,18 +76,10 @@ public class SimpleProjectile : MaskedWeaponSpawn
     /// </summary>
     private static readonly RaycastHit2D[] hits = new RaycastHit2D[4];
 
-    private IEnumerator Fire_CR()
+    private void FixedUpdate()
     {
-        ContactFilter2D contactFilter = new()
+        if (gameObject.activeInHierarchy && !lifetime.IncrementFixedUpdate(false))
         {
-            layerMask = collisionMask,
-            useLayerMask = true
-        };
-
-        while (enabled && !lifetime.IncrementFixedUpdate(false))
-        {
-            yield return new WaitForFixedUpdate();
-
             // Do the raycast things.
             int totalHits = Physics2D.Raycast(
                 transform.position,
@@ -138,7 +136,7 @@ public class SimpleProjectile : MaskedWeaponSpawn
             if (needsDestroy)
             {
                 // Break from loop.
-                break;
+                DestroyProjectile();
             }
 
             if (!hitThing)
@@ -147,7 +145,14 @@ public class SimpleProjectile : MaskedWeaponSpawn
                 transform.position += Forwards * deltaDistance;
             }
         }
+        else
+        {
+            DestroyProjectile();
+        }
+    }
 
+    public void DestroyProjectile()
+    {
         // Handle any destruction thingies here.
         if (spawnOnDeath)
         {
