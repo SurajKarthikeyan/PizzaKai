@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3713069838657419861}
   - component: {fileID: 7524738371606959033}
+  - component: {fileID: 7386473082203206720}
   m_Layer: 0
   m_Name: CM_FollowPlayer
   m_TagString: Untagged
@@ -71,6 +72,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 287833654090064755}
+--- !u!114 &7386473082203206720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725204059117474297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233931af32a4d27aebe2f30a0ccdf29f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3147912659787599546
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +179,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -192,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 287833654090064755}
   - component: {fileID: 7011569018496480686}
+  - component: {fileID: 383974659211979628}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -226,3 +240,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &383974659211979628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010080821199723154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0

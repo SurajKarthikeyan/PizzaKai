@@ -40,6 +40,7 @@ public class PathfindingManager : MonoBehaviour
     #region Variables
     [Header("Main")]
     [Tooltip("Unity grid, used to help generate the graph.")]
+    [ReadOnly]
     public Grid grid;
 
     [Tooltip("The visualizer for the graph.")]
@@ -47,11 +48,14 @@ public class PathfindingManager : MonoBehaviour
     private Tracer<Vector3Int> visualizer;
 
     [Tooltip("The tilemaps contained by grid.")]
+    [ReadOnly]
     public List<Tilemap> tilemaps;
 
     /// <summary>
     /// Scriptable object to store the data.
     /// </summary>
+    [SerializeField]
+    [ReadOnly]
     private PathfindingData data;
 
     [Header("Maximum Iterations")]
@@ -88,7 +92,7 @@ public class PathfindingManager : MonoBehaviour
 
                 string path = SceneManager.GetActiveScene().name;
                 path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
-                path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+                // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
                 AssetDatabase.CreateAsset(data, path);
                 AssetDatabase.SaveAssets();
             }
@@ -108,6 +112,12 @@ public class PathfindingManager : MonoBehaviour
     #region Instantiation
     private void Start()
     {
+        if (!grid)
+        {
+            throw new NullReferenceException("Value of grid not set! " +
+                "Press the Build Graph button.");
+        }
+
         BoundsInt cellBounds = new();
         cellBounds.SetMinMax(
             VectorExt.WithMinComponents(

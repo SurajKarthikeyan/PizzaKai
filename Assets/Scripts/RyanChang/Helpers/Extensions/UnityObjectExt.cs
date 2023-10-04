@@ -203,6 +203,29 @@ public static class UnityObjectExt
     }
     #endregion
 
+    #region In Scene
+    /// <summary>
+    /// Attempts to locate a gameobject with the specified tag.
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <param name="gameObject"></param>
+    /// <returns>True if gameobject was found, false otherwise.</returns>
+    public static bool ExistsWithTag(string tag, out GameObject gameObject)
+    {
+        try
+        {
+            gameObject = GameObject.FindWithTag(tag);
+
+            return gameObject != null;
+        }
+        catch (UnityException e)
+        {
+            Debug.LogError($"Tag {tag} is not defined!");
+            throw e;
+        }
+    }
+    #endregion
+
     #endregion
 
     #region Query Multiple

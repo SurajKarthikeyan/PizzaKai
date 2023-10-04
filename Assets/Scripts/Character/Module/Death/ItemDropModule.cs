@@ -30,10 +30,8 @@ public class ItemDropModule : DeathModule
                 // assign this now.
                 spawner.maxStartForce = maxForce;
             }
-
-            if (itemInst.HasComponent(out Rigidbody2D r2d))
+            else if (itemInst.HasComponent(out Rigidbody2D r2d))
             {
-
                 r2d.AddForce(
                     RNGExt.WithinCircle(Mathf.Abs(maxForce)),
                     ForceMode2D.Impulse
