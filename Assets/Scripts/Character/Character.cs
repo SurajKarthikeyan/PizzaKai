@@ -190,8 +190,16 @@ public class Character : MonoBehaviour
 
     private void Die()
     {
-        respawn.RespawnPlayer();
-        HP = maxHP;
+        if (!this.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            respawn.RespawnPlayer();
+            HP = maxHP;
+        }
+
     }
 
     private void PlayerKnockback()
