@@ -898,19 +898,19 @@ MonoBehaviour:
     - key: deepDishShot
       value: {fileID: 8300000, guid: b83f090b8a1adee4a9977d5980bc6793, type: 3}
     - key: tommyShoot
-      value: {fileID: 8300000, guid: a01257a7920e3df4187750b2ba665ed2, type: 3}
+      value: {fileID: 8300000, guid: 3b5cae9bea1455b4caffb6cd6c860e08, type: 3}
     - key: tommyAlt
       value: {fileID: 8300000, guid: 87e171d9ac7446f41937546e879348bb, type: 3}
     - key: tommyReload
       value: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
     - key: shotgunShoot
-      value: {fileID: 8300000, guid: f3a34ddaff110554f91d16d6b2f60ad6, type: 3}
+      value: {fileID: 8300000, guid: 05520b4edb8036844bc9415620923266, type: 3}
     - key: shotgunAlt
-      value: {fileID: 8300000, guid: c2c87ce0694ff37499540099430b2753, type: 3}
+      value: {fileID: 8300000, guid: 1bfae3892a2666a4ba58b1ace1fe780a, type: 3}
     - key: shotgunReload
-      value: {fileID: 8300000, guid: f959677c08ec700419883c73f10dcf5d, type: 3}
+      value: {fileID: 8300000, guid: 957ebb02b6839d04593b79e67cb6cdf2, type: 3}
     - key: flamethrowerShoot
-      value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
+      value: {fileID: 8300000, guid: 206bae257baecab449cbc4ae54b853d0, type: 3}
     - key: flamethrowerAlt
       value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
     - key: flamethrowerReload
@@ -931,6 +931,10 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: c414642b4d2d0a44b9b2f357afabb990, type: 3}
     - key: explosionLow
       value: {fileID: 8300000, guid: c414642b4d2d0a44b9b2f357afabb990, type: 3}
+    - key: forkyRadio
+      value: {fileID: 8300000, guid: b79f358ba44e0f2458f3ad8877e98ab2, type: 3}
+    - key: forkyRadio1
+      value: {fileID: 8300000, guid: af4e0e896ffe33c43bf6e6ca892b3f91, type: 3}
   source: 0
   testSource: {fileID: 6426834763429577237}
   gunSource: {fileID: 0}
@@ -1278,7 +1282,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2407071942407806261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdaffd3285b5e05468c88731e19b135d, type: 3}
   m_Name: 
@@ -3335,6 +3339,7 @@ MonoBehaviour:
     maxTime: 0
     elapsed: 0
   playerDamageInvulnerability: 1
+  knockbackMultiplier: 1
   respawn: {fileID: 8019257334451026239}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
@@ -3349,7 +3354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 5, y: 0}
-  moveAcceleration: {x: 0.5, y: 1}
+  moveAcceleration: {x: 25, y: 1}
+  decelerationPercentage: 0.95
   jumpForce: 12
   jumpCooldown:
     maxTime: 0.5
@@ -3364,16 +3370,15 @@ MonoBehaviour:
   dashTimer:
     maxTime: 0.2
     elapsed: 0
-  shotgunPushed: 0
   groundCheck: {fileID: 1061556619110042102}
   characterAnimator: {fileID: 948621413}
-  positiveAnimParamOnly: 0
+  positiveAnimParamOnly: 1
   animParamSpeedX: RightLeftMovement
   animParamSpeedY: 
   animParamJump: Jumping
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
-  inputtedDash: 0
+  inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
   groundCheckCF2D:
@@ -3416,7 +3421,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 32cbb4ca49a8f5041b45f65417d11975, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b183afc7ebe34224d88d06e7b76da761, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3907,6 +3912,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7754860285980378560}
     m_Modifications:
+    - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: altFireball
+      value: 
+      objectReference: {fileID: 6339640274177304179, guid: 3aeb0223cf7483649a1c54fc8becc5a7, type: 3}
     - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: m_Name
       value: Flamethrower
@@ -4004,7 +4013,7 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: -6018481526313655432, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: player
       value: 

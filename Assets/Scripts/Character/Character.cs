@@ -62,6 +62,8 @@ public class Character : MonoBehaviour
     /// </summary>
     public bool IsPlayer { get; private set; }
 
+    public bool hasDied = false;
+
     /// <summary>
     /// The current HP of the character. Setting this value also calls <see
     /// cref="EventManager.onCharacterDeath"/> if the character's health drops
@@ -78,7 +80,11 @@ public class Character : MonoBehaviour
             {
                 hp = 0;
                 EventManager.Instance.onCharacterDeath.Invoke(this);
-                Die();
+                if (!hasDied || IsPlayer)
+                {
+                    Die();
+                    hasDied = true;
+                }
             }
         }
     }
@@ -188,16 +194,16 @@ public class Character : MonoBehaviour
         HP += healthIncrease;
     }
 
-    private void Die()
+    public virtual void Die()
     {
-        if (!this.CompareTag("Player"))
-        {
-            Destroy(this.gameObject);
-        }
-        else
+        if (IsPlayer)
         {
             respawn.RespawnPlayer();
             HP = maxHP;
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
     }
