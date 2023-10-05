@@ -35,6 +35,7 @@ public class PathfindingManager : MonoBehaviour
     private void Awake()
     {
         this.InstantiateSingleton(ref instance);
+        InitializeData();
     }
 
     #region Variables
@@ -81,25 +82,7 @@ public class PathfindingManager : MonoBehaviour
 
     #region Properties
     /// <inheritdoc cref="data"/>
-    private PathfindingData Data
-    {
-        get
-        {
-#if UNITY_EDITOR
-            if (!data)
-            {
-                data = ScriptableObject.CreateInstance<PathfindingData>();
-
-                string path = SceneManager.GetActiveScene().name;
-                path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
-                // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
-                AssetDatabase.CreateAsset(data, path);
-                AssetDatabase.SaveAssets();
-            }
-#endif
-            return data;
-        }
-    }
+    private PathfindingData Data => data;
 
     /// <summary>
     /// The pathfinding graph.
@@ -129,6 +112,22 @@ public class PathfindingManager : MonoBehaviour
         );
 
         CellBounds = cellBounds;
+    }
+
+    private void InitializeData()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (!data || data.name != sceneName)
+        {
+            data = ScriptableObject.CreateInstance<PathfindingData>();
+
+            string path = sceneName;
+            path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
+            // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+            AssetDatabase.CreateAsset(data, path);
+            AssetDatabase.SaveAssets();
+        }
     }
     #endregion
 

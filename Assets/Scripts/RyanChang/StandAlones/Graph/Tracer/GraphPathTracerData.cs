@@ -7,4 +7,14 @@ public class GraphPathTracerData : MonoBehaviour
 
     public LineRenderer tracerRenderer;
     #endregion
+
+    private void Awake()
+    {
+        if (!tracerRenderer)
+        {
+            tracerRenderer = Resources.Load<LineRenderer>(
+                "Pathfinding/Visual/DefaultTracerData"
+            );
+        }
+    }
 }
