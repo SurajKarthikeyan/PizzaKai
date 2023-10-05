@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102768215337682573}
   - component: {fileID: 859241716677527053}
-  - component: {fileID: -6018481526313655432}
-  - component: {fileID: 1820865533147646225}
-  - component: {fileID: 3183303478953219607}
+  - component: {fileID: 8830377775791593255}
   m_Layer: 7
   m_Name: Shotgun Bullet
   m_TagString: PlayerBullet
@@ -87,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6018481526313655432
+--- !u!114 &8830377775791593255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,59 +94,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991449090420892426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e49610988994eb4a8394ed130848c6d, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c900ed2cba81b85b02e304f0c7c617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  force: 20
-  destroyTime: 0.3
-  damage: 1
-  spread: 10
-  distance: 0
---- !u!50 &1820865533147646225
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991449090420892426}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!61 &3183303478953219607
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991449090420892426}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.011318207, y: -0.0141711235}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15293121, y: 0.08409977}
-  m_EdgeRadius: 0
+  firedBy: {fileID: 0}
+  shots:
+  - amount:
+      rangePattern: 3
+      singleValue: 0
+      scalarMin: -1
+      scalarMax: 1
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      perlinCrawlSpeed: 0
+      modifer:
+        addition: 0
+        multiplier: 0
+      unfoldedInInspector: 1
+      fixedSelectionInInspector: 0
+    toSpawn: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+  - amount:
+      rangePattern: 1
+      singleValue: 0
+      scalarMin: 2
+      scalarMax: 2
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      perlinCrawlSpeed: 0
+      modifer:
+        addition: 0
+        multiplier: 0
+      unfoldedInInspector: 1
+      fixedSelectionInInspector: 0
+    toSpawn: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}

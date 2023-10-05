@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SimpleProjectile : MaskedWeaponSpawn
@@ -122,6 +123,10 @@ public class SimpleProjectile : MaskedWeaponSpawn
                     else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
                     {
                         enemyBasic.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
+                    }
+                    else if (collider.gameObject.HasComponent<BurningScript>() && CompareTag("PlayerFireBullet"))
+                    {
+                        collider.gameObject.GetComponent<BurningScript>().BurnBox();
                     }
 
                     if (currentRicochets < ricochets)

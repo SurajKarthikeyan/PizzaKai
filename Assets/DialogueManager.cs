@@ -28,6 +28,10 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         maxPlayerMoveSpeed = player.maxMoveSpeed;
         playerWeapons = weaponMasterModule.weapons;
     }

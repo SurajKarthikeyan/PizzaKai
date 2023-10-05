@@ -85,7 +85,8 @@ public class BurningScript : MonoBehaviour
         //set the sprite and animation to burning here
         burning.Play("Burndown");
         //spriteRender.color = new Color(1f, 0f, 0f, 1f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.4f);
+        Debug.Log("Box is destroyed");
         Destroy(gameObject);
     }
 
@@ -107,6 +108,10 @@ public class BurningScript : MonoBehaviour
         
     }
 
+    public void BurnBox()
+    {
+        StartCoroutine(burnBox());
+    }
     
 
     private void OnTriggerEnter2D(Collider2D collision)
