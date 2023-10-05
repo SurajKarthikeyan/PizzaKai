@@ -330,6 +330,8 @@ public class WeaponModule : Module
         //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;
 
+        burstCount++;
+
         bullet.Spawn(this);
     }
 
@@ -359,7 +361,7 @@ public class WeaponModule : Module
             reloadDelay.Reset();
             RefillAmmo();
         }
-        
+
         PlayAudio();
 
     }

@@ -16,12 +16,19 @@ public class SimpleProjectile : MaskedWeaponSpawn
     [Tooltip("How far does this projectile travel?")]
     public Range range = new(20);
 
-    [Tooltip("Random spread of the projectile, in degrees.")]
+    [Tooltip("Base random spread of the projectile, in degrees.")]
     public Range spread = new(-5, 5);
 
-    [Tooltip("For automatic weapons, determines how much more spread is caused " +
-        "by holding down the trigger.")]
+    [Tooltip("Determines how fast the spread increases. Lower values = " +
+        "more spread.")]
     public float spreadRampUp = 1.05f;
+
+    [Tooltip("The maximum multiplier for the spread.")]
+    public float spreadMaxMult = 2.5f;
+
+    [Tooltip("If true and weapon is autofire, then always fire the first " +
+        "shot of any burst with no spread.")]
+    public bool firstShotAccurate = true;
 
     // [Tooltip("Gravity applied to the projectile.")]
     // public Vector2 gravity = new(0, -9.81f);
@@ -38,10 +45,6 @@ public class SimpleProjectile : MaskedWeaponSpawn
 
     private Duration lifetime;
 
-    private float maxLifetime;
-
-    private float currentLifetime;
-
     private ContactFilter2D contactFilter;
     #endregion
 
@@ -55,7 +58,16 @@ public class SimpleProjectile : MaskedWeaponSpawn
     protected override void FireInternal()
     {
         // Apply initial spread.
-        float actualSpread = spread.Select() * (spreadRampUp * firedBy.BurstCount);
+        int burstCnt = (firedBy.autofire && firstShotAccurate) ?
+            firedBy.BurstCount - 1 :
+            firedBy.BurstCount;
+
+        float recoilRatio = (burstCnt * spreadMaxMult) /
+            (burstCnt + spreadRampUp);
+
+        print(recoilRatio);
+
+        float actualSpread = spread.Select() * recoilRatio;
         transform.Rotate(new Vector3(0, 0, actualSpread));
 
         // Calculate lifetime;
@@ -89,16 +101,13 @@ public class SimpleProjectile : MaskedWeaponSpawn
                 deltaDistance
             );
 
-            bool hitThing = false;
-            bool needsDestroy = false;
-
             for (int i = 0; i < totalHits; i++)
             {
                 var hit = hits[i];
 
                 if (hit.collider)
                 {
-                    hitThing = true;
+                    bool hitCharacter = false;
                     var collider = hit.collider;
 
                     if (collider.gameObject.HasComponent(out Character character))
@@ -108,6 +117,11 @@ public class SimpleProjectile : MaskedWeaponSpawn
                             Mathf.RoundToInt(damage.Evaluate()),
                             Forwards * knockback.Evaluate()
                         );
+                        hitCharacter = true;
+                    }
+                    else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
+                    {
+                        enemyBasic.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
                     }
 
                     if (currentRicochets < ricochets)
@@ -127,23 +141,20 @@ public class SimpleProjectile : MaskedWeaponSpawn
                     else
                     {
                         // No more ricochets.
-                        needsDestroy = true;
+                        DestroyProjectile();
+                        return;
+                    }
+
+                    if (hitCharacter)
+                    {
+                        // Hit a character. Break from loop. 
                         break;
                     }
                 }
             }
 
-            if (needsDestroy)
-            {
-                // Break from loop.
-                DestroyProjectile();
-            }
-
-            if (!hitThing)
-            {
-                // Hit nothing. Continue on.
-                transform.position += Forwards * deltaDistance;
-            }
+            // Continue on.
+            transform.position += Forwards * deltaDistance;
         }
         else
         {

@@ -171,13 +171,18 @@ public class EnemyBasic : MonoBehaviour
         // Debug.Log("Was hit");
         if (collision.gameObject.CompareTag("PlayerBullet") || collision.gameObject.CompareTag("PlayerFireBullet"))
         {
-            currentHP = currentHP - (int)collision.gameObject.GetComponent<bulletScript>().damage;
-            Destroy(collision.gameObject);
+            TakeDamage((int)collision.gameObject.GetComponent<bulletScript>().damage);
 
-            hitState = true;
-            hitTime = Time.time + hitDur;
+            Destroy(collision.gameObject);
         }
-        
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        hitState = true;
+        hitTime = Time.time + hitDur;
     }
 
     // Handles Enemy being inRoom or not for detection purposes.

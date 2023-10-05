@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -45,6 +46,7 @@ public abstract class WeaponSpawn : MonoBehaviour
     /// What fired this spawn thingy? Make sure to check that this hasn't been
     /// destroyed.
     /// </summary>
+    [ReadOnly]
     public WeaponModule firedBy;
     #endregion
 
@@ -63,8 +65,8 @@ public abstract class WeaponSpawn : MonoBehaviour
 
         spawned.gameObject.SetActive(true);
 
-        firedBy = weapon;
-        FireInternal();
+        spawned.firedBy = weapon;
+        spawned.FireInternal();
         return spawned;
     }
 
