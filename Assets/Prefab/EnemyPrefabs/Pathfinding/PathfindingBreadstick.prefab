@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 6478255713057580273}
   - component: {fileID: 6478255713057580272}
   - component: {fileID: 6478255713057580265}
+  - component: {fileID: -6358471799411875562}
   m_Layer: 11
   m_Name: PathfindingBreadstick
   m_TagString: Enemy
@@ -320,6 +321,28 @@ MonoBehaviour:
     maxNormalAngle: 0
   groundedStatus: 0
   movementStatus: 0
+--- !u!114 &-6358471799411875562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478255713057580286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 20
+  r2d: {fileID: 0}
+  c2d: {fileID: 0}
+  flipModule: {fileID: 0}
+  damageInvulnerability:
+    maxTime: 0
+    elapsed: 0
+  playerDamageInvulnerability: 1
+  knockbackMultiplier: 1
+  respawn: {fileID: 0}
 --- !u!1 &6478255713251395454
 GameObject:
   m_ObjectHideFlags: 0
