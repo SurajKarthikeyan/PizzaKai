@@ -115,7 +115,7 @@ public class PathfindingManager : MonoBehaviour
         if (!grid)
         {
             throw new NullReferenceException("Value of grid not set! " +
-                "Press the Build Graph button.");
+                "Press the Build Graph button (Managers > PathfindingManager).");
         }
 
         BoundsInt cellBounds = new();
