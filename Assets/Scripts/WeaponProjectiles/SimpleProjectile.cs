@@ -65,7 +65,7 @@ public class SimpleProjectile : MaskedWeaponSpawn
         float recoilRatio = (burstCnt * spreadMaxMult) /
             (burstCnt + spreadRampUp);
 
-        print(recoilRatio);
+        // print(recoilRatio);
 
         float actualSpread = spread.Select() * recoilRatio;
         transform.Rotate(new Vector3(0, 0, actualSpread));
