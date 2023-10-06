@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunFireRateUpgrade : MonoBehaviour
 {
-    public GunScriptableObject gunSO;
+    //public GunScriptableObject gunSO;
     public int upgradePercentage = 10;
     private float realUpgradePercentage;
     
@@ -12,7 +12,7 @@ public class GunFireRateUpgrade : MonoBehaviour
     void UpgradeFireRate()
     {
         realUpgradePercentage = (float)upgradePercentage / 100f;
-        gunSO.timeBetweenFiring *= (1 - realUpgradePercentage);
+        //gunSO.timeBetweenFiring *= (1 - realUpgradePercentage);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

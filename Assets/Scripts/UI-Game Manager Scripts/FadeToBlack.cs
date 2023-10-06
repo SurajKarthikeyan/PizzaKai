@@ -8,7 +8,7 @@ public class FadeToBlack : MonoBehaviour
 {
     [Tooltip("This should only be the Blackness gameobject in the UI Canvas")]
     public Image blackness;
-    bool contact;
+    public bool contact;
     public bool fadeIn;
     bool fadeDone;
     public string nextScene;
@@ -41,15 +41,30 @@ public class FadeToBlack : MonoBehaviour
 
     public void FadingIn(string sceneToLoad)
     {
+        contact = true;
+        if (fadeIn == false)
+        {
+            fadeIn = true;
+        }
+
         blackness.color += new Color(0, 0, 0, Time.deltaTime);
         if (blackness.color.a >= 1)
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (sceneToLoad != null || sceneToLoad != "") 
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+            
             fadeDone = true;
         }
     }
     public void FadingOut()
     {
+        contact = true;
+        if (fadeIn == true)
+        {
+            fadeIn = false;
+        }
         blackness.color -= new Color(0, 0, 0, Time.deltaTime / 4);
         if (blackness.color.a <= 0)
         {
