@@ -20,8 +20,8 @@ public class SimpleProjectile : MaskedWeaponSpawn
     [Tooltip("Base random spread of the projectile, in degrees.")]
     public Range spread = new(-5, 5);
 
-    [Tooltip("Determines how fast the spread increases. Lower values = " +
-        "more spread.")]
+    [Tooltip("Determines how fast the spread increases. Higher values = " +
+        "faster spread increase.")]
     public float spreadRampUp = 1.05f;
 
     [Tooltip("The maximum multiplier for the spread.")]
@@ -64,7 +64,7 @@ public class SimpleProjectile : MaskedWeaponSpawn
             firedBy.BurstCount;
 
         float recoilRatio = (burstCnt * spreadMaxMult) /
-            (burstCnt + spreadRampUp);
+            (burstCnt + (1 / spreadRampUp));
 
         // print(recoilRatio);
 

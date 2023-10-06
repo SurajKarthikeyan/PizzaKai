@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Multishot : WeaponSpawn
@@ -10,6 +11,9 @@ public class Multishot : WeaponSpawn
         public WeaponSpawn toSpawn;
     }
 
+    [InfoBox("Usage:\n" +
+        "amount: Number of projectiles to spawn.\n" +
+        "toSpawn: What weapon to spawn.")]
     public Shot[] shots;
 
     protected override void FireInternal()

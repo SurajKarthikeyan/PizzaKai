@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4342418669924086011
 Transform:
   m_ObjectHideFlags: 0
@@ -428,15 +428,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputState: 0
-  weaponAnimator: {fileID: 0}
-  animFiringBool: 
+  weaponAnimator: {fileID: 4342418669316601403}
+  animFiringBool: Fire
   animAltingBool: 
-  animReloadingBool: 
+  animReloadingBool: Reload
   weaponAudio: {fileID: -4717194129262909025}
   firingClip: {fileID: 0}
   altingClip: {fileID: 0}
   reloadClip: {fileID: 0}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 4342418669661374407}
   autofire: 1
   firingDelay:
     maxTime: 1
