@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36de0ae2805a2e43b3352feff2cda38, type: 3}
+  m_Name: ___XnTelemetry Multiplayer ProjectInfo___
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 256076583d49e1542b31f2fe4bb6ff73, type: 3}
+  iconMaxWidth: 128
+  title: <b>XnTelemetry</b>\nMultiplayer\nfor MI 497
+  sections:
+  - heading: Version 2022.4.0
+    text: 'Implemented a basic version of multiplayer XnTelemetry that will work
+      for the five games in MI 497.
+
+
+      XnTelemetry does not rely on any special
+      packages. It uses all built-in Unity classes.'
+    linkText: 
+    url: 
+  - heading: <b>Setting Up Telemetry</b>
+    text: "1. Make a new TelemetrySettings file: <i>Assets > Create >\n    ScriptableObjects
+      > TelemetrySettings</i>\n\n2. Select the new TelemetrySettings file, and choose
+      your\n    Project from the list."
+    linkText: 
+    url: 
+  - heading: Unity Window Layout File
+    text: "To use the Unity Window Layout that Jeremy prefers:\n\n1. Choose Layout
+      > Load Layout from file\u2026 from the\n    button in the top-right of the
+      Unity window.\n\n2. Open the <b>UnityWindowLayoutFile.wlt</b> file in the\n   
+      Assets folder."
+    linkText: 
+    url: 
+  showDefaultInspector: 1

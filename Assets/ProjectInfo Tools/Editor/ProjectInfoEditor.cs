@@ -3,210 +3,180 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEditor;
 using System;
 using System.IO;
 using System.Reflection;
-#endif
 
-namespace XnTools {
-	[CustomEditor( typeof(ProjectInfo_SO) )]
-	[InitializeOnLoad]
-	public class ProjectInfoEditor : Editor {
-		const string ProjectMenuHeader = "Tools";
 
-		static string kShowedProjectInfoSessionStateName = "ProjectInfoEditor.showedProjectInfo";
+[CustomEditor( typeof( ProjectInfo_SO ) )]
+[InitializeOnLoad]
+public class ProjectInfoEditor : Editor {
+	const string ProjectMenuHeader = "3PLE";
 
-		static float kSpace = 16f;
+	static string kShowedProjectInfoSessionStateName = "ProjectInfoEditor.showedProjectInfo";
 
-		static ProjectInfoEditor() {
-			EditorApplication.delayCall += SelectProjectInfoAutomatically;
+	static float kSpace = 16f;
+
+	static ProjectInfoEditor() {
+		EditorApplication.delayCall += SelectProjectInfoAutomatically;
+	}
+
+	static void SelectProjectInfoAutomatically() {
+		if ( !SessionState.GetBool( kShowedProjectInfoSessionStateName, false ) ) {
+			var pInfo = SelectProjectInfo();
+			SessionState.SetBool( kShowedProjectInfoSessionStateName, true );
+
+			//if ( pInfo && !pInfo.loadedLayout ) {
+			//	// LoadLayout();
+			//	pInfo.loadedLayout = true;
+			//}
 		}
+	}
 
-		static void SelectProjectInfoAutomatically() {
-			if ( !SessionState.GetBool( kShowedProjectInfoSessionStateName, false ) ) {
-				var pInfo = SelectProjectInfo();
-				SessionState.SetBool( kShowedProjectInfoSessionStateName, true );
+	// static void LoadLayout() {
+	// 	var assembly = typeof( EditorApplication ).Assembly;
+	// 	var windowLayoutType = assembly.GetType( "UnityEditor.WindowLayout", true );
+	// 	var method = windowLayoutType.GetMethod( "LoadWindowLayout", BindingFlags.Public | BindingFlags.Static );
+	// 	method.Invoke( null, new object[] { Path.Combine( Application.dataPath, "TutorialInfo/Layout.wlt" ), false } );
+	// }
 
-				//if ( pInfo && !pInfo.loadedLayout ) {
-				//	// LoadLayout();
-				//	pInfo.loadedLayout = true;
-				//}
-			}
-		}
+	[MenuItem( ProjectMenuHeader+"/Show Project Instructions", false, 1 )]
+	static ProjectInfo_SO SelectProjectInfo() {
+		var ids = AssetDatabase.FindAssets( "t:ProjectInfo_SO" );
+		if ( ids.Length == 1 ) {
+			var pInfoObject = AssetDatabase.LoadMainAssetAtPath( AssetDatabase.GUIDToAssetPath( ids[0] ) );
 
-		// static void LoadLayout() {
-		// 	var assembly = typeof( EditorApplication ).Assembly;
-		// 	var windowLayoutType = assembly.GetType( "UnityEditor.WindowLayout", true );
-		// 	var method = windowLayoutType.GetMethod( "LoadWindowLayout", BindingFlags.Public | BindingFlags.Static );
-		// 	method.Invoke( null, new object[] { Path.Combine( Application.dataPath, "TutorialInfo/Layout.wlt" ), false } );
-		// }
+			Selection.objects = new UnityEngine.Object[] { pInfoObject };
 
-		[MenuItem( ProjectMenuHeader + "/Show Project Info", false, 1 )]
-		static ProjectInfo_SO SelectProjectInfo() {
-			var ids = AssetDatabase.FindAssets( "t:ProjectInfo_SO" );
-			if ( ids.Length == 1 ) {
-				var pInfoObject =
-					AssetDatabase.LoadMainAssetAtPath( AssetDatabase.GUIDToAssetPath( ids[0] ) );
+			return (ProjectInfo_SO) pInfoObject;
+		} else if (ids.Length == 0) {
+			Debug.Log( "Couldn't find a ProjectInfo" );
+			return null;
+		} else {
+			Debug.Log( "Found more than 1 ProjectInfo file" );
+			return null;
+        }
+	}
+	
+	/// <summary>
+	/// Adds an "Edit..." item to the context menu for InfoComponent
+	/// </summary>
+	/// <param name="command"></param>
+	[MenuItem("CONTEXT/ProjectInfo/Edit Project Info...")]
+	static void EnableEdit(MenuCommand command)
+	{
+		ProjectInfo_SO info = (ProjectInfo_SO)command.context;
+		info.showDefaultInspector = !info.showDefaultInspector;
+	}
 
-				Selection.objects = new UnityEngine.Object[] { pInfoObject };
+	protected override void OnHeaderGUI() {
+		var pInfo = (ProjectInfo_SO) target;
+		Init();
 
-				return (ProjectInfo_SO)pInfoObject;
-			} else if ( ids.Length == 0 ) {
-				Debug.Log( "Couldn't find a ProjectInfo" );
-				return null;
+		var iconWidth = Mathf.Min( EditorGUIUtility.currentViewWidth / 3f - 20f, pInfo.iconMaxWidth);
+
+		GUILayout.BeginHorizontal( "In BigTitle" );
+		{
+			GUILayout.Label( pInfo.icon, GUILayout.Width( iconWidth ), GUILayout.Height( iconWidth ) );
+			if ( pInfo.title != null ) {
+				string titleString = pInfo.title.Replace( "\\n", "\n" );
+				titleString = titleString.Replace( "\\t", "\t" );
+				GUILayout.Label( titleString, TitleStyle );
 			} else {
-				Debug.Log( "Found more than 1 ProjectInfo file" );
-				return null;
+				GUILayout.Label( "You must set this title", TitleStyle );
 			}
 		}
+		GUILayout.EndHorizontal();
+	}
 
-		/// <summary>
-		/// Adds an "Edit..." item to the context menu for InfoComponent
-		/// </summary>
-		/// <param name="command"></param>
-		[MenuItem( "CONTEXT/ProjectInfo/Edit Project Info..." )]
-		static void EnableEdit( MenuCommand command ) {
-			ProjectInfo_SO info = (ProjectInfo_SO)command.context;
-			info.showDefaultInspector = !info.showDefaultInspector;
+	public override void OnInspectorGUI() {
+		var pInfo = (ProjectInfo_SO) target;
+		Init();
+		
+		bool altHeld = ( Event.current.modifiers == EventModifiers.Alt );
+		if ( pInfo.showDefaultInspector || altHeld ) {
+			pInfo.showDefaultInspector = EditorGUILayout.ToggleLeft( "Show Default Inspector…", pInfo.showDefaultInspector );
+            
 		}
 
-		protected override void OnHeaderGUI() {
-			var pInfo = (ProjectInfo_SO)target;
-			Init();
-
-			var iconWidth = Mathf.Min( EditorGUIUtility.currentViewWidth / 3f - 20f,
-				pInfo.iconMaxWidth );
-
-			GUILayout.BeginHorizontal( "In BigTitle" );
-			{
-				GUILayout.Label( pInfo.icon, GUILayout.Width( iconWidth ),
-					GUILayout.Height( iconWidth ) );
-
-				if ( pInfo.title != null ) {
-					string titleString = pInfo.title.Replace( "\\n", "\n" );
-					titleString = titleString.Replace( "\\t", "\t" );
-					GUILayout.Label( titleString, TitleStyle );
-				} else { GUILayout.Label( "You must set this title", TitleStyle ); }
-			}
-
-			GUILayout.EndHorizontal();
-		}
-
-		public override void OnInspectorGUI() {
-			var pInfo = (ProjectInfo_SO)target;
-			Init();
-
-			bool altHeld = ( Event.current.modifiers == EventModifiers.Alt );
-			if ( pInfo.showDefaultInspector || altHeld ) {
-				pInfo.showDefaultInspector = EditorGUILayout.ToggleLeft( "Show Default Inspector…",
-					pInfo.showDefaultInspector );
-			}
-
-			if ( pInfo.sections != null ) {
-				foreach ( var section in pInfo.sections ) {
-					if ( !string.IsNullOrEmpty( section.heading ) ) {
-						GUILayout.Label( section.heading, HeadingStyle );
-					}
-
-					if ( !string.IsNullOrEmpty( section.text ) ) {
-						string sTxt = section.text.Replace( "\\n", "\n" );
-						sTxt = sTxt.Replace( "\\t", "\t" );
-						GUILayout.Label( sTxt, BodyStyle );
-					}
-
-					if ( !string.IsNullOrEmpty( section.linkText ) ) {
-						if ( LinkLabel( new GUIContent( section.linkText ) ) ) {
-							Application.OpenURL( section.url );
-						}
-					}
-
-					GUILayout.Space( kSpace );
+		if ( pInfo.sections != null ) {
+			foreach ( var section in pInfo.sections ) {
+				if ( !string.IsNullOrEmpty( section.heading ) ) {
+					GUILayout.Label( section.heading, HeadingStyle );
 				}
+				if ( !string.IsNullOrEmpty( section.text ) ) {
+					string sTxt = section.text.Replace( "\\n", "\n" );
+					sTxt = sTxt.Replace( "\\t", "\t" );
+					GUILayout.Label( sTxt, BodyStyle );
+				}
+				if ( !string.IsNullOrEmpty( section.linkText ) ) {
+					if ( LinkLabel( new GUIContent( section.linkText ) ) ) {
+						Application.OpenURL( section.url );
+					}
+				}
+				GUILayout.Space( kSpace );
 			}
-
-			if ( pInfo.showDefaultInspector ) {
-				GUILayout.Space( 10 );
-				if ( GUILayout.Button( "Hide Default Inspector" ) )
-					pInfo.showDefaultInspector = false;
-
-				DrawDefaultInspector();
-			}
 		}
 
-
-		bool m_Initialized;
-
-		GUIStyle LinkStyle {
-			get { return m_LinkStyle; }
+		if (pInfo.showDefaultInspector) {
+			GUILayout.Space(10);
+			if (GUILayout.Button("Hide Default Inspector")) pInfo.showDefaultInspector = false;
+			DrawDefaultInspector();
 		}
+	}
 
-		[SerializeField]
-		GUIStyle m_LinkStyle;
 
-		GUIStyle TitleStyle {
-			get { return m_TitleStyle; }
-		}
+	bool m_Initialized;
 
-		[SerializeField]
-		GUIStyle m_TitleStyle;
+	GUIStyle LinkStyle { get { return m_LinkStyle; } }
+	[SerializeField] GUIStyle m_LinkStyle;
 
-		GUIStyle HeadingStyle {
-			get { return m_HeadingStyle; }
-		}
+	GUIStyle TitleStyle { get { return m_TitleStyle; } }
+	[SerializeField] GUIStyle m_TitleStyle;
 
-		[SerializeField]
-		GUIStyle m_HeadingStyle;
+	GUIStyle HeadingStyle { get { return m_HeadingStyle; } }
+	[SerializeField] GUIStyle m_HeadingStyle;
 
-		GUIStyle BodyStyle {
-			get { return m_BodyStyle; }
-		}
+	GUIStyle BodyStyle { get { return m_BodyStyle; } }
+	[SerializeField] GUIStyle m_BodyStyle;
 
-		[SerializeField]
-		GUIStyle m_BodyStyle;
+	void Init() {
+		if ( m_Initialized )
+			return;
+		m_BodyStyle = new GUIStyle( EditorStyles.label );
+		m_BodyStyle.wordWrap = true;
+		m_BodyStyle.fontSize = 14;
+		m_BodyStyle.richText = true;
 
-		void Init() {
-			if ( m_Initialized )
-				return;
+		m_TitleStyle = new GUIStyle( m_BodyStyle );
+		m_TitleStyle.fontSize = 26;
+		m_TitleStyle.alignment = TextAnchor.MiddleCenter;
 
-			m_BodyStyle = new GUIStyle( EditorStyles.label );
-			m_BodyStyle.wordWrap = true;
-			m_BodyStyle.fontSize = 14;
-			m_BodyStyle.richText = true;
+		m_HeadingStyle = new GUIStyle( m_BodyStyle );
+		m_HeadingStyle.fontSize = 18;
 
-			m_TitleStyle = new GUIStyle( m_BodyStyle );
-			m_TitleStyle.fontSize = 26;
-			m_TitleStyle.alignment = TextAnchor.MiddleCenter;
+		m_LinkStyle = new GUIStyle( m_BodyStyle );
+		m_LinkStyle.wordWrap = false;
+		// Match selection color which works nicely for both light and dark skins
+		m_LinkStyle.normal.textColor = new Color( 0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f );
+		m_LinkStyle.stretchWidth = false;
 
-			m_HeadingStyle = new GUIStyle( m_BodyStyle );
-			m_HeadingStyle.fontSize = 18;
+		m_Initialized = true;
+	}
 
-			m_LinkStyle = new GUIStyle( m_BodyStyle );
-			m_LinkStyle.wordWrap = false;
-			// Match selection color which works nicely for both light and dark skins
-			m_LinkStyle.normal.textColor = new Color( 0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f );
-			m_LinkStyle.stretchWidth = false;
+	bool LinkLabel( GUIContent label, params GUILayoutOption[] options ) {
+		var position = GUILayoutUtility.GetRect( label, LinkStyle, options );
 
-			m_Initialized = true;
-		}
+		Handles.BeginGUI();
+		Handles.color = LinkStyle.normal.textColor;
+		Handles.DrawLine( new Vector3( position.xMin, position.yMax ), new Vector3( position.xMax, position.yMax ) );
+		Handles.color = Color.white;
+		Handles.EndGUI();
 
-		bool LinkLabel( GUIContent label, params GUILayoutOption[] options ) {
-			var position = GUILayoutUtility.GetRect( label, LinkStyle, options );
+		EditorGUIUtility.AddCursorRect( position, MouseCursor.Link );
 
-			Handles.BeginGUI();
-			Handles.color = LinkStyle.normal.textColor;
-			Handles.DrawLine( new Vector3( position.xMin, position.yMax ),
-				new Vector3( position.xMax, position.yMax ) );
-
-			Handles.color = Color.white;
-			Handles.EndGUI();
-
-			EditorGUIUtility.AddCursorRect( position, MouseCursor.Link );
-
-			return GUI.Button( position, label, LinkStyle );
-		}
+		return GUI.Button( position, label, LinkStyle );
 	}
 }
 
