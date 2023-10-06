@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1991449090420892426, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
       propertyPath: m_Name
-      value: TommyGunBullet
+      value: ShotgunPellet
       objectReference: {fileID: 0}
     - target: {fileID: 2102768215337682573, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,30 @@ PrefabInstance:
     - target: {fileID: 2102768215337682573, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: range.scalarMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: range.scalarMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: speed.scalarMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: speed.scalarMin
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: range.rangePattern
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028312020448293877, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: speed.rangePattern
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}

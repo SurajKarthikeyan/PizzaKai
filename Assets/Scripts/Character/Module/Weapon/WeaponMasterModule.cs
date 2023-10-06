@@ -69,7 +69,7 @@ public class WeaponMasterModule : Module
             }
             else
             {
-                CurrentWeapon.ResetBurst();
+                CurrentWeapon.ReleaseTrigger();
             }
             if (Input.GetMouseButton(1))
             {
@@ -161,29 +161,21 @@ public class WeaponMasterModule : Module
     /// <summary>
     /// Switches to the next weapon.
     /// </summary>
-    public void NextWeapon()
-    {
-        weaponIndex++;
-        weaponIndex %= weapons.Count;
-
-        EnableCurrentWeapon();
-    }
+    public void NextWeapon() => SwitchToWeapon(++weaponIndex);
 
     /// <summary>
     /// Switches to the previous weapon.
     /// </summary>
-    public void PrevWeapon()
-    {
-        if (weaponIndex > 0)
-        {
-            weaponIndex--;
-        }
-        else
-        {
-            weaponIndex = weapons.Count - 1;
-        }
-        weaponIndex %= weapons.Count;
+    public void PrevWeapon() => SwitchToWeapon(--weaponIndex);
 
+    /// <summary>
+    /// Switches to the specified weapon index.
+    /// </summary>
+    /// <param name="index">The new weapon index. Will be wrapped so it remains
+    /// within range of <see cref="weapons"/>.</param>
+    public void SwitchToWeapon(int index)
+    {
+        weaponIndex = index.WrapAroundLength(weapons);
         EnableCurrentWeapon();
     }
 
@@ -206,7 +198,8 @@ public class WeaponMasterModule : Module
     public void AddWeapon(WeaponModule weapon)
     {
         weapon.transform.Localize(transform);
-        weapons.Add(weapon);
+        weapons.Insert(0, weapon);
+        SwitchToWeapon(0);
     }
     #endregion
     #endregion

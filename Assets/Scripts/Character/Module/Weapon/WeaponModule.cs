@@ -105,6 +105,11 @@ public class WeaponModule : Module
     [Tooltip("If true, keep firing the weapon when the trigger is held down.")]
     public bool autofire = true;
 
+    [Tooltip("If true and weapon is autofire, then always fire the first " +
+        "shot of any burst with no spread.")]
+    [ShowIf(nameof(autofire))]
+    public bool firstShotAccurate = true;
+
     [Tooltip("How long to wait between rounds fired.")]
     public Duration firingDelay = new(1f);
 
@@ -290,7 +295,18 @@ public class WeaponModule : Module
         return canFire;
     }
 
-    public void ResetBurst() => burstCount = 0;
+    /// <summary>
+    /// Called by <see cref="WeaponMasterModule"/> to stop firing.
+    /// </summary>
+    public void ReleaseTrigger()
+    {
+        if (InputState == WeaponInputState.FiringStart ||
+            InputState == WeaponInputState.FiringHeld)
+        {
+            InputState = WeaponInputState.Idle;
+            burstCount = 0;
+        }
+    }
 
     /// <summary>
     /// Checks if the weapon can fire.

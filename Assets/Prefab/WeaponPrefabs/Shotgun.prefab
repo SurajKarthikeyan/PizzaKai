@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342418669661374406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.136, y: -0.126, z: 0}
+  m_LocalPosition: {x: 1.192, y: -0.007, z: 0}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -437,7 +437,8 @@ MonoBehaviour:
   altingClip: {fileID: 0}
   reloadClip: {fileID: 0}
   firePoint: {fileID: 4342418669661374407}
-  autofire: 1
+  autofire: 0
+  firstShotAccurate: 1
   firingDelay:
     maxTime: 1
     elapsed: 0

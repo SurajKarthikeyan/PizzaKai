@@ -27,10 +27,6 @@ public class SimpleProjectile : MaskedWeaponSpawn
     [Tooltip("The maximum multiplier for the spread.")]
     public float spreadMaxMult = 2.5f;
 
-    [Tooltip("If true and weapon is autofire, then always fire the first " +
-        "shot of any burst with no spread.")]
-    public bool firstShotAccurate = true;
-
     // [Tooltip("Gravity applied to the projectile.")]
     // public Vector2 gravity = new(0, -9.81f);
 
@@ -58,24 +54,29 @@ public class SimpleProjectile : MaskedWeaponSpawn
 
     protected override void FireInternal()
     {
-        // Apply initial spread.
-        int burstCnt = (firedBy.autofire && firstShotAccurate) ?
-            firedBy.BurstCount - 1 :
-            firedBy.BurstCount;
+        float recoilRatio = 1;
 
-        float recoilRatio = (burstCnt * spreadMaxMult) /
-            (burstCnt + (1 / spreadRampUp));
+        if (firedBy.autofire)
+        {
+            // Apply initial spread.
+            int burstCnt = (firedBy.autofire && firedBy.firstShotAccurate) ?
+                firedBy.BurstCount - 1 :
+                firedBy.BurstCount;
+    
+            recoilRatio = burstCnt * spreadMaxMult /
+                (burstCnt + (1 / spreadRampUp));
+        }
 
         // print(recoilRatio);
 
-        float actualSpread = spread.Select() * recoilRatio;
+        float actualSpread = spread.Evaluate() * recoilRatio;
         transform.Rotate(new Vector3(0, 0, actualSpread));
 
         // Calculate lifetime;
-        lifetime = new(range.Select() / speed.Select());
+        lifetime = new(range.Evaluate() / speed.Evaluate());
 
         // Calculate delta distance.
-        deltaDistance = speed.Select() * Time.fixedDeltaTime;
+        deltaDistance = speed.Evaluate() * Time.fixedDeltaTime;
 
         contactFilter = new()
         {
