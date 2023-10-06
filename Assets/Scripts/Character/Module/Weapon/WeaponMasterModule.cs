@@ -198,5 +198,16 @@ public class WeaponMasterModule : Module
     }
     #endregion
 
+    #region Weapon Management
+    /// <summary>
+    /// Adds <paramref name="weapon"/>, which is an instance, to the weapon master.
+    /// </summary>
+    /// <param name="weapon">The weapon to add.</param>
+    public void AddWeapon(WeaponModule weapon)
+    {
+        weapon.transform.Localize(transform);
+        weapons.Add(weapon);
+    }
+    #endregion
     #endregion
 }

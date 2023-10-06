@@ -55,7 +55,7 @@ public class PathNode : IEquatable<PathNode>
 
     #region Variables
     #region Readonly and Const
-    public static readonly LayerMask groundMask = LayersManager.GetMask(
+    public static readonly LayerMask groundMask = LayerExt.GetMask(
         LayersManager.Platform,
         LayersManager.Ground
     );

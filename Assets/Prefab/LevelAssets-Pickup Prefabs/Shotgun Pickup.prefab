@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5219901646902708590}
   - component: {fileID: 5219901646902708577}
-  - component: {fileID: 5219901646902708576}
+  - component: {fileID: 3093972040225123415}
   - component: {fileID: 5219901646902708591}
   m_Layer: 0
   m_Name: Shotgun Pickup
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5219901646902708576
+--- !u!114 &3093972040225123415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,10 +95,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5219901646902708579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975061d6a38e5b644a63dcd2ff105f3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9239f54837935f698b341d506f4d5bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchWeapons: {fileID: 0}
+  trigger: {fileID: 5219901646902708591}
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  weapon: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
 --- !u!61 &5219901646902708591
 BoxCollider2D:
   m_ObjectHideFlags: 0
