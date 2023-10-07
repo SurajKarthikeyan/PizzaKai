@@ -46,8 +46,15 @@ public class ShotGunWeapon : WeaponModule
     {
         //Gets the player mouse position and sends the player in the opposite direction
         Vector3 dir = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dir.y = 0;
+        float dirY = dir.y;
+        float dirMag = dir.magnitude;
+        if (dirMag >= 5f)
+        {
+            dir.y = 7.5f;
+        }
+        
         dir.Normalize();
+        //dir.y = 1;
         // !IMPORTANT! NEVER set velocity directly. Instead, use AddForce with
         // !ForceMode2D.Impulse. Setting velocity directly causes a race
         // !condition with other things that may be modifying velocity.
