@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6133658855620907987}
   - component: {fileID: 6133658855620907986}
-  - component: {fileID: 6133658855620907985}
   - component: {fileID: 6133658855620908012}
+  - component: {fileID: 774668653052079427}
   m_Layer: 0
   m_Name: ftpickup
   m_TagString: Flamethrower
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6133658855620907985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6133658855620907984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975061d6a38e5b644a63dcd2ff105f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  switchWeapons: {fileID: 0}
 --- !u!61 &6133658855620908012
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +112,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9001751, y: 0.3338952}
   m_EdgeRadius: 0
+--- !u!114 &774668653052079427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133658855620907984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9239f54837935f698b341d506f4d5bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 6133658855620908012}
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  weapon: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
