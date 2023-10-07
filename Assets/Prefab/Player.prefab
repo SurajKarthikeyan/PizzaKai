@@ -3622,7 +3622,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 5a05bfcb10e8c0e4da63ebcc23179ef4, type: 2}
@@ -3683,6 +3683,7 @@ MonoBehaviour:
   playerDamageInvulnerability: 1
   knockbackMultiplier: 1
   respawn: {fileID: 8019257334451026239}
+  hasDied: 0
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
