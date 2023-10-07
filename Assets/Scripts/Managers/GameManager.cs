@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
     /// The static reference to an GameManager instance.
     /// </summary>
     private static GameManager instance;
-    
+
     /// <summary>
     /// The static reference to an GameManager instance.
     /// </summary>
@@ -20,6 +21,35 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("The layers where characters can jump off of.")]
     public LayerMask canJumpLayers;
+
+    [Tooltip("The player character.")]
+    [ReadOnly]
+    [SerializeField]
+    private Character player = null;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// The player character.
+    /// </summary>
+    public Character Player
+    {
+        get => player;
+        set
+        {
+            if (player)
+            {
+                throw new System.InvalidOperationException(
+                    "Cannot have multiple players!"
+                );
+            }
+            else
+            {
+                player = value;
+            }
+        }
+    }
+
     #endregion
 
     private void Awake()
@@ -28,6 +58,6 @@ public class GameManager : MonoBehaviour
         {
             this.InstantiateSingleton(ref instance);
         }
-        
+
     }
 }

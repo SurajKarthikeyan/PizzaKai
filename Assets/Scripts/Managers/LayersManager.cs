@@ -171,38 +171,6 @@ public class LayersManager : MonoBehaviour
     #endregion
 
     #region Methods
-    /// <summary>
-    /// Moves all children of root into the specified layer.
-    /// </summary>
-    /// <param name="root"></param>
-    /// <param name="layer"></param>
-    public static void MoveAllToLayer(GameObject root, int layer)
-    {
-        root.layer = layer;
-
-        foreach (Transform child in root.transform)
-        {
-            MoveAllToLayer(child.gameObject, layer);
-        }
-    }
-
-    /// <summary>
-    /// Returns a layer mask from <paramref name="layers"/>.
-    /// </summary>
-    /// <param name="layers">The layers to exclude from the mask.</param>
-    /// <returns></returns>
-    public static LayerMask GetMask(params int[] layers)
-    {
-        int mask = 0;
-
-        foreach (var layer in layers)
-        {
-            mask |= 1 << layer;
-        }
-
-        return mask;
-    }
-
     public void IgnoreCollisionsWithPlatforms(Collider2D collider,
         bool ignore)
     {

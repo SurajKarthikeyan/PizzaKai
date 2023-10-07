@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342418669661374406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.136, y: -0.126, z: 0}
+  m_LocalPosition: {x: 1.192, y: -0.007, z: 0}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4342418669924086011
 Transform:
   m_ObjectHideFlags: 0
@@ -428,16 +428,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputState: 0
-  weaponAnimator: {fileID: 0}
-  animFiringBool: 
+  weaponAnimator: {fileID: 4342418669316601403}
+  animFiringBool: Fire
   animAltingBool: 
-  animReloadingBool: 
+  animReloadingBool: Reload
   weaponAudio: {fileID: -4717194129262909025}
   firingClip: {fileID: 0}
   altingClip: {fileID: 0}
   reloadClip: {fileID: 0}
-  firePoint: {fileID: 0}
-  autofire: 1
+  firePoint: {fileID: 4342418669661374407}
+  autofire: 0
+  firstShotAccurate: 1
   firingDelay:
     maxTime: 1
     elapsed: 0
@@ -449,12 +450,11 @@ MonoBehaviour:
   reloadDelay:
     maxTime: 1
     elapsed: 0
-  bullet: {fileID: -6018481526313655432, guid: 7236cd95f3f2c2448a8bdbc438f40857, type: 3}
+  bullet: {fileID: 8830377775791593255, guid: 923cad85e2abe124e9febc538ec85838, type: 3}
   weaponName: 
   weaponAction: 
   weaponUIImage: {fileID: 21300000, guid: b5d30d52c1b3f544aae6ad8816e16592, type: 3}
   pushPower: 15.5
-  player: {fileID: 0}
 --- !u!82 &-4717194129262909025
 AudioSource:
   m_ObjectHideFlags: 0

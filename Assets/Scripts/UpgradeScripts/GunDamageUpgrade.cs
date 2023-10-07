@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunDamageUpgrade : MonoBehaviour
 {
-    public GunScriptableObject gunSO;
+    //public GunScriptableObject gunSO;
     public int upgradePercentage = 10;
     private float realUpgradePercentage;
     private GameObject gunSOBullet;
@@ -14,19 +14,19 @@ public class GunDamageUpgrade : MonoBehaviour
     void UpgradeDamage()
     {
         realUpgradePercentage = (float)upgradePercentage / 100f;
-        gunSO.damageMultiplier += realUpgradePercentage;
+        //gunSO.damageMultiplier += realUpgradePercentage;
         
         if (gunSOBullet.GetComponent<bulletScript>() != null)
         {
-            gunSOBullet.GetComponent<bulletScript>().damage *= gunSO.damageMultiplier;
+            //gunSOBullet.GetComponent<bulletScript>().damage *= gunSO.damageMultiplier;
         }
         else if (gunSOBullet.GetComponent<Shotgunbullet>() != null)
         {
-            gunSOBullet.GetComponent<Shotgunbullet>().damage *= gunSO.damageMultiplier;
+            //gunSOBullet.GetComponent<Shotgunbullet>().damage *= gunSO.damageMultiplier;
         }
         else if (gunSOBullet.GetComponent<FlameShot>() != null)
         {
-            gunSOBullet.GetComponent<FlameShot>().damage *= gunSO.damageMultiplier;
+            //gunSOBullet.GetComponent<FlameShot>().damage *= gunSO.damageMultiplier;
         }
 
     }

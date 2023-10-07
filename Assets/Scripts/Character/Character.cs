@@ -130,7 +130,7 @@ public class Character : MonoBehaviour
 
     private void SetVars()
     {
-        GetComponentsInChildren<Module>(true, Modules);
+        GetComponentsInChildren(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 
         this.RequireComponent(out r2d);
@@ -138,7 +138,12 @@ public class Character : MonoBehaviour
 
         this.RequireComponent(out flipModule);
 
-        IsPlayer = this.HasComponentInChildren<PlayerControlModule>();
+        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
+
+        if (IsPlayer)
+        {
+            GameManager.Instance.Player = player.Master;
+        }
 
         respawn = GameObject.Find("StartingRespawnPoint").GetComponent<RespawnScript>();
     }
@@ -189,7 +194,7 @@ public class Character : MonoBehaviour
         r2d.AddForce(knockback * knockbackMultiplier, ForceMode2D.Impulse);
     }
 
-    public void HealPlayer(int healthIncrease)
+    public void Heal(int healthIncrease)
     {
         HP += healthIncrease;
     }

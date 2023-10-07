@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ce15f488e004e17ba1da7eed0c2b30, type: 3}
+  m_Name: ___XnAnalytics Info
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: b0d6e46d7a49245d595e6d5c1dcce02a, type: 3}
+  iconMaxWidth: 128
+  title: 'XnAnalytics
+
+    and
+
+    Bug Report Panel
+
+    Jeremy Bond 2023'
+  sections:
+  - heading: XnAnalytics
+    text: '<b>XnAnalytics</b> is a script that allows you to log a row of data to
+      a specified Google Sheet. Everything that is actually essential is included
+      in the <b>XnAnalytics.cs</b> script file, including step-by-step instructions,
+      sample scripts (commented out), and the required Google App Script.
+
+
+      One
+      of the very cool aspects of XnAnalytics is that <i>any</i> field added to the
+      WWWForm class that is posted to the Sheet will be automatically added as a
+      column in the Sheet itself.
+
+'
+    linkText: 
+    url: 
+  - heading: Instructions
+    text: "Instructions and the Google Apps Script required to make this work in
+      the <b>XnAnalytics.cs</b> file. You must follow those instructions, set up
+      a Google Sheet, and set the <i>Sheets Url</i> field of the XnAnalytics component
+      for this to work.\n\nExamples of use can be found in:\n\u2013 ReportButtonClick.cs
+      : Clicked()\n\u2013 ReportEveryTimeKeyIsPressed.cs : Update()\n\u2013 BugReportPanel.cs
+      : SubmitFeedback()"
+    linkText: 
+    url: 
+  - heading: Bug Report Panel
+    text: This is a simple bug report tool that you can add to any project. It will
+      allow your players to report bugs from within the game that will be posted
+      to a flexible Google Sheet.
+    linkText: 
+    url: 
+  - heading: Required Additional Assets for BugReporter
+    text: "While XnAnalytics.cs will work just fine by itself, in order to use the
+      BugReporter example, you should also install TextMeshPro from the Window >
+      Package Manager (which Unity should automatically ask you to do).\n\nIf you
+      need to allow iOS players to type text into an input field in WebGL, I highly
+      recommend the WebGLInput project by keo-yeung:\n    https://github.com/kou-yeung/WebGLInput"
+    linkText: 
+    url: 
+  - heading: Credits
+    text: "by Jeremy Gibson Bond <jeremy@exninja.com>\nThis version was made in 2023.\n\nSeveral
+      scripts are based on other people's work. I've tried to credit them in comments
+      throughout.\n\nFonts Included:\n\u2013 Highway Gothic Wide: https://www.dafont.com/highway-gothic.font\n\u2013
+      m+ 1m: https://fonts.google.com/specimen/M+PLUS+1 or https://www.fontsquirrel.com/fonts/m-1m"
+    linkText: 
+    url: 
+  showDefaultInspector: 0

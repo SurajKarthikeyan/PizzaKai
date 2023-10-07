@@ -33,8 +33,8 @@ public class RangeDrawerUIE : PropertyDrawer
                 return;
 
             // Define indent
-            var indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 1;
+            var oldIndent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel++;
 
             // Calculate rects
             var patternRect = new Rect(position.x, position.y + lnHeight, position.width, lnHeight);
@@ -68,7 +68,7 @@ public class RangeDrawerUIE : PropertyDrawer
             }
 
             // Set indent back to what it was
-            EditorGUI.indentLevel = indent;
+            EditorGUI.indentLevel = oldIndent;
 
             EditorGUI.EndProperty();
         }

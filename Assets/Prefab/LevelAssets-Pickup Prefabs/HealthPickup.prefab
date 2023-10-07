@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2085793452763184991}
   - component: {fileID: 7464848099595743837}
-  - component: {fileID: 2761536225860999452}
+  - component: {fileID: 2447239377773044019}
   - component: {fileID: 4882631454360775178}
   m_Layer: 0
   m_Name: HealthPickup
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2761536225860999452
+--- !u!114 &2447239377773044019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4386287598845906938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975061d6a38e5b644a63dcd2ff105f3f, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e0f670a8cc68885b9558cc73f918f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 4882631454360775178}
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 128
   healthIncrease: 5
-  switchWeapons: {fileID: 0}
 --- !u!61 &4882631454360775178
 BoxCollider2D:
   m_ObjectHideFlags: 0

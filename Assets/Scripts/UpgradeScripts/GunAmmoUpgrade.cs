@@ -5,13 +5,13 @@ using UnityEngine;
 public class GunAmmoUpgrade : MonoBehaviour
 {
 
-    public GunScriptableObject gunSO;
+    //public GunScriptableObject gunSO;
     public int ammoUpgrade = 10;
 
     void UpgradeAmmo()
     {
-        gunSO.ammoCountMax += ammoUpgrade;
-        gunSO.ammoCountCurrent = gunSO.ammoCountMax;
+        //gunSO.ammoCountMax += ammoUpgrade;
+        //gunSO.ammoCountCurrent = gunSO.ammoCountMax;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

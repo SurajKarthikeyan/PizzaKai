@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SimpleProjectile : MaskedWeaponSpawn
@@ -19,16 +20,12 @@ public class SimpleProjectile : MaskedWeaponSpawn
     [Tooltip("Base random spread of the projectile, in degrees.")]
     public Range spread = new(-5, 5);
 
-    [Tooltip("Determines how fast the spread increases. Lower values = " +
-        "more spread.")]
+    [Tooltip("Determines how fast the spread increases. Higher values = " +
+        "faster spread increase.")]
     public float spreadRampUp = 1.05f;
 
     [Tooltip("The maximum multiplier for the spread.")]
     public float spreadMaxMult = 2.5f;
-
-    [Tooltip("If true and weapon is autofire, then always fire the first " +
-        "shot of any burst with no spread.")]
-    public bool firstShotAccurate = true;
 
     // [Tooltip("Gravity applied to the projectile.")]
     // public Vector2 gravity = new(0, -9.81f);
@@ -57,24 +54,29 @@ public class SimpleProjectile : MaskedWeaponSpawn
 
     protected override void FireInternal()
     {
-        // Apply initial spread.
-        int burstCnt = (firedBy.autofire && firstShotAccurate) ?
-            firedBy.BurstCount - 1 :
-            firedBy.BurstCount;
+        float recoilRatio = 1;
 
-        float recoilRatio = (burstCnt * spreadMaxMult) /
-            (burstCnt + spreadRampUp);
+        if (firedBy.autofire)
+        {
+            // Apply initial spread.
+            int burstCnt = (firedBy.autofire && firedBy.firstShotAccurate) ?
+                firedBy.BurstCount - 1 :
+                firedBy.BurstCount;
+    
+            recoilRatio = burstCnt * spreadMaxMult /
+                (burstCnt + (1 / spreadRampUp));
+        }
 
         // print(recoilRatio);
 
-        float actualSpread = spread.Select() * recoilRatio;
+        float actualSpread = spread.Evaluate() * recoilRatio;
         transform.Rotate(new Vector3(0, 0, actualSpread));
 
         // Calculate lifetime;
-        lifetime = new(range.Select() / speed.Select());
+        lifetime = new(range.Evaluate() / speed.Evaluate());
 
         // Calculate delta distance.
-        deltaDistance = speed.Select() * Time.fixedDeltaTime;
+        deltaDistance = speed.Evaluate() * Time.fixedDeltaTime;
 
         contactFilter = new()
         {
@@ -122,6 +124,10 @@ public class SimpleProjectile : MaskedWeaponSpawn
                     else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
                     {
                         enemyBasic.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
+                    }
+                    else if (collider.gameObject.HasComponent<BurningScript>() && CompareTag("PlayerFireBullet"))
+                    {
+                        collider.gameObject.GetComponent<BurningScript>().BurnBox();
                     }
 
                     if (currentRicochets < ricochets)

@@ -80,23 +80,31 @@ public static class EnumerableExt
     /// name="collection"/> count. If it lies outside of that bound, then wrap
     /// it.
     /// </summary>
-    public static int BoundToLength(this ICollection collection, int index)
+    public static int WrapAroundLength(this int index, ICollection collection)
     {
-        return collection.Count.BoundToLength(index);
+        return index.WrapAroundLength(collection.Count);
     }
 
     /// <summary>
     /// Ensures that <paramref name="index"/> ranges from 0 to <paramref
     /// name="length"/>. If it lies outside of that bound, then wrap it.
     /// </summary>
-    public static int BoundToLength(this int length, int index)
+    /// <remarks>
+    /// Adapted from https://stackoverflow.com/a/1082938.
+    /// </remarks>
+    public static int WrapAroundLength(this int index, int length)
     {
-        while (index < 0)
-            index += length;
+        return (index % length + length) % length;
+    }
 
-        index %= length;
-
-        return index;
+    /// <summary>
+    /// Ensures that <paramref name="index"/> ranges from <paramref
+    /// name="from"/> to <paramref name="to"/> (including <paramref
+    /// name="to"/>). If it lies outside of that bound, then wrap it.
+    /// </summary>
+    public static int WrapAround(this int index, int from, int to)
+    {
+        return index.WrapAroundLength(to - from + 1) + from;
     }
     #endregion
 
