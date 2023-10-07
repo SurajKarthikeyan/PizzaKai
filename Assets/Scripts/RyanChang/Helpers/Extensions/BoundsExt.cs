@@ -1,4 +1,5 @@
 using UnityEngine;
+using static VectorExt;
 
 /// <summary>
 /// Contains methods pertaining to Unity bounds.
@@ -22,14 +23,13 @@ public static class BoundsExt
     #region Conversions
     /// <summary>
     /// Converts this bounds to a rect. Follows the logic from
-    /// <see cref="VectorExt.ToVector2(Vector3)"/>, so the x and y components of
-    /// the new rect will be the x and z components of bounds.
+    /// <see cref="VectorExt.ToVector2(Vector3)"/>.
     /// </summary>
     /// <param name="bounds">The bounds used to create the rect.</param>
     /// <returns></returns>
-    public static Rect ToRect(this Bounds bounds)
+    public static Rect ToRect(this Bounds bounds, Axis axis = DEFAULT_AXIS)
     {
-        return new Rect(bounds.min.ToVector2(), bounds.size.ToVector2());
+        return new Rect(bounds.min.ToVector2(axis), bounds.size.ToVector2(axis));
     }
 
     /// <summary>

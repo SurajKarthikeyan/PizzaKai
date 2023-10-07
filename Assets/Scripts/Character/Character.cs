@@ -44,11 +44,7 @@ public class Character : MonoBehaviour
     private Duration damageInvulnerability;
 
     [SerializeField]
-    private float playerDamageInvulnerability = 1f;
-
-    [SerializeField]
     private float knockbackMultiplier = 1;
-
 
     [SerializeField] private RespawnScript respawn;
     #endregion

@@ -8,17 +8,51 @@ using System.Linq;
 /// </summary>
 public static class VectorExt
 {
+    /// <summary>
+    /// The default axis.
+    /// </summary>
+    /// <seealso cref="Axis"/>
+    public const Axis DEFAULT_AXIS = Axis.Z;
+
+    /// <summary>
+    /// The axis on which we convert Vector2 (v2) to Vector3 (v3) and vice
+    /// versa.
+    ///
+    /// <br/>
+    ///
+    /// If axis = X: v2(x,y) = v3(0,y,z)
+    ///
+    /// <br/>
+    ///
+    /// If axis = Y: v2(x,y) = v3(x,0,z)
+    ///
+    /// <br/>
+    ///
+    /// If axis = Z: v2(x,y) = v3(x,y,0)
+    /// </summary>
+    public enum Axis
+    {
+        X,
+        Y,
+        Z,
+    }
     #region Conversion
     /// <summary>
-    /// Converts from a Vector2, v2, to a Vector3, v3, such that
-    /// v3.x == v2.x and v3.z == v2.y and v3.y == 0
+    /// Converts from a Vector2, v2, to a Vector3, v3.
     /// </summary>
     /// <param name="v">The Vector2 to convert.</param>
-    /// <param name="y">The y component of the new Vector3</param>
+    /// <param name="o">The x/y/z component of the new Vector3</param>
+    /// <param name="axis">See <see cref="Axis"/></param>
     /// <returns>The converted Vector3.</returns>
-    public static Vector3 ToVector3(this Vector2 v, float y = 0)
+    public static Vector3 ToVector3(this Vector2 v, float o = 0,
+        Axis axis = DEFAULT_AXIS)
     {
-        return new(v.x, y, v.y);
+        return axis switch
+        {
+            Axis.X => new Vector3(o, v.x, v.y),
+            Axis.Y => new Vector3(v.x, o, v.y),
+            _ => new Vector3(v.x, v.y, o),
+        };
     }
 
     /// <summary>
@@ -32,14 +66,20 @@ public static class VectorExt
     }
 
     /// <summary>
-    /// Converts from a Vector3, v3, to a Vector2, v2, such that
-    /// v2.x == v3.x and v2.y == v3.z
+    /// Converts from a Vector3, v3, to a Vector2, v2.
     /// </summary>
     /// <param name="v">The Vector3 to convert.</param>
+    /// <param name="axis">See <see cref="Axis"/></param>
     /// <returns>The converted Vector2.</returns>
-    public static Vector2 ToVector2(this Vector3 v)
+    public static Vector2 ToVector2(this Vector3 v,
+        Axis axis = DEFAULT_AXIS)
     {
-        return new(v.x, v.z);
+        return axis switch
+        {
+            Axis.X => new Vector2(v.y, v.z),
+            Axis.Y => new Vector2(v.x, v.z),
+            _ => new Vector2(v.x, v.y),
+        };
     }
 
     /// <summary>

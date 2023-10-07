@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -90,23 +91,35 @@ public class EnemyControlModule : Module
             Master.SetLookAngle(heading.x > 0 ? 0 : 180);
     }
 
+    /// <summary>
+    /// Notifies the EnemyControlModule that it has arrived at its destination.
+    /// </summary>
     public void ArrivedAtDestination()
     {
-        StartCoroutine(AnotherTarget_CR());
+        StartCoroutine(Idle_CR());
     }
     #endregion
 
     #region Helpers
-    private IEnumerator AnotherTarget_CR()
+    /// <summary>
+    /// Coroutine that monitors the distance between the enemy and target. 
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Idle_CR()
     {
+        Debug.Assert(
+            pathAgent.State == PathfindingAgent.NavigationState.Idle,
+            $"{nameof(Idle_CR)} called when pathAgent.State is not idle!"
+        );
+
         do
         {
+            // As long as the enemy is within 2 tiles of the player, it will not
+            // attempt to set a target.
             yield return new WaitForSeconds(pathRecomputationDelay.Evaluate());
         } while (transform.position.TaxicabDistance(CurrentTarget.position) < 2);
 
-        pathAgent.SetTarget(
-            currentTarget
-        );
+        pathAgent.SetTarget(currentTarget);
     }
     #endregion
 

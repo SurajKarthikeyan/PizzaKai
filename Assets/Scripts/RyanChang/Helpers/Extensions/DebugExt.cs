@@ -333,10 +333,10 @@ public static class DebugExt
     {
         // Define corners
         Vector3[] corners = {
-            new Vector3(max.x, 0, max.y),
-            new Vector3(min.x, 0, max.y),
-            new Vector3(min.x, 0, min.y),
-            new Vector3(max.x, 0, min.y)
+            new Vector2(max.x, max.y).ToVector3(),
+            new Vector2(min.x, max.y).ToVector3(),
+            new Vector2(min.x, min.y).ToVector3(),
+            new Vector2(max.x, min.y).ToVector3()
         };
 
         // Center rect at origin, rotate, then transform back to original
@@ -367,12 +367,14 @@ public static class DebugExt
     /// <param name="rotation">Rotation of the drawn object.</param>
     public static void DrawCrossRect(Rect rect, Quaternion rotation)
     {
+        Vector2 max = rect.max, min = rect.min;
+
         // Define corners
         Vector3[] corners = {
-            new Vector3(rect.xMax, 0, rect.yMax),
-            new Vector3(rect.xMin, 0, rect.yMax),
-            new Vector3(rect.xMin, 0, rect.yMin),
-            new Vector3(rect.xMax, 0, rect.yMin)
+            new Vector2(max.x, max.y).ToVector3(),
+            new Vector2(min.x, max.y).ToVector3(),
+            new Vector2(min.x, min.y).ToVector3(),
+            new Vector2(max.x, min.y).ToVector3()
         };
 
         // Center rect at origin, rotate, then transform back to original
