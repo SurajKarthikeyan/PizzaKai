@@ -21,13 +21,10 @@ public class TommyGunWeapon : WeaponModule
     public Transform playerTransform;
 
     [Tooltip("Damage done by the tommy alt flash")]
-    public int altFireDamage = 5;
+    public int altFireDamage = 20;
 
     [Tooltip("Tommy flash UI image")]
     public UnityEngine.UI.Image tommyFlashImage;
-
-    [Tooltip("Camera script used for camera shake")] 
-    public CameraFollow cameraScript;
 
     [Tooltip("Enemy layer mask")]
     [SerializeField]
@@ -60,7 +57,7 @@ public class TommyGunWeapon : WeaponModule
         base.AltFire();
 
         // Probably fix the camera shake, but leave it here for now.
-        StartCoroutine(cameraScript.Shake());
+        //StartCoroutine(cameraScript.Shake());
         StartCoroutine(tommyAltFlash());
 
         FindEnemies();

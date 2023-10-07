@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &761148533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761148534}
+  - component: {fileID: 761148535}
+  m_Layer: 0
+  m_Name: MouseFollower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &761148534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761148533}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49696973, y: 1.0606061, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 389789358470127961}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &761148535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761148533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f997b8be45cb12a009698764032beef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1937126640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937126641}
+  - component: {fileID: 1937126642}
+  m_Layer: 0
+  m_Name: CM_Tracking
+  m_TagString: PlayerFollow
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1937126641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937126640}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49696973, y: 1.0606061, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 389789358470127961}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937126642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937126640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionMode: 0
+  m_RotationMode: 1
+  m_UpdateMethod: 2
+  m_Targets:
+  - target: {fileID: 0}
+    weight: 1
+    radius: 1
+  - target: {fileID: 761148534}
+    weight: 0.5
+    radius: 1
 --- !u!1 &389789358470127967
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,6 +137,8 @@ Transform:
   - {fileID: 2240493763340484889}
   - {fileID: 7279009654578405950}
   - {fileID: 8397270891130551354}
+  - {fileID: 1937126641}
+  - {fileID: 761148534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,8 +157,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 5a05bfcb10e8c0e4da63ebcc23179ef4, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -72,12 +172,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 389789358470127967}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5140880b769d456f6a61b618f64e2847, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0413733, y: 0.33421734}
-  m_Size: {x: 0.35962045, y: 0.6537741}
+  m_Offset: {x: -0.053119082, y: 0.3221627}
+  m_Size: {x: 0.36848128, y: 0.63484323}
   m_Direction: 0
 --- !u!114 &5622900668386144491
 MonoBehaviour:
@@ -114,7 +214,9 @@ MonoBehaviour:
     maxTime: 0
     elapsed: 0
   playerDamageInvulnerability: 2
+  knockbackMultiplier: 1
   respawn: {fileID: 2000505796032495078}
+  hasDied: 0
 --- !u!114 &1465201858662095713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: {x: 5, y: 0}
-  moveAcceleration: {x: 0.5, y: 1}
+  moveAcceleration: {x: 25, y: 1}
+  decelerationPercentage: 0.95
   jumpForce: 12
   jumpCooldown:
     maxTime: 0.5
@@ -143,16 +246,15 @@ MonoBehaviour:
   dashTimer:
     maxTime: 0.2
     elapsed: 0
-  shotgunPushed: 0
   groundCheck: {fileID: 8805224999771344175}
   characterAnimator: {fileID: 8397270892820599996}
-  positiveAnimParamOnly: 0
+  positiveAnimParamOnly: 1
   animParamSpeedX: RightLeftMovement
   animParamSpeedY: 
   animParamJump: Jumping
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
-  inputtedDash: 0
+  inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
   groundCheckCF2D:
