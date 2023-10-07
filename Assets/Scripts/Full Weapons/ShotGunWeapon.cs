@@ -45,7 +45,9 @@ public class ShotGunWeapon : WeaponModule
     private void PushPlayer()
     {
         //Gets the player mouse position and sends the player in the opposite direction
-        Vector3 dir = Vector3.Normalize(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 dir = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dir.y = 0;
+        dir.Normalize();
         // !IMPORTANT! NEVER set velocity directly. Instead, use AddForce with
         // !ForceMode2D.Impulse. Setting velocity directly causes a race
         // !condition with other things that may be modifying velocity.

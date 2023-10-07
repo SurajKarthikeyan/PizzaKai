@@ -195,11 +195,12 @@ public class WeaponMasterModule : Module
     /// Adds <paramref name="weapon"/>, which is an instance, to the weapon master.
     /// </summary>
     /// <param name="weapon">The weapon to add.</param>
-    public void AddWeapon(WeaponModule weapon)
+    public WeaponModule AddWeapon(WeaponModule weapon)
     {
         weapon.transform.Localize(transform);
         weapons.Insert(0, weapon);
         SwitchToWeapon(0);
+        return weapon;
     }
     #endregion
     #endregion

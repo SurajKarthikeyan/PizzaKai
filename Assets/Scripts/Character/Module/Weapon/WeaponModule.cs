@@ -158,6 +158,7 @@ public class WeaponModule : Module
     protected virtual void Start()
     {
         currentAmmo = ammoCount;
+        Debug.Log(Master);
     }
     #endregion
 

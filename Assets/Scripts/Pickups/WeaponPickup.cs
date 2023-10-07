@@ -11,7 +11,8 @@ public class WeaponPickup : Pickup
     {
         if (character.HasComponentInChildren(out WeaponMasterModule master))
         {
-            master.AddWeapon(Instantiate(weapon));
+            WeaponModule newweapon = master.AddWeapon(Instantiate(weapon));
+            newweapon.LinkToMaster(character);
             return true;
         }
 
