@@ -146,7 +146,7 @@ public class Character : MonoBehaviour
     #endregion
 
     #region MonoBehavior Methods
-    private void Update()
+    public virtual void Update()
     {
         // Required to get this to work properly.
         damageInvulnerability.IncrementUpdate(false);
