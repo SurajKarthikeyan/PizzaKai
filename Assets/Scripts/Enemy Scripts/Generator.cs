@@ -91,6 +91,14 @@ public class Generator : EnemyBasic
         Destroy(this.gameObject);
         
     }
+    public override void TakeDamage(int damage)
+    {
+        if (isVulnerable)
+        {
+            base.TakeDamage(damage);
+        }
+        
+    }
     #endregion
-    
+
 }

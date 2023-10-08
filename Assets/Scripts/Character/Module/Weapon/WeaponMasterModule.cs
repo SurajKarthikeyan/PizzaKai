@@ -83,13 +83,34 @@ public class WeaponMasterModule : Module
             }
 
             //Next two if blocks cycle through weapons
-            if (Input.mouseScrollDelta.y > 0)
+            if (Input.mouseScrollDelta.y >= 1f)
             {
                 NextWeapon();
             }
-            if (Input.mouseScrollDelta.y < 0)
+            if (Input.mouseScrollDelta.y <= -1f)
             {
                 PrevWeapon();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                SwitchToWeapon(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                SwitchToWeapon(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                SwitchToWeapon(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                SwitchToWeapon(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                SwitchToWeapon(4);
             }
         }
     }

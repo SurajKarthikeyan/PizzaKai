@@ -178,7 +178,7 @@ public class EnemyBasic : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         currentHP -= damage;
         hitState = true;
