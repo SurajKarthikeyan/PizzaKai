@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region Variables
+    public Flowchart levelFlowchart;
+
     public CharacterMovementModule player;
 
     public WeaponMasterModule weaponMasterModule;
@@ -47,17 +50,20 @@ public class DialogueManager : MonoBehaviour
         
         if (stopPlayer)
         {
-            player.maxMoveSpeed = new Vector2(0, 0);
-            foreach (var weapon in weaponMasterModule.weapons)
-            {
-                weapon.gameObject.SetActive(false);
-            }
+            player.Master.r2d.velocity = new Vector2(0, 0);
+            player.enabled = false;
+            weaponMasterModule.enabled = false;
         }
         else
         {
-            player.maxMoveSpeed = maxPlayerMoveSpeed;
-            weaponMasterModule.weapons = playerWeapons;
+            player.enabled = true;
+            weaponMasterModule.enabled = true;
             weaponMasterModule.EnableCurrentWeapon();
         }
+    }
+
+    public void CallDialogueBlock(string blockName)
+    {
+        levelFlowchart.ExecuteBlock(blockName);
     }
 }
