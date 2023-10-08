@@ -17,6 +17,7 @@ public class RavioliPathing : Character
     [Tooltip("Distance to the player at which to explode at")]
     [SerializeField] private float distanceCheck;
     private GameObject playerRef;
+    private bool distanceDeath = false;
     #endregion
 
     #region UnityMethods
@@ -29,9 +30,10 @@ public class RavioliPathing : Character
     public override void Update()
     {
         base.Update();
-        if (DistanceToPlayer() <= distanceCheck)    // if within the bounds to explode, explode
+        if (DistanceToPlayer() <= distanceCheck && !distanceDeath)    // if within the bounds to explode, explode
         {
             Die();
+            distanceDeath = true;
         }
     }
     
