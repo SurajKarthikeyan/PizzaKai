@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b968d221cf9e66d43a23e4f9fcb98907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelFlowchart: {fileID: 0}
   player: {fileID: 0}
   weaponMasterModule: {fileID: 0}
 --- !u!1 &672629396907353863
@@ -202,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8485758540099607936}
   - component: {fileID: 8396842951331332546}
+  - component: {fileID: 1662882124}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -247,6 +249,22 @@ MonoBehaviour:
   player: {fileID: 0}
   isDying: 0
   weaponMaster: {fileID: 0}
+--- !u!114 &1662882124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266495603451537799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a826d4cec08dba449d4808002f35f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackness: {fileID: 0}
+  contact: 0
+  fadeIn: 1
+  nextScene: 
 --- !u!1 &4330151603135715542
 GameObject:
   m_ObjectHideFlags: 0

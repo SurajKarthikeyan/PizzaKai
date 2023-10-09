@@ -1,9 +1,11 @@
+using Fungus;
 using UnityEngine;
 
 public class WeaponPickup : Pickup
 {
     #region Variables
     public WeaponModule weapon;
+    public string weaponTutorialBlock;
     #endregion
 
     #region Pickup Implementation
@@ -14,6 +16,7 @@ public class WeaponPickup : Pickup
             WeaponModule newweapon = master.AddWeapon(Instantiate(weapon));
             newweapon.LinkToMaster(character);
             newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
+            DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
             return true;
         }
 
