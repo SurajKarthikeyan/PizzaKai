@@ -12,7 +12,8 @@ namespace XnTelemetry {
         public const string DIVESTRING = "Dive";
         public const string JUMPSTRING = "Jump";
 
-        public static string[] PROJECTS = { "grappler", "grabbie", "3PLE", "UnicycleSamurai", "DemolitionExpress", "ScreenTear", "RockTheHouse", "Chamber8", "FPS_Demo" };
+        public static string[] PROJECTS = { "grappler", "grabbie", "3PLE", "UnicycleSamurai", "DemolitionExpress", "ScreenTear", "RockTheHouse", "Chamber8", "FPS_Demo",
+                                            "F23_HappyTrails", "F23_Pizzakai", "F23_ShotInTheDark", "F23_TheMine", "Demo"};
         [System.Flags]
         public enum eSaveOptions { None=0, Local=1, Cloud=2 };
 
