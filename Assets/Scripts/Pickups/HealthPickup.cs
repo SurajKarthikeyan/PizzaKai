@@ -9,6 +9,9 @@ public class HealthPickup : Pickup
     #region Pickup Implementation
     protected override bool ReceiveCharacter(Character character)
     {
+        if (character.HP == character.maxHP)
+            return false;
+
         character.Heal(healthIncrease);
         return true;
     }

@@ -63,6 +63,10 @@ public class WeaponModule : Module
     #region User Settings
     /// <inheritdoc cref="WeaponInputState"/>
     [Header("Global")]
+    [Tooltip("The ID of the weapon. Used to determine what " +
+        "weapons the player has.")]
+    public string weaponID = "[Not Set]";
+
     [Tooltip("Describes the current status of the weapon.")]
     [ReadOnly]
     [SerializeField]
@@ -158,7 +162,11 @@ public class WeaponModule : Module
     protected virtual void Start()
     {
         currentAmmo = ammoCount;
-        Debug.Log(Master);
+        
+        if (weaponID == "[Not Set]")
+        {
+            Debug.LogError("WeaponID is not set from its default value", gameObject);
+        }
     }
     #endregion
 

@@ -2,6 +2,7 @@
 
 /// <summary>
 /// Use to instantly kill the character this is attached to.
+/// This script is only used for testing.
 /// 
 /// <br/>
 /// 

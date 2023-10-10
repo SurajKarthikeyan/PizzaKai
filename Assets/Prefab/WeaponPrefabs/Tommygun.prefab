@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc36dd84854980429bd207a3d806b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponID: SMG
   inputState: 0
   weaponAnimator: {fileID: 1566744871564542801}
   animFiringBool: Fire
@@ -333,6 +334,7 @@ MonoBehaviour:
   reloadClip: {fileID: 0}
   firePoint: {fileID: 2741532492258955962}
   autofire: 1
+  firstShotAccurate: 1
   firingDelay:
     maxTime: 0.1
     elapsed: 0
@@ -351,7 +353,6 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   altFireDamage: 5
   tommyFlashImage: {fileID: 0}
-  cameraScript: {fileID: 0}
   enemyLayerNum: 10
 --- !u!82 &4629331206116993892
 AudioSource:
