@@ -904,7 +904,7 @@ MonoBehaviour:
     - key: tommyReload
       value: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
     - key: shotgunShoot
-      value: {fileID: 8300000, guid: 05520b4edb8036844bc9415620923266, type: 3}
+      value: {fileID: 8300000, guid: fdc72e5a6053718459572f1b3f5c8515, type: 3}
     - key: shotgunAlt
       value: {fileID: 8300000, guid: 1bfae3892a2666a4ba58b1ace1fe780a, type: 3}
     - key: shotgunReload
@@ -3338,9 +3338,9 @@ MonoBehaviour:
   damageInvulnerability:
     maxTime: 0
     elapsed: 0
-  playerDamageInvulnerability: 1
   knockbackMultiplier: 1
   respawn: {fileID: 8019257334451026239}
+  hasDied: 0
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
