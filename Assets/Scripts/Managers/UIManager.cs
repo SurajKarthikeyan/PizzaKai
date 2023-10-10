@@ -47,9 +47,6 @@ public class UIManager : MonoBehaviour
     [Tooltip("Image containing the ammo UI element")]
     public Image ammoUI;
 
-    [Tooltip("Slider used to show the player's dash cooldown")]
-    public RespawnScript respawn;
-
     [Header("UI relevant player information")]
     [Tooltip("Script containing UI relevant player information")]
     public Character player;

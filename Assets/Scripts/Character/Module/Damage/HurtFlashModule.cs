@@ -17,8 +17,8 @@ public class HurtFlashModule : Module
     {
         this.RequireComponent(out spriteRenderer);
         originalColor = spriteRenderer.color;
-        Master.onCharacterHurtEvent.AddListener((_) => DoHurt());
-        Master.onCharacterDeathEvent.AddListener(ResetColor);
+        Master.onCharacterHurt.AddListener((_) => DoHurt());
+        Master.onCharacterDeath.AddListener(ResetColor);
     }
 
     public void DoHurt()

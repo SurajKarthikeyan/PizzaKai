@@ -1,54 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
-    public RespawnScript respawn;
-    private Collider2D coll;
+    #region Variables
+    [Tooltip("The collider trigger for the checkpoint.")]
+    [SerializeField]
+    [ReadOnly]
+    private Collider2D trigger;
 
-    public Animator Checkpoint;
-    public bool Activated;
-    public bool ActiveIdle;
-    public float time;
+    [Tooltip("The animator for the checkpoint.")]
+    [SerializeField]
+    [ReadOnly]
+    private Animator flagAnimator;
 
-    void Awake()
+    [SerializeField]
+    [AnimatorParam(nameof(flagAnimator), AnimatorControllerParameterType.Bool)]
+    private string flagActiveAnimKey = "Activated"; 
+    #endregion
+
+    #region Instantiation
+    private void Awake()
     {
-        //respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnScript>();
-        coll = GetComponent<Collider2D>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Checkpoint.SetBool("Activated", Activated);
-        Checkpoint.SetBool("ActiveIdle", ActiveIdle);
-
-        if (coll.enabled == false)
-        {
-            StartCoroutine(Idle());
-        }
+        SetVars();
     }
 
+    private void OnValidate()
+    {
+        SetVars();
+    }
+
+    private void SetVars()
+    {
+        this.RequireComponent(out flagAnimator);
+        this.RequireComponent(out trigger);
+        trigger.isTrigger = true;
+    }
+    #endregion
+
+    #region Main Behavior
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.HasComponentInChildren(out RespawnModule respawn))
         {
-            Activated = true;
-            respawn.respawnPoint = this.gameObject;
-            coll.enabled = false;
+            flagAnimator.SetBool(flagActiveAnimKey, true);
+            respawn.lastRespawnPoint = transform;
+            trigger.enabled = false;
         }
-    }
-
-    private IEnumerator Idle()
-    {
-        yield return new WaitForSecondsRealtime(2);
-        Activated = false;
-        ActiveIdle = true;
-    }
+    } 
+    #endregion
 }

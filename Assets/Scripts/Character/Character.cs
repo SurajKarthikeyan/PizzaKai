@@ -45,8 +45,6 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     private float knockbackMultiplier = 1;
-
-    [SerializeField] private RespawnScript respawn;
     #endregion
 
     #endregion
@@ -76,6 +74,7 @@ public class Character : MonoBehaviour
             {
                 hp = 0;
                 EventManager.Instance.onCharacterDeath.Invoke(this);
+                onCharacterDeath.Invoke();
                 if (!hasDied || IsPlayer)
                 {
                     Die();
@@ -96,10 +95,12 @@ public class Character : MonoBehaviour
     /// Called on character death.
     /// </summary>
     public readonly UnityEvent onCharacterDeath = new();
+
     /// <summary>
-    /// Called on character death.
+    /// Called when the character is revived.
     /// </summary>
-    public readonly UnityEvent onCharacterDeathEvent = new();
+    public readonly UnityEvent onCharacterRevive = new();
+
 
     /// <summary>
     /// Called on character hurt.
@@ -108,7 +109,7 @@ public class Character : MonoBehaviour
     /// 
     /// T0 = Damage taken.
     /// </summary>
-    public readonly UnityEvent<int> onCharacterHurtEvent = new();
+    public readonly UnityEvent<int> onCharacterHurt = new();
     #endregion
 
     #region Methods
@@ -140,8 +141,6 @@ public class Character : MonoBehaviour
         {
             GameManager.Instance.Player = player.Master;
         }
-
-        respawn = GameObject.Find("StartingRespawnPoint").GetComponent<RespawnScript>();
     }
     #endregion
 
@@ -190,22 +189,35 @@ public class Character : MonoBehaviour
         r2d.AddForce(knockback * knockbackMultiplier, ForceMode2D.Impulse);
     }
 
+    /// <summary>
+    /// Heals the character by a specific amount.
+    /// </summary>
+    /// <param name="healthIncrease"></param>
     public void Heal(int healthIncrease)
     {
         HP += healthIncrease;
     }
 
+    /// <summary>
+    /// Revives the character with max HP.
+    /// </summary>
+    public void Revive()
+    {
+        HP = maxHP;
+        onCharacterRevive.Invoke();
+    }
+
     public virtual void Die()
     {
-        if (IsPlayer)
-        {
-            respawn.RespawnPlayer();
-            HP = maxHP;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        //if (IsPlayer)
+        //{
+        //    respawn.RespawnPlayer();
+        //    HP = maxHP;
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
 
     }
 
@@ -217,16 +229,8 @@ public class Character : MonoBehaviour
     #endregion
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Checkpoint")
-        {
-            respawn.respawnPoint = collision.gameObject;
-        }
-    }
-
     public void PlayClip(AudioClip clip)
     {
-
+        
     }
 }

@@ -8,11 +8,12 @@ public abstract class DeathModule : Module
     /// <summary>
     /// Flag that avoids running this multiple times.
     /// </summary>
-    private bool ranDeathAction;
+    protected bool ranDeathAction;
 
     protected override void OnLinked()
     {
-        Master.onCharacterDeathEvent.AddListener(StartDeath);
+        Master.onCharacterDeath.AddListener(StartDeath);
+        Master.onCharacterRevive.AddListener(StartRevive);
     }
 
     private void StartDeath()
@@ -29,4 +30,9 @@ public abstract class DeathModule : Module
     }
 
     protected abstract void OnDeath();
+
+    private void StartRevive()
+    {
+        ranDeathAction = false;
+    }
 }
