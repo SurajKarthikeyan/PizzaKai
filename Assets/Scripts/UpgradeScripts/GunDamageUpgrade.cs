@@ -14,21 +14,14 @@ public class GunDamageUpgrade : MonoBehaviour
     void UpgradeDamage()
     {
         realUpgradePercentage = (float)upgradePercentage / 100f;
-        //gunSO.damageMultiplier += realUpgradePercentage;
-        
-        if (gunSOBullet.GetComponent<bulletScript>() != null)
-        {
-            //gunSOBullet.GetComponent<bulletScript>().damage *= gunSO.damageMultiplier;
-        }
-        else if (gunSOBullet.GetComponent<Shotgunbullet>() != null)
-        {
-            //gunSOBullet.GetComponent<Shotgunbullet>().damage *= gunSO.damageMultiplier;
-        }
-        else if (gunSOBullet.GetComponent<FlameShot>() != null)
-        {
-            //gunSOBullet.GetComponent<FlameShot>().damage *= gunSO.damageMultiplier;
-        }
 
+        if (gunSOBullet.HasComponent(out DamagingWeaponSpawn damaging))
+        {
+            damaging.damageModifier.Add(
+                new PriorityKey<int>(this, "gun_upgrade"),
+                new Modifier(0, realUpgradePercentage)
+            );
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

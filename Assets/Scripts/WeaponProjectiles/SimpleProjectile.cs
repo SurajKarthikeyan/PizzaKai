@@ -2,12 +2,9 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SimpleProjectile : MaskedWeaponSpawn
+public class SimpleProjectile : DamagingWeaponSpawn
 {
     #region Variables
-    [Tooltip("Amount of damage to deal. This will be rounded to an int.")]
-    public Range damage = new(14);
-
     [Tooltip("Amount of knockback applied.")]
     public Range knockback = new(1);
 
@@ -116,14 +113,14 @@ public class SimpleProjectile : MaskedWeaponSpawn
                     {
                         // Deal damage.
                         character.TakeDamage(
-                            Mathf.RoundToInt(damage.Evaluate()),
+                            ActualDamage,
                             Forwards * knockback.Evaluate()
                         );
                         hitCharacter = true;
                     }
                     else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
                     {
-                        enemyBasic.TakeDamage(Mathf.RoundToInt(damage.Evaluate()));
+                        enemyBasic.TakeDamage(ActualDamage);
                     }
                     else if (collider.gameObject.HasComponent<BurningScript>() && CompareTag("PlayerFireBullet"))
                     {
