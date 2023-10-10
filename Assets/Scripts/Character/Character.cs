@@ -123,6 +123,7 @@ public sealed class Character : MonoBehaviour
     {
         SetVars();
         HP = maxHP;
+        transform.position = transform.position.ToVector2();
     }
 
     // private void OnValidate()
