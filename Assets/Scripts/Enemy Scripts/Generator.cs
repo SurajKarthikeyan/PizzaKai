@@ -41,21 +41,9 @@ public class Generator : EnemyBasic
             OnDeath();
         }
     }
+    
 
-    // Handles taking damage if the generator is vulnerable
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (isVulnerable)   // checks if vulnerability is allowed
-        {
-            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageGood", generatorSource);
-            base.OnTriggerEnter2D(collision);
-        }
-        else
-        {
-            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageBad", generatorSource);
-        }
-    }
+
     #endregion
 
     #region PrivateMethods
@@ -91,13 +79,18 @@ public class Generator : EnemyBasic
         Destroy(gameObject);
         
     }
+    
     public override void TakeDamage(int damage)
     {
-        if (isVulnerable)
+        if (isVulnerable)   // checks if vulnerability is allowed
         {
+            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageGood", generatorSource);
             base.TakeDamage(damage);
         }
-        
+        else
+        {
+            AudioDictionary.aDict.PlayAudioClipRemote("generatorDamageBad", generatorSource);
+        }
     }
     #endregion
 
