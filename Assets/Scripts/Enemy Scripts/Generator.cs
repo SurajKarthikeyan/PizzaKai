@@ -86,9 +86,9 @@ public class Generator : EnemyBasic
         Debug.Log(key);
         AudioDictionary.aDict.PlayAudioClip(key, AudioDictionary.Source.Generator);
         // how do I handle randomization without having to re-code this?
-        Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(this.gameObject.transform.position, 180f));
+        ExplosionManager.Instance.SelectExplosionRandom(this.gameObject.transform.position, 180f);
         forky.NextPhase();
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         
     }
     public override void TakeDamage(int damage)

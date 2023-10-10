@@ -47,6 +47,6 @@ public class OilBarrel : MonoBehaviour
         }
 
         //Dont damage player if they are near an oil barrel going into the oven
-        Instantiate(ExplosionManager.explosionManager.SelectExplosionRandom(explosionPos, -90));
+        ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
     }
 }

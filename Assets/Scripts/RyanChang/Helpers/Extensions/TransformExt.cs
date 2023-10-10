@@ -123,12 +123,21 @@ public static class TransformExt
     /// <summary>
     /// Returns the distance between the two transforms.
     /// </summary>
-    /// <param name="a">The first transform.</param>
-    /// <param name="b">The second transform.</param>
+    /// <param name="t1">The first transform.</param>
+    /// <param name="t2">The second transform.</param>
     /// <returns>The distance between the two transforms.</returns>
-    public static float Distance(this Transform a, Transform b)
+    public static float Distance(this Transform t1, Transform t2)
     {
-        return Vector3.Distance(a.position, b.position);
+        return Vector3.Distance(t1.position, t2.position);
+    }
+
+    /// <summary>
+    /// Returns the 2D distance between the two transforms.
+    /// </summary>
+    /// <inheritdoc cref="Distance(Transform, Transform)"/>
+    public static float Distance2D(this Transform t1, Transform t2)
+    {
+        return Vector2.Distance(t1.position.ToVector2(), t2.position.ToVector2());
     }
 
     /// <summary>
@@ -140,6 +149,15 @@ public static class TransformExt
     public static float Distance(this Transform transform, Vector3 point)
     {
         return Vector3.Distance(transform.position, point);
+    }
+
+    /// <summary>
+    /// Returns the 2D distance between this transform and a point.
+    /// </summary>
+    /// <inheritdoc cref="Distance(Transform, Vector3)"/>
+    public static float Distance2D(this Transform transform, Vector2 point)
+    {
+        return Vector2.Distance(transform.position.ToVector2(), point);
     }
 
     /// <summary>

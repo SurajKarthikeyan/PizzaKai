@@ -24,22 +24,23 @@ public class EnemyControlModule : Module
     [ReadOnly]
     public PathfindingAgent pathAgent;
 
-    // public Arc sightline = new(-160, 160, 10);
-
     [Tooltip("How long to wait before recomputing the path " +
         "(after arrival at target)?")]
-    [SerializeField]
-    private Range pathRecomputationDelay = new(2, 5);
+    public Range pathRecomputationDelay = new(2, 5);
 
-    [Tooltip("Delay for recalculating the movement vectors.")]
-    [SerializeField]
-    private Range targetTokenRefreshDelay = new(0.5f, 2);
+    // [Tooltip("Delay for recalculating the movement vectors.")]
+    // [SerializeField]
+    // private Range targetTokenRefreshDelay = new(0.5f, 2);
 
     private Transform currentTarget;
     private IEnumerator tokenRefreshCR;
     #endregion
 
     #region Property
+    /// <summary>
+    /// The current target. Set this value to get this enemy to target a certain
+    /// target.
+    /// </summary>
     public Transform CurrentTarget
     {
         get => currentTarget;
@@ -54,6 +55,11 @@ public class EnemyControlModule : Module
             }
         }
     }
+    
+    /// <summary>
+    /// Reference to the player.
+    /// </summary>
+    public Character Player => GameManager.Instance.Player;
     #endregion
 
     #region Instantiation

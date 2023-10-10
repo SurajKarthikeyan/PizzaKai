@@ -12,6 +12,6 @@ public class DieModule : Module
     [Button]
     private void GoAndDie()
     {
-        Master.TakeDamage(int.MaxValue);
+        Master.Die();
     }
 }

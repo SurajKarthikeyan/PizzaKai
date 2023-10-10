@@ -11,13 +11,16 @@ using UnityEngine;
 public class DeathSoundModule : DeathModule
 {
     [SerializeField]
-    private AudioClip deathSound;
+    private AudioClip[] deathSounds;
 
     protected override void OnDeath()
     {
-        if (deathSound)
+        if (!deathSounds.IsNullOrEmpty())
         {
-            Master.PlayClip(deathSound);
+            foreach (var clip in deathSounds)
+            {
+                Master.PlayClip(clip);
+            }
         }
     }
 }

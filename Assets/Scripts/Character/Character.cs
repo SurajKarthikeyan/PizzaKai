@@ -14,7 +14,7 @@ using UnityEngine.Events;
 /// Authors: Ryan Chang (2023)
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(DefaultFlipModule))]
-public class Character : MonoBehaviour
+public sealed class Character : MonoBehaviour
 {
     #region Variables
     #region User Settings
@@ -38,7 +38,14 @@ public class Character : MonoBehaviour
     public Collider2D c2d;
 
     [ReadOnly]
+    public SpriteRenderer sr;
+
+    [ReadOnly]
     public DefaultFlipModule flipModule;
+
+    [Tooltip("Optional.")]
+    [SerializeField]
+    private AudioSource audioSource;
 
     [SerializeField]
     private Duration damageInvulnerability;
@@ -56,7 +63,10 @@ public class Character : MonoBehaviour
     /// </summary>
     public bool IsPlayer { get; private set; }
 
-    public bool hasDied = false;
+    /// <summary>
+    /// True if HP is 0.
+    /// </summary>
+    public bool IsDead => hp <= 0;
 
     /// <summary>
     /// The current HP of the character. Setting this value also calls <see
@@ -75,11 +85,6 @@ public class Character : MonoBehaviour
                 hp = 0;
                 EventManager.Instance.onCharacterDeath.Invoke(this);
                 onCharacterDeath.Invoke();
-                if (!hasDied || IsPlayer)
-                {
-                    Die();
-                    hasDied = true;
-                }
             }
         }
     }
@@ -132,6 +137,7 @@ public class Character : MonoBehaviour
 
         this.RequireComponent(out r2d);
         this.RequireComponent(out c2d);
+        this.RequireComponentInChildren(out sr);
 
         this.RequireComponent(out flipModule);
 
@@ -145,7 +151,7 @@ public class Character : MonoBehaviour
     #endregion
 
     #region MonoBehavior Methods
-    public virtual void Update()
+    public void Update()
     {
         // Required to get this to work properly.
         damageInvulnerability.IncrementUpdate(false);
@@ -207,18 +213,12 @@ public class Character : MonoBehaviour
         onCharacterRevive.Invoke();
     }
 
-    public virtual void Die()
+    /// <summary>
+    /// Kills the character by dealing maximum damage.
+    /// </summary>
+    public void Die()
     {
-        //if (IsPlayer)
-        //{
-        //    respawn.RespawnPlayer();
-        //    HP = maxHP;
-        //}
-        //else
-        //{
-        //    Destroy(this.gameObject);
-        //}
-
+        TakeDamage(int.MaxValue);
     }
 
     private void PlayerKnockback()
@@ -229,8 +229,18 @@ public class Character : MonoBehaviour
     #endregion
     #endregion
 
+    /// <summary>
+    /// Legacy function to play audio. Consider using <see
+    /// cref="AudioDictionary"/> instead.
+    /// </summary>
+    /// <param name="clip">The audio clip to play.</param>
     public void PlayClip(AudioClip clip)
     {
-        
+        if (!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.PlayOneShot(clip);
     }
 }
