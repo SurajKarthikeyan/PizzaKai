@@ -118,7 +118,7 @@ namespace XnTelemetry {
                 break;
             }
 
-            if ( overrideColor ) Handles.color = handleColor;
+            //if ( overrideColor ) Handles.color = handleColor;
 #endif
         }
     }

@@ -343,6 +343,8 @@ public class CharacterMovementModule : Module
             // direction. Also shoves all enemies out of the way.
             Master.r2d.bodyType = RigidbodyType2D.Kinematic;
             Master.r2d.velocity = inputtedDash * dashSpeed;
+
+            XnTelemetry.Telemetry_Cloud.DASHLOG("Dash");
         }
     }
 

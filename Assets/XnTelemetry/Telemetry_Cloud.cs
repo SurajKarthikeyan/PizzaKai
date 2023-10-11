@@ -41,6 +41,17 @@ namespace XnTelemetry {
             }
         }
 
+        public virtual void DashLog(string tag)
+        {
+            Telem telem = new Telem(elapsed, transform.position, transform.rotation, tag);
+            if (telemetrySettings.customEventDict.ContainsKey(tag))
+            {
+                telemetrySettings.customEventDict[tag].Draw(telem);
+                telems.Add(telem);
+            }
+                
+        }
+
         IEnumerator LogEveryInterval() {
             while (true) {
                 Log();
@@ -174,6 +185,11 @@ namespace XnTelemetry {
 
         static public void LOG(string tag) {
             if (S != null) S.Log(tag);
+        }
+
+        static public void DASHLOG(string tag)
+        {
+            S?.DashLog(tag);
         }
 
 
