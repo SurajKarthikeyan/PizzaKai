@@ -99,7 +99,7 @@ public class ModifierChain
     /// <returns></returns>
     public float Modify(float input)
     {
-        if (cacheDirty)
+        if (cacheDirty || !cache.Approx(input))
         {
             cache = input;
 

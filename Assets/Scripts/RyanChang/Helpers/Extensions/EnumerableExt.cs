@@ -9,52 +9,6 @@ using System.Linq;
 /// </summary>
 public static class EnumerableExt
 {
-    /// <summary>
-    /// Returns true if <paramref name="collection"/> is null or contains no
-    /// elements.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="collection">Collection to check.</param>
-    /// <returns></returns>
-    public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
-    {
-        return collection == null || collection.Count <= 0;
-    }
-
-    /// <summary>
-    /// Adds an addition to a list in the dictionary. Creates the list and adds
-    /// the addition if the specified key does not exist in the dictionary.
-    /// <typeparam name="TKey">The key.</typeparam>
-    /// <typeparam name="TMem">The member of the list within the
-    /// dictionary.</typeparam>
-    /// <param name="dict">The dictionary to add to.</param>
-    /// <param name="key">The specified key.</param>
-    /// <param name="addition">What to add to the list.</param>
-    /// </summary>
-    public static void CreateAndAddList<TKey, TMem>(this Dictionary<TKey,
-        List<TMem>> dict, TKey key, TMem addition)
-    {
-        dict.GetOrCreate(key).Add(addition);
-    }
-
-    /// <summary>
-    /// Creates a new instance of TMem if the specified key does not exist in
-    /// the provided dictionary.
-    /// </summary>
-    /// <typeparam name="TKey">The key type.</typeparam>
-    /// <typeparam name="TMem">The member type.</typeparam>
-    /// <param name="dict">The provided dictionary.</param>
-    /// <param name="key">The specified key.</param>
-    /// <returns>The newly created or found instance of TMem.</returns>
-    public static TMem GetOrCreate<TKey, TMem>(this Dictionary<TKey,
-        TMem> dict, TKey key) where TMem : class, new()
-    {
-        if (!dict.ContainsKey(key))
-            dict[key] = new();
-
-        return dict[key];
-    }
-
     #region Index
     /// <summary>
     /// Returns true if <paramref name="index"/> is a valid indexer into
@@ -80,7 +34,7 @@ public static class EnumerableExt
     /// name="collection"/> count. If it lies outside of that bound, then wrap
     /// it.
     /// </summary>
-    public static int WrapAroundLength(this int index, ICollection collection)
+    public static int WrapAroundLength<T>(this int index, ICollection<T> collection)
     {
         return index.WrapAroundLength(collection.Count);
     }
@@ -108,6 +62,7 @@ public static class EnumerableExt
     }
     #endregion
 
+    #region List
     /// <summary>
     /// Swaps the values in the collection at <paramref name="indexA"/> and
     /// <paramref name="indexB"/>.
@@ -121,7 +76,6 @@ public static class EnumerableExt
             (collection[indexA], collection[indexB]);
     }
 
-    #region List
     /// <summary>
     /// Removes everything past (and including) index from.
     /// </summary>
@@ -255,41 +209,17 @@ public static class EnumerableExt
     }
     #endregion
 
-    #region Enums
+    #region Misc
     /// <summary>
-    /// Evaluates <paramref name="value"/> and determines whether or not all
-    /// bits in <paramref name="flags"/> is also set in <paramref
-    /// name="value"/>.
+    /// Returns true if <paramref name="collection"/> is null or contains no
+    /// elements.
     /// </summary>
-    /// <typeparam name="TEnum">Any enum type.</typeparam>
-    /// <param name="value">The value to test.</param>
-    /// <param name="flags">The flags to test against.</param>
-    /// <returns>True if all bits in <paramref name="flags"/> are also set in
-    /// <paramref name="value"/>, false otherwise.</returns>
-    public static bool AllFlagsSet<TEnum>(this TEnum value, TEnum flags)
-        where TEnum : System.Enum
+    /// <typeparam name="T"></typeparam>
+    /// <param name="collection">Collection to check.</param>
+    /// <returns></returns>
+    public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
     {
-        var valueLong = Convert.ToInt64(value);
-        var flagsLong = Convert.ToInt64(flags);
-
-        return (valueLong & flagsLong) == flagsLong;
-    }
-
-    /// <summary>
-    /// Evaluates <paramref name="value"/> and determines whether or not at
-    /// least one bit in <paramref name="flags"/> is also set in its
-    /// corresponding location in <paramref name="value"/>.
-    /// </summary>
-    /// <returns>True if at least one bit in <paramref name="flags"/> is also
-    /// set in its corresponding location in <paramref name="value"/>, false
-    /// otherwise.</returns>
-    /// <inheritdoc cref="AllFlagsSet{TEnum}(TEnum, TEnum)"/>
-    public static bool SomeFlagsSet<TEnum>(this TEnum value, TEnum flags)
-    {
-        var valueLong = Convert.ToInt64(value);
-        var flagsLong = Convert.ToInt64(flags);
-
-        return (valueLong & flagsLong) != 0;
+        return collection == null || collection.Count <= 0;
     }
     #endregion
 }

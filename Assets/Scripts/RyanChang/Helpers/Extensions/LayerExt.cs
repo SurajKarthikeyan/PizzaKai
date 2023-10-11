@@ -78,7 +78,7 @@ public static class LayerExt
     /// </summary>
     /// <param name="layers">The layers to exclude from the mask.</param>
     /// <returns></returns>
-    public static LayerMask GetMask(params int[] layers)
+    public static LayerMask CreateMask(params int[] layers)
     {
         int mask = 0;
 

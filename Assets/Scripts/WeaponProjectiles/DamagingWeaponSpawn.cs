@@ -9,8 +9,9 @@ public abstract class DamagingWeaponSpawn : WeaponSpawn
 
     [Tooltip("Amount of damage to deal. This will be rounded to an int.")]
     [SerializeField]
-    private Range damage = new(14);
+    protected Range damage = new(14);
 
+    [HideInInspector]
     public ModifierChain damageModifier = new();
     #endregion
 

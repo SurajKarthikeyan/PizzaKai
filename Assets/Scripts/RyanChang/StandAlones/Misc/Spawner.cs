@@ -5,12 +5,18 @@ using UnityEngine.AI;
 
 public class Spawner : MonoBehaviour
 {
-    public List<GameObject> objectsToSpawn = new List<GameObject>();
+    [Tooltip("If true, start spawning ")]
+    public bool autostart = true;
+
+    [Tooltip("If true, then destroy all spawned objects when this spawner " +
+        "is destroyed.")]
+    public bool cleanUpSpawns = false;
+
+    public List<GameObject> objectsToSpawn = new();
 
     [HideInInspector]
     public List<GameObject> objectsSpawned = new();
     public Range spawnNum = new(1);
-    private int numSpawned;
 
     [Tooltip("Spawn objects after how many seconds?")]
     public float spawnTime = 0.1f;
@@ -18,14 +24,18 @@ public class Spawner : MonoBehaviour
     [Tooltip("Spawn radius")]
     public float spawnRadius;
 
+    [Tooltip("The maximum force to apply to the spawned object.")]
     public float maxStartForce;
 
-    public float startRotation;
-    public float rotationDeviation;
+    [Tooltip("The rotation to start at.")]
+    public Range startRotation;
 
-    public void Start()
+    private void Start()
     {
-        Invoke(nameof(StartSpawn), 0.1f);
+        if (autostart)
+        {
+            Invoke(nameof(StartSpawn), 0.1f);
+        }
     }
 
     private void OnDrawGizmos()
@@ -38,7 +48,7 @@ public class Spawner : MonoBehaviour
     /// For some reason, the entities fail to spawn in the correct location
     /// if the spawning is not deferred.
     /// </summary>
-    private void StartSpawn()
+    public void StartSpawn()
     {
         if (spawnTime > 0)
         {
@@ -55,14 +65,12 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnObjectsCoroutine()
     {
-        SpawnObjects();
-
-        numSpawned++;
-
-        yield return new WaitForSeconds(spawnTime);
-
-        if (numSpawned < spawnNum.Select())
-            StartCoroutine(SpawnObjectsCoroutine());
+        for (int i = 0; i < spawnNum.Select(); i++)
+        {
+            SpawnObjects();
+    
+            yield return new WaitForSeconds(spawnTime);
+        }
     }
 
     private void SpawnObjects()
@@ -84,19 +92,13 @@ public class Spawner : MonoBehaviour
         {
             nma.Warp(transform.position + offset);
             enemyObj.transform.rotation =
-                Quaternion.Euler(0, startRotation +
-                RNGExt.RandomFloat(
-                    -rotationDeviation, rotationDeviation), 0
-                    );
+                Quaternion.Euler(0, startRotation.Evaluate(), 0);
         }
         else
         {
             enemyObj.transform.SetPositionAndRotation(
                 transform.position + offset,
-                Quaternion.Euler(0, startRotation +
-                RNGExt.RandomFloat(
-                    -rotationDeviation, rotationDeviation), 0
-                    )
+                Quaternion.Euler(0, startRotation.Evaluate(), 0)
             );
         }
 
@@ -105,7 +107,10 @@ public class Spawner : MonoBehaviour
             r2d.AddForce(RNGExt.WithinCircle(Mathf.Abs(maxStartForce)));
         }
 
-        objectsSpawned.Add(enemyObj);
+        if (cleanUpSpawns)
+        {
+            objectsSpawned.Add(enemyObj);
+        }
 
         /// Uncomment for spawn debug
         //print($"Spawn at {enemyObj.transform.position} from spawner at {transform.position}");

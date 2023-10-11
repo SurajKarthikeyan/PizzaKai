@@ -49,7 +49,7 @@ public static class EditorExt
                 int index = int.Parse(name.Substring(bracketPos + 1,
                     name.Length - bracketPos - 2));
 
-                var enumerable = ((IEnumerable)targetObject);
+                var enumerable = (IEnumerable)targetObject;
 
                 // Iterate through the enumerable, until index is reached.
                 foreach (var thing in enumerable)
@@ -66,13 +66,19 @@ public static class EditorExt
             }
             else
             {
+                // Go through all inherited 
                 // For each name in the path, get the reflection.
-                FieldInfo field = targetType.GetField(name,
-                    BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo field = targetType.GetField(
+                    name,
+                    BindingFlags.NonPublic | BindingFlags.Public |
+                    BindingFlags.Instance | BindingFlags.FlattenHierarchy
+                );
 
                 if (field == null)
+                {
                     throw new System.NullReferenceException(
                         $"Field is null for {name}");
+                }
 
                 targetType = field.FieldType;
                 targetObject = field.GetValue(targetObject);
