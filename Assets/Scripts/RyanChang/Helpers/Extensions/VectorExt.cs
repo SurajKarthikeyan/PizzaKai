@@ -8,11 +8,15 @@ using System.Linq;
 /// </summary>
 public static class VectorExt
 {
+    #region Constants
     /// <summary>
     /// The default axis.
     /// </summary>
     /// <seealso cref="Axis"/>
     public const Axis DEFAULT_AXIS = Axis.Z;
+
+    public static Vector3 VECTOR3_NAN => new(float.NaN, float.NaN, float.NaN);
+    #endregion
 
     /// <summary>
     /// The axis on which we convert Vector2 (v2) to Vector3 (v3) and vice
