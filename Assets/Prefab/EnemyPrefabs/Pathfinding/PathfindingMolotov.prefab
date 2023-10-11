@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2036092049310882209}
   - component: {fileID: 2698420784114633084}
   - component: {fileID: 6623532801780059504}
-  - component: {fileID: 2118394690289951276}
   - component: {fileID: 6470781767325147832}
   - component: {fileID: 5482948887436973539}
   m_Layer: 9
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.04, y: 2.04, z: 2.04}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 4367462475517175693}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,12 +160,12 @@ MonoBehaviour:
       multiplier: 1
     unfoldedInInspector: 0
     fixedSelectionInInspector: 0
-  flags: 6
-  attachedCharacter: {fileID: 0}
+  flags: 1
+  attachedCharacter: {fileID: 5482948887436973539}
   projectileEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2118394690289951276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: StartSpawn
         m_Mode: 1
@@ -177,60 +177,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2118394690289951276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036092049310882222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f49d47c242d7a5795c39b2e993d9f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autostart: 0
-  cleanUpSpawns: 0
-  objectsToSpawn:
-  - {fileID: 3726359714984970032, guid: 8505e4ec636734c23b46c723c1203f9e, type: 3}
-  objectsSpawned: []
-  spawnNum:
-    rangePattern: 0
-    singleValue: 1
-    scalarMin: 1
-    scalarMax: 1
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    perlinCrawlSpeed: 0.1
-    modifer:
-      addition: 0
-      multiplier: 1
-    unfoldedInInspector: 1
-    fixedSelectionInInspector: 0
-  spawnTime: 0
-  spawnRadius: 0
-  maxStartForce: 0
-  startRotation:
-    rangePattern: 0
-    singleValue: 0
-    scalarMin: 0
-    scalarMax: 0
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    perlinCrawlSpeed: 0
-    modifer:
-      addition: 0
-      multiplier: 0
-    unfoldedInInspector: 0
-    fixedSelectionInInspector: 0
 --- !u!114 &6470781767325147832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,3 +214,67 @@ MonoBehaviour:
     maxTime: 0
     elapsed: 0
   knockbackMultiplier: 0
+--- !u!1 &8038509214884745026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367462475517175693}
+  - component: {fileID: 1098743139340067165}
+  - component: {fileID: 3214408147347005464}
+  m_Layer: 9
+  m_Name: Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4367462475517175693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038509214884745026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2036092049310882213}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1098743139340067165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038509214884745026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32143a7c91d3e451cb4f3ec1f2c52bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.1
+--- !u!114 &3214408147347005464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038509214884745026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f8375e61b610969a9fa4060cd04f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  dropTable:
+    elements:
+    - selection: {fileID: 3726359714984970032, guid: 8505e4ec636734c23b46c723c1203f9e, type: 3}
+      probability: 1
+  maxForce: 0
