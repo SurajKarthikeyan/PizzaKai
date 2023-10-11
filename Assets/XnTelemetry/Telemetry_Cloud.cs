@@ -47,7 +47,7 @@ namespace XnTelemetry {
             if (telemetrySettings.customEventDict.ContainsKey(tag))
             {
                 telemetrySettings.customEventDict[tag].Draw(telem);
-                telems.Add(telem);
+                //telems.Add(telem);
             }
                 
         }

@@ -24,8 +24,17 @@ MonoBehaviour:
   - name: Dash
     type: 0
     rot: 1
-    overrideColor: 1
+    overrideColor: 0
     color: {r: 0, g: 0.09651899, b: 1, a: 1}
+    icon: {fileID: 0}
+    iconSize: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+    scaleMultiplier: 2
+  - name: Death
+    type: 2
+    rot: 1
+    overrideColor: 1
+    color: {r: 1, g: 0.14359435, b: 0, a: 1}
     icon: {fileID: 0}
     iconSize: 0
     positionOffset: {x: 0, y: 0, z: 0}
