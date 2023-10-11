@@ -20,6 +20,6 @@ public class RavioliPathing : EnemyControlModule
     #endregion
 
     #region Private Methods
-    private float DistanceToPlayer() => transform.Distance2D(Player.transform);
+    private float DistanceToPlayer() => transform.Distance2D(GameManager.Instance.Player.transform);
     #endregion
 }
