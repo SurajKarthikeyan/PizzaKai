@@ -29,7 +29,12 @@ public class EnemyControlModule : Module
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
     // private Range targetTokenRefreshDelay = new(0.5f, 2);
-    private IEnumerator tokenRefreshCR;
+    //private IEnumerator tokenRefreshCR;
+    #endregion
+
+    #region Properties
+    public Vector3 Target => pathAgent.CurrentToken?.Target
+        ?? VectorExt.VECTOR3_NAN;
     #endregion
 
     #region Instantiation
@@ -52,11 +57,17 @@ public class EnemyControlModule : Module
     private void Start()
     {
         // For now, chase player.
-        pathAgent.SetTarget(GameManager.Instance.Player.transform);
+        SetTarget(GameManager.Instance.Player.transform);
     }
     #endregion
 
     #region Main Logic
+    /// <inheritdoc cref="PathfindingAgent.SetTarget(Vector3)"/>
+    public void SetTarget(Vector3 target) => pathAgent.SetTarget(target);
+
+    /// <inheritdoc cref="PathfindingAgent.SetTarget(Transform)"/>
+    public void SetTarget(Transform target) => pathAgent.SetTarget(target);
+
     public void AcceptToken(TargetToken token)
     {
         var heading = token.GetHeading(transform.position).normalized;

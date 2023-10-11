@@ -304,11 +304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6def4b5bea993b4298c107edd35eee61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpHeight: 4
   visualizer:
     tracerData: {fileID: 0}
     middleContainer: {fileID: 0}
-  aiUpdateRate: 2
   stuckTimer:
     maxTime: 8
     elapsed: 0
@@ -326,23 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4216788931708193480}
   pathAgent: {fileID: 4708559427818300093}
-  pathRecomputationDelay:
-    rangePattern: 1
-    singleValue: 3.5
-    scalarMin: 2
-    scalarMax: 5
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    perlinCrawlSpeed: 0.1
-    modifer:
-      addition: 0
-      multiplier: 1
-    unfoldedInInspector: 0
-    fixedSelectionInInspector: 0
   decisionTree: {fileID: 243598273414101973}
 --- !u!114 &243598273414101973
 MonoBehaviour:
@@ -357,4 +338,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root:
-    subtrees: []
+    subtrees:
+    - subtrees: []
