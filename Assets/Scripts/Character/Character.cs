@@ -122,14 +122,22 @@ public sealed class Character : MonoBehaviour
     private void Awake()
     {
         SetVars();
+
+        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
+
+        if (IsPlayer)
+        {
+            GameManager.Instance.Player = player.Master;
+        }
+
         HP = maxHP;
         transform.position = transform.position.ToVector2();
     }
 
-    // private void OnValidate()
-    // {
-    //     SetVars();
-    // }
+    private void OnValidate()
+    {
+        SetVars();
+    }
 
     private void SetVars()
     {
@@ -141,13 +149,11 @@ public sealed class Character : MonoBehaviour
         this.RequireComponentInChildren(out sr);
 
         this.RequireComponent(out flipModule);
+    }
 
-        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
-
-        if (IsPlayer)
-        {
-            GameManager.Instance.Player = player.Master;
-        }
+    private void Reset()
+    {
+        hp = 20;
     }
     #endregion
 

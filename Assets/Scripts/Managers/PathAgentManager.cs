@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -62,6 +63,19 @@ public class PathAgentManager : MonoBehaviour
     [Tooltip("If true, then use multithreading. Disable this if you want " +
         "to test pathfinding.")]
     public bool useThreads = true;
+
+    [BoxGroup("AI Timing")]
+    [Tooltip("How long will the path agent wait before recomputing the path " +
+        "after the agent arrives at its target?")]
+    public Range pathRecomputeDelay = new(0.2f, 1);
+
+    [BoxGroup("AI Timing")]
+    [Tooltip("How long between stuck checks?")]
+    public float stuckCheckDelay = 0.7f;
+
+    [BoxGroup("AI Timing")]
+    [Tooltip("How often to check for navigation updates?")]
+    public float aiUpdateRate = 0.4f;
     #endregion
 
     #region Properties
@@ -103,9 +117,9 @@ public class PathAgentManager : MonoBehaviour
             // Tasks are managed by C#'s ThreadPool, so you can create as many as
             // you want (I think).
             var task = Task.Run(() => thread.ThreadProcess(out path));
-    
+
             yield return new WaitUntil(() => task.IsCompleted);
-    
+
             if (!task.IsCompletedSuccessfully)
             {
                 throw task.Exception;
