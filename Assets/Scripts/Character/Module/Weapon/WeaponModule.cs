@@ -67,6 +67,9 @@ public class WeaponModule : Module
         "weapons the player has.")]
     public string weaponID = "[Not Set]";
 
+    [Tooltip("Bool stating whether this player has access to weapon or not")]
+    public bool accessible = false;
+
     [Tooltip("Describes the current status of the weapon.")]
     [ReadOnly]
     [SerializeField]

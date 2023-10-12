@@ -16,6 +16,10 @@ public class WeaponMasterModule : Module
     [Tooltip("The weapons available to the weapon master.")]
     public List<WeaponModule> weapons;
 
+    [Tooltip("The weapons available to the player.")]
+    [ReadOnly]
+    public List<WeaponModule> availableWeapons;
+
     [Tooltip("Which weapon is the character holding?")]
     public int weaponIndex;
 
@@ -29,13 +33,20 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Properties
-    public WeaponModule CurrentWeapon => weapons[weaponIndex];
+    public WeaponModule CurrentWeapon => availableWeapons[weaponIndex];
     #endregion
 
     #region Methods
     #region Instantiation
     private void Awake()
     {
+        foreach(var weapon in weapons)
+        {
+            if (weapon.accessible)
+            {
+                availableWeapons.Add(weapon);
+            }
+        }
         SetComponents();
     }
 
@@ -196,7 +207,7 @@ public class WeaponMasterModule : Module
     /// within range of <see cref="weapons"/>.</param>
     public void SwitchToWeapon(int index)
     {
-        weaponIndex = index.WrapAroundLength(weapons);
+        weaponIndex = index.WrapAroundLength(availableWeapons);
         EnableCurrentWeapon();
     }
 
@@ -205,7 +216,7 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void EnableCurrentWeapon()
     {
-        weapons.ForEach(weap => weap.gameObject.SetActive(false));
+        availableWeapons.ForEach(weap => weap.gameObject.SetActive(false));
 
         CurrentWeapon.gameObject.SetActive(true);
     }
@@ -219,7 +230,8 @@ public class WeaponMasterModule : Module
     public WeaponModule AddWeapon(WeaponModule weapon)
     {
         weapon.transform.Localize(transform);
-        weapons.Insert(0, weapon);
+        weapon.accessible = true;
+        availableWeapons.Insert(0, weapon);
         SwitchToWeapon(0);
         return weapon;
     }
