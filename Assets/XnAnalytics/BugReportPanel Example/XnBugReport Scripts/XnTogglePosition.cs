@@ -109,6 +109,13 @@ namespace XnBugReport {
                 }
 
                 state = nextState;
+                //I couldn't get it to work so im manually setting the stat to the next pos
+                if (state == eState.moving1)
+                    state = eState.pos1;
+                if (state == eState.moving0)
+                    state = eState.pos0;
+
+
             }
         }
 

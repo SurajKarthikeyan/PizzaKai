@@ -52,7 +52,12 @@ public class FadeToBlack : MonoBehaviour
         {
             if (sceneToLoad != null || sceneToLoad != "") 
             {
+                LevelAnalytics levelAnalytics = FindObjectOfType<LevelAnalytics>();
+                levelAnalytics.levelCompleted = true;
+                levelAnalytics.PostLevelAnalytics();
+
                 SceneManager.LoadScene(sceneToLoad);
+                
             }
             
             fadeDone = true;

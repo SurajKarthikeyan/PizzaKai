@@ -19,7 +19,6 @@ public class LevelAnalytics : MonoBehaviour
         startTime = Time.fixedTime;
         WMM = FindObjectOfType<WeaponMasterModule>();
         currentWeapon = WMM.CurrentWeapon;
-        print(currentWeapon);
     }
 
     private void FixedUpdate()
