@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyAITree : Module
+public class EnemyAITree
 {
     #region Classes
     [System.Serializable]
@@ -15,7 +15,35 @@ public class EnemyAITree : Module
 
         public List<TreeElement> subtrees = new();
 
-        public TreeElement AIUpdate(EnemyControlModule enemy)
+        /// <summary>
+        /// Updates all the actions within this element.
+        /// </summary>
+        /// <param name="enemy">The enemy controller.</param>
+        /// <param name="next">The next tree element. May be set to this if this
+        /// has any remaining actions left.</param>
+        public void UpdateAI(EnemyControlModule enemy, out TreeElement next)
+        {
+            bool actionsAllDone = true;
+
+            foreach (var act in actions)
+            {
+                if (!act.UpdateAI(enemy))
+                {
+                    actionsAllDone = false;
+                }
+            }
+
+            if (actionsAllDone)
+            {
+                next = GoToNext(enemy);
+            }
+            else
+            {
+                next = this;
+            }
+        }
+
+        private TreeElement GoToNext(EnemyControlModule enemy)
         {
             if (subtrees.IsNullOrEmpty())
             {
@@ -38,34 +66,4 @@ public class EnemyAITree : Module
     #region Variables
     public TreeElement root;
     #endregion
-
-    // private void OnValidate()
-    // {
-    //     foreach (var tree in FlattenedElements())
-    //     {
-    //         tree.
-    //     }
-    // }
-
-
-
-    /// <summary>
-    /// Iterates through all the subtrees.
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerable<TreeElement> FlattenedElements()
-    {
-        Queue<TreeElement> q = new(root.subtrees);
-
-        while (q.Count > 0)
-        {
-            var branch = q.Dequeue();
-            yield return branch;
-
-            foreach (var subtree in branch.subtrees)
-            {
-                q.Enqueue(subtree);
-            }
-        }
-    }
 }

@@ -24,7 +24,14 @@ public class EnemyControlModule : Module
     [ReadOnly]
     public PathfindingAgent pathAgent;
 
+    [Tooltip("The root element of the decision tree.")]
     public EnemyAITree decisionTree;
+
+    /// <summary>
+    /// Current branch of the AI tree.
+    /// </summary>
+    [HideInInspector]
+    private EnemyAITree.TreeElement currentBranch;
 
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
@@ -67,6 +74,9 @@ public class EnemyControlModule : Module
 
     /// <inheritdoc cref="PathfindingAgent.SetTarget(Transform)"/>
     public void SetTarget(Transform target) => pathAgent.SetTarget(target);
+
+    /// <inheritdoc cref="PathfindingAgent.SetTarget(TargetToken)"/>
+    public void SetTarget(TargetToken target) => pathAgent.SetTarget(target);
 
     public void AcceptToken(TargetToken token)
     {
