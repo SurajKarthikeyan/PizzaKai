@@ -54,12 +54,14 @@ public class AIAction
     public Transform targetTransform;
 
     [AllowNesting]
+    [Tooltip("The preferred range to move.")]
     [ShowIf(nameof(moveFlags), MovementFlags.KeepDistance)]
-    public MinMax moveRange = new(5, 10);
+    public MinMax preferredMoveRange = new(5, 10);
 
-    [AllowNesting]
-    [ShowIf(nameof(miscFlags), MiscFlags.ShootAtTarget)]
-    public MinMax shootingRange = new(10, 15);
+    //[AllowNesting]
+    //[Tooltip("The preferred range to start shooting.")]
+    //[ShowIf(nameof(miscFlags), MiscFlags.ShootAtTarget)]
+    //public MinMax shootingRange = new(10, 15);
     #endregion
 
     #region Private Variables
@@ -67,38 +69,35 @@ public class AIAction
     #endregion
 
     /// <summary>
-    /// Called when the AI is started.
-    /// </summary>
-    /// <param name="enemy"></param>
-    public void StartAI(EnemyControlModule enemy)
-    {
-        targetToken = targetFlags switch
-        {
-            TargetFlags.TargetPlayer => new(GameManager.Instance.Player.transform),
-            TargetFlags.TargetTransform => new(targetTransform),
-            TargetFlags.TargetPoint => new(targetPoint),
-            _ => null
-        };
-
-        if (targetToken != null)
-        {
-            switch (moveFlags)
-            {
-                case MovementFlags.SimpleFollow:
-                    enemy.SetTarget(targetToken);
-                    break;
-            }
-        }
-    }
-
-    /// <summary>
     /// Called when the AI is updated with FixedUpdate.
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns>True if the action has completed, false otherwise.</returns>
-    public bool UpdateAI(EnemyControlModule enemy)
+    public bool UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
-        
+        if (target != null)
+        {
+            switch (moveFlags)
+            {
+                case MovementFlags.SimpleFollow:
+                    if (PathfindingManager.Instance.InSameCell(
+                            target.Target,
+                            enemy.transform.position
+                        ))
+                    {
+                        return true;
+                    }
+                    else if (PathfindingManager.Instance.InSameCell(
+                                target.Target,
+                                enemy.Target
+                            ))
+                    {
+                        enemy.SetTarget(target);
+                    }
+
+                    break;
+            }
+        }
 
         return true;
     }
