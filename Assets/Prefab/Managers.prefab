@@ -113,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7581203168070266453}
   - component: {fileID: 5216390918397901653}
+  - component: {fileID: 7418077980715241165}
   m_Layer: 0
   m_Name: Analytics
   m_TagString: Untagged
@@ -148,6 +149,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheetsUrl: https://script.google.com/macros/s/AKfycby6H8X9x-SSxb9T3iAC_glRfxNTAJ-lm0pK4TyKjosykky8Q1MJEc15Z9Dj6s221CDU/exec
+--- !u!114 &7418077980715241165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147656651423216130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e9bb5aebc699a46ab681d1b6af9307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WMM: {fileID: 0}
+  currentWeapon: {fileID: 0}
+  levelCompleted: 0
+  levelName: 
 --- !u!1 &3917945205210972639
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +262,6 @@ MonoBehaviour:
   isPaused: 0
   pauseMenu: {fileID: 0}
   ammoUI: {fileID: 0}
-  respawn: {fileID: 0}
   player: {fileID: 0}
   isDying: 0
   weaponMaster: {fileID: 0}
@@ -621,6 +637,7 @@ MonoBehaviour:
   canJumpLayers:
     serializedVersion: 2
     m_Bits: 329
+  defaultRespawnPoint: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &9196742206444863517
 GameObject:
