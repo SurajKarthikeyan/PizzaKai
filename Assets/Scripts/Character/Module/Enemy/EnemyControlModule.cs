@@ -61,10 +61,22 @@ public class EnemyControlModule : Module
         this.RequireComponent(out pathAgent);
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //    //// For now, chase player.
+    //    //SetTarget(GameManager.Instance.Player.transform);
+    //}
+    #endregion
+
+    #region Main Loop
+    private IEnumerator OnEnable()
     {
-        // For now, chase player.
-        SetTarget(GameManager.Instance.Player.transform);
+        while (enabled)
+        {
+            yield return new WaitForSeconds(PathAgentManager.Instance.aiUpdateRate);
+
+            decisionTree.AIUpdate(this);
+        }
     }
     #endregion
 

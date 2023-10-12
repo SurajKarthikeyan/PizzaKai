@@ -326,17 +326,15 @@ MonoBehaviour:
   decisionTree:
     root:
       decision:
+        distanceFlags: 0
         priority: 0
-      actions:
-      - targetFlags: 3
-        moveFlags: 2
+      action:
+        targetFlags: 3
+        moveFlags: 0
         miscFlags: 0
         targetPoint: {x: 0, y: 0, z: 0}
         targetTransform: {fileID: 0}
-        moveRange:
-          min: 0
-          max: 0
-        shootingRange:
-          min: 0
-          max: 0
+        preferredMoveRange:
+          min: 5
+          max: 10
       subtrees: []
