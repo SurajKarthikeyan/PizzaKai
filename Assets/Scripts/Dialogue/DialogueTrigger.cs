@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public string dialogueBlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DialogueManager.Instance.CallDialogueBlock("TommyGunTutorial");
+            DialogueManager.Instance.CallDialogueBlock(dialogueBlock);
         }
     }
 }
