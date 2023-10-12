@@ -16,28 +16,25 @@ using UnityEngine;
 public class AIAction
 {
     #region Flags
-    [System.Flags]
     public enum TargetFlags
     {
-        Nothing = 0,
-        TargetPoint = 1,
-        TargetTransform = 2,
-        TargetPlayer = 4,
+        Nothing,
+        TargetPoint,
+        TargetTransform,
+        TargetPlayer,
     }
 
-    [System.Flags]
     public enum MovementFlags
     {
-        Nothing = 0,
-        SimpleFollow = 1,
-        KeepDistance = 2
+        Nothing,
+        SimpleFollow,
+        KeepDistance
     }
 
-    [System.Flags]
     public enum MiscFlags
     {
-        Nothing = 0,
-        ShootAtTarget = 1,
+        Nothing,
+        ShootAtTarget,
     }
     #endregion
 
@@ -48,15 +45,19 @@ public class AIAction
 
     public MiscFlags miscFlags;
 
+    [AllowNesting]
     [ShowIf(nameof(targetFlags), TargetFlags.TargetPoint)]
     public Vector3 targetPoint;
 
+    [AllowNesting]
     [ShowIf(nameof(targetFlags), TargetFlags.TargetTransform)]
     public Transform targetTransform;
 
+    [AllowNesting]
     [ShowIf(nameof(moveFlags), MovementFlags.KeepDistance)]
     public MinMax moveRange = new(5, 10);
 
+    [AllowNesting]
     [ShowIf(nameof(miscFlags), MiscFlags.ShootAtTarget)]
     public MinMax shootingRange = new(10, 15);
     #endregion

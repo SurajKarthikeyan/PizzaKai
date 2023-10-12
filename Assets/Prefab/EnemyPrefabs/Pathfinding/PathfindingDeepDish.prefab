@@ -66,7 +66,6 @@ GameObject:
   - component: {fileID: 4216788931708193480}
   - component: {fileID: 4708559427818300093}
   - component: {fileID: 5774588144130074580}
-  - component: {fileID: 243598273414101973}
   m_Layer: 10
   m_Name: PathfindingDeepDish
   m_TagString: Enemy
@@ -324,19 +323,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4216788931708193480}
   pathAgent: {fileID: 4708559427818300093}
-  decisionTree: {fileID: 243598273414101973}
---- !u!114 &243598273414101973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148419337918994584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e0173e4e1faff3597e45209e901f75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  root:
-    subtrees:
-    - subtrees: []
+  decisionTree:
+    root:
+      decision:
+        priority: 0
+      actions:
+      - targetFlags: 3
+        moveFlags: 2
+        miscFlags: 0
+        targetPoint: {x: 0, y: 0, z: 0}
+        targetTransform: {fileID: 0}
+        moveRange:
+          min: 0
+          max: 0
+        shootingRange:
+          min: 0
+          max: 0
+      subtrees: []
