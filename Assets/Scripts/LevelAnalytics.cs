@@ -23,6 +23,9 @@ public class LevelAnalytics : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (levelName == "MainMenu")
+            return;
+
         currentWeapon = WMM.CurrentWeapon;
         switch (currentWeapon)
         {
