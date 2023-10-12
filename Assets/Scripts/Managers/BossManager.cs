@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
@@ -13,6 +14,14 @@ public class BossManager : MonoBehaviour
     public GameObject bossCamParent;
 
     private GameObject bossCam;
+
+    public ConveyorBeltScript conveyorBelt;
+
+    public Forky forky;
+
+    public AudioSource music;
+
+    public AudioClip bossTheme;
 
     public static BossManager instance;
 
@@ -32,8 +41,6 @@ public class BossManager : MonoBehaviour
     {
         bossCam = bossCamParent.transform.GetChild(0).gameObject;
     }
-
-  
 
     void Update()
     {
@@ -65,6 +72,15 @@ public class BossManager : MonoBehaviour
             //Set bossStart to true
             bossStart = true;
         }
+    }
+
+    public void ForkyBossStart()
+    {
+        forky.active = true;
+        conveyorBelt.conveyorSpeed = -1;
+        music.Stop();
+        music.PlaySound(bossTheme, 1);
+        music.loop = true;
     }
 
 }

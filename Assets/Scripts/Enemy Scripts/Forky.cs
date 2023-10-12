@@ -23,6 +23,8 @@ public class Forky : MonoBehaviour
     [Tooltip("Audio Source for forky walkie talkie")]
     public AudioSource walkieTalkieSource;
 
+    public bool active = false;
+
     //Spawn interval settings
 
     //Minimum time for box to spawn
@@ -78,28 +80,31 @@ public class Forky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsDead)
+        if (active)
         {
-            //Play Death Animation once and destroy object
-            //Going to Main Menu is temporary
-            SceneManager.LoadScene("MainMenu");
-        }
-
-        //Logic for when the boss is alive
-        else if (!actionTaken)
-        {
-            float enemySpawnChance = Random.Range(0, 1f);
-            if (enemySpawnChance <= 0.25f) 
+            if (IsDead)
             {
-                //Start coroutine for spawning enemies after a certain amount of time
-                StartCoroutine(IntervalSpawner(true));
-            }
-            else
-            {
-                //Start coroutine for spawning boxes
-                StartCoroutine(IntervalSpawner(false));
+                //Play Death Animation once and destroy object
+                //Going to Main Menu is temporary
+                SceneManager.LoadScene("MainMenu");
             }
 
+            //Logic for when the boss is alive
+            else if (!actionTaken)
+            {
+                float enemySpawnChance = Random.Range(0, 1f);
+                if (enemySpawnChance <= 0.25f)
+                {
+                    //Start coroutine for spawning enemies after a certain amount of time
+                    StartCoroutine(IntervalSpawner(true));
+                }
+                else
+                {
+                    //Start coroutine for spawning boxes
+                    StartCoroutine(IntervalSpawner(false));
+                }
+
+            }
         }
     }
     #endregion
