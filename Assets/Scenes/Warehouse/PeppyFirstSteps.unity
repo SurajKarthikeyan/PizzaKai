@@ -142177,11 +142177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1597938267 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8206075540257416576, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-  m_PrefabInstance: {fileID: 2061561924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629099880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144855,30 +144850,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 995613533016112330, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: accessible
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2407071942407806261, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2604085519130311706, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: accessible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213876410492947914, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: accessible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4790811292301610700, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4790811292301610700, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -144927,10 +144898,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9030143811031299631, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-      propertyPath: m_Targets.Array.data[0].target
-      value: 
-      objectReference: {fileID: 1597938267}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
 --- !u!1 &2073156824
