@@ -12,17 +12,12 @@ public class Lever : MonoBehaviour
 
     #endregion
 
-    #region UnityMethods
-    
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            AudioDictionary.aDict.PlayAudioClip("leverSwitch", AudioDictionary.Source.Lever);
-            leverArm.GetComponent<SpriteRenderer>().color = Color.red;
-        }
+    #region PrivateMethods
 
-        int x = 5;
+    public void LeverArmActivate()
+    {
+        AudioDictionary.aDict.PlayAudioClip("leverSwitch", AudioDictionary.Source.Lever);
+        leverArm.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     #endregion

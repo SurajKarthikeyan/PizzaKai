@@ -126,6 +126,11 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     {
                         collider.gameObject.GetComponent<BurningScript>().BurnBox();
                     }
+                    
+                    else if (collider.gameObject.HasComponent(out Lever lever))
+                    {
+                        lever.LeverArmActivate();
+                    }
 
                     if (currentRicochets < ricochets)
                     {
