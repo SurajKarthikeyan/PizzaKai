@@ -325,16 +325,22 @@ MonoBehaviour:
   pathAgent: {fileID: 4708559427818300093}
   decisionTree:
     root:
-      decision:
-        distanceFlags: 0
-        priority: 0
-      action:
-        targetFlags: 3
-        moveFlags: 0
-        miscFlags: 0
+      targeting:
+        flags: 3
         targetPoint: {x: 0, y: 0, z: 0}
         targetTransform: {fileID: 0}
+      decision:
+        flags: 1
+        priority: 0
+        distanceToTarget:
+          mode: 0
+          min: 0
+          max: 5
+      action:
+        moveFlags: 2
+        miscFlags: 0
         preferredMoveRange:
+          mode: 0
           min: 5
           max: 10
-      subtrees: []
+      branches: []

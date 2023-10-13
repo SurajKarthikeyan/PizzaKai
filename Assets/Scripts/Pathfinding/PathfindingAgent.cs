@@ -72,6 +72,13 @@ public class PathfindingAgent : MonoBehaviour
     public Path<Vector3Int> CurrentPath { get; private set; }
 
     /// <summary>
+    /// True if <see cref="CurrentPath"/> is set to some valid value.
+    /// </summary>
+    public bool HasPath => CurrentPath != null &&
+        State == NavigationState.WaitingForPath ||
+        State == NavigationState.NavigatingToDestination;
+
+    /// <summary>
     /// The current target token.
     /// </summary>
     public TargetToken CurrentToken { get; private set; }

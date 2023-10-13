@@ -16,14 +16,6 @@ using UnityEngine;
 public class AIAction
 {
     #region Flags
-    public enum TargetFlags
-    {
-        Nothing,
-        TargetPoint,
-        TargetTransform,
-        TargetPlayer,
-    }
-
     public enum MovementFlags
     {
         Nothing,
@@ -39,19 +31,9 @@ public class AIAction
     #endregion
 
     #region Variables
-    public TargetFlags targetFlags;
-
     public MovementFlags moveFlags;
 
     public MiscFlags miscFlags;
-
-    [AllowNesting]
-    [ShowIf(nameof(targetFlags), TargetFlags.TargetPoint)]
-    public Vector3 targetPoint;
-
-    [AllowNesting]
-    [ShowIf(nameof(targetFlags), TargetFlags.TargetTransform)]
-    public Transform targetTransform;
 
     [AllowNesting]
     [Tooltip("The preferred range to move.")]
@@ -64,10 +46,6 @@ public class AIAction
     //public MinMax shootingRange = new(10, 15);
     #endregion
 
-    #region Private Variables
-    private TargetToken targetToken;
-    #endregion
-
     /// <summary>
     /// Called when the AI is updated with FixedUpdate.
     /// </summary>
@@ -77,25 +55,45 @@ public class AIAction
     {
         if (target != null)
         {
+            PathfindingManager pm = PathfindingManager.Instance;
+
             switch (moveFlags)
             {
                 case MovementFlags.SimpleFollow:
-                    if (PathfindingManager.Instance.InSameCell(
+                    if (pm.InSameCell(
                             target.Target,
                             enemy.transform.position
                         ))
                     {
+                        // Arrived at target.
                         return true;
                     }
-                    else if (PathfindingManager.Instance.InSameCell(
-                                target.Target,
-                                enemy.Target
-                            ))
+
+                    return false;
+                case MovementFlags.KeepDistance:
+                    if (enemy.pathAgent.HasPath)
                     {
-                        enemy.SetTarget(target);
+                        int dist = enemy.pathAgent.CurrentPath.GetLength(
+                            pm.WorldToCell(enemy.transform.position)
+                        );
+    
+                        if (preferredMoveRange.Evaluate(dist))
+                        {
+                            // Arrived at ideal distance.
+                            return true;
+                        }
+                        
+                        dist = pm.WorldToCell(enemy.transform.position)
+                            .TaxicabDistance(target.GridTarget);
+                        
+                        if (preferredMoveRange.Evaluate(dist))
+                        {
+                            // Arrived at ideal distance.
+                            return true;
+                        }
                     }
 
-                    break;
+                    return false;
             }
         }
 
