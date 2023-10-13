@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Multishot : WeaponSpawn
 {
+    [HideInInspector]
+    //this variable is needed to properly add extra pellets from the shotgun upgrade
+    public int upAmount;
+
     [System.Serializable]
     public class Shot
     {
@@ -21,6 +25,7 @@ public class Multishot : WeaponSpawn
         foreach (var shot in shots)
         {
             int amount = Mathf.RoundToInt(shot.amount.Evaluate());
+            amount += upAmount;
             for (int i = 0; i < amount; i++)
             {
                 // Spawn shots.

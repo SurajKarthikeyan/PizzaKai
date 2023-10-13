@@ -16,9 +16,12 @@ public class UpgradeManager : MonoBehaviour
     #endregion
 
     #region Variables
-    private WeaponSpawn flameProjectile;
+    private WeaponModule tommygun;
+    private WeaponModule shotgun;
+    private WeaponModule flamethrower;
+    private WeaponModule sniper;
 
-    private WeaponSpawn shotgunProjectile;
+    private WeaponMasterModule WMM;
 
     [Header("Upgrade Values")]
     [Tooltip("the amount of extra bullets the upgrade adds to the tommygun's magazine")]
@@ -49,9 +52,28 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
-        shotgunProjectile = FindObjectOfType<ShotGunWeapon>().bullet;
-        print(shotgunProjectile.name);
-        flameProjectile = FindObjectOfType<FlameThrowerWeapon>().bullet;
+        WMM = FindObjectOfType<WeaponMasterModule>();
+        foreach(WeaponModule weaponM in WMM.weapons)
+        {
+            switch (weaponM.weaponID)
+            {
+                case "SMG":
+                    tommygun = weaponM;
+                    break;
+                case "Shotgun":
+                    shotgun = weaponM;
+                    break;
+                case "Flamethrower":
+                    flamethrower = weaponM;
+                    break;
+                //case "Sniper":
+                    //sniper = weaponM;
+                    //break;
+            }
+        }
+        shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
+        flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
+        
 
         //these are for re-applying the upgrades to the new player in the scene
         if (tommyUP)
@@ -83,7 +105,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!tommyUP)
         {
-            FindObjectOfType<TommyGunWeapon>().ammoCount += extraTommyAmmo;
+            tommygun.ammoCount += extraTommyAmmo;
             tommyUP = true;
         }
     }
@@ -92,7 +114,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!shotgunUP)
         {
-            //shotgunProjectile.shots[0].amount = new(shotgunProjectile.shots[0].amount.singleValue + extraShotgunPellets);
+            shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = extraShotgunPellets;
             shotgunUP = true;
         }
     }
@@ -101,7 +123,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!flamethrowerUP)
         {
-            //flameProjectile.range = new(flameProjectile.range.singleValue + extraFlamethrowerRange);
+            flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = extraFlamethrowerRange;
             flamethrowerUP = true;
         }
     }
@@ -114,5 +136,7 @@ public class UpgradeManager : MonoBehaviour
             sniperUP = true;
         }
     }
+
     #endregion
+    
 }
