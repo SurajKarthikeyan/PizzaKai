@@ -86,7 +86,8 @@ public class Forky : MonoBehaviour
             {
                 //Play Death Animation once and destroy object
                 //Going to Main Menu is temporary
-                SceneManager.LoadScene("MainMenu");
+                active = false;
+                DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
             }
 
             //Logic for when the boss is alive
