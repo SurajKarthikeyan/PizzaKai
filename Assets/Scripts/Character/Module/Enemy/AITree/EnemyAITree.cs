@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,7 +7,7 @@ public class EnemyAITree
 {
     #region Classes
     [System.Serializable]
-    public class TreeElement
+    public class Branch
     {
         [Tooltip("Determines what to target.")]
         public AITargeting targeting;
@@ -16,77 +17,58 @@ public class EnemyAITree
 
         public AIAction action;
 
-        public List<TreeElement> subtrees = new();
+        public List<Branch> branches = new();
 
         public bool PeekInto(EnemyControlModule enemy)
         {
             TargetToken target = targeting.GetTarget();
 
-            return target != null && decision.CheckDecision(enemy);
+            return target != null && decision.CheckDecision(enemy, target);
         }
 
-        public void UpdateAI(EnemyControlModule enemy, out TreeElement next)
+        public Branch UpdateAI(EnemyControlModule enemy)
         {
             TargetToken target = targeting.GetTarget();
 
             if (!action.UpdateAI(enemy, target))
             {
-                // TODO: Go onto next area.
+                // Action has ended. Go onto next.
+
+                if (!branches.IsNullOrEmpty())
+                {
+                    // Select from branches.
+                    var validBranches = branches
+                        .Where(b => b.decision.CheckDecision(enemy, target));
+
+                    if (validBranches.Any())
+                    {
+                        return validBranches
+                            .Aggregate(
+                                (b1, b2) =>
+                                    b1.decision.priority > b2.decision.priority
+                                    ? b1 : b2
+                            );
+                    }
+                }
+                // No more valid branches. Return root.
+                return enemy.decisionTree.root;
             }
 
-            next = this;
+            // Action still occurring.
+            return this;
         }
-
-        ///// <summary>
-        ///// Updates all the actions within this element.
-        ///// </summary>
-        ///// <param name="enemy">The enemy controller.</param>
-        ///// <param name="next">The next tree element. May be set to this if this
-        ///// has any remaining actions left.</param>
-        //public void UpdateAI(EnemyControlModule enemy, out TreeElement next)
-        //{
-        //    if (!action.UpdateAI(enemy))
-        //    {
-        //        next = GoToNext(enemy);
-        //    }
-        //    else
-        //    {
-        //        next = this;
-        //    }
-        //}
-
-        //private TreeElement GoToNext(EnemyControlModule enemy)
-        //{
-        //    if (subtrees.IsNullOrEmpty())
-        //    {
-        //        return enemy.decisionTree.root;
-        //    }
-        //    else
-        //    {
-        //        foreach (var branch in subtrees)
-        //        {
-        //            if (branch.decision.CheckDecision(enemy))
-        //                return branch;
-        //        }
-
-        //        return this;
-        //    }
-        //}
     }
     #endregion
 
     #region Variables
-    public TreeElement root;
+    public Branch root;
 
-    private TreeElement current = null;
+    private Branch current = null;
     #endregion
 
 
     public void AIUpdate(EnemyControlModule enemy)
     {
-        if (current == null)
-            current = root;
-
-        current.UpdateAI(enemy, out current);
+        current = (current ??= root).UpdateAI(enemy);
     }
 }

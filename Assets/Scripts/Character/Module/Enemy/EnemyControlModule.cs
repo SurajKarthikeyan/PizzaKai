@@ -31,7 +31,7 @@ public class EnemyControlModule : Module
     /// Current branch of the AI tree.
     /// </summary>
     [HideInInspector]
-    private EnemyAITree.TreeElement currentBranch;
+    private EnemyAITree.Branch currentBranch;
 
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
@@ -69,7 +69,7 @@ public class EnemyControlModule : Module
     #endregion
 
     #region Main Loop
-    private IEnumerator OnEnable()
+    private IEnumerator Start()
     {
         while (enabled)
         {

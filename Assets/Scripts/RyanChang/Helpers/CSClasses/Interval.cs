@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
+[System.Obsolete("Use Duration instead")]
 public class Interval
 {
     [Tooltip("The range used.")]
