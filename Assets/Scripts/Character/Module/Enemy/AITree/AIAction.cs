@@ -33,11 +33,9 @@ public class AIAction
     #endregion
 
     #region Variables
+    #region Halting
     [InfoBox("Determines when the action is considered to be done.")]
     public HaltingFlags haltingFlags;
-
-    [InfoBox("Determines what actions to perform. Can select multiple.")]
-    public ActionFlags actionFlags;
 
     [AllowNesting]
     [Tooltip("The time to wait for this action to complete.")]
@@ -48,11 +46,12 @@ public class AIAction
     [Tooltip("The preferred distance to the target.")]
     [ShowIf(nameof(haltingFlags), HaltingFlags.DistanceFromTarget)]
     public MinMax preferredDistance = new(5, 10);
+    #endregion
 
-    //[AllowNesting]
-    //[Tooltip("The preferred range to start shooting.")]
-    //[ShowIf(nameof(miscFlags), MiscFlags.ShootAtTarget)]
-    //public MinMax shootingRange = new(10, 15);
+    #region Action
+    [InfoBox("Determines what actions to perform. Can select multiple.")]
+    public ActionFlags actionFlags;
+    #endregion
     #endregion
 
     /// <summary>
@@ -62,21 +61,9 @@ public class AIAction
     /// <returns>True if the action has completed, false otherwise.</returns>
     public bool UpdateAI(EnemyControlModule enemy, TargetToken target, float deltaTime)
     {
-        if (actionFlags.HasFlag(ActionFlags.Follow))
-        {
-            if (enemy.pathAgent.State == PathfindingAgent.NavigationState.Idle)
-            {
-
-            }
-        }
-
-        if (target == null)
-            return true;
-
+        PerformActions(enemy, target, deltaTime);
         return CheckIfDone(enemy, target, deltaTime);
     }
-
-
 
     /// <summary>
     /// Called when it's time to exit control of the AI action.
@@ -84,12 +71,30 @@ public class AIAction
     /// <param name="enemy"></param>
     public void ExitAI(EnemyControlModule enemy)
     {
-
+        if (actionFlags.HasFlag(ActionFlags.Follow))
+        {
+            enemy.ClearMoveTarget();
+        }
     }
 
     #region Helpers
+    private void PerformActions(EnemyControlModule enemy, TargetToken target, float deltaTime)
+    {
+        if (actionFlags.HasFlag(ActionFlags.Follow))
+        {
+            if (enemy.pathAgent.State == PathfindingAgent.NavigationState.Idle)
+            {
+                // In idle state, which means it can accept an move input.
+                enemy.SetMoveTarget(target);
+            }
+        }
+    }
+
     private bool CheckIfDone(EnemyControlModule enemy, TargetToken target, float deltaTime)
     {
+        if (target == null)
+            return true;
+
         PathfindingManager pm = PathfindingManager.Instance;
 
         switch (haltingFlags)

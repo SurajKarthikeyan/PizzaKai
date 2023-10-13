@@ -27,12 +27,6 @@ public class EnemyControlModule : Module
     [Tooltip("The root element of the decision tree.")]
     public EnemyAITree decisionTree;
 
-    /// <summary>
-    /// Current branch of the AI tree.
-    /// </summary>
-    [HideInInspector]
-    private EnemyAITree.Branch currentBranch;
-
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
     // private Range targetTokenRefreshDelay = new(0.5f, 2);
@@ -77,13 +71,18 @@ public class EnemyControlModule : Module
 
     #region Main Logic
     /// <inheritdoc cref="PathfindingAgent.SetTarget(Vector3)"/>
-    public void SetTarget(Vector3 target) => pathAgent.SetTarget(target);
+    public void SetMoveTarget(Vector3 target) => pathAgent.SetTarget(target);
 
     /// <inheritdoc cref="PathfindingAgent.SetTarget(Transform)"/>
-    public void SetTarget(Transform target) => pathAgent.SetTarget(target);
+    public void SetMoveTarget(Transform target) => pathAgent.SetTarget(target);
 
     /// <inheritdoc cref="PathfindingAgent.SetTarget(TargetToken)"/>
-    public void SetTarget(TargetToken target) => pathAgent.SetTarget(target);
+    public void SetMoveTarget(TargetToken target) => pathAgent.SetTarget(target);
+
+    /// <summary>
+    /// Clears the movement target token.
+    /// </summary>
+    public void ClearMoveTarget() => pathAgent.State = PathfindingAgent.NavigationState.Idle;
 
     public void AcceptToken(TargetToken token)
     {
