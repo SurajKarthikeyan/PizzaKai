@@ -26,11 +26,11 @@ public class EnemyAITree
             return target != null && decision.CheckDecision(enemy, target);
         }
 
-        public Branch UpdateAI(EnemyControlModule enemy)
+        public Branch UpdateAI(EnemyControlModule enemy, float deltaTime)
         {
             TargetToken target = targeting.GetTarget();
 
-            if (!action.UpdateAI(enemy, target))
+            if (!action.UpdateAI(enemy, target, deltaTime))
             {
                 // Action has ended. Go onto next.
 
@@ -67,8 +67,8 @@ public class EnemyAITree
     #endregion
 
 
-    public void AIUpdate(EnemyControlModule enemy)
+    public void AIUpdate(EnemyControlModule enemy, float deltaTime)
     {
-        current = (current ??= root).UpdateAI(enemy);
+        current = (current ??= root).UpdateAI(enemy, deltaTime);
     }
 }
