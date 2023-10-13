@@ -16,8 +16,9 @@ public class UpgradeManager : MonoBehaviour
     #endregion
 
     #region Variables
-    public FlameProjectile flameProjectile;
-    public Multishot shotgunProjectile;
+    private WeaponSpawn flameProjectile;
+
+    private WeaponSpawn shotgunProjectile;
 
     [Header("Upgrade Values")]
     [Tooltip("the amount of extra bullets the upgrade adds to the tommygun's magazine")]
@@ -48,33 +49,37 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        shotgunProjectile = FindObjectOfType<ShotGunWeapon>().bullet;
+        print(shotgunProjectile.name);
+        flameProjectile = FindObjectOfType<FlameThrowerWeapon>().bullet;
+
         //these are for re-applying the upgrades to the new player in the scene
         if (tommyUP)
         {
             tommyUP = false;
-            TommyGunUpgrade();
+            UpgradeTommyGun();
         }
         if (shotgunUP)
         {
             shotgunUP = false;
-            ShotgunUpgrade();
+            UpgradeShotgun();
         }
         if (flamethrowerUP)
         {
             flamethrowerUP = false;
-            FlamethrowerUpgrade();
+            UpgradeFlamethrower();
         }
         if (sniperUP)
         {
             sniperUP = false;
-            SniperUpgrade();
+            UpgradeSniper();
         }
     }
     #endregion
 
     #region UpgradeCalls
     //these are called by the upgrade pickup once picked up, and this script to re-apply the upgrades in a new scene
-    public void TommyGunUpgrade()
+    public void UpgradeTommyGun()
     {
         if (!tommyUP)
         {
@@ -83,25 +88,25 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void ShotgunUpgrade()
+    public void UpgradeShotgun()
     {
         if (!shotgunUP)
         {
-            shotgunProjectile.shots[0].amount = new(shotgunProjectile.shots[0].amount.singleValue + extraShotgunPellets);
+            //shotgunProjectile.shots[0].amount = new(shotgunProjectile.shots[0].amount.singleValue + extraShotgunPellets);
             shotgunUP = true;
         }
     }
 
-    public void FlamethrowerUpgrade()
+    public void UpgradeFlamethrower()
     {
         if (!flamethrowerUP)
         {
-            flameProjectile.range = new(flameProjectile.range.singleValue + extraFlamethrowerRange);
+            //flameProjectile.range = new(flameProjectile.range.singleValue + extraFlamethrowerRange);
             flamethrowerUP = true;
         }
     }
 
-    public void SniperUpgrade()
+    public void UpgradeSniper()
     {
         if (!sniperUP)
         {
