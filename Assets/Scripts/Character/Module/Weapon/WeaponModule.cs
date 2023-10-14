@@ -369,6 +369,11 @@ public class WeaponModule : Module
         PlayAudio();
     }
 
+    public virtual void AltFireKeyUp()
+    {
+
+    }
+
     #endregion
 
     #region Weapon Reloading

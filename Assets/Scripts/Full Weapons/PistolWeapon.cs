@@ -33,22 +33,12 @@ public class PistolWeapon : WeaponModule
         base.Start();
         weaponName = WeaponAudioStrings.PistolName;
         //This line below will need to be changed to have it get the player's RB
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        rb = Master.r2d;
 
     }
     #endregion
 
     #region Methods
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        base.Update();
-       
-        isGrappling = false;
-        
-    }
 
     private void FixedUpdate()
     {
@@ -57,7 +47,7 @@ public class PistolWeapon : WeaponModule
             lineRend.enabled = true;
             rb.velocity = (rb.velocity * 0.5f) + grappleForce * (hitPoint - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized * grappleMultiplier;
             grappleMultiplier += 1f * Time.fixedDeltaTime;
-            lineRend.SetPosition(0, transform.position + Vector3.up);
+            lineRend.SetPosition(0, firePoint.position);
             lineRend.SetPosition(1, hitPoint);
         }
         else
@@ -87,6 +77,11 @@ public class PistolWeapon : WeaponModule
                 isGrappling = true;
             }
         }
+    }
+
+    public override void AltFireKeyUp()
+    {
+        isGrappling = false;
     }
 
     #endregion

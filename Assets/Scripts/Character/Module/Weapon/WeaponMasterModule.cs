@@ -82,10 +82,14 @@ public class WeaponMasterModule : Module
             {
                 CurrentWeapon.ReleaseTrigger();
             }
-            if (Input.GetMouseButton(1))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 //Alt fire
                 TryAltFire();
+            }
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                TryAltFireUp();
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -176,6 +180,11 @@ public class WeaponMasterModule : Module
         {
             CurrentWeapon.AltFire();
         }
+    }
+
+    public void TryAltFireUp()
+    {
+        CurrentWeapon.AltFireKeyUp();
     }
     #endregion
 
