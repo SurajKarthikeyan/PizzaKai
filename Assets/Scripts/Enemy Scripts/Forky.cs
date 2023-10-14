@@ -1,7 +1,6 @@
+using NaughtyAttributes;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -23,32 +22,47 @@ public class Forky : MonoBehaviour
     [Tooltip("Audio Source for forky walkie talkie")]
     public AudioSource walkieTalkieSource;
 
+    [Header("Forky Boss Logic")]
+
+    [Tooltip("Is Forky Active")]
     public bool active = false;
 
-    //Spawn interval settings
+    [Header("Spawn interval settings")]
 
-    //Minimum time for box to spawn
+    [Tooltip("Minimum time for box to spawn")]
+    [SerializeField]
     private float minBoxSpawnTime = 5f;
 
-    //Maximum time for box to spawn
+    [Tooltip("Maximum time for box to spawn")]
+    [SerializeField]
     private float maxBoxSpawnTime = 7f;
 
-    //Minimum time for a series of enemies to spawn
+    
+    [Tooltip("Minimum time for a series of enemies to spawn")]
+    [SerializeField]
     private float minEnemySpawnTime = 6f;
-    //Maximum time for a series of enemies to spawn
+
+    [Tooltip("Maximum time for a series of enemies to spawn")]
+    [SerializeField]
     private float maxEnemySpawnTime = 9f;
 
-    //Maximum number of enemies spawned at a time
+    
+    [Tooltip("Maximum number of enemies spawned at a time")]
+    [SerializeField]
     private int maxEnemyCount = 2;
 
-    //Minimum height of boxes spawned at any given time
+    
+    [Tooltip("Minimum height of boxes spawned at any given time")]
+    [SerializeField]
     private int minBoxHeight = 1;
 
-    //Maximum height of boxes spawned at any given time
+    [Tooltip("Maximum height of boxes spawned at any given time")]
+    [SerializeField]
     private int maxBoxHeight = 4;
 
     //Chance of oil spawning
     private float oilChance = 0;
+
     //Has an action been taken by Forky yet?
     private bool actionTaken = false;
 
@@ -57,14 +71,18 @@ public class Forky : MonoBehaviour
     public Transform enemySpawnPoint;
 
     //Crate generator script reference
-    ForkyCrateSpawner crateSpawner;
+    private ForkyCrateSpawner crateSpawner;
 
+    [Header("Breadstick enemy to spawn")]
     public GameObject breadstick;
 
-    [SerializeField] private ConveyorBeltScript conveyorBelt;
+    [SerializeField] 
+    private ConveyorBeltScript conveyorBelt;
 
-    int generators = 3;
+    private int generators = 3;
 
+    [Tooltip("Is Forky Dead")]
+    [ReadOnly]
     public bool IsDead = false;
     #endregion
 
@@ -191,6 +209,7 @@ public class Forky : MonoBehaviour
             conveyorBelt.conveyorSpeed = 0;
         }
 
+        //Increase rate of spawning objects
         maxBoxSpawnTime -= 1;
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;

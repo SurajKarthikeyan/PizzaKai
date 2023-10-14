@@ -49,19 +49,19 @@ public class FlameThrowerWeapon : WeaponModule
         Instantiate(altFireball, firePoint.position, Quaternion.identity);
     }
 
-    override public void ReloadWeapon()
-    {
-        InputState = WeaponInputState.Reloading;
-        weaponAction = WeaponAudioStrings.Reload;
+    //override public void ReloadWeapon()
+    //{
+    //    InputState = WeaponInputState.Reloading;
+    //    weaponAction = WeaponAudioStrings.Reload;
 
-        if (InputState == WeaponInputState.Reloading)
-        {
-            reloadDelay.Reset();
-            RefillAmmo();
-        }
-        OnMouseUp();
-        PlayAudio();
-    }
+    //    if (InputState == WeaponInputState.Reloading)
+    //    {
+    //        reloadDelay.Reset();
+    //        RefillAmmo();
+    //    }
+    //    OnMouseUp();
+    //    PlayAudio();
+    //}
 
     override public void PlayAudio()
     {
