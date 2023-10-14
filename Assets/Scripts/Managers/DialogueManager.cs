@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    
     #region Instance
     /// <summary>
     /// The static reference to a UIManager instance.
@@ -15,48 +16,40 @@ public class DialogueManager : MonoBehaviour
     /// The static reference to a UIManager instance.
     /// </summary>
     public static DialogueManager Instance => instance;
+
+    private void Awake()
+    {
+        this.InstantiateSingleton(ref instance);
+    }
     #endregion
 
     #region Variables
     public Flowchart levelFlowchart;
 
-    public CharacterMovementModule player;
-
-    public WeaponMasterModule weaponMasterModule;
-
-    Vector2 maxPlayerMoveSpeed;
-
-    private List<WeaponModule> playerWeapons;
+    private WeaponMasterModule weaponMasterModule;
     #endregion
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        maxPlayerMoveSpeed = player.maxMoveSpeed;
-        playerWeapons = weaponMasterModule.weapons;
-    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    #region Properties
+    private Character Player => GameManager.Instance.Player;
+    #endregion
+
+    private void Start()
+    {
+        Player.gameObject.RequireComponentInChildren(out weaponMasterModule);
+    }
 
     public void StopPlayer(bool stopPlayer)
     {   
         
         if (stopPlayer)
         {
-            player.Master.r2d.velocity = new Vector2(0, 0);
-            player.enabled = false;
+            Player.r2d.velocity = new Vector2(0, 0);
+            Player.enabled = false;
             weaponMasterModule.enabled = false;
         }
         else
         {
-            player.enabled = true;
+            Player.enabled = true;
             weaponMasterModule.enabled = true;
             weaponMasterModule.EnableCurrentWeapon();
         }

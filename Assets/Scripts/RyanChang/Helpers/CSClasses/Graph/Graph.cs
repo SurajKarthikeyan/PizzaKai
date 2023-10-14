@@ -265,18 +265,6 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     }
 
     /// <summary>
-    /// Attempts to get the vertex by its key, then attempts to cast it into the
-    /// specified vertex type.
-    /// </summary>
-    /// <inheritdoc cref="TryGetVertex(T, out Vertex{T})"/>
-    public bool TryGetVertex<TVertex>(T key, out TVertex vertex)
-        where TVertex : Vertex<T>
-    {
-        vertex = GetVertex(key) as TVertex;
-        return vertex != null;
-    }
-
-    /// <summary>
     /// Determines if an edge exists between fromID and toID.
     /// </summary>
     /// <param name="fromID">ID to come from.</param>

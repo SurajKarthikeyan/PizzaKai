@@ -60,10 +60,6 @@ public class PathAgentManager : MonoBehaviour
     }
 
     #region Variables
-    [Tooltip("If true, then use multithreading. Disable this if you want " +
-        "to test pathfinding.")]
-    public bool useThreads = true;
-
     [BoxGroup("AI Timing")]
     [Tooltip("How long will the path agent wait before recomputing the path " +
         "after the agent arrives at its target?")]
@@ -76,6 +72,11 @@ public class PathAgentManager : MonoBehaviour
     [BoxGroup("AI Timing")]
     [Tooltip("How often to check for navigation updates?")]
     public float aiUpdateRate = 0.4f;
+
+    [BoxGroup("Debug")]
+    [Tooltip("If true, then use multithreading. Disable this if you want " +
+        "to test pathfinding.")]
+    public bool useThreads = true;
     #endregion
 
     #region Properties
