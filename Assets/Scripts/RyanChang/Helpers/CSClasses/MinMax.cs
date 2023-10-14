@@ -1,4 +1,5 @@
 using Fungus;
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -27,11 +28,20 @@ public struct MinMax
     #region Variables
     public Mode mode;
 
+    [AllowNesting]
+    [ShowIf(nameof(Max_ShowIf))]
     [SerializeField]
     private float min;
 
+    [AllowNesting]
+    [ShowIf(nameof(Min_ShowIf))]
     [SerializeField]
     private float max;
+
+    #region Validation
+    private readonly bool Min_ShowIf => mode != Mode.GreaterThan;
+    private readonly bool Max_ShowIf => mode != Mode.LessThan;
+    #endregion
     #endregion
 
     #region Properties

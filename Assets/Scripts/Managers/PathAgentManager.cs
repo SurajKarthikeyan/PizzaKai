@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NaughtyAttributes;
+using NaughtyAttributes.Test;
 using UnityEngine;
 
 /// <summary>
@@ -29,7 +30,7 @@ public class PathAgentManager : MonoBehaviour
             this.current = current;
         }
 
-        public void ThreadProcess(out Path<Vector3Int> path)
+        public readonly void ThreadProcess(out Path<Vector3Int> path)
         {
             // if (!PathfindingManager.Instance.Pathfinding.PathExists(current, target))
             //     throw new System.InvalidOperationException();
@@ -100,13 +101,41 @@ public class PathAgentManager : MonoBehaviour
     public void Schedule(PathfindingAgent agent, TargetToken target)
     {
         var current = agent.GridPosition;
-        StartCoroutine(WaitForTask_CR(agent, target,
-            new(
-                agent,
-                current,
-                target.GridTarget
-            )
-        ));
+
+        // Make sure target valid.
+        try
+        {
+            var startV = PathfindingManager.Instance.GetClosestNeighbor(current);
+            var endV = PathfindingManager.Instance.GetClosestNeighbor(target.GridTarget, startV.sectionID);
+
+            Pathfinding.ValidateStartEnd(true, startV, endV);
+        }
+        catch (PathfindingException e) when (e is StartIsEndVertexException)
+        {
+            // AI has already arrived.
+            agent.State = PathfindingAgent.NavigationState.ArrivedAtDestination;
+            return;
+        }
+        catch (PathfindingException)
+        {
+            // Do nothing.
+        }
+
+        try
+        {
+            StartCoroutine(WaitForTask_CR(agent, target,
+                new(
+                    agent,
+                    current,
+                    target.GridTarget
+                )
+            ));
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
     }
 
     private IEnumerator WaitForTask_CR(PathfindingAgent agent,
@@ -120,6 +149,9 @@ public class PathAgentManager : MonoBehaviour
             var task = Task.Run(() => thread.ThreadProcess(out path));
 
             yield return new WaitUntil(() => task.IsCompleted);
+
+            // // Forces task to actually complete.
+            // task.Wait();
 
             if (!task.IsCompletedSuccessfully)
             {
