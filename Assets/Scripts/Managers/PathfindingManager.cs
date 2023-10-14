@@ -426,13 +426,28 @@ public class PathfindingManager : MonoBehaviour
 
         string msg = "Assert failed: " +
             $"[{startV} section {startV.sectionID}], " +
-            $"[{endV} section {endV.sectionID}]";
+            $"[{endV} section {endV.sectionID}]. ";
 
-        Debug.Assert(startV != endV, msg);
-        Debug.Assert(startV.sectionID != Guid.Empty, msg);
-        Debug.Assert(endV.sectionID != Guid.Empty, msg);
-        Debug.Assert(startV.sectionID == endV.sectionID, msg);
-        Debug.Assert(Pathfinding.VerticesConnected(startV, endV), msg);
+        Debug.Assert(
+            startV != endV,
+            msg + "Start and end vertices are the same."
+        );
+        Debug.Assert(
+            startV.sectionID != Guid.Empty,
+            msg + "Start vertex has an empty section ID."
+        );
+        Debug.Assert(
+            endV.sectionID != Guid.Empty,
+            msg + "End vertex has an empty section ID."
+        );
+        Debug.Assert(
+            startV.sectionID == endV.sectionID,
+            msg + "Start and end vertices are not in the same section."
+        );
+        Debug.Assert(
+            Pathfinding.VerticesConnected(startV, endV),
+            msg + "Start and end vertices are not connected."
+        );
 
         return Pathfinding.AStarSearch(startV.id, endV.id);
     }
