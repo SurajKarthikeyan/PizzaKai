@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Fungus;
+using UnityEngine;
 
 public class Path<T> : IEnumerable<Vertex<T>>,
     IEnumerable<GraphEdge<T>>, ITraceable<T> where T : IEquatable<T>
@@ -187,6 +188,11 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     /// <returns></returns>
     public int GetLength(Vertex<T> from, Vertex<T> to)
     {
+        if (from == null)
+            throw new ArgumentNullException("Vertex from is null");
+        else if (to == null)
+            throw new ArgumentNullException("Vertex to is null");
+
         int cnt = 1;
 
         while (from != to)
@@ -219,10 +225,29 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     /// <param name="from">The vertex to start iteration at.</param>
     /// <param name="to">The vertex to stop iteration at.</param>
     /// <returns></returns>
-    public int GetLength(T from, T to) => GetLength(Graph.GetVertex(from), Graph.GetVertex(to));
+    public int GetLength(T from, T to)
+    {
+        if (!Graph.TryGetVertex(from, out var fromV))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(from),
+                $"{from} does not exist in the graph"
+            );
+        }
+
+        if (!Graph.TryGetVertex(to, out var toV))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(to),
+                $"{to} does not exist in the graph"
+            );
+        }
+        
+        return GetLength(fromV, toV);
+    }
 
     /// <inheritdoc cref="GetLength(Vertex{T})"/>
-    public int GetLength(T from) => GetLength(Graph.GetVertex(from), End);
+    public int GetLength(T from) => GetLength(from, End.Value);
 
     /// <summary>
     /// Returns all the vertices along this path from <paramref name="from"/> to

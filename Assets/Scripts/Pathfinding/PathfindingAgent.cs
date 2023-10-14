@@ -313,7 +313,7 @@ public class PathfindingAgent : MonoBehaviour
                         enemyControl.transform.position
                     ))
                 {
-                    print("Restarting nav");
+                    // print("Restarting nav");
                     SetTarget(CurrentToken);
                 }
             }

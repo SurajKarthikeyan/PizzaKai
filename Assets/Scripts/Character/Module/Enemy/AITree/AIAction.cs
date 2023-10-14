@@ -95,7 +95,6 @@ public class AIAction
         if (target == null)
             return true;
 
-        PathfindingManager pm = PathfindingManager.Instance;
 
         switch (haltingFlags)
         {
@@ -111,12 +110,13 @@ public class AIAction
                     // If it does, use the path length to calculate the
                     // distance.
                     dist = enemy.pathAgent.CurrentPath.GetLength(
-                        pm.WorldToCell(enemy.transform.position)
+                        enemy.pathAgent.NextNode
                     );
                 }
                 else
                 {
                     // Otherwise, use the taxicab distance.
+                    PathfindingManager pm = PathfindingManager.Instance;
                     dist = pm.WorldToCell(enemy.transform.position)
                         .TaxicabDistance(target.GridTarget);
                 }
