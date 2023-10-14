@@ -30,6 +30,8 @@ public class WeaponMasterModule : Module
     [AnimatorParam(nameof(characterAnimator), AnimatorControllerParameterType.Bool)]
     [SerializeField]
     private string animParamFire;
+
+    public bool isGrappling = false;
     #endregion
 
     #region Properties
@@ -139,25 +141,30 @@ public class WeaponMasterModule : Module
     public void AimAt(Vector2 target)
     {
         Debug.DrawLine(target, transform.position, Color.blue);
+        if (!isGrappling)
+        {
+            // Do some basic trig to get the weapons pointed at the target.
+            Vector2 disp = target - (Vector2)transform.position;
+            float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
 
-        // Do some basic trig to get the weapons pointed at the target.
-        Vector2 disp = target - (Vector2)transform.position;
-        float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
 
-        // Send data to the flip module.
-        Master.SetLookAngle(zRot);
-        var scale = transform.localScale;
-        scale.x = Master.flipModule.FlipMultiplier;
-        scale.y = Master.flipModule.FlipMultiplier;
-        transform.localScale = scale;
+            // Send data to the flip module.
 
-        Vector3 eulerAngles = new(
-            0,
-            0,
-            zRot
-        );
+            Master.SetLookAngle(zRot);
+            var scale = transform.localScale;
+            scale.x = Master.flipModule.FlipMultiplier;
+            scale.y = Master.flipModule.FlipMultiplier;
+            transform.localScale = scale;
 
-        transform.eulerAngles = eulerAngles;
+
+            Vector3 eulerAngles = new(
+                0,
+                0,
+                zRot
+            );
+
+            transform.eulerAngles = eulerAngles;
+        }
     }
     #endregion
 
@@ -168,7 +175,11 @@ public class WeaponMasterModule : Module
     /// <returns>true if able to fire, false if unable</returns>
     public bool TryFire()
     {
-        return CurrentWeapon.TryFireWeapon();
+        if (!isGrappling)
+        {
+            return CurrentWeapon.TryFireWeapon();
+        }
+        return false;
     }
 
     /// <summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using NaughtyAttributes;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// Represents the Tommy Gun, child class of WeaponModule
@@ -24,6 +25,8 @@ public class PistolWeapon : WeaponModule
     private bool isGrappling = false;
     private float grappleMultiplier = 0f;
     [SerializeField] private LineRenderer lineRend;
+
+    private WeaponMasterModule parent;
     #endregion
 
     #region Init
@@ -32,9 +35,9 @@ public class PistolWeapon : WeaponModule
     {
         base.Start();
         weaponName = WeaponAudioStrings.PistolName;
-        //This line below will need to be changed to have it get the player's RB
         rb = Master.r2d;
-
+        parent = GetComponentInParent<WeaponMasterModule>();
+        AltFireKeyUp();
     }
     #endregion
 
@@ -75,6 +78,7 @@ public class PistolWeapon : WeaponModule
             if (hit.collider != null)
             {
                 isGrappling = true;
+                parent.isGrappling = isGrappling;
             }
         }
     }
@@ -82,6 +86,7 @@ public class PistolWeapon : WeaponModule
     public override void AltFireKeyUp()
     {
         isGrappling = false;
+        parent.isGrappling = isGrappling;
     }
 
     #endregion
