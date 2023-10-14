@@ -419,35 +419,10 @@ public class PathfindingManager : MonoBehaviour
     public Path<Vector3Int> AStarSearch(Vector3Int start, Vector3Int end)
     {
         if (start == end)
-            throw new StartIsEndVertexException(start, "Cannot create graph");
+            throw new StartIsEndVertexException("Cannot create graph", start);
 
-        var startV = GetClosestNeighbor(start, Guid.Empty);
+        var startV = GetClosestNeighbor(start);
         var endV = GetClosestNeighbor(end, startV.sectionID);
-
-        string msg = "Assert failed: " +
-            $"[{startV} section {startV.sectionID}], " +
-            $"[{endV} section {endV.sectionID}]. ";
-
-        Debug.Assert(
-            startV != endV,
-            msg + "Start and end vertices are the same."
-        );
-        Debug.Assert(
-            startV.sectionID != Guid.Empty,
-            msg + "Start vertex has an empty section ID."
-        );
-        Debug.Assert(
-            endV.sectionID != Guid.Empty,
-            msg + "End vertex has an empty section ID."
-        );
-        Debug.Assert(
-            startV.sectionID == endV.sectionID,
-            msg + "Start and end vertices are not in the same section."
-        );
-        Debug.Assert(
-            Pathfinding.VerticesConnected(startV, endV),
-            msg + "Start and end vertices are not connected."
-        );
 
         return Pathfinding.AStarSearch(startV.id, endV.id);
     }
@@ -512,8 +487,18 @@ public class PathfindingManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the closest (or at least relatively closest) vertex to <paramref
-    /// name="position"/>.
+    /// Gets the closest vertex to <paramref name="position"/>, with no
+    /// preference to sectionID.
+    /// </summary>
+    /// <inheritdoc cref="GetClosestNeighbor(Vector3Int, Guid)"/>
+    public Vertex3Int GetClosestNeighbor(Vector3Int position)
+    {
+        return GetClosestNeighbor(position, Guid.Empty);
+    }
+
+    /// <summary>
+    /// Gets the closest vertex to <paramref name="position"/> within the same
+    /// section as <paramref name="section"/>.
     /// </summary>
     /// <param name="position">Where to being searching for neighbors.</param>
     /// <param name="section">The section of the graph to search in.</param>
@@ -521,27 +506,9 @@ public class PathfindingManager : MonoBehaviour
     /// found.</returns>
     public Vertex3Int GetClosestNeighbor(Vector3Int position, Guid section)
     {
-        if (section == Guid.Empty)
-        {
-            return Pathfinding.Values
-                .Aggregate((v1, v2) =>
-                    v1.id.TaxicabDistance(position) <
-                    v2.id.TaxicabDistance(position) ?
-                    v1 : v2
-                );
-        }
-        else
-        {
-            return Pathfinding.Values
-                .Where(v => v.sectionID == section)
-                .Aggregate((v1, v2) =>
-                    v1.id.TaxicabDistance(position) <
-                    v2.id.TaxicabDistance(position) ?
-                    v1 : v2
-                );
-        }
-
-        // Old, better performing code. Use again once it works.
+        // Old, better performing code. Use again once it works. However, make
+        // sure to keep the existing code.
+        #region Old
         // // First see if position contains what we are looking for.
         // if (Pathfinding.TryGetVertex(position, out var vertex) &&
         //     (section == Guid.Empty || section == vertex.sectionID))
@@ -573,23 +540,19 @@ public class PathfindingManager : MonoBehaviour
         //         }
         //     }
         // }
+        #endregion
 
-        // // Didn't find anything. Try expensive Linq.
-        // IEnumerable<Vertex3Int> linqSelect = section == Guid.Empty ?
-        //     Pathfinding.Values :
-        //     Pathfinding.Values.Where(v => v.sectionID == section);
+        var vertices = Pathfinding.Values.AsEnumerable();
 
-        // if (linqSelect.Any())
-        // {
-        //     return linqSelect.Aggregate((v1, v2) =>
-        //         v1.id.TaxicabDistance(position) <
-        //         v2.id.TaxicabDistance(position) ?
-        //         v1 : v2);
-        // }
-        // else
-        // {
-        //     return null;
-        // }
+        if (section != Guid.Empty)
+            vertices = vertices.Where(v => v.sectionID == section);
+
+        return vertices
+            .Aggregate((v1, v2) =>
+                v1.id.TaxicabDistance(position) <
+                v2.id.TaxicabDistance(position) ?
+                v1 : v2
+            );
     }
 
     private IEnumerable<Vector3Int> TFOffsets(int t, int i)
