@@ -44,6 +44,7 @@ public class MenuButtons : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+        FindObjectOfType<LevelAnalytics>().PostLevelAnalytics();
     }
 
     public void ResumeButtonPress()

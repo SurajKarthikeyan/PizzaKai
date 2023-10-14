@@ -11,6 +11,8 @@ public class GrapplingHook : MonoBehaviour
     private Vector2 hitPoint;
     private Rigidbody2D rb;
     private bool isGrappling = false;
+    private float grappleMultiplier = 0f;
+    [SerializeField] private LineRenderer lineRend;
 
     // Start is called before the first frame update
     void Start()
@@ -48,14 +50,16 @@ public class GrapplingHook : MonoBehaviour
     {
         if(isGrappling)
         {
-            rb.AddForce(grappleForce * (hitPoint - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized);
-
+            lineRend.enabled = true;
+            rb.velocity = (rb.velocity * 0.5f) + grappleForce * (hitPoint - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized * grappleMultiplier;
+            grappleMultiplier += 1f * Time.fixedDeltaTime;
+            lineRend.SetPosition(0, transform.position + Vector3.up);
+            lineRend.SetPosition(1, hitPoint);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        
-        Gizmos.DrawSphere(hitPoint, 1f);
+        else
+        {
+            grappleMultiplier = 0f;
+            lineRend.enabled = false;
+        }
     }
 }

@@ -16,13 +16,13 @@ public class WeaponPickup : Pickup
         {
             try
             {
-                if (master.weapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
+                if (master.availableWeapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
                 {
                     // Ensure that we don't already have this weapon.
                     return false;
                 }
 
-                WeaponModule newweapon = master.AddWeapon(Instantiate(weapon));
+                WeaponModule newweapon = master.AddWeapon(weapon);
                 newweapon.LinkToMaster(character);
                 newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
