@@ -22,6 +22,7 @@ public class WeaponModule : Module
         public static readonly string TommyName = "tommy";
         public static readonly string ShotgunName = "shotgun";
         public static readonly string FlamethrowerName = "flamethrower";
+        public static readonly string PistolName = "pistol";
 
         public static readonly string Shoot = "Shoot";
         public static readonly string Alt = "Alt";
