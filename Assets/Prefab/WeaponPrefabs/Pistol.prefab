@@ -301,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 2741532492343462794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.114, y: 0.218, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2741532492258955962}
@@ -337,7 +337,7 @@ MonoBehaviour:
   autofire: 1
   firstShotAccurate: 1
   firingDelay:
-    maxTime: 1
+    maxTime: 0.2
     elapsed: 0
   altFireDelay:
     maxTime: 1
@@ -351,10 +351,10 @@ MonoBehaviour:
   weaponName: 
   weaponAction: 
   weaponUIImage: {fileID: 21300000, guid: 868f866114cc36d4d81aea997640a1d2, type: 3}
-  playerTransform: {fileID: 0}
-  altFireDamage: 20
-  tommyFlashImage: {fileID: 0}
-  enemyLayerNum: 10
+  realCamera: {fileID: 0}
+  grappleDistance: 0
+  grappleForce: 0
+  lineRend: {fileID: 0}
 --- !u!82 &4629331206116993892
 AudioSource:
   m_ObjectHideFlags: 0

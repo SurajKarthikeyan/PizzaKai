@@ -16,7 +16,14 @@ using NaughtyAttributes;
 public class PistolWeapon : WeaponModule
 {
     #region Variables
-    
+    [SerializeField] private Camera realCamera;
+    [SerializeField] private float grappleDistance;
+    [SerializeField] private float grappleForce;
+    private Vector2 hitPoint;
+    private Rigidbody2D rb;
+    private bool isGrappling = false;
+    private float grappleMultiplier = 0f;
+    [SerializeField] private LineRenderer lineRend;
     #endregion
 
     #region Init
@@ -25,12 +32,41 @@ public class PistolWeapon : WeaponModule
     {
         base.Start();
         weaponName = WeaponAudioStrings.PistolName;
-        
-     
+        //This line below will need to be changed to have it get the player's RB
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
     }
     #endregion
 
     #region Methods
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        base.Update();
+       
+        isGrappling = false;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if (isGrappling)
+        {
+            lineRend.enabled = true;
+            rb.velocity = (rb.velocity * 0.5f) + grappleForce * (hitPoint - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized * grappleMultiplier;
+            grappleMultiplier += 1f * Time.fixedDeltaTime;
+            lineRend.SetPosition(0, transform.position + Vector3.up);
+            lineRend.SetPosition(1, hitPoint);
+        }
+        else
+        {
+            grappleMultiplier = 0f;
+            lineRend.enabled = false;
+        }
+    }
+
     /// <summary>
     /// Overrides the alt fire function of weapon module - Tommy Flash
     /// </summary>
@@ -38,17 +74,19 @@ public class PistolWeapon : WeaponModule
     {
         base.AltFire();
 
-        //// Probably fix the camera shake, but leave it here for now.
-        ////StartCoroutine(cameraScript.Shake());
-        //StartCoroutine(tommyAltFlash());
+        if (!isGrappling)
+        {
+            RaycastHit2D hit;
+            LayerMask mask = LayerMask.GetMask("Ground", "Box");
+            hit = Physics2D.Raycast(gameObject.transform.position + Vector3.up, realCamera.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, grappleDistance, mask);
 
-        //FindEnemies();
+            hitPoint = hit.point;
 
-        ////TODO: GetComponent is expensive, maybe look into optimizing this. 
-        //foreach (Collider2D enemy in visibleEnemies)
-        //{
-        //    enemy.GetComponent<EnemyBasic>().currentHP -= altFireDamage;
-        //}
+            if (hit.collider != null)
+            {
+                isGrappling = true;
+            }
+        }
     }
 
     #endregion
