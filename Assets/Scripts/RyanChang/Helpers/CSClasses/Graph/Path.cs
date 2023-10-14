@@ -103,8 +103,12 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         catch (KeyNotFoundException e)
         {
             var trailingEdge = path
-                .Where(e => e.Value == begin);
-            throw new PathfindingException($"Vertex {begin} is not in path.", e);
+                .First(edge => edge.Value == begin);
+            throw new PathfindingException(
+                $"Vertex {begin} (trailing edge {trailingEdge}) " +
+                "is not in path.",
+                e
+            );
         }
     }
 

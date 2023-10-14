@@ -810,23 +810,37 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         out float cost)
     {
         if (!HasVertex(startID))
-            throw new VertexNotInGraphException(startID, this);
+            throw new VertexNotInGraphException("Cannot build graph", startID, this);
         else if (!HasVertex(endID))
-            throw new VertexNotInGraphException(endID, this);
+            throw new VertexNotInGraphException("Cannot build graph", endID, this);
         else if (Count < 2)
             throw new PathfindingException("Cannot make graph with less than 2 vertices");
         else if (startID.Equals(endID))
-            throw new StartIsEndVertexException(startID, "Cannot build graph.");
+            throw new StartIsEndVertexException("Cannot build graph", startID);
 
         var endV = Vertices[endID];
         var startV = Vertices[startID];
 
+        if (startV == endV)
+            throw new StartIsEndVertexException(startV);
+        else if (startV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("Start GUID not set", startV);
+        else if (endV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("End GUID not set", endV);
+        else if (startV.sectionID != endV.sectionID)
+            throw new DisjointGraphException(
+                "Start and end are in different sections",
+                startV, endV
+            );
+        else if (!VerticesConnected(startV, endV))
+            throw new DisjointGraphException(
+                "Start and end vertices are not connected",
+                startV, endV
+            );
+
         if (endV.sectionID != startV.sectionID)
         {
-            throw new DisjointGraphException(
-                "Graph is disjoint. Trying to navigate from section " +
-                $"{startV.sectionID} to section {endV.sectionID}."
-            );
+            throw new DisjointGraphException(startV, endV);
         }
         
         PriorityQueue<Vertex<T>> unvisited = new();

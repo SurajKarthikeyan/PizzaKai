@@ -228,7 +228,7 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     #region Generic Overrides
     public override string ToString()
     {
-        return $"Vertex: {id}";
+        return $"{id} [{sectionID}]";
     }
     public override int GetHashCode()
     {
