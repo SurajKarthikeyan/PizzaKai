@@ -70,6 +70,9 @@ public class PathfindingAgent : MonoBehaviour
         get => state;
         set
         {
+            if (state == value)
+                return;
+            
             switch (value)
             {
                 case NavigationState.Idle:
@@ -86,6 +89,19 @@ public class PathfindingAgent : MonoBehaviour
 
                 case NavigationState.WaitingForPath:
                     stuckTimer.Reset();
+                    break;
+
+                case NavigationState.ArrivedAtDestination:
+                    NextNode = null;
+                    enemyControl.ArrivedAtDestination();
+                    visualizer.Clear();
+
+                    if (checkTargetDistanceCR != null)
+                    {
+                        StopCoroutine(checkTargetDistanceCR);
+                        checkTargetDistanceCR = null;
+                    }
+
                     break;
             }
             state = value;
@@ -174,7 +190,7 @@ public class PathfindingAgent : MonoBehaviour
         if (target.GridTarget == GridPosition)
         {
             // We've already arrived. This avoids a StartIsEndVertexException.
-            ArrivedAtDestination();
+            State = NavigationState.ArrivedAtDestination;
             return;
         }
 
@@ -238,8 +254,6 @@ public class PathfindingAgent : MonoBehaviour
             );
             navigationCR = StartCoroutine(Navigation_CR(token));
         }
-        else
-            State = NavigationState.Idle;
     }
 
     private IEnumerator Navigation_CR(TargetToken token)
@@ -269,21 +283,7 @@ public class PathfindingAgent : MonoBehaviour
             checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         }
 
-        ArrivedAtDestination();
-    }
-
-    private void ArrivedAtDestination()
-    {
-        NextNode = null;
         State = NavigationState.ArrivedAtDestination;
-        enemyControl.ArrivedAtDestination();
-        visualizer.Clear();
-
-        if (checkTargetDistanceCR != null)
-        {
-            StopCoroutine(checkTargetDistanceCR);
-            checkTargetDistanceCR = null;
-        }
     }
 
     private IEnumerator CheckTargetDistance_CR(TargetToken token)

@@ -331,19 +331,51 @@ MonoBehaviour:
         targetTransform: {fileID: 0}
       decision:
         priority: 0
+        flagCombo: 0
         flags: 1
         distanceToTarget:
           mode: 0
           min: 0
           max: 5
-      action:
-        haltingFlags: 2
         time:
           maxTime: 5
           elapsed: 0
-        preferredDistance:
-          mode: 0
-          min: 5
-          max: 10
+      action:
         actionFlags: 1
-      branches: []
+      branches:
+      - targeting:
+          flags: 3
+          targetPoint: {x: 0, y: 0, z: 0}
+          targetTransform: {fileID: 0}
+        decision:
+          priority: 5
+          flagCombo: 0
+          flags: 2
+          distanceToTarget:
+            mode: 2
+            min: 15
+            max: 10
+          time:
+            maxTime: 5
+            elapsed: 0
+        action:
+          actionFlags: 1
+        branches:
+        - targeting:
+            flags: 3
+            targetPoint: {x: 0, y: 0, z: 0}
+            targetTransform: {fileID: 0}
+          decision:
+            priority: 0
+            flagCombo: 0
+            flags: 1
+            distanceToTarget:
+              mode: 0
+              min: 0
+              max: 0
+            time:
+              maxTime: 5
+              elapsed: 0
+          action:
+            actionFlags: 2
+          branches: []

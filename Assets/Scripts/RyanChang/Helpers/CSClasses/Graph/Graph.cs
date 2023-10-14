@@ -846,39 +846,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public Path<T> AStarSearch(T startID, T endID,
         out float cost)
     {
-        if (!HasVertex(startID))
-            throw new VertexNotInGraphException("Cannot build graph", startID, this);
-        else if (!HasVertex(endID))
-            throw new VertexNotInGraphException("Cannot build graph", endID, this);
-        else if (Count < 2)
-            throw new PathfindingException("Cannot make graph with less than 2 vertices");
-        else if (startID.Equals(endID))
-            throw new StartIsEndVertexException("Cannot build graph", startID);
-
-        var endV = Vertices[endID];
-        var startV = Vertices[startID];
-
-        if (startV == endV)
-            throw new StartIsEndVertexException(startV);
-        else if (startV.sectionID == Guid.Empty)
-            throw new GuidUnsetVertexException("Start GUID not set", startV);
-        else if (endV.sectionID == Guid.Empty)
-            throw new GuidUnsetVertexException("End GUID not set", endV);
-        else if (startV.sectionID != endV.sectionID)
-            throw new DisjointGraphException(
-                "Start and end are in different sections",
-                startV, endV
-            );
-        else if (!VerticesConnected(startV, endV))
-            throw new DisjointGraphException(
-                "Start and end vertices are not connected",
-                startV, endV
-            );
-
-        if (endV.sectionID != startV.sectionID)
-        {
-            throw new DisjointGraphException(startV, endV);
-        }
+        ValidateStartEnd(startID, endID, false, out Vertex<T> endV, out Vertex<T> startV);
 
         PriorityQueue<Vertex<T>> unvisited = new();
 
@@ -990,6 +958,52 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public Path<T> AStarSearch(T startID, T endID)
     {
         return AStarSearch(startID, endID, out _);
+    }
+    #endregion
+
+    #region Validation
+    /// <summary>
+    /// Validates the start and end IDs on the graph, throwing errors if
+    /// required to.
+    /// </summary>
+    /// <exception cref="VertexNotInGraphException"></exception>
+    /// <exception cref="PathfindingException"></exception>
+    /// <exception cref="StartIsEndVertexException"></exception>
+    /// <exception cref="GuidUnsetVertexException"></exception>
+    /// <exception cref="DisjointGraphException"></exception>
+    public void ValidateStartEnd(T startID, T endID, bool fullValidation, out Vertex<T> endV, out Vertex<T> startV)
+    {
+        if (!HasVertex(startID))
+            throw new VertexNotInGraphException("Cannot build graph", startID, this);
+        else if (!HasVertex(endID))
+            throw new VertexNotInGraphException("Cannot build graph", endID, this);
+
+        endV = Vertices[endID];
+        startV = Vertices[startID];
+        
+        ValidateStartEnd(fullValidation, endV, startV);
+    }
+
+    public void ValidateStartEnd(bool fullValidation, Vertex<T> endV, Vertex<T> startV)
+    {
+        if (Count < 2)
+            throw new PathfindingException("Cannot make graph with less than 2 vertices");
+        else if (startV == endV)
+            throw new StartIsEndVertexException(startV);
+        else if (startV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("Start GUID not set", startV);
+        else if (endV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("End GUID not set", endV);
+        else if (startV.sectionID != endV.sectionID)
+            throw new DisjointGraphException(
+                "Start and end are in different sections",
+                startV, endV
+            );
+        else if (fullValidation && !VerticesConnected(startV, endV))
+            throw new DisjointGraphException(
+                "Start and end vertices are not connected",
+                startV, endV
+            );
     }
     #endregion
     #endregion

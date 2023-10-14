@@ -11,7 +11,7 @@ using static PathNode;
 using Vertex3Int = Vertex<UnityEngine.Vector3Int>;
 
 /// <summary>
-/// Manager aript that handles the creation and maintenance of the navigation
+/// Manager script that handles the creation and maintenance of the navigation
 /// graph.
 ///
 /// <br/>

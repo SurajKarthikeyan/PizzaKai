@@ -19,26 +19,27 @@ public class EnemyAITree
 
         public List<Branch> branches = new();
 
-        public bool PeekInto(EnemyControlModule enemy)
-        {
-            TargetToken target = targeting.GetTarget();
+        // public bool PeekInto(EnemyControlModule enemy)
+        // {
+        //     TargetToken target = targeting.GetTarget();
 
-            return target != null && decision.CheckDecision(enemy, target);
-        }
+        //     return target != null && decision.CheckDecision(enemy, target, del);
+        // }
 
         public Branch UpdateAI(EnemyControlModule enemy, float deltaTime)
         {
             TargetToken target = targeting.GetTarget();
 
-            if (!action.UpdateAI(enemy, target, deltaTime))
+            if (!decision.CheckDecision(enemy, target, deltaTime))
             {
                 // Action has ended. Go onto next.
+                action.ExitAI(enemy);
 
                 if (!branches.IsNullOrEmpty())
                 {
                     // Select from branches.
                     var validBranches = branches
-                        .Where(b => b.decision.CheckDecision(enemy, target));
+                        .Where(b => b.decision.CheckDecision(enemy, target, deltaTime));
 
                     if (validBranches.Any())
                     {
@@ -55,6 +56,7 @@ public class EnemyAITree
             }
 
             // Action still occurring.
+            action.UpdateAI(enemy, target, deltaTime);
             return this;
         }
     }

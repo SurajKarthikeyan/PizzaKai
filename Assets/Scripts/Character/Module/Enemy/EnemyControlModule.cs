@@ -82,7 +82,11 @@ public class EnemyControlModule : Module
     /// <summary>
     /// Clears the movement target token.
     /// </summary>
-    public void ClearMoveTarget() => pathAgent.State = PathfindingAgent.NavigationState.Idle;
+    public void ClearMoveTarget()
+    {
+        pathAgent.State = PathfindingAgent.NavigationState.Idle;
+        movement.inputtedMovement = Vector2.zero;
+    }
 
     public void AcceptToken(TargetToken token)
     {
