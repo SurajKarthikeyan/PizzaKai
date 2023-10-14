@@ -186,13 +186,13 @@ public class PathfindingManager : MonoBehaviour
             foreach (var pos in map.cellBounds.allPositionsWithin)
             {
                 // Create node + vertex.
-                if (!Pathfinding.TryGetVertex(pos, out Vertex<Vector3Int> vertex))
+                if (!Pathfinding.TryGetVertex(pos, out Vertex3Int vertex))
                 {
                     // Create vertex if we can't find one.
                     vertex = new(pos);
 
                     // Add vertex to graph.
-                    Pathfinding.Add(vertex);
+                    Pathfinding.AddVertex(vertex);
                 }
 
                 PathNode nodeCurrent = new(pos, map);
@@ -228,7 +228,7 @@ public class PathfindingManager : MonoBehaviour
 
             if (Pathfinding.TryGetVertex(
                 vertex.Value + Vector3Int.down,
-                out Vertex<Vector3Int> below))
+                out Vertex3Int below))
             {
                 // There exists a vertex below this one. Check if it is walkable
                 // ground.
@@ -274,7 +274,7 @@ public class PathfindingManager : MonoBehaviour
                         Vector3Int offset = neighbor.Value - vertex.Value;
                         float distMult = offset.magnitude;
                         float cost = defaultCost * distMult;
-                        Pathfinding.Add(vertex, neighbor, cost);
+                        Pathfinding.AddEdge(vertex, neighbor, cost);
                     }
                 }
             }
@@ -297,7 +297,7 @@ public class PathfindingManager : MonoBehaviour
                     Vector3Int pos = vertex.Value + new Vector3Int(0, y);
 
                     if (Pathfinding.TryGetVertex(
-                        pos, out Vertex<Vector3Int> ground
+                        pos, out Vertex3Int ground
                     ))
                     {
                         if (ground.Nodes.Exists(n => n.Solidity == Solidity.Solid))
@@ -312,10 +312,13 @@ public class PathfindingManager : MonoBehaviour
                             // above is walkable.
                             if (Pathfinding.TryGetVertex(
                                 pos + Vector3Int.up,
-                                out Vertex<Vector3Int> walkable
+                                out Vertex3Int walkable
                             ))
                             {
-                                AddEdge(vertex, walkable, jumpUpCost * y, jumpDownCost * y);
+                                Pathfinding.AddDoubleEdge(
+                                    vertex, walkable,
+                                    jumpUpCost * y, jumpDownCost * y
+                                );
                             }
 
                             break;
@@ -335,7 +338,7 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-    private void CheckDrop(Vertex<Vector3Int> vertex, Vector3Int from)
+    private void CheckDrop(Vertex3Int vertex, Vector3Int from)
     {
         if (Pathfinding.TryGetVertex(from, out var fromV))
         {
@@ -350,8 +353,8 @@ public class PathfindingManager : MonoBehaviour
                     if (SomeFlagsSet(vCheck, NodeFlags.Walkable))
                     {
                         // Found a solid tile to drop onto.
-                        AddEdge(fromV, vertex);
-                        AddEdge(
+                        Pathfinding.AddDoubleEdge(fromV, vertex);
+                        Pathfinding.AddDoubleEdge(
                             fromV, vCheck,
                             jumpDownCost * Mathf.Abs(y),
                             jumpUpCost * Mathf.Abs(y)
@@ -364,18 +367,6 @@ public class PathfindingManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void AddEdge(Vertex<Vector3Int> a, Vertex<Vector3Int> b)
-    {
-        AddEdge(a, b, defaultCost, defaultCost);
-    }
-
-    private void AddEdge(Vertex<Vector3Int> a, Vertex<Vector3Int> b,
-        float fromA2BCost, float fromB2ACost)
-    {
-        Pathfinding.Add(a, b, fromA2BCost);
-        Pathfinding.Add(b, a, fromB2ACost);
     }
 
     /// <summary>
@@ -602,7 +593,7 @@ public class PathfindingManager : MonoBehaviour
 
     #region Private Helpers
     private bool SomeFlagsSet(
-        Vertex<Vector3Int> vertex,
+        Vertex3Int vertex,
         NodeFlags flags)
     {
         return vertex.Nodes.Any(n => n.flags.SomeFlagsSet(flags));
