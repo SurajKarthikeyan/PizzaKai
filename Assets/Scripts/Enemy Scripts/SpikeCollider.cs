@@ -25,7 +25,7 @@ public class SpikeCollider : MonoBehaviour
     {
         if (isKnockedBack)
         {
-            player.velocity += Vector2.up * 15f;
+            player.velocity = Vector2.up * 15f;
             isKnockedBack = false;
         }
     }
