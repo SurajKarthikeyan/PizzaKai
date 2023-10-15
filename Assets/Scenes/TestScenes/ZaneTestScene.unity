@@ -139580,6 +139580,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1597938262}
     - target: {fileID: 5033613679611491946, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: saydialog
+      value: 
+      objectReference: {fileID: 2007394647}
+    - target: {fileID: 5033613679611491946, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: levelFlowchart
       value: 
       objectReference: {fileID: 735504682}
@@ -142455,8 +142459,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1073.9, y: 2.2000122}
-  m_SizeDelta: {x: 1500, y: 335}
+  m_AnchoredPosition: {x: -1073.38, y: 2.2000122}
+  m_SizeDelta: {x: 1460.8, y: 352}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2007394648
 MonoBehaviour:
