@@ -2,6 +2,7 @@ using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -24,9 +25,9 @@ public class DialogueManager : MonoBehaviour
 
     public WeaponMasterModule weaponMasterModule;
 
-    Vector2 maxPlayerMoveSpeed;
+    //WHEN MANIPULATING/ACCESSING TRANSFORM OF SAY DIALOG DO IT THROUGH ITS PANEL
+    public Transform saydialog;
 
-    private List<WeaponModule> playerWeapons;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -35,15 +36,13 @@ public class DialogueManager : MonoBehaviour
         {
             instance = this;
         }
-        maxPlayerMoveSpeed = player.maxMoveSpeed;
-        playerWeapons = weaponMasterModule.weapons;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        saydialog.transform.position += new Vector3(1, 0) * Time.deltaTime;
+    }
 
     public void StopPlayer(bool stopPlayer)
     {   
@@ -65,7 +64,11 @@ public class DialogueManager : MonoBehaviour
     public void CallDialogueBlock(string blockName)
     {
         levelFlowchart.ExecuteBlock(blockName);
+        
     }
 
-    
+    public void PedestrianDialogueMove()
+    {
+        SayDialog.ActiveSayDialog.transform.position += new Vector3(0.1f, 0.1f);
+    }
 }
