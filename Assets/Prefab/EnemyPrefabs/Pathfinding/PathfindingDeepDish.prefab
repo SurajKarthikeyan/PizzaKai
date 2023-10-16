@@ -332,10 +332,10 @@ MonoBehaviour:
       decision:
         priority: 0
         flagCombo: 0
-        flags: 1
+        flags: 2
         distanceToTarget:
-          mode: 0
-          min: 0
+          mode: 2
+          min: 10
           max: 5
         time:
           maxTime: 5
@@ -350,7 +350,7 @@ MonoBehaviour:
         decision:
           priority: 5
           flagCombo: 0
-          flags: 1
+          flags: 2
           distanceToTarget:
             mode: 3
             min: 15
@@ -359,5 +359,5 @@ MonoBehaviour:
             maxTime: 5
             elapsed: 0
         action:
-          actionFlags: -1
+          actionFlags: 2
         branches: []

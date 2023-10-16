@@ -33,6 +33,16 @@ public class AIAction
     #endregion
     #endregion
 
+    #region Action Methods
+    /// <summary>
+    /// Initializes the action.
+    /// </summary>
+    /// <param name="enemy">The enemy who this action belongs to.</param>
+    public void InitializeAction(EnemyControlModule enemy)
+    {
+        //Debug.Log("");
+    }
+
     /// <summary>
     /// Called when the AI is updated with FixedUpdate.
     /// </summary>
@@ -53,7 +63,8 @@ public class AIAction
         {
             enemy.ClearMoveTarget();
         }
-    }
+    } 
+    #endregion
 
     #region Helpers
     private void PerformActions(EnemyControlModule enemy, TargetToken target, float deltaTime)
@@ -69,13 +80,10 @@ public class AIAction
     }
     #endregion
 
+    #region ToString
     public override string ToString()
     {
         return $"AIAction [actionFlags: {actionFlags}]";
-    }
-
-    public void InitializeAction(EnemyControlModule enemy)
-    {
-        Debug.Log("");
-    }
+    } 
+    #endregion
 }
