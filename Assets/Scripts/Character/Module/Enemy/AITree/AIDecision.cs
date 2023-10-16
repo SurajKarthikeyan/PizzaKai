@@ -54,6 +54,23 @@ public class AIDecision
     public Duration time = new(5);
     #endregion
 
+    #region Decision Methods
+    /// <summary>
+    /// Initializes the decision.
+    /// </summary>
+    /// <param name="enemy">The enemy who this decision belongs to.</param>
+    public void InitializeDecision(EnemyControlModule enemy)
+    {
+        //Debug.Log("");
+    }
+
+    /// <summary>
+    /// Determines whether or not the decision should be selected or not.
+    /// </summary>
+    /// <param name="enemy">The enemy.</param>
+    /// <param name="target">The target token.</param>
+    /// <param name="deltaTime">How much time has passed.</param>
+    /// <returns></returns>
     public bool CheckDecision(EnemyControlModule enemy, TargetToken target, float deltaTime)
     {
         if (target == null || flags == Flags.Never)
@@ -114,16 +131,14 @@ public class AIDecision
 
         return decision;
     }
+    #endregion
 
+    #region ToString
     public override string ToString()
     {
         return "AIDecision " +
             $"[flagCombinationStyle: {flagCombo}, " +
             $"flags: {flags}]";
-    }
-
-    public void InitializeDecision(EnemyControlModule enemy)
-    {
-        Debug.Log("");
-    }
+    } 
+    #endregion
 }

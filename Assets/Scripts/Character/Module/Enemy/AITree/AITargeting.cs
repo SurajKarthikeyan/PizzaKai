@@ -1,7 +1,6 @@
 ﻿using NaughtyAttributes;
-using System;
-using System.Collections;
 using UnityEngine;
+using static AIAction;
 
 [System.Serializable]
 public class AITargeting
@@ -28,6 +27,16 @@ public class AITargeting
     public Transform targetTransform;
     #endregion
 
+    #region Targeting Methods
+    /// <summary>
+    /// Initializes the targeting.
+    /// </summary>
+    /// <param name="enemy">The enemy who this targeting belongs to.</param>
+    public void InitializeTargeting(EnemyControlModule enemy)
+    {
+
+    }
+
     public TargetToken GetTarget()
     {
         return flags switch
@@ -38,9 +47,12 @@ public class AITargeting
             _ => null
         };
     }
+    #endregion
 
-    public void InitializeTargeting(EnemyControlModule enemy)
+    #region ToString
+    public override string ToString()
     {
-        Debug.Log("");
-    }
+        return $"AITargeting [flags: {flags}]";
+    } 
+    #endregion
 }
