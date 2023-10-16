@@ -1,4 +1,5 @@
 ﻿using NaughtyAttributes;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -36,5 +37,10 @@ public class AITargeting
             Flags.TargetPoint => new(targetPoint),
             _ => null
         };
+    }
+
+    public void InitializeTargeting(EnemyControlModule enemy)
+    {
+        Debug.Log("");
     }
 }

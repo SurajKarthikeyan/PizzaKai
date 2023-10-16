@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -112,5 +113,17 @@ public class AIDecision
         }
 
         return decision;
+    }
+
+    public override string ToString()
+    {
+        return "AIDecision " +
+            $"[flagCombinationStyle: {flagCombo}, " +
+            $"flags: {flags}]";
+    }
+
+    public void InitializeDecision(EnemyControlModule enemy)
+    {
+        Debug.Log("");
     }
 }

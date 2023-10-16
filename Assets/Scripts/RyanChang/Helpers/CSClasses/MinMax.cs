@@ -46,12 +46,12 @@ public struct MinMax
 
     #region Properties
     public readonly float Min => mode switch {
-        Mode.GreaterThan => float.NaN,
+        Mode.LessThan => float.NaN,
         _ => Mathf.Min(min, max)
     };
 
     public readonly float Max => mode switch {
-        Mode.LessThan => float.NaN,
+        Mode.GreaterThan => float.NaN,
         _ => Mathf.Max(min, max)
     };
     #endregion
@@ -78,13 +78,16 @@ public struct MinMax
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public readonly bool Evaluate(float value) => mode switch
+    public readonly bool Evaluate(float value)
     {
-        Mode.Between => Min <= value && value <= Max,
-        Mode.LessThan => value <= Min,
-        Mode.GreaterThan => value >= Max,
-        Mode.NotBetween => Min > value && value > Max,
-        _ => false
-    };
+        return mode switch
+        {
+            Mode.Between => Min <= value && value <= Max,
+            Mode.LessThan => value <= Max,
+            Mode.GreaterThan => value >= Min,
+            Mode.NotBetween => Min > value && value > Max,
+            _ => false
+        };
+    }
     #endregion
 }
