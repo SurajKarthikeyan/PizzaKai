@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87618cd6f0814479110d9243d2ba55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: {x: 5, y: 0}
+  maxMoveSpeed: {x: 3, y: 0}
   moveAcceleration: {x: 50, y: 0}
   decelerationPercentage: 0.95
   jumpForce: 12
@@ -350,32 +350,14 @@ MonoBehaviour:
         decision:
           priority: 5
           flagCombo: 0
-          flags: 2
+          flags: 1
           distanceToTarget:
-            mode: 2
+            mode: 3
             min: 15
             max: 10
           time:
             maxTime: 5
             elapsed: 0
         action:
-          actionFlags: 1
-        branches:
-        - targeting:
-            flags: 3
-            targetPoint: {x: 0, y: 0, z: 0}
-            targetTransform: {fileID: 0}
-          decision:
-            priority: 0
-            flagCombo: 0
-            flags: 1
-            distanceToTarget:
-              mode: 0
-              min: 0
-              max: 0
-            time:
-              maxTime: 5
-              elapsed: 0
-          action:
-            actionFlags: 2
-          branches: []
+          actionFlags: -1
+        branches: []

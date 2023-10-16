@@ -1,4 +1,5 @@
 
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -67,4 +68,14 @@ public class AIAction
         }
     }
     #endregion
+
+    public override string ToString()
+    {
+        return $"AIAction [actionFlags: {actionFlags}]";
+    }
+
+    public void InitializeAction(EnemyControlModule enemy)
+    {
+        Debug.Log("");
+    }
 }

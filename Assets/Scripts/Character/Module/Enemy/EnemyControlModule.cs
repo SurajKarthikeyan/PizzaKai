@@ -60,6 +60,8 @@ public class EnemyControlModule : Module
     #region Main Loop
     private IEnumerator Start()
     {
+        decisionTree.AIInitialize(this);
+
         while (enabled)
         {
             yield return new WaitForSeconds(PathAgentManager.Instance.aiUpdateRate);
