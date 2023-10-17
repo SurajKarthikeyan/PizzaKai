@@ -3209,6 +3209,7 @@ MonoBehaviour:
   weaponIndex: 0
   characterAnimator: {fileID: 948621413}
   animParamFire: Fire
+  isGrappling: 0
 --- !u!1 &7953525393435282714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,7 +3627,7 @@ MonoBehaviour:
   flipModule: {fileID: 0}
   audioSource: {fileID: 0}
   damageInvulnerability:
-    maxTime: 0
+    maxTime: 1
     elapsed: 0
   knockbackMultiplier: 1
 --- !u!114 &6979568082248114104
@@ -4209,6 +4210,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7754860285980378560}
     m_Modifications:
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: accessible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: altFireball
       value: 
       objectReference: {fileID: 6339640274177304179, guid: 3aeb0223cf7483649a1c54fc8becc5a7, type: 3}
@@ -4318,6 +4323,10 @@ PrefabInstance:
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 142466953}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: accessible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
       value: Fire

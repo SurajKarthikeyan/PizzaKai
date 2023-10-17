@@ -1,6 +1,7 @@
 using Fungus;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,10 @@ public class DialogueManager : MonoBehaviour
 
     public WeaponMasterModule weaponMasterModule;
 
+    public TextMeshProUGUI toolTipText;
+
+    public Image toolTipImage;
+
     //WHEN MANIPULATING/ACCESSING TRANSFORM OF SAY DIALOG DO IT THROUGH ITS PANEL
     public Transform saydialog;
 
@@ -41,7 +46,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        saydialog.transform.position += new Vector3(1, 0) * Time.deltaTime;
+        
     }
 
     public void StopPlayer(bool stopPlayer)
@@ -67,8 +72,9 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    public void PedestrianDialogueMove()
+    public void SetToolTipImage(string text, Sprite weaponImage)
     {
-        SayDialog.ActiveSayDialog.transform.position += new Vector3(0.1f, 0.1f);
+        toolTipText.text = text;
+        toolTipImage.sprite = weaponImage;
     }
 }
