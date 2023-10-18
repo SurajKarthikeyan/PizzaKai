@@ -65,9 +65,15 @@ public class FlameThrowerWeapon : WeaponModule
 
     override public void PlayAudio()
     {
-        if (!flameSource.isPlaying)
+        if (weaponAction == WeaponAudioStrings.Shoot)
         {
+
             AudioDictionary.aDict.PlayAudioClipRemote(weaponName + weaponAction, flameSource);
+        }
+        else
+        {
+            flameSource.Stop();
+            base.PlayAudio();
         }
     }
 
