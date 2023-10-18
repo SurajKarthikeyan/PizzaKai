@@ -22,12 +22,13 @@ public class BossManager : MonoBehaviour
     public AudioSource music;
 
     public AudioClip bossTheme;
-
+    
+    [SerializeField]
+    private List<BoxCollider2D> generatorColliders;
 
     public static BossManager instance;
 
     public int interpolationFramesCount = 60; // Number of frames to completely interpolate between the 2 positions
-    int elapsedFrames = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -81,6 +82,10 @@ public class BossManager : MonoBehaviour
         music.Stop();
         music.PlaySound(bossTheme, 1);
         music.loop = true;
+        foreach(BoxCollider2D collider in generatorColliders)
+        {
+            collider.enabled = true;
+        }
     }
 
 }
