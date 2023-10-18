@@ -1,3 +1,5 @@
+using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -23,10 +25,36 @@ public class AIDecisionCombo : AIDecision
 
     #region Variables
     public ComboStyle comboStyle;
+
+    [Tooltip("Place Decisions as children to add them to the list.")]
+    [ReadOnly]
+    [SerializeField]
+    private List<AIDecision> decisions;
     #endregion
+
+    #region Decision
+    public override void InitializeDecision(EnemyControlModule enemy)
+    {
+        // Do nothing
+    }
 
     protected override bool CheckDecisionInternal(EnemyControlModule enemy, TargetToken target)
     {
-        throw new System.NotImplementedException();
+        bool select = comboStyle == ComboStyle.AND;
+        foreach (var decision in decisions)
+        {
+            switch (comboStyle)
+            {
+                case ComboStyle.AND:
+                    select &= decision.CheckDecision(enemy, target);
+                    break;
+                case ComboStyle.OR:
+                    select |= decision.CheckDecision(enemy, target);
+                    break;
+
+            }
+        }
+        return select;
     }
+    #endregion
 }

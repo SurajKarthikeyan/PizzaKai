@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class AIBranch
 {
+    #region Variables
     [Tooltip("Optional identifier for this branch.")]
     public string id;
 
@@ -20,14 +21,27 @@ public class AIBranch
 
     [HideInInspector]
     public AITreeModule tree;
+    #endregion
 
-    // public bool PeekInto(EnemyControlModule enemy)
-    // {
-    //     TargetToken target = targeting.GetTarget();
+    public void AnnotateGameObjects()
+    {
+        if (targeting)
+        {
+            targeting.gameObject.name = $"[Targeting] {id}";
+        }
 
-    //     return target != null && decision.CheckDecision(enemy, target, del);
-    // }
+        if (decision)
+        {
+            decision.gameObject.name = $"[Decision] {id}"; 
+        }
 
+        foreach (var branch in branches)
+        {
+            branch.AnnotateGameObjects();
+        }
+    }
+
+    #region Main Methods
     public AIBranch UpdateAI(EnemyControlModule enemy)
     {
         TargetToken target = targeting.GetTarget();
@@ -88,7 +102,8 @@ public class AIBranch
         {
             branch.InitializeAI(enemy);
         }
-    }
+    } 
+    #endregion
 
     public override string ToString()
     {
