@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6919027893201886674}
+  - component: {fileID: 890056536857304926}
   m_Layer: 0
   m_Name: DecisionTree
   m_TagString: Untagged
@@ -31,6 +32,38 @@ Transform:
   m_Father: {fileID: 7148419337918994598}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890056536857304926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586653013875830777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e0173e4e1faff3597e45209e901f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root:
+    id: '[Root] Follow Player'
+    targeting:
+      flags: 0
+      targetPoint: {x: 0, y: 0, z: 0}
+      targetTransform: {fileID: 0}
+    decision:
+      priority: 0
+      flagCombo: 0
+      flags: 0
+      distanceToTarget:
+        mode: 0
+        min: 0
+        max: 5
+      time:
+        maxTime: 5
+        elapsed: 0
+    action:
+      actionFlags: 0
+    branches: []
 --- !u!1 &4176729313615550120
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,46 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4216788931708193480}
   pathAgent: {fileID: 4708559427818300093}
-  decisionTree:
-    root:
-      id: '[Root] Follow Player'
-      targeting:
-        flags: 3
-        targetPoint: {x: 0, y: 0, z: 0}
-        targetTransform: {fileID: 0}
-      decision:
-        priority: 0
-        flagCombo: 0
-        flags: 2
-        distanceToTarget:
-          mode: 2
-          min: 10
-          max: 5
-        time:
-          maxTime: 5
-          elapsed: 0
-      action:
-        actionFlags: 1
-      branches:
-      - id: Shoot At Player
-        targeting:
-          flags: 3
-          targetPoint: {x: 0, y: 0, z: 0}
-          targetTransform: {fileID: 0}
-        decision:
-          priority: 5
-          flagCombo: 0
-          flags: 2
-          distanceToTarget:
-            mode: 3
-            min: 15
-            max: 10
-          time:
-            maxTime: 5
-            elapsed: 0
-        action:
-          actionFlags: 2
-        branches: []
+  decisionTree: {fileID: 0}
 --- !u!1001 &1517439603524695395
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -48,9 +48,9 @@ public class AIAction
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns>True if the action has completed, false otherwise.</returns>
-    public void UpdateAI(EnemyControlModule enemy, TargetToken target, float deltaTime)
+    public void UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
-        PerformActions(enemy, target, deltaTime);
+        PerformActions(enemy, target);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class AIAction
     #endregion
 
     #region Helpers
-    private void PerformActions(EnemyControlModule enemy, TargetToken target, float deltaTime)
+    private void PerformActions(EnemyControlModule enemy, TargetToken target)
     {
         if (actionFlags.HasFlag(ActionFlags.Follow))
         {
