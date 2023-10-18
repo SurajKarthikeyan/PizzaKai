@@ -59,6 +59,8 @@ public class CharacterMovementModule : Module
         "decelerate?")]
     [Range(0, 0.95f)]
     public float decelerationPercentage = 0.95f;
+
+    private readonly float originalGravityScale = 0.75f;
     #endregion
 
     #region Jumping
@@ -81,7 +83,7 @@ public class CharacterMovementModule : Module
     public Duration dashCooldown = new(2);
 
     [Tooltip("The duration of dashing.")]
-    public Duration dashTimer = new(0.2f);
+    public Duration dashTimer = new(0.5f);
     #endregion
 
     #region Ground Check
@@ -314,9 +316,14 @@ public class CharacterMovementModule : Module
 
         if (movementStatus == MovementStatus.Dashing)
         {
+            if (!dashTimer.IsDone)
+            {
+                Master.r2d.gravityScale = 0;
+            }
             if (dashTimer.IncrementFixedUpdate(false))
             {
                 // We are dashing.
+                
                 Master.r2d.velocity = lockedDashInput * dashSpeed;
                 return;
             }
@@ -324,6 +331,7 @@ public class CharacterMovementModule : Module
             {
                 // Is dash time done? (do NOT reset DashTimer)
                 Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+                Master.r2d.gravityScale = originalGravityScale;
                 movementStatus = MovementStatus.Normal;
             }
         }
