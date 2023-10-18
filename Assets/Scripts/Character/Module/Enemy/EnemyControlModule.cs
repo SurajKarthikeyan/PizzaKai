@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>

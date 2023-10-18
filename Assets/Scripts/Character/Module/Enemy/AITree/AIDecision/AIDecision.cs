@@ -2,8 +2,7 @@ using System;
 using NaughtyAttributes;
 using UnityEngine;
 
-[System.Serializable]
-public class AIDecision
+public abstract class AIDecision :MonoBehaviour
 {
     #region Flags
     public enum FlagCombinationStyle
@@ -43,10 +42,6 @@ public class AIDecision
     /// </summary>
     public Flags flags;
 
-    [SerializeField]
-    [AllowNesting]
-    [ShowIf(nameof(flags), Flags.DistanceToTarget)]
-    private MinMax distanceToTarget = new(0, 5);
 
     [AllowNesting]
     [Tooltip("The time to wait for this action to complete.")]
@@ -69,68 +64,17 @@ public class AIDecision
     /// </summary>
     /// <param name="enemy">The enemy.</param>
     /// <param name="target">The target token.</param>
-    /// <param name="deltaTime">How much time has passed.</param>
     /// <returns></returns>
-    public bool CheckDecision(EnemyControlModule enemy, TargetToken target, float deltaTime)
+    public bool CheckDecision(EnemyControlModule enemy, TargetToken target)
     {
         if (target == null || flags == Flags.Never)
             return false;
 
-        bool decision = flagCombo == FlagCombinationStyle.And;
-
-        void ModifyDecision(bool value)
-        {
-            switch (flagCombo)
-            {
-                case FlagCombinationStyle.And:
-                    decision &= value;
-                    break;
-
-                case FlagCombinationStyle.Or:
-                default:
-                    decision |= value;
-                    break;
-            }
-        }
-
-        if (flags.HasFlag(Flags.Timer))
-        {
-            ModifyDecision(!time.Increment(deltaTime, true));
-        }
-        if (flags.HasFlag(Flags.DistanceToTarget))
-        {
-            int dist = -1;
-
-            // Check if the path agent has a path.
-            if (enemy.pathAgent.CurrentPath != null)
-            {
-                try
-                {
-                    // If it does, use the path length to calculate the
-                    // distance.
-                    dist = enemy.pathAgent.CurrentPath.GetLength(
-                        enemy.pathAgent.NextNode
-                    );
-                }
-                catch (System.Exception)
-                {
-                    // Do nothing
-                }
-            }
-
-            if (dist < 0)
-            {
-                // Otherwise, use the taxicab distance.
-                PathfindingManager pm = PathfindingManager.Instance;
-                dist = pm.WorldToCell(enemy.transform.position)
-                    .TaxicabDistance(target.GridTarget);
-            }
-
-            ModifyDecision(distanceToTarget.Evaluate(dist));
-        }
-
-        return decision;
+        return CheckDecisionInternal(enemy, target);
     }
+
+    protected abstract bool CheckDecisionInternal(EnemyControlModule enemy,
+        TargetToken target);
     #endregion
 
     #region ToString

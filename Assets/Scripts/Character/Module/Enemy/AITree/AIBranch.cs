@@ -18,6 +18,9 @@ public class AIBranch
 
     public List<AIBranch> branches = new();
 
+    [HideInInspector]
+    public AITreeModule tree;
+
     // public bool PeekInto(EnemyControlModule enemy)
     // {
     //     TargetToken target = targeting.GetTarget();
@@ -25,13 +28,13 @@ public class AIBranch
     //     return target != null && decision.CheckDecision(enemy, target, del);
     // }
 
-    public AIBranch UpdateAI(EnemyControlModule enemy, float deltaTime)
+    public AIBranch UpdateAI(EnemyControlModule enemy)
     {
         TargetToken target = targeting.GetTarget();
 
         action.actionFlags |= AIAction.ActionFlags.FireWeapon;
 
-        if (!decision.CheckDecision(enemy, target, deltaTime))
+        if (!decision.CheckDecision(enemy, target))
         {
             // Action has ended. Go onto next.
             action.ExitAI(enemy);
@@ -44,7 +47,7 @@ public class AIBranch
                 // Select from branches.
                 var validBranches = branches
                     .Where(b => b.decision.CheckDecision(
-                        enemy, target, deltaTime
+                        enemy, target
                     ));
 
                 if (validBranches.Any())
@@ -71,7 +74,7 @@ public class AIBranch
         }
 
         // Action still occurring.
-        action.UpdateAI(enemy, target, deltaTime);
+        action.UpdateAI(enemy, target);
         return this;
     }
 
