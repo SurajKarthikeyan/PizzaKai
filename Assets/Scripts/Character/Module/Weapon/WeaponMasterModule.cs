@@ -251,8 +251,8 @@ public class WeaponMasterModule : Module
     {
         weapon.transform.Localize(transform);
         weapon.accessible = true;
-        availableWeapons.Insert(0, weapon);
-        SwitchToWeapon(0);
+        availableWeapons.Add(weapon);
+        SwitchToWeapon(availableWeapons.Count - 1);
         return weapon;
     }
     #endregion
