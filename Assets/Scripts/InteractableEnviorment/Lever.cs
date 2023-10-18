@@ -33,7 +33,7 @@ public class Lever : MonoBehaviour
         //Active, unable to be shot again
         canBeShot = false;
         leverArm.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(disabledTime);
+        yield return new WaitForSeconds(enabledTime);
         StartCoroutine(DisabledTime());
     }
 
@@ -42,7 +42,7 @@ public class Lever : MonoBehaviour
         //Not active, unable to be shot again
         leverArm.GetComponent<SpriteRenderer>().color = Color.magenta;
         //------------------Play different SFX here???????--------------------//
-        yield return new WaitForSeconds(enabledTime);
+        yield return new WaitForSeconds(disabledTime);
         leverArm.GetComponent<SpriteRenderer>().color = Color.white;
         canBeShot = true;
         //------------------Play Enable SFX here???????--------------------//
