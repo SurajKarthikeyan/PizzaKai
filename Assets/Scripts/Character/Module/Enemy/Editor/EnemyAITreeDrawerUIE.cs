@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(EnemyAITree))]
+[CustomPropertyDrawer(typeof(AITreeModule))]
 public class EnemyAITreeDrawerUIE : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

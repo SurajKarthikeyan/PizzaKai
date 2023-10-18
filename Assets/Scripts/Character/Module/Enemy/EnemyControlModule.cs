@@ -25,7 +25,7 @@ public class EnemyControlModule : Module
     public PathfindingAgent pathAgent;
 
     [Tooltip("The root element of the decision tree.")]
-    public EnemyAITree decisionTree;
+    public AITreeModule decisionTree;
 
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
