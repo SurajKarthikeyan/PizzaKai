@@ -352,7 +352,7 @@ public class CharacterMovementModule : Module
 
             // Switch to a kinematic collider so the player is forced in one
             // direction. Also shoves all enemies out of the way.
-            Master.r2d.bodyType = RigidbodyType2D.Kinematic;
+            Master.r2d.bodyType = RigidbodyType2D.Dynamic;
             Master.r2d.velocity = inputtedDash * dashSpeed;
 
             XnTelemetry.Telemetry_Cloud.DASHLOG("Dash");

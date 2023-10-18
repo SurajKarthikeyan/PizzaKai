@@ -46,9 +46,9 @@ public class PlayerControlModule : Module
             Input.GetAxisRaw("Vertical")
         );
 
-        movementController.inputtedJump = Input.GetKeyDown(KeyCode.Space);
+        movementController.inputtedJump = Input.GetKey(KeyCode.Space);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             movementController.inputtedDash =
                 movementController.inputtedMovement;

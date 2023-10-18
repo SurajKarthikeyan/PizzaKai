@@ -3654,12 +3654,10 @@ MonoBehaviour:
     maxTime: 0.5
     elapsed: 0
   dashSpeed: 15
-  dashCooldown:
-    maxTime: 2
-    elapsed: 0
-  dashTimer:
-    maxTime: 0.2
-    elapsed: 0
+  dashCooldown: 2
+  dashTimer: 0.2
+  canDash: 1
+  dashTime: -10
   groundCheck: {fileID: 1061556619110042102}
   characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 1
