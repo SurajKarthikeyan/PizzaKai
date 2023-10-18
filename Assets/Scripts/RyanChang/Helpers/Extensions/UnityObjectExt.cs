@@ -890,7 +890,7 @@ public static class UnityObjectExt
     /// <param name="dontDestroyOnLoad">If true, then call DontDestroyOnLoad on
     /// the gameobject. Also orphans the gameobject.</param>
     public static void InstantiateSingleton<T>(this T self, ref T singleton,
-        bool dontDestroyOnLoad = true) where T : MonoBehaviour
+        bool dontDestroyOnLoad = true) where T : Component
     {
         if (singleton)
         {
@@ -906,6 +906,27 @@ public static class UnityObjectExt
                 self.transform.Orphan();
                 GameObject.DontDestroyOnLoad(self.gameObject);
             }
+        }
+    }
+
+    /// <summary>
+    /// Instantiates a singleton (aka an instance) of an scriptable object. Also
+    /// checks if singleton is already set.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="self">The monobehavior to instantiate the singleton
+    /// on.</param>
+    /// <param name="singleton">The static singleton to set.</param>
+    public static void InstantiateSingleton<T>(this T self, ref T singleton)
+        where T : ScriptableObject
+    {
+        if (singleton)
+        {
+            Debug.LogError($"Multiple instances of {typeof(T)}.");
+        }
+        else
+        {
+            singleton = self;
         }
     }
 

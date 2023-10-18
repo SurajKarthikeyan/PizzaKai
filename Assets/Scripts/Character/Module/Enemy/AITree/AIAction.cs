@@ -77,6 +77,20 @@ public class AIAction
                 enemy.SetMoveTarget(target);
             }
         }
+
+        if (actionFlags.HasFlag(ActionFlags.FireWeapon))
+        {
+            if (enemy.Master.weaponMasterModule)
+            {
+                Debug.Log("Firing weapon");
+                enemy.Master.weaponMasterModule.AimAt(target.Target);
+                enemy.Master.weaponMasterModule.TryFire();
+            }
+            else
+            {
+                Debug.LogWarning($"No weapon master found on {enemy}");
+            }
+        }
     }
     #endregion
 
