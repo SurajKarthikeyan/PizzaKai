@@ -77,7 +77,7 @@ public class SimpleProjectile : DamagingWeaponSpawn
 
         contactFilter = new()
         {
-            layerMask = collisionMask,
+            layerMask = CollisionMask,
             useLayerMask = true
         };
     }

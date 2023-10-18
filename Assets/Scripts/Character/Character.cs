@@ -52,6 +52,12 @@ public sealed class Character : MonoBehaviour
 
     [SerializeField]
     private float knockbackMultiplier = 1;
+
+    [BoxGroup("Common Modules")]
+    [Tooltip("The weapon master module, if one exists. Make sure to check if " +
+        "null.")]
+    [ReadOnly]
+    public WeaponMasterModule weaponMasterModule;
     #endregion
 
     #endregion
@@ -149,6 +155,8 @@ public sealed class Character : MonoBehaviour
         this.RequireComponentInChildren(out sr);
 
         this.RequireComponent(out flipModule);
+
+        this.HasComponentInChildren(out weaponMasterModule);
     }
 
     private void Reset()

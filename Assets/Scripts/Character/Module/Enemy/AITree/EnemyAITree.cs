@@ -10,6 +10,9 @@ public class EnemyAITree
     [System.Serializable]
     public class Branch
     {
+        [Tooltip("Optional identifier for this branch.")]
+        public string id;
+
         [Tooltip("Determines what to target.")]
         public AITargeting targeting;
 
@@ -87,6 +90,11 @@ public class EnemyAITree
             {
                 branch.InitializeAI(enemy);
             }
+        }
+
+        public override string ToString()
+        {
+            return $"AITreeBranch {id}";
         }
     }
     #endregion

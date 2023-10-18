@@ -588,6 +588,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc1e74b99929b5e5bf190f4ebd530b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBulletsCollision:
+    serializedVersion: 2
+    m_Bits: 67336
+  enemyBulletsCollision:
+    serializedVersion: 2
+    m_Bits: 65928
 --- !u!1 &8897851845531681822
 GameObject:
   m_ObjectHideFlags: 0
