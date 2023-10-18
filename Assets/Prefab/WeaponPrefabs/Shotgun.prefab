@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: Shotgun
+  accessible: 0
   inputState: 0
   weaponAnimator: {fileID: 4342418669316601403}
   animFiringBool: Fire
@@ -441,7 +442,7 @@ MonoBehaviour:
   autofire: 0
   firstShotAccurate: 1
   firingDelay:
-    maxTime: 1
+    maxTime: 0.8
     elapsed: 0
   altFireDelay:
     maxTime: 2
@@ -455,7 +456,7 @@ MonoBehaviour:
   weaponName: 
   weaponAction: 
   weaponUIImage: {fileID: 21300000, guid: b5d30d52c1b3f544aae6ad8816e16592, type: 3}
-  pushPower: 15.5
+  pushPower: 14
 --- !u!82 &-4717194129262909025
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fungus;
 using System.Collections;
 using System.Collections.Generic;
@@ -76,5 +77,10 @@ public class DialogueManager : MonoBehaviour
     {
         toolTipText.text = text;
         toolTipImage.sprite = weaponImage;
+    }
+
+    public void ActivateCamera(GameObject camera, bool activateCam)
+    {
+        camera.GetComponent<CinemachineVirtualCamera>().enabled = activateCam;
     }
 }

@@ -80,10 +80,13 @@ public class CharacterMovementModule : Module
     public float dashSpeed = 20;
 
     [Tooltip("The cooldown for dashing.")]
-    public Duration dashCooldown = new(2);
+    public float dashCooldown = 2;
 
     [Tooltip("The duration of dashing.")]
-    public Duration dashTimer = new(0.5f);
+    public float dashTimer = 0.5f;
+    public bool canDash = true;
+    private bool isDashing = false;
+    public float dashTime = -10f;
     #endregion
 
     #region Ground Check
@@ -170,7 +173,6 @@ public class CharacterMovementModule : Module
     #region Instantiation
     private void Start()
     {
-        dashTimer.Finish();
 
         // Make sure max speed is positive.
         maxMoveSpeed = maxMoveSpeed.Abs();
@@ -312,18 +314,15 @@ public class CharacterMovementModule : Module
     #region Dash
     private void UpdateDash()
     {
-        dashCooldown.IncrementFixedUpdate(false);
 
         if (movementStatus == MovementStatus.Dashing)
         {
-            if (!dashTimer.IsDone)
+            if (isDashing)
             {
                 Master.r2d.gravityScale = 0;
-            }
-            if (dashTimer.IncrementFixedUpdate(false))
-            {
+
                 // We are dashing.
-                
+
                 Master.r2d.velocity = lockedDashInput * dashSpeed;
                 return;
             }
@@ -333,17 +332,21 @@ public class CharacterMovementModule : Module
                 Master.r2d.bodyType = RigidbodyType2D.Dynamic;
                 Master.r2d.gravityScale = originalGravityScale;
                 movementStatus = MovementStatus.Normal;
+
             }
         }
 
-        if (!inputtedDash.ApproxZero() && dashCooldown.IsDone)
+        if (!inputtedDash.ApproxZero() && canDash)
         {
             // Do dash here.
-            dashCooldown.Reset();
             inputtedDash.Normalize();
 
             // Now do dash.
-            dashTimer.Reset();
+            isDashing = true;
+            canDash = false;
+            dashTime = Time.time;
+            Invoke(nameof(ResetDash), dashTimer);
+            Invoke(nameof(ResetDashTimer), dashCooldown);
             lockedDashInput = inputtedDash;
             movementStatus = MovementStatus.Dashing;
 
@@ -354,6 +357,16 @@ public class CharacterMovementModule : Module
 
             XnTelemetry.Telemetry_Cloud.DASHLOG("Dash");
         }
+    }
+
+    private void ResetDashTimer()
+    {
+        canDash = true;
+    }
+
+    private void ResetDash()
+    {
+        isDashing = false;
     }
 
     #endregion

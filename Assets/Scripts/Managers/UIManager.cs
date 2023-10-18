@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
             {
                 healthSlider.value = 1;
             }
-            if(!player.GetComponent<CharacterMovementModule>().dashCooldown.IsDone)
+            if(!player.GetComponent<CharacterMovementModule>().canDash)
             {
                 DashFill();
             }
@@ -139,8 +139,8 @@ public class UIManager : MonoBehaviour
     public void DashFill()
     {
         //Fills the dash slider over times
-        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashCooldown.maxTime,
-            player.GetComponent<CharacterMovementModule>().dashCooldown.elapsed);
+        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashTimer,
+            Time.time - player.GetComponent<CharacterMovementModule>().dashTime);
     }
 
     /// <summary>
