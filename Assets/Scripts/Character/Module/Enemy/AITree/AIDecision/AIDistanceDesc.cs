@@ -8,7 +8,7 @@ using UnityEngine;
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class AIDistDesc : AIDecision
+public class AIDistanceDesc : AIDecision
 {
     #region Variables
     [SerializeField]
@@ -16,6 +16,11 @@ public class AIDistDesc : AIDecision
     #endregion
 
     #region Decision Implementation
+    public override void InitializeDecision(EnemyControlModule enemy)
+    {
+        
+    }
+
     protected override bool CheckDecisionInternal(EnemyControlModule enemy, TargetToken target)
     {
         int dist = -1;
