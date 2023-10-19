@@ -30,9 +30,6 @@ public class AIBranchEditor : Editor
     {
         serializedObject.UpdateIfRequiredOrScript();
 
-        GUIStyle boxStyle = GUI.skin.box;
-        boxStyle.alignment = TextAnchor.MiddleLeft;
-
         GUILayout.Box(
             "A branch is utilizes classes derived from AITargeting, " +
             "AIDecision, and AIAction (collectively referred to as AI " +
@@ -41,7 +38,7 @@ public class AIBranchEditor : Editor
             "* AIDecision uses that target to decide if the branch should be " +
             "executed.\n" +
             "* AIAction is responsible for the actual execution of the AI.",
-            boxStyle
+            GUIStyleExt.LeftAlignBox
         );
 
         base.OnInspectorGUI();
@@ -55,7 +52,7 @@ public class AIBranchEditor : Editor
             "assign it. Once assigned, you can click on the Remove button to " +
             "get rid of it. Be warned: undo does NOT work for this, and I " +
             "didn't add a confirmation box either (lmk if you want one).",
-            boxStyle
+            GUIStyleExt.LeftAlignBox
         );
 
         EditAIControl(ref branch.targeting, "Targeting");
