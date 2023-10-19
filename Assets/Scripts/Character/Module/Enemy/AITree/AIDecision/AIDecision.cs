@@ -4,13 +4,6 @@ using UnityEngine;
 
 public abstract class AIDecision :MonoBehaviour
 {
-    #region Variables
-    /// <summary>
-    /// Priority of the AI, used for tie-breaks.
-    /// </summary>
-    public int priority;
-    #endregion
-
     #region Decision Methods
     /// <summary>
     /// Initializes the decision.
