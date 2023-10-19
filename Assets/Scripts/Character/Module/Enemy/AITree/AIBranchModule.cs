@@ -9,6 +9,10 @@ public class AIBranchModule : Module
     [Tooltip("Optional identifier for this branch.")]
     public string id;
 
+    [Tooltip("The priority of the branch. Higher priority branches are " +
+        "selected over lower priority ones.")]
+    public int priority;
+
     [Tooltip("Determines what to target.")]
     public AITargeting targeting;
 
@@ -29,7 +33,32 @@ public class AIBranchModule : Module
     /// </summary>
     public void AnnotateGameObjects()
     {
-        // Just setting the names of the gameobjects.
+        // // Just setting the names of the gameobjects.
+        // gameObject.name = ToString();
+
+        // if (targeting)
+        // {
+        //     targeting.gameObject.name = $"[Targeting] {id}";
+        // }
+
+        // if (decision)
+        // {
+        //     decision.gameObject.name = $"[Decision] {id}";
+        // }
+
+        // if (action)
+        // {
+        //     action.gameObject.name = $"[Action] {id}";
+        // }
+
+        // foreach (var branch in branches)
+        // {
+        //     branch.AnnotateGameObjects();
+        // }
+    }
+
+    private void OnValidate()
+    {
         gameObject.name = ToString();
 
         if (targeting)
@@ -45,11 +74,6 @@ public class AIBranchModule : Module
         if (action)
         {
             action.gameObject.name = $"[Action] {id}";
-        }
-
-        foreach (var branch in branches)
-        {
-            branch.AnnotateGameObjects();
         }
     }
     #endregion
@@ -85,7 +109,7 @@ public class AIBranchModule : Module
                     var selected = validBranches
                         .Aggregate(
                             (b1, b2) =>
-                                b1.decision.priority > b2.decision.priority
+                                b1.priority > b2.priority
                                 ? b1 : b2
                         );
 

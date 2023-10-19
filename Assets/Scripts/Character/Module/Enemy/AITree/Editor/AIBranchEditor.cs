@@ -28,16 +28,27 @@ public class AIBranchEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        serializedObject.UpdateIfRequiredOrScript();
 
-        serializedObject.Update();
+        GUIStyle boxStyle = GUI.skin.box;
+        boxStyle.alignment = TextAnchor.MiddleLeft;
+
+        GUILayout.Box(
+            "A branch is utilizes classes derived from AITargeting, " +
+            "AIDecision, and AIAction (collectively referred to as AI " +
+            "Controls).\n" +
+            "* AITargeting selects a target for the AI.\n" +
+            "* AIDecision uses that target to decide if the branch should be " +
+            "executed.\n" +
+            "* AIAction is responsible for the actual execution of the AI.",
+            boxStyle
+        );
+
+        base.OnInspectorGUI();
 
         AIBranchModule branch = (AIBranchModule)serializedObject.targetObject;
 
         EditorGUILayout.Separator();
-
-        GUIStyle boxStyle = GUI.skin.box;
-        boxStyle.alignment = TextAnchor.MiddleLeft;
 
         GUILayout.Box(
             "Select a type from the dropdowns below to quickly create and " +

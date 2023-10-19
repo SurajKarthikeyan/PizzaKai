@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &565336560794172778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6725908185165966726}
+  - component: {fileID: 3241781020449857649}
+  m_Layer: 0
+  m_Name: '[Decision] Shoot Player'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6725908185165966726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565336560794172778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 551143694409669544}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3241781020449857649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565336560794172778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ae440a38720d252890a9792eba9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToTarget:
+    mode: 2
+    min: 15
+    max: 15
 --- !u!1 &1586653013875830777
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +95,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 4812696129408210747}
   deltaTime: 0
+--- !u!1 &1741931568452720880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551143694409669544}
+  - component: {fileID: 7025700469383657410}
+  m_Layer: 0
+  m_Name: '[Branch] Shoot Player'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &551143694409669544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741931568452720880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1898038310592014779}
+  - {fileID: 6725908185165966726}
+  - {fileID: 8550392220859918624}
+  m_Father: {fileID: 7413732566694898132}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7025700469383657410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741931568452720880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a196a2e928b65f3fd91c8ce8b473b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Shoot Player
+  priority: 10
+  targeting: {fileID: 6258865597649658031}
+  decision: {fileID: 3241781020449857649}
+  action: {fileID: 8757701490152497100}
+  branches: []
+  tree: {fileID: 0}
 --- !u!1 &3947017126843493645
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +323,7 @@ Transform:
   - {fileID: 2140404199025849562}
   - {fileID: 5856896243423957886}
   - {fileID: 7018733443263936806}
+  - {fileID: 551143694409669544}
   m_Father: {fileID: 6919027893201886674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,10 +340,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Follow Player
+  priority: 0
   targeting: {fileID: 2983886355987994139}
   decision: {fileID: 2635106269511430270}
   action: {fileID: 7312053445134588262}
-  branches: []
+  branches:
+  - {fileID: 7025700469383657410}
   tree: {fileID: 0}
 --- !u!1 &4720015989602250738
 GameObject:
@@ -286,11 +391,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae440a38720d252890a9792eba9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 0
   distanceToTarget:
     mode: 3
     min: 0
     max: 15
+--- !u!1 &6552882439706471497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898038310592014779}
+  - component: {fileID: 6258865597649658031}
+  m_Layer: 0
+  m_Name: '[Targeting] Shoot Player'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1898038310592014779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552882439706471497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 551143694409669544}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6258865597649658031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552882439706471497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf41c3ddcf45ddc58a6fbfc0ff74140c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7148419337918994584
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +760,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f40312e8c067a02bbb63f5fd6c4a060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8608923414216134863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8550392220859918624}
+  - component: {fileID: 8757701490152497100}
+  m_Layer: 0
+  m_Name: '[Action] Shoot Player'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8550392220859918624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608923414216134863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 551143694409669544}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8757701490152497100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608923414216134863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79de0149839e9c9ac8aa9ee13b292f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1517439603524695395
