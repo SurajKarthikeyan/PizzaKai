@@ -74,7 +74,7 @@ public class WeaponMasterModule : Module
             if (Input.GetMouseButton(0))
             {
                 // Firing.
-                TryFire();
+                PressWeaponTrigger();
             }
             else
             {
@@ -166,23 +166,21 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Firing
-    /// <summary>
-    /// Tries to fire the weapon.
-    /// </summary>
-    /// <param name="continuous">If false, calls <see cref="ReleaseTrigger"/>
-    /// after firing.</param>
-    /// <returns>True if able to fire, false if unable</returns>
-    public bool TryFire(bool continuous = true)
+    /// <param name="hold">If false, immediately release the trigger if we are
+    /// able to.</param>
+    /// <inheritdoc cref="WeaponModule.PressTrigger"/>
+    public bool PressWeaponTrigger(bool hold = true)
     {
-        bool success = isGrappling && CurrentWeapon.TryFireWeapon();
+        bool success = isGrappling && CurrentWeapon.PressTrigger();
 
-        if (success && !continuous)
-            ReleaseTrigger();
+        if (success && !hold)
+            ReleaseWeaponTrigger();
 
         return success;
     }
 
-    public void ReleaseTrigger()
+    /// <inheritdoc cref="WeaponModule.ReleaseTrigger"/>
+    public void ReleaseWeaponTrigger()
     {
         CurrentWeapon.ReleaseTrigger();
     }

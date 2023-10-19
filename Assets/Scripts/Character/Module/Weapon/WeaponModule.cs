@@ -278,10 +278,16 @@ public class WeaponModule : Module
 
     #region Weapon Firing
     /// <summary>
-    /// Attempts to fire the weapon.
+    /// Attempts to fire the weapon. The attempt fails if the weapon is out of
+    /// ammo, the weapon's fire delay has not yet expired, or if the weapon is
+    /// not autofire and the trigger has not been released.
     /// </summary>
-    /// <returns>True if firing was successful, false otherwise.</returns>
-    public bool TryFireWeapon()
+    /// <returns>True the weapon has fired.</returns>
+    /// <remarks>
+    /// This method has been renamed from TryFireWeapon, as its new name,
+    /// PressTrigger, is more appropriate for its behavior.
+    /// </remarks>
+    public bool PressTrigger()
     {
         bool canFire = CheckCanFire();
 
@@ -321,7 +327,9 @@ public class WeaponModule : Module
     }
 
     /// <summary>
-    /// Called by <see cref="WeaponMasterModule"/> to stop firing.
+    /// Releases the trigger, causing the gun to stop firing. This needs to be
+    /// called between instances of <see cref="PressTrigger"/> if <see
+    /// cref="autofire"/> is false.
     /// </summary>
     public void ReleaseTrigger()
     {
