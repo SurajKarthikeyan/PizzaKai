@@ -26,8 +26,6 @@ public class AITreeModule : Module
             rootGO.transform.Localize(transform);
             rootGO.RequireComponent(out root);
         }
-        
-        root.AnnotateGameObjects();
     }
     #endregion
 

@@ -168,6 +168,7 @@ public class WeaponModule : Module
     protected virtual void Start()
     {
         currentAmmo = ammoCount;
+
         if (weaponID == "[Not Set]")
         {
             Debug.LogError("WeaponID is not set from its default value", gameObject);
@@ -262,6 +263,13 @@ public class WeaponModule : Module
         // Always increment firing delay.
         firingDelay.IncrementUpdate(false);
 
+        // Check if trigger held down.
+        if (InputState == WeaponInputState.FiringHeld &&
+            firingDelay.IsDone)
+        {
+            FireProjectile();
+        }
+
         if (!altFireDelay.IsDone) altFireDelay.IncrementUpdate(false);
 
         // Determine if reload has completed.
@@ -289,34 +297,16 @@ public class WeaponModule : Module
     /// </remarks>
     public bool PressTrigger()
     {
+        InputState = autofire ?
+            WeaponInputState.FiringHeld :
+            WeaponInputState.FiringStart;
+
         bool canFire = CheckCanFire();
 
         if (canFire)
         {
-            firingDelay.Reset();
-
-            switch (InputState)
-            {
-                // If the player is already firing, then we go to the firing
-                // start state, otherwise we start firing.
-                case WeaponInputState.FiringStart:
-                    InputState = WeaponInputState.FiringHeld;
-                    break;
-                default:
-                    InputState = WeaponInputState.FiringStart;
-                    break;
-            }
-
             // Actually fire now.
             FireProjectile();
-            currentAmmo -= 1;
-            PlayAudio();
-        }
-
-        // Set animations.
-        if (weaponAnimator && !string.IsNullOrWhiteSpace(animFiringBool))
-        {
-            weaponAnimator.SetBool(animFiringBool, canFire);
         }
 
         if (playerAnimator && !string.IsNullOrWhiteSpace(animFiringBool))
@@ -367,10 +357,16 @@ public class WeaponModule : Module
     }
 
     /// <summary>
-    /// Actually fires the weapon.
+    /// Actually fires the weapon. Also resets the fireDelay.
     /// </summary>
     protected virtual void FireProjectile()
     {
+        // Reset timer.
+        firingDelay.Reset();
+
+        currentAmmo -= 1;
+        PlayAudio();
+
         //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;
 

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -112,5 +114,38 @@ public class Duration
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Creates a coroutine on <paramref name="unityObject"/> that calls
+    /// <paramref name="callback"/> once <see cref="maxTime"/> has passed. This
+    /// does not affect any values within this <see cref="Duration"/>.
+    /// </summary>
+    /// <param name="unityObject">The behavior to attach the coroutine
+    /// to.</param>
+    /// <param name="callback">The callback to perform.</param>
+    /// <param name="coroutine">The created coroutine.</param>
+    /// <param name="repeat">If true, keeps repeating the coroutine.</param>
+    /// <param name="unscaledTime">Whether or not to use unscaled time.</param>
+    public void GetCallback(MonoBehaviour unityObject, Action callback,
+        out Coroutine coroutine, bool repeat, bool unscaledTime = false)
+    {
+        coroutine = unityObject.StartCoroutine(WaitUntilDone_CR(
+            callback, repeat, unscaledTime
+        ));
+    }
+
+    private IEnumerator WaitUntilDone_CR(Action callback, bool repeat,
+        bool unscaledTime)
+    {
+        do
+        {
+            if (unscaledTime)
+                yield return new WaitForSecondsRealtime(maxTime);
+            else
+                yield return new WaitForSeconds(maxTime);
+    
+            callback();
+        } while (repeat);
     }
 }
