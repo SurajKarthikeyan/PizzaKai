@@ -288,9 +288,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 420420342852313319}
+  weapons: []
   weaponIndex: 0
   characterAnimator: {fileID: 879536357}
   animParamFire: 
+  isGrappling: 0
 --- !u!1 &4655716731726255398
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   maxHP: 500
+  characterAnimator: {fileID: 0}
+  animParamDeath: 
   r2d: {fileID: 7148419337918994596}
   c2d: {fileID: 7148419337918994599}
   sr: {fileID: 7148419337918994585}
@@ -806,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79de0149839e9c9ac8aa9ee13b292f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continuousFire: 1
 --- !u!1001 &1517439603524695395
 PrefabInstance:
   m_ObjectHideFlags: 0

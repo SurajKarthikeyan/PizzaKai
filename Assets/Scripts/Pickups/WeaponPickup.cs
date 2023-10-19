@@ -16,7 +16,7 @@ public class WeaponPickup : Pickup
         {
             try
             {
-                if (master.availableWeapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
+                if (master.weapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
                 {
                     // Ensure that we don't already have this weapon.
                     return false;

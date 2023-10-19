@@ -101,7 +101,7 @@ public class AIBranchModule : Module
                 // Select from branches.
                 var validBranches = branches
                     .Where(b => b.decision.CheckDecision(
-                        enemy, target
+                        enemy, b.targeting.GetTarget()
                     ));
 
                 if (validBranches.Any())
@@ -116,6 +116,8 @@ public class AIBranchModule : Module
                     Debug.Log(
                         $"Switching to subbranch {selected}"
                     );
+
+                    selected.StartAI(enemy);
                     return selected;
                 }
             }
@@ -142,6 +144,17 @@ public class AIBranchModule : Module
         {
             branch.InitializeAI(enemy);
         }
+    }
+
+    /// <summary>
+    /// Sets the AI.
+    /// </summary>
+    /// <param name="enemy"></param>
+    private void StartAI(EnemyControlModule enemy)
+    {
+        var target = targeting.GetTarget();
+
+        action.StartAI(enemy, target);
     }
     #endregion
 
