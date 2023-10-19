@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class AIBranch
+public class AIBranchModule : Module
 {
     #region Variables
     [Tooltip("Optional identifier for this branch.")]
@@ -17,14 +17,21 @@ public class AIBranch
 
     public AIAction action;
 
-    public List<AIBranch> branches = new();
+    public List<AIBranchModule> branches = new();
 
     [HideInInspector]
     public AITreeModule tree;
     #endregion
 
+    #region Validate
+    /// <summary>
+    /// Sets the names of itself and all of its AI components.
+    /// </summary>
     public void AnnotateGameObjects()
     {
+        // Just setting the names of the gameobjects.
+        gameObject.name = ToString();
+
         if (targeting)
         {
             targeting.gameObject.name = $"[Targeting] {id}";
@@ -32,7 +39,12 @@ public class AIBranch
 
         if (decision)
         {
-            decision.gameObject.name = $"[Decision] {id}"; 
+            decision.gameObject.name = $"[Decision] {id}";
+        }
+
+        if (action)
+        {
+            action.gameObject.name = $"[Action] {id}";
         }
 
         foreach (var branch in branches)
@@ -40,13 +52,17 @@ public class AIBranch
             branch.AnnotateGameObjects();
         }
     }
+    #endregion
 
     #region Main Methods
-    public AIBranch UpdateAI(EnemyControlModule enemy)
+    /// <summary>
+    /// Updates the AI.
+    /// </summary>
+    /// <param name="enemy"></param>
+    /// <returns></returns>
+    public AIBranchModule UpdateAI(EnemyControlModule enemy)
     {
         TargetToken target = targeting.GetTarget();
-
-        action.actionFlags |= AIAction.ActionFlags.FireWeapon;
 
         if (!decision.CheckDecision(enemy, target))
         {
@@ -102,11 +118,11 @@ public class AIBranch
         {
             branch.InitializeAI(enemy);
         }
-    } 
+    }
     #endregion
 
     public override string ToString()
     {
-        return $"AITreeBranch {id}";
+        return $"[Branch] {id}";
     }
 }

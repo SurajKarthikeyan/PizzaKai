@@ -18,7 +18,7 @@ public class AIDistanceDesc : AIDecision
     #region Decision Implementation
     public override void InitializeDecision(EnemyControlModule enemy)
     {
-        
+        // Do nothing.
     }
 
     protected override bool CheckDecisionInternal(EnemyControlModule enemy, TargetToken target)
