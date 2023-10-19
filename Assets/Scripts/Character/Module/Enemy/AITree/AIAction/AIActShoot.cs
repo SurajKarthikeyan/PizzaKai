@@ -17,7 +17,7 @@ public class AIActShoot : AIAction
             Debug.Log("Firing weapon");
             enemy.Master.weaponMasterModule.AimAt(target.Target);
             
-            enemy.Master.weaponMasterModule.TryFire(continuousFire);
+            enemy.Master.weaponMasterModule.PressWeaponTrigger(continuousFire);
         }
         else
         {
