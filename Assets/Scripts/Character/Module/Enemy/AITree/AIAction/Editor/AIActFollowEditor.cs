@@ -2,20 +2,22 @@ using UnityEngine;
 using UnityEditor;
 
 /// <summary>
-/// Custom editor for <see cref="AITargetPlayer"/>.
+/// Custom editor for <see cref="AIActFollow"/>
 /// 
 /// <br/>
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[CustomEditor(typeof(AITargetPlayer))]
-public class AITargetPlayerEditor : Editor
+[CustomEditor(typeof(AIActFollow))]
+public class AIActFollowEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         GUILayout.Box(
-            "Automatically targets the player.",
+            "Tells the AI to follow its current target.",
             GUIStyleExt.LeftAlignBox
         );
+
+        base.OnInspectorGUI();
     }
 }

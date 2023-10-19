@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class AIActShoot : AIAction
 {
+    #region Variables
+    [Tooltip("If true, fires continuously. If single fire weapon, only one " +
+        "shot will be performed.")]
+    [SerializeField]
+    private bool continuousFire = true;
+    #endregion
+
     #region Action Implementation
-    public override void ExitAI(EnemyControlModule enemy)
-    {
-        // Do nothing.
-    }
-
-    public override void InitializeAction(EnemyControlModule enemy)
-    {
-        // Do nothing.
-    }
-
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)
     {
         if (enemy.Master.weaponMasterModule)
         {
             Debug.Log("Firing weapon");
             enemy.Master.weaponMasterModule.AimAt(target.Target);
-            enemy.Master.weaponMasterModule.TryFire();
+            
+            enemy.Master.weaponMasterModule.TryFire(continuousFire);
         }
         else
         {

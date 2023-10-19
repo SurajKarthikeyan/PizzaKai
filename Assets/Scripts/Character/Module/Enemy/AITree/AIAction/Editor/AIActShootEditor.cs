@@ -2,20 +2,22 @@ using UnityEngine;
 using UnityEditor;
 
 /// <summary>
-/// Custom editor for <see cref="AITargetPlayer"/>.
+/// Custom editor for <see cref="AIActShoot"/>.
 /// 
 /// <br/>
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[CustomEditor(typeof(AITargetPlayer))]
-public class AITargetPlayerEditor : Editor
+[CustomEditor(typeof(AIActShoot))]
+public class AIActShootEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         GUILayout.Box(
-            "Automatically targets the player.",
+            "Shoots at the AI's current target.",
             GUIStyleExt.LeftAlignBox
         );
+
+        base.OnInspectorGUI();
     }
 }

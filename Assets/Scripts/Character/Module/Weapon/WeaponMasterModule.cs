@@ -148,12 +148,24 @@ public class WeaponMasterModule : Module
 
     #region Firing
     /// <summary>
-    /// Tries to fire the weapon
+    /// Tries to fire the weapon.
     /// </summary>
-    /// <returns>true if able to fire, false if unable</returns>
-    public bool TryFire()
+    /// <param name="continuous">If false, calls <see cref="ReleaseTrigger"/>
+    /// after firing.</param>
+    /// <returns>True if able to fire, false if unable</returns>
+    public bool TryFire(bool continuous = true)
     {
-        return CurrentWeapon.TryFireWeapon();
+        bool success = CurrentWeapon.TryFireWeapon();
+
+        if (success && !continuous)
+            ReleaseTrigger();
+
+        return success;
+    }
+
+    public void ReleaseTrigger()
+    {
+        CurrentWeapon.ReleaseTrigger();
     }
 
     /// <summary>
