@@ -24,6 +24,10 @@ public class AIDecisionCombo : AIDecision
     #endregion
 
     #region Variables
+    [Tooltip("Allows multiple decisions to be chained together. " +
+        "Options are:\n" +
+        "AND: all decisions must be true.\n" +
+        "OR: at least one decision must be true.")]
     public ComboStyle comboStyle;
 
     [Tooltip("Place Decisions as children to add them to the list.")]
@@ -32,7 +36,7 @@ public class AIDecisionCombo : AIDecision
     private List<AIDecision> decisions;
     #endregion
 
-    #region Decision
+    #region Decision Implementation
     public override void InitializeDecision(EnemyControlModule enemy)
     {
         // Do nothing

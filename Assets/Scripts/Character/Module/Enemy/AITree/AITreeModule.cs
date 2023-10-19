@@ -5,9 +5,9 @@ using UnityEngine;
 public class AITreeModule : Module
 {
     #region Variables
-    public AIBranch root;
+    public AIBranchModule root;
 
-    private AIBranch current = null;
+    private AIBranchModule current = null;
 
     [SerializeField]
     [ReadOnly]
@@ -17,6 +17,16 @@ public class AITreeModule : Module
     #region Validate
     private void OnValidate()
     {
+        if (!root)
+        {
+            var rootGO = new GameObject(
+                "",
+                typeof(AIBranchModule)
+            );
+            rootGO.transform.Localize(transform);
+            rootGO.RequireComponent(out root);
+        }
+        
         root.AnnotateGameObjects();
     }
     #endregion
@@ -39,9 +49,9 @@ public class AITreeModule : Module
     /// Performs a BFS over all the branches of the tree.
     /// </summary>
     /// <returns>Branches</returns>
-    public IEnumerable<AIBranch> AllBranches()
+    public IEnumerable<AIBranchModule> AllBranches()
     {
-        Queue<AIBranch> q = new();
+        Queue<AIBranchModule> q = new();
         q.Enqueue(root);
 
         while (q.Count > 0)
