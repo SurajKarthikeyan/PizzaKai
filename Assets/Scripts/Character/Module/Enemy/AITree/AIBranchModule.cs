@@ -28,35 +28,6 @@ public class AIBranchModule : Module
     #endregion
 
     #region Validate
-    /// <summary>
-    /// Sets the names of itself and all of its AI components.
-    /// </summary>
-    public void AnnotateGameObjects()
-    {
-        // // Just setting the names of the gameobjects.
-        // gameObject.name = ToString();
-
-        // if (targeting)
-        // {
-        //     targeting.gameObject.name = $"[Targeting] {id}";
-        // }
-
-        // if (decision)
-        // {
-        //     decision.gameObject.name = $"[Decision] {id}";
-        // }
-
-        // if (action)
-        // {
-        //     action.gameObject.name = $"[Action] {id}";
-        // }
-
-        // foreach (var branch in branches)
-        // {
-        //     branch.AnnotateGameObjects();
-        // }
-    }
-
     private void OnValidate()
     {
         gameObject.name = ToString();
@@ -86,52 +57,9 @@ public class AIBranchModule : Module
     /// <returns></returns>
     public AIBranchModule UpdateAI(EnemyControlModule enemy)
     {
-        TargetToken target = targeting.GetTarget();
-
-        if (!decision.CheckDecision(enemy, target))
-        {
-            // Action has ended. Go onto next.
-            action.ExitAI(enemy);
-            Debug.Log(
-                $"Action [{action}] has ended."
-            );
-
-            if (!branches.IsNullOrEmpty())
-            {
-                // Select from branches.
-                var validBranches = branches
-                    .Where(b => b.decision.CheckDecision(
-                        enemy, b.targeting.GetTarget()
-                    ));
-
-                if (validBranches.Any())
-                {
-                    var selected = validBranches
-                        .Aggregate(
-                            (b1, b2) =>
-                                b1.priority > b2.priority
-                                ? b1 : b2
-                        );
-
-                    Debug.Log(
-                        $"Switching to subbranch {selected}"
-                    );
-
-                    selected.StartAI(enemy);
-                    return selected;
-                }
-            }
-            // No more valid branches. Return root.
-            Debug.Log(
-                "No more branches. Return to root " +
-                $"[{enemy.decisionTree.root}]"
-            );
-            return enemy.decisionTree.root;
-        }
-
-        // Action still occurring.
-        action.UpdateAI(enemy, target);
-        return this;
+        var branch = SelectAI(enemy);
+        branch.UpdateAI(enemy);
+        return branch;
     }
 
     public void InitializeAI(EnemyControlModule enemy)
@@ -146,15 +74,91 @@ public class AIBranchModule : Module
         }
     }
 
-    /// <summary>
-    /// Sets the AI.
-    /// </summary>
-    /// <param name="enemy"></param>
-    private void StartAI(EnemyControlModule enemy)
+    private AIBranchModule SelectAI(EnemyControlModule enemy)
     {
-        var target = targeting.GetTarget();
+        TargetToken target = targeting.GetTarget();
 
+        if (decision.CheckDecision(enemy, target))
+        {
+            // Action has not yet ended. Update action and return.
+            UpdateAI(enemy, target);
+            return this;
+        }
+
+        // Action has ended. Go onto next.
+        ExitAI(enemy);
+        Debug.Log(
+            $"Action [{action}] has ended."
+        );
+
+        // Default case if nothing is selected.
+        AIBranchModule selected = enemy.decisionTree.root;
+
+        if (!branches.IsNullOrEmpty())
+        {
+            // Select from branches.
+            var validBranches = branches
+                .Where(b => b.decision.CheckDecision(
+                    enemy, b.targeting.GetTarget()
+                ));
+
+            if (validBranches.Any())
+            {
+                // Selecting new AI.
+                selected = validBranches
+                    .Aggregate(
+                        (b1, b2) =>
+                            b1.priority > b2.priority
+                            ? b1 : b2
+                    );
+
+                Debug.Log(
+                    $"Switching to subbranch {selected}"
+                );
+            }
+        }
+
+        if (enemy.decisionTree.root == selected)
+        {
+            // No more valid branches. Return root.
+            Debug.Log(
+                "No more branches. Return to root " +
+                $"[{selected}]"
+            );
+        }
+
+        if (selected != this)
+        {
+            // In the case that the tree consists of only the root, we don't
+            // want to keep calling StartAI.
+            selected.StartAI(enemy, target);
+        }
+
+        return selected;
+    }
+
+    /// <summary>
+    /// Starts all AI controls belonging to the branch.
+    /// </summary>
+    private void StartAI(EnemyControlModule enemy, TargetToken target)
+    {
         action.StartAI(enemy, target);
+    }
+
+    /// <summary>
+    /// Updates all AI controls belonging to the branch.
+    /// </summary>
+    private void UpdateAI(EnemyControlModule enemy, TargetToken target)
+    {
+        action.UpdateAI(enemy, target);
+    }
+
+    /// <summary>
+    /// Exits all AI controls belonging to the branch.
+    /// </summary>
+    private void ExitAI(EnemyControlModule enemy)
+    {
+        action.ExitAI(enemy);
     }
     #endregion
 

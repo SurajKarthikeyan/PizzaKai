@@ -9,11 +9,6 @@ using UnityEngine;
 /// </summary>
 public class AITargetPlayer : AITargeting
 {
-    public override void InitializeTargeting(EnemyControlModule enemy)
-    {
-        
-    }
-
     public override TargetToken GetTarget()
     {
         return new TargetToken(GameManager.Instance.Player.transform);

@@ -18,7 +18,7 @@ public abstract class AITargeting : MonoBehaviour
     /// Initializes the targeting.
     /// </summary>
     /// <param name="enemy">The enemy who this targeting belongs to.</param>
-    public abstract void InitializeTargeting(EnemyControlModule enemy);
+    public virtual void InitializeTargeting(EnemyControlModule enemy) { }
 
     public abstract TargetToken GetTarget();
     #endregion
