@@ -2214,7 +2214,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_Targets:
   - target: {fileID: 8206075540257416576}
-    weight: 1
+    weight: 2
     radius: 1
   - target: {fileID: 6520382722505347044}
     weight: 0.5
@@ -4257,7 +4257,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: accessible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: altFireball
@@ -4519,7 +4519,7 @@ PrefabInstance:
       objectReference: {fileID: 2061561926}
     - target: {fileID: -2332675900567559233, guid: 80d4e0c31f67a6a4e967ee724805cc8d, type: 3}
       propertyPath: accessible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2332675900567559233, guid: 80d4e0c31f67a6a4e967ee724805cc8d, type: 3}
       propertyPath: grappleForce

@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: Flamethrower
+  accessible: 0
   inputState: 0
   weaponAnimator: {fileID: 2770841203617395344}
   animFiringBool: Fire
@@ -150,7 +151,7 @@ MonoBehaviour:
   altFireDelay:
     maxTime: 5
     elapsed: 0
-  ammoCount: 80
+  ammoCount: 50
   currentAmmo: 0
   reloadDelay:
     maxTime: 3.5
