@@ -46,7 +46,7 @@ namespace XnTelemetry {
             Telem telem = new Telem(elapsed, transform.position, transform.rotation, tag);
             if (telemetrySettings.customEventDict.ContainsKey(tag))
             {
-                telemetrySettings.customEventDict[tag].Draw(telem);
+                telems.Add(telem);
                 print( tag + " Drawn");
             }
                 

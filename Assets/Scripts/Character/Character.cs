@@ -83,9 +83,11 @@ public sealed class Character : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
+                XnTelemetry.Telemetry_Cloud.CUSTOMEVENTLOG("Death");
                 EventManager.Instance.onCharacterDeath.Invoke(this);
                 onCharacterDeath.Invoke();
-                XnTelemetry.Telemetry_Cloud.CUSTOMEVENTLOG("Death");
+                
+
             }
         }
     }

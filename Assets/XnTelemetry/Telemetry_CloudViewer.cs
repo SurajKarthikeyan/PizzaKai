@@ -475,9 +475,6 @@ namespace XnTelemetry {
                 //bool grapplePointsTracking = false;
                 for (int i = 0; i < numPointsToDraw; i++) { // telems.Length; i++) {
                     telem = telems[i];
-                    if ( i > 60 ) {
-                        Debug.Log("BREAK");
-                    }
 
                     //// Only draw up to the total telemetryTime
                     //if (telem.time > telemetryTime) {
