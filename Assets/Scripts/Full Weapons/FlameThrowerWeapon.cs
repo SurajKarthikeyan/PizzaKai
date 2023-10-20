@@ -17,7 +17,7 @@ public class FlameThrowerWeapon : WeaponModule
     #region Variables
     [Header("Alt Fire Settings")]
     [Tooltip("Fireball used for alt fire")]
-    public GameObject altFireball;
+    public AltFlameProjectile altFireball;
     public AudioSource flameSource;
     #endregion
 
@@ -46,28 +46,13 @@ public class FlameThrowerWeapon : WeaponModule
     override public void AltFire()
     {
         base.AltFire();
-        Instantiate(altFireball, firePoint.position, Quaternion.identity);
+        altFireball.Spawn(this);
     }
-
-    //override public void ReloadWeapon()
-    //{
-    //    InputState = WeaponInputState.Reloading;
-    //    weaponAction = WeaponAudioStrings.Reload;
-
-    //    if (InputState == WeaponInputState.Reloading)
-    //    {
-    //        reloadDelay.Reset();
-    //        RefillAmmo();
-    //    }
-    //    OnMouseUp();
-    //    PlayAudio();
-    //}
 
     override public void PlayAudio()
     {
         if (weaponAction == WeaponAudioStrings.Shoot)
         {
-
             AudioDictionary.aDict.PlayAudioClipRemote(weaponName + weaponAction, flameSource);
         }
         else

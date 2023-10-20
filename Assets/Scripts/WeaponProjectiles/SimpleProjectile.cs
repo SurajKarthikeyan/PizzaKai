@@ -122,36 +122,47 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     {
                         enemyBasic.TakeDamage(ActualDamage);
                     }
-                    else if (collider.gameObject.HasComponent<BurningScript>() && CompareTag("PlayerFireBullet"))
+                    else if (collider.gameObject.HasComponent(out BurningScript burn)&& CompareTag("PlayerFireBullet"))
                     {
-                        collider.gameObject.GetComponent<BurningScript>().BurnBox();
+                        if (gameObject.HasComponent<AltFlameProjectile>())
+                        {
+                            Destroy(collider.gameObject);
+                        }
+                        else
+                        {
+                            burn.BurnBox();
+                        }
+                        
                     }
                     
                     else if (collider.gameObject.HasComponent(out Lever lever))
                     {
                         lever.LeverArmActivate();
                     }
-
-                    if (currentRicochets < ricochets)
+                    if (!gameObject.HasComponent<AltFlameProjectile>())
                     {
-                        // Handle ricochets. Position projectile very close to
-                        // the hit point, but not quite there.
-                        Vector2 diff = hit.point - transform.position.ToVector2();
-                        transform.position += diff.ToVector3() * 0.95f;
+                        if (currentRicochets < ricochets)
+                        {
+                            // Handle ricochets. Position projectile very close to
+                            // the hit point, but not quite there.
+                            Vector2 diff = hit.point - transform.position.ToVector2();
+                            transform.position += diff.ToVector3() * 0.95f;
 
-                        // Make the projectile go in the collision normal
-                        // direction.
-                        transform.right = Vector3.Reflect(
-                            Forwards,
-                            hit.normal.ToVector3()
-                        );
+                            // Make the projectile go in the collision normal
+                            // direction.
+                            transform.right = Vector3.Reflect(
+                                Forwards,
+                                hit.normal.ToVector3()
+                            );
+                        }
+                        else
+                        {
+                            // No more ricochets.
+                            DestroyProjectile();
+                            return;
+                        }
                     }
-                    else
-                    {
-                        // No more ricochets.
-                        DestroyProjectile();
-                        return;
-                    }
+                    
 
                     if (hitCharacter)
                     {
