@@ -475,6 +475,9 @@ namespace XnTelemetry {
                 //bool grapplePointsTracking = false;
                 for (int i = 0; i < numPointsToDraw; i++) { // telems.Length; i++) {
                     telem = telems[i];
+                    if ( i > 60 ) {
+                        Debug.Log("BREAK");
+                    }
 
                     //// Only draw up to the total telemetryTime
                     //if (telem.time > telemetryTime) {
@@ -482,98 +485,108 @@ namespace XnTelemetry {
                     //}
 
                     points[i] = telem.position;
-                    switch (telem.splitTag[0]) {
+                    string tag0 = telem.splitTag[0];
+                    
+                    // Check for TelemetryCustomEvents. This also allows TCEs to override Jump and Dive here.
+                    if ( tv.telemetrySettings.customEventDict.ContainsKey( tag0 ) ) {
+                        // Let the custom event handle it
+                        tv.telemetrySettings.customEventDict[tag0].Draw( telem );
+                    } else {
+                        switch ( tag0 ) {
                         case "Jump":
                             Handles.color = Color.white;
-                            Handles.ConeHandleCap(0, telem.position + coneOffset, rotUp, coneSize, EventType.Repaint);
+                            Handles.ConeHandleCap( 0, telem.position + coneOffset, rotUp, coneSize, EventType.Repaint );
                             break;
+
                         case "Dive":
                             Handles.color = Color.green;
-                            Handles.ConeHandleCap(0, telem.position, telem.rotation, coneSize, EventType.Repaint);
+                            Handles.ConeHandleCap( 0, telem.position, telem.rotation, coneSize, EventType.Repaint );
+                            break;
+
+                        default: // Including "_"
+                            Handles.color = telemColor;
+                            Handles.ConeHandleCap( 0, telem.position, telem.rotation, coneSize, EventType.Repaint );
+                            break;
+
+
+                        /*
+                        case "Jump":
+                            Handles.color = CJump;
+                            Handles.ConeHandleCap( 0, telem.position+coneOffset, rotUp, coneSize, EventType.Repaint );
+                            break;
+                        case "Grapple":
+                            Handles.color = telemColor;
+                            if ( telem.splitTag.Length < 2 ) break; // Just don't show it if there's an issue
+                            switch (telem.splitTag[1]) {
+                            case "Hit":
+                                grapplePoints.Clear();
+                                Handles.ConeHandleCap( 0, telem.position + camOffset, telem.rotation, coneSize, EventType.Repaint );
+                                if ( telem.p0 == Telemetry_Cloud.V3_INVALID ) {
+                                    try {
+                                        // Get the position of the GrapplerPoint that was grabbed
+                                        telem.p0 = Vector3.zero;
+                                        telem.p0.x = float.Parse( telem.splitTag[2] );
+                                        telem.p0.y = float.Parse( telem.splitTag[3] );
+                                        telem.p0.z = float.Parse( telem.splitTag[4] );
+                                        Handles.DrawLine( telem.position + camOffset, telem.p0 );
+                                        grapplePoints.Add( telem.p0 );
+                                        grapplePoints.Add( telem.position + camOffset );
+                                        grapplePointsTracking = true;
+                                    }
+                                    catch { }
+                                } else {
+                                    Handles.DrawLine( telem.position + camOffset, telem.p0 );
+                                }
+                                break;
+                            case "Miss":
+                                Handles.ConeHandleCap( 0, telem.position+camOffset, telem.rotation, coneSize, EventType.Repaint );
+                                if (grappleDist == 0) {
+                                    try {
+                                        grappleDist = float.Parse( telem.splitTag[2] );
+                                    }
+                                    catch {
+                                        grappleDist = 20; // Default
+                                    }
+                                }
+                                if (telem.p0 == Telemetry_Cloud.V3_INVALID ) {
+                                    telem.p0 = telem.position + camOffset + ( telem.rotation * ( Vector3.forward * grappleDist ) );
+                                }
+                                Handles.DrawDottedLine( telem.position + camOffset, telem.p0, 4f );
+                                break;
+                            case "Release":
+                                Handles.CubeHandleCap( 0, telem.position + camOffset, rotDown, cubeSize, EventType.Repaint );
+                                if ( telem.p0 == Telemetry_Cloud.V3_INVALID ) {
+                                    try {
+                                        // Get the position of the GrapplerPoint that was grabbed
+                                        telem.p0 = Vector3.zero;
+                                        telem.p0.x = float.Parse( telem.splitTag[2] );
+                                        telem.p0.y = float.Parse( telem.splitTag[3] );
+                                        telem.p0.z = float.Parse( telem.splitTag[4] );
+                                        Handles.DrawLine( telem.position + camOffset, telem.p0 );
+                                        if (grapplePointsTracking) {
+                                            grapplePoints.Add( telem.position + camOffset );
+                                            grapplePoints.Add( telem.p0 );
+
+                                            Handles.color = telemColorTrans;
+                                            Handles.DrawAAConvexPolygon( grapplePoints.ToArray() );
+                                            grapplePointsTracking = false;
+                                            grapplePoints.Clear();
+                                        }
+                                    }
+                                    catch { }
+                                } else {
+                                    Handles.DrawLine( telem.position + camOffset, telem.p0 );
+                                }
+                                break;
+                            }
                             break;
                         default: // Including "_"
                             Handles.color = telemColor;
-                            Handles.ConeHandleCap(0, telem.position, telem.rotation, coneSize, EventType.Repaint);
+                            Handles.ConeHandleCap( 0, telem.position, telem.rotation, coneSize, EventType.Repaint );
+                            if ( grapplePointsTracking ) grapplePoints.Add( telem.position + camOffset );
                             break;
-
-
-                            /*
-                            case "Jump":
-                                Handles.color = CJump;
-                                Handles.ConeHandleCap( 0, telem.position+coneOffset, rotUp, coneSize, EventType.Repaint );
-                                break;
-                            case "Grapple":
-                                Handles.color = telemColor;
-                                if ( telem.splitTag.Length < 2 ) break; // Just don't show it if there's an issue
-                                switch (telem.splitTag[1]) {
-                                case "Hit":
-                                    grapplePoints.Clear();
-                                    Handles.ConeHandleCap( 0, telem.position + camOffset, telem.rotation, coneSize, EventType.Repaint );
-                                    if ( telem.p0 == Telemetry_Cloud.V3_INVALID ) {
-                                        try {
-                                            // Get the position of the GrapplerPoint that was grabbed
-                                            telem.p0 = Vector3.zero;
-                                            telem.p0.x = float.Parse( telem.splitTag[2] );
-                                            telem.p0.y = float.Parse( telem.splitTag[3] );
-                                            telem.p0.z = float.Parse( telem.splitTag[4] );
-                                            Handles.DrawLine( telem.position + camOffset, telem.p0 );
-                                            grapplePoints.Add( telem.p0 );
-                                            grapplePoints.Add( telem.position + camOffset );
-                                            grapplePointsTracking = true;
-                                        }
-                                        catch { }
-                                    } else {
-                                        Handles.DrawLine( telem.position + camOffset, telem.p0 );
-                                    }
-                                    break;
-                                case "Miss":
-                                    Handles.ConeHandleCap( 0, telem.position+camOffset, telem.rotation, coneSize, EventType.Repaint );
-                                    if (grappleDist == 0) {
-                                        try {
-                                            grappleDist = float.Parse( telem.splitTag[2] );
-                                        }
-                                        catch {
-                                            grappleDist = 20; // Default
-                                        }
-                                    }
-                                    if (telem.p0 == Telemetry_Cloud.V3_INVALID ) {
-                                        telem.p0 = telem.position + camOffset + ( telem.rotation * ( Vector3.forward * grappleDist ) );
-                                    }
-                                    Handles.DrawDottedLine( telem.position + camOffset, telem.p0, 4f );
-                                    break;
-                                case "Release":
-                                    Handles.CubeHandleCap( 0, telem.position + camOffset, rotDown, cubeSize, EventType.Repaint );
-                                    if ( telem.p0 == Telemetry_Cloud.V3_INVALID ) {
-                                        try {
-                                            // Get the position of the GrapplerPoint that was grabbed
-                                            telem.p0 = Vector3.zero;
-                                            telem.p0.x = float.Parse( telem.splitTag[2] );
-                                            telem.p0.y = float.Parse( telem.splitTag[3] );
-                                            telem.p0.z = float.Parse( telem.splitTag[4] );
-                                            Handles.DrawLine( telem.position + camOffset, telem.p0 );
-                                            if (grapplePointsTracking) {
-                                                grapplePoints.Add( telem.position + camOffset );
-                                                grapplePoints.Add( telem.p0 );
-
-                                                Handles.color = telemColorTrans;
-                                                Handles.DrawAAConvexPolygon( grapplePoints.ToArray() );
-                                                grapplePointsTracking = false;
-                                                grapplePoints.Clear();
-                                            }
-                                        }
-                                        catch { }
-                                    } else {
-                                        Handles.DrawLine( telem.position + camOffset, telem.p0 );
-                                    }
-                                    break;
-                                }
-                                break;
-                            default: // Including "_"
-                                Handles.color = telemColor;
-                                Handles.ConeHandleCap( 0, telem.position, telem.rotation, coneSize, EventType.Repaint );
-                                if ( grapplePointsTracking ) grapplePoints.Add( telem.position + camOffset );
-                                break;
-                            */
+                        */
+                        }
                     }
                 }
                 Handles.color = telemColor;
