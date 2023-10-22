@@ -53,6 +53,10 @@ public class FlameThrowerWeapon : WeaponModule
     {
         if (weaponAction == WeaponAudioStrings.Shoot)
         {
+            if (flameSource.isPlaying)
+            {
+                return;
+            }
             AudioDictionary.aDict.PlayAudioClipRemote(weaponName + weaponAction, flameSource);
         }
         else
