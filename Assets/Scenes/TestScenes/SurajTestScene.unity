@@ -141203,6 +141203,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 995613533016112330, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+      propertyPath: altWaitBetweenShots
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995613533016112330, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: altFireDelay.maxTime
       value: 5
       objectReference: {fileID: 0}
@@ -141278,6 +141282,14 @@ PrefabInstance:
       propertyPath: audioDict.keyValuePairs.Array.data[14].value
       value: 
       objectReference: {fileID: 8300000, guid: 1856c628e6d52bd4ba9dae7be2bb84ba, type: 3}
+    - target: {fileID: 8907281305966034701, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[16].value
+      value: 
+      objectReference: {fileID: 8300000, guid: 557061c8626a6a04b932079706fec8c9, type: 3}
+    - target: {fileID: 8907281305966034701, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+      propertyPath: audioDict.keyValuePairs.Array.data[18].value
+      value: 
+      objectReference: {fileID: 8300000, guid: 40f2414c593196845a6aed35376126d9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
 --- !u!1 &2073156824
