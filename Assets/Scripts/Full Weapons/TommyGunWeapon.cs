@@ -20,6 +20,9 @@ public class TommyGunWeapon : WeaponModule
     [Tooltip("Point from which tommy flash starts")]
     public Transform playerTransform;
 
+    [Tooltip("Time between alt fire shots")] [SerializeField]
+    private float altWaitBetweenShots;
+
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 20;
 
@@ -62,7 +65,13 @@ public class TommyGunWeapon : WeaponModule
 
     IEnumerator TommyRapidFire()
     {
-        yield return new WaitForSeconds(1f);
+        ReloadWeapon();
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 22; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
+        {
+            TryFireWeapon();
+            yield return new WaitForSeconds(altWaitBetweenShots);
+        }
         Debug.Log("TommyAltDone");
     }
     #endregion
