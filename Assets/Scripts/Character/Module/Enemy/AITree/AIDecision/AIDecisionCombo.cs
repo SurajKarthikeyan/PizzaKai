@@ -39,7 +39,10 @@ public class AIDecisionCombo : AIDecision
     #region Decision Implementation
     public override void InitializeDecision(EnemyControlModule enemy)
     {
-        // Do nothing
+        foreach (var decision in decisions)
+        {
+            decision.InitializeDecision(enemy);
+        }
     }
 
     protected override bool CheckDecisionInternal(EnemyControlModule enemy, TargetToken target)

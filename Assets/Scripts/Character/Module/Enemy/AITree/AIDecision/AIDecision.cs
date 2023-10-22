@@ -6,7 +6,8 @@ public abstract class AIDecision :MonoBehaviour
 {
     #region Decision Methods
     /// <summary>
-    /// Initializes the decision.
+    /// Initializes the decision. This is called when <see cref="AITreeModule"/>
+    /// is first initialized.
     /// </summary>
     /// <param name="enemy">The enemy who this decision belongs to.</param>
     public abstract void InitializeDecision(EnemyControlModule enemy);

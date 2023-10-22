@@ -38,25 +38,18 @@ public class WeaponMasterModule : Module
     #region Instantiation
     private void Awake()
     {
-        foreach(var weapon in weapons)
-        {
-            if (weapon.accessible)
-            {
-                weapons.Add(weapon);
-            }
-        }
-        SetComponents();
+        SetVars();
     }
 
     private void OnValidate()
     {
-        SetComponents();
+        SetVars();
     }
 
     /// <summary>
     /// Sets components for master module
     /// </summary>
-    private void SetComponents()
+    private void SetVars()
     {
         GetComponentsInChildren(true, weapons);
     }
@@ -253,7 +246,6 @@ public class WeaponMasterModule : Module
     public WeaponModule AddWeapon(WeaponModule weapon)
     {
         weapon.transform.Localize(transform);
-        weapon.accessible = true;
         weapons.Add(weapon);
         SwitchToWeapon(weapons.Count - 1);
         return weapon;
