@@ -106,9 +106,14 @@ public static class TransformExt
     /// etc, etc.
     /// </summary>
     /// <param name="transform"></param>
+    /// <param name="includeSelf">If true, the iteration contains <paramref name="transform"/>.</param>
     /// <returns></returns>
-    public static IEnumerable<Transform> Parents(this Transform transform)
+    public static IEnumerable<Transform> Parents(this Transform transform,
+        bool includeSelf = true)
     {
+        if (includeSelf)
+            yield return transform;
+
         Transform parent = transform.parent;
 
         while (parent != null)

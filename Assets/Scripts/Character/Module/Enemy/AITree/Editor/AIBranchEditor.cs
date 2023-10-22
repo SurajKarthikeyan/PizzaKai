@@ -26,20 +26,28 @@ using UnityEngine;
 [CustomEditor(typeof(AIBranchModule))]
 public class AIBranchEditor : Editor
 {
+    private bool[] opened = new bool[2];
+
     public override void OnInspectorGUI()
     {
         serializedObject.UpdateIfRequiredOrScript();
 
-        GUILayout.Box(
-            "A branch is utilizes classes derived from AITargeting, " +
-            "AIDecision, and AIAction (collectively referred to as AI " +
-            "Controls).\n" +
-            "* AITargeting selects a target for the AI.\n" +
-            "* AIDecision uses that target to decide if the branch should be " +
-            "executed.\n" +
-            "* AIAction is responsible for the actual execution of the AI.",
-            GUIStyleExt.LeftAlignBox
-        );
+        opened[0] = EditorGUILayout.BeginFoldoutHeaderGroup(opened[0],
+            "Branch Documentation");
+        if (opened[0])
+        {
+            GUILayout.Box(
+                "A branch is utilizes classes derived from AITargeting, " +
+                "AIDecision, and AIAction (collectively referred to as AI " +
+                "Controls). " +
+                "AITargeting selects a target for the AI. " +
+                "AIDecision uses that target to decide if the branch should be " +
+                "executed. " +
+                "AIAction is responsible for the actual execution of the AI.",
+                GUIStyleExt.LeftAlignBox
+            ); 
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
 
         base.OnInspectorGUI();
 
@@ -47,13 +55,19 @@ public class AIBranchEditor : Editor
 
         EditorGUILayout.Separator();
 
-        GUILayout.Box(
-            "Select a type from the dropdowns below to quickly create and " +
-            "assign it. Once assigned, you can click on the Remove button to " +
-            "get rid of it. Be warned: undo does NOT work for this, and I " +
-            "didn't add a confirmation box either (lmk if you want one).",
-            GUIStyleExt.LeftAlignBox
-        );
+        opened[1] = EditorGUILayout.BeginFoldoutHeaderGroup(opened[1],
+            "Buttons Documentation");
+        if (opened[1])
+        {
+            GUILayout.Box(
+                "Select a type from the dropdowns below to quickly create and " +
+                "assign it. Once assigned, you can click on the Remove button to " +
+                "get rid of it. Be warned: undo does NOT work for this, and I " +
+                "didn't add a confirmation box either (lmk if you want one).",
+                GUIStyleExt.LeftAlignBox
+            );
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
 
         EditAIControl(ref branch.targeting, "Targeting");
         EditAIControl(ref branch.decision, "Decision");

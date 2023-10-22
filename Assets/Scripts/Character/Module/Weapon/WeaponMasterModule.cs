@@ -36,18 +36,18 @@ public class WeaponMasterModule : Module
     #region Instantiation
     private void Awake()
     {
-        SetComponents();
+        SetVars();
     }
 
     private void OnValidate()
     {
-        SetComponents();
+        SetVars();
     }
 
     /// <summary>
     /// Sets components for master module
     /// </summary>
-    private void SetComponents()
+    private void SetVars()
     {
         GetComponentsInChildren(true, weapons);
     }

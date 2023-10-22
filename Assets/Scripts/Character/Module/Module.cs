@@ -17,17 +17,44 @@ public class Module : MonoBehaviour
     public Character Master { get; private set; }
     #endregion
 
+    private void OnTransformParentChanged()
+    {
+        if (!Master || !transform.IsChildOf(Master.transform))
+        {
+            // New master. Remove module from old.
+            if (Master)
+                Master.RemoveModule(this);
+
+            if (this.HasComponentInAnyParent(out Character m))
+            {
+                m.AddModule(this);
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Master)
+        {
+            Master.RemoveModule(this);
+        }
+    }
+
     #region Public Methods
     public void LinkToMaster(Character master)
     {
-        Master = master;
-        OnLinked();
+        if (master != Master)
+        {
+            var old = Master;
+            Master = master;
+            OnLinked(old); 
+        }
     }
 
     /// <summary>
     /// Called once <see cref="Master"/> is set from <see
     /// cref="LinkToMaster(Character)"/>.
     /// </summary>
-    protected virtual void OnLinked() { }
+    protected virtual void OnLinked(Character oldMaster) { }
     #endregion
 }

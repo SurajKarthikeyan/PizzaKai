@@ -95,7 +95,7 @@ public sealed class Character : MonoBehaviour
         }
     }
 
-    public List<Module> Modules { get; private set; } = new();
+    private List<Module> Modules { get; set; } = new();
     #endregion
 
     // These are local events that can be captured by child Modules. By
@@ -162,6 +162,39 @@ public sealed class Character : MonoBehaviour
     private void Reset()
     {
         hp = 20;
+    }
+    #endregion
+
+    #region Module Methods
+    /// <summary>
+    /// Adds <paramref name="module"/> to the list of modules.
+    /// Fails if <paramref name="module"/> already exists in that list.
+    /// </summary>
+    /// <param name="module">The module.</param>
+    /// <returns>True if the module was not previously in the list, false otherwise.</returns>
+    public bool AddModule(Module module)
+    {
+        if (Modules.Contains(module))
+            return false;
+
+        Modules.Add(module);
+        module.LinkToMaster(this);
+        return true;
+    }
+
+    /// <summary>
+    /// Removes <paramref name="module"/> from the list of modules.
+    /// Fails if <paramref name="module"/> does not exist in that list.
+    /// </summary>
+    /// <param name="module">The module.</param>
+    /// <returns>True if the module was removed, false otherwise.</returns>
+    public bool RemoveModule(Module module)
+    {
+        if (!Modules.Contains(module))
+            return false;
+
+        Modules.Remove(module);
+        return true;
     }
     #endregion
 
@@ -257,5 +290,24 @@ public sealed class Character : MonoBehaviour
         }
 
         audioSource.PlayOneShot(clip);
+    }
+
+    /// <summary>
+    /// Uses the <see cref="AudioDictionary"/> to play a sound.
+    /// </summary>
+    /// <param name="audKey">The key of the audio dictionary.</param>
+    public void PlayClip(string audKey)
+    {
+        if (AudioDictionary.aDict.audioDict.TryGetValue(audKey, out AudioClip clip))
+        {
+            PlayClip(clip);
+        }
+        else
+        {
+            Debug.LogWarning(
+                $"Key {audKey} not found in AudioDictionary",
+                AudioDictionary.aDict
+            );
+        }
     }
 }

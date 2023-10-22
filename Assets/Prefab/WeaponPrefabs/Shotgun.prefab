@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 4342418669709362196}
   - component: {fileID: 4342418669709362197}
   - component: {fileID: 4342418669316601403}
+  - component: {fileID: 5164988763456788806}
   m_Layer: 7
   m_Name: PlayerShotgunRightArm
   m_TagString: Untagged
@@ -379,6 +380,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5164988763456788806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342418669709362199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be31a49bcf9d33d73a0c809132f4d2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4342418669924086010
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,9 +447,9 @@ MonoBehaviour:
   animAltingBool: 
   animReloadingBool: Reload
   weaponAudio: {fileID: -4717194129262909025}
-  firingClip: {fileID: 0}
-  altingClip: {fileID: 0}
-  reloadClip: {fileID: 0}
+  firingClip: {fileID: 8300000, guid: fdc72e5a6053718459572f1b3f5c8515, type: 3}
+  altingClip: {fileID: 8300000, guid: 56c9bb88452236544a197f789de8e600, type: 3}
+  reloadClip: {fileID: 8300000, guid: 957ebb02b6839d04593b79e67cb6cdf2, type: 3}
   firePoint: {fileID: 4342418669661374407}
   autofire: 0
   firstShotAccurate: 1
