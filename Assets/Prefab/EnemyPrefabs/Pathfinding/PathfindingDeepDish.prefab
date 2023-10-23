@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToTarget:
-    mode: 2
+    mode: 3
     min: 15
-    max: 15
+    max: 10
 --- !u!1 &1586653013875830777
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 4812696129408210747}
-  deltaTime: 0
+  current: {fileID: 0}
 --- !u!1 &1741931568452720880
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToTarget:
-    mode: 3
-    min: 0
+    mode: 2
+    min: 10
     max: 15
 --- !u!1 &6552882439706471497
 GameObject:
@@ -806,7 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79de0149839e9c9ac8aa9ee13b292f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continuousFire: 1
 --- !u!1001 &1517439603524695395
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class WeaponModule : Module
         /// <summary>
         /// The first frame of firing.
         /// </summary>
-        FiringStart,
+        FiringSingle,
         /// <summary>
         /// The later frames of firing. Used for auto-fire.
         /// </summary>
@@ -184,6 +184,14 @@ public class WeaponModule : Module
     public bool OutOfAmmo => currentAmmo <= 0 &&
         InputState != WeaponInputState.Reloading;
 
+    /// <summary>
+    /// True if the weapon is in either
+    /// <see cref="WeaponInputState.FiringSingle"/> or
+    /// <see cref="WeaponInputState.FiringHeld"/>.
+    /// </summary>
+    public bool PrimaryTriggerDown => InputState == WeaponInputState.FiringSingle ||
+        InputState == WeaponInputState.FiringHeld;
+
     public WeaponInputState InputState
     {
         get => inputState;
@@ -205,8 +213,7 @@ public class WeaponModule : Module
                 {
                     weaponAnimator.SetBool(
                         animFiringBool,
-                        InputState == WeaponInputState.FiringStart ||
-                        InputState == WeaponInputState.FiringHeld
+                        PrimaryTriggerDown
                     );
                 }
 
@@ -223,8 +230,7 @@ public class WeaponModule : Module
                     // Use it instead.
                     weaponAnimator.SetBool(
                         animFiringBool,
-                        InputState == WeaponInputState.FiringStart ||
-                        InputState == WeaponInputState.FiringHeld ||
+                        PrimaryTriggerDown ||
                         InputState == WeaponInputState.Alting
                     );
                 }
@@ -267,23 +273,17 @@ public class WeaponModule : Module
         // Always increment firing delay.
         firingDelay.IncrementUpdate(false);
 
-        // Check if trigger held down.
-        if (InputState == WeaponInputState.FiringHeld &&
-            firingDelay.IsDone)
-        {
-            FireProjectile();
-        }
+        // Fire if trigger is held down.
+        TryFireProjectile();
 
         if (!altFireDelay.IsDone) altFireDelay.IncrementUpdate(false);
 
         // Determine if reload has completed.
-        if (InputState == WeaponInputState.Reloading)
+        if (InputState == WeaponInputState.Reloading &&
+            reloadDelay.IncrementUpdate(true))
         {
-            if (reloadDelay.IncrementUpdate(true))
-            {
-                // Done reloading.
-                RefillAmmo();
-            }
+            // Done reloading.
+            RefillAmmo();
         }
     }
     #endregion
@@ -303,17 +303,9 @@ public class WeaponModule : Module
     {
         InputState = autofire ?
             WeaponInputState.FiringHeld :
-            WeaponInputState.FiringStart;
+            WeaponInputState.FiringSingle;
 
-        bool canFire = CheckCanFire();
-
-        if (canFire)
-        {
-            // Actually fire now.
-            FireProjectile();
-        }
-
-        return canFire;
+        return TryFireProjectile();
     }
 
     /// <summary>
@@ -323,9 +315,9 @@ public class WeaponModule : Module
     /// </summary>
     public void ReleaseTrigger()
     {
-        if (InputState == WeaponInputState.FiringStart ||
-            InputState == WeaponInputState.FiringHeld)
+        if (PrimaryTriggerDown)
         {
+            // Only release trigger if actually firing.
             InputState = WeaponInputState.Idle;
             burstCount = 0;
         }
@@ -345,9 +337,8 @@ public class WeaponModule : Module
 
         switch (InputState)
         {
-            case WeaponInputState.Idle:
-                return firingDelay.IsDone;
-            case WeaponInputState.FiringStart:
+            case WeaponInputState.FiringSingle:
+                return firingDelay.IsDone && BurstCount == 0;
             case WeaponInputState.FiringHeld:
                 // If autofire is disabled, then do not allow the weapon to be fired
                 return firingDelay.IsDone;
@@ -357,22 +348,27 @@ public class WeaponModule : Module
     }
 
     /// <summary>
-    /// Actually fires the weapon. Also resets the fireDelay.
+    /// Tries to fire the projectile. Fails if firing delay has
+    /// not expired, if out of ammo, etc.
     /// </summary>
-    protected void FireProjectile()
+    protected bool TryFireProjectile()
     {
+        bool canFire = CheckCanFire();
+
+        if (!canFire)
+            return false;
+
         // Reset timer.
         firingDelay.Reset();
 
-        currentAmmo -= 1;
         PlayAudio();
 
-        //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;
-
         burstCount++;
-
+        currentAmmo -= 1;
         bullet.Spawn(this);
+
+        return true;
     }
 
     /// <summary>

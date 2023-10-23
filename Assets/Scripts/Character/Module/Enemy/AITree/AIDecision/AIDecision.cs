@@ -17,7 +17,8 @@ public abstract class AIDecision :MonoBehaviour
     /// </summary>
     /// <param name="enemy">The enemy.</param>
     /// <param name="target">The target token.</param>
-    /// <returns></returns>
+    /// <returns>True if the decision should be selected (or should
+    /// continue being selected), false otherwise.</returns>
     public bool CheckDecision(EnemyControlModule enemy, TargetToken target)
     {
         if (target == null)

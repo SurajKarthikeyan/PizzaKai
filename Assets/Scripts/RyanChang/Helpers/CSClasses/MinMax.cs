@@ -90,4 +90,14 @@ public struct MinMax
         };
     }
     #endregion
+
+    #region ToString
+    public override readonly string ToString() => mode switch
+    {
+        Mode.Between => $"Between [{Min}, {Max}]",
+        Mode.LessThan => $"Less than or equal to {Max}",
+        Mode.GreaterThan => $"Greater than or equal to {Min}",
+        _ => $"Not between ({Min}, {Max})"
+    };
+    #endregion
 }
