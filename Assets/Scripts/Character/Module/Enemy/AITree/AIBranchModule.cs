@@ -51,17 +51,9 @@ public class AIBranchModule : Module
 
     #region Main Methods
     /// <summary>
-    /// Updates the AI.
+    /// Initializes the AI branch. Called once from the AI tree.
     /// </summary>
-    /// <param name="enemy"></param>
-    /// <returns></returns>
-    public AIBranchModule UpdateAI(EnemyControlModule enemy)
-    {
-        var branch = SelectAI(enemy);
-        branch.UpdateAI(enemy);
-        return branch;
-    }
-
+    /// <param name="enemy">The enemy the AI branch is associated with.</param>
     public void InitializeAI(EnemyControlModule enemy)
     {
         targeting.InitializeTargeting(enemy);
@@ -74,7 +66,13 @@ public class AIBranchModule : Module
         }
     }
 
-    private AIBranchModule SelectAI(EnemyControlModule enemy)
+    /// <summary>
+    /// Selects the AI to run next. This will either be one of this branch's sub-branches
+    /// or the root of the tree this belongs to.
+    /// </summary>
+    /// <returns>The selected branch.</returns>
+    /// <inheritdoc cref="InitializeAI(EnemyControlModule)"/>
+    public AIBranchModule SelectAI(EnemyControlModule enemy)
     {
         TargetToken target = targeting.GetTarget();
 

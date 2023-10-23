@@ -159,14 +159,12 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Firing
-    /// <param name="hold">If false, immediately release the trigger if we are
-    /// able to.</param>
     /// <inheritdoc cref="WeaponModule.PressTrigger"/>
-    public bool PressWeaponTrigger(bool hold = true)
+    public bool PressWeaponTrigger()
     {
         bool success = isGrappling && CurrentWeapon.PressTrigger();
 
-        if (success && !hold)
+        if (success)
             ReleaseWeaponTrigger();
 
         return success;

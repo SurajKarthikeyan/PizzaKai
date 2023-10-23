@@ -7,11 +7,10 @@ public class AITreeModule : Module
     #region Variables
     public AIBranchModule root;
 
-    private AIBranchModule current = null;
-
     [SerializeField]
     [ReadOnly]
-    protected float deltaTime;
+    [Tooltip("The current running branch.")]
+    private AIBranchModule current = null;
     #endregion
 
     #region Validate
@@ -19,12 +18,10 @@ public class AITreeModule : Module
     {
         if (!root)
         {
-            var rootGO = new GameObject(
-                "",
-                typeof(AIBranchModule)
-            );
-            rootGO.transform.Localize(transform);
+            // Create root.
+            GameObject rootGO = new("[Branch] Root", typeof(AIBranchModule));
             rootGO.RequireComponent(out root);
+            root.id = "Root";
         }
     }
     #endregion
@@ -37,10 +34,11 @@ public class AITreeModule : Module
 
     public void AIUpdate(EnemyControlModule enemy, float deltaTime)
     {
-        this.deltaTime = deltaTime;
-        current ??= root;
+        if (!current)
+            current = root;
+
         current.tree = this;
-        current = current.UpdateAI(enemy);
+        current = current.SelectAI(enemy);
     }
 
     /// <summary>

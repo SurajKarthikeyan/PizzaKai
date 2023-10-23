@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 4342418669709362196}
   - component: {fileID: 4342418669709362197}
   - component: {fileID: 4342418669316601403}
+  - component: {fileID: 6443677834159546948}
   m_Layer: 7
-  m_Name: PlayerShotgunRightArm
+  m_Name: EnemyShotgunRightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,6 +190,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6443677834159546948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342418669709362199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be31a49bcf9d33d73a0c809132f4d2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4342418669924086010
 GameObject:
   m_ObjectHideFlags: 0
