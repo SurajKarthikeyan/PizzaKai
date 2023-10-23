@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class AIActFollow : AIAction
 {
     #region Action Implementation

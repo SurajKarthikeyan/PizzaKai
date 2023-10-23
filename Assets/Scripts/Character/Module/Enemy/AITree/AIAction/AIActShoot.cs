@@ -4,21 +4,66 @@ using UnityEngine;
 public class AIActShoot : AIAction
 {
     #region Variables
+    [SerializeField]
+    [Tooltip("If true, start reloading when exiting the action.")]
+    private bool reloadOnExit; 
     #endregion
 
     #region Action Implementation
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)
     {
-        if (enemy.Master.weaponMasterModule)
-        {
-            //Debug.Log("Firing weapon");
-            enemy.Master.weaponMasterModule.AimAt(target.Position);
+        WeaponMasterModule wmm = enemy.Master.weaponMasterModule;
 
-            enemy.Master.weaponMasterModule.PressWeaponTrigger();
+        if (wmm)
+        {
+            StartCoroutine(Aiming_CR(enemy, target));
+
+            wmm.PressWeaponTrigger();
+
+            if (!wmm.CurrentWeapon.autofire)
+            {
+                // Release trigger.
+                wmm.ReleaseWeaponTrigger();
+            }
         }
         else
         {
             Debug.LogWarning($"No weapon master found on {enemy}");
+        }
+    }
+
+    public override void ExitAI(EnemyControlModule enemy)
+    {
+        StopAllCoroutines();
+
+        WeaponMasterModule wmm = enemy.Master.weaponMasterModule;
+
+        if (wmm)
+        {
+            wmm.ReleaseWeaponTrigger();
+
+            if (reloadOnExit)
+            {
+                wmm.TryReload();
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No weapon master found on {enemy}");
+        }
+    }
+    #endregion
+
+    #region Helpers
+    private IEnumerator Aiming_CR(EnemyControlModule enemy, TargetToken target)
+    {
+        WeaponMasterModule wmm = enemy.Master.weaponMasterModule;
+
+        while (selected && enemy)
+        {
+            yield return new WaitForFixedUpdate();
+
+            wmm.AimAt(target.Position);
         }
     }
     #endregion

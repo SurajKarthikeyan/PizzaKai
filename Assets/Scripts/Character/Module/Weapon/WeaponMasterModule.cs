@@ -147,14 +147,11 @@ public class WeaponMasterModule : Module
         scale.y = Master.flipModule.FlipMultiplier;
         transform.localScale = scale;
 
-
-        Vector3 eulerAngles = new(
+        transform.eulerAngles = new(
             0,
             0,
             zRot
         );
-
-        transform.eulerAngles = eulerAngles;
     }
     #endregion
 

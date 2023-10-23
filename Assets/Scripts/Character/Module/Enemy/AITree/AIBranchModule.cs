@@ -19,7 +19,7 @@ public class AIBranchModule : Module
     [Tooltip("The decision for entering this element.")]
     public AIDecision decision;
 
-    public AIAction action;
+    public AIAction[] actions = new AIAction[0];
 
     public List<AIBranchModule> branches = new();
 
@@ -42,9 +42,12 @@ public class AIBranchModule : Module
             decision.gameObject.name = $"[Decision] {id}";
         }
 
-        if (action)
+        foreach (var action in actions)
         {
-            action.gameObject.name = $"[Action] {id}";
+            if (action)
+            {
+                action.gameObject.name = $"[Action] {id}";
+            }
         }
     }
     #endregion
@@ -58,7 +61,10 @@ public class AIBranchModule : Module
     {
         targeting.InitializeTargeting(enemy);
         decision.InitializeDecision(enemy);
-        action.InitializeAction(enemy);
+        foreach (var action in actions)
+        {
+            action.InitializeAction(enemy);
+        }
 
         foreach (var branch in branches)
         {
@@ -85,8 +91,12 @@ public class AIBranchModule : Module
 
         // Action has ended. Go onto next.
         ExitAI(enemy);
+        var actNames = string.Join(
+            ", ",
+            actions.Select(a => a.ToString())
+        );
         Debug.Log(
-            $"Action [{action}] has ended."
+            $"Actions [{actNames}] has ended."
         );
 
         // Default case if nothing is selected.
@@ -140,7 +150,11 @@ public class AIBranchModule : Module
     /// </summary>
     private void StartAI(EnemyControlModule enemy, TargetToken target)
     {
-        action.StartAI(enemy, target);
+        foreach (var action in actions)
+        {
+            action.selected = true;
+            action.StartAI(enemy, target); 
+        }
     }
 
     /// <summary>
@@ -148,7 +162,10 @@ public class AIBranchModule : Module
     /// </summary>
     private void UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
-        action.UpdateAI(enemy, target);
+        foreach (var action in actions)
+        {
+            action.UpdateAI(enemy, target); 
+        }
     }
 
     /// <summary>
@@ -156,7 +173,11 @@ public class AIBranchModule : Module
     /// </summary>
     private void ExitAI(EnemyControlModule enemy)
     {
-        action.ExitAI(enemy);
+        foreach (var action in actions)
+        {
+            action.selected = false;
+            action.ExitAI(enemy); 
+        }
     }
     #endregion
 
