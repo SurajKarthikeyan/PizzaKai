@@ -29,63 +29,49 @@ public struct MinMax
     public Mode mode;
 
     [AllowNesting]
-    [ShowIf(nameof(Max_ShowIf))]
+    [ShowIf(nameof(Min_ShowIf))]
     [SerializeField]
     private float min;
 
     [AllowNesting]
-    [ShowIf(nameof(Min_ShowIf))]
+    [ShowIf(nameof(Max_ShowIf))]
     [SerializeField]
     private float max;
 
     #region Validation
-    private readonly bool Min_ShowIf => mode != Mode.GreaterThan;
-    private readonly bool Max_ShowIf => mode != Mode.LessThan;
+    private readonly bool Min_ShowIf => mode != Mode.LessThan;
+    private readonly bool Max_ShowIf => mode != Mode.GreaterThan;
     #endregion
-    #endregion
-
-    #region Properties
-    public readonly float Min => mode switch {
-        Mode.LessThan => float.NaN,
-        _ => Mathf.Min(min, max)
-    };
-
-    public readonly float Max => mode switch {
-        Mode.GreaterThan => float.NaN,
-        _ => Mathf.Max(min, max)
-    };
     #endregion
 
     #region Constructors
-    public MinMax(float min, float max)
+    public MinMax(float min, float max) : this(min, max, Mode.Between)
     {
-        this.min = min;
-        this.max = max;
-        mode = Mode.Between;
+
     }
 
     public MinMax(float min, float max, Mode mode)
     {
-        this.min = min;
-        this.max = max;
+        this.min = Mathf.Min(min, max);
+        this.max = Mathf.Max(min, max);
         this.mode = mode;
     }
     #endregion
 
     #region Methods
     /// <summary>
-    /// Determines if <paramref name="value"/> satisfies this range.
+    /// Determines if <paramref name="val"/> satisfies this range.
     /// </summary>
-    /// <param name="value"></param>
+    /// <param name="val"></param>
     /// <returns></returns>
-    public readonly bool Evaluate(float value)
+    public readonly bool Evaluate(float val)
     {
         return mode switch
         {
-            Mode.Between => Min <= value && value <= Max,
-            Mode.LessThan => value <= Max,
-            Mode.GreaterThan => value >= Min,
-            Mode.NotBetween => Min > value && value > Max,
+            Mode.Between => min <= val && val <= max,
+            Mode.LessThan => val <= max,
+            Mode.GreaterThan => val >= min,
+            Mode.NotBetween => min > val && val > max,
             _ => false
         };
     }
@@ -94,10 +80,10 @@ public struct MinMax
     #region ToString
     public override readonly string ToString() => mode switch
     {
-        Mode.Between => $"Between [{Min}, {Max}]",
-        Mode.LessThan => $"Less than or equal to {Max}",
-        Mode.GreaterThan => $"Greater than or equal to {Min}",
-        _ => $"Not between ({Min}, {Max})"
+        Mode.Between => $"Between [{min}, {max}]",
+        Mode.LessThan => $"Less than or equal to {max}",
+        Mode.GreaterThan => $"Greater than or equal to {min}",
+        _ => $"Not between ({min}, {max})"
     };
     #endregion
 }

@@ -12,6 +12,9 @@ public static class GUIStyleExt
     #region Variables
     /// <inheritdoc cref="LeftAlignBox"/>
     private static GUIStyle leftAlignBox = null;
+
+    /// <inheritdoc cref="BoldLabel"/>
+    private static GUIStyle boldLabel = null;
     #endregion
 
     #region Properties
@@ -30,6 +33,23 @@ public static class GUIStyleExt
             }
 
             return leftAlignBox;
+        }
+    }
+
+    /// <summary>
+    /// A GUI style of a label that's bold.
+    /// </summary>
+    public static GUIStyle BoldLabel
+    {
+        get
+        {
+            if (boldLabel == null)
+            {
+                boldLabel = GUI.skin.label;
+                boldLabel.fontStyle = FontStyle.Bold;
+            }
+
+            return boldLabel;
         }
     }
     #endregion

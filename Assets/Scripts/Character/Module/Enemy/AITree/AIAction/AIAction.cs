@@ -1,7 +1,4 @@
-
-using System;
 using NaughtyAttributes;
-using UnityEngine;
 
 
 /// <summary>
@@ -13,6 +10,14 @@ using UnityEngine;
 /// </summary>
 public abstract class AIAction : Module
 {
+    #region Variables
+    /// <summary>
+    /// True if this action is selected to run.
+    /// </summary>
+    [ReadOnly]
+    public bool selected;
+    #endregion
+
     #region Action Methods
     /// <summary>
     /// Initializes the action. Called when the behavior tree is initialized.

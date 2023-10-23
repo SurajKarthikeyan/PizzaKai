@@ -76,11 +76,7 @@ public class PathfindingAgent : MonoBehaviour
             switch (value)
             {
                 case NavigationState.Idle:
-                    if (navigationCR != null)
-                    {
-                        StopCoroutine(navigationCR);
-                        StopCoroutine(checkTargetDistanceCR);
-                    }
+                    this.StopCoroutineIfExists(navigationCR, checkTargetDistanceCR);
                     navigationCR = null;
                     checkTargetDistanceCR = null;
                     CurrentPath = null;

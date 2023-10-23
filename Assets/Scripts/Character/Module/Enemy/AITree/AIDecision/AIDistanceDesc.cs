@@ -50,6 +50,8 @@ public class AIDistanceDesc : AIDecision
                 .TaxicabDistance(target.GridPosition);
         }
 
+        print(dist + ", " + distanceToTarget);
+
         return distanceToTarget.Evaluate(dist);
     }
     #endregion

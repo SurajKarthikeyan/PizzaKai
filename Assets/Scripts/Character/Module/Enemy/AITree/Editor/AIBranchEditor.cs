@@ -45,7 +45,7 @@ public class AIBranchEditor : Editor
                 "executed. " +
                 "AIAction is responsible for the actual execution of the AI.",
                 GUIStyleExt.LeftAlignBox
-            ); 
+            );
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
 
@@ -71,11 +71,26 @@ public class AIBranchEditor : Editor
 
         EditAIControl(ref branch.targeting, "Targeting");
         EditAIControl(ref branch.decision, "Decision");
-        EditAIControl(ref branch.action, "Action");
+        branch.actions = EditAIControl(branch.actions, "Action");
 
         EditorGUILayout.Separator();
 
         CreateAddBranchBtn();
+    }
+
+    /// <inheritdoc cref="EditAIControl{T}(ref T, string, bool)"/>
+    private T[] EditAIControl<T>(T[] aiControls, string noun)
+        where T : Component
+    {
+        T aiControl = null;
+        CreateAddDropDown(ref aiControl, noun);
+
+        if (aiControl)
+        {
+            return aiControls.Append(aiControl).ToArray();
+        }
+
+        return aiControls;
     }
 
     /// <summary>
@@ -86,49 +101,14 @@ public class AIBranchEditor : Editor
     /// <typeparam name="T"></typeparam>
     /// <param name="aiControl">The AI Control.</param>
     /// <param name="noun">What to call <paramref name="aiControl"/>.</param>
-    private void EditAIControl<T>(ref T aiControl, string noun)
+    private void EditAIControl<T>(ref T aiControl, string noun, bool noRemove = false)
         where T : Component
     {
         if (!aiControl)
         {
-            // Create a list of types derived from T.
-            var types = TypeExt.FindAllDerivedTypes<T>();
-
-            // Take that list and create another one that's the names of the
-            // types, along with a [Not Set] value.
-            var options = types
-                .Select(t => t.Name)
-                .Prepend("[Not Set]")
-                .ToArray();
-
-            // Selection corresponds with the selected element in types, or -1
-            // if [Not Set] is selected. Also create the popup.
-            int selection = EditorGUILayout.Popup(
-                "Add " + noun,
-                0,
-                options
-            ) - 1;
-
-            if (selection >= 0)
-            {
-                // If we have selected a valid value, then get the selected
-                // type. See above comment for more info.
-                var selectedType = types.ElementAt(selection);
-                Debug.Log(selectedType);
-
-                // Create the new AI Control gameobject, make it a child of the
-                // branch, then assign it to the referenced aiControl.
-                var branch = (AIBranchModule)serializedObject.targetObject;
-
-                GameObject go = new(
-                    $"[{noun}] {branch.id}",
-                    selectedType
-                );
-                go.transform.Localize(branch.transform);
-                go.RequireComponent(out aiControl);
-            }
+            CreateAddDropDown(ref aiControl, noun);
         }
-        else
+        else if (!noRemove)
         {
             if (GUILayout.Button("Remove " + noun))
             {
@@ -137,6 +117,54 @@ public class AIBranchEditor : Editor
                 // of play mode.
                 DestroyImmediate(aiControl.gameObject);
                 aiControl = null;
+            }
+        }
+    }
+
+    private void CreateAddDropDown<T>(ref T aiControl, string noun) where T : Component
+    {
+        // Create a list of types derived from T.
+        var types = TypeExt.FindAllDerivedTypes<T>();
+
+        // Take that list and create another one that's the names of the
+        // types, along with a [Not Set] value.
+        var options = types
+            .Select(t => t.Name)
+            .Prepend("[Not Set]")
+            .ToArray();
+
+        // Selection corresponds with the selected element in types, or -1
+        // if [Not Set] is selected. Also create the popup.
+        int selection = EditorGUILayout.Popup(
+            "Add " + noun,
+            0,
+            options
+        ) - 1;
+
+        if (selection >= 0)
+        {
+            EditorGUI.BeginChangeCheck();
+
+            // If we have selected a valid value, then get the selected
+            // type. See above comment for more info.
+            var selectedType = types.ElementAt(selection);
+            Debug.Log(selectedType);
+
+            // Create the new AI Control gameobject, make it a child of the
+            // branch, then assign it to the referenced aiControl.
+            var branch = (AIBranchModule)serializedObject.targetObject;
+
+            GameObject go = new(
+                $"[{noun}] {branch.id}",
+                selectedType
+            );
+            go.transform.Localize(branch.transform);
+            go.RequireComponent(out T tempCtrl);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(aiControl, "AICTRL" + noun);
+                aiControl = tempCtrl;
             }
         }
     }
