@@ -25,11 +25,11 @@ public class TargetTokenDrawerUIE : PropertyDrawer
 
             // Display the target tile/transform.
             EditorGUI.indentLevel++;
-            EditorGUI.LabelField(position, "Target", $"{token.Target}");
+            EditorGUI.LabelField(position, "Target", $"{token.Position}");
             position.Translate(0, position.height);
             if (PathfindingManager.Instance)
             {
-                EditorGUI.LabelField(position, "Grid Target", $"{token.GridTarget}");
+                EditorGUI.LabelField(position, "Grid Target", $"{token.GridPosition}");
                 position.Translate(0, position.height);
             }
 

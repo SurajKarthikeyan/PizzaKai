@@ -187,7 +187,7 @@ public class PathfindingAgent : MonoBehaviour
         State = NavigationState.Idle;
         State = NavigationState.WaitingForPath;
 
-        if (target.GridTarget == GridPosition)
+        if (target.GridPosition == GridPosition)
         {
             // We've already arrived. This avoids a StartIsEndVertexException.
             State = NavigationState.ArrivedAtDestination;
@@ -288,7 +288,7 @@ public class PathfindingAgent : MonoBehaviour
 
     private IEnumerator CheckTargetDistance_CR(TargetToken token)
     {
-        Vector3 originalTargetPosition = token.Target;
+        Vector3 originalTargetPosition = token.Position;
 
         // Makes sure the updates are staggered, rather than occurring all at
         // once.
@@ -304,12 +304,12 @@ public class PathfindingAgent : MonoBehaviour
                 PathAgentManager.Instance.aiUpdateRate
             );
 
-            if (Vector3.Distance(originalTargetPosition, token.Target) > 1 ||
+            if (Vector3.Distance(originalTargetPosition, token.Position) > 1 ||
                 stuckTimer.IsDone)
             {
                 // Restart navigation.
                 if (!PathfindingManager.Instance.InSameCell(
-                        CurrentToken.Target,
+                        CurrentToken.Position,
                         enemyControl.transform.position
                     ))
                 {

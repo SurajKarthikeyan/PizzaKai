@@ -12,7 +12,7 @@ public class AIActShoot : AIAction
         if (enemy.Master.weaponMasterModule)
         {
             //Debug.Log("Firing weapon");
-            enemy.Master.weaponMasterModule.AimAt(target.Target);
+            enemy.Master.weaponMasterModule.AimAt(target.Position);
 
             enemy.Master.weaponMasterModule.PressWeaponTrigger();
         }

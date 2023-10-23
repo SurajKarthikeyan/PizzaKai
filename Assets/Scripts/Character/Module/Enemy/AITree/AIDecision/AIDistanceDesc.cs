@@ -47,7 +47,7 @@ public class AIDistanceDesc : AIDecision
             // Otherwise, use the taxicab distance.
             PathfindingManager pm = PathfindingManager.Instance;
             dist = pm.WorldToCell(enemy.transform.position)
-                .TaxicabDistance(target.GridTarget);
+                .TaxicabDistance(target.GridPosition);
         }
 
         return distanceToTarget.Evaluate(dist);

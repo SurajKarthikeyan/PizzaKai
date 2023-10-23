@@ -24,16 +24,16 @@ public class TargetToken
     /// <summary>
     /// The target position in world coordinates.
     /// </summary>
-    public Vector3 Target => dynamicTarget ? dynamicTarget.position : tileTarget;
+    public Vector3 Position => dynamicTarget ? dynamicTarget.position : tileTarget;
 
     /// <summary>
     /// The target position in grid coordinates.
     /// </summary>
-    public Vector3Int GridTarget => PathfindingManager.Instance.WorldToCell(Target);
+    public Vector3Int GridPosition => PathfindingManager.Instance.WorldToCell(Position);
 
     public Vector3 GetHeading(Vector3 currentLocation)
     {
-        return Target - currentLocation;
+        return Position - currentLocation;
     }
 
     /// <summary>

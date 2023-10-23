@@ -106,7 +106,7 @@ public class PathAgentManager : MonoBehaviour
         try
         {
             var startV = PathfindingManager.Instance.GetClosestNeighbor(current);
-            var endV = PathfindingManager.Instance.GetClosestNeighbor(target.GridTarget, startV.sectionID);
+            var endV = PathfindingManager.Instance.GetClosestNeighbor(target.GridPosition, startV.sectionID);
 
             Pathfinding.ValidateStartEnd(true, startV, endV);
         }
@@ -127,7 +127,7 @@ public class PathAgentManager : MonoBehaviour
                 new(
                     agent,
                     current,
-                    target.GridTarget
+                    target.GridPosition
                 )
             ));
         }
