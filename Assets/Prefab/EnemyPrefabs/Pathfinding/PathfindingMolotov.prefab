@@ -124,8 +124,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0048020305, y: 0.046314914}
-  m_Size: {x: 0.16078575, y: 0.36468974}
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.1, y: 0.3}
   m_Direction: 0
 --- !u!114 &6623532801780059504
 MonoBehaviour:
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firedBy: {fileID: 0}
+  overrideMask: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 65992
@@ -205,15 +206,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
-  r2d: {fileID: 0}
-  c2d: {fileID: 0}
-  sr: {fileID: 0}
-  flipModule: {fileID: 0}
+  r2d: {fileID: 2036092049310882209}
+  c2d: {fileID: 2698420784114633084}
+  sr: {fileID: 2036092049310882210}
+  flipModule: {fileID: 6470781767325147832}
   audioSource: {fileID: 0}
   damageInvulnerability:
     maxTime: 0
     elapsed: 0
   knockbackMultiplier: 0
+  weaponMasterModule: {fileID: 0}
 --- !u!1 &8038509214884745026
 GameObject:
   m_ObjectHideFlags: 0

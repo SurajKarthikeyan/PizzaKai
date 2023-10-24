@@ -40,6 +40,11 @@ public class EnemyControlModule : Module
     private void OnValidate()
     {
         SetVars();
+
+        if (!decisionTree)
+        {
+            decisionTree = transform.CreateChildComponent<AITreeModule>("Decision Tree");
+        }
     }
 
     private void SetVars()
