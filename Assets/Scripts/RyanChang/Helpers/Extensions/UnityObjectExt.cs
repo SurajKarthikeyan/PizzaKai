@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Unity.Entities;
 
 /// <summary>
 /// Contains methods that extend game objects or other unity objects.
@@ -804,6 +805,66 @@ public static class UnityObjectExt
             parent
         ).RequireComponent(out T instance);
         return instance;
+    }
+    #endregion
+
+    #region Create Gameobject
+    /// <summary>
+    /// Creates a child game object with the specified component, then returns
+    /// the component.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="parent">The parent of the new game object.</param>
+    /// <param name="name">Name of the child.</param>
+    /// <param name="componentType">Type of component to add.</param>
+    /// <returns>The component in the newly created child.</returns>
+    public static Component CreateChildComponent(this Transform parent,
+        string name, Type componentType)
+    {
+        GameObject go = new(
+            name,
+            componentType
+        );
+
+        go.transform.Localize(parent);
+        return go.GetComponent(componentType);
+    }
+
+    /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
+    /// <typeparam name="T">The type of component to add to the child.</typeparam>
+    public static T CreateChildComponent<T>(this Transform parent,
+        string name) where T : Component
+    {
+        GameObject go = new(
+            name,
+            typeof(T)
+        );
+
+        go.transform.Localize(parent);
+        return go.GetComponent<T>();
+    }
+
+    /// <summary>
+    /// Creates a child game object with the specified components,
+    /// then returns those components.
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="name"></param>
+    /// <param name="componentTypes">A list of all the component
+    /// types to add. Duplicate values are added multiple times.</param>
+    /// <returns>The list of all added components to the child.</returns>
+    public static Component[] CreateChildComponents(this Transform parent,
+        string name, Type[] componentTypes)
+    {
+        GameObject go = new(
+            name,
+            componentTypes
+        );
+
+        go.transform.Localize(parent);
+        return componentTypes
+            .Select(ct => go.GetComponent(ct))
+            .ToArray();
     }
     #endregion
 

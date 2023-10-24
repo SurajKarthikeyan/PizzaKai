@@ -154,17 +154,15 @@ public class AIBranchEditor : Editor
             // branch, then assign it to the referenced aiControl.
             var branch = (AIBranchModule)serializedObject.targetObject;
 
-            GameObject go = new(
+            var ctrl = branch.transform.CreateChildComponent(
                 $"[{noun}] {branch.id}",
                 selectedType
-            );
-            go.transform.Localize(branch.transform);
-            go.RequireComponent(out T tempCtrl);
+            ) as T;
 
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(aiControl, "AICTRL" + noun);
-                aiControl = tempCtrl;
+                aiControl = ctrl;
             }
         }
     }
