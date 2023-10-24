@@ -18,6 +18,7 @@ using Vertex3Int = Vertex<UnityEngine.Vector3Int>;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
+[ExecuteAlways]
 public class PathfindingManager : MonoBehaviour
 {
     #region Instance
@@ -34,8 +35,14 @@ public class PathfindingManager : MonoBehaviour
 
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
-        InitializeData();
+        if (Application.isPlaying)
+        {
+            this.InstantiateSingleton(ref instance); 
+        }
+        else
+        {
+            InitData();
+        }
     }
 
     #region Variables
@@ -114,11 +121,11 @@ public class PathfindingManager : MonoBehaviour
         CellBounds = cellBounds;
     }
 
-    private void InitializeData()
+    private void InitData()
     {
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if (!data || data.name != sceneName)
+        if (!Data || Data.name != sceneName)
         {
             data = ScriptableObject.CreateInstance<PathfindingData>();
 

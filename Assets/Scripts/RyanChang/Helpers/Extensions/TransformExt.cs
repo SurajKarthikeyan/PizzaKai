@@ -50,7 +50,7 @@ public static class TransformExt
     /// <param name="newParent"></param>
     public static void Localize(this Transform transform, Transform newParent)
     {
-        transform.parent = newParent;
+        transform.SetParent(newParent, false);
         transform.Localize();
     }
 
@@ -62,8 +62,10 @@ public static class TransformExt
     /// <param name="other"></param>
     public static void MatchOther(this Transform target, Transform other)
     {
-        target.position = other.position;
-        target.rotation = other.rotation;
+        target.SetPositionAndRotation(
+            other.position,
+            other.rotation
+        );
     }
 
     /// <summary>

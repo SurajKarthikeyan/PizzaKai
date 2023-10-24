@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -10,6 +11,9 @@ using UnityEngine;
 public class AIStaticDesc : AIDecision
 {
     #region Variables
+    [InfoBox("Determines whether or not this decision will " +
+        "evaluate to true or false. If true, the decision is " +
+        "always taken. Vice versa for false.")]
     public bool decision;
     #endregion
 

@@ -16,11 +16,10 @@ public class AITreeModule : Module
     #region Validate
     private void OnValidate()
     {
-        if (!root)
+        if (!root && !this.HasComponentInChildren(out root))
         {
             // Create root.
-            GameObject rootGO = new("[Branch] Root", typeof(AIBranchModule));
-            rootGO.RequireComponent(out root);
+            root = transform.CreateChildComponent<AIBranchModule>("[Branch] Root");
             root.id = "Root";
         }
     }
@@ -38,7 +37,16 @@ public class AITreeModule : Module
             current = root;
 
         current.tree = this;
-        current = current.SelectAI(enemy);
+
+        if (current == root && current.branches.IsNullOrEmpty())
+        {
+            // Just the root exists in the tree.
+            root.UpdateAI(enemy, root.targeting.GetTarget());
+        }
+        else
+        {
+            current = current.SelectAI(enemy);
+        }
     }
 
     /// <summary>

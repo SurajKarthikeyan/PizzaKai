@@ -194,5 +194,16 @@ public class PathNode : IEquatable<PathNode>
             this.flags == other.flags;
     }
     #endregion
+
+    #region ToString
+    public override string ToString()
+    {
+        return $"Node [at {gridPosition}, " +
+            $"flags {flags}, " +
+            $"map layer {mapLayer}, " +
+            $"collider type {colliderType}, " +
+            $"marker data {markerData}]";
+    } 
+    #endregion
     #endregion
 }
