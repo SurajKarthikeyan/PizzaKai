@@ -9,6 +9,25 @@ using Unity.Entities;
 /// </summary>
 public static class UnityObjectExt
 {
+    #region Variables & Properties
+    /// <inheritdoc cref="EmptyGORef"/>
+    private static GameObject emptyGORef;
+
+    /// <summary>
+    /// A prefab of an empty game object that can be instantiated.
+    /// </summary>
+    private static GameObject EmptyGORef
+    {
+        get
+        {
+            if (!emptyGORef)
+                emptyGORef = Resources.Load<GameObject>("empty");
+
+            return emptyGORef;
+        }
+    }
+    #endregion
+
     #region Query
     #region Query Single
 
@@ -809,6 +828,27 @@ public static class UnityObjectExt
     #endregion
 
     #region Create Gameobject
+    /// <inheritdoc cref="CreateGameObject(string, Transform)"/>
+    public static GameObject CreateGameObject() =>
+        CreateGameObject("New GameObject");
+
+    /// <inheritdoc cref="CreateGameObject(string, Transform)"/>
+    public static GameObject CreateGameObject(string name) =>
+        CreateGameObject(name, null);
+
+    /// <summary>
+    /// Creates an empty game object instance.
+    /// </summary>
+    /// <param name="name">Name of the new game object.</param>
+    /// <param name="parent">Parent of the new game object.</param>
+    /// <returns>An empty game object.</returns>
+    public static GameObject CreateGameObject(string name, Transform parent)
+    {
+        var go = GameObject.Instantiate(EmptyGORef, parent);
+        go.name = name;
+        return go;
+    }
+
     /// <summary>
     /// Creates a child game object with the specified component, then returns
     /// the component.
@@ -821,13 +861,9 @@ public static class UnityObjectExt
     public static Component CreateChildComponent(this Transform parent,
         string name, Type componentType)
     {
-        GameObject go = new(
-            name,
-            componentType
-        );
-
-        go.transform.Localize(parent);
-        return go.GetComponent(componentType);
+        GameObject go = CreateGameObject(name, parent);
+        go.transform.Localize();
+        return go.AddComponent(componentType);
     }
 
     /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
@@ -835,13 +871,9 @@ public static class UnityObjectExt
     public static T CreateChildComponent<T>(this Transform parent,
         string name) where T : Component
     {
-        GameObject go = new(
-            name,
-            typeof(T)
-        );
-
-        go.transform.Localize(parent);
-        return go.GetComponent<T>();
+        GameObject go = CreateGameObject(name, parent);
+        go.transform.Localize();
+        return go.AddComponent<T>();
     }
 
     /// <summary>

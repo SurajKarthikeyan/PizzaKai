@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3102732749710121301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4767256889855892578}
+  - component: {fileID: 8345106781479735994}
+  m_Layer: 0
+  m_Name: Decision Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4767256889855892578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102732749710121301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5045526183500533100}
+  m_Father: {fileID: 6478255713057580264}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8345106781479735994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102732749710121301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e0173e4e1faff3597e45209e901f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 133576776749318810}
+  current: {fileID: 0}
+--- !u!1 &5581515349099300003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5045526183500533100}
+  - component: {fileID: 133576776749318810}
+  m_Layer: 0
+  m_Name: '[Branch] Root'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5045526183500533100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581515349099300003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2e-44, y: 0, z: 1e-45}
+  m_LocalScale: {x: 0, y: 0, z: 1.02e-43}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4767256889855892578}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 8.1e-43, y: -1.9595811e+29, z: 8.1e-43}
+--- !u!114 &133576776749318810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581515349099300003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a196a2e928b65f3fd91c8ce8b473b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Root
+  priority: 0
+  targeting: {fileID: 0}
+  decision: {fileID: 0}
+  actions: []
+  branches: []
+  tree: {fileID: 0}
 --- !u!1 &6478255711362482354
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +168,7 @@ Transform:
   m_Children:
   - {fileID: 6478255713251395440}
   - {fileID: 6478255711362482355}
+  - {fileID: 4767256889855892578}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -214,12 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 6478255713057580265}
   pathAgent: {fileID: 6478255713057580274}
-  decisionTree:
-    root:
-      decision:
-        priority: 0
-      actions: []
-      subtrees: []
+  decisionTree: {fileID: 8345106781479735994}
 --- !u!114 &6478255713057580272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +407,7 @@ MonoBehaviour:
     maxTime: 0
     elapsed: 0
   knockbackMultiplier: 1
+  weaponMasterModule: {fileID: 0}
 --- !u!1 &6478255713251395454
 GameObject:
   m_ObjectHideFlags: 0

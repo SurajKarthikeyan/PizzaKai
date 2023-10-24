@@ -151,11 +151,12 @@ public sealed class Character : MonoBehaviour
         }
 
         HP = maxHP;
-        transform.position = transform.position.ToVector2();
     }
 
     private void SetVars()
     {
+        transform.position = transform.position.ToVector2();
+
         GetComponentsInChildren(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 

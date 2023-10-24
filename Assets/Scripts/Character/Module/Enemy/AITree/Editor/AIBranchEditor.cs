@@ -143,8 +143,6 @@ public class AIBranchEditor : Editor
 
         if (selection >= 0)
         {
-            EditorGUI.BeginChangeCheck();
-
             // If we have selected a valid value, then get the selected
             // type. See above comment for more info.
             var selectedType = types.ElementAt(selection);
@@ -159,10 +157,10 @@ public class AIBranchEditor : Editor
                 selectedType
             ) as T;
 
-            if (EditorGUI.EndChangeCheck())
+            if (ctrl)
             {
-                Undo.RecordObject(aiControl, "AICTRL" + noun);
                 aiControl = ctrl;
+                Undo.RecordObject(aiControl, "AICTRL" + noun);
             }
         }
     }

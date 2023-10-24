@@ -160,7 +160,7 @@ public class AIBranchModule : Module
     /// <summary>
     /// Updates all AI controls belonging to the branch.
     /// </summary>
-    private void UpdateAI(EnemyControlModule enemy, TargetToken target)
+    public void UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
         foreach (var action in actions)
         {

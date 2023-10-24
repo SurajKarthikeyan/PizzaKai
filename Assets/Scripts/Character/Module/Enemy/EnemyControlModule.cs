@@ -41,7 +41,7 @@ public class EnemyControlModule : Module
     {
         SetVars();
 
-        if (!decisionTree)
+        if (!decisionTree && !this.HasComponentInChildren(out decisionTree))
         {
             decisionTree = transform.CreateChildComponent<AITreeModule>("Decision Tree");
         }
