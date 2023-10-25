@@ -30,8 +30,6 @@ public class AIBranchModule : Module
     #region Validate
     private void OnValidate()
     {
-        gameObject.name = ToString();
-
         if (targeting)
         {
             targeting.gameObject.name = $"[Targeting] {id}";

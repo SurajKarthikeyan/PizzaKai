@@ -26,7 +26,7 @@ using UnityEngine;
 [CustomEditor(typeof(AIBranchModule))]
 public class AIBranchEditor : Editor
 {
-    private bool[] opened = new bool[2];
+    private readonly bool[] opened = new bool[2];
 
     public override void OnInspectorGUI()
     {
@@ -52,6 +52,7 @@ public class AIBranchEditor : Editor
         base.OnInspectorGUI();
 
         AIBranchModule branch = (AIBranchModule)serializedObject.targetObject;
+        branch.gameObject.name = branch.ToString();
 
         EditorGUILayout.Separator();
 
