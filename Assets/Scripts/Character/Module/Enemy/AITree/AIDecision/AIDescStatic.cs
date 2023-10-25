@@ -8,7 +8,7 @@ using UnityEngine;
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class AIStaticDesc : AIDecision
+public class AIDescStatic : AIDecision
 {
     #region Variables
     [InfoBox("Determines whether or not this decision will " +

@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -29,5 +30,16 @@ public abstract class AIDecision :MonoBehaviour
 
     protected abstract bool CheckDecisionInternal(EnemyControlModule enemy,
         TargetToken target);
+    #endregion
+
+    #region ToString
+    private static readonly Regex actTypeRX = new(@"AIDesc(\w+)");
+
+    public override string ToString()
+    {
+        string actType = GetType().Name;
+        actType = actTypeRX.Match(actType).Groups[1].Value;
+        return $"[Decision:{actType}]";
+    }
     #endregion
 }

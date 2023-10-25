@@ -532,6 +532,7 @@ Transform:
   - {fileID: 7654335126528108799}
   - {fileID: 5622313491496666169}
   - {fileID: 1709318498092196910}
+  - {fileID: 3663732862489568292}
   m_Father: {fileID: 4453943157385386407}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -553,6 +554,7 @@ MonoBehaviour:
   decision: {fileID: 2915407386214065586}
   actions:
   - {fileID: 2463154005841774340}
+  - {fileID: 3307005385447278316}
   branches: []
   tree: {fileID: 0}
 --- !u!1 &4895402820210329829
@@ -566,7 +568,7 @@ GameObject:
   - component: {fileID: 1709318498092196910}
   - component: {fileID: 2463154005841774340}
   m_Layer: 0
-  m_Name: '[Action] Root'
+  m_Name: '[Action:Follow]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,3 +738,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decision: 1
+--- !u!1 &8920314119048315691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3663732862489568292}
+  - component: {fileID: 3307005385447278316}
+  m_Layer: 0
+  m_Name: '[Action:Kamikaze]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3663732862489568292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920314119048315691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2892841149768644042}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3307005385447278316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920314119048315691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef08909edb0ebe308b6fb3d491ae85d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  distance: 0.5

@@ -27,29 +27,6 @@ public class AIBranchModule : Module
     public AITreeModule tree;
     #endregion
 
-    #region Validate
-    private void OnValidate()
-    {
-        if (targeting)
-        {
-            targeting.gameObject.name = $"[Targeting] {id}";
-        }
-
-        if (decision)
-        {
-            decision.gameObject.name = $"[Decision] {id}";
-        }
-
-        foreach (var action in actions)
-        {
-            if (action)
-            {
-                action.gameObject.name = $"[Action] {id}";
-            }
-        }
-    }
-    #endregion
-
     #region Main Methods
     /// <summary>
     /// Initializes the AI branch. Called once from the AI tree.
