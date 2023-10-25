@@ -48,9 +48,6 @@ public class FlameThrowerWeapon : WeaponModule
         base.AltFire();
         
         altFireball.Spawn(this);
-        altFireball.gameObject.transform.rotation = weaponMaster.gameObject.transform.rotation;
-        altFireball.gameObject.transform.Rotate(0, 0, -90f);
-
     }
 
     override public void PlayAudio()
