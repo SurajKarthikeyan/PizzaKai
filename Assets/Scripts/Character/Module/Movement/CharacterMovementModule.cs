@@ -376,7 +376,7 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            TouchingGround;
+            TouchingGround && Master.r2d.velocity.y <= 0.1f;
     }
 
     private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
