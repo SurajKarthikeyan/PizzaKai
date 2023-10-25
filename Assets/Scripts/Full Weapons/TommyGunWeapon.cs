@@ -58,7 +58,6 @@ public class TommyGunWeapon : WeaponModule
     override public void AltFire()
     {
         base.AltFire();
-        Debug.Log("TommyAlt");
         StartCoroutine(TommyRapidFire());
         
     }
@@ -72,7 +71,7 @@ public class TommyGunWeapon : WeaponModule
             TryFireWeapon();
             yield return new WaitForSeconds(altWaitBetweenShots);
         }
-        Debug.Log("TommyAltDone");
+        ReloadWeapon();
     }
     #endregion
 }
