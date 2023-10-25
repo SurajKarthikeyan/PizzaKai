@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using NaughtyAttributes;
 
 
@@ -55,5 +56,16 @@ public abstract class AIAction : Module
     /// <param name="enemy"></param>
     /// <param name="target"></param>
     protected abstract void PerformAction(EnemyControlModule enemy, TargetToken target);
+    #endregion
+
+    #region ToString
+    private static readonly Regex actTypeRX = new(@"AIAct(\w+)");
+
+    public override string ToString()
+    {
+        string actType = GetType().Name;
+        actType = actTypeRX.Match(actType).Groups[1].Value;
+        return $"[Action:{actType}]";
+    }
     #endregion
 }

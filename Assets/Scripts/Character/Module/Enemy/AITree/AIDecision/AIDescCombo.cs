@@ -10,7 +10,7 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class AIDecisionCombo : AIDecision
+public class AIDescCombo : AIDecision
 {
     #region Enums
     /// <summary>

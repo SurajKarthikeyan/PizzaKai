@@ -30,8 +30,6 @@ public class AIBranchEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.UpdateIfRequiredOrScript();
-
         opened[0] = EditorGUILayout.BeginFoldoutHeaderGroup(opened[0],
             "Branch Documentation");
         if (opened[0])
@@ -52,7 +50,8 @@ public class AIBranchEditor : Editor
         base.OnInspectorGUI();
 
         AIBranchModule branch = (AIBranchModule)serializedObject.targetObject;
-        branch.gameObject.name = branch.ToString();
+
+        SetNames(branch);
 
         EditorGUILayout.Separator();
 
@@ -77,6 +76,38 @@ public class AIBranchEditor : Editor
         EditorGUILayout.Separator();
 
         CreateAddBranchBtn();
+    }
+
+    /// <summary>
+    /// Sets the names of the gameobject of <paramref name="branch"/> and its
+    /// children.
+    /// </summary>
+    /// <param name="branch">The branch.</param>
+    private static void SetNames(AIBranchModule branch)
+    {
+        branch.gameObject.name = branch.ToString();
+        var targeting = branch.targeting;
+        var decision = branch.decision;
+        var actions = branch.actions;
+        string id = " " + branch.id;
+
+        if (targeting)
+        {
+            targeting.gameObject.name = targeting.ToString() + id;
+        }
+
+        if (decision)
+        {
+            decision.gameObject.name = decision.ToString() + id;
+        }
+
+        foreach (var action in actions)
+        {
+            if (action)
+            {
+                action.gameObject.name = action.ToString() + id;
+            }
+        }
     }
 
     /// <inheritdoc cref="EditAIControl{T}(ref T, string, bool)"/>

@@ -8,7 +8,7 @@ using UnityEngine;
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-public class AIDistanceDesc : AIDecision
+public class AIDescDistance : AIDecision
 {
     #region Variables
     [SerializeField]
