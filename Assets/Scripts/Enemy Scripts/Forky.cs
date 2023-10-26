@@ -1,7 +1,10 @@
 using NaughtyAttributes;
 using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Responsible for this file: Zane O'Dell
@@ -82,8 +85,16 @@ public class Forky : MonoBehaviour
     private int generators = 3;
 
     [Tooltip("Is Forky Dead")]
-    [ReadOnly]
+    [NaughtyAttributes.ReadOnly]
     public bool IsDead = false;
+
+
+    public Tilemap tilemap;
+
+    public List<AnimatedTile> conveyorTiles;
+
+    private float animSpeed = 7.0f;
+
     #endregion
 
     #region Init
@@ -91,6 +102,16 @@ public class Forky : MonoBehaviour
     void Start()
     {
         crateSpawner = GetComponent<ForkyCrateSpawner>();
+        //foreach (AnimatedTile tile in conveyorTiles)
+        //{
+        //    tile.m_AnimationStartTime = (float)double.PositiveInfinity;
+        //    tile.m_MinSpeed = animSpeed;
+        //    tile.m_MaxSpeed = animSpeed;
+        //}
+
+        
+
+
     }
     #endregion
 
@@ -207,6 +228,12 @@ public class Forky : MonoBehaviour
         {
             IsDead = true;
             conveyorBelt.conveyorSpeed = 0;
+            foreach (AnimatedTile tile in conveyorTiles)
+            {
+                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
+                tile.m_MinSpeed = animSpeed;
+                tile.m_MaxSpeed = animSpeed;
+            }
         }
 
         //Increase rate of spawning objects
@@ -217,6 +244,26 @@ public class Forky : MonoBehaviour
 
         //Add or subtract 1 to the conveyor speed depending on if the conveyorbelt has a negative or positive speed
         conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
+        if (generators == 1)
+        {
+            foreach (AnimatedTile tile in conveyorTiles)
+            {
+                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
+                tile.m_MinSpeed = 2 * animSpeed;
+                tile.m_MaxSpeed = 2 * animSpeed;
+            }
+            
+        }
+        else
+        {
+            foreach (AnimatedTile tile in conveyorTiles)
+            {
+                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
+                tile.m_MinSpeed = 3 * animSpeed;
+                tile.m_MaxSpeed = 3 * animSpeed;
+            }
+            
+        }
     }
     #endregion
 }

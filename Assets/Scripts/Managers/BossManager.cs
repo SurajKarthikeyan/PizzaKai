@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BossManager : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    
     private void Start()
     {
         bossCam = bossCamParent.transform.GetChild(0).gameObject;
@@ -74,10 +76,15 @@ public class BossManager : MonoBehaviour
             bossStart = true;
         }
     }
-
+    
     public void ForkyBossStart()
     {
         forky.active = true;
+        foreach (AnimatedTile tile in forky.conveyorTiles)
+        {
+            tile.m_MinSpeed = 7f;
+            tile.m_MaxSpeed = 7f;
+        }
         conveyorBelt.conveyorSpeed = -1;
         music.Stop();
         music.PlaySound(bossTheme, 1);
