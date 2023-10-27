@@ -3622,6 +3622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 20
+  characterAnimator: {fileID: 948621413}
+  animParamDeath: Dying
   r2d: {fileID: 0}
   c2d: {fileID: 0}
   sr: {fileID: 0}
@@ -4257,12 +4259,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: accessible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: altFireball
       value: 
-      objectReference: {fileID: 6339640274177304179, guid: 3aeb0223cf7483649a1c54fc8becc5a7, type: 3}
+      objectReference: {fileID: 6120694099053025178, guid: 86d1d3f031aafac42b2ec388dfa0958d, type: 3}
     - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: m_Name
       value: Flamethrower

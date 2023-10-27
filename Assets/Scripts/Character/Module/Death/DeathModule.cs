@@ -8,7 +8,7 @@ public abstract class DeathModule : Module
     /// <summary>
     /// Flag that avoids running this multiple times.
     /// </summary>
-    protected bool ranDeathAction;
+    protected bool ranDeathAction = false;
 
     protected override void OnLinked()
     {
@@ -20,12 +20,25 @@ public abstract class DeathModule : Module
     {
         if (!ranDeathAction)
         {
-            ranDeathAction = true;
-            
+            print("death delay: " + delay);
+
             if (delay <= 0)
+            {
                 OnDeath();
+                ranDeathAction = true;
+            }
+                
             else
+            {
+                Master.characterAnimator.Play("PlayerDeath");
+                while (Master.characterAnimator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath"))
+                {
+                    continue;
+                }
+                ranDeathAction = true;
                 Invoke(nameof(OnDeath), delay);
+            }
+                
         }
     }
 
@@ -33,6 +46,7 @@ public abstract class DeathModule : Module
 
     private void StartRevive()
     {
+        
         ranDeathAction = false;
     }
 }

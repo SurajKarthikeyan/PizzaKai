@@ -38,9 +38,15 @@ public class RespawnModule : DeathModule
     }
 
     protected override void OnDeath()
-    {
-        Master.transform.position = RespawnPosition;
-        Master.Revive();
+    {   
+        if (ranDeathAction)
+        {
+            print("respawn delay: " + delay);
+            Master.transform.position = RespawnPosition;
+            Master.characterAnimator.Play("PizzaGuy_Idle");
+            Master.Revive();
+        }
+        
     } 
     #endregion
 }
