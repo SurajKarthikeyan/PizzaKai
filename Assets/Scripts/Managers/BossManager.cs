@@ -43,6 +43,9 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         bossCam = bossCamParent.transform.GetChild(0).gameObject;
+
+        //this is so it gets set back to zero and won't move until the fight starts
+        forky.tilemap.animationFrameRate = 0;
     }
 
     void Update()
@@ -80,11 +83,8 @@ public class BossManager : MonoBehaviour
     public void ForkyBossStart()
     {
         forky.active = true;
-        foreach (AnimatedTile tile in forky.conveyorTiles)
-        {
-            tile.m_MinSpeed = 7f;
-            tile.m_MaxSpeed = 7f;
-        }
+       
+        forky.tilemap.animationFrameRate = 1;
         conveyorBelt.conveyorSpeed = -1;
         music.Stop();
         music.PlaySound(bossTheme, 1);

@@ -93,7 +93,7 @@ public class Forky : MonoBehaviour
 
     public List<AnimatedTile> conveyorTiles;
 
-    private float animSpeed = 7.0f;
+    private float animSpeed = 5.0f;
 
     #endregion
 
@@ -108,10 +108,6 @@ public class Forky : MonoBehaviour
         //    tile.m_MinSpeed = animSpeed;
         //    tile.m_MaxSpeed = animSpeed;
         //}
-
-        
-
-
     }
     #endregion
 
@@ -226,14 +222,9 @@ public class Forky : MonoBehaviour
 
         if(generators == 0)
         {
-            IsDead = true;
             conveyorBelt.conveyorSpeed = 0;
-            foreach (AnimatedTile tile in conveyorTiles)
-            {
-                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
-                tile.m_MinSpeed = animSpeed;
-                tile.m_MaxSpeed = animSpeed;
-            }
+            tilemap.animationFrameRate = 0;
+            IsDead = true;
         }
 
         //Increase rate of spawning objects
@@ -246,23 +237,13 @@ public class Forky : MonoBehaviour
         conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
         if (generators == 1)
         {
-            foreach (AnimatedTile tile in conveyorTiles)
-            {
-                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
-                tile.m_MinSpeed = 2 * animSpeed;
-                tile.m_MaxSpeed = 2 * animSpeed;
-            }
             
+            tilemap.animationFrameRate = 3;
         }
         else
         {
-            foreach (AnimatedTile tile in conveyorTiles)
-            {
-                tile.m_AnimationStartTime = (float)double.PositiveInfinity;
-                tile.m_MinSpeed = 3 * animSpeed;
-                tile.m_MaxSpeed = 3 * animSpeed;
-            }
             
+            tilemap.animationFrameRate = 2;
         }
     }
     #endregion
