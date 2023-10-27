@@ -41,9 +41,9 @@ public class RespawnModule : DeathModule
     {   
         if (ranDeathAction)
         {
-            print("respawn delay: " + delay);
             Master.transform.position = RespawnPosition;
             Master.characterAnimator.Play("PizzaGuy_Idle");
+            weaponMaster.gameObject.SetActive(true);
             Master.Revive();
         }
         

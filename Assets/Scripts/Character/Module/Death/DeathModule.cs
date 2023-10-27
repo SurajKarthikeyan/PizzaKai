@@ -10,35 +10,35 @@ public abstract class DeathModule : Module
     /// </summary>
     protected bool ranDeathAction = false;
 
+    /// <summary>
+    /// Reference to the weapon master to disable it for death
+    /// </summary>
+    protected WeaponMasterModule weaponMaster;
+
     protected override void OnLinked()
     {
         Master.onCharacterDeath.AddListener(StartDeath);
         Master.onCharacterRevive.AddListener(StartRevive);
+        weaponMaster = Master.GetComponentInChildren<WeaponMasterModule>();
     }
 
     private void StartDeath()
     {
         if (!ranDeathAction)
         {
-            print("death delay: " + delay);
-
             if (delay <= 0)
             {
                 OnDeath();
                 ranDeathAction = true;
             }
-                
+
             else
             {
+                weaponMaster.gameObject.SetActive(false);
                 Master.characterAnimator.Play("PlayerDeath");
-                while (Master.characterAnimator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath"))
-                {
-                    continue;
-                }
                 ranDeathAction = true;
                 Invoke(nameof(OnDeath), delay);
-            }
-                
+            }   
         }
     }
 
@@ -46,7 +46,6 @@ public abstract class DeathModule : Module
 
     private void StartRevive()
     {
-        
         ranDeathAction = false;
     }
 }
