@@ -222,9 +222,10 @@ public class Forky : MonoBehaviour
 
         if(generators == 0)
         {
-            conveyorBelt.conveyorSpeed = 0;
             tilemap.animationFrameRate = 0;
+            conveyorBelt.conveyorSpeed = 0;
             IsDead = true;
+            return;
         }
 
         //Increase rate of spawning objects
