@@ -18,8 +18,10 @@ public class PlayerTelemDirection : MonoBehaviour
     {
         Vector3 placeholder = gameObject.transform.position - rotationForTelemetry.position;
         gameObject.transform.localPosition = playerRb.velocity.normalized;
-       
-        rotationForTelemetry.transform.rotation = Quaternion.LookRotation(placeholder);
+
+        if (placeholder != Vector3.zero)
+            rotationForTelemetry.transform.rotation = Quaternion.LookRotation(placeholder);
+
         Debug.DrawRay(rotationForTelemetry.position, placeholder );
     }
 }
