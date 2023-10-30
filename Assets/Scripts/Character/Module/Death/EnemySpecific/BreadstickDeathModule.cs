@@ -57,5 +57,8 @@ public class BreadstickDeathModule : DeathModule
                 breb.Master.r2d.AddForce(force * breb.Master.r2d.mass);
             }
         }
+        
+        // Kill original.
+        Destroy(Master.gameObject);
     }
 }

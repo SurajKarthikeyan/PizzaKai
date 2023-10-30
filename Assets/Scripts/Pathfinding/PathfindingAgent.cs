@@ -145,6 +145,11 @@ public class PathfindingAgent : MonoBehaviour
         PathAgentManager.Instance.ActiveAgents.Remove(this);
     }
 
+    private void OnDestroy()
+    {
+        visualizer.Clear(true);
+    }
+
     private void Update()
     {
         if (State == NavigationState.NavigatingToDestination)
