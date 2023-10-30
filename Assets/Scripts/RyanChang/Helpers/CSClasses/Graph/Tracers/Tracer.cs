@@ -88,11 +88,21 @@ public class Tracer<T> where T : IEquatable<T>
         subcontainer.transform.Localize(middleContainer);
     }
 
-    public void Clear()
+    /// <summary>
+    /// Clears all traces.
+    /// </summary>
+    /// <param name="exit">If true, then also destroy the trace
+    /// container.</param>
+    public void Clear(bool exit = false)
     {
         if (middleContainer)
         {
             middleContainer.DestroyAllChildren(true);
+
+            if (exit)
+            {
+                GameObject.Destroy(middleContainer);
+            }
         }
     }
 

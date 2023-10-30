@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5482219098915055056}
   - component: {fileID: 7779587168733525766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: '[Decision:Static] Root'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4767256889855892578}
   - component: {fileID: 8345106781479735994}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Decision Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1231977407101316494}
   - component: {fileID: 4883944593845934962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: '[Action:Follow] Root'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5439885393083735089}
   - component: {fileID: 8344735250166152908}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5045526183500533100}
   - component: {fileID: 133576776749318810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: '[Branch] Root'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6478255711362482355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Traces Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 6478255713057580272}
   - component: {fileID: 6478255713057580265}
   - component: {fileID: -6358471799411875562}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: PathfindingBreadstick
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6478255713251395440}
   - component: {fileID: 6478255713251395455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundedCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3528130712447291536}
   - component: {fileID: 5423999458321242012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: '[Target:Player] Root'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
