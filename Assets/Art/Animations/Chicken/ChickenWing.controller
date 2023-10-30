@@ -64,7 +64,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyWalkRight
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9188500396008443361}
@@ -79,7 +79,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 667c9d2a0770efd46a54f7ec552ba772, type: 2}
+  m_Motion: {fileID: 7400000, guid: 69bee8c8d78377a488279009fe81656a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -133,7 +133,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bcc89d56c8df17a43a3f6ceb1447e30c, type: 2}
+  m_Motion: {fileID: 7400000, guid: c22195c52cdc5494687493d8959d0161, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -249,7 +249,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8800fc4a7d5d127448bae686bf2dc319, type: 2}
+  m_Motion: {fileID: 7400000, guid: d20dc5dfaad422e4681a229f13300038, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -517,7 +517,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyWalkLeft
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2248046057997389219}
@@ -532,7 +532,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c99c31c4d4345954b94a8039153141ae, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4530b1e5935ecce45a196f672e3c13d0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
