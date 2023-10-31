@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using NaughtyAttributes;
 
 /// <summary>
@@ -25,9 +24,6 @@ public class TommyGunWeapon : WeaponModule
 
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 20;
-
-    [Tooltip("Tommy flash UI image")]
-    public UnityEngine.UI.Image tommyFlashImage;
 
     [Tooltip("Enemy layer mask")]
     [SerializeField]

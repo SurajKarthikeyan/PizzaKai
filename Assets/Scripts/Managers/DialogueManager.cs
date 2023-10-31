@@ -55,7 +55,8 @@ public class DialogueManager : MonoBehaviour
         
         if (stopPlayer)
         {
-            player.Master.r2d.velocity = new Vector2(0, 0);
+            player.Master.r2d.velocity = new Vector2(0, player.Master.r2d.velocity.y);
+            player.characterAnimator.SetFloat("RightLeftMovement", 0f);
             player.enabled = false;
             weaponMasterModule.enabled = false;
         }
