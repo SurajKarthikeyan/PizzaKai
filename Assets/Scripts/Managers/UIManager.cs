@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
     public void DashFill()
     {
         //Fills the dash slider over times
-        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashTimer,
+        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashCooldown,
             Time.time - player.GetComponent<CharacterMovementModule>().dashTime);
     }
 
