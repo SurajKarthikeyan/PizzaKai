@@ -30,6 +30,8 @@ public class Forky : MonoBehaviour
     [Tooltip("Is Forky Active")]
     public bool active = false;
 
+    public bool spawning = false;
+
     [Header("Spawn interval settings")]
 
     [Tooltip("Minimum time for box to spawn")]
@@ -89,11 +91,12 @@ public class Forky : MonoBehaviour
     public bool IsDead = false;
 
 
+    public GameObject pipes;
+
+    //Change to forky
+    public Rigidbody2D box;
+
     public Tilemap tilemap;
-
-    public List<AnimatedTile> conveyorTiles;
-
-    private float animSpeed = 5.0f;
 
     #endregion
 
@@ -102,12 +105,6 @@ public class Forky : MonoBehaviour
     void Start()
     {
         crateSpawner = GetComponent<ForkyCrateSpawner>();
-        //foreach (AnimatedTile tile in conveyorTiles)
-        //{
-        //    tile.m_AnimationStartTime = (float)double.PositiveInfinity;
-        //    tile.m_MinSpeed = animSpeed;
-        //    tile.m_MaxSpeed = animSpeed;
-        //}
     }
     #endregion
 
@@ -122,24 +119,27 @@ public class Forky : MonoBehaviour
                 //Play Death Animation once and destroy object
                 //Going to Main Menu is temporary
                 active = false;
+                StartCoroutine(KillForky());
                 DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
             }
 
             //Logic for when the boss is alive
             else if (!actionTaken)
             {
-                float enemySpawnChance = Random.Range(0, 1f);
-                if (enemySpawnChance <= 0.25f)
+                if (spawning)
                 {
-                    //Start coroutine for spawning enemies after a certain amount of time
-                    StartCoroutine(IntervalSpawner(true));
+                    float enemySpawnChance = Random.Range(0, 1f);
+                    if (enemySpawnChance <= 0.25f)
+                    {
+                        //Start coroutine for spawning enemies after a certain amount of time
+                        StartCoroutine(IntervalSpawner(true));
+                    }
+                    else
+                    {
+                        //Start coroutine for spawning boxes
+                        StartCoroutine(IntervalSpawner(false));
+                    }
                 }
-                else
-                {
-                    //Start coroutine for spawning boxes
-                    StartCoroutine(IntervalSpawner(false));
-                }
-
             }
         }
     }
@@ -209,6 +209,27 @@ public class Forky : MonoBehaviour
             AudioDictionary.aDict.PlayAudioClipRemote("forkLift", forkyAudioSource);
         }
         actionTaken = false;
+    }
+
+    /// <summary>
+    /// Coroutine that continually runs and spawns enemies and boxes 
+    /// </summary>
+    /// <param name="spawnEnemies">Bool to decide whether eneimes or boxes are spawned</param>
+    /// <returns></returns>
+    IEnumerator KillForky()
+    {
+        Rigidbody2D[] rigidBodies = pipes.GetComponentsInChildren<Rigidbody2D>();
+        for (int i = 0; i < rigidBodies.Length; i++)
+        {
+            Rigidbody2D rigidBody = rigidBodies[i];
+            rigidBody.gravityScale = 1;
+        }
+        yield return new WaitForSeconds(0.5f);
+        box.gravityScale = 1f;
+        box.AddForce(new Vector2(-5f, 5f), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+        box.gameObject.layer = 7;
+        box.GetComponentInParent<BoxCollider2D>().enabled = true;
     }
 
     /// <summary>

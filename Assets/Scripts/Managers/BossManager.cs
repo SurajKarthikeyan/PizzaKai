@@ -47,43 +47,11 @@ public class BossManager : MonoBehaviour
         //this is so it gets set back to zero and won't move until the fight starts
         forky.tilemap.animationFrameRate = 0;
     }
-
-    void Update()
-    {
-        //if (lerpCam)
-        //{
-        //    float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
-
-        //    Vector3 interpolatedPosition = Vector3.Lerp(mainCam.transform.position, bossCamParent.transform.position, interpolationRatio);
-
-        //    mainCam.transform.position = interpolatedPosition;
-        //    if (mainCam.transform.position == bossCamParent.transform.position)
-        //    {
-        //        mainCam.SetActive(false);
-        //        bossCam.SetActive(true);
-        //    }
-        //    elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);  // reset elapsedFrames to zero after it reached (interpolationFramesCount + 1)
-        //}
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            //Interpolate camera position to boss camera, swap active cameras.
-            //lerpCam = true;
-            mainCam.SetActive(false);
-            bossCamParent.SetActive(true);
-            //Set bossStart to true
-            bossStart = true;
-        }
-    }
     
     public void ForkyBossStart()
     {
         forky.active = true;
-       
+        forky.spawning = true;
         forky.tilemap.animationFrameRate = 1;
         conveyorBelt.conveyorSpeed = -1;
         music.Stop();
