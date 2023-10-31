@@ -93,5 +93,13 @@ public class TargetToken : IEquatable<TargetToken>
             }
         }
     }
+
+    public override int GetHashCode()
+    {
+        if (IsDynamic)
+            return HashCode.Combine(IsDynamic, dynamicTarget);
+        else
+            return HashCode.Combine(staticPosition, IsDynamic);
+    }
     #endregion
 }

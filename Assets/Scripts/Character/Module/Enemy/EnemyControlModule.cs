@@ -108,7 +108,10 @@ public class EnemyControlModule : Module
     /// </summary>
     public void ArrivedAtDestination()
     {
-        // StartCoroutine(Idle_CR());
+        // Stop all movement.
+        movement.inputtedMovement = Vector2.zero;
+        movement.inputtedDash = Vector2.zero;
+        movement.inputtedJump = false;
     }
     #endregion
 

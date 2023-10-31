@@ -130,6 +130,7 @@ public class AIBranchModule : Module
     /// </summary>
     private void StartAI(EnemyControlModule enemy, TargetToken target)
     {
+        print($"{this} started");
         foreach (var action in actions)
         {
             action.selected = true;
@@ -142,6 +143,7 @@ public class AIBranchModule : Module
     /// </summary>
     public void UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
+        print($"{this} update");
         foreach (var action in actions)
         {
             action.UpdateAI(enemy, target); 
@@ -153,6 +155,7 @@ public class AIBranchModule : Module
     /// </summary>
     private void ExitAI(EnemyControlModule enemy)
     {
+        print($"{this} exit");
         foreach (var action in actions)
         {
             action.selected = false;
@@ -161,8 +164,10 @@ public class AIBranchModule : Module
     }
     #endregion
 
+    #region Object Overrides
     public override string ToString()
     {
         return $"[Branch] {id}";
-    }
+    } 
+    #endregion
 }
