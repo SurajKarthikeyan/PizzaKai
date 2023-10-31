@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,13 +9,13 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[System.Serializable]
-public class TargetToken
+[Serializable]
+public class TargetToken : IEquatable<TargetToken>
 {
     /// <summary>
-    /// The location of the targeted tile in world coordinates.
+    /// Tracking a static target.
     /// </summary>
-    private readonly Vector3 tileTarget;
+    private readonly Vector3 staticPosition;
 
     /// <summary>
     /// Tracking a dynamic target.
@@ -24,12 +25,17 @@ public class TargetToken
     /// <summary>
     /// The target position in world coordinates.
     /// </summary>
-    public Vector3 Position => dynamicTarget ? dynamicTarget.position : tileTarget;
+    public Vector3 Position => IsDynamic ? dynamicTarget.position : staticPosition;
 
     /// <summary>
     /// The target position in grid coordinates.
     /// </summary>
     public Vector3Int GridPosition => PathfindingManager.Instance.WorldToCell(Position);
+
+    /// <summary>
+    /// True if tracking a dynamic transform.
+    /// </summary>
+    public bool IsDynamic => dynamicTarget;
 
     public Vector3 GetHeading(Vector3 currentLocation)
     {
@@ -42,7 +48,7 @@ public class TargetToken
     /// <param name="gridPosition">The grid positions of the tile.</param>
     public TargetToken(Vector3Int gridPosition)
     {
-        tileTarget = PathfindingManager.Instance.CellToWorld(gridPosition);
+        staticPosition = PathfindingManager.Instance.CellToWorld(gridPosition);
     }
 
     /// <summary>
@@ -51,7 +57,7 @@ public class TargetToken
     /// <param name="worldPosition"></param>
     public TargetToken(Vector3 worldPosition)
     {
-        tileTarget = worldPosition;
+        staticPosition = worldPosition;
     }
 
     /// <summary>
@@ -62,4 +68,30 @@ public class TargetToken
     {
         dynamicTarget = tracking;
     }
+
+    #region Equals
+    public override bool Equals(object obj)
+    {
+        return obj is TargetToken tt && Equals(tt);
+    }
+
+    public bool Equals(TargetToken other)
+    {
+        if (IsDynamic != other.IsDynamic)
+            return false;
+        else
+        {
+            if (IsDynamic)
+            {
+                // Make sure dynamic targets match up.
+                return dynamicTarget == other.dynamicTarget;
+            }
+            else
+            {
+                // Make sure static targets match up.
+                return staticPosition == other.staticPosition;
+            }
+        }
+    }
+    #endregion
 }
