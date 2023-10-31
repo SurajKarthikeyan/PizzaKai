@@ -1,8 +1,4 @@
-using NaughtyAttributes;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -92,6 +88,9 @@ public class Forky : MonoBehaviour
 
 
     public GameObject pipes;
+
+    [SerializeField]
+    private LayerMask enemyLayer;
 
     //Change to forky
     public Rigidbody2D box;
@@ -223,6 +222,12 @@ public class Forky : MonoBehaviour
         {
             Rigidbody2D rigidBody = rigidBodies[i];
             rigidBody.gravityScale = 1;
+        }
+
+        Collider2D [] enemyColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 25, enemyLayer);
+        for (int i = 0; i < enemyColliders.Length; i++)
+        {
+            Destroy(enemyColliders[i].gameObject);
         }
         yield return new WaitForSeconds(0.5f);
         box.gravityScale = 1f;
