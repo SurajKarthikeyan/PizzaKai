@@ -8,16 +8,21 @@ public class ForkyOven : MonoBehaviour
 
     [SerializeField] private Generator[] generators;
     [SerializeField] private Alarm alarm;
+    [SerializeField] private LayerMask bossLayerMask;
 
     #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //If the player enters the oven, kill the player
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.CompareTag("Player"))
         {
             //There doesnt appear to be a way to get player maxhealth so I just picked a big number
             collision.gameObject.GetComponent<Character>().TakeDamage(999999);
+        }
+        else if (collision.gameObject.layer == bossLayerMask)
+        {
+            StartCoroutine(GetComponent<Forky>().AfterForkyDeath());
         }
         else
         {

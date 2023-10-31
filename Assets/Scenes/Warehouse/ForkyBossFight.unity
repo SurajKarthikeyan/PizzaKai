@@ -1108,6 +1108,9 @@ MonoBehaviour:
   - {fileID: 99103970}
   - {fileID: 582553744}
   alarm: {fileID: 260653167}
+  bossLayerMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!61 &253655531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2546,7 +2549,7 @@ MonoBehaviour:
   storyText: Let us continue the plan. I thank you once again, Peppy.
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2573,7 +2576,7 @@ MonoBehaviour:
   storyText: Nothing important. Just erasing the mobsters from this world.
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2601,7 +2604,7 @@ MonoBehaviour:
     have to fight through the city to even get there."
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2629,7 +2632,7 @@ MonoBehaviour:
     heads watches over as an administrator."
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2683,7 +2686,7 @@ MonoBehaviour:
   storyText: Correct. And after that, just cleaning up the mess.
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2765,7 +2768,7 @@ MonoBehaviour:
     city, in a bar."
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2820,7 +2823,7 @@ MonoBehaviour:
     I can tell that things will go smoothly, as planned.
   description: 
   character: {fileID: 1329563239}
-  portrait: {fileID: 21300000, guid: d8af1521b58435d468a7cb2f628e1911, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -3376,9 +3379,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 493893797}
+  - {fileID: 493893780}
   selectedCommands:
-  - {fileID: 493893878}
+  - {fileID: 493893768}
   variables:
   - {fileID: 493893821}
   description: 
@@ -78507,7 +78510,7 @@ GameObject:
   - component: {fileID: 821852785}
   - component: {fileID: 821852784}
   - component: {fileID: 821852788}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Forky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83271,7 +83274,7 @@ GameObject:
   - component: {fileID: 1940334957}
   - component: {fileID: 1940334956}
   - component: {fileID: 1940334959}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83290,7 +83293,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 99999
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

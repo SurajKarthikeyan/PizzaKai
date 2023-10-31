@@ -117,9 +117,8 @@ public class Forky : MonoBehaviour
             {
                 //Play Death Animation once and destroy object
                 //Going to Main Menu is temporary
-                active = false;
+                spawning = false;
                 StartCoroutine(KillForky());
-                DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
             }
 
             //Logic for when the boss is alive
@@ -211,9 +210,8 @@ public class Forky : MonoBehaviour
     }
 
     /// <summary>
-    /// Coroutine that continually runs and spawns enemies and boxes 
+    /// Coroutine that kills forky
     /// </summary>
-    /// <param name="spawnEnemies">Bool to decide whether eneimes or boxes are spawned</param>
     /// <returns></returns>
     IEnumerator KillForky()
     {
@@ -230,11 +228,31 @@ public class Forky : MonoBehaviour
             Destroy(enemyColliders[i].gameObject);
         }
         yield return new WaitForSeconds(0.5f);
-        box.gravityScale = 1f;
-        box.AddForce(new Vector2(-5f, 5f), ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.5f);
-        box.gameObject.layer = 7;
-        box.GetComponentInParent<BoxCollider2D>().enabled = true;
+        if (box != null && box.gameObject != null)
+        {
+            box.gravityScale = 1f;
+            box.velocity = Vector3.left * 5;
+            yield return new WaitForSeconds(0.5f);
+            box.velocity = Vector3.zero;
+            box.gameObject.layer = 14;
+            BoxCollider2D boxCollider = box.GetComponentInParent<BoxCollider2D>();
+            boxCollider.enabled = true;
+            box.gravityScale = 10f;
+        }
+    }
+
+    /// <summary>
+    /// After forky dies (RIP)
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator AfterForkyDeath()
+    {
+        tilemap.animationFrameRate = 0;
+        conveyorBelt.conveyorSpeed = 0;
+        Vector2 explosionPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
+        yield return new WaitForSeconds(1f);
+        DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
     }
 
     /// <summary>
@@ -248,8 +266,8 @@ public class Forky : MonoBehaviour
 
         if(generators == 0)
         {
-            tilemap.animationFrameRate = 0;
-            conveyorBelt.conveyorSpeed = 0;
+            tilemap.animationFrameRate = 1;
+            conveyorBelt.conveyorSpeed = -1;
             IsDead = true;
             return;
         }
