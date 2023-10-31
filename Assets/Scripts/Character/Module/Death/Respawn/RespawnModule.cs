@@ -38,8 +38,8 @@ public class RespawnModule : DeathModule
     }
 
     protected override void OnDeath()
-    {   
-        if (ranDeathAction)
+    {
+        if (!ranDeathAction)
         {
             Master.transform.position = RespawnPosition;
             Master.characterAnimator.Play("PizzaGuy_Idle");
