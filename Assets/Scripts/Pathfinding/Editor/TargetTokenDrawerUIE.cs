@@ -40,17 +40,21 @@ public class TargetTokenDrawerUIE : PropertyDrawer
                 out Transform dynamicTarget
             ) && dynamicTarget)
             {
+                position.Translate(0, position.height);
+
                 EditorGUI.LabelField(
                     position,
                     "Dynamic Target",
                     $"{dynamicTarget}"
                 );
             }
-            else if (token.TryGetFieldValue(
+            if (token.TryGetFieldValue(
                 "tileTarget",
                 BindingFlags.NonPublic | BindingFlags.Instance,
                 out Vector3 tileTarget))
             {
+                position.Translate(0, position.height);
+
                 EditorGUI.LabelField(
                     position,
                     "Tile Target",
