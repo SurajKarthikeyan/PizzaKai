@@ -61,13 +61,16 @@ public class TommyGunWeapon : WeaponModule
     IEnumerator TommyRapidFire()
     {
         ReloadWeapon();
+        Duration savedDelay = new Duration(firingDelay.maxTime);
+        firingDelay.maxTime = altWaitBetweenShots;
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 22; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
+        for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
         {
             TryFireWeapon();
             yield return new WaitForSeconds(altWaitBetweenShots);
         }
         ReloadWeapon();
+        firingDelay = savedDelay;
     }
     #endregion
 }
