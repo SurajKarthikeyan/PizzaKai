@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 5219901646902708579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.09, y: -8.92, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 643b7509aaaf6f745b351e03548d23c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1fab654c3387454a9e928a8eac756f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   weapon: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  weaponTutorialBlock: 
 --- !u!61 &5219901646902708591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 10, y: 5}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
