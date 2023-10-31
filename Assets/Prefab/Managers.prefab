@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &109230095111014720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2299213927446052081}
+  - component: {fileID: 213161800589810923}
+  m_Layer: 0
+  m_Name: ScreenShake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2299213927446052081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109230095111014720}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.5860195, y: -1.0974644, z: 1.9126167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2929617964724522076}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213161800589810923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109230095111014720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adb9edfc8bf8a34583cbd52d8391ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cineCamera: {fileID: 0}
+  durationTotal: 0.1
+  intensity: 3
+  cmBasicPerlin: {fileID: 0}
 --- !u!1 &520746502911827385
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +95,9 @@ MonoBehaviour:
   levelFlowchart: {fileID: 0}
   player: {fileID: 0}
   weaponMasterModule: {fileID: 0}
+  toolTipText: {fileID: 0}
+  toolTipImage: {fileID: 0}
+  saydialog: {fileID: 0}
 --- !u!1 &672629396907353863
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2070d6be6df69d64fb1e4e7b0a4c4d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flameProjectile: {fileID: 7188908662319675697, guid: 1b91d82f00566074088c796276655311, type: 3}
-  shotgunProjectile: {fileID: 8830377775791593255, guid: 923cad85e2abe124e9febc538ec85838, type: 3}
   extraTommyAmmo: 0
   extraShotgunPellets: 0
   extraFlamethrowerRange: 0
@@ -731,6 +780,7 @@ Transform:
   - {fileID: 610514351886050883}
   - {fileID: 7581203168070266453}
   - {fileID: 8813910087433784086}
+  - {fileID: 2299213927446052081}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
