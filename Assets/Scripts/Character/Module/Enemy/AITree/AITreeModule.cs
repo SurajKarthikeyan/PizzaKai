@@ -34,19 +34,13 @@ public class AITreeModule : Module
     public void AIUpdate(EnemyControlModule enemy, float deltaTime)
     {
         if (!current)
-            current = root;
+        {
+            current = root.StartRoot(enemy);
+        }
 
         current.tree = this;
 
-        if (current == root && current.branches.IsNullOrEmpty())
-        {
-            // Just the root exists in the tree.
-            root.UpdateAI(enemy, root.targeting.GetTarget());
-        }
-        else
-        {
-            current = current.SelectAI(enemy);
-        }
+        current = current.SelectAI(enemy);
     }
 
     /// <summary>

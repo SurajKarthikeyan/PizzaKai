@@ -1,18 +1,21 @@
+/// <summary>
+/// Follows the target.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
 public class AIActFollow : AIAction
 {
     #region Action Implementation
-    public override void InitializeAction(EnemyControlModule enemy)
+    public override void StartAI(EnemyControlModule enemy, TargetToken target)
     {
-        // Do nothing.
+        enemy.SetMoveTarget(target);
     }
 
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)
     {
-        if (enemy.pathAgent.State == PathfindingAgent.NavigationState.Idle)
-        {
-            // In idle state, which means it can accept an move input.
-            enemy.SetMoveTarget(target);
-        }
+        // Do nothing. Logic handled by the enemy control and agent.
     }
 
     public override void ExitAI(EnemyControlModule enemy)

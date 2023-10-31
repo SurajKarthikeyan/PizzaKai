@@ -1,11 +1,11 @@
 ﻿using System.Text.RegularExpressions;
-using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
 /// Responsible for providing a target for the AI to target (to follow, attack,
 /// etc). This is accomplished through the <see cref="TargetToken"/> provided by
-/// <see cref="GetTarget"/>.
+/// <see cref="GetTarget"/>. Changing the target while the branch is executing
+/// is not supported.
 ///
 /// <br/>
 ///
@@ -21,6 +21,10 @@ public abstract class AITargeting : MonoBehaviour
     /// <param name="enemy">The enemy who this targeting belongs to.</param>
     public virtual void InitializeTargeting(EnemyControlModule enemy) { }
 
+    /// <summary>
+    /// Calculates the target.
+    /// </summary>
+    /// <returns>The target.</returns>
     public abstract TargetToken GetTarget();
     #endregion
 

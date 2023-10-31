@@ -110,14 +110,19 @@ public class AIBranchModule : Module
             );
         }
 
-        if (selected != this)
-        {
-            // In the case that the tree consists of only the root, we don't
-            // want to keep calling StartAI.
-            selected.StartAI(enemy, target);
-        }
+        selected.StartAI(enemy, target);
 
         return selected;
+    }
+
+    /// <summary>
+    /// The root requires some extra initialization.
+    /// </summary>
+    /// <param name="enemy"></param>
+    public AIBranchModule StartRoot(EnemyControlModule enemy)
+    {
+        StartAI(enemy, targeting.GetTarget());
+        return this;
     }
 
     /// <summary>
