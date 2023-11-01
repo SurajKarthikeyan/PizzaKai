@@ -6,7 +6,7 @@ using TMPro;
 
 namespace XnBugReport {
     /// <summary>
-    /// Provides a simple, modal dialog box with up to three buttons as responses.
+    /// Provides a simple, modal dialog forkyr2d with up to three buttons as responses.
     /// The buttons and buttonTexts arrays and the UnityEvents on each Button must be set in the Inspector.
     /// </summary>
     public class XnModalPanel : MonoBehaviour {

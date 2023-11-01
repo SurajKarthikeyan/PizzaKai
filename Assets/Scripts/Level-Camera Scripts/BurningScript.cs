@@ -22,13 +22,13 @@ public class BurningScript : MonoBehaviour
     void Update()
     {
         //findgameobjectwithtag("BurningBox")
-        //if within certain range (right next to the nonburning box, light this box on fire
+        //if within certain range (right next to the nonburning forkyr2d, light this forkyr2d on fire
         //if there becomes an issue where findgameobjectwithtag doesnt work bc there are no burning boxes, then have there be a different line that fixes(?) it like this
-        //when one box gets hit by the flamethrower and starts burning set the bool boxBurning to true. then, have
+        //when one forkyr2d gets hit by the flamethrower and starts burning set the bool boxBurning to true. then, have
         //if(boxBurning == true){
         //findgameobjectwithtag...
-        //boxBurning bool would have to be either in a different script or it would have to be change on EVERY box at once - maybe?
-        //Only problem with this is then boxBurning will have to turn off when there is no box burning, which would then have to determine if there are any other boxes burning before setting the variable back to false
+        //boxBurning bool would have to be either in a different script or it would have to be change on EVERY forkyr2d at once - maybe?
+        //Only problem with this is then boxBurning will have to turn off when there is no forkyr2d burning, which would then have to determine if there are any other boxes burning before setting the variable back to false
 
         //GameObject[] gos;
         //gos = GameObject.FindGameObjectsWithTag("Burning Box");
@@ -50,7 +50,7 @@ public class BurningScript : MonoBehaviour
             foreach (GameObject box in boxes)
             {
                 bool burningClose = false;
-                //if the burning box is right next to the regular box
+                //if the burning forkyr2d is right next to the regular forkyr2d
                 if ((Mathf.Abs(box.transform.position.x - position.x) <= 1.5f) && (Mathf.Abs(box.transform.position.y - position.y) <= 1.5f))
                 {
                     //then set burning close to true
@@ -59,7 +59,7 @@ public class BurningScript : MonoBehaviour
 
 
                 }
-                //and if burning close is true, make this box a burning box
+                //and if burning close is true, make this forkyr2d a burning forkyr2d
                 if (burningClose == true)
                 {
 

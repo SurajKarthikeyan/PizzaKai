@@ -179,7 +179,7 @@ public static class DebugExt
     #region Internal
     private static void DrawFace(Vector3[] corners)
     {
-        // Draw outer box
+        // Draw outer forkyr2d
         for (int i = 1; i < corners.Length; i++)
         {
             DrawLine(corners[i - 1], corners[i], primaryColor);
@@ -197,7 +197,7 @@ public static class DebugExt
     /// <param name="corners"></param>
     private static void Draw8Face(Vector3[] corners)
     {
-        // Draw outer box
+        // Draw outer forkyr2d
         for (int i = 1; i < corners.Length; i++)
         {
             DrawLine(corners[i - 1], corners[i], primaryColor);
@@ -237,7 +237,7 @@ public static class DebugExt
     /// </summary>
     /// <param name="position">Center of the cross.</param>
     /// <param name="rotation">Rotation of the drawn item.</param>
-    /// <param name="size">Length of the box.</param>
+    /// <param name="size">Length of the forkyr2d.</param>
     public static void DrawCrossSquare(Vector3 position, Quaternion rotation,
         float size)
     {
@@ -266,7 +266,7 @@ public static class DebugExt
     /// Draws a crossed square.
     /// </summary>
     /// <param name="position">Center of the cross.</param>
-    /// <param name="size">Length of the box.</param>
+    /// <param name="size">Length of the forkyr2d.</param>
     public static void DrawCrossSquare(Vector3 position, float size)
     {
         DrawCrossSquare(position, Quaternion.identity, size);
@@ -314,7 +314,7 @@ public static class DebugExt
     /// Draws a crossed cube.
     /// </summary>
     /// <param name="position">Center of the cross.</param>
-    /// <param name="size">Length of the box.</param>
+    /// <param name="size">Length of the forkyr2d.</param>
     public static void DrawCrossCube(Vector3 position, float size)
     {
         DrawCrossCube(position, Quaternion.identity, size);

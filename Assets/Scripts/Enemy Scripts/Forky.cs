@@ -30,11 +30,11 @@ public class Forky : MonoBehaviour
 
     [Header("Spawn interval settings")]
 
-    [Tooltip("Minimum time for box to spawn")]
+    [Tooltip("Minimum time for forkyr2d to spawn")]
     [SerializeField]
     private float minBoxSpawnTime = 5f;
 
-    [Tooltip("Maximum time for box to spawn")]
+    [Tooltip("Maximum time for forkyr2d to spawn")]
     [SerializeField]
     private float maxBoxSpawnTime = 7f;
 
@@ -94,7 +94,7 @@ public class Forky : MonoBehaviour
     private LayerMask enemyLayer;
 
     //Change to forky
-    public Rigidbody2D box;
+    public Rigidbody2D forkyr2d;
 
     public Tilemap tilemap;
 
@@ -234,17 +234,19 @@ public class Forky : MonoBehaviour
         }
         active = false;
         yield return new WaitForSeconds(1.5f);
-        CinemachineCameraShake.instance.ShakeScreen(5f, 0.5f);
-        if (box != null && box.gameObject != null)
+        CinemachineCameraShake.instance.ShakeScreen(60f, 1f);
+        if (forkyr2d != null && forkyr2d.gameObject != null)
         {
-            box.gravityScale = 1f;
-            box.velocity = Vector3.left * 7 + Vector3.up * 5;
+            yield return new WaitForSeconds(0.3f);
+            forkyr2d.gameObject.GetComponent<Animator>().SetBool("Dying", true);
+            forkyr2d.gravityScale = 1f;
+            forkyr2d.velocity = Vector3.left * 7 + Vector3.up * 5;
             yield return new WaitForSeconds(0.5f);
-            box.velocity = Vector3.zero;
-            box.gameObject.layer = 14;
-            BoxCollider2D boxCollider = box.GetComponentInParent<BoxCollider2D>();
+            forkyr2d.velocity = Vector3.zero;
+            forkyr2d.gameObject.layer = 14;
+            BoxCollider2D boxCollider = forkyr2d.GetComponentInParent<BoxCollider2D>();
             boxCollider.enabled = true;
-            box.gravityScale = 10f;
+            forkyr2d.gravityScale = 10f;
         }
 
     }
@@ -262,7 +264,7 @@ public class Forky : MonoBehaviour
     {
         tilemap.animationFrameRate = 0;
         conveyorBelt.conveyorSpeed = 0;
-        Vector2 explosionPos = new(dyingForky.transform.position.x, gameObject.transform.position.y);
+        Vector2 explosionPos = new(dyingForky.transform.position.x - 0.65f, gameObject.transform.position.y);
         ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
         yield return new WaitForSeconds(1f);
         DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");

@@ -19,7 +19,7 @@ public class BoxDropScript : MonoBehaviour
     }
     private void OnDestroy()
     {
-        // if box marked for spikes, will only and always drop spikes
+        // if forkyr2d marked for spikes, will only and always drop spikes
         if(spikes)
         {
             Instantiate(spikesGO, boxLocation, Quaternion.identity);
@@ -28,7 +28,7 @@ public class BoxDropScript : MonoBehaviour
 
         // for the future if there are other drops such as powerups or something
 
-        //used to simulate the chance for a box to drop something
+        //used to simulate the chance for a forkyr2d to drop something
         if (Random.Range(0, 100) <= 30)
         {
             int dropChoice = Random.Range(0, drops.Count);

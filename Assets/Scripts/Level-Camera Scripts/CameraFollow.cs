@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     //camera follow variables
-    private BoxCollider2D cameraBox; //the camera's box collider
+    private BoxCollider2D cameraBox; //the camera's forkyr2d collider
     private Transform player; //player's position
     private float cameraHeight;
     private float cameraWidth;
@@ -67,7 +67,7 @@ public class CameraFollow : MonoBehaviour
         //Think of a better way to find boundaries, find is kinda slow
         if (GameObject.Find("Boundary"))
         {
-            //changes the camera's position depending on where the player is in the boundary box
+            //changes the camera's position depending on where the player is in the boundary forkyr2d
             transform.position = new Vector3(Mathf.Clamp(player.position.x, GameObject.Find("Boundary").GetComponent<BoxCollider2D>().bounds.min.x + cameraBox.size.x / 2, GameObject.Find("Boundary").GetComponent<BoxCollider2D>().bounds.max.x - cameraBox.size.x / 2),
                                              Mathf.Clamp(player.position.y, GameObject.Find("Boundary").GetComponent<BoxCollider2D>().bounds.min.y + cameraBox.size.y / 2, GameObject.Find("Boundary").GetComponent<BoxCollider2D>().bounds.max.y - cameraBox.size.y / 2),
                                              transform.position.z);

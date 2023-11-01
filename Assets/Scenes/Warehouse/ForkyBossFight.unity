@@ -291,6 +291,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: isVulnerable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: vulnerableTime
       value: 4
       objectReference: {fileID: 0}
@@ -1246,7 +1250,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260653166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2500,7 +2504,6 @@ GameObject:
   - component: {fileID: 493893870}
   - component: {fileID: 493893871}
   - component: {fileID: 493893875}
-  - component: {fileID: 493893874}
   - component: {fileID: 493893873}
   - component: {fileID: 493893872}
   - component: {fileID: 493893876}
@@ -2886,7 +2889,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 493893874}
   - {fileID: 493893875}
   - {fileID: 493893779}
   - {fileID: 493893778}
@@ -3380,8 +3382,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 493893883}
-  selectedCommands: []
+  - {fileID: 493893780}
+  selectedCommands:
+  - {fileID: 493893875}
   variables:
   - {fileID: 493893821}
   description: 
@@ -3978,24 +3981,6 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
---- !u!114 &493893874
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493893766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fab8abf0343545abbfebd9a7b7b34bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 137
-  indentLevel: 0
-  logType: 0
-  logMessage:
-    stringRef: {fileID: 0}
-    stringVal: PLAY FORKY DEATH ANIMATION
 --- !u!114 &493893875
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4331,6 +4316,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 590096159254537214, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: isVulnerable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8556730011733145476, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
@@ -78664,9 +78653,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 134144
-  box: {fileID: 1940334956}
+  forkyr2d: {fileID: 1597334379}
   tilemap: {fileID: 705232846}
-  dyingForky: {fileID: 1940334955}
+  dyingForky: {fileID: 1597334374}
 --- !u!4 &821852787
 Transform:
   m_ObjectHideFlags: 0
@@ -79655,7 +79644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1088775719
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -82324,9 +82313,11 @@ GameObject:
   - component: {fileID: 1597334377}
   - component: {fileID: 1597334376}
   - component: {fileID: 1597334375}
-  m_Layer: 0
+  - component: {fileID: 1597334379}
+  - component: {fileID: 1597334378}
+  m_Layer: 14
   m_Name: (NEW) Forky Solo
-  m_TagString: Untagged
+  m_TagString: BossForky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82391,7 +82382,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 1404920070, guid: daf082d6bafbb734cb835ff84f3405d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82418,6 +82409,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1597334378
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597334374}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.54401404}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.10569106}
+    oldSize: {x: 1.5375, y: 1.5375}
+    newSize: {x: 1.5375, y: 1.5375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4560267}
+  m_EdgeRadius: 0
+--- !u!50 &1597334379
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597334374}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 99999
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1658846927
 GameObject:
   m_ObjectHideFlags: 0
@@ -83584,6 +83622,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
+      propertyPath: isVulnerable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816986910633548225, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
       propertyPath: vulnerableTime
       value: 4
       objectReference: {fileID: 0}
@@ -83675,7 +83717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1940334956
 Rigidbody2D:
   serializedVersion: 4
