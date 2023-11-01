@@ -8,13 +8,9 @@ public class BossManager : MonoBehaviour
 {
     public bool bossStart = false;
 
-    private bool lerpCam = false;
-
     public GameObject mainCam;
 
     public GameObject bossCamParent;
-
-    private GameObject bossCam;
 
     public ConveyorBeltScript conveyorBelt;
 
@@ -42,8 +38,6 @@ public class BossManager : MonoBehaviour
     
     private void Start()
     {
-        bossCam = bossCamParent.transform.GetChild(0).gameObject;
-
         //this is so it gets set back to zero and won't move until the fight starts
         forky.tilemap.animationFrameRate = 0;
     }

@@ -1111,6 +1111,7 @@ MonoBehaviour:
   bossLayerMask:
     serializedVersion: 2
     m_Bits: 16384
+  forky: {fileID: 821852786}
 --- !u!61 &253655531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78511,7 +78512,7 @@ GameObject:
   - component: {fileID: 821852788}
   m_Layer: 14
   m_Name: Forky
-  m_TagString: Untagged
+  m_TagString: BossForky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78665,6 +78666,7 @@ MonoBehaviour:
     m_Bits: 134144
   box: {fileID: 1940334956}
   tilemap: {fileID: 705232846}
+  dyingForky: {fileID: 1940334955}
 --- !u!4 &821852787
 Transform:
   m_ObjectHideFlags: 0
@@ -79652,7 +79654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1088775719
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83458,7 +83460,7 @@ GameObject:
   - component: {fileID: 1940334959}
   m_Layer: 14
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: BossForky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

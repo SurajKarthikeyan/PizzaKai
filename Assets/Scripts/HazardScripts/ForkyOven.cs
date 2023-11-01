@@ -9,6 +9,7 @@ public class ForkyOven : MonoBehaviour
     [SerializeField] private Generator[] generators;
     [SerializeField] private Alarm alarm;
     [SerializeField] private LayerMask bossLayerMask;
+    [SerializeField] private Forky forky;
 
     #endregion
 
@@ -20,9 +21,11 @@ public class ForkyOven : MonoBehaviour
             //There doesnt appear to be a way to get player maxhealth so I just picked a big number
             collision.gameObject.GetComponent<Character>().TakeDamage(999999);
         }
-        else if (collision.gameObject.layer == bossLayerMask)
+        else if (collision.gameObject.CompareTag("BossForky"))
         {
-            StartCoroutine(GetComponent<Forky>().AfterForkyDeath());
+            print("AfterForkyDeath");
+            forky.HelpAfterForky();
+            Destroy(collision.gameObject);
         }
         else
         {

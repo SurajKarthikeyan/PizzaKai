@@ -11,8 +11,7 @@ public class BurningScript : MonoBehaviour
 
     public Animator burning;
     public bool burns;
-    
-    private bool burningME = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,16 +93,12 @@ public class BurningScript : MonoBehaviour
     {
         if (flameBulletHit == true)
         {
-            
-            burningME = true;
             gameObject.tag = ("Burning Box");
         }
         else
         {
             yield return new WaitForSeconds(Random.Range(2f, 5f));
             gameObject.tag = ("Burning Box");
-
-            burningME = true;
         }
         
     }

@@ -11,8 +11,6 @@ public class SpikeCollider : MonoBehaviour
 
     public float knockbackDuration = 1f;
 
-    private float knockBackElapsed = 0f;
-
 
     // Start is called before the first frame update
     void Start()

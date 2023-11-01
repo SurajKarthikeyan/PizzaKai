@@ -82,6 +82,7 @@ public class Forky : MonoBehaviour
 
     private int generators = 3;
 
+
     [Tooltip("Is Forky Dead")]
     [NaughtyAttributes.ReadOnly]
     public bool IsDead = false;
@@ -96,6 +97,8 @@ public class Forky : MonoBehaviour
     public Rigidbody2D box;
 
     public Tilemap tilemap;
+
+    public GameObject dyingForky;
 
     #endregion
 
@@ -116,8 +119,8 @@ public class Forky : MonoBehaviour
             if (IsDead)
             {
                 //Play Death Animation once and destroy object
-                //Going to Main Menu is temporary
                 spawning = false;
+                StopAllCoroutines();
                 StartCoroutine(KillForky());
             }
 
@@ -229,13 +232,13 @@ public class Forky : MonoBehaviour
         {
             Destroy(enemyColliders[i].gameObject);
         }
-
+        active = false;
         yield return new WaitForSeconds(1.5f);
-        CinemachineCameraShake.instance.ShakeScreen(4f, 0.25f);
+        CinemachineCameraShake.instance.ShakeScreen(5f, 0.5f);
         if (box != null && box.gameObject != null)
         {
             box.gravityScale = 1f;
-            box.velocity = Vector3.left * 5;
+            box.velocity = Vector3.left * 7 + Vector3.up * 5;
             yield return new WaitForSeconds(0.5f);
             box.velocity = Vector3.zero;
             box.gameObject.layer = 14;
@@ -243,6 +246,12 @@ public class Forky : MonoBehaviour
             boxCollider.enabled = true;
             box.gravityScale = 10f;
         }
+
+    }
+
+    public void HelpAfterForky()
+    {
+        StartCoroutine(AfterForkyDeath());
     }
 
     /// <summary>
@@ -253,7 +262,7 @@ public class Forky : MonoBehaviour
     {
         tilemap.animationFrameRate = 0;
         conveyorBelt.conveyorSpeed = 0;
-        Vector2 explosionPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        Vector2 explosionPos = new(dyingForky.transform.position.x, gameObject.transform.position.y);
         ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
         yield return new WaitForSeconds(1f);
         DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");

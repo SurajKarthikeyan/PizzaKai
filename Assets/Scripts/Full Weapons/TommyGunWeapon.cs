@@ -25,11 +25,6 @@ public class TommyGunWeapon : WeaponModule
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 20;
 
-    [Tooltip("Enemy layer mask")]
-    [SerializeField]
-    [ReadOnly]
-    private int enemyLayerNum = 10;
-
     #endregion
 
     #region Init
