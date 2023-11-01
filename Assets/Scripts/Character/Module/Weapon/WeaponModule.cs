@@ -80,6 +80,9 @@ public class WeaponModule : Module
     [Tooltip("The animator for the weapon")]
     public Animator weaponAnimator;
 
+    [Tooltip("The animator for the player")]
+    public Animator playerAnimator;
+
     [Tooltip("The name of the animation parameter that controls firing.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animFiringBool;
@@ -209,6 +212,12 @@ public class WeaponModule : Module
                         InputState == WeaponInputState.FiringStart ||
                         InputState == WeaponInputState.FiringHeld
                     );
+
+                    playerAnimator.SetBool(
+                        animFiringBool,
+                        InputState == WeaponInputState.FiringStart ||
+                        InputState == WeaponInputState.FiringHeld
+                    );
                 }
 
                 if (!string.IsNullOrEmpty(animAltingBool))
@@ -306,6 +315,11 @@ public class WeaponModule : Module
         if (weaponAnimator && !string.IsNullOrWhiteSpace(animFiringBool))
         {
             weaponAnimator.SetBool(animFiringBool, canFire);
+        }
+
+        if (playerAnimator && !string.IsNullOrWhiteSpace(animFiringBool))
+        {
+            playerAnimator.SetBool(animFiringBool, canFire);
         }
 
         return canFire;

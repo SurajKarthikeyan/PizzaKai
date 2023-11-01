@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_Targets:
   - target: {fileID: 8206075540257416576}
-    weight: 2
+    weight: 1.5
     radius: 1
   - target: {fileID: 6520382722505347044}
     weight: 0.5
@@ -3784,7 +3784,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8206075540257416582}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b183afc7ebe34224d88d06e7b76da761, type: 3}
@@ -4214,6 +4214,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3413369618218320337}
     - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 948621413}
+    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 8206075540257416576}
@@ -4337,12 +4341,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: accessible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: altFireball
       value: 
       objectReference: {fileID: 6120694099053025178, guid: 86d1d3f031aafac42b2ec388dfa0958d, type: 3}
+    - target: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 948621413}
     - target: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
       propertyPath: m_Name
       value: Flamethrower
@@ -4451,12 +4459,16 @@ PrefabInstance:
       objectReference: {fileID: 142466953}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: accessible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 948621413}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: weaponAnimator
       value: 
@@ -4605,6 +4617,10 @@ PrefabInstance:
       propertyPath: grappleForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -2332675900567559233, guid: 80d4e0c31f67a6a4e967ee724805cc8d, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 948621413}
     - target: {fileID: -2332675900567559233, guid: 80d4e0c31f67a6a4e967ee724805cc8d, type: 3}
       propertyPath: grappleDistance
       value: 10

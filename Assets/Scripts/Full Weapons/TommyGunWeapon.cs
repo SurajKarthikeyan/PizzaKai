@@ -29,9 +29,7 @@ public class TommyGunWeapon : WeaponModule
     [SerializeField]
     [ReadOnly]
     private int enemyLayerNum = 10;
-    private int layerMask;
 
-    private List<Collider2D> visibleEnemies = new();
     #endregion
 
     #region Init
@@ -43,7 +41,6 @@ public class TommyGunWeapon : WeaponModule
         //Sets the image for the tommy flash to be clear
 
         //Left shifts the layer num  to represent layer number by a single bit in the 32-bit integer
-        layerMask = 1 << enemyLayerNum;
     }
     #endregion
 
