@@ -13,6 +13,13 @@ public class AITreeModule : Module
     private AIBranchModule current = null;
     #endregion
 
+    #region Properties
+    /// <summary>
+    /// The current running branch.
+    /// </summary>
+    public AIBranchModule Current => current;
+    #endregion
+
     #region Validate
     private void OnValidate()
     {
@@ -33,13 +40,9 @@ public class AITreeModule : Module
 
     public void AIUpdate(EnemyControlModule enemy, float deltaTime)
     {
-        if (!current)
-        {
-            current = root.StartRoot(enemy);
-        }
+        if (!current) current = root;
 
         current.tree = this;
-
         current = current.SelectAI(enemy);
     }
 
