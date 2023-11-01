@@ -34,8 +34,8 @@ public abstract class DeathModule : Module
 
             else
             {
-                weaponMaster.gameObject.SetActive(false);
-                Master.characterAnimator.Play("PlayerDeath");
+                //weaponMaster.gameObject.SetActive(false);
+                //Master.characterAnimator.Play("PlayerDeath");
                 ranDeathAction = true;
                 Invoke(nameof(OnDeath), delay);
             }   

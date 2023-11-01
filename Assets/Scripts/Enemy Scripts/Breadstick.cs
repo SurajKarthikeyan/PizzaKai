@@ -43,6 +43,7 @@ public class Breadstick : EnemyBasic
         if (currentHP <= 0)
         {
             deathState = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             breadDead.Play();
             
             breadVanish.SetBool("Death", deathState);
