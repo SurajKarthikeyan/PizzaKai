@@ -1,13 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
 [System.Serializable]
 public class AIBranchModule : Module
 {
+    #region Enums
+    public enum State
+    {
+        Stopped,
+        Starting,
+        Updating,
+        Exiting
+    }
+    #endregion
+
     #region Variables
     [Tooltip("Optional identifier for this branch.")]
     public string id;
+
+    [ReadOnly]
+    [SerializeField]
+    [Tooltip("Current state of the branch.")]
+    private State state;
 
     [Tooltip("The priority of the branch. Higher priority branches are " +
         "selected over lower priority ones.")]
@@ -25,6 +41,19 @@ public class AIBranchModule : Module
 
     [HideInInspector]
     public AITreeModule tree;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// True if this branch has <paramref name="tree"/> and if it is the current
+    /// running branch on <paramref name="tree"/>.
+    /// </summary>
+    public bool IsSelected => tree && tree.Current == this;
+
+    /// <summary>
+    /// The current state of the branch's execution.
+    /// </summary>
+    public State BranchState => state;
     #endregion
 
     #region Main Methods
@@ -116,21 +145,16 @@ public class AIBranchModule : Module
     }
 
     /// <summary>
-    /// The root requires some extra initialization.
-    /// </summary>
-    /// <param name="enemy"></param>
-    public AIBranchModule StartRoot(EnemyControlModule enemy)
-    {
-        StartAI(enemy, targeting.GetTarget());
-        return this;
-    }
-
-    /// <summary>
     /// Starts all AI controls belonging to the branch.
     /// </summary>
     private void StartAI(EnemyControlModule enemy, TargetToken target)
     {
-        print($"{this} started");
+        Debug.Assert(
+            BranchState == State.Stopped,
+            $"{this} StartAI called when state not Stopped!"
+        );
+        print($"{this} StartAI.");
+        state = State.Starting;
         foreach (var action in actions)
         {
             action.selected = true;
@@ -141,12 +165,27 @@ public class AIBranchModule : Module
     /// <summary>
     /// Updates all AI controls belonging to the branch.
     /// </summary>
-    public void UpdateAI(EnemyControlModule enemy, TargetToken target)
+    private void UpdateAI(EnemyControlModule enemy, TargetToken target)
     {
-        print($"{this} update");
-        foreach (var action in actions)
+        if (state == State.Updating || state == State.Starting)
         {
-            action.UpdateAI(enemy, target); 
+            Debug.Assert(
+                BranchState == State.Updating,
+                $"{this} UpdateAI called when state not Updating or Starting!"
+            );
+
+            print($"{this} UpdateAI.");
+            state = State.Updating;
+            foreach (var action in actions)
+            {
+                action.UpdateAI(enemy, target); 
+            }
+        }
+        else
+        {
+            // Start has not been called yet. Do that now.
+            print($"{this} UpdateAI deferred. Running StartAI instead.");
+            StartAI(enemy, target);
         }
     }
 
@@ -155,7 +194,13 @@ public class AIBranchModule : Module
     /// </summary>
     private void ExitAI(EnemyControlModule enemy)
     {
-        print($"{this} exit");
+        Debug.Assert(
+            BranchState == State.Updating,
+            $"{this} ExitAI called when state not Updating!"
+        );
+
+        print($"{this} ExitAI.");
+        state = State.Exiting;
         foreach (var action in actions)
         {
             action.selected = false;
