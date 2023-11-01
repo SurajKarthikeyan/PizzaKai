@@ -36,7 +36,7 @@ public class PathfindingManager : MonoBehaviour
     {
         if (instance == null) {
             this.InstantiateSingleton(ref instance);
-            InitializeData();
+            //InitializeData();
         }
         
     }
@@ -117,21 +117,21 @@ public class PathfindingManager : MonoBehaviour
         CellBounds = cellBounds;
     }
 
-    private void InitializeData()
-    {
-        string sceneName = SceneManager.GetActiveScene().name;
+    //private void InitializeData()
+    //{
+    //    string sceneName = SceneManager.GetActiveScene().name;
 
-        if (!data || data.name != sceneName)
-        {
-            data = ScriptableObject.CreateInstance<PathfindingData>();
+    //    if (!data || data.name != sceneName)
+    //    {
+    //        data = ScriptableObject.CreateInstance<PathfindingData>();
 
-            string path = sceneName;
-            path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
-            // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
-            AssetDatabase.CreateAsset(data, path);
-            AssetDatabase.SaveAssets();
-        }
-    }
+    //        string path = sceneName;
+    //        path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
+    //        // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+    //        AssetDatabase.CreateAsset(data, path);
+    //        AssetDatabase.SaveAssets();
+    //    }
+    //}
     #endregion
 
     #region Graph Instantiation
