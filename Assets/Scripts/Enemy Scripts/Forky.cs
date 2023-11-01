@@ -215,6 +215,7 @@ public class Forky : MonoBehaviour
     /// <returns></returns>
     IEnumerator KillForky()
     {
+        //Makes pipes fall behind Forky
         Rigidbody2D[] rigidBodies = pipes.GetComponentsInChildren<Rigidbody2D>();
         for (int i = 0; i < rigidBodies.Length; i++)
         {
@@ -222,12 +223,15 @@ public class Forky : MonoBehaviour
             rigidBody.gravityScale = 1;
         }
 
-        Collider2D [] enemyColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 25, enemyLayer);
+        //Kills all enemies
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 25, enemyLayer);
         for (int i = 0; i < enemyColliders.Length; i++)
         {
             Destroy(enemyColliders[i].gameObject);
         }
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(1.5f);
+        CinemachineCameraShake.instance.ShakeScreen(4f, 0.25f);
         if (box != null && box.gameObject != null)
         {
             box.gravityScale = 1f;
