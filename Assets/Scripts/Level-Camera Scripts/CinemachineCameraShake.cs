@@ -63,6 +63,11 @@ public class CinemachineCameraShake : MonoBehaviour
         else
         {
             cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
+            if (cineCamera != null)
+            {
+                cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+            }
         }
     }
 
