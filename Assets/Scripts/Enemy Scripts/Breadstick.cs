@@ -14,6 +14,11 @@ public class Breadstick : EnemyBasic
     public AudioSource breadDead;
 
     public AudioSource breadAttack;
+
+    Animator breadVanish;
+
+    private bool hasSpawned = false;
+
     // Start is called before the first frame update
     override public void Start()
     {
@@ -22,6 +27,8 @@ public class Breadstick : EnemyBasic
         base.Start();
         breadDead.clip = AudioDictionary.aDict.audioDict["breadDead"];
         breadAttack.clip = AudioDictionary.aDict.audioDict["breadAttack"];
+        breadVanish = gameObject.GetComponent<Animator>();
+        deathState = false;
     }
 
     public override void Update()
@@ -35,8 +42,11 @@ public class Breadstick : EnemyBasic
 
         if (currentHP <= 0)
         {
+            deathState = true;
             breadDead.Play();
-            if (size > 1)
+            
+            breadVanish.SetBool("Death", deathState);
+            if (size > 1 && !hasSpawned)
             {
                 for (int i = 0; i < stickSplit; i++)
                 {
@@ -67,8 +77,10 @@ public class Breadstick : EnemyBasic
                     }
                 }
             }
-            Destroy(gameObject);
+            hasSpawned = true;
+            Destroy(gameObject, 0.5f);
             //Debug.Log("Killed breadstick and size is " + size + " and pointer " + this);
+            Destroy(this);
         }
 
         if (hitState && Time.time > hitTime) hitState = false;
