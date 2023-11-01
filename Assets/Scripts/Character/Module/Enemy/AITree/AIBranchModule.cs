@@ -173,7 +173,7 @@ public class AIBranchModule : Module
         if (state == State.Updating || state == State.Starting)
         {
 #if UNITY_EDITOR
-            print($"{this} UpdateAI.");
+            if (state == State.Starting) print($"{this} UpdateAI.");
 #endif
 
             state = State.Updating;
