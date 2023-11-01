@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
@@ -16,19 +17,36 @@ using UnityEngine;
 public class EnemyControlModule : Module
 {
     #region Variables
+    [SerializeField]
+    [Tooltip("What must the y input be for the control module to request " +
+        "a jump?")]
+    [BoxGroup("Settings")]
+    private float jumpThreshold = 0.5f;    
+
     [ReadOnly]
+    [BoxGroup("Required Modules")]
     public CharacterMovementModule movement;
 
     [ReadOnly]
+    [BoxGroup("Required Modules")]
     public PathfindingAgent pathAgent;
 
     [Tooltip("The root element of the decision tree.")]
+    [BoxGroup("Required Modules")]
     public AITreeModule decisionTree;
 
     // [Tooltip("Delay for recalculating the movement vectors.")]
     // [SerializeField]
     // private Range targetTokenRefreshDelay = new(0.5f, 2);
     //private IEnumerator tokenRefreshCR;
+    #endregion
+
+    #region Member Variables
+    /// <summary>
+    /// Callback for the <see cref="SetMoveTarget(TargetToken,
+    /// Action{TargetToken})"/> function.
+    /// </summary>
+    private Action<TargetToken> cachedCallback;
     #endregion
 
     #region Instantiation
@@ -52,12 +70,6 @@ public class EnemyControlModule : Module
         this.RequireComponent(out movement);
         this.RequireComponent(out pathAgent);
     }
-
-    //private void Start()
-    //{
-    //    //// For now, chase player.
-    //    //SetTarget(GameManager.Instance.Player.transform);
-    //}
     #endregion
 
     #region Main Loop
@@ -75,14 +87,17 @@ public class EnemyControlModule : Module
     #endregion
 
     #region Main Logic
-    /// <inheritdoc cref="PathfindingAgent.SetTarget(Vector3)"/>
-    public void SetMoveTarget(Vector3 target) => pathAgent.SetTarget(target);
-
-    /// <inheritdoc cref="PathfindingAgent.SetTarget(Transform)"/>
-    public void SetMoveTarget(Transform target) => pathAgent.SetTarget(target);
-
     /// <inheritdoc cref="PathfindingAgent.SetTarget(TargetToken)"/>
     public void SetMoveTarget(TargetToken target) => pathAgent.SetTarget(target);
+
+    /// <inheritdoc cref="SetMoveTarget(TargetToken)"/>
+    /// <param name="callOnArrival">Callback on arrival.</param>
+    public void SetMoveTarget(TargetToken target,
+        Action<TargetToken> callOnArrival)
+    {
+        pathAgent.SetTarget(target);
+        cachedCallback = callOnArrival;
+    }
 
     /// <summary>
     /// Clears the movement target token.
@@ -93,11 +108,22 @@ public class EnemyControlModule : Module
         movement.inputtedMovement = Vector2.zero;
     }
 
+    /// <summary>
+    /// Accepts a movement token, which contains the data required to move the
+    /// character.
+    /// </summary>
+    /// <param name="token">The movement/target token.</param>
     public void AcceptToken(TargetToken token)
     {
         var heading = token.GetHeading(transform.position).normalized;
         movement.inputtedMovement = heading;
-        movement.inputtedJump = heading.y > 0;
+        movement.inputtedJump = heading.y > jumpThreshold;
+
+        if (-jumpThreshold < heading.y && heading.y < 0)
+        {
+            // Avoids pressing down unnecessarily.
+            heading.y = 0;
+        }
 
         if (!heading.x.Approx(0, 0.1f))
             Master.SetLookAngle(heading.x > 0 ? 0 : 180);
@@ -106,12 +132,19 @@ public class EnemyControlModule : Module
     /// <summary>
     /// Notifies the EnemyControlModule that it has arrived at its destination.
     /// </summary>
-    public void ArrivedAtDestination()
+    /// <param name="token">The token used to get to the destination.</param>
+    public void ArrivedAtDestination(TargetToken token)
     {
         // Stop all movement.
         movement.inputtedMovement = Vector2.zero;
         movement.inputtedDash = Vector2.zero;
         movement.inputtedJump = false;
+
+        if (cachedCallback != null)
+        {
+            cachedCallback(token);
+            cachedCallback = null;
+        }
     }
     #endregion
 
@@ -142,6 +175,7 @@ public class EnemyControlModule : Module
     }
     #endregion
 
+#if UNITY_EDITOR
     #region Debug
     private void OnDrawGizmos()
     {
@@ -152,4 +186,5 @@ public class EnemyControlModule : Module
         );
     }
     #endregion
+#endif
 }

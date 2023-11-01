@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Root
+  state: 0
   priority: 0
   targeting: {fileID: 5423999458321242012}
   decision: {fileID: 7779587168733525766}
@@ -383,7 +384,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -455,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2806ee2cccf24018db0e97b334908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpThreshold: 0.5
   movement: {fileID: 6478255713057580265}
   pathAgent: {fileID: 6478255713057580274}
   decisionTree: {fileID: 8345106781479735994}
@@ -488,7 +490,7 @@ MonoBehaviour:
   maxMoveSpeed: {x: 10, y: 0}
   moveAcceleration: {x: 10, y: 0}
   decelerationPercentage: 0.95
-  jumpForce: 12
+  jumpForce: 18
   jumpCooldown:
     maxTime: 0.5
     elapsed: 0

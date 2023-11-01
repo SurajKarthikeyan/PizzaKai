@@ -89,7 +89,8 @@ public class PathfindingAgent : MonoBehaviour
 
                 case NavigationState.ArrivedAtDestination:
                     NextNode = null;
-                    enemyControl.ArrivedAtDestination();
+                    print("Arrived at position " + CurrentToken);
+                    enemyControl.ArrivedAtDestination(CurrentToken);
                     visualizer.Clear();
 
                     if (checkTargetDistanceCR != null)

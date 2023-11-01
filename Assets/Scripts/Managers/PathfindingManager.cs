@@ -71,9 +71,9 @@ public class PathfindingManager : MonoBehaviour
     [SerializeField]
     private int platformCheckCeiling = 8;
 
-    [Tooltip("How far to check for neighboring vertices?")]
-    [SerializeField]
-    private int neighborCheckMaxDistance = 16;
+    // [Tooltip("How far to check for neighboring vertices?")]
+    // [SerializeField]
+    // private int neighborCheckMaxDistance = 16;
 
     [Header("Path Costs")]
     [Tooltip("The cost of jumping up one tile's worth of distance.")]

@@ -98,11 +98,7 @@ public class Tracer<T> where T : IEquatable<T>
         if (middleContainer)
         {
             middleContainer.DestroyAllChildren(true);
-
-            if (exit)
-            {
-                GameObject.Destroy(middleContainer);
-            }
+            middleContainer.gameObject.DestroyIf(exit);
         }
     }
 
