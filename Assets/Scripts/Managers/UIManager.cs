@@ -152,6 +152,7 @@ public class UIManager : MonoBehaviour
         {
             //Unpauses game
             pauseMenu.SetActive(false);
+            DialogueManager.Instance.StopPlayer(false);
             isPaused = false;
             Time.timeScale = 1;
         }
@@ -159,6 +160,7 @@ public class UIManager : MonoBehaviour
         {
             //Pauses game
             pauseMenu.SetActive(true);
+            DialogueManager.Instance.StopPlayer(true);
             isPaused = true;
             Time.timeScale = 0;
         }
