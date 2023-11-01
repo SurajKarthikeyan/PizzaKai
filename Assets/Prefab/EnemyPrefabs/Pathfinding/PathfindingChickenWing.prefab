@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
-  reloadOnExit: 0
+  reloadOnExit: 1
 --- !u!1 &1195072301350445198
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +91,153 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToTarget:
-    mode: 2
+    mode: 0
     min: 8
+    max: 12
+--- !u!1 &1555724273637378154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7425363333434490732}
+  - component: {fileID: 7241687557925496842}
+  m_Layer: 0
+  m_Name: '[Decision:Distance] Get Closer'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7425363333434490732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555724273637378154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2217984649839805962}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7241687557925496842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555724273637378154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ae440a38720d252890a9792eba9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToTarget:
+    mode: 2
+    min: 12
+    max: 5
+--- !u!1 &1931218078166290807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5063151239782859721}
+  - component: {fileID: 7056499393006955564}
+  m_Layer: 0
+  m_Name: '[Action:Flee] Run Away'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5063151239782859721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931218078166290807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6874786496001802430}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7056499393006955564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931218078166290807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7a0399d05eedfb880c82cb2c41bf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  preferredFleeDistance: 10
+  recalculationDelay:
+    maxTime: 2.5
+    elapsed: 0
+--- !u!1 &2306947048575964134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5185134332054342449}
+  - component: {fileID: 5301980218724208285}
+  m_Layer: 0
+  m_Name: '[Decision:Distance] Run Away'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5185134332054342449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306947048575964134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6874786496001802430}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5301980218724208285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306947048575964134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ae440a38720d252890a9792eba9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToTarget:
+    mode: 3
+    min: 0
     max: 8
 --- !u!1 &2623344497766838220
 GameObject:
@@ -169,7 +314,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6944289635099800467}
+  - {fileID: 5185134332054342449}
+  - {fileID: 5063151239782859721}
   m_Father: {fileID: 6522310158142288141}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,12 +334,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Run Away
-  priority: 0
-  targeting: {fileID: 0}
-  decision: {fileID: 0}
-  actions: []
+  state: 0
+  priority: 5
+  targeting: {fileID: 7531056849744898991}
+  decision: {fileID: 5301980218724208285}
+  actions:
+  - {fileID: 7056499393006955564}
   branches: []
   tree: {fileID: 0}
+--- !u!1 &4681998802287641549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7260578603660686224}
+  - component: {fileID: 1756594381162881826}
+  m_Layer: 0
+  m_Name: '[Target:Player] Get Closer'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7260578603660686224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681998802287641549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2217984649839805962}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756594381162881826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681998802287641549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf41c3ddcf45ddc58a6fbfc0ff74140c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5047893439454643748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 251450717328453317}
+  - component: {fileID: 8576509585858642917}
+  m_Layer: 0
+  m_Name: '[Action:Follow] Get Closer'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &251450717328453317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047893439454643748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2217984649839805962}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8576509585858642917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047893439454643748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f40312e8c067a02bbb63f5fd6c4a060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
 --- !u!1 &5513693996745406628
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +442,7 @@ GameObject:
   - component: {fileID: 2217984649839805962}
   - component: {fileID: 5372739845135645697}
   m_Layer: 0
-  m_Name: New Branch
+  m_Name: '[Branch] Get Closer'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +459,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7260578603660686224}
+  - {fileID: 7425363333434490732}
+  - {fileID: 251450717328453317}
   m_Father: {fileID: 6522310158142288141}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -236,11 +478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a196a2e928b65f3fd91c8ce8b473b74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: Get Closer
+  state: 0
   priority: 0
-  targeting: {fileID: 0}
-  decision: {fileID: 0}
-  actions: []
+  targeting: {fileID: 1756594381162881826}
+  decision: {fileID: 7241687557925496842}
+  actions:
+  - {fileID: 8576509585858642917}
   branches: []
   tree: {fileID: 0}
 --- !u!1 &6388695323189409098
@@ -293,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Root
+  state: 0
   priority: 0
   targeting: {fileID: 7259733484458259743}
   decision: {fileID: 6943527473827754855}
@@ -585,9 +830,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2806ee2cccf24018db0e97b334908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpThreshold: 0.5
   movement: {fileID: 4588151809240339083}
   pathAgent: {fileID: 1287220591596743552}
   decisionTree: {fileID: 5383094313206243604}
+--- !u!1 &7453281119939966198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6944289635099800467}
+  - component: {fileID: 7531056849744898991}
+  m_Layer: 0
+  m_Name: '[Target:Player] Run Away'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6944289635099800467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453281119939966198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6874786496001802430}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7531056849744898991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453281119939966198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf41c3ddcf45ddc58a6fbfc0ff74140c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7761651304077495885
 GameObject:
   m_ObjectHideFlags: 0

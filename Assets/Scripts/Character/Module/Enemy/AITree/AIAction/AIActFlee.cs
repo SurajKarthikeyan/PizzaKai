@@ -27,11 +27,20 @@ public class AIActFlee : AIAction
 
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)
     {
-        // Do nothing. RecalculationDelay handles the logic.
+        switch (enemy.pathAgent.State)
+        {
+            case PathfindingAgent.NavigationState.Idle:
+            case PathfindingAgent.NavigationState.ArrivedAtDestination:
+                // Restart navigation.
+                ExitAI(enemy);
+                StartAI(enemy, target);
+                break;
+        }
     }
 
     public override void ExitAI(EnemyControlModule enemy)
     {
+        recalculationDelay.ClearCallback();
         enemy.ClearMoveTarget();
     }
     #endregion

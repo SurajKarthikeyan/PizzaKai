@@ -158,6 +158,11 @@ public class Duration
         return true;
     }
 
+    /// <summary>
+    /// Clears the callback.
+    /// </summary>
+    /// <returns>True if the callback existed and was removed, false
+    /// otherwise.</returns>
     public bool ClearCallback()
     {
         if (CallbackActive)
