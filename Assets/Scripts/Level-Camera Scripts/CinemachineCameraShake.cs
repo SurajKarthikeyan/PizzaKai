@@ -47,6 +47,7 @@ public class CinemachineCameraShake : MonoBehaviour
                 cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
                 cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
             }
+
             if (duration > 0)
             {
                 duration -= Time.deltaTime;
@@ -54,7 +55,10 @@ public class CinemachineCameraShake : MonoBehaviour
                 cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
             }
             else
+            {
                 cmBasicPerlin.m_AmplitudeGain = 0f;
+            }
+                
         }
         else
         {
