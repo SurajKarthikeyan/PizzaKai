@@ -19,33 +19,47 @@ public class CinemachineCameraShake : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
         this.InstantiateSingleton(ref instance);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
-        cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-        //cmBasicPerlin = cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        if (cineCamera == null)
+        {
+            cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
+            if (cineCamera != null)
+            {
+                cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
+        if (cineCamera != null)
         {
-            cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
-            cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-        }
-        if (duration > 0)
-        {
-            duration -= Time.deltaTime;
-         
-            cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
+            if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
+            {
+                cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+            }
+            if (duration > 0)
+            {
+                duration -= Time.deltaTime;
+
+                cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
+            }
+            else
+                cmBasicPerlin.m_AmplitudeGain = 0f;
         }
         else
-            cmBasicPerlin.m_AmplitudeGain = 0f;
+        {
+            cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        }
     }
 
     public void ShakeScreen()

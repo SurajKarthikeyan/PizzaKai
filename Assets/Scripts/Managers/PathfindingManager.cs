@@ -34,8 +34,11 @@ public class PathfindingManager : MonoBehaviour
 
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
-        InitializeData();
+        if (instance == null) {
+            this.InstantiateSingleton(ref instance);
+            InitializeData();
+        }
+        
     }
 
     #region Variables

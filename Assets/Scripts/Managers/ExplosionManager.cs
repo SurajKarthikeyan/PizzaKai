@@ -18,6 +18,7 @@ public class ExplosionManager : MonoBehaviour
     
     private void Awake()
     {
+        if (instance == null)
         this.InstantiateSingleton(ref instance);
     }
 

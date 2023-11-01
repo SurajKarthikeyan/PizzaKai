@@ -54,8 +54,11 @@ public class PathAgentManager : MonoBehaviour
 
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
-        ActiveAgents = new();
+        if (instance == null)
+        {
+            this.InstantiateSingleton(ref instance);
+            ActiveAgents = new();
+        }
     }
 
     #region Variables
