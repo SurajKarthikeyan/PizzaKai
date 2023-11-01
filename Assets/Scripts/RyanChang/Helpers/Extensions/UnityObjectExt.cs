@@ -934,7 +934,7 @@ public static class UnityObjectExt
     }
     #endregion
 
-    #region Other
+    #region Null Check
     /// <summary>
     /// Checks if an object either <br/>
     /// - is null <br/>
@@ -971,7 +971,9 @@ public static class UnityObjectExt
         }
         return false;
     }
+    #endregion
 
+    #region Copy Components
     /// <summary>
     /// Copies a component to <paramref name="target"/>. Adapted from
     /// http://answers.unity.com/answers/1118416/view.html
@@ -1000,7 +1002,7 @@ public static class UnityObjectExt
             {
                 prop.SetValue(target, prop.GetValue(original, null), null);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 continue;
             }
@@ -1038,7 +1040,9 @@ public static class UnityObjectExt
         }
         return dst;
     }
+    #endregion
 
+    #region Singleton
     /// <summary>
     /// Instantiates a singleton (aka an instance). Also checks if singleton is
     /// already set.
@@ -1054,7 +1058,7 @@ public static class UnityObjectExt
     {
         if (singleton)
         {
-            GameObject.Destroy(self.gameObject);
+            UnityEngine.Object.Destroy(self.gameObject);
             Debug.LogError($"Multiple instances of {typeof(T)}.");
         }
         else
@@ -1064,7 +1068,7 @@ public static class UnityObjectExt
             if (dontDestroyOnLoad)
             {
                 self.transform.Orphan();
-                GameObject.DontDestroyOnLoad(self.gameObject);
+                UnityEngine.Object.DontDestroyOnLoad(self.gameObject);
             }
         }
     }
@@ -1089,7 +1093,9 @@ public static class UnityObjectExt
             singleton = self;
         }
     }
+    #endregion
 
+    #region Destroy
     /// <summary>
     /// Detects if Unity is running as an editor or application, then chooses
     /// the appropriate destruction method to use to destroy <paramref
@@ -1110,13 +1116,32 @@ public static class UnityObjectExt
                 );
             }
 
-            GameObject.DestroyImmediate(gameObject, false);
+            UnityEngine.Object.DestroyImmediate(gameObject, false);
 #endif
         }
         else
         {
-            GameObject.Destroy(gameObject);
+            UnityEngine.Object.Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// Destroys <paramref name="unityObject"/> if <paramref name="condition"/>
+    /// evaluates to false.
+    /// </summary>
+    /// <param name="unityObject">The object to conditionally destroy.</param>
+    /// <param name="condition">Whether or not to destroy the object.</param>
+    /// <param name="t">Time before destruction of the object.</param>
+    public static bool DestroyIf(this UnityEngine.Object unityObject,
+        bool condition, float t = 0)
+    {
+        if (condition) UnityEngine.Object.Destroy(unityObject, t);
+        return condition;
+    }
+
+    /// <inheritdoc cref="DestroyIf"/>.
+    public static bool DestroyIf(this UnityEngine.Object unityObject,
+        Func<bool> condition, float t = 0) =>
+        unityObject.DestroyIf(condition(), t);
     #endregion
 }

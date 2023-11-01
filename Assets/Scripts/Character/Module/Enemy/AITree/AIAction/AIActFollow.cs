@@ -8,14 +8,16 @@
 public class AIActFollow : AIAction
 {
     #region Action Implementation
-    public override void StartAI(EnemyControlModule enemy, TargetToken target)
-    {
-        enemy.SetMoveTarget(target);
-    }
-
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)
     {
-        // Do nothing. Logic handled by the enemy control and agent.
+        switch (enemy.pathAgent.State)
+        {
+            case PathfindingAgent.NavigationState.Idle:
+            case PathfindingAgent.NavigationState.ArrivedAtDestination:
+                // Enemy idle. Force it not to be idle anymore.
+                enemy.SetMoveTarget(target);
+                break;
+        }
     }
 
     public override void ExitAI(EnemyControlModule enemy)

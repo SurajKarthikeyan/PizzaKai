@@ -149,16 +149,19 @@ public class AIBranchModule : Module
     /// </summary>
     private void StartAI(EnemyControlModule enemy, TargetToken target)
     {
+#if UNITY_EDITOR
         Debug.Assert(
             BranchState == State.Stopped,
             $"{this} StartAI called when state not Stopped!"
         );
         print($"{this} StartAI.");
+#endif
+
         state = State.Starting;
         foreach (var action in actions)
         {
             action.selected = true;
-            action.StartAI(enemy, target); 
+            action.StartAI(enemy, target);
         }
     }
 
@@ -169,22 +172,22 @@ public class AIBranchModule : Module
     {
         if (state == State.Updating || state == State.Starting)
         {
-            Debug.Assert(
-                BranchState == State.Updating,
-                $"{this} UpdateAI called when state not Updating or Starting!"
-            );
-
+#if UNITY_EDITOR
             print($"{this} UpdateAI.");
+#endif
+
             state = State.Updating;
             foreach (var action in actions)
             {
-                action.UpdateAI(enemy, target); 
+                action.UpdateAI(enemy, target);
             }
         }
-        else
+        else if (state == State.Stopped)
         {
-            // Start has not been called yet. Do that now.
+#if UNITY_EDITOR
             print($"{this} UpdateAI deferred. Running StartAI instead.");
+#endif
+            // Start has not been called yet. Do that now.
             StartAI(enemy, target);
         }
     }
@@ -204,7 +207,7 @@ public class AIBranchModule : Module
         foreach (var action in actions)
         {
             action.selected = false;
-            action.ExitAI(enemy); 
+            action.ExitAI(enemy);
         }
     }
     #endregion
@@ -213,6 +216,6 @@ public class AIBranchModule : Module
     public override string ToString()
     {
         return $"[Branch] {id}";
-    } 
+    }
     #endregion
 }
