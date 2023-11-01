@@ -11,6 +11,7 @@ public class CinemachineCameraShake : MonoBehaviour
 
     private float duration;
     public float durationTotal;
+    private float currentTotalDuration;
 
     public float intensity;
     [SerializeField]
@@ -41,7 +42,7 @@ public class CinemachineCameraShake : MonoBehaviour
         {
             duration -= Time.deltaTime;
          
-            cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / durationTotal);
+            cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
         }
         else
             cmBasicPerlin.m_AmplitudeGain = 0f;
@@ -52,5 +53,14 @@ public class CinemachineCameraShake : MonoBehaviour
         cmBasicPerlin.m_AmplitudeGain = intensity;
 
         duration = durationTotal;
+        currentTotalDuration = durationTotal;
+    }
+
+    public void ShakeScreen(float _intensity, float _duration)
+    {
+        cmBasicPerlin.m_AmplitudeGain = _intensity;
+
+        duration = _duration;
+        currentTotalDuration = _duration;
     }
 }
