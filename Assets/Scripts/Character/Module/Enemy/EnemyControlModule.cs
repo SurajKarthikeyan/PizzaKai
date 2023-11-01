@@ -21,7 +21,7 @@ public class EnemyControlModule : Module
     [Tooltip("What must the y input be for the control module to request " +
         "a jump?")]
     [BoxGroup("Settings")]
-    private float jumpThreshold = 0.5f;    
+    private float jumpThreshold = 0.5f;
 
     [ReadOnly]
     [BoxGroup("Required Modules")]
@@ -82,6 +82,12 @@ public class EnemyControlModule : Module
             yield return new WaitForSeconds(PathAgentManager.Instance.aiUpdateRate);
 
             decisionTree.AIUpdate(this, PathAgentManager.Instance.aiUpdateRate);
+
+            if (pathAgent.State == PathfindingAgent.NavigationState.NavigatingToDestination &&
+                pathAgent.CurrentToken != null)
+            {
+                UpdateMovementDirection();
+            }
         }
     }
     #endregion
@@ -109,27 +115,6 @@ public class EnemyControlModule : Module
     }
 
     /// <summary>
-    /// Accepts a movement token, which contains the data required to move the
-    /// character.
-    /// </summary>
-    /// <param name="token">The movement/target token.</param>
-    public void AcceptToken(TargetToken token)
-    {
-        var heading = token.GetHeading(transform.position).normalized;
-        movement.inputtedMovement = heading;
-        movement.inputtedJump = heading.y > jumpThreshold;
-
-        if (-jumpThreshold < heading.y && heading.y < 0)
-        {
-            // Avoids pressing down unnecessarily.
-            heading.y = 0;
-        }
-
-        if (!heading.x.Approx(0, 0.1f))
-            Master.SetLookAngle(heading.x > 0 ? 0 : 180);
-    }
-
-    /// <summary>
     /// Notifies the EnemyControlModule that it has arrived at its destination.
     /// </summary>
     /// <param name="token">The token used to get to the destination.</param>
@@ -149,6 +134,27 @@ public class EnemyControlModule : Module
     #endregion
 
     #region Helpers
+    /// <summary>
+    /// Accepts a movement token, which contains the data required to move the
+    /// character.
+    /// </summary>
+    /// <param name="token">The movement/target token.</param>
+    private void UpdateMovementDirection()
+    {
+        Vector2 heading = pathAgent.GetHeading();
+        movement.inputtedMovement = heading;
+        movement.inputtedJump = heading.y > jumpThreshold;
+
+        if (-jumpThreshold < heading.y && heading.y < 0)
+        {
+            // Avoids pressing down unnecessarily.
+            heading.y = 0;
+        }
+
+        if (!heading.x.Approx(0, 0.1f))
+            Master.SetLookAngle(heading.x > 0 ? 0 : 180);
+    }
+
     /// <summary>
     /// Coroutine that monitors the distance between the enemy and target. 
     /// </summary>

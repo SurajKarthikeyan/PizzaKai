@@ -422,7 +422,9 @@ public class PathfindingManager : MonoBehaviour
         var startV = GetClosestNeighbor(start);
         var endV = GetClosestNeighbor(end, startV.sectionID);
 
-        return Pathfinding.AStarSearch(startV.id, endV.id);
+        var path = Pathfinding.AStarSearch(startV.id, endV.id);
+
+        return path;
     }
     #endregion
 
