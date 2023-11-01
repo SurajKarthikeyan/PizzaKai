@@ -127,6 +127,9 @@ public class PathfindingAgent : MonoBehaviour
         .WorldToCell(WorldPosition);
 
     public Vertex<Vector3Int> NextNode { get; private set; }
+
+    public Vector3 NextNodeWorldPosition => PathfindingManager.Instance
+        .CellToWorld(NextNode.Value);
     #endregion
 
     #region MonoBehavior Functions
@@ -263,14 +266,14 @@ public class PathfindingAgent : MonoBehaviour
         yield return new WaitUntil(() => enemyControl);
 
         State = NavigationState.NavigatingToDestination;
-        checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
+        //checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         NextNode = CurrentPath.Start;
 
         while (NextNode != CurrentPath.End)
         {
             NextNode = CurrentPath.Next(NextNode);
             nextToken = new(NextNode.Value);
-            enemyControl.AcceptToken(nextToken);
+            //enemyControl.AcceptToken(nextToken);
 
             while (!CheckAlongPath())
             {
@@ -281,51 +284,51 @@ public class PathfindingAgent : MonoBehaviour
 
             print($"Arrived at {NextNode}");
             stuckTimer.Reset();
-            StopCoroutine(checkTargetDistanceCR);
-            checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
+            this.StopCoroutineIfExists(checkTargetDistanceCR);
+            //checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         }
 
         State = NavigationState.ArrivedAtDestination;
     }
 
-    private IEnumerator CheckTargetDistance_CR(TargetToken token)
-    {
-        Vector3 originalTargetPosition = token.Position;
+    //private IEnumerator CheckTargetDistance_CR(TargetToken token)
+    //{
+    //    Vector3 originalTargetPosition = token.Position;
 
-        // Makes sure the updates are staggered, rather than occurring all at
-        // once.
-        yield return new WaitForSecondsRealtime(
-            RNGExt.RandomFloat(0f, PathAgentManager.Instance.aiUpdateRate)
-        );
+    //    // Makes sure the updates are staggered, rather than occurring all at
+    //    // once.
+    //    yield return new WaitForSecondsRealtime(
+    //        RNGExt.RandomFloat(0f, PathAgentManager.Instance.aiUpdateRate)
+    //    );
 
-        while (enabled)
-        {
-            // Would want to batch this somehow so this doesn't all run at the
-            // same time.
-            yield return new WaitForSecondsRealtime(
-                PathAgentManager.Instance.aiUpdateRate
-            );
+    //    while (enabled)
+    //    {
+    //        // Would want to batch this somehow so this doesn't all run at the
+    //        // same time.
+    //        yield return new WaitForSecondsRealtime(
+    //            PathAgentManager.Instance.aiUpdateRate
+    //        );
 
-            if (Vector3.Distance(originalTargetPosition, token.Position) > 1 ||
-                stuckTimer.IsDone)
-            {
-                // Restart navigation.
-                if (!PathfindingManager.Instance.InSameCell(
-                        CurrentToken.Position,
-                        enemyControl.transform.position
-                    ))
-                {
-                    // print("Restarting nav");
-                    SetTarget(CurrentToken);
-                }
-            }
-            else
-            {
-                // Resend the token again.
-                enemyControl.AcceptToken(token);
-            }
-        }
-    }
+    //        if (Vector3.Distance(originalTargetPosition, token.Position) > 1 ||
+    //            stuckTimer.IsDone)
+    //        {
+    //            // Restart navigation.
+    //            if (!PathfindingManager.Instance.InSameCell(
+    //                    CurrentToken.Position,
+    //                    enemyControl.transform.position
+    //                ))
+    //            {
+    //                // print("Restarting nav");
+    //                SetTarget(CurrentToken);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // Resend the token again.
+    //            enemyControl.AcceptToken(token);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Check if we've arrived at a later node down the path.
@@ -345,6 +348,23 @@ public class PathfindingAgent : MonoBehaviour
         }
 
         return false;
+    }
+    #endregion
+
+    #region Getters
+    public Vector2 GetHeading()
+    {
+        //Vector3 tPos = NextNodeWorldPosition;
+        //// Check distance between next node and the token.
+        //if (tPos.TaxicabDistance(WorldPosition) < 3)
+        //{
+        //    // Use the CurrentToken instead of NextNode.
+        //    tPos = CurrentToken.Position;
+        //}
+
+        Vector3 tPos = CurrentToken.Position;
+
+        return (tPos - transform.position).normalized;
     }
     #endregion
 }
