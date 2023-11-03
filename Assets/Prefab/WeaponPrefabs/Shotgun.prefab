@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342418669661374406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.192, y: -0.007, z: 0}
+  m_LocalPosition: {x: 1.251, y: -0.022, z: 0}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431,6 +431,7 @@ MonoBehaviour:
   accessible: 0
   inputState: 0
   weaponAnimator: {fileID: 4342418669316601403}
+  playerAnimator: {fileID: 0}
   animFiringBool: Fire
   animAltingBool: 
   animReloadingBool: Reload

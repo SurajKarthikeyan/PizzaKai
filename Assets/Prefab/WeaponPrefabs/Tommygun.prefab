@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2741532492258955963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.263, y: 0.122, z: 0}
+  m_LocalPosition: {x: 0.394, y: 0.111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,6 +326,7 @@ MonoBehaviour:
   accessible: 0
   inputState: 0
   weaponAnimator: {fileID: 1566744871564542801}
+  playerAnimator: {fileID: 0}
   animFiringBool: Fire
   animAltingBool: 
   animReloadingBool: Reload
@@ -354,8 +355,6 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   altWaitBetweenShots: 0.1
   altFireDamage: 5
-  tommyFlashImage: {fileID: 0}
-  enemyLayerNum: 10
 --- !u!82 &4629331206116993892
 AudioSource:
   m_ObjectHideFlags: 0
