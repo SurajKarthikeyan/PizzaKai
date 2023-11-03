@@ -32,6 +32,8 @@ public abstract class DeathModule : Module
             if (delay > 0)
             {
                 Debug.Log("Invoking ondeath");
+                Master.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                DialogueManager.Instance.StopPlayer(true);
                 Invoke(nameof(OnDeath), delay);
             }
             else

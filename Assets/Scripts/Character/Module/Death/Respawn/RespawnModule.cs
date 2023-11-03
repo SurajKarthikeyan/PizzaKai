@@ -46,6 +46,7 @@ public class RespawnModule : DeathModule
             Master.transform.position = RespawnPosition;
             Master.Revive();
             Master.characterAnimator.Play("PizzaGuy_Idle");
+            DialogueManager.Instance.StopPlayer(false);
             weaponMaster.gameObject.SetActive(true);
         }
         
