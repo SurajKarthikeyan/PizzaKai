@@ -15,6 +15,8 @@ public abstract class DeathModule : Module
     /// </summary>
     protected WeaponMasterModule weaponMaster;
 
+    protected bool ranOnDeath = false;
+
     protected override void OnLinked()
     {
         Master.onCharacterDeath.AddListener(StartDeath);
@@ -22,24 +24,24 @@ public abstract class DeathModule : Module
         weaponMaster = Master.GetComponentInChildren<WeaponMasterModule>();
     }
 
-    private void StartDeath()
+    protected virtual void StartDeath()
     {
+        
         if (!ranDeathAction)
         {
-            if (delay <= 0)
+            if (delay > 0)
             {
-                OnDeath();
-                ranDeathAction = true;
+                Debug.Log("Invoking ondeath");
+                Invoke(nameof(OnDeath), delay);
             }
-
             else
             {
-                //weaponMaster.gameObject.SetActive(false);
-                //Master.characterAnimator.Play("PlayerDeath");
-                ranDeathAction = true;
-                Invoke(nameof(OnDeath), delay);
-            }   
-        }
+                Debug.Log("First run");
+                weaponMaster.gameObject.SetActive(false);
+                Master.characterAnimator.Play("PlayerDeath");
+            }
+        }   
+        
     }
 
     protected abstract void OnDeath();

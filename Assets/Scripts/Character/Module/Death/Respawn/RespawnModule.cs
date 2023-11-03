@@ -41,12 +41,19 @@ public class RespawnModule : DeathModule
     {
         if (!ranDeathAction)
         {
+            Debug.Log("Hey You're in respawnOnDeath");
+            ranDeathAction = true;
             Master.transform.position = RespawnPosition;
+            Master.Revive();
             Master.characterAnimator.Play("PizzaGuy_Idle");
             weaponMaster.gameObject.SetActive(true);
-            Master.Revive();
         }
         
     } 
+
+    protected override void StartDeath()
+    {
+        base.StartDeath();
+    }
     #endregion
 }

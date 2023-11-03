@@ -23,6 +23,8 @@ public sealed class Character : MonoBehaviour
     /// The current hp of the character. Please use <see cref="HP"/> instead, as
     /// that fires the <see cref="EventManager.onCharacterDeath"/> event.
     /// </summary>
+    [SerializeField]
+    [ReadOnly]
     private int hp;
 
     /// <summary>
