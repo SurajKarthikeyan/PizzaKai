@@ -14,7 +14,7 @@ public class Breadstick : EnemyBasic
     public AudioSource breadDead;
 
     public AudioSource breadAttack;
-
+    public Collider2D breadCollider;
     Animator breadVanish;
 
     private bool hasSpawned = false;
@@ -45,7 +45,6 @@ public class Breadstick : EnemyBasic
             deathState = true;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             breadDead.Play();
-            
             breadVanish.SetBool("Death", deathState);
             if (size > 1 && !hasSpawned)
             {
@@ -80,6 +79,7 @@ public class Breadstick : EnemyBasic
             }
             hasSpawned = true;
             Destroy(gameObject, 0.5f);
+            //Destroy(breadCollider, 0.5f);
             //Debug.Log("Killed breadstick and size is " + size + " and pointer " + this);
             Destroy(this);
         }
