@@ -65,7 +65,7 @@ public class Forky : MonoBehaviour
     private float oilChance = 0;
 
     //Has an action been taken by Forky yet?
-    private bool actionTaken = false;
+    public bool actionTaken = false;
 
     [Header("EnemySpawnTransform")]
 
@@ -130,7 +130,7 @@ public class Forky : MonoBehaviour
                 if (spawning)
                 {
                     float enemySpawnChance = Random.Range(0, 1f);
-                    if (enemySpawnChance <= 0.25f)
+                    if (enemySpawnChance <= 0.15f)
                     {
                         //Start coroutine for spawning enemies after a certain amount of time
                         StartCoroutine(IntervalSpawner(true));
@@ -281,8 +281,8 @@ public class Forky : MonoBehaviour
 
         if(generators == 0)
         {
-            tilemap.animationFrameRate = 1;
-            conveyorBelt.conveyorSpeed = -1;
+            tilemap.animationFrameRate = 2;
+            conveyorBelt.conveyorSpeed = -2;
             IsDead = true;
             return;
         }
@@ -297,12 +297,10 @@ public class Forky : MonoBehaviour
         conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
         if (generators == 1)
         {
-            
             tilemap.animationFrameRate = 3;
         }
         else
         {
-            
             tilemap.animationFrameRate = 2;
         }
     }

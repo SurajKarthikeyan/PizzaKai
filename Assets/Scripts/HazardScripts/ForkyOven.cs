@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ForkyOven : MonoBehaviour
 {
@@ -10,6 +10,13 @@ public class ForkyOven : MonoBehaviour
     [SerializeField] private Alarm alarm;
     [SerializeField] private LayerMask bossLayerMask;
     [SerializeField] private Forky forky;
+    [SerializeField] private ConveyorBeltScript conveyorBelt;
+    [SerializeField] private Tilemap conveyorTilemap;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int genVulnerableTime;
+
+
+    private bool destroyedOil = false;
 
     #endregion
 
@@ -32,17 +39,68 @@ public class ForkyOven : MonoBehaviour
 
             if(collision.gameObject.GetComponent<OilBarrel>() != null)
             {
-                foreach(Generator generator in generators)
+                if (!destroyedOil)
                 {
-                    if(generator != null)
+                    destroyedOil = true;
+                    conveyorTilemap.animationFrameRate = 0;
+                    forky.spawning = false;
+                    forky.active = false;
+                    forky.StopAllCoroutines();
+                    forky.actionTaken = false;
+                    Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 25, enemyLayer);
+                    for (int i = 0; i < enemyColliders.Length; i++)
                     {
-                        alarm.AlarmSystem();
-                        generator.SetVulnerability();
+                        Destroy(enemyColliders[i].gameObject);
                     }
+                    conveyorBelt.conveyorSpeed = 0;
+                    foreach (Generator generator in generators)
+                    {
+                        if (generator != null)
+                        {
+                            genVulnerableTime = generator.vulnerableTime;
+                            generator.vulnerableTime = 999999;
+                        }
+                    }
+                    WeakenGenerators();
+                    DialogueManager.Instance.StopPlayer(true);
+                    DialogueManager.Instance.CallDialogueBlock("Boss Hint Block");
                 }
+                else
+                {
+                    WeakenGenerators();
+                }
+                
             }
             Destroy(collision.gameObject);
         }
 
+    }
+    public void RestartConveyor()
+    {
+        conveyorTilemap.animationFrameRate = 1;
+        conveyorBelt.conveyorSpeed = -1;
+        DialogueManager.Instance.StopPlayer(false);
+        forky.spawning = true;
+        forky.active = true;
+        foreach (Generator generator in generators)
+        {
+            if (generator != null)
+            {
+                generator.vulnerableTime = genVulnerableTime;
+                
+            }
+        }
+    }
+
+    public void WeakenGenerators()
+    {
+        foreach (Generator generator in generators)
+        {
+            if (generator != null)
+            {
+                alarm.AlarmSystem();
+                generator.SetVulnerability();
+            }
+        }
     }
 }

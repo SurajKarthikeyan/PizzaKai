@@ -11,7 +11,7 @@ public class Generator : EnemyBasic
     [Tooltip("Boolean variable to see if the generator is vulnerable")]
     [SerializeField] private bool isVulnerable;
     [Tooltip("Int variable to set the duration of the vulnerability in a coroutine")]
-    [SerializeField] private int vulnerableTime;
+    [SerializeField] public int vulnerableTime;
     [SerializeField] private AudioSource generatorSource;
     [SerializeField] private ShakyGenerator shakyGen;
     [SerializeField] private Animator generatorAnimator;
