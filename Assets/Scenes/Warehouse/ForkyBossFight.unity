@@ -2544,6 +2544,9 @@ GameObject:
   - component: {fileID: 493893889}
   - component: {fileID: 493893891}
   - component: {fileID: 493893890}
+  - component: {fileID: 493893892}
+  - component: {fileID: 493893894}
+  - component: {fileID: 493893893}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2919,6 +2922,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 493893893}
   - {fileID: 493893875}
   - {fileID: 493893884}
   - {fileID: 493893779}
@@ -3348,6 +3352,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 493893869}
   - {fileID: 493893867}
+  - {fileID: 493893892}
   - {fileID: 493893865}
   - {fileID: 493893879}
   - {fileID: 493893866}
@@ -3414,9 +3419,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 493893887}
+  - {fileID: 493893780}
   selectedCommands:
-  - {fileID: 493893886}
+  - {fileID: 493893893}
   variables:
   - {fileID: 493893821}
   description: 
@@ -4438,6 +4443,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 493893894}
   - {fileID: 493893891}
   - {fileID: 493893890}
   - {fileID: 493893886}
@@ -4555,6 +4561,51 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &493893892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493893766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 161
+  indentLevel: 1
+  sayDialog: {fileID: 1070428830}
+--- !u!114 &493893893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493893766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 163
+  indentLevel: 0
+  sayDialog: {fileID: 1070428830}
+--- !u!114 &493893894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493893766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 162
+  indentLevel: 0
+  sayDialog: {fileID: 1070428830}
 --- !u!1001 &582553743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79896,6 +79947,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1070428830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4007303126458286565, guid: e488316967e2f294fae72563480034db, type: 3}
+  m_PrefabInstance: {fileID: 376943613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1088775718
 GameObject:
   m_ObjectHideFlags: 0

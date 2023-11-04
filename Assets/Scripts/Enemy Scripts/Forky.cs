@@ -62,7 +62,7 @@ public class Forky : MonoBehaviour
     private int maxBoxHeight = 4;
 
     //Chance of oil spawning
-    private float oilChance = 0;
+    private float oilChance = 20;
 
     //Has an action been taken by Forky yet?
     public bool actionTaken = false;

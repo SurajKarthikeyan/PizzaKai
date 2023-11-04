@@ -89,7 +89,7 @@ public sealed class Character : MonoBehaviour
     public int HP
     {
         get => hp;
-        private set
+        set
         {
             hp = value;
 
@@ -136,8 +136,13 @@ public sealed class Character : MonoBehaviour
     private void Awake()
     {
         SetVars();
-        HP = maxHP;
+        MaxHeal();
         transform.position = transform.position.ToVector2();
+    }
+
+    public void MaxHeal()
+    {
+        HP = maxHP;
     }
 
     private void SetVars()

@@ -25,6 +25,7 @@ public class WeaponPickup : Pickup
                 WeaponModule newweapon = master.AddWeapon(weapon);
                 newweapon.LinkToMaster(character);
                 newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
+                character.HP = 999999;
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
                 return true;
             }
