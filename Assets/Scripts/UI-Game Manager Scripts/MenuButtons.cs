@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     public UIManager UIScript;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +52,7 @@ public class MenuButtons : MonoBehaviour
     {
         //the way this is set rn it may just set the button to false not the whole menu
         Time.timeScale = 1;
-        GameObject PauseMenu = GameObject.FindGameObjectWithTag("Pause Menu");
         UIScript.isPaused = false;
-        PauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 }
