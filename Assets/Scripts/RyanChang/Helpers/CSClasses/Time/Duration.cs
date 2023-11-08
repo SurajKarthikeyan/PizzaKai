@@ -145,7 +145,7 @@ public class Duration
     /// <param name="repeat">If true, keeps repeating the coroutine.</param>
     /// <param name="unscaledTime">Whether or not to use unscaled time.</param>
     /// <returns>True on success, false otherwise.</returns>
-    public bool Callback(MonoBehaviour unityObject, Action callback,
+    public bool CreateCallback(MonoBehaviour unityObject, Action callback,
         bool repeat = true, bool unscaledTime = false)
     {
         if (CallbackActive)

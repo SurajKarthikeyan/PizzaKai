@@ -88,4 +88,9 @@ public class SimultaneousAnimatorControl : SimultaneousControl
     {
         // Do nothing.
     }
+
+    public override void DisableControl()
+    {
+        // Do nothing.
+    }
 }
