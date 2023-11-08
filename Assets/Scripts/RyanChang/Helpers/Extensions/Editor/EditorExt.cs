@@ -66,7 +66,7 @@ public static class EditorExt
             }
             else
             {
-                // Go through all inherited 
+                // Go through all inherited classes as well.
                 // For each name in the path, get the reflection.
                 FieldInfo field = targetType.GetField(
                     name,
