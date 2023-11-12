@@ -9,6 +9,8 @@ public class CinemachineCameraShake : MonoBehaviour
     [SerializeField]
     CinemachineVirtualCamera cineCamera;
 
+    private Transform cameraTransform;
+
     private float duration;
     public float durationTotal;
     private float currentTotalDuration;
@@ -33,6 +35,8 @@ public class CinemachineCameraShake : MonoBehaviour
             {
                 cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
                 cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+
+                cameraTransform = Camera.main.gameObject.transform;
             }
         }
     }
@@ -57,6 +61,7 @@ public class CinemachineCameraShake : MonoBehaviour
             else
             {
                 cmBasicPerlin.m_AmplitudeGain = 0f;
+                cameraTransform.eulerAngles = Vector3.zero;
             }
                 
         }

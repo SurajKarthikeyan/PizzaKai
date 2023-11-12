@@ -134,6 +134,10 @@ public class CharacterMovementModule : Module
     [ReadOnly]
     public bool inputtedJump;
 
+    [Tooltip("If false, the player has jumped for one input.")]
+    [ReadOnly]
+    public bool oneJump;
+
     [Tooltip("The inputted dash. Will be normalized.")]
     [ReadOnly]
     public Vector2 inputtedDash;
@@ -275,13 +279,18 @@ public class CharacterMovementModule : Module
         jumpCooldown.IncrementFixedUpdate(false);
         coyoteTimer.IncrementFixedUpdate(false);
 
-        if (inputtedJump && CanJump())
+        if (!inputtedJump && CanJump())
+            oneJump = true;
+
+        if (inputtedJump && CanJump() && oneJump)
         {
             // Since a jump is only performed for one fixed update, it must be
             // an impulse.
             Master.r2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             groundedStatus = GroundedStatus.AirbornFromJump;
+
+            oneJump = false;
 
             coyoteTimer.Reset();
             jumpCooldown.Reset();
