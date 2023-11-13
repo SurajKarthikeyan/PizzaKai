@@ -278,7 +278,7 @@ public class PathfindingAgent : MonoBehaviour
             while (!CheckAlongPath())
             {
                 yield return new WaitForSecondsRealtime(
-                    PathAgentManager.Instance.aiUpdateRate
+                    PathAgentManager.Instance.AIUpdateRate
                 );
             }
 

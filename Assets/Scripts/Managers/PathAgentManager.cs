@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NaughtyAttributes;
-using NaughtyAttributes.Test;
 using UnityEngine;
 
 /// <summary>
@@ -72,7 +71,8 @@ public class PathAgentManager : MonoBehaviour
 
     [BoxGroup("AI Timing")]
     [Tooltip("How often to check for navigation updates?")]
-    public float aiUpdateRate = 0.4f;
+    [SerializeField]
+    private float baseAiUpdateRate = 0.4f;
 
     [BoxGroup("Debug")]
     [Tooltip("If true, then use multithreading. Disable this if you want " +
@@ -81,6 +81,12 @@ public class PathAgentManager : MonoBehaviour
     #endregion
 
     #region Properties
+    /// <summary>
+    /// How often to check for navigation updates? Scales with
+    /// current performance.
+    /// </summary>
+    public float AIUpdateRate { get; private set; }
+
     /// <summary>
     /// Collection of currently active agents.
     /// </summary>
@@ -93,6 +99,12 @@ public class PathAgentManager : MonoBehaviour
     #endregion
 
     #region Main Logic
+    private void Update()
+    {
+        float t = Mathf.Clamp(Time.deltaTime, 0.5f, 1);
+        AIUpdateRate = baseAiUpdateRate * t;
+    }
+
     /// <summary>
     /// Schedules this agent to generate its path.
     /// </summary>

@@ -79,9 +79,10 @@ public class EnemyControlModule : Module
 
         while (enabled)
         {
-            yield return new WaitForSeconds(PathAgentManager.Instance.aiUpdateRate);
+            float updateRate = PathAgentManager.Instance.AIUpdateRate;
+            yield return new WaitForSeconds(updateRate);
 
-            decisionTree.AIUpdate(this, PathAgentManager.Instance.aiUpdateRate);
+            decisionTree.AIUpdate(this, updateRate);
 
             if (pathAgent.State == PathfindingAgent.NavigationState.NavigatingToDestination &&
                 pathAgent.CurrentToken != null)
