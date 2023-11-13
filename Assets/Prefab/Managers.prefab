@@ -145,9 +145,8 @@ MonoBehaviour:
     tracerData: {fileID: 8607763443668789644}
     middleContainer: {fileID: 0}
   tilemaps: []
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 1ba44ffc838b9e64da48274a730a5af9, type: 2}
   platformCheckCeiling: 8
-  neighborCheckMaxDistance: 16
   jumpUpCost: 5
   jumpDownCost: 0
   defaultCost: 1
@@ -223,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026390086814163798}
   - component: {fileID: 7782198989946921144}
+  - component: {fileID: 3072850830812315603}
   m_Layer: 0
   m_Name: PathAgentManager
   m_TagString: Untagged
@@ -277,6 +277,22 @@ MonoBehaviour:
   stuckCheckDelay: 0.7
   aiUpdateRate: 0.4
   useThreads: 1
+--- !u!114 &3072850830812315603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917945205210972639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f199b1301038b7c4b8f45c33a863baf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxConcurrentDecisions: 32
+  refreshRate:
+    maxTime: 0.2
+    elapsed: 0
 --- !u!1 &4266495603451537799
 GameObject:
   m_ObjectHideFlags: 0
