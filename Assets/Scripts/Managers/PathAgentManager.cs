@@ -16,29 +16,23 @@ public class PathAgentManager : MonoBehaviour
     #region Structs
     public struct AgentThread
     {
-        private readonly PathfindingAgent agent;
         public Vector3Int current;
-
         public Vector3Int target;
 
-        public AgentThread(PathfindingAgent agent, Vector3Int current,
-            Vector3Int target)
+        public AgentThread(Vector3Int current, Vector3Int target)
         {
-            this.agent = agent;
             this.target = target;
             this.current = current;
         }
 
         public readonly void ThreadProcess(out Path<Vector3Int> path)
         {
-            // if (!PathfindingManager.Instance.Pathfinding.PathExists(current, target))
-            //     throw new System.InvalidOperationException();
-
-
             path = PathfindingManager.Instance.AStarSearch(
                 current,
                 target
             );
+
+            
         }
     }
     #endregion
@@ -137,7 +131,6 @@ public class PathAgentManager : MonoBehaviour
         {
             StartCoroutine(WaitForTask_CR(agent, target,
                 new(
-                    agent,
                     current,
                     target.GridPosition
                 )
