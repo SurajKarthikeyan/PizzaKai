@@ -2,6 +2,13 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Target token drawer.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
 [CustomPropertyDrawer(typeof(TargetToken))]
 public class TargetTokenDrawerUIE : PropertyDrawer
 {

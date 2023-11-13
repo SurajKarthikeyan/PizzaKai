@@ -3,6 +3,15 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
+/// <summary>
+/// Defines a branch on an AI decision tree. The actual control of this branch
+/// is controlled by the subcomponents, <see cref="AITargeting"/>,
+/// <see cref="AIDecision"/>, and <see cref="AIAction"/>.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
 [System.Serializable]
 public class AIBranchModule : Module
 {
