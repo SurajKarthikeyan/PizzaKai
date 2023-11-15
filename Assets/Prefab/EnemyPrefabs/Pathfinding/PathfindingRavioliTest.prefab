@@ -143,7 +143,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -322,12 +322,10 @@ MonoBehaviour:
     maxTime: 0.5
     elapsed: 0
   dashSpeed: 20
-  dashCooldown:
-    maxTime: 2
-    elapsed: 0
-  dashTimer:
-    maxTime: 0.2
-    elapsed: 0
+  dashCooldown: 2
+  dashTimer: 0.5
+  canDash: 1
+  dashTime: -10
   groundCheck: {fileID: 2639796223306224776}
   characterAnimator: {fileID: 2639796223633684227}
   positiveAnimParamOnly: 1
@@ -336,6 +334,7 @@ MonoBehaviour:
   animParamJump: Jump
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
+  oneJump: 0
   inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
@@ -367,7 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   maxHP: 20
+  characterAnimator: {fileID: 0}
+  animParamDeath: 
   r2d: {fileID: 0}
   c2d: {fileID: 0}
   sr: {fileID: 0}

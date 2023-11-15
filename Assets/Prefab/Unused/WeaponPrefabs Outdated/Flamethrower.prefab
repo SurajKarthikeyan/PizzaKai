@@ -216,8 +216,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df5cff713091d6448706056621e7201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponID: '[Not Set]'
+  accessible: 0
   inputState: 0
   weaponAnimator: {fileID: 2770841203617395344}
+  playerAnimator: {fileID: 0}
   animFiringBool: Fire
   animAltingBool: 
   animReloadingBool: Reload
@@ -227,6 +230,7 @@ MonoBehaviour:
   reloadClip: {fileID: 0}
   firePoint: {fileID: 2770841202015864618}
   autofire: 1
+  firstShotAccurate: 1
   firingDelay:
     maxTime: 0.05
     elapsed: 0
@@ -238,7 +242,7 @@ MonoBehaviour:
   reloadDelay:
     maxTime: 2
     elapsed: 0
-  bullet: {fileID: 141357925656780269, guid: 2e0d49bae67a8d748bc854e00305eee6, type: 3}
+  bullet: {fileID: 0}
   weaponName: 
   weaponAction: 
   weaponUIImage: {fileID: 21300000, guid: 7a3d0ca5681fa9d4d8d0554f29d0703f, type: 3}
@@ -394,7 +398,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +503,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

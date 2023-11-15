@@ -93,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,23 +233,6 @@ MonoBehaviour:
       multiplier: 1
     unfoldedInInspector: 0
     fixedSelectionInInspector: 0
-  targetTokenRefreshDelay:
-    rangePattern: 1
-    singleValue: 1.25
-    scalarMin: 0.5
-    scalarMax: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    perlinCrawlSpeed: 0.1
-    modifer:
-      addition: 0
-      multiplier: 1
-    unfoldedInInspector: 0
-    fixedSelectionInInspector: 0
 --- !u!114 &6478255713057580272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,12 +271,10 @@ MonoBehaviour:
     maxTime: 0.5
     elapsed: 0
   dashSpeed: 20
-  dashCooldown:
-    maxTime: 2
-    elapsed: 0
-  dashTimer:
-    maxTime: 0.2
-    elapsed: 0
+  dashCooldown: 2
+  dashTimer: 0.5
+  canDash: 1
+  dashTime: -10
   groundCheck: {fileID: 6478255713251395455}
   characterAnimator: {fileID: 6478255713057580276}
   positiveAnimParamOnly: 1
@@ -302,6 +283,7 @@ MonoBehaviour:
   animParamJump: Jump
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
+  oneJump: 0
   inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
@@ -333,17 +315,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   maxHP: 20
+  characterAnimator: {fileID: 0}
+  animParamDeath: 
   r2d: {fileID: 0}
   c2d: {fileID: 0}
+  sr: {fileID: 0}
   flipModule: {fileID: 0}
+  audioSource: {fileID: 0}
   damageInvulnerability:
     maxTime: 0
     elapsed: 0
-  playerDamageInvulnerability: 1
   knockbackMultiplier: 1
-  respawn: {fileID: 0}
-  hasDied: 0
 --- !u!1 &6478255713251395454
 GameObject:
   m_ObjectHideFlags: 0
