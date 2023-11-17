@@ -21,7 +21,10 @@ public class AIActFlee : AIAction
     public override void StartAI(EnemyControlModule enemy, TargetToken target)
     {
         // Start recalculation.
-        recalculationDelay.CreateCallback(this, SetFlee, true);
+        recalculationDelay.CreateCallback(
+            this, SetFlee,
+            Duration.Options.Repeat
+        );
     }
 
     protected override void PerformAction(EnemyControlModule enemy, TargetToken target)

@@ -32,7 +32,7 @@ public class PathAgentManager : MonoBehaviour
                 target
             );
 
-            
+            path.PruneNodes();
         }
     }
     #endregion

@@ -6,7 +6,7 @@ using System.Linq;
 public class Path<T> : IEnumerable<Vertex<T>>,
     IEnumerable<GraphEdge<T>>, ITraceable<T> where T : IEquatable<T>
 {
-    private Dictionary<Vertex<T>, Vertex<T>> path;
+    private readonly Dictionary<Vertex<T>, Vertex<T>> path;
 
     public Vertex<T> Start { get; private set; }
     public Vertex<T> End { get; private set; }
@@ -87,7 +87,17 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     /// <returns></returns>
     public T Next(T begin)
     {
-        return this[begin].id;
+        try
+        {
+            return this[begin].id;
+        }
+        catch (KeyNotFoundException e)
+        {
+            throw new PathfindingException(
+                $"Vertex of ID {begin} is not in path.",
+                e
+            );
+        }
     }
 
     /// <inheritdoc cref="Next(T)"/>
@@ -102,8 +112,8 @@ public class Path<T> : IEnumerable<Vertex<T>>,
             var trailingEdge = path
                 .FirstOrDefault(edge => edge.Value == begin);
             throw new PathfindingException(
-                $"Vertex {begin} (trailing edge [{trailingEdge.Key}, {trailingEdge.Value}]) " +
-                "is not in path.",
+                $"Vertex {begin} (trailing edge [{trailingEdge.Key}, " +
+                $"{trailingEdge.Value}]) is not in path.",
                 e
             );
         }
@@ -130,7 +140,7 @@ public class Path<T> : IEnumerable<Vertex<T>>,
 
         for (int i = 0; i < steps; i++)
         {
-            next = path[next];
+            next = Next(next);
 
             if (next == End)
                 break;
@@ -178,6 +188,44 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         }
 
         return next;
+    }
+
+    /// <summary>
+    /// Tries to remove the node.
+    /// </summary>
+    /// <param name="toRemove"></param>
+    /// <param name="previous"></param>
+    /// <returns></returns>
+    public bool TryRemove(Vertex<T> toRemove, Vertex<T> previous)
+    {
+        if (toRemove == Start)
+        {
+            // Remove starting node. Don't need to use previous.
+            Start = Next(toRemove);
+
+            return true;
+        }
+        if (toRemove == Next(previous))
+        {
+            if (toRemove == End)
+            {
+                // Remove the end by removing the end node, and setting the new
+                // end as previous.
+                path[previous] = Next(toRemove);
+                End = previous;
+
+                return true;
+            }
+            else
+            {
+                // Remove some node in the center.
+                path[previous] = Next(toRemove);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -243,7 +291,7 @@ public class Path<T> : IEnumerable<Vertex<T>>,
                 $"{to} does not exist in the graph"
             );
         }
-        
+
         return GetLength(fromV, toV);
     }
 
