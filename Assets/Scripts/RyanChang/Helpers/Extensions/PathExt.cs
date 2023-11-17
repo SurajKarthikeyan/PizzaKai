@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -18,23 +19,40 @@ public static class PathExt
 	public static void PruneNodes(this Path<Vector3Int> path)
 	{
 		var left = path.Start;
-		var curr = path.Next(left);
+		var right = path.Next(left);
 
-		while (curr != path.End)
+		while (right != path.End)
 		{
-			var right = path.Next(curr);
+			// Mystery code. 1 = X is same, 2 = Y is same, 3 = X/Y are both same
+			// (error), 0 = none are same.
+			short code = 0;
 
 			// Check if the left, right, and current lie on the same x/y
 			// coordinate.
-			if (NumericalExt.AllEqual(left.id.x, curr.id.x, right.id.x) ||
-				NumericalExt.AllEqual(left.id.y, curr.id.y, right.id.y))
+			if (NumericalExt.AllEqual(left.id.x, right.id.x))
+				code++;
+			if (NumericalExt.AllEqual(left.id.y, right.id.y))
+				code += 2;
+
+			if (code > 2)
 			{
-				// Can remove this one.
-				path.TryRemove(curr, left);
+				// X and Y are the same. Should not happen.
+				throw new InvalidOperationException("X and Y coords are the same " +
+					$"for {left} and {right}!");
 			}
 
-			left = curr;
-			curr = right;
+			while ((NumericalExt.AllEqual(left.id.x, right.id.x) && code == 1) ||
+				(NumericalExt.AllEqual(left.id.y, right.id.y) && code == 2))
+			{
+				// Shimmy to the right.
+				right = path.Next(right);
+			}
+
+			if (code > 0)
+			{
+				// Bridge the two nodes together.
+				path.Intrasect(left, right);
+			}
 		}
 	}
 	#endregion

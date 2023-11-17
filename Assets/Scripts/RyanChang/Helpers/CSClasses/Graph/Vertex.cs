@@ -8,7 +8,7 @@ using UnityEngine;
 /// Vertex used in graph. Weights are stored in the graph.
 /// </summary>
 /// <typeparam name="T">Any IEquatable type.</typeparam>
-[System.Serializable]
+[Serializable]
 public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> where T : IEquatable<T>
 {
     #region Fields

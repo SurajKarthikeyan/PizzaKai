@@ -191,43 +191,40 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     }
 
     /// <summary>
-    /// Tries to remove the node.
+    /// Removes all vertices between <paramref name="left"/> and <paramref
+    /// name="right"/>. The weights of the removed edges and heuristics of the
+    /// removed vertices are preserved as the weight of the new edge between the
+    /// two vertices.
     /// </summary>
-    /// <param name="toRemove"></param>
-    /// <param name="previous"></param>
-    /// <returns></returns>
-    public bool TryRemove(Vertex<T> toRemove, Vertex<T> previous)
+    public void Intrasect(Vertex<T> left, Vertex<T> right)
     {
-        if (toRemove == Start)
+        // Don't need to run this if right is literally the next value.
+        if (Next(left) == right)
+            return;
+
+        // Step 1: Get total cost of edges.
+        float totalCost = GetEdges(left, right)
+            .Sum(e => e.weight);
+
+        // Step 2: Bridge left and right.
+        path[left] = right;
+
+        // Step 3: Remove intermediate vertices and get their heuristics.
+        var next = Next(left);
+        do
         {
-            // Remove starting node. Don't need to use previous.
-            Start = Next(toRemove);
-
-            return true;
+            var prev = next;
+            totalCost += prev.heuristic;
+            next = Next(next);
+            path.Remove(prev);
         }
-        if (toRemove == Next(previous))
-        {
-            if (toRemove == End)
-            {
-                // Remove the end by removing the end node, and setting the new
-                // end as previous.
-                path[previous] = Next(toRemove);
-                End = previous;
+        while (next != right);
 
-                return true;
-            }
-            else
-            {
-                // Remove some node in the center.
-                path[previous] = Next(toRemove);
-
-                return true;
-            }
-        }
-
-        return false;
+        // Step 4: Set cost of edge.
+        left.Adjacent[right.id] = totalCost;
     }
 
+    #region Get Length
     /// <summary>
     /// Returns the length of the path from <paramref name="from"/> to <paramref
     /// name="to"/>.
@@ -297,7 +294,9 @@ public class Path<T> : IEnumerable<Vertex<T>>,
 
     /// <inheritdoc cref="GetLength(Vertex{T})"/>
     public int GetLength(T from) => GetLength(from, End.Value);
+    #endregion
 
+    #region Get Vertices
     /// <summary>
     /// Returns all the vertices along this path from <paramref name="from"/> to
     /// <paramref name="to"/>.
@@ -339,6 +338,43 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     {
         return GetVertices(Start);
     }
+    #endregion
+
+    #region Get Edges
+    /// <summary>
+    /// Iterates through the edges of the path.
+    /// </summary>
+    /// <param name="from">The vertex to start the iteration from.</param>
+    /// <param name="to">The vertex to end the iteration at.</param>
+    /// <returns></returns>
+    public IEnumerable<GraphEdge<T>> GetEdges(Vertex<T> from, Vertex<T> to)
+    {
+        GraphEdge<T> edge = new(from, Next(from));
+
+        while (edge.to != to)
+        {
+            yield return edge;
+            from = Next(from);
+            edge = new(from, Next(from));
+        }
+
+        yield return edge;
+    }
+
+    /// <summary>
+    /// Iterates through the edges of the path, until we reach the end.
+    /// </summary>
+    /// <inheritdoc cref="GetEdges(Vertex{T}, Vertex{T})"/>
+    public IEnumerable<GraphEdge<T>> GetEdges(Vertex<T> from) =>
+        GetEdges(from, End);
+
+    /// <summary>
+    /// Iterates through all edges of the path.
+    /// </summary>
+    /// <inheritdoc cref="GetEdges(Vertex{T}, Vertex{T})"/>
+    public IEnumerable<GraphEdge<T>> GetEdges() =>
+        GetEdges(Start, End);
+    #endregion
 
     /// <summary>
     /// Iterates through the path, beginning at <paramref name="begin"/>, until
