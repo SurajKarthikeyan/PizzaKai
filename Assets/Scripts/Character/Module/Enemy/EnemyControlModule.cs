@@ -53,6 +53,7 @@ public class EnemyControlModule : Module
     private void Awake()
     {
         SetVars();
+        AIManager.Instance.RegisterAI(this);
     }
 
     private void OnValidate()
@@ -70,30 +71,29 @@ public class EnemyControlModule : Module
         this.RequireComponent(out movement);
         this.RequireComponent(out pathAgent);
     }
-    #endregion
 
-    #region Main Loop
-    private IEnumerator Start()
+    private void Start()
     {
         decisionTree.AIInitialize(this);
-
-        while (enabled)
-        {
-            float updateRate = PathAgentManager.Instance.AIUpdateRate;
-            yield return new WaitForSeconds(updateRate);
-
-            decisionTree.AIUpdate(this, updateRate);
-
-            if (pathAgent.State == PathfindingAgent.NavigationState.NavigatingToDestination &&
-                pathAgent.CurrentToken != null)
-            {
-                UpdateMovementDirection();
-            }
-        }
     }
     #endregion
 
     #region Main Logic
+    /// <summary>
+    /// Performs a movement update.
+    /// </summary>
+    /// <param name="deltaTime"></param>
+    public void UpdateEnemyAIControl(float deltaTime)
+    {
+        decisionTree.AIUpdate(this, deltaTime);
+
+        if (pathAgent.State == PathfindingAgent.NavigationState.NavigatingToDestination &&
+            pathAgent.CurrentToken != null)
+        {
+            UpdateMovementDirection();
+        }
+    }
+
     /// <inheritdoc cref="PathfindingAgent.SetTarget(TargetToken)"/>
     public void SetMoveTarget(TargetToken target) => pathAgent.SetTarget(target);
 

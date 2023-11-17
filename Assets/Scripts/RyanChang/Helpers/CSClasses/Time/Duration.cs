@@ -10,9 +10,19 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class Duration
 {
+    #region Enums
+    [Flags]
+    public enum Options
+    {
+        None = 0,
+        Repeat = 1,
+        UnscaledTime = 2,
+    }
+    #endregion
+
     #region Variables
     [Tooltip("How long is this duration?")]
     public float maxTime = 1f;
@@ -144,17 +154,18 @@ public class Duration
     /// <param name="callback">The callback to perform.</param>
     /// <param name="repeat">If true, keeps repeating the coroutine.</param>
     /// <param name="unscaledTime">Whether or not to use unscaled time.</param>
-    /// <returns>True on success, false otherwise.</returns>
+    /// <returns>False if another callback is running. True otherwise.</returns>
     public bool CreateCallback(MonoBehaviour unityObject, Action callback,
-        bool repeat = true, bool unscaledTime = false)
+        Options options)
     {
         if (CallbackActive)
             return false;
 
         callbackMB = unityObject;
         callbackCR = unityObject.StartCoroutine(WaitUntilDone_CR(
-            callback, repeat, unscaledTime
+            callback, options
         ));
+
         return true;
     }
 
@@ -176,12 +187,11 @@ public class Duration
         return false;
     }
 
-    private IEnumerator WaitUntilDone_CR(Action callback, bool repeat,
-        bool unscaledTime)
+    private IEnumerator WaitUntilDone_CR(Action callback, Options options)
     {
         do
         {
-            if (unscaledTime)
+            if (options.HasFlag(Options.UnscaledTime))
                 yield return new WaitForSecondsRealtime(maxTime);
             else
                 yield return new WaitForSeconds(maxTime);
@@ -190,7 +200,7 @@ public class Duration
                 yield break;
 
             callback();
-        } while (repeat);
+        } while (options.HasFlag(Options.Repeat));
 
         callbackCR = null;
     }
