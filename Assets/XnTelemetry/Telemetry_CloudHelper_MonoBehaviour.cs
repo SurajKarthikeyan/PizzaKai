@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace XnTelemetry {
+namespace XnTelemetry
+{
     public class Telemetry_CloudHelper_MonoBehaviour : MonoBehaviour {
         static public Telemetry_CloudHelper_MonoBehaviour _S;
         static public bool ACTIVE = false;

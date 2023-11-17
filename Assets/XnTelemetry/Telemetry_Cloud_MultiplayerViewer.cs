@@ -1,7 +1,4 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,7 +6,8 @@ using UnityEngine.SceneManagement;
 #endif
 
 
-namespace XnTelemetry {
+namespace XnTelemetry
+{
     public class Telemetry_Cloud_MultiplayerViewer : MonoBehaviour {
         //static public List<string> SCENE_NAMES;
 

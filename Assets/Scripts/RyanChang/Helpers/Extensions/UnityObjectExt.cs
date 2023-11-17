@@ -2,32 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using Unity.Entities;
 
 /// <summary>
 /// Contains methods that extend game objects or other unity objects.
 /// </summary>
 public static class UnityObjectExt
 {
-    #region Variables & Properties
-    /// <inheritdoc cref="EmptyGORef"/>
-    private static GameObject emptyGORef;
-
-    /// <summary>
-    /// A prefab of an empty game object that can be instantiated.
-    /// </summary>
-    private static GameObject EmptyGORef
-    {
-        get
-        {
-            if (!emptyGORef)
-                emptyGORef = Resources.Load<GameObject>("empty");
-
-            return emptyGORef;
-        }
-    }
-    #endregion
-
     #region Query
     #region Query Single
 
@@ -844,8 +824,11 @@ public static class UnityObjectExt
     /// <returns>An empty game object.</returns>
     public static GameObject CreateGameObject(string name, Transform parent)
     {
-        var go = GameObject.Instantiate(EmptyGORef, parent);
-        go.name = name;
+        GameObject go = new(name);
+
+        if (parent)
+            go.transform.parent = parent;
+
         return go;
     }
 
@@ -867,7 +850,8 @@ public static class UnityObjectExt
     }
 
     /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
-    /// <typeparam name="T">The type of component to add to the child.</typeparam>
+    /// <typeparam name="T">The type of component to add to the
+    /// child.</typeparam>
     public static T CreateChildComponent<T>(this Transform parent,
         string name) where T : Component
     {
@@ -877,14 +861,13 @@ public static class UnityObjectExt
     }
 
     /// <summary>
-    /// Creates a child game object with the specified components,
-    /// then returns those components.
+    /// Creates one child game object with all the specified components, then
+    /// returns those components.
     /// </summary>
-    /// <param name="parent"></param>
-    /// <param name="name"></param>
-    /// <param name="componentTypes">A list of all the component
-    /// types to add. Duplicate values are added multiple times.</param>
+    /// <param name="componentTypes">A list of all the component types to add.
+    /// Duplicate values are added multiple times.</param>
     /// <returns>The list of all added components to the child.</returns>
+    /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
     public static Component[] CreateChildComponents(this Transform parent,
         string name, Type[] componentTypes)
     {
@@ -905,7 +888,7 @@ public static class UnityObjectExt
     /// Loads <paramref name="obj"/> from <paramref name="path"/>.
     /// </summary>
     /// <inheritdoc cref="LoadIfMissing{T}(T, string)"/>
-    public static void LoadResource<T>(this T obj, string path)
+    public static void LoadResource<T>(ref T obj, string path)
             where T : UnityEngine.Object
     {
         obj = Resources.Load<T>(path);
@@ -921,7 +904,7 @@ public static class UnityObjectExt
     /// folder.</param>
     /// <returns>True if <paramref name="obj"/> is already set to some value,
     /// false otherwise.</returns>
-    public static bool LoadIfMissing<T>(this T obj, string path)
+    public static bool LoadIfMissing<T>(ref T obj, string path)
         where T : UnityEngine.Object
     {
         if (!obj)

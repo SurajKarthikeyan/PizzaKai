@@ -1,5 +1,3 @@
-using UnityEngine;
-
 /// <summary>
 /// Death module that destroys the character's game object.
 /// 
