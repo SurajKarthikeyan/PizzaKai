@@ -39,7 +39,7 @@ public class ForkyOven : MonoBehaviour
 
             if(collision.gameObject.GetComponent<OilBarrel>() != null)
             {
-                if (!destroyedOil)
+                if (!destroyedOil && forky.active)
                 {
                     destroyedOil = true;
                     conveyorTilemap.animationFrameRate = 0;

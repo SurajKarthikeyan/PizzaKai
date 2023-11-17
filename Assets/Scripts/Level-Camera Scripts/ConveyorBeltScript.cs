@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ConveyorBeltScript : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class ConveyorBeltScript : MonoBehaviour
 
     public float conveyorSpeed;
 
+    public Tilemap conveyorTilemap;
+
     // Start is called before the first frame update
     void Start()
     {
         col2D = gameObject.GetComponent<Collider2D>();
-        
+        conveyorTilemap.animationFrameRate = 1;
+        conveyorSpeed = -1f;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -24,4 +28,9 @@ public class ConveyorBeltScript : MonoBehaviour
         }
     }
     
+    public void SetConveyorSpeed(float speed)
+    {
+        conveyorTilemap.animationFrameRate = Mathf.Abs(speed);
+        conveyorSpeed = speed;
+    }
 }

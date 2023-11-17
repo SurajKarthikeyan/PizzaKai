@@ -39,6 +39,11 @@ public class CinemachineCameraShake : MonoBehaviour
                 cameraTransform = Camera.main.gameObject.transform;
             }
         }
+        else
+        {
+            cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+            cameraTransform = Camera.main.gameObject.transform;
+        }
     }
 
     // Update is called once per frame

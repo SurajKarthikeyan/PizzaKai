@@ -38,8 +38,7 @@ public class BossManager : MonoBehaviour
     
     private void Start()
     {
-        //this is so it gets set back to zero and won't move until the fight starts
-        forky.tilemap.animationFrameRate = 0;
+        
     }
     
     public void ForkyBossStart()
