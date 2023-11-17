@@ -1,5 +1,4 @@
 ﻿using Cinemachine;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]

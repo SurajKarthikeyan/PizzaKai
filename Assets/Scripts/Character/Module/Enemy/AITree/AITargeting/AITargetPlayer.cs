@@ -1,5 +1,3 @@
-using UnityEngine;
-
 /// <summary>
 /// Provides the player as a target for the AI.
 /// 

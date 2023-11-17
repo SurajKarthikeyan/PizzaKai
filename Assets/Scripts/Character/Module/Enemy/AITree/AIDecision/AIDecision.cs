@@ -1,6 +1,4 @@
-using System;
 using System.Text.RegularExpressions;
-using NaughtyAttributes;
 using UnityEngine;
 
 public abstract class AIDecision :MonoBehaviour

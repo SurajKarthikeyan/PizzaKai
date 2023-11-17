@@ -1,6 +1,5 @@
 using UnityEngine;
 using NaughtyAttributes;
-using UnityEngine.UI;
 
 /// <summary>
 /// Represents a singular weapon. This can be used by both players and enemies.

@@ -2,9 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Fungus;
-using UnityEngine;
 
 public class Path<T> : IEnumerable<Vertex<T>>,
     IEnumerable<GraphEdge<T>>, ITraceable<T> where T : IEquatable<T>
