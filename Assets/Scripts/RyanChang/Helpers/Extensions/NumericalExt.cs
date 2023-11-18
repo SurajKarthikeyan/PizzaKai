@@ -49,7 +49,7 @@ public static class NumericalExt
         
         for (int i = 1; i < values.Length; i++)
         {
-            if (temp.Equals(values[i]))
+            if (!temp.Equals(values[i]))
                 return false;
         }
 

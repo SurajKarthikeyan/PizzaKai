@@ -53,7 +53,6 @@ public class EnemyControlModule : Module
     private void Awake()
     {
         SetVars();
-        AIManager.Instance.RegisterAI(this);
     }
 
     private void OnValidate()
@@ -74,6 +73,7 @@ public class EnemyControlModule : Module
 
     private void Start()
     {
+        AIManager.Instance.RegisterAI(this);
         decisionTree.AIInitialize(this);
     }
     #endregion
