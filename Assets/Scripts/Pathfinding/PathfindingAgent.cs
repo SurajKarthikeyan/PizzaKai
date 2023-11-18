@@ -53,11 +53,7 @@ public class PathfindingAgent : MonoBehaviour
     private Duration stuckTimer = new(8);
 
     [Header("Debug")]
-    [SerializeField]
-    private TargetToken nextToken;
-
     private Coroutine navigationCR;
-    private Coroutine checkTargetDistanceCR;
     private NavigationState state;
     #endregion
 
@@ -76,9 +72,8 @@ public class PathfindingAgent : MonoBehaviour
             switch (value)
             {
                 case NavigationState.Idle:
-                    this.StopCoroutineIfExists(navigationCR, checkTargetDistanceCR);
+                    this.StopCoroutineIfExists(navigationCR);
                     navigationCR = null;
-                    checkTargetDistanceCR = null;
                     CurrentPath = null;
                     FinalToken = null;
                     break;
@@ -95,9 +90,6 @@ public class PathfindingAgent : MonoBehaviour
                     );
                     enemyControl.ArrivedAtDestination(FinalToken);
                     visualizer.Clear();
-
-                    this.StopCoroutineIfExists(checkTargetDistanceCR, checkTargetDistanceCR);
-                    checkTargetDistanceCR = null;
 
                     break;
             }
@@ -267,17 +259,22 @@ public class PathfindingAgent : MonoBehaviour
 
         State = NavigationState.NavigatingToDestination;
         NextNode = CurrentPath.Start;
-        
-        while (!CheckAlongPath())
-        {
-            yield return new WaitForSecondsRealtime(
-                PathAgentManager.Instance.AIUpdateRate
-            );
-        }
 
-        print($"Arrived at {NextNode}");
-        stuckTimer.Reset();
-        this.StopCoroutineIfExists(checkTargetDistanceCR);
+        while (NextNode != CurrentPath.End)
+        {
+            while (!CheckAlongPath(NextNode))
+            {
+                yield return new WaitForSecondsRealtime(
+                    PathAgentManager.Instance.AIUpdateRate
+                );
+            }
+
+            print($"Arrived at {NextNode}");
+            stuckTimer.Reset();
+
+            // Go to next node.
+            NextNode = CurrentPath.Next(NextNode);
+        }
 
         State = NavigationState.ArrivedAtDestination;
     }
@@ -286,28 +283,26 @@ public class PathfindingAgent : MonoBehaviour
     /// Check if we've arrived at a later node down the path.
     /// </summary>
     /// <returns></returns>
-    private bool CheckAlongPath()
+    private bool CheckAlongPath(Vertex<Vector3Int> next)
     {
         var currentGridPos = GridPosition;
 
         // Iterate through all nodes starting past NextNode.
-        foreach (var node in CurrentPath.GetVertices(NextNode))
+        foreach (var node in CurrentPath.GetVertices(next))
         {
-            if (node.id == currentGridPos && node != NextNode)
+            if (node.id == currentGridPos)
             {
                 // Found the node we need to be on.
-                NextNode = node;
                 return true;
             }
         }
 
         // Same thing, but do a "close enough" check instead.
-        foreach (var node in CurrentPath.GetVertices(NextNode))
+        foreach (var node in CurrentPath.GetVertices(next))
         {
-            if (node.id.TaxicabDistance(currentGridPos) <= 1 && node != NextNode)
+            if (node.id.TaxicabDistance(currentGridPos) <= 1)
             {
                 // Found the node we need to be on.
-                NextNode = node;
                 return true;
             }
         }
