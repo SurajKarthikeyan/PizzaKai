@@ -79,9 +79,11 @@ public class Breadstick : EnemyBasic
             }
             hasSpawned = true;
             Destroy(gameObject, 0.5f);
-            //Destroy(breadCollider, 0.5f);
+            breadCollider.enabled = false;
+            rigid.gravityScale= 0;
+            return;
             //Debug.Log("Killed breadstick and size is " + size + " and pointer " + this);
-            Destroy(this);
+            //Destroy(this);
         }
 
         if (hitState && Time.time > hitTime) hitState = false;
