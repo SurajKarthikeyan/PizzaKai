@@ -141,18 +141,6 @@ public class WeaponModule : Module
     [Tooltip("Bullet that this weapon uses")]
     public WeaponSpawn bullet;
 
-    [Header("HDR Color Settings")]
-    [Tooltip("HDR Color for URP Shading CURRENTLT TESTING")]
-    [ColorUsage(true, true)]
-    public Color HDRColorIntense;
-    
-    [Tooltip("HDR Color for URP Shading CURRENTLT TESTING")]
-    [ColorUsage(true, true)]
-    public Color HDRColorDefault;
-
-    //[Tooltip("Updated bullet spawn this weapon uses.")]
-    //public bulletScript bulletSpawn;
-
     [Header("Audio Settings")]
     [Tooltip("Prefix used to help get proper audio clip from audio dict")]
     [ReadOnly]
@@ -180,7 +168,6 @@ public class WeaponModule : Module
     protected virtual void Start()
     {
         currentAmmo = ammoCount;
-        
         if (weaponID == "[Not Set]")
         {
             Debug.LogError("WeaponID is not set from its default value", gameObject);
@@ -297,15 +284,9 @@ public class WeaponModule : Module
     public bool TryFireWeapon()
     {
         bool canFire = CheckCanFire();
-        Material weaponLitMat = weaponAnimator.gameObject.GetComponent<SpriteRenderer>().material;
 
         if (canFire)
         {
-            
-            //___________________TEST VFX SECTION__________________//
-            weaponLitMat.color = HDRColorIntense;
-            weaponAnimator.gameObject.GetComponent<SpriteRenderer>().material = weaponLitMat;
-            //__________________END TEST VFX SEC___________________//
             firingDelay.Reset();
 
             switch (InputState)
@@ -336,12 +317,7 @@ public class WeaponModule : Module
         {
             playerAnimator.SetBool(animFiringBool, canFire);
         }
-        //___________________TEST VFX SECTION__________________//
-        weaponLitMat.color = HDRColorDefault;
-        weaponAnimator.gameObject.GetComponent<SpriteRenderer>().material = weaponLitMat;
-        //__________________END TEST VFX SEC___________________//
         return canFire;
-        
     }
 
     /// <summary>
@@ -385,7 +361,7 @@ public class WeaponModule : Module
     /// <summary>
     /// Actually fires the weapon.
     /// </summary>
-    protected void FireProjectile()
+    protected virtual void FireProjectile()
     {
         //Spawned projectile, need to look into refactoring bullets themselves
         weaponAction = WeaponAudioStrings.Shoot;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 using NaughtyAttributes;
 
@@ -40,10 +41,11 @@ public class TommyGunWeapon : WeaponModule
     #endregion
 
     #region Methods
+
     /// <summary>
     /// Overrides the alt fire function of weapon module - Tommy Flash
     /// </summary>
-    override public void AltFire()
+    public override void AltFire()
     {
         base.AltFire();
         StartCoroutine(TommyRapidFire());
