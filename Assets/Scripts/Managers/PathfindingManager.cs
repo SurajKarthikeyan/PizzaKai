@@ -436,7 +436,9 @@ public class PathfindingManager : MonoBehaviour
 
     public Vector3Int WorldToCell(Vector3 worldPosition)
     {
-        return grid.WorldToCell(worldPosition);
+        var w2c = grid.WorldToCell(worldPosition);
+        w2c.z = 0;
+        return w2c;
     }
 
     /// <summary>

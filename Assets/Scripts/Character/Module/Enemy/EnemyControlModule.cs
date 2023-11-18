@@ -112,7 +112,11 @@ public class EnemyControlModule : Module
     public void ClearMoveTarget()
     {
         pathAgent.State = PathfindingAgent.NavigationState.Idle;
+
+        // Stop all movement.
         movement.inputtedMovement = Vector2.zero;
+        movement.inputtedDash = Vector2.zero;
+        movement.inputtedJump = false;
     }
 
     /// <summary>
@@ -121,16 +125,16 @@ public class EnemyControlModule : Module
     /// <param name="token">The token used to get to the destination.</param>
     public void ArrivedAtDestination(TargetToken token)
     {
-        // Stop all movement.
-        movement.inputtedMovement = Vector2.zero;
-        movement.inputtedDash = Vector2.zero;
-        movement.inputtedJump = false;
+        // // Stop all movement.
+        // movement.inputtedMovement = Vector2.zero;
+        // movement.inputtedDash = Vector2.zero;
+        // movement.inputtedJump = false;
 
-        if (cachedCallback != null)
-        {
-            cachedCallback(token);
-            cachedCallback = null;
-        }
+        // if (cachedCallback != null)
+        // {
+        //     cachedCallback(token);
+        //     cachedCallback = null;
+        // }
     }
     #endregion
 
@@ -168,17 +172,6 @@ public class EnemyControlModule : Module
         );
 
         yield return new WaitForFixedUpdate();
-
-        // do
-        // {
-        //     // As long as the enemy is within 2 tiles of the player, it will not
-        //     // attempt to set a target.
-        //     yield return new WaitForSeconds(
-        //         PathAgentManager.Instance.pathRecomputeDelay.Evaluate()
-        //     );
-        // } while (transform.position.TaxicabDistance(pathAgent.) < 2);
-
-        // pathAgent.ResetTarget();
     }
     #endregion
 

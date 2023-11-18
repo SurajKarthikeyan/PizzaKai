@@ -85,7 +85,7 @@ public class PathfindingAgent : MonoBehaviour
                 case NavigationState.ArrivedAtDestination:
                     NextNode = null;
                     Debug.Log(
-                        "Arrived at position " + FinalToken,
+                        "Arrived at final destination " + FinalToken,
                         enemyControl
                     );
                     enemyControl.ArrivedAtDestination(FinalToken);
@@ -195,6 +195,13 @@ public class PathfindingAgent : MonoBehaviour
         {
             PathAgentManager.Instance.Schedule(this, target);
         }
+        catch (StartIsEndVertexException)
+        {
+            // We've already arrived. This may not be caught by the above if
+            // statement if start is interpolated to end (or vice versa).
+            State = NavigationState.ArrivedAtDestination;
+            return;
+        }
         catch (PathfindingException e)
         {
             Debug.LogError(e);
@@ -269,7 +276,10 @@ public class PathfindingAgent : MonoBehaviour
                 );
             }
 
-            print($"Arrived at {NextNode}");
+            Debug.Log(
+                "Arrived at intermediate position " + NextNode,
+                enemyControl
+            );
             stuckTimer.Reset();
 
             // Go to next node.
@@ -286,6 +296,7 @@ public class PathfindingAgent : MonoBehaviour
     private bool CheckAlongPath(Vertex<Vector3Int> next)
     {
         var currentGridPos = GridPosition;
+        currentGridPos.z = 0;
 
         // Iterate through all nodes starting past NextNode.
         foreach (var node in CurrentPath.GetVertices(next))
@@ -314,11 +325,19 @@ public class PathfindingAgent : MonoBehaviour
     #region Getters
     public Vector2 GetHeading()
     {
-        Vector3 tPos = NextNode != null ?
-            NextNodeWorldPosition :
-            FinalToken.Position;
+        return State switch
+        {
+            NavigationState.NavigatingToDestination =>
+                GetNormalized(NextNodeWorldPosition),
+            NavigationState.ArrivedAtDestination =>
+                GetNormalized(FinalToken.Position),
+            _ => Vector2.zero
+        };
 
-        return (tPos - transform.position).normalized;
+        Vector3 GetNormalized(Vector3 position)
+        {
+            return (position - transform.position).normalized;
+        }
     }
     #endregion
 }

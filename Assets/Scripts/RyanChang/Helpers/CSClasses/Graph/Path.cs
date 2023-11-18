@@ -13,12 +13,6 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     public Graph<T> Graph { get; private set; }
 
     /// <summary>
-    /// The total number of nodes in the path, from <see cref="Start"/> to <see
-    /// cref="End"/>.
-    /// </summary>
-    public int Count { get; private set; }
-
-    /// <summary>
     /// Creates a new path.
     /// </summary>
     public Path(Vertex<T> start, Vertex<T> end,
@@ -33,14 +27,10 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         Start = start;
         End = end;
 
-        Count = 0;
-
         Vertex<T> next = end;
 
         while (next != start)
         {
-            Count++;
-
             var prev = next;
             try
             {
