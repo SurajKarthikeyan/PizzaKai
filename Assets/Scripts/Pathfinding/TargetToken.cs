@@ -12,6 +12,7 @@ using UnityEngine;
 [Serializable]
 public class TargetToken : IEquatable<TargetToken>
 {
+    #region Member Variables
     /// <summary>
     /// Tracking a static target.
     /// </summary>
@@ -21,7 +22,9 @@ public class TargetToken : IEquatable<TargetToken>
     /// Tracking a dynamic target.
     /// </summary>
     private readonly Transform dynamicTarget;
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The target position in world coordinates.
     /// </summary>
@@ -36,12 +39,9 @@ public class TargetToken : IEquatable<TargetToken>
     /// True if tracking a dynamic transform.
     /// </summary>
     public bool IsDynamic => dynamicTarget;
+    #endregion
 
-    public Vector3 GetHeading(Vector3 currentLocation)
-    {
-        return Position - currentLocation;
-    }
-
+    #region Constructors
     /// <summary>
     /// Creates a path token targeting a grid tile.
     /// </summary>
@@ -68,8 +68,23 @@ public class TargetToken : IEquatable<TargetToken>
     {
         dynamicTarget = tracking;
     }
+    #endregion
 
-    #region Equals
+    #region Getters/Setters
+    public Vector3 GetHeading(Vector3 currentLocation)
+    {
+        return Position - currentLocation;
+    }
+    #endregion
+
+    #region Object Overrides
+    public override string ToString()
+    {
+        return (IsDynamic ? "Dynamic" : "Fixed") + 
+            $" [at {Position}, grid {GridPosition}" +
+            (IsDynamic ? $", tracking {dynamicTarget}]" : "]");
+    }
+
     public override bool Equals(object obj)
     {
         return obj is TargetToken tt && Equals(tt);

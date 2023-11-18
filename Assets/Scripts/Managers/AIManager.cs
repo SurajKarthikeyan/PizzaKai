@@ -38,7 +38,7 @@ public class AIManager : MonoBehaviour
     /// <summary>
     /// The queue of AIs this manager will update.
     /// </summary>
-    private Queue<EnemyControlModule> catalog = new();
+    private Queue<EnemyControlModule> waiting = new();
     #endregion
 
     #region Instantiation
@@ -58,7 +58,7 @@ public class AIManager : MonoBehaviour
     /// <param name="ai"></param>
     public void RegisterAI(EnemyControlModule ai)
     {
-        catalog.Enqueue(ai);
+        waiting.Enqueue(ai);
     }
 
     /// <summary>
@@ -66,22 +66,22 @@ public class AIManager : MonoBehaviour
     /// </summary>
     private void Loop()
     {
-        int length = Mathf.Min(maxConcurrentDecisions, catalog.Count);
+        int length = Mathf.Min(maxConcurrentDecisions, waiting.Count);
 
         for (int i = 0; i < length; i++)
         {
             // Dequeue an element, update it, and requeue it. This allows each
             // enemy to be updated in order, avoiding starvation.
-            var toUpdate = catalog.Dequeue();
+            var toUpdate = waiting.Dequeue();
 
             // Avoid referencing destroyed enemies. This also allows destroyed
             // enemies to be conveniently removed from the catalog.
             if (toUpdate && toUpdate.decisionTree)
             {
                 toUpdate.UpdateEnemyAIControl(
-                    refreshRate.maxTime * Time.deltaTime
+                    refreshRate.maxTime
                 );
-                catalog.Enqueue(toUpdate);
+                waiting.Enqueue(toUpdate);
             }
         }
     }

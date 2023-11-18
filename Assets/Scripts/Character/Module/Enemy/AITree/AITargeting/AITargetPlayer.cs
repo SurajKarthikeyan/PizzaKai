@@ -7,7 +7,7 @@
 /// </summary>
 public class AITargetPlayer : AITargeting
 {
-    public override TargetToken GetTarget()
+    public override TargetToken GetTarget(EnemyControlModule enemy)
     {
         return new TargetToken(GameManager.Instance.Player.transform);
     }

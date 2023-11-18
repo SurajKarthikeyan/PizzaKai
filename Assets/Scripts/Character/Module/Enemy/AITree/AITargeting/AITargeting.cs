@@ -25,10 +25,13 @@ public abstract class AITargeting : MonoBehaviour
     /// Calculates the target.
     /// </summary>
     /// <returns>The target.</returns>
-    public abstract TargetToken GetTarget();
+    public abstract TargetToken GetTarget(EnemyControlModule enemy);
     #endregion
 
-    #region ToString
+    #region Object Overrides
+    /// <summary>
+    /// Regex for <see cref="ToString"/>
+    /// </summary>
     private static readonly Regex actTypeRX = new(@"AITarget(\w+)");
 
     public override string ToString()

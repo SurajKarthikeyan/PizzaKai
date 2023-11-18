@@ -93,7 +93,7 @@ public class AIBranchModule : Module
     /// <inheritdoc cref="InitializeAI(EnemyControlModule)"/>
     public AIBranchModule SelectAI(EnemyControlModule enemy)
     {
-        TargetToken target = targeting.GetTarget();
+        TargetToken target = targeting.GetTarget(enemy);
 
         if (decision.CheckDecision(enemy, target))
         {
@@ -120,7 +120,7 @@ public class AIBranchModule : Module
             // Select from branches.
             var validBranches = branches
                 .Where(b => b.decision.CheckDecision(
-                    enemy, b.targeting.GetTarget()
+                    enemy, b.targeting.GetTarget(enemy)
                 ));
 
             if (validBranches.Any())

@@ -12,11 +12,11 @@ using static PathMarker;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class PathNode : IEquatable<PathNode>
 {
     #region Enum
-    [System.Flags]
+    [Flags]
     public enum NodeFlags
     {
         /// <summary>
@@ -56,8 +56,8 @@ public class PathNode : IEquatable<PathNode>
     #region Variables
     #region Readonly and Const
     public static readonly LayerMask groundMask = LayerExt.CreateMask(
-        LayersManager.Platform,
-        LayersManager.Ground
+        Platform,
+        Ground
     );
     #endregion
 
@@ -101,9 +101,9 @@ public class PathNode : IEquatable<PathNode>
                 return Solidity.None;
             else if (flags.HasFlag(NodeFlags.Exists))
             {
-                if (mapLayer == LayersManager.Platform)
+                if (mapLayer == Platform)
                     return Solidity.Platform;
-                else if (mapLayer == LayersManager.Ground)
+                else if (mapLayer == Ground)
                     return Solidity.Solid;
                 else if (groundMask.ContainsLayer(mapLayer))
                     return Solidity.Solid;
@@ -180,7 +180,7 @@ public class PathNode : IEquatable<PathNode>
             tilemapName = "[None]";
             tilemapID = -1;
 
-            mapLayer = LayersManager.Invalid;
+            mapLayer = Invalid;
         }
     }
     #endregion

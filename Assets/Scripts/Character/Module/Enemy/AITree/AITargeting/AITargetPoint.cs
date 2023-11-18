@@ -12,12 +12,7 @@ public class AITargetPoint : AITargeting
     public Vector3 targetPoint;
 
     #region AITargeting Implementation
-    public override void InitializeTargeting(EnemyControlModule enemy)
-    {
-        
-    }
-
-    public override TargetToken GetTarget()
+    public override TargetToken GetTarget(EnemyControlModule enemy)
     {
         return new TargetToken(targetPoint);
     }
