@@ -88,7 +88,7 @@ public class EnemyControlModule : Module
         decisionTree.AIUpdate(this, deltaTime);
 
         if (pathAgent.State == PathfindingAgent.NavigationState.NavigatingToDestination &&
-            pathAgent.CurrentToken != null)
+            pathAgent.NextNode != null)
         {
             UpdateMovementDirection();
         }

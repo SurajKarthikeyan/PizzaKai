@@ -109,44 +109,26 @@ public class PathAgentManager : MonoBehaviour
         var current = agent.GridPosition;
 
         // Make sure target valid.
-        try
-        {
-            var startV = PathfindingManager.Instance.GetClosestNeighbor(current);
-            var endV = PathfindingManager.Instance.GetClosestNeighbor(target.GridPosition, startV.sectionID);
+        var startV = PathfindingManager.Instance.GetClosestNeighbor(current);
+        var endV = PathfindingManager.Instance.GetClosestNeighbor(
+            target.GridPosition,
+            startV.sectionID
+        );
 
-            Pathfinding.ValidateStartEnd(true, startV, endV);
-        }
-        catch (PathfindingException e) when (e is StartIsEndVertexException)
-        {
-            // AI has already arrived.
-            agent.State = PathfindingAgent.NavigationState.ArrivedAtDestination;
-            return;
-        }
-        catch (PathfindingException)
-        {
-            // Do nothing.
-        }
+        Pathfinding.ValidateStartEnd(true, startV, endV);
 
-        try
-        {
-            StartCoroutine(WaitForTask_CR(agent, target,
-                new(
-                    current,
-                    target.GridPosition
-                )
-            ));
-        }
-        catch (System.Exception)
-        {
-
-            throw;
-        }
+        StartCoroutine(WaitForTask_CR(
+            agent,
+            target
+        ));
     }
 
     private IEnumerator WaitForTask_CR(PathfindingAgent agent,
-        TargetToken token, AgentThread thread)
+        TargetToken token)
     {
         Path<Vector3Int> path = null;
+        AgentThread thread = new(agent.GridPosition, token.GridPosition);
+
         if (useThreads)
         {
             // Tasks are managed by C#'s ThreadPool, so you can create as many as

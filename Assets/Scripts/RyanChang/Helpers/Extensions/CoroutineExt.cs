@@ -10,10 +10,12 @@ using UnityEngine;
 public static class CoroutineExt
 {
     /// <summary>
-    /// Stops <paramref name="coroutines"/> if it's not null.
+    /// For each coroutine in <paramref name="coroutines"/>, stops each
+    /// individual coroutine if that coroutine is not null. not null.
     /// </summary>
-    /// <param name="behaviour">The MonoBehavior that owns the coroutine.</param>
-    /// <param name="coroutines">The coroutines to stop.</param>
+    /// <param name="behaviour">The MonoBehavior that owns the
+    /// coroutine.</param>
+    /// <param name="coroutines">The coroutines to evaluate and stop.</param>
     public static void StopCoroutineIfExists(this MonoBehaviour behaviour,
         params Coroutine[] coroutines)
     {
