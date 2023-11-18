@@ -1,5 +1,6 @@
 using System.Collections;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -71,7 +72,7 @@ public class PathfindingAgent : MonoBehaviour
         {
             if (state == value)
                 return;
-            
+
             switch (value)
             {
                 case NavigationState.Idle:
@@ -88,15 +89,15 @@ public class PathfindingAgent : MonoBehaviour
 
                 case NavigationState.ArrivedAtDestination:
                     NextNode = null;
-                    print("Arrived at position " + FinalToken);
+                    Debug.Log(
+                        "Arrived at position " + FinalToken,
+                        enemyControl
+                    );
                     enemyControl.ArrivedAtDestination(FinalToken);
                     visualizer.Clear();
 
-                    if (checkTargetDistanceCR != null)
-                    {
-                        StopCoroutine(checkTargetDistanceCR);
-                        checkTargetDistanceCR = null;
-                    }
+                    this.StopCoroutineIfExists(checkTargetDistanceCR, checkTargetDistanceCR);
+                    checkTargetDistanceCR = null;
 
                     break;
             }
@@ -266,22 +267,17 @@ public class PathfindingAgent : MonoBehaviour
 
         State = NavigationState.NavigatingToDestination;
         NextNode = CurrentPath.Start;
-
-        while (NextNode != CurrentPath.End)
+        
+        while (!CheckAlongPath())
         {
-            NextNode = CurrentPath.Next(NextNode);
-
-            while (!CheckAlongPath())
-            {
-                yield return new WaitForSecondsRealtime(
-                    PathAgentManager.Instance.AIUpdateRate
-                );
-            }
-
-            print($"Arrived at {NextNode}");
-            stuckTimer.Reset();
-            this.StopCoroutineIfExists(checkTargetDistanceCR);
+            yield return new WaitForSecondsRealtime(
+                PathAgentManager.Instance.AIUpdateRate
+            );
         }
+
+        print($"Arrived at {NextNode}");
+        stuckTimer.Reset();
+        this.StopCoroutineIfExists(checkTargetDistanceCR);
 
         State = NavigationState.ArrivedAtDestination;
     }
@@ -293,9 +289,22 @@ public class PathfindingAgent : MonoBehaviour
     private bool CheckAlongPath()
     {
         var currentGridPos = GridPosition;
+
+        // Iterate through all nodes starting past NextNode.
         foreach (var node in CurrentPath.GetVertices(NextNode))
         {
-            if (node.id == currentGridPos)
+            if (node.id == currentGridPos && node != NextNode)
+            {
+                // Found the node we need to be on.
+                NextNode = node;
+                return true;
+            }
+        }
+
+        // Same thing, but do a "close enough" check instead.
+        foreach (var node in CurrentPath.GetVertices(NextNode))
+        {
+            if (node.id.TaxicabDistance(currentGridPos) <= 1 && node != NextNode)
             {
                 // Found the node we need to be on.
                 NextNode = node;
