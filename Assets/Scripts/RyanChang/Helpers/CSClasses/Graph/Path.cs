@@ -206,10 +206,7 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         float totalCost = GetEdges(left, right)
             .Sum(e => e.weight);
 
-        // Step 2: Bridge left and right.
-        path[left] = right;
-
-        // Step 3: Remove intermediate vertices and get their heuristics.
+        // Step 2: Remove intermediate vertices and get their heuristics.
         var next = Next(left);
         do
         {
@@ -219,6 +216,9 @@ public class Path<T> : IEnumerable<Vertex<T>>,
             path.Remove(prev);
         }
         while (next != right);
+
+        // Step 3: Bridge left and right.
+        path[left] = right;
 
         // Step 4: Set cost of edge.
         left.Adjacent[right.id] = totalCost;

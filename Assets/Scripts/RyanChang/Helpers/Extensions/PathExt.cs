@@ -41,8 +41,9 @@ public static class PathExt
 					$"for {left} and {right}!");
 			}
 
-			while ((NumericalExt.AllEqual(left.id.x, right.id.x) && code == 1) ||
-				(NumericalExt.AllEqual(left.id.y, right.id.y) && code == 2))
+			while (right != path.End &&
+				((NumericalExt.AllEqual(left.id.x, right.id.x) && code == 1) ||
+				(NumericalExt.AllEqual(left.id.y, right.id.y) && code == 2)))
 			{
 				// Shimmy to the right.
 				right = path.Next(right);
