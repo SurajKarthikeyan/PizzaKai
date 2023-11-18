@@ -4191,10 +4191,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 50774348178933711, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0314c1fa605aa2f41b4fb421dda3bd2f, type: 2}
     - target: {fileID: 1566744870868696934, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_SortingOrder
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 1566744870868696934, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0314c1fa605aa2f41b4fb421dda3bd2f, type: 2}
     - target: {fileID: 1566744870868696937, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_TagString
       value: PlayerArm
@@ -4485,7 +4493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: accessible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
