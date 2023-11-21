@@ -16,29 +16,38 @@ using UnityEngine;
 public class AIAction
 {
     #region Flags
-    public enum MovementFlags
+    public enum HaltingFlags
     {
-        Nothing,
-        SimpleFollow,
-        KeepDistance
+        NoHalting,
+        Timer,
+        DistanceFromTarget,
     }
 
-    public enum MiscFlags
+    [System.Flags]
+    public enum ActionFlags
     {
-        Nothing,
-        ShootAtTarget,
+        Nothing = 0,
+        Follow = 1,
+        FireWeapon = 2
     }
     #endregion
 
     #region Variables
-    public MovementFlags moveFlags;
+    [InfoBox("Determines when the action is considered to be done.")]
+    public HaltingFlags haltingFlags;
 
-    public MiscFlags miscFlags;
+    [InfoBox("Determines what actions to perform. Can select multiple.")]
+    public ActionFlags actionFlags;
 
     [AllowNesting]
-    [Tooltip("The preferred range to move.")]
-    [ShowIf(nameof(moveFlags), MovementFlags.KeepDistance)]
-    public MinMax preferredMoveRange = new(5, 10);
+    [Tooltip("The time to wait for this action to complete.")]
+    [ShowIf(nameof(haltingFlags), HaltingFlags.Timer)]
+    public Duration time = new(5);
+
+    [AllowNesting]
+    [Tooltip("The preferred distance to the target.")]
+    [ShowIf(nameof(haltingFlags), HaltingFlags.DistanceFromTarget)]
+    public MinMax preferredDistance = new(5, 10);
 
     //[AllowNesting]
     //[Tooltip("The preferred range to start shooting.")]
@@ -51,54 +60,23 @@ public class AIAction
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns>True if the action has completed, false otherwise.</returns>
-    public bool UpdateAI(EnemyControlModule enemy, TargetToken target)
+    public bool UpdateAI(EnemyControlModule enemy, TargetToken target, float deltaTime)
     {
-        if (target != null)
+        if (actionFlags.HasFlag(ActionFlags.Follow))
         {
-            PathfindingManager pm = PathfindingManager.Instance;
-
-            switch (moveFlags)
+            if (enemy.pathAgent.State == PathfindingAgent.NavigationState.Idle)
             {
-                case MovementFlags.SimpleFollow:
-                    if (pm.InSameCell(
-                            target.Target,
-                            enemy.transform.position
-                        ))
-                    {
-                        // Arrived at target.
-                        return true;
-                    }
 
-                    return false;
-                case MovementFlags.KeepDistance:
-                    if (enemy.pathAgent.HasPath)
-                    {
-                        int dist = enemy.pathAgent.CurrentPath.GetLength(
-                            pm.WorldToCell(enemy.transform.position)
-                        );
-    
-                        if (preferredMoveRange.Evaluate(dist))
-                        {
-                            // Arrived at ideal distance.
-                            return true;
-                        }
-                        
-                        dist = pm.WorldToCell(enemy.transform.position)
-                            .TaxicabDistance(target.GridTarget);
-                        
-                        if (preferredMoveRange.Evaluate(dist))
-                        {
-                            // Arrived at ideal distance.
-                            return true;
-                        }
-                    }
-
-                    return false;
             }
         }
 
-        return true;
+        if (target == null)
+            return true;
+
+        return CheckIfDone(enemy, target, deltaTime);
     }
+
+
 
     /// <summary>
     /// Called when it's time to exit control of the AI action.
@@ -108,4 +86,43 @@ public class AIAction
     {
 
     }
+
+    #region Helpers
+    private bool CheckIfDone(EnemyControlModule enemy, TargetToken target, float deltaTime)
+    {
+        PathfindingManager pm = PathfindingManager.Instance;
+
+        switch (haltingFlags)
+        {
+            case HaltingFlags.Timer:
+                return time.Increment(deltaTime, true);
+
+            case HaltingFlags.DistanceFromTarget:
+                int dist;
+
+                // Check if the path agent has a path.
+                if (enemy.pathAgent.CurrentPath != null)
+                {
+                    // If it does, use the path length to calculate the
+                    // distance.
+                    dist = enemy.pathAgent.CurrentPath.GetLength(
+                        pm.WorldToCell(enemy.transform.position)
+                    );
+                }
+                else
+                {
+                    // Otherwise, use the taxicab distance.
+                    dist = pm.WorldToCell(enemy.transform.position)
+                        .TaxicabDistance(target.GridTarget);
+                }
+
+                // Arrived at ideal distance.
+                return preferredDistance.Evaluate(dist);
+
+            case HaltingFlags.NoHalting:
+            default:
+                return false;
+        }
+    }
+    #endregion
 }

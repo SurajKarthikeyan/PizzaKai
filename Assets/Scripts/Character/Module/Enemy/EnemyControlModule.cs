@@ -39,11 +39,6 @@ public class EnemyControlModule : Module
     //private IEnumerator tokenRefreshCR;
     #endregion
 
-    #region Properties
-    public Vector3 Target => pathAgent.CurrentToken?.Target
-        ?? VectorExt.VECTOR3_NAN;
-    #endregion
-
     #region Instantiation
     private void Awake()
     {
@@ -75,7 +70,7 @@ public class EnemyControlModule : Module
         {
             yield return new WaitForSeconds(PathAgentManager.Instance.aiUpdateRate);
 
-            decisionTree.AIUpdate(this);
+            decisionTree.AIUpdate(this, PathAgentManager.Instance.aiUpdateRate);
         }
     }
     #endregion
