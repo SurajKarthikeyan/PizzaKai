@@ -136,13 +136,16 @@ public sealed class Character : MonoBehaviour
     private void Awake()
     {
         SetVars();
-        MaxHeal();
-        transform.position = transform.position.ToVector2();
-    }
 
-    public void MaxHeal()
-    {
+        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
+
+        if (IsPlayer)
+        {
+            GameManager.Instance.Player = player.Master;
+        }
+
         HP = maxHP;
+        transform.position = transform.position.ToVector2();
     }
 
     private void SetVars()
@@ -155,13 +158,11 @@ public sealed class Character : MonoBehaviour
         this.RequireComponentInChildren(out sr);
 
         this.RequireComponent(out flipModule);
+    }
 
-        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
-
-        if (IsPlayer)
-        {
-            GameManager.Instance.Player = player.Master;
-        }
+    private void Reset()
+    {
+        hp = 20;
     }
     #endregion
 
@@ -217,6 +218,18 @@ public sealed class Character : MonoBehaviour
     public void Heal(int healthIncrease)
     {
         HP += healthIncrease;
+    }
+
+    /// <summary>
+    /// If the character is dead, revive the character. Otherwise, restore all
+    /// health.
+    /// </summary>
+    public void MaxHeal()
+    {
+        if (IsDead)
+            Revive();
+        else
+            HP = maxHP;
     }
 
     /// <summary>

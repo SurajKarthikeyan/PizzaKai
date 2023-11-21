@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -42,19 +43,13 @@ public class PathfindingAgent : MonoBehaviour
     /// </summary>
     private EnemyControlModule enemyControl;
 
-    [Tooltip("How high can this thing jump?")]
-    public int maxJumpHeight = 4;
-
     [SerializeField]
     private Tracer<Vector3Int> visualizer;
-
-    [Tooltip("How often to check for navigation updates?")]
-    [SerializeField]
-    private float aiUpdateRate = 2f;
 
     [Tooltip("After how long after arriving at the previous node is this " +
         "agent considered stuck?")]
     [SerializeField]
+    [ReadOnly]
     private Duration stuckTimer = new(8);
 
     [Header("Debug")]
@@ -77,6 +72,11 @@ public class PathfindingAgent : MonoBehaviour
     public Path<Vector3Int> CurrentPath { get; private set; }
 
     /// <summary>
+    /// The current target token.
+    /// </summary>
+    public TargetToken CurrentToken { get; private set; }
+
+    /// <summary>
     /// Position of this agent in world coordinates.
     /// </summary>
     public Vector3 WorldPosition => transform.position;
@@ -94,6 +94,7 @@ public class PathfindingAgent : MonoBehaviour
     private void Awake()
     {
         this.RequireComponent(out enemyControl);
+        stuckTimer = new(PathAgentManager.Instance.stuckCheckDelay);
     }
 
     private void OnEnable()
@@ -118,6 +119,11 @@ public class PathfindingAgent : MonoBehaviour
     #endregion
 
     #region Navigation
+    public void ResetTarget()
+    {
+        SetTarget(CurrentToken);
+    }
+
     /// <inheritdoc cref="SetTarget(TargetToken, int)"/>
     public void SetTarget(TargetToken target)
     {
@@ -168,8 +174,10 @@ public class PathfindingAgent : MonoBehaviour
     {
         if (recoverAttempts > 0)
         {
-            yield return new WaitForSeconds(recoverAttempts);
-            SetTarget(token);
+            yield return new WaitForSecondsRealtime(
+                PathAgentManager.Instance.stuckCheckDelay
+            );
+            SetTarget(token, --recoverAttempts);
         }
         else
         {
@@ -215,6 +223,7 @@ public class PathfindingAgent : MonoBehaviour
         if (enabled)
         {
             CurrentPath = path;
+            CurrentToken = token;
             visualizer.Trace(
                 CurrentPath,
                 (vector) => PathfindingManager.Instance.CellToWorld(vector.Value),
@@ -240,16 +249,11 @@ public class PathfindingAgent : MonoBehaviour
             nextToken = new(NextNode.Value);
             enemyControl.AcceptToken(nextToken);
 
-            int cnt = 0;
             while (!CheckAlongPath())
             {
-                cnt++;
-                float waitTime = Mathf.Min(
-                    aiUpdateRate,
-                    cnt * Time.deltaTime
+                yield return new WaitForSecondsRealtime(
+                    PathAgentManager.Instance.aiUpdateRate
                 );
-
-                yield return new WaitForSecondsRealtime(waitTime);
             }
 
             print($"Arrived at {NextNode}");
@@ -281,27 +285,29 @@ public class PathfindingAgent : MonoBehaviour
 
         // Makes sure the updates are staggered, rather than occurring all at
         // once.
-        Range updateOffset = new(-aiUpdateRate, aiUpdateRate);
-        yield return new WaitForSecondsRealtime(updateOffset.Evaluate());
+        yield return new WaitForSecondsRealtime(
+            RNGExt.RandomFloat(0f, PathAgentManager.Instance.aiUpdateRate)
+        );
 
         while (enabled)
         {
             // Would want to batch this somehow so this doesn't all run at the
             // same time.
-            yield return new WaitForSecondsRealtime(aiUpdateRate);
+            yield return new WaitForSecondsRealtime(
+                PathAgentManager.Instance.aiUpdateRate
+            );
 
             if (Vector3.Distance(originalTargetPosition, token.Target) > 1 ||
                 stuckTimer.IsDone)
             {
                 // Restart navigation.
-                if (enemyControl.CurrentTarget &&
-                    !PathfindingManager.Instance.InSameCell(
-                        enemyControl.CurrentTarget.position,
+                if (!PathfindingManager.Instance.InSameCell(
+                        CurrentToken.Target,
                         enemyControl.transform.position
                     ))
                 {
                     print("Restarting nav");
-                    SetTarget(enemyControl.CurrentTarget);
+                    SetTarget(CurrentToken);
                 }
             }
             else
