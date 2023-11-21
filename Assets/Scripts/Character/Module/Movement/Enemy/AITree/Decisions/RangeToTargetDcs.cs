@@ -1,7 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public class RangeToTargetDecision : AIDecision
+﻿/// <summary>
+/// Makes a decision if the range to target is within a certain value.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
+public class RangeToTargetDcs : AIDecision
 {
     #region Variables
     public float minRange;
@@ -14,7 +18,7 @@ public class RangeToTargetDecision : AIDecision
     {
         float range = enemy.transform.Distance2D(enemy.Target);
 
-        return minRange <= range && range <= minRange;
+        return minRange <= range && range <= maxRange;
     }
     #endregion
 }
