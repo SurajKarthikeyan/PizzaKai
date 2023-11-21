@@ -4261,7 +4261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462794, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_RootOrder
@@ -4511,10 +4511,18 @@ PrefabInstance:
       propertyPath: animReloadingBool
       value: Reload
       objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: reloadDelay.maxTime
+      value: 2.66
+      objectReference: {fileID: 0}
     - target: {fileID: 4342418668238935986, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_SortingOrder
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 4342418668238935986, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
     - target: {fileID: 4342418668238935991, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_TagString
       value: PlayerArm
@@ -4531,6 +4539,10 @@ PrefabInstance:
       propertyPath: AnimPlayer
       value: 
       objectReference: {fileID: 948621413}
+    - target: {fileID: 4342418669709362197, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
     - target: {fileID: 4342418669709362199, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_TagString
       value: PlayerArm
@@ -4615,6 +4627,27 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4342418669316601403, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 4342418669529012302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &893394009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4342418669709362199, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 4342418669529012302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5841878536653938908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893394009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tommyRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  tommyLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
+  idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!1 &966027444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4342418669924086010, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
@@ -4625,6 +4658,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
   m_PrefabInstance: {fileID: 4342418669529012302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1562710009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4342418668238935991, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+  m_PrefabInstance: {fileID: 4342418669529012302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3274775735443843121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562710009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tommyRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  tommyLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
+  idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!114 &3213876410492947914 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
