@@ -102,6 +102,10 @@ public class PathfindingManager : MonoBehaviour
     #region Instantiation
     private void Start()
     {
+        if (!Application.isPlaying)
+        // We don't want Start running in the editor, only Awake.
+            return;
+
         if (!grid)
         {
             throw new NullReferenceException("Value of grid not set! " +
