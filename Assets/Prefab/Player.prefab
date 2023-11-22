@@ -1060,7 +1060,7 @@ MonoBehaviour:
     - key: tommyShoot
       value: {fileID: 8300000, guid: 3b5cae9bea1455b4caffb6cd6c860e08, type: 3}
     - key: tommyAlt
-      value: {fileID: 8300000, guid: 87e171d9ac7446f41937546e879348bb, type: 3}
+      value: {fileID: 8300000, guid: 07380eafeca0b8e4389dd771c4c66d57, type: 3}
     - key: tommyReload
       value: {fileID: 8300000, guid: 73e29122d52b3b74aa8c6c779ab3deb6, type: 3}
     - key: shotgunShoot
@@ -3786,7 +3786,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8206075540257416582}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b183afc7ebe34224d88d06e7b76da761, type: 3}
@@ -4249,7 +4249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: altFireDelay.maxTime
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492258955962, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4261,7 +4261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462794, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_RootOrder
@@ -4445,8 +4445,32 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 2770841203617395345, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 647b218be81d9ec4281a899afed099a9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+--- !u!1 &1030203828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2770841203617395346, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
+  m_PrefabInstance: {fileID: 2770841203435297574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195408301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030203828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18786d415c8044e4bb1686c3475bd6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flamethrowerHand: {fileID: 2100000, guid: 647b218be81d9ec4281a899afed099a9, type: 2}
+  shootIdleEmission: {fileID: 2800000, guid: 86f3b840a3093be499702057d69b8d96, type: 3}
+  reloadEmission: {fileID: 2800000, guid: 0e713df66ce66c244b88b8513a3463dd, type: 3}
 --- !u!1 &1758217588 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2770841202751872594, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
@@ -4644,8 +4668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tommyRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
-  tommyLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
   shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
   idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!1 &966027444 stripped
@@ -4675,8 +4699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tommyRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
-  tommyLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
   shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
   idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!114 &3213876410492947914 stripped
