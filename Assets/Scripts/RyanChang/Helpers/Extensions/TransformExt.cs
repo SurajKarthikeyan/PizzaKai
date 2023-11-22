@@ -31,9 +31,9 @@ public static class TransformExt
 
     /// <summary>
     /// Sets the local position, rotation, and scale of the transform to their
-    /// "default" values.
+    /// "default" values. 
     /// </summary>
-    /// <param name="transform"></param>
+    /// <inheritdoc cref="Localize(Transform, Transform)"/>
     public static void Localize(this Transform transform)
     {
         transform.localPosition = Vector3.zero;
@@ -45,8 +45,14 @@ public static class TransformExt
     /// Sets the local position, rotation, and scale of the transform to their
     /// "default" values, while also setting the parent.
     /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="newParent"></param>
+    /// <remarks>
+    /// The "default" values sets the local position to (0, 0,
+    /// 0), setting local rotation to the identity, and setting local scale to
+    /// (1, 1, 1).
+    /// </remarks>
+    /// <param name="transform">Transform to localize.</param>
+    /// <param name="newParent">The new parent of <paramref
+    /// name="transform"/>.</param>
     public static void Localize(this Transform transform, Transform newParent)
     {
         transform.SetParent(newParent, false);

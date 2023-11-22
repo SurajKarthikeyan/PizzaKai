@@ -47,7 +47,6 @@ public class UpgradeManager : MonoBehaviour
     #region Startup
     private void Awake()
     {
-        if (instance == null)
         this.InstantiateSingleton(ref instance);
     }
 

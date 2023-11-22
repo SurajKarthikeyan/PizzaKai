@@ -1,5 +1,12 @@
 using UnityEngine;
 
+/// <summary>
+/// Represents a projectile that uses raycasting to move and deal damage.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2023)
+/// </summary>
 public class SimpleProjectile : DamagingWeaponSpawn
 {
     #region Variables
