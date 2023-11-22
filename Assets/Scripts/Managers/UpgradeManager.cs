@@ -21,6 +21,8 @@ public class UpgradeManager : MonoBehaviour
     private WeaponModule flamethrower;
     private WeaponModule sniper;
 
+    private static int endingWeapon;
+
     private WeaponMasterModule WMM;
 
     [Header("Upgrade Values")]
@@ -97,6 +99,11 @@ public class UpgradeManager : MonoBehaviour
             sniperUP = false;
             UpgradeSniper();
         }
+
+        if(WMM.weaponIndex != endingWeapon)
+        {
+            WMM.SwitchToWeapon(endingWeapon);
+        }
     }
     #endregion
 
@@ -139,5 +146,10 @@ public class UpgradeManager : MonoBehaviour
     }
 
     #endregion
+
+    public void RememberWeapon()
+    {
+        endingWeapon = WMM.weaponIndex;
+    }
     
 }
