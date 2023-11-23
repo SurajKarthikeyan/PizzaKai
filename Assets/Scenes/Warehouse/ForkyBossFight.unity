@@ -82752,7 +82752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1270830840, guid: 62e65030de028344b9b7e1d0f63b7577, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1270830841, guid: 62e65030de028344b9b7e1d0f63b7577, type: 3}
       propertyPath: m_AnchorMax.x
@@ -84726,7 +84726,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4673764846743304713, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c9e3181f44a380b468a3489099ce81b8, type: 3}
 --- !u!114 &1932903898 stripped
 MonoBehaviour:
