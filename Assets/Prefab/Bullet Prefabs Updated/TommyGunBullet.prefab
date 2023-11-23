@@ -100,7 +100,7 @@ MonoBehaviour:
   firedBy: {fileID: 0}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 593672
+    m_Bits: 610056
   damage:
     rangePattern: 0
     singleValue: 2.5
@@ -190,3 +190,4 @@ MonoBehaviour:
   spreadMaxMult: 2.5
   ricochets: 0
   spawnOnDeath: {fileID: 0}
+  currentRicochets: 0

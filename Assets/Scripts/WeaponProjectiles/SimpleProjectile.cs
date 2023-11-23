@@ -1,4 +1,7 @@
+using Fungus;
+using NaughtyAttributes;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,15 +27,14 @@ public class SimpleProjectile : DamagingWeaponSpawn
     [Tooltip("The maximum multiplier for the spread.")]
     public float spreadMaxMult = 2.5f;
 
-    // [Tooltip("Gravity applied to the projectile.")]
-    // public Vector2 gravity = new(0, -9.81f);
-
     [Tooltip("How many ricochets does this projectile have?")]
     public int ricochets = 0;
 
     [Tooltip("[Optional] What to spawn on death?")]
     public GameObject spawnOnDeath;
 
+    [SerializeField]
+    [ReadOnly]
     private int currentRicochets = 0;
 
     private float deltaDistance = 0;
@@ -40,6 +42,8 @@ public class SimpleProjectile : DamagingWeaponSpawn
     private Duration lifetime;
 
     private ContactFilter2D contactFilter;
+
+    private bool collidingWithRichochetSurface;
     #endregion
 
     #region Properties
@@ -141,19 +145,15 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     }
                     if (!gameObject.HasComponent<AltFlameProjectile>())
                     {
-                        if (currentRicochets < ricochets)
+                        if (currentRicochets < ricochets || collider.gameObject.CompareTag("BossForky"))
                         {
                             // Handle ricochets. Position projectile very close to
                             // the hit point, but not quite there.
-                            Vector2 diff = hit.point - transform.position.ToVector2();
-                            transform.position += diff.ToVector3() * 0.95f;
-
-                            // Make the projectile go in the collision normal
-                            // direction.
-                            transform.right = Vector3.Reflect(
-                                Forwards,
-                                hit.normal.ToVector3()
-                            );
+                            BulletRicochet(hit);
+                            if (collider.gameObject.CompareTag("BossForky"))
+                            {
+                                BossManager.instance.bulletsReflected++;
+                            }
                         }
                         else
                         {
@@ -179,6 +179,21 @@ public class SimpleProjectile : DamagingWeaponSpawn
         {
             DestroyProjectile();
         }
+    }
+    /// <summary>
+    /// Richochets this bullet
+    /// </summary>
+    public void BulletRicochet(RaycastHit2D hit)
+    {
+        Vector2 diff = hit.point - transform.position.ToVector2();
+        transform.position += diff.ToVector3() * 0.95f;
+
+        // Make the projectile go in the collision normal
+        // direction.
+        transform.right = Vector3.Reflect(
+        Forwards,
+            hit.normal.ToVector3()
+        );
     }
 
     public void DestroyProjectile()
