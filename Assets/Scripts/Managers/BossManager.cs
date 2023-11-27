@@ -46,7 +46,7 @@ public class BossManager : MonoBehaviour
         if ( bulletsReflected > 0 && bulletsReflected % 15 == 0)
         {
             //Play some dialogue of Forky saying that the player can't shoot him or something
-            print("15 more shots have hit forky's barrier");
+            DialogueManager.Instance.CallDialogueBlock("Forky Invincible Block");
         }
     }
 
