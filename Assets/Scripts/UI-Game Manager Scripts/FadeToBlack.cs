@@ -54,6 +54,8 @@ public class FadeToBlack : MonoBehaviour
                 levelAnalytics.levelCompleted = true;
                 levelAnalytics.PostLevelAnalytics();
 
+                UpgradeManager.Instance.RememberWeapon();
+
                 SceneManager.LoadScene(sceneToLoad);
                 
             }

@@ -1,6 +1,11 @@
+using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that manages bosses, in this particular case Forky
+/// </summary>
 public class BossManager : MonoBehaviour
 {
     public bool bossStart = false;
@@ -16,13 +21,15 @@ public class BossManager : MonoBehaviour
     public AudioSource music;
 
     public AudioClip bossTheme;
+
+    [ReadOnly]
+    public int bulletsReflected;
     
     [SerializeField]
     private List<BoxCollider2D> generatorColliders;
 
     public static BossManager instance;
 
-    public int interpolationFramesCount = 60; // Number of frames to completely interpolate between the 2 positions
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,12 +39,16 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    
-    private void Start()
+    private void Update()
     {
-        
+        if ( bulletsReflected > 0 && bulletsReflected % 15 == 0)
+        {
+            //Play some dialogue of Forky saying that the player can't shoot him or something
+            DialogueManager.Instance.CallDialogueBlock("Forky Invincible Block");
+        }
     }
-    
+
+
     public void ForkyBossStart()
     {
         forky.active = true;

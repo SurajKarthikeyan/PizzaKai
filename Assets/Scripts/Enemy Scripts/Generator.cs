@@ -19,6 +19,9 @@ public class Generator : EnemyBasic
     private static readonly int IsVulnerable = Animator.StringToHash("isVulnerable");
     private Forky forky;
 
+    private GameObject reticleGO;
+
+
     #endregion
 
     #region  UnityMethods
@@ -27,6 +30,7 @@ public class Generator : EnemyBasic
         base.Start();
         isVulnerable = false;
         forky = GameObject.Find("Forky").GetComponent<Forky>();
+        reticleGO = transform.GetChild(1).gameObject;
     }
 
     // Overrided to do nothing to avoid console errors with pathfinding (generator doesn't need pathfinding)
@@ -36,6 +40,15 @@ public class Generator : EnemyBasic
         {
             deathState = true;
             OnDeath();
+        }
+
+        if (isVulnerable)
+        {
+            reticleGO.transform.Rotate(new Vector3(0, 0, -50 * Time.deltaTime));
+        }
+        else
+        {
+            reticleGO.transform.rotation = Quaternion.identity;
         }
     }
     
@@ -57,10 +70,11 @@ public class Generator : EnemyBasic
     IEnumerator VulnerabilityWait()
     {
         isVulnerable = true;
+        reticleGO.SetActive(true);
         yield return new WaitForSeconds(vulnerableTime);
         isVulnerable = false;
+        reticleGO.SetActive(false);
         generatorAnimator.SetBool(IsVulnerable, false);
-
     }
 
     private void OnDeath()

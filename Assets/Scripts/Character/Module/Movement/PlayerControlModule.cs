@@ -50,8 +50,7 @@ public class PlayerControlModule : Module
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            movementController.inputtedDash =
-                movementController.inputtedMovement;
+            movementController.inputtedDash = new Vector2(movementController.inputtedMovement.x, 0);
         }
         else
         {

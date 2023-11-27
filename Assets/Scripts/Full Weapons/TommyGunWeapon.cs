@@ -47,7 +47,7 @@ public class TommyGunWeapon : WeaponModule
     /// </summary>
     public override void AltFire()
     {
-        base.AltFire();
+        //base.AltFire();
         StartCoroutine(TommyRapidFire());
         
     }
@@ -55,15 +55,20 @@ public class TommyGunWeapon : WeaponModule
     IEnumerator TommyRapidFire()
     {
         ReloadWeapon();
+        yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
+        weaponAction = WeaponAudioStrings.Alt;
+        altFireDelay.Reset();
+        PlayAudio();
+        yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
         Duration savedDelay = new Duration(firingDelay.maxTime);
         firingDelay.maxTime = altWaitBetweenShots;
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
         {
             PressTrigger();
             yield return new WaitForSeconds(altWaitBetweenShots);
         }
-        ReloadWeapon();
+        //ReloadWeapon();
         firingDelay = savedDelay;
     }
     #endregion
