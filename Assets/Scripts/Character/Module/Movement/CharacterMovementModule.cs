@@ -158,6 +158,10 @@ public class CharacterMovementModule : Module
     public MovementStatus movementStatus;
 
     private Vector2 lockedDashInput;
+
+    [SerializeField] private int totalJumps = 1; //Number of additional jumps the player can perform
+
+    private int numJumps = 0; //current jumps available
     #endregion
     #endregion
 
@@ -177,6 +181,7 @@ public class CharacterMovementModule : Module
     #region Instantiation
     private void Start()
     {
+        numJumps = totalJumps;
 
         // Make sure max speed is positive.
         maxMoveSpeed = maxMoveSpeed.Abs();
@@ -284,8 +289,13 @@ public class CharacterMovementModule : Module
 
         if (inputtedJump && CanJump() && oneJump)
         {
+            if(!TouchingGround)
+            {
+                numJumps -= 1;
+            }
             // Since a jump is only performed for one fixed update, it must be
             // an impulse.
+            Master.r2d.velocity = new Vector2(Master.r2d.velocity.x, 0);
             Master.r2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             groundedStatus = GroundedStatus.AirbornFromJump;
@@ -297,6 +307,7 @@ public class CharacterMovementModule : Module
         }
         else if (TouchingGround)
         {
+            numJumps = totalJumps;
             groundedStatus = GroundedStatus.Grounded;
             coyoteTimer.Reset();
         }
@@ -385,7 +396,7 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            TouchingGround && Master.r2d.velocity.y <= 0.1f;
+            (TouchingGround || numJumps > 0) && Master.r2d.velocity.y <= 0.1f;
     }
 
     private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
