@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 /// <summary>
 /// Can be used in a sorted list, dictionary, or set in order to define priority

@@ -99,7 +99,7 @@ public class CollisionProjectile : DamagingWeaponSpawn
 
     private void TestCollision(GameObject collideWith)
     {
-        if (collisionMask.ContainsLayer(collideWith.layer))
+        if (CollisionMask.ContainsLayer(collideWith.layer))
         {
             if (flags.HasFlag(Flags.KillOnCollide))
             {

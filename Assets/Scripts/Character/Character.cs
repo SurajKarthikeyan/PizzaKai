@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -65,6 +64,12 @@ public sealed class Character : MonoBehaviour
 
     [SerializeField]
     private float knockbackMultiplier = 1;
+
+    [BoxGroup("Common Modules")]
+    [Tooltip("The weapon master module, if one exists. Make sure to check if " +
+        "null.")]
+    [ReadOnly]
+    public WeaponMasterModule weaponMasterModule;
     #endregion
 
     #endregion
@@ -103,7 +108,7 @@ public sealed class Character : MonoBehaviour
         }
     }
 
-    public List<Module> Modules { get; private set; } = new();
+    private List<Module> Modules { get; set; } = new();
     #endregion
 
     // These are local events that can be captured by child Modules. By
@@ -136,17 +141,21 @@ public sealed class Character : MonoBehaviour
     private void Awake()
     {
         SetVars();
-        MaxHeal();
-        transform.position = transform.position.ToVector2();
-    }
 
-    public void MaxHeal()
-    {
+        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
+
+        if (IsPlayer)
+        {
+            GameManager.Instance.Player = player.Master;
+        }
+
         HP = maxHP;
     }
 
     private void SetVars()
     {
+        transform.position = transform.position.ToVector2();
+
         GetComponentsInChildren(true, Modules);
         Modules.ForEach(module => module.LinkToMaster(this));
 
@@ -156,12 +165,45 @@ public sealed class Character : MonoBehaviour
 
         this.RequireComponent(out flipModule);
 
-        IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
+        this.HasComponentInChildren(out weaponMasterModule);
+    }
 
-        if (IsPlayer)
-        {
-            GameManager.Instance.Player = player.Master;
-        }
+    private void Reset()
+    {
+        hp = 20;
+    }
+    #endregion
+
+    #region Module Methods
+    /// <summary>
+    /// Adds <paramref name="module"/> to the list of modules.
+    /// Fails if <paramref name="module"/> already exists in that list.
+    /// </summary>
+    /// <param name="module">The module.</param>
+    /// <returns>True if the module was not previously in the list, false otherwise.</returns>
+    public bool AddModule(Module module)
+    {
+        if (Modules.Contains(module))
+            return false;
+
+        Modules.Add(module);
+        module.LinkToMaster(this);
+        return true;
+    }
+
+    /// <summary>
+    /// Removes <paramref name="module"/> from the list of modules.
+    /// Fails if <paramref name="module"/> does not exist in that list.
+    /// </summary>
+    /// <param name="module">The module.</param>
+    /// <returns>True if the module was removed, false otherwise.</returns>
+    public bool RemoveModule(Module module)
+    {
+        if (!Modules.Contains(module))
+            return false;
+
+        Modules.Remove(module);
+        return true;
     }
     #endregion
 
@@ -220,6 +262,18 @@ public sealed class Character : MonoBehaviour
     }
 
     /// <summary>
+    /// If the character is dead, revive the character. Otherwise, restore all
+    /// health.
+    /// </summary>
+    public void MaxHeal()
+    {
+        if (IsDead)
+            Revive();
+        else
+            HP = maxHP;
+    }
+
+    /// <summary>
     /// Revives the character with max HP.
     /// </summary>
     public void Revive()
@@ -267,5 +321,24 @@ public sealed class Character : MonoBehaviour
         }
 
         audioSource.PlayOneShot(clip);
+    }
+
+    /// <summary>
+    /// Uses the <see cref="AudioDictionary"/> to play a sound.
+    /// </summary>
+    /// <param name="audKey">The key of the audio dictionary.</param>
+    public void PlayClip(string audKey)
+    {
+        if (AudioDictionary.aDict.audioDict.TryGetValue(audKey, out AudioClip clip))
+        {
+            PlayClip(clip);
+        }
+        else
+        {
+            Debug.LogWarning(
+                $"Key {audKey} not found in AudioDictionary",
+                AudioDictionary.aDict
+            );
+        }
     }
 }

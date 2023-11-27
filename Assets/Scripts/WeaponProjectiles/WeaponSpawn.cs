@@ -58,14 +58,27 @@ public abstract class WeaponSpawn : MonoBehaviour
     /// <returns></returns>
     public WeaponSpawn Spawn(WeaponModule weapon)
     {
+        // Note that [this] corresponds to the prefab of the weapon spawn, not
+        // the actual instance. 
         var spawned = this.InstantiateComponent(
             weapon.firePoint.position,
             weapon.firePoint.rotation
         );
         CinemachineCameraShake.instance.ShakeScreen();
 
+        // Set layer of spawned projectile based on if the character is an enemy
+        // or player. This allows the projectile to use the default layer
+        // collisions provided by LayersManager (see
+        // LayersManager.playerBulletsCollision and
+        // LayersManager.enemyBulletsCollision).
+        spawned.gameObject.layer = weapon.Master.IsPlayer ?
+            LayersManager.Player :
+            LayersManager.EnemyProjectile;
+
+        // Set the spawned object active.
         spawned.gameObject.SetActive(true);
-        
+
+        // Actually fire the spawned thing.
         spawned.firedBy = weapon;
         spawned.FireInternal();
         return spawned;

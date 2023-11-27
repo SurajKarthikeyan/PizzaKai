@@ -65,7 +65,7 @@ public class TommyGunWeapon : WeaponModule
         //yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
         {
-            TryFireWeapon();
+            PressTrigger();
             yield return new WaitForSeconds(altWaitBetweenShots);
         }
         //ReloadWeapon();

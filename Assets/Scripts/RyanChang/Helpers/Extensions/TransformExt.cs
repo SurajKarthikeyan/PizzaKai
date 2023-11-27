@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -32,9 +31,9 @@ public static class TransformExt
 
     /// <summary>
     /// Sets the local position, rotation, and scale of the transform to their
-    /// "default" values.
+    /// "default" values. 
     /// </summary>
-    /// <param name="transform"></param>
+    /// <inheritdoc cref="Localize(Transform, Transform)"/>
     public static void Localize(this Transform transform)
     {
         transform.localPosition = Vector3.zero;
@@ -46,11 +45,17 @@ public static class TransformExt
     /// Sets the local position, rotation, and scale of the transform to their
     /// "default" values, while also setting the parent.
     /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="newParent"></param>
+    /// <remarks>
+    /// The "default" values sets the local position to (0, 0,
+    /// 0), setting local rotation to the identity, and setting local scale to
+    /// (1, 1, 1).
+    /// </remarks>
+    /// <param name="transform">Transform to localize.</param>
+    /// <param name="newParent">The new parent of <paramref
+    /// name="transform"/>.</param>
     public static void Localize(this Transform transform, Transform newParent)
     {
-        transform.parent = newParent;
+        transform.SetParent(newParent, false);
         transform.Localize();
     }
 
@@ -62,8 +67,10 @@ public static class TransformExt
     /// <param name="other"></param>
     public static void MatchOther(this Transform target, Transform other)
     {
-        target.position = other.position;
-        target.rotation = other.rotation;
+        target.SetPositionAndRotation(
+            other.position,
+            other.rotation
+        );
     }
 
     /// <summary>
@@ -106,9 +113,14 @@ public static class TransformExt
     /// etc, etc.
     /// </summary>
     /// <param name="transform"></param>
+    /// <param name="includeSelf">If true, the iteration contains <paramref name="transform"/>.</param>
     /// <returns></returns>
-    public static IEnumerable<Transform> Parents(this Transform transform)
+    public static IEnumerable<Transform> Parents(this Transform transform,
+        bool includeSelf = true)
     {
+        if (includeSelf)
+            yield return transform;
+
         Transform parent = transform.parent;
 
         while (parent != null)

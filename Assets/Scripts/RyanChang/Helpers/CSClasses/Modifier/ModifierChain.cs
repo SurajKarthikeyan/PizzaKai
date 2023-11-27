@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 /// <summary>
 /// Defines a chain of <see cref="Modifier"/>s. Allows one float to be modified

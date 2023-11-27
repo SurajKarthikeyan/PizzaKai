@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 [Serializable]
@@ -34,6 +33,38 @@ public class Modifier
     public float Modify(float input)
     {
         return input * multiplier + addition;
+    }
+
+    /// <summary>
+    /// Modifies a range. <see cref="Range.singleValue"/>, <see
+    /// cref="Range.scalarMin"/>, and <see cref="Range.scalarMax"/> are modified
+    /// as floats. <see cref="Range.modifier"/> is modified memberwise, which
+    /// serves to modify the <see cref="Range.RangePattern.Curves"/> and <see
+    /// cref="Range.RangePattern.Perlin"/> modes.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public Range Modify(Range input)
+    {
+        return new(input.rangePattern)
+        {
+            singleValue = Modify(input.singleValue),
+            scalarMin = Modify(input.scalarMin),
+            scalarMax = Modify(input.scalarMax),
+            modifier = MemberwiseModify(input.modifier)
+        };
+    }
+
+    /// <summary>
+    /// Returns a new modifier whose addition component is the sum of the
+    /// inputs' addition components and whose multiplier component is the
+    /// product of the inputs' multiplier components.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public Modifier MemberwiseModify(Modifier input)
+    {
+        return new(addition + input.addition, multiplier * input.multiplier);
     }
 
     public override int GetHashCode()

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class HealthPickup : Pickup
 {
     #region Variables

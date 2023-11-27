@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     [ReadOnly]
     [SerializeField]
     private Character player = null;
+
+    private WeaponMasterModule playerWeaponMaster;
+
+    private CharacterMovementModule playerMovement;
     #endregion
 
     #region Properties
@@ -50,10 +54,21 @@ public class GameManager : MonoBehaviour
             else
             {
                 player = value;
+                player.RequireComponentInChildren(out playerWeaponMaster);
+                player.RequireComponent(out playerMovement);
             }
         }
     }
 
+    /// <summary>
+    /// The <see cref="WeaponMasterModule"/> of the player.
+    /// </summary>
+    public WeaponMasterModule PlayerWeapons => playerWeaponMaster;
+
+    /// <summary>
+    /// The movement module of the player.
+    /// </summary>
+    public CharacterMovementModule PlayerMovement => playerMovement;
     #endregion
 
     private void Awake()

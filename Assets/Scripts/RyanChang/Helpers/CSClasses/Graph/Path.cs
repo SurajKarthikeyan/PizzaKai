@@ -6,17 +6,11 @@ using System.Linq;
 public class Path<T> : IEnumerable<Vertex<T>>,
     IEnumerable<GraphEdge<T>>, ITraceable<T> where T : IEquatable<T>
 {
-    private Dictionary<Vertex<T>, Vertex<T>> path;
+    private readonly Dictionary<Vertex<T>, Vertex<T>> path;
 
     public Vertex<T> Start { get; private set; }
     public Vertex<T> End { get; private set; }
     public Graph<T> Graph { get; private set; }
-
-    /// <summary>
-    /// The total number of nodes in the path, from <see cref="Start"/> to <see
-    /// cref="End"/>.
-    /// </summary>
-    public int Count { get; private set; }
 
     /// <summary>
     /// Creates a new path.
@@ -29,18 +23,14 @@ public class Path<T> : IEnumerable<Vertex<T>>,
             throw new PathfindingException($"start and end are the same: {start}");
 
         path = new();
-        this.Graph = graph;
-        this.Start = start;
-        this.End = end;
-
-        Count = 0;
+        Graph = graph;
+        Start = start;
+        End = end;
 
         Vertex<T> next = end;
 
         while (next != start)
         {
-            Count++;
-
             var prev = next;
             try
             {
@@ -72,10 +62,12 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         }
     }
 
-    public void UpdatePath(Vertex<T> from, Vertex<T> to)
-    {
-        path[from] = to;
-    }
+    /// <summary>
+    /// Index by <typeparamref name="T"/>.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <returns>The vertex associated with the key.</returns>
+    public Vertex<T> this[T key] => Graph.GetVertex(key);
 
     /// <summary>
     /// Traverse to the next item in the path.
@@ -85,7 +77,17 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     /// <returns></returns>
     public T Next(T begin)
     {
-        return path[Graph.GetVertex(begin)].id;
+        try
+        {
+            return this[begin].id;
+        }
+        catch (KeyNotFoundException e)
+        {
+            throw new PathfindingException(
+                $"Vertex of ID {begin} is not in path.",
+                e
+            );
+        }
     }
 
     /// <inheritdoc cref="Next(T)"/>
@@ -98,13 +100,18 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         catch (KeyNotFoundException e)
         {
             var trailingEdge = path
-                .Where(e => e.Value == begin);
-            throw new PathfindingException($"Vertex {begin} is not in path.", e);
+                .FirstOrDefault(edge => edge.Value == begin);
+            throw new PathfindingException(
+                $"Vertex {begin} (trailing edge [{trailingEdge.Key}, " +
+                $"{trailingEdge.Value}]) is not in path.",
+                e
+            );
         }
     }
 
     /// <summary>
-    /// Traverse to the next N items on the path.
+    /// Traverse to the next N items on the path. Stops traversal if we reach
+    /// the end of the path.
     /// </summary>
     /// <param name="steps">How many items to traverse?</param>
     /// <param name="stepsTaken">How many items were actually traversed before
@@ -123,7 +130,7 @@ public class Path<T> : IEnumerable<Vertex<T>>,
 
         for (int i = 0; i < steps; i++)
         {
-            next = path[next];
+            next = Next(next);
 
             if (next == End)
                 break;
@@ -174,6 +181,113 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     }
 
     /// <summary>
+    /// Removes all vertices between <paramref name="left"/> and <paramref
+    /// name="right"/>. The weights of the removed edges and heuristics of the
+    /// removed vertices are preserved as the weight of the new edge between the
+    /// two vertices.
+    /// </summary>
+    public void Intrasect(Vertex<T> left, Vertex<T> right)
+    {
+        // Don't need to run this if right is literally the next value.
+        if (Next(left) == right)
+            return;
+
+        // Step 1: Get total cost of edges.
+        float totalCost = GetEdges(left, right)
+            .Sum(e => e.weight);
+
+        // Step 2: Remove intermediate vertices and get their heuristics.
+        var next = Next(left);
+        do
+        {
+            var prev = next;
+            totalCost += prev.heuristic;
+            next = Next(next);
+            path.Remove(prev);
+        }
+        while (next != right);
+
+        // Step 3: Bridge left and right.
+        path[left] = right;
+
+        // Step 4: Set cost of edge.
+        left.Adjacent[right.id] = totalCost;
+    }
+
+    #region Get Length
+    /// <summary>
+    /// Returns the length of the path from <paramref name="from"/> to <paramref
+    /// name="to"/>.
+    /// </summary>
+    /// <param name="from">The vertex to start iteration at.</param>
+    /// <param name="to">The vertex to stop iteration at.</param>
+    /// <returns></returns>
+    public int GetLength(Vertex<T> from, Vertex<T> to)
+    {
+        if (from == null)
+            throw new ArgumentNullException("Vertex from is null");
+        else if (to == null)
+            throw new ArgumentNullException("Vertex to is null");
+
+        int cnt = 1;
+
+        while (from != to)
+        {
+            cnt++;
+            from = Next(from);
+        }
+
+        return cnt;
+    }
+
+    /// <summary>
+    /// Returns the length of the path from <paramref name="from"/> to <see
+    /// cref="End"/>.
+    /// </summary>
+    /// <inheritdoc cref="GetLength(Vertex{T}, Vertex{T})"/>
+    public int GetLength(Vertex<T> from) => GetLength(from, End);
+
+    /// <summary>
+    /// Returns the length of the path from <see cref="Start"/> to <see
+    /// cref="End"/>.
+    /// </summary>
+    /// <inheritdoc cref="GetLength(Vertex{T}, Vertex{T})"/>
+    public int GetLength() => GetLength(Start, End);
+
+    // <summary>
+    /// Returns the length of the path from <paramref name="from"/> to <paramref
+    /// name="to"/>.
+    /// </summary>
+    /// <param name="from">The vertex to start iteration at.</param>
+    /// <param name="to">The vertex to stop iteration at.</param>
+    /// <returns></returns>
+    public int GetLength(T from, T to)
+    {
+        if (!Graph.TryGetVertex(from, out var fromV))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(from),
+                $"{from} does not exist in the graph"
+            );
+        }
+
+        if (!Graph.TryGetVertex(to, out var toV))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(to),
+                $"{to} does not exist in the graph"
+            );
+        }
+
+        return GetLength(fromV, toV);
+    }
+
+    /// <inheritdoc cref="GetLength(Vertex{T})"/>
+    public int GetLength(T from) => GetLength(from, End.Value);
+    #endregion
+
+    #region Get Vertices
+    /// <summary>
     /// Returns all the vertices along this path from <paramref name="from"/> to
     /// <paramref name="to"/>.
     /// </summary>
@@ -214,6 +328,43 @@ public class Path<T> : IEnumerable<Vertex<T>>,
     {
         return GetVertices(Start);
     }
+    #endregion
+
+    #region Get Edges
+    /// <summary>
+    /// Iterates through the edges of the path.
+    /// </summary>
+    /// <param name="from">The vertex to start the iteration from.</param>
+    /// <param name="to">The vertex to end the iteration at.</param>
+    /// <returns></returns>
+    public IEnumerable<GraphEdge<T>> GetEdges(Vertex<T> from, Vertex<T> to)
+    {
+        GraphEdge<T> edge = new(from, Next(from));
+
+        while (edge.to != to)
+        {
+            yield return edge;
+            from = Next(from);
+            edge = new(from, Next(from));
+        }
+
+        yield return edge;
+    }
+
+    /// <summary>
+    /// Iterates through the edges of the path, until we reach the end.
+    /// </summary>
+    /// <inheritdoc cref="GetEdges(Vertex{T}, Vertex{T})"/>
+    public IEnumerable<GraphEdge<T>> GetEdges(Vertex<T> from) =>
+        GetEdges(from, End);
+
+    /// <summary>
+    /// Iterates through all edges of the path.
+    /// </summary>
+    /// <inheritdoc cref="GetEdges(Vertex{T}, Vertex{T})"/>
+    public IEnumerable<GraphEdge<T>> GetEdges() =>
+        GetEdges(Start, End);
+    #endregion
 
     /// <summary>
     /// Iterates through the path, beginning at <paramref name="begin"/>, until

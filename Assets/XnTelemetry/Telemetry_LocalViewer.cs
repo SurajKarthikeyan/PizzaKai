@@ -1,13 +1,11 @@
 //#define ENABLED
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
-namespace XnTelemetry {
+namespace XnTelemetry
+{
     /// <summary>
     /// The Telemetry_LocalViewer class is included here in case you want to
     /// implement a local solution in the future. It is no longer used, and it

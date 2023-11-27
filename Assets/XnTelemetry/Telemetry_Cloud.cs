@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.Networking;
 
 
-namespace XnTelemetry {
+namespace XnTelemetry
+{
     public class Telemetry_Cloud : MonoBehaviour {
         static public float LOG_INTERVAL = 0.25f;
         static protected bool DEBUG_FORM_DATA = false;
