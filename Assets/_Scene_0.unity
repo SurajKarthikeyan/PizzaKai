@@ -1,0 +1,806 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.45137054, g: 0.5003875, b: 0.5697814, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 23800000, guid: 9897b20e546d84798bbb69436ef4dc4a, type: 2}
+--- !u!1 &208317113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208317117}
+  - component: {fileID: 208317116}
+  - component: {fileID: 208317115}
+  - component: {fileID: 208317114}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!65 &208317114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208317113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &208317115
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208317113}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 30d4dadae167d48908e0e161357be12b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &208317116
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208317113}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &208317117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208317113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 40, y: 1, z: 40}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &435467274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+  m_PrefabInstance: {fileID: 1553820766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &544131532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979513502919885530, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_Name
+      value: Agent_Prefab_N
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979513502919885530, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+--- !u!4 &943407769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3470765610573780759, guid: 2e355329a432449ec9c406e579c87312, type: 3}
+  m_PrefabInstance: {fileID: 544131532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1062580546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4178681796339728513, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_Name
+      value: Agent_Prefab_Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+--- !u!1 &1141641174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141641176}
+  - component: {fileID: 1141641175}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1141641175
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141641174}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1141641176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141641174}
+  m_LocalRotation: {x: 0.0020269966, y: -0.31241295, z: 0.7201362, w: 0.6195142}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 26.902, y: -25.518, z: 92.391}
+--- !u!1001 &1553820766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887332263813186419, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_Name
+      value: Agent_Prefab_M
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887332263813186419, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1f52d3b8e3d6423da2b941d10def659, type: 3}
+--- !u!1 &1647429629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647429632}
+  - component: {fileID: 1647429631}
+  - component: {fileID: 1647429630}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1647429630
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647429629}
+  m_Enabled: 1
+--- !u!20 &1647429631
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647429629}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1647429632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647429629}
+  m_LocalRotation: {x: 0.3314368, y: -0, z: -0, w: 0.9434774}
+  m_LocalPosition: {x: 0, y: 7.65, z: -22.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 38.712, y: 0, z: 0}
+--- !u!4 &1683515530 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8451754497990055244, guid: 133abc2b022b042dd94cf2a1f6cdbff1, type: 3}
+  m_PrefabInstance: {fileID: 1062580546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1753833369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887332263813186419, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_Name
+      value: Agent_Prefab_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887332263813186419, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+--- !u!1 &1892168204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1892168206}
+  - component: {fileID: 1892168205}
+  - component: {fileID: 1892168207}
+  m_Layer: 0
+  m_Name: __XnTelemetry__
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1892168205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892168204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7758da26a58734620bf909a4ef9e0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordTelemetry: 1
+  telemetrySettings: {fileID: 11400000, guid: 037347efcef5d42ccb3e960477517c96, type: 2}
+  rotationTransform: {fileID: 0}
+  trackers:
+  - id: 0
+    color: {r: 0.8627451, g: 0.74509805, b: 1, a: 1}
+    positionTransform: {fileID: 1905159133}
+    rotationTransform: {fileID: 0}
+  - id: 1
+    color: {r: 0.5019608, g: 0, b: 0, a: 1}
+    positionTransform: {fileID: 435467274}
+    rotationTransform: {fileID: 0}
+  - id: 2
+    color: {r: 0, g: 0, b: 0.45882353, a: 1}
+    positionTransform: {fileID: 943407769}
+    rotationTransform: {fileID: 0}
+  - id: 3
+    color: {r: 1, g: 0.88235295, b: 0.09803922, a: 1}
+    positionTransform: {fileID: 1683515530}
+    rotationTransform: {fileID: 0}
+--- !u!4 &1892168206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892168204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1892168207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892168204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5b00b6a78e04369a36f57e6277b3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showTelemetry: 0
+  telemetrySettings: {fileID: 11400000, guid: 037347efcef5d42ccb3e960477517c96, type: 2}
+  coneScale: 0.42
+  telemetryEntries:
+  - show: 0
+    recNum: 2418
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-24 20:27:07
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.08\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.08\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.08\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.08\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t3.02\t0.08\t-7.23\t0.00\t31.85\t0.00\t0\n_\t0.35\t-4.38\t0.08\t1.31\t0.00\t42.40\t0.00\t1\n_\t0.35\t-5.91\t0.08\t-8.97\t0.00\t318.40\t0.00\t2\n_\t0.35\t0.05\t0.08\t0.02\t0.00\t41.63\t0.00\t3\n_\t0.61\t3.46\t0.08\t-6.52\t0.00\t31.85\t0.00\t0\n_\t0.61\t-4.35\t0.08\t0.46\t0.00\t72.76\t0.00\t1\n_\t0.61\t-6.70\t0.08\t-8.66\t0.00\t299.73\t0.00\t2\n_\t0.61\t0.85\t0.08\t0.31\t0.00\t61.14\t0.00\t3\n_\t0.86\t3.93\t0.08\t-5.77\t0.00\t31.85\t0.00\t0\n_\t0.86\t-4.33\t0.08\t-0.42\t0.00\t102.99\t0.00\t1\n_\t0.86\t-7.52\t0.08\t-8.35\t0.00\t293.90\t0.00\t2\n_\t0.86\t1.67\t0.08\t0.61\t0.00\t67.23\t0.00\t3\n_\t1.11\t4.40\t0.08\t-5.02\t0.00\t31.85\t0.00\t0\n_\t1.11\t-4.30\t0.08\t-1.30\t0.00\t133.24\t0.00\t1\n_\t1.11\t-8.34\t0.08\t-8.03\t0.00\t292.05\t0.00\t2\n_\t1.11\t2.50\t0.08\t0.91\t0.00\t69.16\t0.00\t3\n_\t1.37\t4.87\t0.08\t-4.26\t0.00\t31.85\t0.00\t0\n_\t1.37\t-4.27\t0.08\t-2.20\t0.00\t161.61\t0.00\t1\n_\t1.37\t-9.18\t0.08\t-7.70\t0.00\t291.46\t0.00\t2\n_\t1.37\t3.35\t0.08\t1.21\t0.00\t69.78\t0.00\t3\n_\t1.62\t5.34\t0.08\t-3.49\t0.00\t31.85\t0.00\t0\n_\t1.62\t-4.25\t0.08\t-3.09\t0.00\t173.10\t0.00\t1\n_\t1.62\t-10.02\t0.08\t-7.38\t0.00\t291.27\t0.00\t2\n_\t1.62\t4.19\t0.08\t1.52\t0.00\t69.97\t0.00\t3\n_\t1.87\t5.81\t0.08\t-2.75\t0.00\t31.85\t0.00\t0\n_\t1.87\t-4.22\t0.08\t-3.98\t0.00\t176.64\t0.00\t1\n_\t1.87\t-10.84\t0.08\t-7.06\t0.00\t291.22\t0.00\t2\n_\t1.87\t5.02\t0.08\t1.82\t0.00\t70.03\t0.00\t3\n_\t2.13\t6.27\t0.08\t-2.00\t0.00\t31.85\t0.00\t0\n_\t2.13\t-4.19\t0.08\t-4.86\t0.00\t177.77\t0.00\t1\n_\t2.13\t-11.58\t0.08\t-6.77\t0.00\t291.20\t0.00\t2\n_\t2.13\t5.85\t0.08\t2.12\t0.00\t70.05\t0.00\t3\nTurn\t2.34\t-11.95\t0.08\t-6.63\t0.00\t291.20\t0.00\t2\n_\t2.38\t6.66\t0.08\t-1.37\t0.00\t31.85\t0.00\t0\n_\t2.38\t-4.17\t0.08\t-5.75\t0.00\t178.13\t0.00\t1\n_\t2.38\t-11.98\t0.08\t-6.61\t0.00\t291.67\t0.00\t2\n_\t2.38\t6.69\t0.08\t2.43\t0.00\t70.06\t0.00\t3\nTurn\t2.53\t6.79\t0.08\t-1.16\t0.00\t31.85\t0.00\t0\n_\t2.63\t6.82\t0.08\t-1.05\t0.00\t27.53\t0.00\t0\n_\t2.63\t-4.14\t0.08\t-6.63\t0.00\t178.24\t0.00\t1\n_\t2.63\t-11.92\t0.08\t-6.44\t0.00\t316.23\t0.00\t2\n_\t2.63\t7.52\t0.08\t2.73\t0.00\t70.06\t0.00\t3\n_\t2.89\t6.54\t0.08\t-0.67\t0.00\t358.57\t0.00\t0\n_\t2.89\t-4.12\t0.08\t-7.52\t0.00\t178.27\t0.00\t1\n_\t2.89\t-11.36\t0.08\t-6.18\t0.00\t346.47\t0.00\t2\n_\t2.89\t8.35\t0.08\t3.03\t0.00\t70.06\t0.00\t3\n_\t3.14\t5.91\t0.08\t-0.28\t0.00\t328.82\t0.00\t0\n_\t3.14\t-4.09\t0.08\t-8.40\t0.00\t178.29\t0.00\t1\n_\t3.14\t-10.54\t0.08\t-5.86\t0.00\t16.72\t0.00\t2\n_\t3.14\t9.18\t0.08\t3.33\t0.00\t70.06\t0.00\t3\nTurn\t3.36\t5.58\t0.08\t-0.08\t0.00\t315.96\t0.00\t0\n_\t3.39\t5.55\t0.08\t-0.06\t0.00\t315.22\t0.00\t0\n_\t3.39\t-4.06\t0.08\t-9.28\t0.00\t178.29\t0.00\t1\n_\t3.39\t-9.72\t0.08\t-5.54\t0.00\t46.61\t0.00\t2\n_\t3.39\t9.97\t0.08\t3.62\t0.00\t70.06\t0.00\t3\n_\t3.64\t5.21\t0.08\t0.38\t0.00\t319.80\t0.00\t0\n_\t3.64\t-4.04\t0.08\t-10.16\t0.00\t178.29\t0.00\t1\n_\t3.64\t-8.89\t0.08\t-5.23\t0.00\t61.86\t0.00\t2\n_\t3.64\t10.46\t0.08\t3.80\t0.00\t70.06\t0.00\t3\nTurn\t3.67\t10.50\t0.08\t3.81\t0.00\t70.06\t0.00\t3\n_\t3.89\t4.77\t0.08\t1.13\t0.00\t326.68\t0.00\t0\n_\t3.89\t-4.01\t0.08\t-11.04\t0.00\t178.29\t0.00\t1\n_\t3.89\t-8.07\t0.08\t-4.91\t0.00\t66.69\t0.00\t2\n_\t3.89\t10.65\t0.08\t3.71\t0.00\t87.87\t0.00\t3\n_\t4.15\t4.33\t0.08\t1.90\t0.00\t328.92\t0.00\t0\n_\t4.15\t-3.99\t0.08\t-11.66\t0.00\t178.29\t0.00\t1\n_\t4.15\t-7.25\t0.08\t-4.59\t0.00\t68.23\t0.00\t2\n_\t4.15\t10.61\t0.08\t3.18\t0.00\t118.11\t0.00\t3\nTurn\t4.24\t-3.99\t0.08\t-11.79\t0.00\t178.29\t0.00\t1\n_\t4.40\t3.89\t0.08\t2.66\t0.00\t329.62\t0.00\t0\n_\t4.40\t-4.03\t0.08\t-11.88\t0.00\t186.98\t0.00\t1\n_\t4.40\t-6.42\t0.08\t-4.28\t0.00\t68.72\t0.00\t2\n_\t4.40\t10.42\t0.08\t2.32\t0.00\t148.35\t0.00\t3\n_\t4.65\t3.45\t0.08\t3.42\t0.00\t329.85\t0.00\t0\n_\t4.65\t-4.29\t0.08\t-11.66\t0.00\t217.23\t0.00\t1\n_\t4.65\t-5.60\t0.08\t-3.96\t0.00\t68.87\t0.00\t2\n_\t4.65\t10.22\t0.08\t1.46\t0.00\t176.20\t0.00\t3\n_\t4.91\t3.01\t0.08\t4.19\t0.00\t329.92\t0.00\t0\n_\t4.91\t-4.77\t0.08\t-11.01\t0.00\t247.95\t0.00\t1\n_\t4.91\t-4.76\t0.08\t-3.64\t0.00\t68.92\t0.00\t2\n_\t4.91\t10.02\t0.08\t0.59\t0.00\t187.69\t0.00\t3\n_\t5.16\t2.72\t0.08\t4.68\t0.00\t329.94\t0.00\t0\n_\t5.16\t-5.29\t0.08\t-10.28\t0.00\t278.67\t0.00\t1\n_\t5.16\t-3.93\t0.08\t-3.32\t0.00\t68.94\t0.00\t2\n_\t5.16\t9.82\t0.08\t-0.28\t0.00\t191.25\t0.00\t3\nTurn\t5.21\t2.68\t0.08\t4.74\t0.00\t329.94\t0.00\t0\n_\t5.41\t2.54\t0.08\t4.78\t0.00\t315.16\t0.00\t0\n_\t5.41\t-5.80\t0.08\t-9.56\t0.00\t307.06\t0.00\t1\n_\t5.41\t-3.10\t0.08\t-3.00\t0.00\t68.94\t0.00\t2\n_\t5.41\t9.62\t0.08\t-1.14\t0.00\t192.36\t0.00\t3\n_\t5.67\t2.28\t0.08\t4.38\t0.00\t284.92\t0.00\t0\n_\t5.67\t-6.31\t0.08\t-8.84\t0.00\t319.13\t0.00\t1\n_\t5.67\t-2.28\t0.08\t-2.68\t0.00\t68.94\t0.00\t2\n_\t5.67\t9.43\t0.08\t-2.00\t0.00\t192.70\t0.00\t3\n_\t5.92\t1.95\t0.08\t3.59\t0.00\t254.68\t0.00\t0\n_\t5.92\t-6.81\t0.08\t-8.12\t0.00\t322.95\t0.00\t1\n_\t5.92\t-1.56\t0.08\t-2.40\t0.00\t68.94\t0.00\t2\n_\t5.92\t9.23\t0.08\t-2.86\t0.00\t192.82\t0.00\t3\nTurn\t6.11\t-1.25\t0.08\t-2.28\t0.00\t68.94\t0.00\t2\n_\t6.17\t1.61\t0.08\t2.77\t0.00\t224.77\t0.00\t0\n_\t6.17\t-7.25\t0.08\t-7.49\t0.00\t324.08\t0.00\t1\n_\t6.17\t-1.18\t0.08\t-2.26\t0.00\t69.92\t0.00\t2\n_\t6.17\t9.04\t0.08\t-3.72\t0.00\t192.85\t0.00\t3\nTurn\t6.36\t-7.44\t0.08\t-7.23\t0.00\t324.33\t0.00\t1\n_\t6.43\t1.27\t0.08\t1.95\t0.00\t209.43\t0.00\t0\n_\t6.43\t-7.46\t0.08\t-7.17\t0.00\t326.46\t0.00\t1\n_\t6.43\t-0.55\t0.08\t-2.29\t0.00\t83.84\t0.00\t2\n_\t6.43\t8.84\t0.08\t-4.60\t0.00\t192.86\t0.00\t3\n_\t6.68\t0.93\t0.08\t1.13\t0.00\t204.70\t0.00\t0\n_\t6.68\t-7.25\t0.08\t-6.86\t0.00\t354.26\t0.00\t1\n_\t6.68\t0.32\t0.08\t-2.41\t0.00\t93.35\t0.00\t2\n_\t6.68\t8.64\t0.08\t-5.45\t0.00\t192.86\t0.00\t3\n_\t6.93\t0.59\t0.08\t0.32\t0.00\t203.20\t0.00\t0\n_\t6.93\t-6.57\t0.08\t-6.45\t0.00\t24.55\t0.00\t1\n_\t6.93\t1.20\t0.08\t-2.53\t0.00\t96.38\t0.00\t2\n_\t6.93\t8.49\t0.08\t-6.13\t0.00\t192.87\t0.00\t3\nTurn\t7.06\t8.44\t0.08\t-6.32\t0.00\t192.87\t0.00\t3\n_\t7.19\t0.25\t0.08\t-0.51\t0.00\t202.72\t0.00\t0\n_\t7.19\t-5.78\t0.08\t-6.03\t0.00\t49.42\t0.00\t1\n_\t7.19\t2.08\t0.08\t-2.65\t0.00\t97.34\t0.00\t2\n_\t7.19\t8.45\t0.08\t-6.41\t0.00\t187.71\t0.00\t3\n_\t7.44\t-0.08\t0.08\t-1.32\t0.00\t202.04\t0.00\t0\n_\t7.44\t-5.01\t0.08\t-5.62\t0.00\t57.34\t0.00\t1\n_\t7.44\t2.96\t0.08\t-2.77\t0.00\t97.64\t0.00\t2\n_\t7.44\t8.72\t0.08\t-6.31\t0.00\t157.72\t0.00\t3\n_\t7.69\t-0.38\t0.08\t-2.13\t0.00\t201.33\t0.00\t0\n_\t7.69\t-4.29\t0.08\t-5.18\t0.00\t58.61\t0.00\t1\n_\t7.69\t3.83\t0.08\t-2.89\t0.00\t97.73\t0.00\t2\n_\t7.69\t9.30\t0.08\t-5.83\t0.00\t127.48\t0.00\t3\n_\t7.95\t-0.71\t0.08\t-2.96\t0.00\t201.52\t0.00\t0\n_\t7.95\t-3.55\t0.08\t-4.75\t0.00\t59.15\t0.00\t1\n_\t7.95\t4.72\t0.08\t-3.01\t0.00\t97.76\t0.00\t2\n_\t7.95\t9.97\t0.08\t-5.23\t0.00\t96.74\t0.00\t3\n_\t8.20\t-1.03\t0.08\t-3.77\t0.00\t201.29\t0.00\t0\n_\t8.20\t-2.82\t0.08\t-4.32\t0.00\t59.44\t0.00\t1\n_\t8.20\t5.59\t0.08\t-3.13\t0.00\t97.77\t0.00\t2\n_\t8.20\t10.49\t0.08\t-4.75\t0.00\t69.83\t0.00\t3\nTurn\t8.35\t10.67\t0.08\t-4.59\t0.00\t62.93\t0.00\t3\n_\t8.45\t-1.35\t0.08\t-4.59\t0.00\t201.63\t0.00\t0\n_\t8.45\t-2.09\t0.08\t-3.90\t0.00\t59.72\t0.00\t1\n_\t8.45\t6.46\t0.08\t-3.25\t0.00\t98.13\t0.00\t2\n_\t8.45\t10.71\t0.08\t-4.53\t0.00\t57.75\t0.00\t3\n_\t8.70\t-1.66\t0.08\t-5.22\t0.00\t204.61\t0.00\t0\n_\t8.70\t-1.32\t0.08\t-3.48\t0.00\t61.28\t0.00\t1\n_\t8.70\t7.31\t0.08\t-3.30\t0.00\t94.57\t0.00\t2\n_\t8.70\t10.49\t0.08\t-4.50\t0.00\t28.05\t0.00\t3\nTurn\t8.92\t-1.82\t0.08\t-5.52\t0.00\t205.81\t0.00\t0\n_\t8.95\t-1.84\t0.08\t-5.55\t0.00\t206.54\t0.00\t0\n_\t8.95\t-0.53\t0.08\t-3.07\t0.00\t62.29\t0.00\t1\n_\t8.95\t8.18\t0.08\t-3.43\t0.00\t97.62\t0.00\t2\n_\t8.95\t9.79\t0.08\t-4.63\t0.00\t357.81\t0.00\t3\n_\t9.21\t-2.13\t0.08\t-5.51\t0.00\t232.69\t0.00\t0\n_\t9.21\t0.25\t0.08\t-2.67\t0.00\t62.61\t0.00\t1\n_\t9.21\t9.05\t0.08\t-3.57\t0.00\t98.68\t0.00\t2\n_\t9.21\t8.93\t0.08\t-4.82\t0.00\t327.56\t0.00\t3\n_\t9.46\t-2.68\t0.08\t-5.04\t0.00\t262.91\t0.00\t0\n_\t9.46\t1.03\t0.08\t-2.27\t0.00\t62.71\t0.00\t1\n_\t9.46\t9.81\t0.08\t-3.69\t0.00\t99.00\t0.00\t2\n_\t9.46\t8.07\t0.08\t-5.01\t0.00\t297.34\t0.00\t3\nTurn\t9.65\t10.13\t0.08\t-3.75\t0.00\t99.08\t0.00\t2\n_\t9.71\t-3.33\t0.08\t-4.44\t0.00\t292.46\t0.00\t0\n_\t9.71\t1.82\t0.08\t-1.86\t0.00\t62.74\t0.00\t1\n_\t9.71\t10.18\t0.08\t-3.76\t0.00\t100.17\t0.00\t2\n_\t9.71\t7.21\t0.08\t-5.20\t0.00\t271.42\t0.00\t3\n_\t9.97\t-3.99\t0.08\t-3.81\t0.00\t306.94\t0.00\t0\n_\t9.97\t2.63\t0.08\t-1.45\t0.00\t62.75\t0.00\t1\n_\t9.97\t10.10\t0.08\t-3.94\t0.00\t127.58\t0.00\t2\n_\t9.97\t6.32\t0.08\t-5.40\t0.00\t261.70\t0.00\t3\n"
+    maxTime: 9.97
+  - show: 0
+    recNum: 2419
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-24 20:33:54
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.08\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.08\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.08\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.08\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t2.99\t0.08\t-7.23\t0.00\t354.84\t0.00\t0\n_\t0.35\t-4.33\t0.08\t1.33\t0.00\t42.40\t0.00\t1\n_\t0.35\t-5.85\t0.08\t-8.94\t0.00\t14.45\t0.00\t2\n_\t0.35\t0.05\t0.08\t0.00\t0.00\t41.97\t0.00\t3\n_\t0.61\t2.91\t0.08\t-6.37\t0.00\t354.84\t0.00\t0\n_\t0.61\t-3.60\t0.08\t0.89\t0.00\t72.95\t0.00\t1\n_\t0.61\t-5.63\t0.08\t-8.11\t0.00\t14.45\t0.00\t2\n_\t0.61\t0.91\t0.08\t0.08\t0.00\t69.38\t0.00\t3\n_\t0.86\t2.83\t0.08\t-5.48\t0.00\t354.84\t0.00\t0\n_\t0.86\t-2.83\t0.08\t0.42\t0.00\t102.40\t0.00\t1\n_\t0.86\t-5.41\t0.08\t-7.24\t0.00\t14.45\t0.00\t2\n_\t0.86\t1.80\t0.08\t0.16\t0.00\t80.00\t0.00\t3\n_\t1.12\t2.75\t0.08\t-4.60\t0.00\t354.84\t0.00\t0\n_\t1.12\t-2.08\t0.08\t-0.03\t0.00\t115.27\t0.00\t1\n_\t1.12\t-5.19\t0.08\t-6.39\t0.00\t14.45\t0.00\t2\n_\t1.12\t2.68\t0.08\t0.24\t0.00\t83.27\t0.00\t3\n_\t1.37\t2.67\t0.08\t-3.71\t0.00\t354.84\t0.00\t0\n_\t1.37\t-1.31\t0.08\t-0.50\t0.00\t119.37\t0.00\t1\n_\t1.37\t-4.96\t0.08\t-5.52\t0.00\t14.45\t0.00\t2\n_\t1.37\t3.57\t0.08\t0.33\t0.00\t84.31\t0.00\t3\n_\t1.62\t2.59\t0.08\t-2.83\t0.00\t354.84\t0.00\t0\n_\t1.62\t-0.56\t0.08\t-0.95\t0.00\t120.63\t0.00\t1\n_\t1.62\t-4.75\t0.08\t-4.66\t0.00\t14.45\t0.00\t2\n_\t1.62\t4.45\t0.08\t0.41\t0.00\t84.63\t0.00\t3\n_\t1.88\t2.51\t0.08\t-1.95\t0.00\t354.84\t0.00\t0\n_\t1.88\t0.19\t0.08\t-1.41\t0.00\t121.02\t0.00\t1\n_\t1.88\t-4.52\t0.08\t-3.81\t0.00\t14.45\t0.00\t2\n_\t1.88\t5.33\t0.08\t0.49\t0.00\t84.73\t0.00\t3\n_\t2.13\t2.43\t0.08\t-1.07\t0.00\t354.84\t0.00\t0\n_\t2.13\t0.69\t0.08\t-1.71\t0.00\t121.13\t0.00\t1\n_\t2.13\t-4.30\t0.08\t-2.96\t0.00\t14.45\t0.00\t2\n_\t2.13\t6.21\t0.08\t0.57\t0.00\t84.76\t0.00\t3\nTurn\t2.19\t0.77\t0.08\t-1.76\t0.00\t121.14\t0.00\t1\n_\t2.38\t2.35\t0.08\t-0.20\t0.00\t354.84\t0.00\t0\n_\t2.38\t0.81\t0.08\t-1.89\t0.00\t134.29\t0.00\t1\n_\t2.38\t-4.08\t0.08\t-2.10\t0.00\t14.45\t0.00\t2\n_\t2.38\t7.08\t0.08\t0.65\t0.00\t84.77\t0.00\t3\n_\t2.63\t2.27\t0.08\t0.68\t0.00\t354.84\t0.00\t0\n_\t2.63\t0.43\t0.08\t-2.12\t0.00\t164.54\t0.00\t1\n_\t2.63\t-3.87\t0.08\t-1.29\t0.00\t14.45\t0.00\t2\n_\t2.63\t7.78\t0.08\t0.71\t0.00\t84.77\t0.00\t3\nTurn\t2.78\t8.01\t0.08\t0.73\t0.00\t84.77\t0.00\t3\n_\t2.88\t2.19\t0.08\t1.56\t0.00\t354.84\t0.00\t0\n_\t2.88\t-0.37\t0.08\t-2.40\t0.00\t194.80\t0.00\t1\n_\t2.88\t-3.75\t0.08\t-0.79\t0.00\t14.45\t0.00\t2\n_\t2.88\t8.11\t0.08\t0.78\t0.00\t79.90\t0.00\t3\nTurn\t2.90\t-3.74\t0.08\t-0.78\t0.00\t14.45\t0.00\t2\n_\t3.14\t2.11\t0.08\t2.44\t0.00\t354.84\t0.00\t0\n_\t3.14\t-1.20\t0.08\t-2.69\t0.00\t224.93\t0.00\t1\n_\t3.14\t-3.61\t0.08\t-0.73\t0.00\t32.36\t0.00\t2\n_\t3.14\t8.18\t0.08\t1.21\t0.00\t50.51\t0.00\t3\n_\t3.39\t2.03\t0.08\t3.33\t0.00\t354.84\t0.00\t0\n_\t3.39\t-2.05\t0.08\t-2.98\t0.00\t242.82\t0.00\t1\n_\t3.39\t-3.24\t0.08\t-1.12\t0.00\t63.16\t0.00\t2\n_\t3.39\t8.05\t0.08\t2.05\t0.00\t19.70\t0.00\t3\n_\t3.65\t1.95\t0.08\t4.23\t0.00\t354.84\t0.00\t0\n_\t3.65\t-2.89\t0.08\t-3.28\t0.00\t248.36\t0.00\t1\n_\t3.65\t-2.77\t0.08\t-1.87\t0.00\t93.93\t0.00\t2\n_\t3.65\t7.89\t0.08\t2.93\t0.00\t359.21\t0.00\t3\n_\t3.90\t1.87\t0.08\t5.10\t0.00\t354.84\t0.00\t0\n_\t3.90\t-3.72\t0.08\t-3.57\t0.00\t250.07\t0.00\t1\n_\t3.90\t-2.31\t0.08\t-2.62\t0.00\t124.05\t0.00\t2\n_\t3.90\t7.73\t0.08\t3.80\t0.00\t352.80\t0.00\t3\n_\t4.15\t1.79\t0.08\t5.98\t0.00\t354.84\t0.00\t0\n_\t4.15\t-4.56\t0.08\t-3.86\t0.00\t250.62\t0.00\t1\n_\t4.15\t-1.85\t0.08\t-3.37\t0.00\t140.75\t0.00\t2\n_\t4.15\t7.58\t0.08\t4.67\t0.00\t350.77\t0.00\t3\n_\t4.40\t1.71\t0.08\t6.86\t0.00\t354.84\t0.00\t0\n_\t4.40\t-5.39\t0.08\t-4.15\t0.00\t250.79\t0.00\t1\n_\t4.40\t-1.39\t0.08\t-4.12\t0.00\t146.01\t0.00\t2\n_\t4.40\t7.42\t0.08\t5.54\t0.00\t350.13\t0.00\t3\n_\t4.66\t1.63\t0.08\t7.74\t0.00\t354.84\t0.00\t0\n_\t4.66\t-6.23\t0.08\t-4.43\t0.00\t250.84\t0.00\t1\n_\t4.66\t-0.93\t0.08\t-4.88\t0.00\t147.67\t0.00\t2\n_\t4.66\t7.27\t0.08\t6.41\t0.00\t349.92\t0.00\t3\n_\t4.91\t1.56\t0.08\t8.62\t0.00\t354.84\t0.00\t0\n_\t4.91\t-7.06\t0.08\t-4.72\t0.00\t250.86\t0.00\t1\n_\t4.91\t-0.47\t0.08\t-5.63\t0.00\t148.20\t0.00\t2\n_\t4.91\t7.14\t0.08\t7.13\t0.00\t349.86\t0.00\t3\nTurn\t5.07\t7.09\t0.08\t7.40\t0.00\t349.85\t0.00\t3\n_\t5.16\t1.48\t0.08\t9.49\t0.00\t354.84\t0.00\t0\n_\t5.16\t-7.91\t0.08\t-5.02\t0.00\t250.86\t0.00\t1\n_\t5.16\t0.00\t0.08\t-6.39\t0.00\t148.37\t0.00\t2\n_\t5.16\t7.08\t0.08\t7.47\t0.00\t350.11\t0.00\t3\n_\t5.42\t1.43\t0.08\t10.04\t0.00\t354.84\t0.00\t0\n_\t5.42\t-8.74\t0.08\t-5.31\t0.00\t250.87\t0.00\t1\n_\t5.42\t0.46\t0.08\t-7.14\t0.00\t148.42\t0.00\t2\n_\t5.42\t7.12\t0.08\t7.32\t0.00\t16.18\t0.00\t3\nTurn\t5.46\t1.42\t0.08\t10.09\t0.00\t354.84\t0.00\t0\n_\t5.67\t1.24\t0.08\t10.26\t0.00\t337.49\t0.00\t0\n_\t5.67\t-9.58\t0.08\t-5.60\t0.00\t250.87\t0.00\t1\n_\t5.67\t0.93\t0.08\t-7.90\t0.00\t148.43\t0.00\t2\n_\t5.67\t7.28\t0.08\t6.67\t0.00\t46.87\t0.00\t3\n_\t5.92\t0.60\t0.08\t10.24\t0.00\t307.25\t0.00\t0\n_\t5.92\t-10.42\t0.08\t-5.89\t0.00\t250.87\t0.00\t1\n_\t5.92\t1.24\t0.08\t-8.41\t0.00\t148.44\t0.00\t2\n_\t5.92\t7.49\t0.08\t5.81\t0.00\t77.11\t0.00\t3\nTurn\t6.00\t1.30\t0.08\t-8.51\t0.00\t148.44\t0.00\t2\n"
+    maxTime: 6
+  - show: 0
+    recNum: 2420
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-24 20:40:49
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.08\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.08\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.08\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.08\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t3.04\t0.08\t-7.27\t0.00\t41.89\t0.00\t0\n_\t0.35\t-4.33\t0.08\t1.37\t0.00\t41.76\t0.00\t1\n_\t0.35\t-5.85\t0.08\t-8.94\t0.00\t6.30\t0.00\t2\n_\t0.35\t0.04\t0.08\t0.04\t0.00\t41.06\t0.00\t3\n_\t0.60\t3.88\t0.08\t-7.14\t0.00\t67.54\t0.00\t0\n_\t0.60\t-3.51\t0.08\t1.58\t0.00\t64.51\t0.00\t1\n_\t0.60\t-5.76\t0.08\t-8.10\t0.00\t6.30\t0.00\t2\n_\t0.60\t0.64\t0.08\t0.63\t0.00\t44.14\t0.00\t3\n_\t0.86\t4.75\t0.08\t-7.01\t0.00\t76.92\t0.00\t0\n_\t0.86\t-2.65\t0.08\t1.80\t0.00\t72.13\t0.00\t1\n_\t0.86\t-5.66\t0.08\t-7.22\t0.00\t6.30\t0.00\t2\n_\t0.86\t1.27\t0.08\t1.25\t0.00\t45.14\t0.00\t3\n_\t1.11\t5.62\t0.08\t-6.88\t0.00\t79.89\t0.00\t0\n_\t1.11\t-1.80\t0.08\t2.02\t0.00\t74.55\t0.00\t1\n_\t1.11\t-5.57\t0.08\t-6.34\t0.00\t6.30\t0.00\t2\n_\t1.11\t1.90\t0.08\t1.86\t0.00\t45.46\t0.00\t3\n_\t1.36\t6.49\t0.08\t-6.74\t0.00\t80.83\t0.00\t0\n_\t1.36\t-0.95\t0.08\t2.24\t0.00\t75.31\t0.00\t1\n_\t1.36\t-5.47\t0.08\t-5.47\t0.00\t6.30\t0.00\t2\n_\t1.36\t2.53\t0.08\t2.48\t0.00\t45.56\t0.00\t3\n_\t1.61\t7.37\t0.08\t-6.61\t0.00\t81.13\t0.00\t0\n_\t1.61\t-0.09\t0.08\t2.46\t0.00\t75.55\t0.00\t1\n_\t1.61\t-5.37\t0.08\t-4.59\t0.00\t6.30\t0.00\t2\n_\t1.61\t3.16\t0.08\t3.10\t0.00\t45.59\t0.00\t3\n_\t1.86\t8.24\t0.08\t-6.47\t0.00\t81.22\t0.00\t0\n_\t1.86\t0.76\t0.08\t2.67\t0.00\t75.63\t0.00\t1\n_\t1.86\t-5.28\t0.08\t-3.71\t0.00\t6.30\t0.00\t2\n_\t1.86\t3.79\t0.08\t3.71\t0.00\t45.60\t0.00\t3\n_\t2.12\t9.11\t0.08\t-6.34\t0.00\t81.25\t0.00\t0\n_\t2.12\t1.62\t0.08\t2.89\t0.00\t75.66\t0.00\t1\n_\t2.12\t-5.18\t0.08\t-2.84\t0.00\t6.30\t0.00\t2\n_\t2.12\t4.42\t0.08\t4.33\t0.00\t45.61\t0.00\t3\n_\t2.37\t9.98\t0.08\t-6.21\t0.00\t81.26\t0.00\t0\n_\t2.37\t2.47\t0.08\t3.11\t0.00\t75.66\t0.00\t1\n_\t2.37\t-5.08\t0.08\t-1.96\t0.00\t6.30\t0.00\t2\n_\t2.37\t5.05\t0.08\t4.95\t0.00\t45.61\t0.00\t3\n_\t2.62\t10.80\t0.08\t-6.08\t0.00\t81.27\t0.00\t0\n_\t2.62\t3.32\t0.08\t3.33\t0.00\t75.67\t0.00\t1\n_\t2.62\t-4.99\t0.08\t-1.08\t0.00\t6.30\t0.00\t2\n_\t2.62\t5.68\t0.08\t5.56\t0.00\t45.61\t0.00\t3\nTurn\t2.88\t11.29\t0.08\t-6.01\t0.00\t81.27\t0.00\t0\n_\t2.88\t11.29\t0.08\t-6.01\t0.00\t81.27\t0.00\t0\n_\t2.88\t3.92\t0.08\t3.48\t0.00\t75.67\t0.00\t1\n_\t2.88\t-4.89\t0.08\t-0.19\t0.00\t6.30\t0.00\t2\n_\t2.88\t6.32\t0.08\t6.19\t0.00\t45.61\t0.00\t3\nTurn\t2.96\t4.04\t0.08\t3.51\t0.00\t75.67\t0.00\t1\n_\t3.13\t11.48\t0.08\t-5.72\t0.00\t59.36\t0.00\t0\n_\t3.13\t4.25\t0.08\t3.45\t0.00\t86.65\t0.00\t1\n_\t3.13\t-4.79\t0.08\t0.70\t0.00\t6.30\t0.00\t2\n_\t3.13\t6.96\t0.08\t6.82\t0.00\t45.61\t0.00\t3\n_\t3.39\t11.51\t0.08\t-4.96\t0.00\t28.61\t0.00\t0\n_\t3.39\t4.71\t0.08\t2.94\t0.00\t117.26\t0.00\t1\n_\t3.39\t-4.69\t0.08\t1.59\t0.00\t6.30\t0.00\t2\n_\t3.39\t7.53\t0.08\t7.37\t0.00\t45.61\t0.00\t3\nTurn\t3.59\t7.77\t0.08\t7.61\t0.00\t45.61\t0.00\t3\n_\t3.64\t11.50\t0.08\t-4.06\t0.00\t8.19\t0.00\t0\n_\t3.64\t5.22\t0.08\t2.21\t0.00\t136.27\t0.00\t1\n_\t3.64\t-4.59\t0.08\t2.48\t0.00\t6.30\t0.00\t2\n_\t3.64\t7.81\t0.08\t7.65\t0.00\t44.67\t0.00\t3\n_\t3.90\t11.48\t0.08\t-3.16\t0.00\t1.81\t0.00\t0\n_\t3.90\t5.74\t0.08\t1.47\t0.00\t142.16\t0.00\t1\n_\t3.90\t-4.49\t0.08\t3.37\t0.00\t6.30\t0.00\t2\n_\t3.90\t7.64\t0.08\t7.76\t0.00\t17.86\t0.00\t3\n_\t4.16\t11.46\t0.08\t-2.27\t0.00\t359.83\t0.00\t0\n_\t4.16\t6.26\t0.08\t0.74\t0.00\t143.98\t0.00\t1\n_\t4.16\t-4.40\t0.08\t4.26\t0.00\t6.30\t0.00\t2\n_\t4.16\t6.97\t0.08\t7.74\t0.00\t347.14\t0.00\t3\n_\t4.41\t11.45\t0.08\t-1.39\t0.00\t359.22\t0.00\t0\n_\t4.41\t6.76\t0.08\t0.02\t0.00\t144.53\t0.00\t1\n_\t4.41\t-4.30\t0.08\t5.14\t0.00\t6.30\t0.00\t2\n_\t4.41\t6.10\t0.08\t7.66\t0.00\t316.93\t0.00\t3\n_\t4.66\t11.43\t0.08\t-0.49\t0.00\t359.03\t0.00\t0\n_\t4.66\t7.28\t0.08\t-0.71\t0.00\t144.71\t0.00\t1\n_\t4.66\t-4.20\t0.08\t6.03\t0.00\t6.30\t0.00\t2\n_\t4.66\t5.20\t0.08\t7.58\t0.00\t286.61\t0.00\t3\n_\t4.92\t11.41\t0.08\t0.39\t0.00\t358.97\t0.00\t0\n_\t4.92\t7.71\t0.08\t-1.31\t0.00\t144.76\t0.00\t1\n_\t4.92\t-4.10\t0.08\t6.91\t0.00\t6.30\t0.00\t2\n_\t4.92\t4.33\t0.08\t7.50\t0.00\t271.76\t0.00\t3\nTurn\t5.08\t7.86\t0.08\t-1.54\t0.00\t144.77\t0.00\t1\n_\t5.17\t11.40\t0.08\t1.29\t0.00\t358.96\t0.00\t0\n_\t5.17\t7.92\t0.08\t-1.59\t0.00\t142.27\t0.00\t1\n_\t5.17\t-4.01\t0.08\t7.80\t0.00\t6.30\t0.00\t2\n_\t5.17\t3.43\t0.08\t7.42\t0.00\t267.06\t0.00\t3\n_\t5.42\t11.38\t0.08\t2.17\t0.00\t358.95\t0.00\t0\n_\t5.42\t8.07\t0.08\t-1.39\t0.00\t113.77\t0.00\t1\n_\t5.42\t-3.91\t0.08\t8.67\t0.00\t6.30\t0.00\t2\n_\t5.42\t2.56\t0.08\t7.35\t0.00\t265.61\t0.00\t3\n_\t5.68\t11.37\t0.08\t3.01\t0.00\t358.95\t0.00\t0\n_\t5.68\t8.19\t0.08\t-0.68\t0.00\t83.00\t0.00\t1\n_\t5.68\t-3.81\t0.08\t9.56\t0.00\t6.30\t0.00\t2\n_\t5.68\t1.66\t0.08\t7.27\t0.00\t265.14\t0.00\t3\nTurn\t5.93\t11.36\t0.08\t3.49\t0.00\t358.95\t0.00\t0\n_\t5.94\t11.36\t0.08\t3.49\t0.00\t358.90\t0.00\t0\n_\t5.94\t8.30\t0.08\t0.21\t0.00\t52.29\t0.00\t1\n_\t5.94\t-3.71\t0.08\t10.45\t0.00\t6.30\t0.00\t2\n_\t5.94\t0.77\t0.08\t7.19\t0.00\t265.00\t0.00\t3\n_\t6.19\t11.19\t0.08\t3.57\t0.00\t337.05\t0.00\t0\n_\t6.19\t8.41\t0.08\t1.09\t0.00\t24.14\t0.00\t1\n_\t6.19\t-3.62\t0.08\t11.26\t0.00\t6.30\t0.00\t2\n_\t6.19\t0.12\t0.08\t7.13\t0.00\t264.96\t0.00\t3\nTurn\t6.29\t-0.03\t0.08\t7.12\t0.00\t264.96\t0.00\t3\nTurn\t6.41\t-3.58\t0.08\t11.67\t0.00\t6.30\t0.00\t2\n_\t6.44\t10.66\t0.08\t3.27\t0.00\t306.36\t0.00\t0\n_\t6.44\t8.52\t0.08\t1.98\t0.00\t12.39\t0.00\t1\n_\t6.44\t-3.57\t0.08\t11.70\t0.00\t6.27\t0.00\t2\n_\t6.44\t-0.11\t0.08\t7.09\t0.00\t259.77\t0.00\t3\n_\t6.70\t9.91\t0.08\t2.81\t0.00\t276.13\t0.00\t0\n_\t6.70\t8.62\t0.08\t2.85\t0.00\t8.75\t0.00\t1\n_\t6.70\t-3.59\t0.08\t11.67\t0.00\t347.44\t0.00\t2\n_\t6.70\t0.16\t0.08\t7.01\t0.00\t229.54\t0.00\t3\n_\t6.95\t9.17\t0.08\t2.34\t0.00\t251.05\t0.00\t0\n_\t6.95\t8.72\t0.08\t3.72\t0.00\t7.21\t0.00\t1\n_\t6.95\t-3.69\t0.08\t11.14\t0.00\t317.20\t0.00\t2\n_\t6.95\t0.91\t0.08\t6.89\t0.00\t199.30\t0.00\t3\n_\t7.20\t8.41\t0.08\t1.88\t0.00\t242.56\t0.00\t0\n_\t7.20\t8.83\t0.08\t4.60\t0.00\t7.37\t0.00\t1\n_\t7.20\t-3.84\t0.08\t10.28\t0.00\t286.91\t0.00\t2\n_\t7.20\t1.78\t0.08\t6.76\t0.00\t169.01\t0.00\t3\n_\t7.45\t7.66\t0.08\t1.42\t0.00\t239.88\t0.00\t0\n_\t7.45\t8.92\t0.08\t5.24\t0.00\t7.42\t0.00\t1\n_\t7.45\t-3.99\t0.08\t9.41\t0.00\t256.72\t0.00\t2\n_\t7.45\t2.65\t0.08\t6.62\t0.00\t138.82\t0.00\t3\nTurn\t7.56\t8.94\t0.08\t5.39\t0.00\t7.43\t0.00\t1\n_\t7.70\t6.91\t0.08\t0.96\t0.00\t239.03\t0.00\t0\n_\t7.70\t8.92\t0.08\t5.49\t0.00\t0.64\t0.00\t1\n_\t7.70\t-4.14\t0.08\t8.54\t0.00\t226.49\t0.00\t2\n_\t7.70\t3.52\t0.08\t6.48\t0.00\t112.81\t0.00\t3\n_\t7.96\t6.15\t0.08\t0.50\t0.00\t238.77\t0.00\t0\n_\t7.96\t8.67\t0.08\t5.30\t0.00\t330.36\t0.00\t1\n_\t7.96\t-4.25\t0.08\t7.88\t0.00\t204.83\t0.00\t2\n_\t7.96\t4.40\t0.08\t6.35\t0.00\t103.25\t0.00\t3\nTurn\t8.08\t-4.29\t0.08\t7.69\t0.00\t200.71\t0.00\t2\n_\t8.21\t5.40\t0.08\t0.04\t0.00\t238.68\t0.00\t0\n_\t8.21\t8.18\t0.08\t4.70\t0.00\t300.12\t0.00\t1\n_\t8.21\t-4.25\t0.08\t7.57\t0.00\t191.61\t0.00\t2\n_\t8.21\t5.27\t0.08\t6.21\t0.00\t100.21\t0.00\t3\n_\t8.46\t4.63\t0.08\t-0.42\t0.00\t238.65\t0.00\t0\n_\t8.46\t7.63\t0.08\t4.00\t0.00\t269.39\t0.00\t1\n_\t8.46\t-3.81\t0.08\t7.44\t0.00\t160.88\t0.00\t2\n_\t8.46\t6.15\t0.08\t6.08\t0.00\t99.25\t0.00\t3\n_\t8.72\t3.88\t0.08\t-0.88\t0.00\t238.65\t0.00\t0\n_\t8.72\t7.08\t0.08\t3.31\t0.00\t239.63\t0.00\t1\n_\t8.72\t-2.97\t0.08\t7.45\t0.00\t130.65\t0.00\t2\n_\t8.72\t7.03\t0.08\t5.94\t0.00\t98.95\t0.00\t3\n_\t8.97\t3.13\t0.08\t-1.34\t0.00\t238.64\t0.00\t0\n_\t8.97\t6.54\t0.08\t2.61\t0.00\t224.93\t0.00\t1\n_\t8.97\t-2.09\t0.08\t7.48\t0.00\t103.69\t0.00\t2\n_\t8.97\t7.90\t0.08\t5.81\t0.00\t98.86\t0.00\t3\n"
+    maxTime: 8.97
+  - show: 0
+    recNum: 2421
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-24 20:43:03
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.08\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.08\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.08\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.08\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t3.01\t0.08\t-7.23\t0.00\t21.24\t0.00\t0\n_\t0.35\t-4.36\t0.08\t1.31\t0.00\t42.40\t0.00\t1\n_\t0.35\t-5.83\t0.08\t-9.03\t0.00\t42.40\t0.00\t2\n_\t0.35\t0.05\t0.08\t0.02\t0.00\t41.44\t0.00\t3\n_\t0.61\t3.32\t0.08\t-6.43\t0.00\t21.24\t0.00\t0\n_\t0.61\t-4.04\t0.08\t0.52\t0.00\t72.80\t0.00\t1\n_\t0.61\t-5.35\t0.08\t-9.74\t0.00\t72.80\t0.00\t2\n_\t0.61\t0.80\t0.08\t0.42\t0.00\t55.53\t0.00\t3\n_\t0.86\t3.64\t0.08\t-5.61\t0.00\t21.24\t0.00\t0\n_\t0.86\t-3.71\t0.08\t-0.30\t0.00\t103.08\t0.00\t1\n_\t0.86\t-4.84\t0.08\t-10.46\t0.00\t103.08\t0.00\t2\n_\t0.86\t1.58\t0.08\t0.84\t0.00\t60.08\t0.00\t3\n_\t1.11\t3.96\t0.08\t-4.79\t0.00\t21.24\t0.00\t0\n_\t1.11\t-3.38\t0.08\t-1.12\t0.00\t133.23\t0.00\t1\n_\t1.11\t-4.41\t0.08\t-11.09\t0.00\t128.28\t0.00\t2\n_\t1.11\t2.36\t0.08\t1.25\t0.00\t61.52\t0.00\t3\nTurn\t1.29\t-4.23\t0.08\t-11.35\t0.00\t134.98\t0.00\t2\n_\t1.36\t4.28\t0.08\t-3.97\t0.00\t21.24\t0.00\t0\n_\t1.36\t-3.05\t0.08\t-1.93\t0.00\t150.11\t0.00\t1\n_\t1.36\t-4.19\t0.08\t-11.40\t0.00\t134.48\t0.00\t2\n_\t1.36\t3.14\t0.08\t1.66\t0.00\t61.97\t0.00\t3\n_\t1.62\t4.60\t0.08\t-3.13\t0.00\t21.24\t0.00\t0\n_\t1.62\t-2.71\t0.08\t-2.76\t0.00\t155.52\t0.00\t1\n_\t1.62\t-3.91\t0.08\t-11.25\t0.00\t107.68\t0.00\t2\n_\t1.62\t3.94\t0.08\t2.08\t0.00\t62.12\t0.00\t3\n_\t1.87\t4.92\t0.08\t-2.31\t0.00\t21.24\t0.00\t0\n_\t1.87\t-2.38\t0.08\t-3.58\t0.00\t157.20\t0.00\t1\n_\t1.87\t-3.44\t0.08\t-10.66\t0.00\t77.43\t0.00\t2\n_\t1.87\t4.60\t0.08\t2.42\t0.00\t62.16\t0.00\t3\nTurn\t2.04\t4.85\t0.08\t2.56\t0.00\t62.17\t0.00\t3\n_\t2.13\t5.18\t0.08\t-1.51\t0.00\t19.47\t0.00\t0\n_\t2.13\t-2.00\t0.08\t-4.36\t0.00\t154.20\t0.00\t1\n_\t2.13\t-2.97\t0.08\t-9.99\t0.00\t50.96\t0.00\t2\n_\t2.13\t4.91\t0.08\t2.59\t0.00\t61.94\t0.00\t3\n_\t2.38\t5.46\t0.08\t-0.89\t0.00\t22.33\t0.00\t0\n_\t2.38\t-1.58\t0.08\t-5.12\t0.00\t152.25\t0.00\t1\n_\t2.38\t-2.56\t0.08\t-9.27\t0.00\t36.37\t0.00\t2\n_\t2.38\t4.77\t0.08\t2.54\t0.00\t35.87\t0.00\t3\nTurn\t2.50\t5.53\t0.08\t-0.74\t0.00\t22.78\t0.00\t0\n_\t2.64\t5.53\t0.08\t-0.63\t0.00\t15.40\t0.00\t0\n_\t2.64\t-1.22\t0.08\t-5.90\t0.00\t154.62\t0.00\t1\n_\t2.64\t-2.21\t0.08\t-8.54\t0.00\t28.80\t0.00\t2\n_\t2.64\t4.15\t0.08\t2.27\t0.00\t5.17\t0.00\t3\n_\t2.89\t5.17\t0.08\t-0.63\t0.00\t345.13\t0.00\t0\n_\t2.89\t-1.13\t0.08\t-6.50\t0.00\t164.61\t0.00\t1\n_\t2.89\t-1.92\t0.08\t-7.94\t0.00\t27.91\t0.00\t2\n_\t2.89\t3.35\t0.08\t1.90\t0.00\t334.90\t0.00\t3\nTurn\t3.02\t-1.10\t0.08\t-6.68\t0.00\t166.64\t0.00\t1\n_\t3.14\t4.42\t0.08\t-0.87\t0.00\t314.96\t0.00\t0\n_\t3.14\t-1.11\t0.08\t-6.75\t0.00\t171.58\t0.00\t1\n_\t3.14\t-1.60\t0.08\t-7.72\t0.00\t44.50\t0.00\t2\n_\t3.14\t2.55\t0.08\t1.54\t0.00\t304.73\t0.00\t3\n_\t3.40\t3.58\t0.08\t-1.15\t0.00\t284.65\t0.00\t0\n_\t3.40\t-1.28\t0.08\t-6.56\t0.00\t201.83\t0.00\t1\n_\t3.40\t-1.23\t0.08\t-7.61\t0.00\t56.88\t0.00\t2\n_\t3.40\t1.74\t0.08\t1.17\t0.00\t274.42\t0.00\t3\n_\t3.65\t2.75\t0.08\t-1.44\t0.00\t262.09\t0.00\t0\n_\t3.65\t-1.64\t0.08\t-5.92\t0.00\t232.01\t0.00\t1\n_\t3.65\t-0.74\t0.08\t-7.04\t0.00\t45.35\t0.00\t2\n_\t3.65\t0.94\t0.08\t0.81\t0.00\t254.80\t0.00\t3\n_\t3.90\t1.91\t0.08\t-1.72\t0.00\t254.59\t0.00\t0\n_\t3.90\t-2.08\t0.08\t-5.15\t0.00\t262.29\t0.00\t1\n_\t3.90\t-0.24\t0.08\t-6.31\t0.00\t38.00\t0.00\t2\n_\t3.90\t0.14\t0.08\t0.45\t0.00\t248.54\t0.00\t3\n_\t4.15\t1.08\t0.08\t-2.01\t0.00\t252.22\t0.00\t0\n_\t4.15\t-2.53\t0.08\t-4.41\t0.00\t292.48\t0.00\t1\n_\t4.15\t0.26\t0.08\t-5.59\t0.00\t35.68\t0.00\t2\n_\t4.15\t-0.64\t0.08\t0.10\t0.00\t246.98\t0.00\t3\n_\t4.40\t0.24\t0.08\t-2.29\t0.00\t251.48\t0.00\t0\n_\t4.40\t-3.05\t0.08\t-3.72\t0.00\t312.78\t0.00\t1\n_\t4.40\t0.76\t0.08\t-4.86\t0.00\t34.94\t0.00\t2\n_\t4.40\t-1.37\t0.08\t-0.26\t0.00\t244.37\t0.00\t3\n_\t4.65\t-0.59\t0.08\t-2.58\t0.00\t251.24\t0.00\t0\n_\t4.65\t-3.56\t0.08\t-3.02\t0.00\t320.50\t0.00\t1\n_\t4.65\t1.26\t0.08\t-4.14\t0.00\t34.71\t0.00\t2\n_\t4.65\t-2.08\t0.08\t-0.64\t0.00\t242.93\t0.00\t3\n_\t4.91\t-1.43\t0.08\t-2.87\t0.00\t251.16\t0.00\t0\n_\t4.91\t-4.06\t0.08\t-2.31\t0.00\t323.62\t0.00\t1\n_\t4.91\t1.73\t0.08\t-3.46\t0.00\t34.64\t0.00\t2\n_\t4.91\t-2.79\t0.08\t-1.02\t0.00\t242.05\t0.00\t3\nTurn\t5.14\t1.98\t0.08\t-3.11\t0.00\t34.62\t0.00\t2\n_\t5.16\t-2.26\t0.08\t-3.15\t0.00\t251.14\t0.00\t0\n_\t5.16\t-4.57\t0.08\t-1.61\t0.00\t323.98\t0.00\t1\n_\t5.16\t1.98\t0.08\t-3.09\t0.00\t34.57\t0.00\t2\n_\t5.16\t-3.50\t0.08\t-1.40\t0.00\t242.10\t0.00\t3\n_\t5.41\t-3.11\t0.08\t-3.44\t0.00\t251.13\t0.00\t0\n_\t5.41\t-5.02\t0.08\t-0.87\t0.00\t327.90\t0.00\t1\n_\t5.41\t1.91\t0.08\t-3.03\t0.00\t13.33\t0.00\t2\n_\t5.41\t-4.26\t0.08\t-1.75\t0.00\t244.09\t0.00\t3\n_\t5.67\t-3.96\t0.08\t-3.73\t0.00\t251.13\t0.00\t0\n_\t5.67\t-5.42\t0.08\t-0.07\t0.00\t331.76\t0.00\t1\n_\t5.67\t1.42\t0.08\t-3.29\t0.00\t342.56\t0.00\t2\n_\t5.67\t-5.09\t0.08\t-2.09\t0.00\t246.80\t0.00\t3\n_\t5.92\t-4.79\t0.08\t-4.02\t0.00\t251.13\t0.00\t0\n_\t5.92\t-5.82\t0.08\t0.72\t0.00\t332.95\t0.00\t1\n_\t5.92\t0.68\t0.08\t-3.75\t0.00\t312.32\t0.00\t2\n_\t5.92\t-5.91\t0.08\t-2.42\t0.00\t247.68\t0.00\t3\n_\t6.18\t-5.63\t0.08\t-4.30\t0.00\t251.13\t0.00\t0\n_\t6.18\t-6.21\t0.08\t1.51\t0.00\t333.32\t0.00\t1\n_\t6.18\t-0.07\t0.08\t-4.22\t0.00\t282.09\t0.00\t2\n_\t6.18\t-6.73\t0.08\t-2.75\t0.00\t247.96\t0.00\t3\n_\t6.43\t-6.46\t0.08\t-4.59\t0.00\t251.13\t0.00\t0\n_\t6.43\t-6.60\t0.08\t2.30\t0.00\t333.44\t0.00\t1\n_\t6.43\t-0.82\t0.08\t-4.68\t0.00\t254.48\t0.00\t2\n_\t6.43\t-7.54\t0.08\t-3.08\t0.00\t248.05\t0.00\t3\n_\t6.68\t-7.29\t0.08\t-4.87\t0.00\t251.13\t0.00\t0\n_\t6.68\t-7.00\t0.08\t3.09\t0.00\t333.48\t0.00\t1\n_\t6.68\t-1.57\t0.08\t-5.14\t0.00\t243.41\t0.00\t2\n_\t6.68\t-8.22\t0.08\t-3.35\t0.00\t248.08\t0.00\t3\nTurn\t6.83\t-8.45\t0.08\t-3.44\t0.00\t248.08\t0.00\t3\n_\t6.93\t-8.13\t0.08\t-5.16\t0.00\t251.13\t0.00\t0\n_\t6.93\t-7.39\t0.08\t3.88\t0.00\t333.49\t0.00\t1\n_\t6.93\t-2.32\t0.08\t-5.61\t0.00\t239.90\t0.00\t2\n_\t6.93\t-8.52\t0.08\t-3.48\t0.00\t245.92\t0.00\t3\n_\t7.18\t-8.96\t0.08\t-5.44\t0.00\t251.13\t0.00\t0\n_\t7.18\t-7.78\t0.08\t4.67\t0.00\t333.49\t0.00\t1\n_\t7.18\t-3.07\t0.08\t-6.07\t0.00\t238.79\t0.00\t2\n_\t7.18\t-8.34\t0.08\t-3.59\t0.00\t217.49\t0.00\t3\n_\t7.44\t-9.80\t0.08\t-5.73\t0.00\t251.13\t0.00\t0\n_\t7.44\t-8.18\t0.08\t5.46\t0.00\t333.49\t0.00\t1\n_\t7.44\t-3.82\t0.08\t-6.54\t0.00\t238.44\t0.00\t2\n_\t7.44\t-7.65\t0.08\t-3.69\t0.00\t187.25\t0.00\t3\n_\t7.69\t-10.63\t0.08\t-6.01\t0.00\t251.13\t0.00\t0\n_\t7.69\t-8.58\t0.08\t6.26\t0.00\t333.49\t0.00\t1\n_\t7.69\t-4.58\t0.08\t-7.01\t0.00\t238.32\t0.00\t2\n_\t7.69\t-6.76\t0.08\t-3.79\t0.00\t156.57\t0.00\t3\n_\t7.94\t-11.18\t0.08\t-6.20\t0.00\t251.13\t0.00\t0\n_\t7.94\t-8.94\t0.08\t6.99\t0.00\t333.49\t0.00\t1\n_\t7.94\t-5.33\t0.08\t-7.47\t0.00\t238.29\t0.00\t2\n_\t7.94\t-5.88\t0.08\t-3.89\t0.00\t126.23\t0.00\t3\nTurn\t8.00\t-11.25\t0.08\t-6.22\t0.00\t251.13\t0.00\t0\nTurn\t8.19\t-9.15\t0.08\t7.40\t0.00\t333.49\t0.00\t1\n_\t8.20\t-11.32\t0.08\t-6.24\t0.00\t258.26\t0.00\t0\n_\t8.20\t-9.15\t0.08\t7.41\t0.00\t333.53\t0.00\t1\n_\t8.20\t-5.95\t0.08\t-7.85\t0.00\t238.28\t0.00\t2\n_\t8.20\t-5.01\t0.08\t-3.98\t0.00\t105.89\t0.00\t3\nTurn\t8.36\t-6.17\t0.08\t-7.99\t0.00\t238.28\t0.00\t2\n_\t8.45\t-10.97\t0.08\t-6.11\t0.00\t289.03\t0.00\t0\n_\t8.45\t-9.02\t0.08\t7.58\t0.00\t356.37\t0.00\t1\n_\t8.45\t-6.24\t0.08\t-8.02\t0.00\t239.67\t0.00\t2\n_\t8.45\t-4.12\t0.08\t-4.08\t0.00\t99.31\t0.00\t3\n_\t8.71\t-10.19\t0.08\t-5.82\t0.00\t319.77\t0.00\t0\n_\t8.71\t-8.39\t0.08\t7.58\t0.00\t27.11\t0.00\t1\n_\t8.71\t-6.15\t0.08\t-7.85\t0.00\t268.39\t0.00\t2\n_\t8.71\t-3.23\t0.08\t-4.18\t0.00\t97.27\t0.00\t3\n_\t8.96\t-9.36\t0.08\t-5.51\t0.00\t350.42\t0.00\t0\n_\t8.96\t-7.50\t0.08\t7.50\t0.00\t57.76\t0.00\t1\n_\t8.96\t-5.69\t0.08\t-7.32\t0.00\t299.04\t0.00\t2\n_\t8.96\t-2.34\t0.08\t-4.28\t0.00\t96.65\t0.00\t3\n_\t9.22\t-8.52\t0.08\t-5.20\t0.00\t21.10\t0.00\t0\n_\t9.22\t-6.60\t0.08\t7.42\t0.00\t82.74\t0.00\t1\n_\t9.22\t-5.09\t0.08\t-6.66\t0.00\t329.72\t0.00\t2\n_\t9.22\t-1.45\t0.08\t-4.38\t0.00\t96.45\t0.00\t3\n_\t9.47\t-7.69\t0.08\t-4.90\t0.00\t50.31\t0.00\t0\n_\t9.47\t-5.73\t0.08\t7.34\t0.00\t91.32\t0.00\t1\n_\t9.47\t-4.49\t0.08\t-6.01\t0.00\t359.96\t0.00\t2\n_\t9.47\t-0.57\t0.08\t-4.48\t0.00\t96.39\t0.00\t3\n"
+    maxTime: 9.47
+  - show: 0
+    recNum: 2439
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-25 14:09:56
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.08\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.08\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.08\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.08\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t3.01\t0.08\t-7.23\t0.00\t19.86\t0.00\t0\n_\t0.35\t-4.33\t0.08\t1.33\t0.00\t42.40\t0.00\t1\n_\t0.35\t-5.81\t0.08\t-8.97\t0.00\t41.50\t0.00\t2\n_\t0.35\t-0.03\t0.08\t0.05\t0.00\t329.82\t0.00\t3\n_\t0.61\t3.28\t0.08\t-6.47\t0.00\t19.86\t0.00\t0\n_\t0.61\t-3.61\t0.08\t0.97\t0.00\t73.05\t0.00\t1\n_\t0.61\t-5.08\t0.08\t-8.62\t0.00\t58.90\t0.00\t2\n_\t0.61\t-0.44\t0.08\t0.75\t0.00\t329.82\t0.00\t3\n_\t0.86\t3.58\t0.08\t-5.64\t0.00\t19.86\t0.00\t0\n_\t0.86\t-2.81\t0.08\t0.60\t0.00\t99.77\t0.00\t1\n_\t0.86\t-4.28\t0.08\t-8.24\t0.00\t62.77\t0.00\t2\n_\t0.86\t-0.88\t0.08\t1.51\t0.00\t329.82\t0.00\t3\n_\t1.11\t3.88\t0.08\t-4.81\t0.00\t19.86\t0.00\t0\n_\t1.11\t-2.00\t0.08\t0.23\t0.00\t109.91\t0.00\t1\n_\t1.11\t-3.48\t0.08\t-7.86\t0.00\t63.98\t0.00\t2\n_\t1.11\t-1.32\t0.08\t2.27\t0.00\t329.82\t0.00\t3\n_\t1.38\t4.20\t0.08\t-3.93\t0.00\t19.86\t0.00\t0\n_\t1.38\t-1.16\t0.08\t-0.15\t0.00\t113.29\t0.00\t1\n_\t1.38\t-2.65\t0.08\t-7.46\t0.00\t64.39\t0.00\t2\n_\t1.38\t-1.79\t0.08\t3.08\t0.00\t329.82\t0.00\t3\n_\t1.64\t4.51\t0.08\t-3.07\t0.00\t19.86\t0.00\t0\n_\t1.64\t-0.33\t0.08\t-0.53\t0.00\t114.23\t0.00\t1\n_\t1.64\t-1.82\t0.08\t-7.07\t0.00\t64.50\t0.00\t2\n_\t1.64\t-2.25\t0.08\t3.87\t0.00\t329.82\t0.00\t3\n_\t1.89\t4.81\t0.08\t-2.24\t0.00\t19.86\t0.00\t0\n_\t1.89\t0.48\t0.08\t-0.90\t0.00\t114.47\t0.00\t1\n_\t1.89\t-1.02\t0.08\t-6.69\t0.00\t64.53\t0.00\t2\n_\t1.89\t-2.70\t0.08\t4.63\t0.00\t329.82\t0.00\t3\n_\t2.15\t5.09\t0.08\t-1.46\t0.00\t19.86\t0.00\t0\n_\t2.15\t1.29\t0.08\t-1.27\t0.00\t114.54\t0.00\t1\n_\t2.15\t-0.21\t0.08\t-6.30\t0.00\t64.54\t0.00\t2\n_\t2.15\t-3.15\t0.08\t5.41\t0.00\t329.82\t0.00\t3\nTurn\t2.38\t5.24\t0.08\t-1.06\t0.00\t19.86\t0.00\t0\n_\t2.40\t5.25\t0.08\t-1.03\t0.00\t19.63\t0.00\t0\n_\t2.40\t2.10\t0.08\t-1.64\t0.00\t114.56\t0.00\t1\n_\t2.40\t0.59\t0.08\t-5.92\t0.00\t64.54\t0.00\t2\n_\t2.40\t-3.59\t0.08\t6.17\t0.00\t329.82\t0.00\t3\n_\t2.65\t5.21\t0.08\t-0.51\t0.00\t5.59\t0.00\t0\n_\t2.65\t2.90\t0.08\t-2.01\t0.00\t114.57\t0.00\t1\n_\t2.65\t1.38\t0.08\t-5.54\t0.00\t64.54\t0.00\t2\n_\t2.65\t-4.03\t0.08\t6.94\t0.00\t329.82\t0.00\t3\n_\t2.91\t5.01\t0.08\t0.35\t0.00\t352.61\t0.00\t0\n_\t2.91\t3.72\t0.08\t-2.38\t0.00\t114.57\t0.00\t1\n_\t2.91\t2.19\t0.08\t-5.16\t0.00\t64.54\t0.00\t2\n_\t2.91\t-4.48\t0.08\t7.71\t0.00\t329.82\t0.00\t3\n_\t3.16\t4.81\t0.08\t1.21\t0.00\t348.52\t0.00\t0\n_\t3.16\t4.52\t0.08\t-2.75\t0.00\t114.57\t0.00\t1\n_\t3.16\t2.99\t0.08\t-4.78\t0.00\t64.54\t0.00\t2\n_\t3.16\t-4.93\t0.08\t8.47\t0.00\t329.82\t0.00\t3\n_\t3.41\t4.60\t0.08\t2.07\t0.00\t347.23\t0.00\t0\n_\t3.41\t5.28\t0.08\t-3.10\t0.00\t114.57\t0.00\t1\n_\t3.41\t3.78\t0.08\t-4.40\t0.00\t64.54\t0.00\t2\n_\t3.41\t-5.37\t0.08\t9.23\t0.00\t329.82\t0.00\t3\n"
+    maxTime: 3.41
+  - show: 0
+    recNum: 2445
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-25 20:09:23
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nTurn\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.35\t2.88\t0.08\t-7.29\t0.00\t315.35\t0.00\t0\n_\t0.35\t-4.36\t0.08\t1.47\t0.00\t10.25\t0.00\t1\n_\t0.35\t-5.75\t0.08\t-8.98\t0.00\t44.11\t0.00\t2\n_\t0.35\t0.05\t0.08\t0.10\t0.00\t29.71\t0.00\t3\n_\t0.61\t2.02\t0.08\t-7.39\t0.00\t285.61\t0.00\t0\n_\t0.61\t-4.21\t0.08\t2.32\t0.00\t10.25\t0.00\t1\n_\t0.61\t-4.89\t0.08\t-8.90\t0.00\t70.88\t0.00\t2\n_\t0.61\t0.48\t0.08\t0.85\t0.00\t29.71\t0.00\t3\n_\t0.87\t1.14\t0.08\t-7.44\t0.00\t272.52\t0.00\t0\n_\t0.87\t-4.05\t0.08\t3.21\t0.00\t10.25\t0.00\t1\n_\t0.87\t-4.01\t0.08\t-8.86\t0.00\t82.31\t0.00\t2\n_\t0.87\t0.93\t0.08\t1.63\t0.00\t29.71\t0.00\t3\n_\t1.14\t0.21\t0.08\t-7.51\t0.00\t267.21\t0.00\t0\n_\t1.14\t-3.88\t0.08\t4.14\t0.00\t10.25\t0.00\t1\n_\t1.14\t-3.07\t0.08\t-8.81\t0.00\t85.93\t0.00\t2\n_\t1.14\t1.40\t0.08\t2.45\t0.00\t29.71\t0.00\t3\n_\t1.40\t-0.68\t0.08\t-7.60\t0.00\t264.98\t0.00\t0\n_\t1.40\t-3.72\t0.08\t5.02\t0.00\t10.25\t0.00\t1\n_\t1.40\t-2.17\t0.08\t-8.76\t0.00\t86.67\t0.00\t2\n_\t1.40\t1.85\t0.08\t3.24\t0.00\t29.71\t0.00\t3\n_\t1.65\t-1.56\t0.08\t-7.70\t0.00\t264.25\t0.00\t0\n_\t1.65\t-3.61\t0.08\t5.64\t0.00\t10.25\t0.00\t1\n_\t1.65\t-1.29\t0.08\t-8.71\t0.00\t86.44\t0.00\t2\n_\t1.65\t2.28\t0.08\t4.00\t0.00\t29.71\t0.00\t3\nTurn\t1.72\t-3.59\t0.08\t5.71\t0.00\t10.25\t0.00\t1\n_\t1.91\t-2.45\t0.08\t-7.81\t0.00\t263.04\t0.00\t0\n_\t1.91\t-3.63\t0.08\t5.80\t0.00\t357.59\t0.00\t1\n_\t1.91\t-0.41\t0.08\t-8.61\t0.00\t84.14\t0.00\t2\n_\t1.91\t2.56\t0.08\t4.49\t0.00\t29.71\t0.00\t3\nTurn\t1.96\t2.59\t0.08\t4.54\t0.00\t29.71\t0.00\t3\nStop\t2.12\t2.67\t0.08\t4.78\t0.00\t25.70\t0.00\t3\n_\t2.16\t-3.33\t0.08\t-7.93\t0.00\t262.39\t0.00\t0\n_\t2.16\t-3.94\t0.08\t5.52\t0.00\t326.91\t0.00\t1\n_\t2.16\t0.48\t0.08\t-8.49\t0.00\t83.15\t0.00\t2\n_\t2.16\t2.70\t0.08\t4.88\t0.00\t24.02\t0.00\t3\n_\t2.42\t-4.22\t0.08\t-8.06\t0.00\t262.19\t0.00\t0\n_\t2.42\t-4.47\t0.08\t4.86\t0.00\t296.18\t0.00\t1\n_\t2.42\t1.36\t0.08\t-8.38\t0.00\t82.84\t0.00\t2\n_\t2.42\t2.75\t0.08\t5.10\t0.00\t20.27\t0.00\t3\n_\t2.67\t-5.09\t0.08\t-8.18\t0.00\t262.13\t0.00\t0\n_\t2.67\t-5.02\t0.08\t4.17\t0.00\t265.92\t0.00\t1\n_\t2.67\t2.24\t0.08\t-8.27\t0.00\t82.75\t0.00\t2\n_\t2.67\t2.75\t0.08\t5.11\t0.00\t19.36\t0.00\t3\n_\t2.93\t-5.98\t0.08\t-8.30\t0.00\t262.11\t0.00\t0\n_\t2.93\t-5.57\t0.08\t3.47\t0.00\t236.73\t0.00\t1\n_\t2.93\t3.13\t0.08\t-8.16\t0.00\t82.72\t0.00\t2\n_\t2.93\t2.80\t0.08\t5.47\t0.00\t13.51\t0.00\t3\n_\t3.18\t-6.87\t0.08\t-8.43\t0.00\t262.11\t0.00\t0\n_\t3.18\t-6.05\t0.08\t2.87\t0.00\t225.00\t0.00\t1\n_\t3.18\t4.02\t0.08\t-8.04\t0.00\t82.71\t0.00\t2\n_\t3.18\t2.89\t0.08\t6.21\t0.00\t9.41\t0.00\t3\nTurn\t3.36\t-6.23\t0.08\t2.64\t0.00\t222.58\t0.00\t1\nTurn\t3.42\t2.94\t0.08\t6.61\t0.00\t8.32\t0.00\t3\n_\t3.44\t-7.75\t0.08\t-8.55\t0.00\t262.11\t0.00\t0\n_\t3.44\t-6.26\t0.08\t2.58\t0.00\t219.51\t0.00\t1\n_\t3.44\t4.91\t0.08\t-7.93\t0.00\t82.71\t0.00\t2\n_\t3.44\t2.94\t0.08\t6.64\t0.00\t8.03\t0.00\t3\n_\t3.69\t-8.64\t0.08\t-8.67\t0.00\t262.10\t0.00\t0\n_\t3.69\t-6.01\t0.08\t2.42\t0.00\t190.10\t0.00\t1\n_\t3.69\t5.79\t0.08\t-7.81\t0.00\t82.70\t0.00\t2\n_\t3.69\t2.75\t0.08\t6.69\t0.00\t343.15\t0.00\t3\nStop\t3.74\t5.93\t0.08\t-7.80\t0.00\t82.70\t0.00\t2\n_\t3.95\t-9.47\t0.08\t-8.79\t0.00\t262.10\t0.00\t0\n_\t3.95\t-5.27\t0.08\t2.32\t0.00\t159.35\t0.00\t1\n_\t3.95\t6.51\t0.08\t-7.72\t0.00\t82.70\t0.00\t2\n_\t3.95\t2.17\t0.08\t6.40\t0.00\t312.39\t0.00\t3\nTurn\t4.20\t-9.92\t0.08\t-8.85\t0.00\t262.10\t0.00\t0\n_\t4.21\t-9.93\t0.08\t-8.85\t0.00\t262.13\t0.00\t0\n_\t4.21\t-4.37\t0.08\t2.25\t0.00\t128.62\t0.00\t1\n_\t4.21\t6.71\t0.08\t-7.70\t0.00\t82.70\t0.00\t2\n_\t4.21\t1.40\t0.08\t5.93\t0.00\t281.66\t0.00\t3\n_\t4.46\t-9.96\t0.08\t-8.75\t0.00\t283.38\t0.00\t0\n_\t4.46\t-3.48\t0.08\t2.17\t0.00\t105.68\t0.00\t1\n_\t4.46\t6.90\t0.08\t-7.67\t0.00\t82.70\t0.00\t2\n_\t4.46\t0.64\t0.08\t5.46\t0.00\t254.00\t0.00\t3\n_\t4.72\t-9.53\t0.08\t-8.40\t0.00\t314.10\t0.00\t0\n_\t4.72\t-2.59\t0.08\t2.09\t0.00\t98.19\t0.00\t1\n_\t4.72\t7.57\t0.08\t-7.59\t0.00\t82.70\t0.00\t2\n_\t4.72\t-0.12\t0.08\t4.99\t0.00\t243.27\t0.00\t3\n_\t4.97\t-8.81\t0.08\t-7.90\t0.00\t344.35\t0.00\t0\n_\t4.97\t-1.71\t0.08\t2.02\t0.00\t95.89\t0.00\t1\n_\t4.97\t8.10\t0.08\t-7.52\t0.00\t82.70\t0.00\t2\n_\t4.97\t-0.87\t0.08\t4.53\t0.00\t239.98\t0.00\t3\nTurn\t5.02\t8.16\t0.08\t-7.51\t0.00\t82.70\t0.00\t2\n_\t5.23\t-8.08\t0.08\t-7.38\t0.00\t15.11\t0.00\t0\n_\t5.23\t-0.82\t0.08\t1.94\t0.00\t95.16\t0.00\t1\n_\t5.23\t8.23\t0.08\t-7.40\t0.00\t66.65\t0.00\t2\n_\t5.23\t-1.64\t0.08\t4.06\t0.00\t238.93\t0.00\t3\nStop\t5.24\t8.23\t0.08\t-7.39\t0.00\t65.74\t0.00\t2\n_\t5.48\t-7.34\t0.08\t-6.87\t0.00\t41.26\t0.00\t0\n_\t5.48\t0.08\t0.08\t1.87\t0.00\t94.93\t0.00\t1\n_\t5.48\t8.19\t0.08\t-7.32\t0.00\t51.42\t0.00\t2\n_\t5.48\t-2.40\t0.08\t3.59\t0.00\t238.61\t0.00\t3\n_\t5.74\t-6.61\t0.08\t-6.35\t0.00\t50.66\t0.00\t0\n_\t5.74\t0.97\t0.08\t1.79\t0.00\t94.86\t0.00\t1\n_\t5.74\t8.19\t0.08\t-7.32\t0.00\t51.42\t0.00\t2\n_\t5.74\t-3.17\t0.08\t3.12\t0.00\t238.51\t0.00\t3\n_\t5.99\t-5.88\t0.08\t-5.84\t0.00\t53.56\t0.00\t0\n_\t5.99\t1.86\t0.08\t1.72\t0.00\t94.84\t0.00\t1\n_\t5.99\t8.00\t0.08\t-7.16\t0.00\t20.89\t0.00\t2\n_\t5.99\t-3.93\t0.08\t2.65\t0.00\t238.48\t0.00\t3\nStop\t6.04\t2.00\t0.08\t1.71\t0.00\t94.84\t0.00\t1\n_\t6.25\t-5.15\t0.08\t-5.32\t0.00\t54.46\t0.00\t0\n_\t6.25\t2.58\t0.08\t1.66\t0.00\t94.83\t0.00\t1\n_\t6.25\t7.41\t0.08\t-6.67\t0.00\t350.13\t0.00\t2\n_\t6.25\t-4.69\t0.08\t2.18\t0.00\t238.47\t0.00\t3\n_\t6.51\t-4.41\t0.08\t-4.81\t0.00\t54.74\t0.00\t0\n_\t6.51\t2.78\t0.08\t1.64\t0.00\t94.83\t0.00\t1\n_\t6.51\t6.73\t0.08\t-6.10\t0.00\t323.71\t0.00\t2\n_\t6.51\t-5.46\t0.08\t1.72\t0.00\t238.46\t0.00\t3\n_\t6.76\t-3.69\t0.08\t-4.30\t0.00\t54.83\t0.00\t0\n_\t6.76\t2.96\t0.08\t1.63\t0.00\t94.83\t0.00\t1\n_\t6.76\t6.05\t0.08\t-5.54\t0.00\t314.16\t0.00\t2\n_\t6.76\t-6.21\t0.08\t1.25\t0.00\t238.46\t0.00\t3\n_\t7.01\t-2.96\t0.08\t-3.78\t0.00\t54.85\t0.00\t0\n_\t7.01\t3.66\t0.08\t1.57\t0.00\t94.83\t0.00\t1\n_\t7.01\t5.36\t0.08\t-4.96\t0.00\t311.13\t0.00\t2\n_\t7.01\t-6.97\t0.08\t0.79\t0.00\t238.46\t0.00\t3\nStop\t7.22\t4.36\t0.08\t1.51\t0.00\t94.83\t0.00\t1\n_\t7.27\t-2.23\t0.08\t-3.27\t0.00\t54.86\t0.00\t0\n_\t7.27\t4.54\t0.08\t1.49\t0.00\t94.83\t0.00\t1\n_\t7.27\t4.67\t0.08\t-4.39\t0.00\t310.19\t0.00\t2\n_\t7.27\t-7.74\t0.08\t0.32\t0.00\t238.46\t0.00\t3\n_\t7.53\t-1.50\t0.08\t-2.75\t0.00\t54.23\t0.00\t0\n_\t7.53\t5.07\t0.08\t1.45\t0.00\t94.83\t0.00\t1\n_\t7.53\t3.98\t0.08\t-3.82\t0.00\t309.59\t0.00\t2\n_\t7.53\t-8.50\t0.08\t-0.15\t0.00\t238.46\t0.00\t3\n_\t7.78\t-0.82\t0.08\t-2.22\t0.00\t52.72\t0.00\t0\n_\t7.78\t5.15\t0.08\t1.44\t0.00\t94.83\t0.00\t1\n_\t7.78\t3.32\t0.08\t-3.28\t0.00\t309.63\t0.00\t2\n_\t7.78\t-9.25\t0.08\t-0.61\t0.00\t238.46\t0.00\t3\n_\t8.03\t-0.12\t0.08\t-1.67\t0.00\t52.50\t0.00\t0\n_\t8.03\t5.53\t0.08\t1.41\t0.00\t94.83\t0.00\t1\n_\t8.03\t2.65\t0.08\t-2.72\t0.00\t309.68\t0.00\t2\n_\t8.03\t-10.01\t0.08\t-1.08\t0.00\t238.46\t0.00\t3\n_\t8.29\t0.60\t0.08\t-1.13\t0.00\t52.88\t0.00\t0\n_\t8.29\t6.37\t0.08\t1.34\t0.00\t94.83\t0.00\t1\n_\t8.29\t1.98\t0.08\t-2.17\t0.00\t309.73\t0.00\t2\n_\t8.29\t-10.64\t0.08\t-1.46\t0.00\t238.46\t0.00\t3\nTurn\t8.44\t-10.84\t0.08\t-1.58\t0.00\t238.46\t0.00\t3\nStop\t8.46\t6.89\t0.08\t1.29\t0.00\t94.83\t0.00\t1\n_\t8.55\t1.31\t0.08\t-0.60\t0.00\t53.47\t0.00\t0\n_\t8.55\t7.10\t0.08\t1.28\t0.00\t94.83\t0.00\t1\n_\t8.55\t1.31\t0.08\t-1.62\t0.00\t309.20\t0.00\t2\n_\t8.55\t-10.92\t0.08\t-1.61\t0.00\t242.88\t0.00\t3\n_\t8.80\t2.04\t0.08\t-0.13\t0.00\t56.07\t0.00\t0\n_\t8.80\t7.43\t0.08\t1.25\t0.00\t94.83\t0.00\t1\n_\t8.80\t0.68\t0.08\t-1.09\t0.00\t309.89\t0.00\t2\n_\t8.80\t-10.98\t0.08\t-1.32\t0.00\t272.57\t0.00\t3\nTurn\t8.98\t7.44\t0.08\t1.25\t0.00\t94.83\t0.00\t1\n_\t9.05\t2.80\t0.08\t0.34\t0.00\t57.36\t0.00\t0\n_\t9.05\t7.42\t0.08\t1.23\t0.00\t104.43\t0.00\t1\n_\t9.05\t0.29\t0.08\t-0.75\t0.00\t310.75\t0.00\t2\n_\t9.05\t-10.85\t0.08\t-0.56\t0.00\t303.28\t0.00\t3\nTurn\t9.08\t0.27\t0.08\t-0.73\t0.00\t310.78\t0.00\t2\n_\t9.31\t3.45\t0.08\t0.75\t0.00\t57.73\t0.00\t0\n_\t9.31\t7.13\t0.08\t0.93\t0.00\t135.16\t0.00\t1\n_\t9.31\t0.30\t0.08\t-0.53\t0.00\t330.54\t0.00\t2\n_\t9.31\t-10.66\t0.08\t0.31\t0.00\t334.02\t0.00\t3\nTurn\t9.50\t3.71\t0.08\t0.91\t0.00\t57.81\t0.00\t0\n_\t9.57\t3.78\t0.08\t0.97\t0.00\t57.02\t0.00\t0\n_\t9.57\t6.53\t0.08\t0.33\t0.00\t165.87\t0.00\t1\n_\t9.57\t0.81\t0.08\t-0.28\t0.00\t1.24\t0.00\t2\n_\t9.57\t-10.48\t0.08\t1.19\t0.00\t359.31\t0.00\t3\n_\t9.82\t4.25\t0.08\t1.44\t0.00\t48.93\t0.00\t0\n_\t9.82\t5.91\t0.08\t-0.31\t0.00\t196.60\t0.00\t1\n_\t9.82\t1.64\t0.08\t0.05\t0.00\t31.97\t0.00\t2\n_\t9.82\t-10.29\t0.08\t2.06\t0.00\t8.12\t0.00\t3\n_\t10.08\t4.84\t0.08\t2.11\t0.00\t44.07\t0.00\t0\n_\t10.08\t5.28\t0.08\t-0.95\t0.00\t215.87\t0.00\t1\n_\t10.08\t2.47\t0.08\t0.39\t0.00\t56.09\t0.00\t2\n_\t10.08\t-10.10\t0.08\t2.94\t0.00\t10.85\t0.00\t3\n_\t10.33\t5.44\t0.08\t2.78\t0.00\t42.57\t0.00\t0\n_\t10.33\t4.65\t0.08\t-1.59\t0.00\t221.84\t0.00\t1\n_\t10.33\t3.30\t0.08\t0.73\t0.00\t64.16\t0.00\t2\n_\t10.33\t-9.91\t0.08\t3.82\t0.00\t11.69\t0.00\t3\n_\t10.59\t6.04\t0.08\t3.44\t0.00\t42.10\t0.00\t0\n_\t10.59\t4.02\t0.08\t-2.23\t0.00\t223.68\t0.00\t1\n_\t10.59\t4.13\t0.08\t1.07\t0.00\t66.65\t0.00\t2\n_\t10.59\t-9.73\t0.08\t4.69\t0.00\t11.95\t0.00\t3\n_\t10.85\t6.64\t0.08\t4.11\t0.00\t41.96\t0.00\t0\n_\t10.85\t3.39\t0.08\t-2.87\t0.00\t224.25\t0.00\t1\n_\t10.85\t4.96\t0.08\t1.41\t0.00\t67.42\t0.00\t2\n_\t10.85\t-9.54\t0.08\t5.57\t0.00\t12.03\t0.00\t3\n_\t11.10\t7.23\t0.08\t4.77\t0.00\t41.92\t0.00\t0\n_\t11.10\t2.77\t0.08\t-3.50\t0.00\t224.43\t0.00\t1\n_\t11.10\t5.78\t0.08\t1.74\t0.00\t67.66\t0.00\t2\n_\t11.10\t-9.35\t0.08\t6.43\t0.00\t12.05\t0.00\t3\n_\t11.35\t7.83\t0.08\t5.43\t0.00\t41.90\t0.00\t0\n_\t11.35\t2.15\t0.08\t-4.14\t0.00\t224.48\t0.00\t1\n_\t11.35\t6.60\t0.08\t2.08\t0.00\t67.73\t0.00\t2\n_\t11.35\t-9.17\t0.08\t7.31\t0.00\t12.06\t0.00\t3\nStop\t11.60\t1.65\t0.08\t-4.65\t0.00\t224.50\t0.00\t1\n_\t11.61\t8.42\t0.08\t6.10\t0.00\t41.90\t0.00\t0\n_\t11.61\t1.62\t0.08\t-4.67\t0.00\t224.50\t0.00\t1\n_\t11.61\t7.43\t0.08\t2.42\t0.00\t67.75\t0.00\t2\n_\t11.61\t-8.98\t0.08\t8.18\t0.00\t12.06\t0.00\t3\n_\t11.87\t8.87\t0.08\t6.59\t0.00\t41.90\t0.00\t0\n_\t11.87\t1.38\t0.08\t-4.91\t0.00\t224.50\t0.00\t1\n_\t11.87\t8.26\t0.08\t2.76\t0.00\t67.76\t0.00\t2\n_\t11.87\t-8.79\t0.08\t9.06\t0.00\t12.07\t0.00\t3\nTurn\t11.98\t8.97\t0.08\t6.71\t0.00\t41.90\t0.00\t0\n_\t12.12\t9.03\t0.08\t6.76\t0.00\t46.08\t0.00\t0\n_\t12.12\t1.37\t0.08\t-4.93\t0.00\t224.50\t0.00\t1\n_\t12.12\t9.08\t0.08\t3.09\t0.00\t67.76\t0.00\t2\n_\t12.12\t-8.61\t0.08\t9.92\t0.00\t12.07\t0.00\t3\nTurn\t12.12\t1.37\t0.08\t-4.93\t0.00\t224.50\t0.00\t1\n_\t12.37\t8.92\t0.08\t6.51\t0.00\t76.80\t0.00\t0\n_\t12.37\t1.62\t0.08\t-4.87\t0.00\t193.78\t0.00\t1\n_\t12.37\t9.82\t0.08\t3.39\t0.00\t67.76\t0.00\t2\n_\t12.37\t-8.42\t0.08\t10.80\t0.00\t12.07\t0.00\t3\nTurn\t12.58\t10.14\t0.08\t3.52\t0.00\t67.77\t0.00\t2\n_\t12.63\t8.52\t0.08\t5.85\t0.00\t107.52\t0.00\t0\n_\t12.63\t2.35\t0.08\t-4.68\t0.00\t163.06\t0.00\t1\n_\t12.63\t10.19\t0.08\t3.54\t0.00\t67.63\t0.00\t2\n_\t12.63\t-8.24\t0.08\t11.64\t0.00\t12.07\t0.00\t3\n_\t12.89\t8.06\t0.08\t5.08\t0.00\t138.23\t0.00\t0\n_\t12.89\t3.22\t0.08\t-4.46\t0.00\t132.35\t0.00\t1\n_\t12.89\t10.10\t0.08\t3.54\t0.00\t44.62\t0.00\t2\n_\t12.89\t-8.14\t0.08\t12.13\t0.00\t12.07\t0.00\t3\nTurn\t12.90\t-8.13\t0.08\t12.14\t0.00\t12.07\t0.00\t3\n_\t13.14\t7.60\t0.08\t4.31\t0.00\t168.95\t0.00\t0\n_\t13.14\t4.09\t0.08\t-4.24\t0.00\t101.62\t0.00\t1\n_\t13.14\t9.52\t0.08\t3.37\t0.00\t13.90\t0.00\t2\n_\t13.14\t-8.12\t0.08\t12.18\t0.00\t26.61\t0.00\t3\n_\t13.39\t7.15\t0.08\t3.55\t0.00\t195.82\t0.00\t0\n_\t13.39\t4.92\t0.08\t-4.03\t0.00\t84.25\t0.00\t1\n_\t13.39\t8.71\t0.08\t3.13\t0.00\t343.70\t0.00\t2\n_\t13.39\t-8.19\t0.08\t11.72\t0.00\t56.80\t0.00\t3\n_\t13.65\t6.69\t0.08\t2.78\t0.00\t206.31\t0.00\t0\n_\t13.65\t5.44\t0.08\t-3.90\t0.00\t79.64\t0.00\t1\n_\t13.65\t7.88\t0.08\t2.88\t0.00\t312.94\t0.00\t2\n_\t13.65\t-8.33\t0.08\t10.86\t0.00\t87.56\t0.00\t3\nTurn\t13.68\t5.47\t0.08\t-3.89\t0.00\t79.45\t0.00\t1\n_\t13.91\t6.22\t0.08\t2.06\t0.00\t210.53\t0.00\t0\n_\t13.91\t5.54\t0.08\t-3.92\t0.00\t94.04\t0.00\t1\n_\t13.91\t7.07\t0.08\t2.64\t0.00\t282.26\t0.00\t2\n_\t13.91\t-8.48\t0.08\t9.98\t0.00\t118.24\t0.00\t3\n_\t14.16\t5.77\t0.08\t1.30\t0.00\t210.83\t0.00\t0\n_\t14.16\t5.16\t0.08\t-4.17\t0.00\t124.77\t0.00\t1\n_\t14.16\t6.24\t0.08\t2.41\t0.00\t263.58\t0.00\t2\n_\t14.16\t-8.63\t0.08\t9.10\t0.00\t148.97\t0.00\t3\n_\t14.42\t5.31\t0.08\t0.53\t0.00\t210.76\t0.00\t0\n_\t14.42\t4.40\t0.08\t-4.60\t0.00\t155.45\t0.00\t1\n_\t14.42\t5.38\t0.08\t2.15\t0.00\t256.42\t0.00\t2\n_\t14.42\t-8.73\t0.08\t8.49\t0.00\t171.82\t0.00\t3\nTurn\t14.50\t-8.75\t0.08\t8.38\t0.00\t174.88\t0.00\t3\n_\t14.67\t4.85\t0.08\t-0.24\t0.00\t210.74\t0.00\t0\n_\t14.67\t3.63\t0.08\t-5.03\t0.00\t186.22\t0.00\t1\n_\t14.67\t4.53\t0.08\t1.89\t0.00\t254.18\t0.00\t2\n_\t14.67\t-8.67\t0.08\t8.16\t0.00\t168.49\t0.00\t3\nStop\t14.84\t3.25\t0.08\t-5.24\t0.00\t205.34\t0.00\t1\n_\t14.93\t4.40\t0.08\t-1.01\t0.00\t210.38\t0.00\t0\n_\t14.93\t3.10\t0.08\t-5.32\t0.00\t213.82\t0.00\t1\n_\t14.93\t3.67\t0.08\t1.64\t0.00\t253.49\t0.00\t2\n_\t14.93\t-8.12\t0.08\t7.74\t0.00\t142.01\t0.00\t3\n_\t15.19\t4.03\t0.08\t-1.76\t0.00\t208.52\t0.00\t0\n_\t15.19\t2.94\t0.08\t-5.41\t0.00\t222.37\t0.00\t1\n_\t15.19\t2.81\t0.08\t1.38\t0.00\t253.27\t0.00\t2\n_\t15.19\t-7.36\t0.08\t7.27\t0.00\t128.01\t0.00\t3\nTurn\t15.36\t2.94\t0.08\t-5.41\t0.00\t222.37\t0.00\t1\n_\t15.44\t3.55\t0.08\t-2.47\t0.00\t212.81\t0.00\t0\n_\t15.44\t2.92\t0.08\t-5.39\t0.00\t231.24\t0.00\t1\n_\t15.44\t1.97\t0.08\t1.12\t0.00\t253.21\t0.00\t2\n_\t15.44\t-6.61\t0.08\t6.80\t0.00\t123.73\t0.00\t3\n_\t15.69\t3.09\t0.08\t-3.12\t0.00\t212.30\t0.00\t0\n_\t15.69\t2.61\t0.08\t-5.12\t0.00\t261.96\t0.00\t1\n_\t15.69\t1.11\t0.08\t0.86\t0.00\t253.18\t0.00\t2\n_\t15.69\t-5.85\t0.08\t6.33\t0.00\t122.37\t0.00\t3\n_\t15.95\t2.80\t0.08\t-3.83\t0.00\t206.36\t0.00\t0\n_\t15.95\t1.95\t0.08\t-4.58\t0.00\t291.20\t0.00\t1\n_\t15.95\t0.25\t0.08\t0.60\t0.00\t253.18\t0.00\t2\n_\t15.95\t-5.09\t0.08\t5.86\t0.00\t121.94\t0.00\t3\n_\t16.20\t2.38\t0.08\t-4.55\t0.00\t209.57\t0.00\t0\n_\t16.20\t1.28\t0.08\t-4.05\t0.00\t302.87\t0.00\t1\n_\t16.20\t-0.59\t0.08\t0.35\t0.00\t253.18\t0.00\t2\n_\t16.20\t-4.34\t0.08\t5.40\t0.00\t121.81\t0.00\t3\n_\t16.46\t1.99\t0.08\t-5.10\t0.00\t213.09\t0.00\t0\n_\t16.46\t0.60\t0.08\t-3.47\t0.00\t308.09\t0.00\t1\n_\t16.46\t-1.45\t0.08\t0.09\t0.00\t253.18\t0.00\t2\n_\t16.46\t-3.57\t0.08\t4.92\t0.00\t121.77\t0.00\t3\nTurn\t16.58\t1.89\t0.08\t-5.25\t0.00\t213.68\t0.00\t0\n_\t16.71\t1.74\t0.08\t-5.34\t0.00\t221.29\t0.00\t0\n_\t16.71\t-0.08\t0.08\t-2.89\t0.00\t309.70\t0.00\t1\n_\t16.71\t-2.31\t0.08\t-0.17\t0.00\t253.18\t0.00\t2\n_\t16.71\t-2.81\t0.08\t4.45\t0.00\t121.76\t0.00\t3\n_\t16.98\t1.08\t0.08\t-5.33\t0.00\t251.92\t0.00\t0\n_\t16.98\t-0.78\t0.08\t-2.29\t0.00\t310.21\t0.00\t1\n_\t16.98\t-3.19\t0.08\t-0.44\t0.00\t253.18\t0.00\t2\n_\t16.98\t-2.03\t0.08\t3.97\t0.00\t121.76\t0.00\t3\n_\t17.23\t0.20\t0.08\t-5.19\t0.00\t270.24\t0.00\t0\n_\t17.23\t-1.46\t0.08\t-1.72\t0.00\t310.36\t0.00\t1\n_\t17.23\t-4.04\t0.08\t-0.69\t0.00\t253.18\t0.00\t2\n_\t17.23\t-1.28\t0.08\t3.50\t0.00\t121.76\t0.00\t3\n_\t17.49\t-0.69\t0.08\t-5.06\t0.00\t276.01\t0.00\t0\n_\t17.49\t-2.14\t0.08\t-1.13\t0.00\t310.41\t0.00\t1\n_\t17.49\t-4.90\t0.08\t-0.95\t0.00\t253.18\t0.00\t2\n_\t17.49\t-0.52\t0.08\t3.03\t0.00\t121.75\t0.00\t3\n_\t17.74\t-1.57\t0.08\t-4.93\t0.00\t277.80\t0.00\t0\n_\t17.74\t-2.82\t0.08\t-0.55\t0.00\t310.42\t0.00\t1\n_\t17.74\t-5.75\t0.08\t-1.21\t0.00\t253.18\t0.00\t2\n_\t17.74\t0.25\t0.08\t2.56\t0.00\t121.75\t0.00\t3\nStop\t17.94\t0.82\t0.08\t2.21\t0.00\t121.75\t0.00\t3\n_\t18.00\t-2.46\t0.08\t-4.79\t0.00\t278.35\t0.00\t0\n_\t18.00\t-3.50\t0.08\t0.03\t0.00\t310.43\t0.00\t1\n_\t18.00\t-6.61\t0.08\t-1.47\t0.00\t253.18\t0.00\t2\n_\t18.00\t1.00\t0.08\t2.10\t0.00\t121.75\t0.00\t3\n_\t18.25\t-3.34\t0.08\t-4.66\t0.00\t278.52\t0.00\t0\n_\t18.25\t-4.19\t0.08\t0.61\t0.00\t310.43\t0.00\t1\n_\t18.25\t-7.47\t0.08\t-1.73\t0.00\t253.18\t0.00\t2\n_\t18.25\t1.43\t0.08\t1.83\t0.00\t121.75\t0.00\t3\n_\t18.51\t-4.23\t0.08\t-4.52\t0.00\t278.57\t0.00\t0\n_\t18.51\t-4.87\t0.08\t1.19\t0.00\t310.43\t0.00\t1\n_\t18.51\t-8.33\t0.08\t-1.99\t0.00\t253.18\t0.00\t2\n_\t18.51\t1.50\t0.08\t1.79\t0.00\t121.75\t0.00\t3\nStop\t18.58\t-4.45\t0.08\t-4.49\t0.00\t278.58\t0.00\t0\n_\t18.77\t-4.98\t0.08\t-4.41\t0.00\t278.59\t0.00\t0\n_\t18.77\t-5.55\t0.08\t1.77\t0.00\t310.43\t0.00\t1\n_\t18.77\t-9.13\t0.08\t-2.24\t0.00\t253.18\t0.00\t2\n_\t18.77\t1.76\t0.08\t1.62\t0.00\t121.75\t0.00\t3\nTurn\t18.92\t1.88\t0.08\t1.55\t0.00\t121.75\t0.00\t3\n_\t19.02\t-5.22\t0.08\t-4.37\t0.00\t278.59\t0.00\t0\n_\t19.02\t-6.24\t0.08\t2.36\t0.00\t310.43\t0.00\t1\n_\t19.02\t-9.60\t0.08\t-2.38\t0.00\t253.18\t0.00\t2\n_\t19.02\t1.90\t0.08\t1.50\t0.00\t128.65\t0.00\t3\nTurn\t19.04\t-9.61\t0.08\t-2.38\t0.00\t253.18\t0.00\t2\n"
+    maxTime: 19.04
+  - show: 1
+    recNum: 2450
+    project: FPS_Demo
+    semester: 2022.4
+    version: 0.2
+    sceneName: _Scene_0
+    playerName: Jeremy_Test
+    dateTime: 2022-10-26 07:16:49
+    data: "Tag\tTime\tx\ty\tz\trX\trY\trZ\tid\nColor\t0.00\t0.86\t0.75\t1.00\t0.00\t0.00\t0.00\t0\nColor\t0.00\t0.50\t0.00\t0.00\t0.00\t0.00\t0.00\t1\nColor\t0.00\t0.00\t0.00\t0.46\t0.00\t0.00\t0.00\t2\nColor\t0.00\t1.00\t0.88\t0.10\t0.00\t0.00\t0.00\t3\nStart\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nStart\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nStart\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\nStart\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\n_\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\n_\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\n_\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t2.99\t0.00\t-7.28\t0.00\t0.00\t0.00\t0\nTurn\t0.00\t-4.38\t0.00\t1.36\t0.00\t0.00\t0.00\t1\nTurn\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t0.00\t3\nTurn\t0.00\t-5.86\t0.00\t-8.99\t0.00\t0.00\t0.00\t2\n_\t0.35\t2.88\t0.08\t-7.25\t0.00\t316.32\t0.00\t0\n_\t0.35\t-4.34\t0.08\t1.26\t0.00\t44.80\t0.00\t1\n_\t0.35\t-5.84\t0.08\t-8.88\t0.00\t13.02\t0.00\t2\n_\t0.35\t-0.03\t0.08\t0.10\t0.00\t341.84\t0.00\t3\n_\t0.60\t2.06\t0.08\t-7.03\t0.00\t295.19\t0.00\t0\n_\t0.60\t-4.05\t0.08\t0.45\t0.00\t74.84\t0.00\t1\n_\t0.60\t-5.64\t0.08\t-8.05\t0.00\t13.02\t0.00\t2\n_\t0.60\t-0.30\t0.08\t0.92\t0.00\t341.84\t0.00\t3\n_\t0.86\t1.20\t0.08\t-6.80\t0.00\t288.19\t0.00\t0\n_\t0.86\t-3.76\t0.08\t-0.38\t0.00\t105.09\t0.00\t1\n_\t0.86\t-5.44\t0.08\t-7.19\t0.00\t13.02\t0.00\t2\n_\t0.86\t-0.58\t0.08\t1.76\t0.00\t341.84\t0.00\t3\n_\t1.11\t0.35\t0.08\t-6.58\t0.00\t285.97\t0.00\t0\n_\t1.11\t-3.46\t0.08\t-1.21\t0.00\t135.28\t0.00\t1\n_\t1.11\t-5.24\t0.08\t-6.33\t0.00\t13.02\t0.00\t2\n_\t1.11\t-0.85\t0.08\t2.60\t0.00\t341.84\t0.00\t3\n_\t1.36\t-0.50\t0.08\t-6.35\t0.00\t285.26\t0.00\t0\n_\t1.36\t-3.16\t0.08\t-2.04\t0.00\t152.37\t0.00\t1\n_\t1.36\t-5.05\t0.08\t-5.47\t0.00\t13.02\t0.00\t2\n_\t1.36\t-1.13\t0.08\t3.43\t0.00\t341.84\t0.00\t3\n_\t1.61\t-1.35\t0.08\t-6.12\t0.00\t285.04\t0.00\t0\n_\t1.61\t-2.87\t0.08\t-2.87\t0.00\t157.81\t0.00\t1\n_\t1.61\t-4.85\t0.08\t-4.61\t0.00\t13.02\t0.00\t2\n_\t1.61\t-1.40\t0.08\t4.27\t0.00\t341.84\t0.00\t3\n_\t1.86\t-2.21\t0.08\t-5.89\t0.00\t284.96\t0.00\t0\n_\t1.86\t-2.57\t0.08\t-3.69\t0.00\t159.53\t0.00\t1\n_\t1.86\t-4.65\t0.08\t-3.75\t0.00\t13.02\t0.00\t2\n_\t1.86\t-1.68\t0.08\t5.11\t0.00\t341.84\t0.00\t3\n_\t2.12\t-3.06\t0.08\t-5.67\t0.00\t284.94\t0.00\t0\n_\t2.12\t-2.37\t0.08\t-4.26\t0.00\t160.00\t0.00\t1\n_\t2.12\t-4.45\t0.08\t-2.89\t0.00\t13.02\t0.00\t2\n_\t2.12\t-1.95\t0.08\t5.95\t0.00\t341.84\t0.00\t3\nTurn\t2.20\t-2.34\t0.08\t-4.36\t0.00\t160.06\t0.00\t1\n_\t2.37\t-3.91\t0.08\t-5.44\t0.00\t284.93\t0.00\t0\n_\t2.37\t-2.30\t0.08\t-4.42\t0.00\t152.89\t0.00\t1\n_\t2.37\t-4.25\t0.08\t-2.03\t0.00\t13.02\t0.00\t2\n_\t2.37\t-2.23\t0.08\t6.79\t0.00\t341.84\t0.00\t3\n_\t2.62\t-4.76\t0.08\t-5.21\t0.00\t284.93\t0.00\t0\n_\t2.62\t-2.33\t0.08\t-4.09\t0.00\t122.64\t0.00\t1\n_\t2.62\t-4.05\t0.08\t-1.17\t0.00\t13.02\t0.00\t2\n_\t2.62\t-2.43\t0.08\t7.42\t0.00\t341.84\t0.00\t3\nTurn\t2.76\t-2.50\t0.08\t7.61\t0.00\t341.84\t0.00\t3\n_\t2.87\t-5.61\t0.08\t-4.99\t0.00\t284.93\t0.00\t0\n_\t2.87\t-2.46\t0.08\t-3.31\t0.00\t92.41\t0.00\t1\n_\t2.87\t-3.86\t0.08\t-0.32\t0.00\t13.02\t0.00\t2\n_\t2.87\t-2.49\t0.08\t7.68\t0.00\t346.48\t0.00\t3\n_\t3.12\t-6.47\t0.08\t-4.76\t0.00\t284.93\t0.00\t0\n_\t3.12\t-2.62\t0.08\t-2.47\t0.00\t62.16\t0.00\t1\n_\t3.12\t-3.72\t0.08\t0.26\t0.00\t13.02\t0.00\t2\n_\t3.12\t-2.19\t0.08\t7.63\t0.00\t16.48\t0.00\t3\nTurn\t3.20\t-3.70\t0.08\t0.36\t0.00\t13.02\t0.00\t2\n_\t3.38\t-7.32\t0.08\t-4.53\t0.00\t284.93\t0.00\t0\n_\t3.38\t-2.84\t0.08\t-1.74\t0.00\t31.93\t0.00\t1\n_\t3.38\t-3.54\t0.08\t0.52\t0.00\t24.44\t0.00\t2\n_\t3.38\t-1.53\t0.08\t7.26\t0.00\t46.71\t0.00\t3\n_\t3.63\t-8.17\t0.08\t-4.31\t0.00\t284.93\t0.00\t0\n_\t3.63\t-2.92\t0.08\t-0.95\t0.00\t9.18\t0.00\t1\n_\t3.63\t-2.88\t0.08\t0.67\t0.00\t54.60\t0.00\t2\n_\t3.63\t-0.77\t0.08\t6.81\t0.00\t76.95\t0.00\t3\n_\t3.88\t-8.77\t0.08\t-4.15\t0.00\t284.93\t0.00\t0\n_\t3.88\t-2.95\t0.08\t-0.48\t0.00\t2.81\t0.00\t1\n_\t3.88\t-2.01\t0.08\t0.75\t0.00\t74.83\t0.00\t2\n_\t3.88\t-0.01\t0.08\t6.36\t0.00\t104.45\t0.00\t3\nTurn\t3.88\t-2.95\t0.08\t-0.48\t0.00\t2.81\t0.00\t1\nTurn\t3.98\t-8.90\t0.08\t-4.11\t0.00\t284.93\t0.00\t0\n_\t4.14\t-8.96\t0.08\t-4.06\t0.00\t292.77\t0.00\t0\n_\t4.14\t-3.21\t0.08\t-0.13\t0.00\t341.54\t0.00\t1\n_\t4.14\t-1.11\t0.08\t0.84\t0.00\t81.40\t0.00\t2\n_\t4.14\t0.56\t0.08\t6.02\t0.00\t114.19\t0.00\t3\nTurn\t4.24\t0.69\t0.08\t5.94\t0.00\t115.64\t0.00\t3\n_\t4.39\t-8.65\t0.08\t-3.94\t0.00\t323.45\t0.00\t0\n_\t4.39\t-3.90\t0.08\t0.34\t0.00\t316.08\t0.00\t1\n_\t4.39\t-0.29\t0.08\t0.92\t0.00\t83.37\t0.00\t2\n_\t4.39\t0.75\t0.08\t5.89\t0.00\t121.18\t0.00\t3\nStop\t4.46\t-0.13\t0.08\t0.94\t0.00\t83.58\t0.00\t2\n_\t4.64\t-7.87\t0.08\t-3.79\t0.00\t353.68\t0.00\t0\n_\t4.64\t-4.64\t0.08\t0.82\t0.00\t307.06\t0.00\t1\n_\t4.64\t0.16\t0.08\t0.97\t0.00\t83.88\t0.00\t2\n_\t4.64\t0.48\t0.08\t5.96\t0.00\t151.42\t0.00\t3\n_\t4.90\t-7.00\t0.08\t-3.63\t0.00\t23.92\t0.00\t0\n_\t4.90\t-5.39\t0.08\t1.30\t0.00\t304.19\t0.00\t1\n_\t4.90\t0.24\t0.08\t0.97\t0.00\t83.97\t0.00\t2\n_\t4.90\t-0.24\t0.08\t6.22\t0.00\t181.66\t0.00\t3\nTurn\t4.98\t0.24\t0.08\t0.97\t0.00\t83.97\t0.00\t2\n_\t5.15\t-6.13\t0.08\t-3.48\t0.00\t54.14\t0.00\t0\n_\t5.15\t-6.13\t0.08\t1.78\t0.00\t303.27\t0.00\t1\n_\t5.15\t0.20\t0.08\t1.08\t0.00\t63.94\t0.00\t2\n_\t5.15\t-1.06\t0.08\t6.53\t0.00\t211.90\t0.00\t3\n_\t5.40\t-5.26\t0.08\t-3.32\t0.00\t71.54\t0.00\t0\n_\t5.40\t-6.87\t0.08\t2.26\t0.00\t302.98\t0.00\t1\n_\t5.40\t-0.01\t0.08\t1.63\t0.00\t33.70\t0.00\t2\n_\t5.40\t-1.89\t0.08\t6.84\t0.00\t242.14\t0.00\t3\n_\t5.65\t-4.40\t0.08\t-3.16\t0.00\t77.08\t0.00\t0\n_\t5.65\t-7.61\t0.08\t2.73\t0.00\t302.89\t0.00\t1\n_\t5.65\t-0.33\t0.08\t2.45\t0.00\t3.51\t0.00\t2\n_\t5.65\t-2.72\t0.08\t7.15\t0.00\t271.20\t0.00\t3\n_\t5.90\t-3.53\t0.08\t-3.00\t0.00\t78.85\t0.00\t0\n_\t5.90\t-8.35\t0.08\t3.21\t0.00\t302.86\t0.00\t1\n_\t5.90\t-0.65\t0.08\t3.27\t0.00\t346.80\t0.00\t2\n_\t5.90\t-3.54\t0.08\t7.46\t0.00\t284.32\t0.00\t3\n_\t6.16\t-2.66\t0.08\t-2.84\t0.00\t79.41\t0.00\t0\n_\t6.16\t-9.06\t0.08\t3.67\t0.00\t302.85\t0.00\t1\n_\t6.16\t-0.96\t0.08\t4.10\t0.00\t341.48\t0.00\t2\n_\t6.16\t-4.33\t0.08\t7.75\t0.00\t288.40\t0.00\t3\n_\t6.41\t-1.79\t0.08\t-2.68\t0.00\t79.59\t0.00\t0\n_\t6.41\t-9.49\t0.08\t3.95\t0.00\t302.85\t0.00\t1\n_\t6.41\t-1.28\t0.08\t4.92\t0.00\t339.79\t0.00\t2\n_\t6.41\t-4.80\t0.08\t7.92\t0.00\t289.48\t0.00\t3\nTurn\t6.42\t-4.81\t0.08\t7.93\t0.00\t289.50\t0.00\t3\nTurn\t6.44\t-9.52\t0.08\t3.97\t0.00\t302.85\t0.00\t1\n_\t6.66\t-0.93\t0.08\t-2.53\t0.00\t79.64\t0.00\t0\n_\t6.66\t-9.53\t0.08\t4.05\t0.00\t318.47\t0.00\t1\n_\t6.66\t-1.54\t0.08\t5.61\t0.00\t339.29\t0.00\t2\n_\t6.66\t-4.99\t0.08\t7.81\t0.00\t269.82\t0.00\t3\nTurn\t6.84\t-1.65\t0.08\t5.89\t0.00\t339.18\t0.00\t2\n_\t6.91\t-0.06\t0.08\t-2.37\t0.00\t79.66\t0.00\t0\n_\t6.91\t-9.08\t0.08\t4.02\t0.00\t348.72\t0.00\t1\n_\t6.91\t-1.67\t0.08\t5.94\t0.00\t338.37\t0.00\t2\n_\t6.91\t-5.01\t0.08\t7.21\t0.00\t239.56\t0.00\t3\n_\t7.16\t0.81\t0.08\t-2.21\t0.00\t79.67\t0.00\t0\n_\t7.16\t-8.30\t0.08\t3.90\t0.00\t18.95\t0.00\t1\n_\t7.16\t-1.73\t0.08\t5.79\t0.00\t311.96\t0.00\t2\n_\t7.16\t-4.90\t0.08\t6.35\t0.00\t209.33\t0.00\t3\n_\t7.42\t1.68\t0.08\t-2.05\t0.00\t79.67\t0.00\t0\n_\t7.42\t-7.52\t0.08\t3.80\t0.00\t49.19\t0.00\t1\n_\t7.42\t-1.72\t0.08\t5.14\t0.00\t281.72\t0.00\t2\n_\t7.42\t-4.77\t0.08\t5.48\t0.00\t184.48\t0.00\t3\n_\t7.67\t2.54\t0.08\t-1.89\t0.00\t79.67\t0.00\t0\n_\t7.67\t-6.73\t0.08\t3.71\t0.00\t77.30\t0.00\t1\n_\t7.67\t-1.69\t0.08\t4.26\t0.00\t251.49\t0.00\t2\n_\t7.67\t-4.64\t0.08\t4.62\t0.00\t175.39\t0.00\t3\n_\t7.92\t3.41\t0.08\t-1.73\t0.00\t79.67\t0.00\t0\n_\t7.92\t-5.93\t0.08\t3.63\t0.00\t89.44\t0.00\t1\n_\t7.92\t-1.66\t0.08\t3.38\t0.00\t221.22\t0.00\t2\n_\t7.92\t-4.49\t0.08\t3.76\t0.00\t171.61\t0.00\t3\n_\t8.17\t4.28\t0.08\t-1.58\t0.00\t79.67\t0.00\t0\n_\t8.17\t-5.12\t0.08\t3.53\t0.00\t94.44\t0.00\t1\n_\t8.17\t-1.63\t0.08\t2.50\t0.00\t193.90\t0.00\t2\n_\t8.17\t-4.33\t0.08\t2.90\t0.00\t170.50\t0.00\t3\n_\t8.42\t5.15\t0.08\t-1.42\t0.00\t79.67\t0.00\t0\n_\t8.42\t-4.28\t0.08\t3.40\t0.00\t97.66\t0.00\t1\n_\t8.42\t-1.60\t0.08\t1.62\t0.00\t183.06\t0.00\t2\n_\t8.42\t-4.26\t0.08\t2.05\t0.00\t173.76\t0.00\t3\n_\t8.68\t6.02\t0.08\t-1.26\t0.00\t79.67\t0.00\t0\n_\t8.68\t-3.41\t0.08\t3.23\t0.00\t99.91\t0.00\t1\n_\t8.68\t-1.57\t0.08\t0.73\t0.00\t179.60\t0.00\t2\n_\t8.68\t-4.20\t0.08\t1.17\t0.00\t175.32\t0.00\t3\n_\t8.93\t6.88\t0.08\t-1.10\t0.00\t79.67\t0.00\t0\n_\t8.93\t-2.55\t0.08\t3.06\t0.00\t100.63\t0.00\t1\n_\t8.93\t-1.54\t0.08\t-0.15\t0.00\t178.50\t0.00\t2\n_\t8.93\t-4.14\t0.08\t0.29\t0.00\t175.82\t0.00\t3\n_\t9.18\t7.75\t0.08\t-0.94\t0.00\t79.67\t0.00\t0\n_\t9.18\t-1.85\t0.08\t2.93\t0.00\t100.84\t0.00\t1\n_\t9.18\t-1.51\t0.08\t-1.03\t0.00\t178.16\t0.00\t2\n_\t9.18\t-4.07\t0.08\t-0.59\t0.00\t175.98\t0.00\t3\nTurn\t9.34\t-1.60\t0.08\t2.88\t0.00\t100.88\t0.00\t1\n_\t9.43\t8.41\t0.08\t-0.82\t0.00\t79.67\t0.00\t0\n_\t9.43\t-1.49\t0.08\t2.89\t0.00\t97.96\t0.00\t1\n_\t9.43\t-1.48\t0.08\t-1.90\t0.00\t178.05\t0.00\t2\n_\t9.43\t-4.01\t0.08\t-1.46\t0.00\t176.03\t0.00\t3\nTurn\t9.56\t8.59\t0.08\t-0.79\t0.00\t79.67\t0.00\t0\n_\t9.68\t8.70\t0.08\t-0.71\t0.00\t73.09\t0.00\t0\n_\t9.68\t-0.97\t0.08\t3.19\t0.00\t74.71\t0.00\t1\n_\t9.68\t-1.44\t0.08\t-2.79\t0.00\t178.01\t0.00\t2\n_\t9.68\t-3.95\t0.08\t-2.35\t0.00\t176.05\t0.00\t3\n_\t9.94\t8.75\t0.08\t-0.21\t0.00\t43.18\t0.00\t0\n_\t9.94\t-0.29\t0.08\t3.75\t0.00\t58.42\t0.00\t1\n_\t9.94\t-1.41\t0.08\t-3.67\t0.00\t178.00\t0.00\t2\n_\t9.94\t-3.89\t0.08\t-3.23\t0.00\t176.05\t0.00\t3\n_\t10.19\t8.63\t0.08\t0.64\t0.00\t13.39\t0.00\t0\n_\t10.19\t0.39\t0.08\t4.31\t0.00\t53.21\t0.00\t1\n_\t10.19\t-1.38\t0.08\t-4.55\t0.00\t178.00\t0.00\t2\n_\t10.19\t-3.83\t0.08\t-4.11\t0.00\t176.05\t0.00\t3\n_\t10.44\t8.50\t0.08\t1.51\t0.00\t358.48\t0.00\t0\n_\t10.44\t1.08\t0.08\t4.86\t0.00\t51.55\t0.00\t1\n_\t10.44\t-1.35\t0.08\t-5.44\t0.00\t177.99\t0.00\t2\n_\t10.44\t-3.77\t0.08\t-4.99\t0.00\t176.05\t0.00\t3\n_\t10.69\t8.37\t0.08\t2.38\t0.00\t353.75\t0.00\t0\n_\t10.69\t1.76\t0.08\t5.42\t0.00\t51.03\t0.00\t1\n_\t10.69\t-1.32\t0.08\t-6.32\t0.00\t177.99\t0.00\t2\n_\t10.69\t-3.71\t0.08\t-5.87\t0.00\t176.05\t0.00\t3\n_\t10.94\t8.24\t0.08\t3.26\t0.00\t352.25\t0.00\t0\n_\t10.94\t2.44\t0.08\t5.98\t0.00\t50.86\t0.00\t1\n_\t10.94\t-1.29\t0.08\t-7.20\t0.00\t177.99\t0.00\t2\n_\t10.94\t-3.65\t0.08\t-6.75\t0.00\t176.05\t0.00\t3\n_\t11.20\t8.11\t0.08\t4.13\t0.00\t351.77\t0.00\t0\n_\t11.20\t3.13\t0.08\t6.54\t0.00\t50.80\t0.00\t1\n_\t11.20\t-1.26\t0.08\t-8.08\t0.00\t177.99\t0.00\t2\n_\t11.20\t-3.59\t0.08\t-7.63\t0.00\t176.05\t0.00\t3\n_\t11.45\t7.98\t0.08\t5.00\t0.00\t351.61\t0.00\t0\n_\t11.45\t3.81\t0.08\t7.09\t0.00\t50.79\t0.00\t1\n_\t11.45\t-1.23\t0.08\t-8.96\t0.00\t177.99\t0.00\t2\n_\t11.45\t-3.55\t0.08\t-8.26\t0.00\t176.05\t0.00\t3\nTurn\t11.56\t-3.53\t0.08\t-8.42\t0.00\t176.05\t0.00\t3\n_\t11.70\t7.85\t0.08\t5.87\t0.00\t351.57\t0.00\t0\n_\t11.70\t4.39\t0.08\t7.56\t0.00\t50.78\t0.00\t1\n_\t11.70\t-1.20\t0.08\t-9.81\t0.00\t177.99\t0.00\t2\n_\t11.70\t-3.45\t0.08\t-8.55\t0.00\t167.80\t0.00\t3\nTurn\t11.88\t4.61\t0.08\t7.75\t0.00\t50.78\t0.00\t1\n_\t11.95\t7.72\t0.08\t6.75\t0.00\t351.55\t0.00\t0\n_\t11.95\t4.67\t0.08\t7.78\t0.00\t53.07\t0.00\t1\n_\t11.95\t-1.18\t0.08\t-10.35\t0.00\t177.99\t0.00\t2\n_\t11.95\t-2.93\t0.08\t-8.66\t0.00\t137.67\t0.00\t3\nTurn\t12.00\t-1.18\t0.08\t-10.41\t0.00\t177.99\t0.00\t2\n_\t12.20\t7.59\t0.08\t7.62\t0.00\t351.55\t0.00\t0\n_\t12.20\t4.97\t0.08\t7.56\t0.00\t81.27\t0.00\t1\n_\t12.20\t-1.18\t0.08\t-10.47\t0.00\t184.32\t0.00\t2\n_\t12.20\t-2.06\t0.08\t-8.65\t0.00\t108.56\t0.00\t3\n_\t12.46\t7.47\t0.08\t8.49\t0.00\t351.54\t0.00\t0\n_\t12.46\t5.35\t0.08\t6.87\t0.00\t111.52\t0.00\t1\n_\t12.46\t-1.33\t0.08\t-10.12\t0.00\t214.57\t0.00\t2\n_\t12.46\t-1.17\t0.08\t-8.63\t0.00\t95.29\t0.00\t3\n_\t12.71\t7.37\t0.08\t9.12\t0.00\t351.54\t0.00\t0\n_\t12.71\t5.76\t0.08\t6.09\t0.00\t137.92\t0.00\t1\n_\t12.71\t-1.55\t0.08\t-9.34\t0.00\t244.79\t0.00\t2\n_\t12.71\t-0.29\t0.08\t-8.62\t0.00\t91.10\t0.00\t3\nTurn\t12.82\t7.35\t0.08\t9.27\t0.00\t351.54\t0.00\t0\n_\t12.96\t7.29\t0.08\t9.35\t0.00\t343.70\t0.00\t0\n_\t12.96\t6.17\t0.08\t5.31\t0.00\t147.92\t0.00\t1\n_\t12.96\t-1.77\t0.08\t-8.49\t0.00\t275.03\t0.00\t2\n_\t12.96\t0.59\t0.08\t-8.61\t0.00\t89.76\t0.00\t3\n_\t13.21\t7.00\t0.08\t9.13\t0.00\t313.45\t0.00\t0\n_\t13.21\t6.57\t0.08\t4.53\t0.00\t151.09\t0.00\t1\n_\t13.21\t-2.00\t0.08\t-7.63\t0.00\t305.28\t0.00\t2\n_\t13.21\t1.47\t0.08\t-8.59\t0.00\t89.34\t0.00\t3\n_\t13.46\t6.52\t0.08\t8.49\t0.00\t283.21\t0.00\t0\n_\t13.46\t6.98\t0.08\t3.74\t0.00\t152.10\t0.00\t1\n_\t13.46\t-2.23\t0.08\t-6.78\t0.00\t331.10\t0.00\t2\n_\t13.46\t2.35\t0.08\t-8.58\t0.00\t89.20\t0.00\t3\n_\t13.72\t6.01\t0.08\t7.78\t0.00\t252.97\t0.00\t0\n_\t13.72\t7.38\t0.08\t2.96\t0.00\t152.42\t0.00\t1\n_\t13.72\t-2.46\t0.08\t-5.93\t0.00\t340.59\t0.00\t2\n_\t13.72\t3.23\t0.08\t-8.57\t0.00\t89.16\t0.00\t3\n_\t13.97\t5.50\t0.08\t7.06\t0.00\t228.32\t0.00\t0\n_\t13.97\t7.79\t0.08\t2.18\t0.00\t152.52\t0.00\t1\n_\t13.97\t-2.68\t0.08\t-5.08\t0.00\t343.62\t0.00\t2\n_\t13.97\t4.07\t0.08\t-8.56\t0.00\t89.15\t0.00\t3\n_\t14.22\t5.09\t0.08\t6.49\t0.00\t220.50\t0.00\t0\n_\t14.22\t8.20\t0.08\t1.39\t0.00\t152.55\t0.00\t1\n_\t14.22\t-2.91\t0.08\t-4.22\t0.00\t344.58\t0.00\t2\n_\t14.22\t4.57\t0.08\t-8.55\t0.00\t89.14\t0.00\t3\nTurn\t14.24\t4.59\t0.08\t-8.55\t0.00\t89.14\t0.00\t3\nTurn\t14.36\t4.96\t0.08\t6.31\t0.00\t219.02\t0.00\t0\n_\t14.47\t4.85\t0.08\t6.24\t0.00\t223.34\t0.00\t0\n_\t14.47\t8.56\t0.08\t0.70\t0.00\t152.56\t0.00\t1\n_\t14.47\t-3.14\t0.08\t-3.37\t0.00\t344.89\t0.00\t2\n_\t14.47\t4.70\t0.08\t-8.38\t0.00\t69.99\t0.00\t3\nTurn\t14.68\t8.72\t0.08\t0.38\t0.00\t152.57\t0.00\t1\n_\t14.73\t4.28\t0.08\t6.28\t0.00\t252.19\t0.00\t0\n_\t14.73\t8.74\t0.08\t0.33\t0.00\t153.54\t0.00\t1\n_\t14.73\t-3.37\t0.08\t-2.50\t0.00\t344.99\t0.00\t2\n_\t14.73\t4.50\t0.08\t-7.82\t0.00\t39.16\t0.00\t3\n_\t14.98\t3.45\t0.08\t6.53\t0.00\t275.24\t0.00\t0\n_\t14.98\t8.54\t0.08\t0.21\t0.00\t179.85\t0.00\t1\n_\t14.98\t-3.60\t0.08\t-1.66\t0.00\t345.02\t0.00\t2\n_\t14.98\t4.09\t0.08\t-7.04\t0.00\t9.03\t0.00\t3\n_\t15.24\t2.59\t0.08\t6.79\t0.00\t283.10\t0.00\t0\n_\t15.24\t7.85\t0.08\t0.27\t0.00\t210.62\t0.00\t1\n_\t15.24\t-3.83\t0.08\t-0.79\t0.00\t345.03\t0.00\t2\n_\t15.24\t3.68\t0.08\t-6.24\t0.00\t344.69\t0.00\t3\n_\t15.49\t1.75\t0.08\t7.04\t0.00\t285.52\t0.00\t0\n_\t15.49\t6.98\t0.08\t0.40\t0.00\t240.81\t0.00\t1\n_\t15.49\t-4.06\t0.08\t0.06\t0.00\t345.03\t0.00\t2\n_\t15.49\t3.28\t0.08\t-5.46\t0.00\t336.53\t0.00\t3\n_\t15.74\t0.89\t0.08\t7.30\t0.00\t286.30\t0.00\t0\n_\t15.74\t6.09\t0.08\t0.53\t0.00\t265.94\t0.00\t1\n_\t15.74\t-4.29\t0.08\t0.93\t0.00\t345.03\t0.00\t2\n_\t15.74\t2.87\t0.08\t-4.66\t0.00\t333.94\t0.00\t3\n_\t16.00\t0.04\t0.08\t7.55\t0.00\t286.53\t0.00\t0\n_\t16.00\t5.22\t0.08\t0.66\t0.00\t274.61\t0.00\t1\n_\t16.00\t-4.52\t0.08\t1.78\t0.00\t345.03\t0.00\t2\n_\t16.00\t2.47\t0.08\t-3.88\t0.00\t333.13\t0.00\t3\n_\t16.25\t-0.80\t0.08\t7.80\t0.00\t286.61\t0.00\t0\n_\t16.25\t4.35\t0.08\t0.80\t0.00\t277.35\t0.00\t1\n_\t16.25\t-4.75\t0.08\t2.63\t0.00\t345.03\t0.00\t2\n_\t16.25\t2.06\t0.08\t-3.09\t0.00\t332.89\t0.00\t3\n_\t16.50\t-1.65\t0.08\t8.05\t0.00\t286.63\t0.00\t0\n_\t16.50\t3.48\t0.08\t0.94\t0.00\t279.24\t0.00\t1\n_\t16.50\t-4.97\t0.08\t3.48\t0.00\t345.03\t0.00\t2\n_\t16.50\t1.66\t0.08\t-2.32\t0.00\t332.30\t0.00\t3\n_\t16.75\t-2.49\t0.08\t8.31\t0.00\t286.64\t0.00\t0\n_\t16.75\t2.68\t0.08\t1.19\t0.00\t284.72\t0.00\t1\n_\t16.75\t-5.20\t0.08\t4.34\t0.00\t345.03\t0.00\t2\n_\t16.75\t1.25\t0.08\t-1.57\t0.00\t331.83\t0.00\t3\n_\t17.00\t-3.34\t0.08\t8.56\t0.00\t286.64\t0.00\t0\n_\t17.00\t1.86\t0.08\t1.44\t0.00\t286.13\t0.00\t1\n_\t17.00\t-5.43\t0.08\t5.19\t0.00\t345.03\t0.00\t2\n_\t17.00\t0.86\t0.08\t-0.89\t0.00\t330.72\t0.00\t3\n_\t17.26\t-4.18\t0.08\t8.81\t0.00\t286.65\t0.00\t0\n_\t17.26\t1.06\t0.08\t1.72\t0.00\t288.26\t0.00\t1\n_\t17.26\t-5.65\t0.08\t6.03\t0.00\t345.40\t0.00\t2\n_\t17.26\t0.51\t0.08\t-0.19\t0.00\t332.75\t0.00\t3\n_\t17.51\t-5.03\t0.08\t9.07\t0.00\t286.64\t0.00\t0\n_\t17.51\t0.22\t0.08\t1.94\t0.00\t285.60\t0.00\t1\n_\t17.51\t-5.86\t0.08\t6.87\t0.00\t345.49\t0.00\t2\n_\t17.51\t0.20\t0.08\t0.53\t0.00\t335.45\t0.00\t3\n_\t17.76\t-5.87\t0.08\t9.32\t0.00\t286.64\t0.00\t0\n_\t17.76\t-0.63\t0.08\t2.14\t0.00\t284.10\t0.00\t1\n_\t17.76\t-6.07\t0.08\t7.62\t0.00\t344.77\t0.00\t2\n_\t17.76\t-0.12\t0.08\t1.23\t0.00\t335.29\t0.00\t3\nTurn\t17.98\t-6.18\t0.08\t7.99\t0.00\t344.48\t0.00\t2\n_\t18.01\t-6.72\t0.08\t9.57\t0.00\t286.64\t0.00\t0\n_\t18.01\t-1.48\t0.08\t2.28\t0.00\t279.82\t0.00\t1\n_\t18.01\t-6.18\t0.08\t8.02\t0.00\t344.91\t0.00\t2\n_\t18.01\t-0.48\t0.08\t1.93\t0.00\t333.65\t0.00\t3\n_\t18.26\t-7.39\t0.08\t9.77\t0.00\t286.64\t0.00\t0\n_\t18.26\t-2.36\t0.08\t2.31\t0.00\t274.30\t0.00\t1\n_\t18.26\t-6.00\t0.08\t8.46\t0.00\t5.48\t0.00\t2\n_\t18.26\t-0.72\t0.08\t2.36\t0.00\t331.80\t0.00\t3\nTurn\t18.42\t-7.61\t0.08\t9.84\t0.00\t286.64\t0.00\t0\nTurn\t18.44\t-0.82\t0.08\t2.53\t0.00\t331.00\t0.00\t3\n_\t18.52\t-7.70\t0.08\t9.83\t0.00\t282.26\t0.00\t0\n_\t18.52\t-3.24\t0.08\t2.33\t0.00\t272.52\t0.00\t1\n_\t18.52\t-5.48\t0.08\t9.10\t0.00\t28.27\t0.00\t2\n_\t18.52\t-0.86\t0.08\t2.60\t0.00\t330.92\t0.00\t3\n_\t18.77\t-7.79\t0.08\t9.47\t0.00\t252.12\t0.00\t0\n_\t18.77\t-4.14\t0.08\t2.36\t0.00\t271.95\t0.00\t1\n_\t18.77\t-5.13\t0.08\t9.51\t0.00\t35.01\t0.00\t2\n_\t18.77\t-1.15\t0.08\t3.15\t0.00\t331.72\t0.00\t3\nTurn\t18.82\t-5.10\t0.08\t9.55\t0.00\t35.51\t0.00\t2\n_\t19.03\t-7.72\t0.08\t8.66\t0.00\t221.39\t0.00\t0\n_\t19.03\t-5.03\t0.08\t2.39\t0.00\t271.77\t0.00\t1\n_\t19.03\t-4.98\t0.08\t9.54\t0.00\t52.76\t0.00\t2\n_\t19.03\t-1.56\t0.08\t3.94\t0.00\t332.37\t0.00\t3\n_\t19.28\t-7.61\t0.08\t7.77\t0.00\t192.01\t0.00\t0\n_\t19.28\t-5.86\t0.08\t2.41\t0.00\t271.72\t0.00\t1\n_\t19.28\t-4.90\t0.08\t9.06\t0.00\t83.43\t0.00\t2\n_\t19.28\t-1.98\t0.08\t4.74\t0.00\t332.57\t0.00\t3\nTurn\t19.52\t-6.30\t0.08\t2.42\t0.00\t271.71\t0.00\t1\n_\t19.54\t-7.51\t0.08\t6.90\t0.00\t179.18\t0.00\t0\n_\t19.54\t-6.32\t0.08\t2.42\t0.00\t271.75\t0.00\t1\n_\t19.54\t-4.89\t0.08\t8.20\t0.00\t113.65\t0.00\t2\n_\t19.54\t-2.38\t0.08\t5.52\t0.00\t332.64\t0.00\t3\n_\t19.79\t-7.43\t0.08\t6.07\t0.00\t175.95\t0.00\t0\n_\t19.79\t-6.32\t0.08\t2.51\t0.00\t292.00\t0.00\t1\n_\t19.79\t-4.87\t0.08\t7.32\t0.00\t143.89\t0.00\t2\n_\t19.79\t-2.78\t0.08\t6.31\t0.00\t332.66\t0.00\t3\n_\t20.04\t-7.32\t0.08\t5.19\t0.00\t174.03\t0.00\t0\n_\t20.04\t-5.84\t0.08\t2.72\t0.00\t322.23\t0.00\t1\n_\t20.04\t-4.88\t0.08\t6.49\t0.00\t168.33\t0.00\t2\n_\t20.04\t-3.19\t0.08\t7.09\t0.00\t332.66\t0.00\t3\n"
+    maxTime: 20.04
+--- !u!4 &1905159133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1109094796009232062, guid: 6588912c109b54e96b144f7a9b7f6baf, type: 3}
+  m_PrefabInstance: {fileID: 1753833369}
+  m_PrefabAsset: {fileID: 0}

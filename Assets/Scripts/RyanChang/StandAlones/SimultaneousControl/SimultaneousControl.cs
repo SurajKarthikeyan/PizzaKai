@@ -24,11 +24,6 @@ public abstract class SimultaneousControl : MonoBehaviour
     public abstract void ResetControl();
 
     /// <summary>
-    /// Called when the control should be disabled.
-    /// </summary>
-    public abstract void DisableControl();
-
-    /// <summary>
     /// Performs the action set by this control.
     /// </summary>
     public abstract IEnumerator DoAction();

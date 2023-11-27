@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace XnTools
-{
-    public enum CurveType {
+namespace XnTools {
+	public enum CurveType {
 	    linear,
 	    square,
 	    power,

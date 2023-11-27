@@ -1,31 +1,32 @@
 using UnityEngine;
 public class UpgradePickup : Pickup
 {
-    #region Variables
-    public WeaponUpgrade upgrade;
+    public enum eUpgrade
+    {
+        Tommygun, Shotgun, Flamethrower, Sniper, none
+    }
 
-    [Tooltip("The weaponID of the weapon to target.")]
-    public string weaponTarget;
-    #endregion
+    public eUpgrade upgradeType = eUpgrade.none;
 
     protected override bool ReceiveCharacter(Character character)
     {
-        if (character.IsPlayer && !string.IsNullOrEmpty(weaponTarget))
+        switch (upgradeType)
         {
-            // Player is doing the pickup. Apply to targeted weapon.
-            var wep = character.weaponMasterModule.weapons
-                .Find(w => w.weaponID == weaponTarget);
-            
-            if (wep)
-            {
-                upgrade.ApplyUpgrade(wep);
+            case eUpgrade.Tommygun:
+                UpgradeManager.Instance.UpgradeTommyGun();
                 return true;
-            }
-
-            // Player does not have the specified weapon.
-            return false;
+            case eUpgrade.Shotgun:
+                UpgradeManager.Instance.UpgradeShotgun();
+                return true;
+            case eUpgrade.Flamethrower:
+                UpgradeManager.Instance.UpgradeFlamethrower();
+                return true;
+            case eUpgrade.Sniper:
+                UpgradeManager.Instance.UpgradeSniper();
+                return true;
+            default:
+                Debug.LogWarning("upgradeType was not set for " + gameObject.name);
+                return false;
         }
-
-        return false;
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -14,7 +13,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class GridCellDebugger : MonoBehaviour
 {
-    #region Variables
     public PathfindingManager pathManager;
 
     [SerializeField]
@@ -36,10 +34,8 @@ public class GridCellDebugger : MonoBehaviour
 
     [SerializeField]
     [ReadOnly]
-    private Vertex<Vector3Int> vertex; 
-    #endregion
+    private Vertex<Vector3Int> vertex;
 
-    #region Debug
     private void OnDrawGizmos()
     {
         if (!pathManager.grid)
@@ -67,26 +63,5 @@ public class GridCellDebugger : MonoBehaviour
             currentNodes = null;
             hasVertex = false;
         }
-    } 
-    #endregion
-
-    #region ToString
-    public override string ToString()
-    {
-        StringBuilder sb = new($"Grid cell [at [${currentCoordinates}], ");
-
-        if (hasVertex)
-        {
-            sb.Append($"Vertex {vertex}, ");
-        }
-        else
-        {
-            sb.Append("No Vertex, ");
-        }
-
-        sb.Append(string.Join(", ", currentNodes));
-        sb.Append("]");
-        return sb.ToString();
-    } 
-    #endregion
+    }
 }

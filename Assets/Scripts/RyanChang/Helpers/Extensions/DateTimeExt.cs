@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 /// <summary>
 /// Contains methods that extend <see cref="System.DateTime"/>.

@@ -13,25 +13,13 @@ public class HurtFlashModule : Module
     #endregion
 
     #region Methods
-    protected override void OnLinked(Character old)
+    protected override void OnLinked()
     {
-        if (!spriteRenderer)
-        {
-            this.RequireComponent(out spriteRenderer);
-            originalColor = spriteRenderer.color; 
-        }
-
-        if (old)
-        {
-            Master.onCharacterHurt.RemoveListener(DoHurt);
-            Master.onCharacterDeath.RemoveListener(ResetColor);
-        }
-
-        Master.onCharacterHurt.AddListener(DoHurt);
+        this.RequireComponent(out spriteRenderer);
+        originalColor = spriteRenderer.color;
+        Master.onCharacterHurt.AddListener((_) => DoHurt());
         Master.onCharacterDeath.AddListener(ResetColor);
     }
-
-    private void DoHurt(int dmg) => DoHurt();
 
     public void DoHurt()
     {

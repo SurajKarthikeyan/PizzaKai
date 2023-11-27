@@ -18,8 +18,8 @@ public static class UnityObjectExt
     /// <typeparam name="T">Type of the component to get.</typeparam>
     /// <param name="gameObject">GameObject to search for the component.</param>
     /// <returns>True if gameObject has the specified component.</returns>
-    public static bool HasComponent<T>(this GameObject gameObject)
-        where T : Component
+    public static bool HasComponent<T>(this GameObject gameObject,
+        bool includeInactive = false)
     {
         return !gameObject.GetComponent<T>().IsNullOrUnityNull();
     }
@@ -31,10 +31,10 @@ public static class UnityObjectExt
     /// <param name="self">Component whose GameObject will be used to search for
     /// the component.</param>
     /// <returns>True if gameObject has the specified component.</returns>
-    public static bool HasComponent<T>(this Component self)
-        where T : Component
+    public static bool HasComponent<T>(this Component self,
+        bool includeInactive = false)
     {
-        return self.gameObject.HasComponent<T>();
+        return self.gameObject.HasComponent<T>(includeInactive);
     }
 
     /// <summary>
@@ -46,7 +46,6 @@ public static class UnityObjectExt
     /// <returns>True if gameObject has the specified component.</returns>
     public static bool HasComponent<T>(this GameObject gameObject,
         out T component)
-        where T : Component
     {
         component = gameObject.GetComponent<T>();
         return !component.IsNullOrUnityNull();
@@ -61,7 +60,6 @@ public static class UnityObjectExt
     /// <param name="component">Set to the component if found.</param>
     /// <returns>True if gameObject has the specified component.</returns>
     public static bool HasComponent<T>(this Component self, out T component)
-        where T : Component
     {
         component = self.GetComponent<T>();
         return !component.IsNullOrUnityNull();
@@ -70,8 +68,7 @@ public static class UnityObjectExt
 
     #region In Parent
     /// <summary>
-    /// Checks if <paramref name="gameObject"/> has the specified component
-    /// in its immediate parent or itself.
+    /// Checks if gameObject has the specified component in its parent.
     /// </summary>
     /// <typeparam name="T">Type of the component to get.</typeparam>
     /// <param name="gameObject">GameObject to search for the component.</param>
@@ -81,96 +78,60 @@ public static class UnityObjectExt
     /// parent.</returns>
     public static bool HasComponentInParent<T>(this GameObject gameObject,
         bool includeInactive = false)
-        where T : Component
     {
         return !gameObject.GetComponentInParent<T>(includeInactive)
             .IsNullOrUnityNull();
     }
 
     /// <summary>
-    /// Checks if <paramref name="self"/> has the specified component
-    /// in its immediate parent or itself.
+    /// Checks if gameObject has the specified component in its children.
     /// </summary>
-    /// <inheritdoc cref="HasComponentInParent{T}(GameObject, bool)"/>
+    /// <typeparam name="T">Type of the component to get.</typeparam>
+    /// <param name="self">Component whose GameObject will be used to search for
+    /// the component.</param>
+    /// <param name="includeInactive">If true, include inactive GameObjects when
+    /// searching. Otherwise, do not include them.</param>
+    /// <returns>True if gameObject has the specified component in its
+    /// children.</returns>
     public static bool HasComponentInParent<T>(this Component self,
         bool includeInactive = false)
-        where T : Component
     {
         return self.gameObject.HasComponentInParent<T>(includeInactive);
     }
 
+    /// <summary>
+    /// Checks if gameObject has the specified component in its parent.
+    /// </summary>
+    /// <typeparam name="T">Type of the component to get.</typeparam>
+    /// <param name="gameObject">GameObject to search for the component.</param>
     /// <param name="component">Set to the component if found.</param>
-    /// <inheritdoc cref="HasComponentInParent{T}(GameObject, bool)"/>
+    /// <param name="includeInactive">If true, include inactive GameObjects when
+    /// searching. Otherwise, do not include them.</param>
+    /// <returns>True if gameObject has the specified component in its
+    /// parent.</returns>
     public static bool HasComponentInParent<T>(this GameObject gameObject,
         out T component, bool includeInactive = false)
-        where T : Component
     {
         component = gameObject.GetComponentInParent<T>(includeInactive);
         return !component.IsNullOrUnityNull();
     }
 
+    /// <summary>
+    /// Checks if gameObject has the specified component in its children.
+    /// </summary>
+    /// <typeparam name="T">Type of the component to get.</typeparam>
+    /// <param name="self">Component whose GameObject will be used to search for
+    /// the component.</param>
     /// <param name="component">Set to the component if found.</param>
-    /// <inheritdoc cref="HasComponentInParent{T}(Component, bool)"/>
+    /// <param name="includeInactive">If true, include inactive GameObjects when
+    /// searching. Otherwise, do not include them.</param>
+    /// <returns>True if gameObject has the specified component in its
+    /// children.</returns>
     public static bool HasComponentInParent<T>(this Component self,
         out T component, bool includeInactive = false)
-        where T : Component
     {
-        return self.gameObject.HasComponentInParent(out component, includeInactive);
+        return self.gameObject.HasComponentInParent<T>(out component);
     }
-
-    #region Any Parent
-    /// <summary>
-    /// Checks if <paramref name="self"/> has the specified component
-    /// in any of its parents or itself.
-    /// </summary>
-    /// <inheritdoc cref="HasComponentInParent{T}(GameObject, out T, bool)"/>
-    public static bool HasComponentInAnyParent<T>(this GameObject self,
-        out T component, bool includeInactive = false)
-        where T : Component
-    {
-        foreach (var parent in self.transform.Parents())
-        {
-            if ((includeInactive || parent.gameObject.activeInHierarchy)
-                && parent.HasComponent(out component))
-            {
-                return true;
-            }
-        }
-
-        component = null;
-        return false;
-    }
-
-    /// <inheritdoc cref="HasComponentInAnyParent{T}(GameObject, out T)"/>
-    public static bool HasComponentInAnyParent<T>(this Component self,
-        out T component, bool includeInactive = false)
-        where T : Component
-    {
-        return self.gameObject.HasComponentInAnyParent(out component, includeInactive);
-    }
-
-    /// <summary>
-    /// Returns the specified component of type <typeparamref name="T"/>,
-    /// if it exists within self or any of its parents.
-    /// </summary>
-    /// <returns>The component, or null if it's not found.</returns>
-    /// <inheritdoc cref="HasComponentInParent{T}(GameObject, out T, bool)"/>
-    public static T GetComponentInAnyParent<T>(this GameObject self,
-        bool includeInactive = false)
-        where T : Component
-    {
-        self.HasComponentInAnyParent(out T component, includeInactive);
-        return component;
-    }
-
-    /// <inheritdoc cref="GetComponentInAnyParent{T}(GameObject, bool)"/>
-    public static T GetComponentInAnyParent<T>(this Component self,
-        bool includeInactive = false)
-        where T : Component
-    {
-        return self.gameObject.GetComponentInAnyParent<T>(includeInactive);
-    }
-    #endregion
     #endregion
 
     #region In Children
@@ -185,7 +146,6 @@ public static class UnityObjectExt
     /// children.</returns>
     public static bool HasComponentInChildren<T>(this GameObject gameObject,
         bool includeInactive = false)
-        where T : Component
     {
         return !gameObject.GetComponentInChildren<T>(includeInactive)
             .IsNullOrUnityNull();
@@ -203,7 +163,6 @@ public static class UnityObjectExt
     /// children.</returns>
     public static bool HasComponentInChildren<T>(this Component self,
         bool includeInactive = false)
-        where T : Component
     {
         return self.gameObject.HasComponentInChildren<T>(includeInactive);
     }
@@ -220,7 +179,6 @@ public static class UnityObjectExt
     /// children.</returns>
     public static bool HasComponentInChildren<T>(this GameObject gameObject,
         out T component, bool includeInactive = false)
-        where T : Component
     {
         component = gameObject.GetComponentInChildren<T>(includeInactive);
         return !component.IsNullOrUnityNull();
@@ -239,7 +197,6 @@ public static class UnityObjectExt
     /// children.</returns>
     public static bool HasComponentInChildren<T>(this Component self,
         out T component, bool includeInactive = false)
-        where T : Component
     {
         return self.gameObject.HasComponentInChildren<T>(out component,
             includeInactive);
@@ -248,10 +205,10 @@ public static class UnityObjectExt
 
     #region In Scene
     /// <summary>
-    /// Attempts to locate a gameobject with the specified <paramref name="tag"/>.
+    /// Attempts to locate a gameobject with the specified tag.
     /// </summary>
-    /// <param name="tag">The tag to search for.</param>
-    /// <param name="gameObject">The reference to the gameobject is found, otherwise null.</param>
+    /// <param name="tag"></param>
+    /// <param name="gameObject"></param>
     /// <returns>True if gameobject was found, false otherwise.</returns>
     public static bool ExistsWithTag(string tag, out GameObject gameObject)
     {
@@ -266,17 +223,6 @@ public static class UnityObjectExt
             Debug.LogError($"Tag {tag} is not defined!");
             throw e;
         }
-    }
-
-    /// <summary>
-    /// Attempts to locate a gameobject with the specified <paramref name="name"/>.
-    /// </summary>
-    /// <param name="name">The name to search for.</param>
-    /// <inheritdoc cref="ExistsWithTag(string, out GameObject)"/>
-    public static bool ExistsWithName(string name, out GameObject gameObject)
-    {
-        gameObject = GameObject.Find(name);
-        return gameObject != null;
     }
     #endregion
 
@@ -295,11 +241,8 @@ public static class UnityObjectExt
     public static IEnumerable<GameObject> WithComponent<T>(
         this IEnumerable<GameObject> array,
         bool includeInactive = false)
-        where T : Component
     {
-        return array.Where(go =>
-            (includeInactive || go.activeInHierarchy)
-            && go.HasComponent<T>());
+        return array.Where(go => go.HasComponent<T>(includeInactive));
     }
 
     /// <summary>
@@ -314,9 +257,7 @@ public static class UnityObjectExt
         this IEnumerable<GameObject> array,
         string tagName, bool includeInactive = false)
     {
-        return array.Where(go =>
-            (includeInactive || go.activeInHierarchy) &&
-            go.CompareTag(tagName));
+        return array.Where(go => go.CompareTag(tagName));
     }
     #endregion
     #endregion
@@ -381,7 +322,6 @@ public static class UnityObjectExt
         this Component self,
         out T component,
         bool doError = true)
-        where T : Component
     {
         return self.RequireComponent(out component, typeof(T).ToString(),
             doError);
@@ -401,7 +341,6 @@ public static class UnityObjectExt
         this GameObject gameObject,
         out T component,
         bool doError = true)
-        where T : Component
     {
         return gameObject.RequireComponent(out component, typeof(T).ToString(),
             doError);
@@ -424,7 +363,6 @@ public static class UnityObjectExt
         out T component,
         string name,
         bool doError = true)
-        where T : Component
     {
         return self.gameObject.RequireComponent(out component, name, doError);
     }
@@ -447,7 +385,6 @@ public static class UnityObjectExt
         out T component,
         string name,
         bool doError = true)
-        where T : Component
     {
         if (gameObject.HasComponent(out component))
         {
@@ -488,7 +425,6 @@ public static class UnityObjectExt
         out T component,
         bool doError = true,
         bool includeInactive = false)
-        where T : Component
     {
         return self.RequireComponentInChildren(out component,
             typeof(T).ToString(), doError, includeInactive);
@@ -513,7 +449,6 @@ public static class UnityObjectExt
         out T component,
         bool doError = true,
         bool includeInactive = false)
-        where T : Component
     {
         return gameObject.RequireComponentInChildren(out component,
             typeof(T).ToString(), doError, includeInactive);
@@ -540,7 +475,6 @@ public static class UnityObjectExt
         string name,
         bool doError = true,
         bool includeInactive = false)
-        where T : Component
     {
         return self.gameObject.RequireComponentInChildren(out component,
             name, doError, includeInactive);
@@ -566,7 +500,6 @@ public static class UnityObjectExt
         string name,
         bool doError = true,
         bool includeInactive = false)
-        where T : Component
     {
         if (gameObject.HasComponentInChildren(out component, includeInactive))
         {
@@ -807,88 +740,12 @@ public static class UnityObjectExt
     }
     #endregion
 
-    #region Create Gameobject
-    /// <inheritdoc cref="CreateGameObject(string, Transform)"/>
-    public static GameObject CreateGameObject() =>
-        CreateGameObject("New GameObject");
-
-    /// <inheritdoc cref="CreateGameObject(string, Transform)"/>
-    public static GameObject CreateGameObject(string name) =>
-        CreateGameObject(name, null);
-
-    /// <summary>
-    /// Creates an empty game object instance.
-    /// </summary>
-    /// <param name="name">Name of the new game object.</param>
-    /// <param name="parent">Parent of the new game object.</param>
-    /// <returns>An empty game object.</returns>
-    public static GameObject CreateGameObject(string name, Transform parent)
-    {
-        GameObject go = new(name);
-
-        if (parent)
-            go.transform.parent = parent;
-
-        return go;
-    }
-
-    /// <summary>
-    /// Creates a child game object with the specified component, then returns
-    /// the component.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="parent">The parent of the new game object.</param>
-    /// <param name="name">Name of the child.</param>
-    /// <param name="componentType">Type of component to add.</param>
-    /// <returns>The component in the newly created child.</returns>
-    public static Component CreateChildComponent(this Transform parent,
-        string name, Type componentType)
-    {
-        GameObject go = CreateGameObject(name, parent);
-        go.transform.Localize();
-        return go.AddComponent(componentType);
-    }
-
-    /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
-    /// <typeparam name="T">The type of component to add to the
-    /// child.</typeparam>
-    public static T CreateChildComponent<T>(this Transform parent,
-        string name) where T : Component
-    {
-        GameObject go = CreateGameObject(name, parent);
-        go.transform.Localize();
-        return go.AddComponent<T>();
-    }
-
-    /// <summary>
-    /// Creates one child game object with all the specified components, then
-    /// returns those components.
-    /// </summary>
-    /// <param name="componentTypes">A list of all the component types to add.
-    /// Duplicate values are added multiple times.</param>
-    /// <returns>The list of all added components to the child.</returns>
-    /// <inheritdoc cref="CreateChildComponent(Transform, string, Type)"/>
-    public static Component[] CreateChildComponents(this Transform parent,
-        string name, Type[] componentTypes)
-    {
-        GameObject go = new(
-            name,
-            componentTypes
-        );
-
-        go.transform.Localize(parent);
-        return componentTypes
-            .Select(ct => go.GetComponent(ct))
-            .ToArray();
-    }
-    #endregion
-
     #region Resource Load
     /// <summary>
     /// Loads <paramref name="obj"/> from <paramref name="path"/>.
     /// </summary>
     /// <inheritdoc cref="LoadIfMissing{T}(T, string)"/>
-    public static void LoadResource<T>(ref T obj, string path)
+    public static void LoadResource<T>(this T obj, string path)
             where T : UnityEngine.Object
     {
         obj = Resources.Load<T>(path);
@@ -904,7 +761,7 @@ public static class UnityObjectExt
     /// folder.</param>
     /// <returns>True if <paramref name="obj"/> is already set to some value,
     /// false otherwise.</returns>
-    public static bool LoadIfMissing<T>(ref T obj, string path)
+    public static bool LoadIfMissing<T>(this T obj, string path)
         where T : UnityEngine.Object
     {
         if (!obj)
@@ -917,23 +774,23 @@ public static class UnityObjectExt
     }
     #endregion
 
-    #region Null Check
+    #region Other
     /// <summary>
     /// Checks if an object either <br/>
     /// - is null <br/>
     /// - is a UnityEngine.Object that is == null, meaning that's invalid - ie.
-    /// Destroyed, not assigned, or created with new. <br/>
+	/// Destroyed, not assigned, or created with new. <br/>
     ///
     /// Unity overloads the == operator for UnityEngine.Object, and returns true
-    /// for a == null both if a is null, or if it doesn't exist in the c++
-    /// engine. This method is for checking for either of those being the case
-    /// for objects that are not necessarily UnityEngine.Objects. This is useful
-    /// when you're using interfaces, since == is a static method, so if you
-    /// check if a member of an interface == null, it will hit the default C# ==
-    /// check instead of the overridden Unity check.
+	/// for a == null both if a is null, or if it doesn't exist in the c++
+	/// engine. This method is for checking for either of those being the case
+	/// for objects that are not necessarily UnityEngine.Objects. This is useful
+	/// when you're using interfaces, since == is a static method, so if you
+	/// check if a member of an interface == null, it will hit the default C# ==
+	/// check instead of the overridden Unity check.
     /// 
     /// Source:
-    /// https://forum.unity.com/threads/when-a-rigid-body-is-not-attached-component-getcomponent-rigidbody-returns-null-as-a-string.521633/
+	/// https://forum.unity.com/threads/when-a-rigid-body-is-not-attached-component-getcomponent-rigidbody-returns-null-as-a-string.521633/
     /// </summary>
     /// <param name="obj">Object to check</param>
     /// <returns>True if the object is null, or if it's a UnityEngine.Object
@@ -954,9 +811,7 @@ public static class UnityObjectExt
         }
         return false;
     }
-    #endregion
 
-    #region Copy Components
     /// <summary>
     /// Copies a component to <paramref name="target"/>. Adapted from
     /// http://answers.unity.com/answers/1118416/view.html
@@ -985,7 +840,7 @@ public static class UnityObjectExt
             {
                 prop.SetValue(target, prop.GetValue(original, null), null);
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 continue;
             }
@@ -1023,9 +878,7 @@ public static class UnityObjectExt
         }
         return dst;
     }
-    #endregion
 
-    #region Singleton
     /// <summary>
     /// Instantiates a singleton (aka an instance). Also checks if singleton is
     /// already set.
@@ -1037,11 +890,11 @@ public static class UnityObjectExt
     /// <param name="dontDestroyOnLoad">If true, then call DontDestroyOnLoad on
     /// the gameobject. Also orphans the gameobject.</param>
     public static void InstantiateSingleton<T>(this T self, ref T singleton,
-        bool dontDestroyOnLoad = true) where T : Component
+        bool dontDestroyOnLoad = true) where T : MonoBehaviour
     {
         if (singleton)
         {
-            UnityEngine.Object.Destroy(self.gameObject);
+            GameObject.Destroy(self.gameObject);
             Debug.LogError($"Multiple instances of {typeof(T)}.");
         }
         else
@@ -1051,34 +904,11 @@ public static class UnityObjectExt
             if (dontDestroyOnLoad)
             {
                 self.transform.Orphan();
-                UnityEngine.Object.DontDestroyOnLoad(self.gameObject);
+                GameObject.DontDestroyOnLoad(self.gameObject);
             }
         }
     }
 
-    /// <summary>
-    /// Instantiates a singleton (aka an instance) of an scriptable object. Also
-    /// checks if singleton is already set.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="self">The monobehavior to instantiate the singleton
-    /// on.</param>
-    /// <param name="singleton">The static singleton to set.</param>
-    public static void InstantiateSingleton<T>(this T self, ref T singleton)
-        where T : ScriptableObject
-    {
-        if (singleton)
-        {
-            Debug.LogError($"Multiple instances of {typeof(T)}.");
-        }
-        else
-        {
-            singleton = self;
-        }
-    }
-    #endregion
-
-    #region Destroy
     /// <summary>
     /// Detects if Unity is running as an editor or application, then chooses
     /// the appropriate destruction method to use to destroy <paramref
@@ -1099,32 +929,13 @@ public static class UnityObjectExt
                 );
             }
 
-            UnityEngine.Object.DestroyImmediate(gameObject, false);
+            GameObject.DestroyImmediate(gameObject, false);
 #endif
         }
         else
         {
-            UnityEngine.Object.Destroy(gameObject);
+            GameObject.Destroy(gameObject);
         }
     }
-
-    /// <summary>
-    /// Destroys <paramref name="unityObject"/> if <paramref name="condition"/>
-    /// evaluates to false.
-    /// </summary>
-    /// <param name="unityObject">The object to conditionally destroy.</param>
-    /// <param name="condition">Whether or not to destroy the object.</param>
-    /// <param name="t">Time before destruction of the object.</param>
-    public static bool DestroyIf(this UnityEngine.Object unityObject,
-        bool condition, float t = 0)
-    {
-        if (condition) UnityEngine.Object.Destroy(unityObject, t);
-        return condition;
-    }
-
-    /// <inheritdoc cref="DestroyIf"/>.
-    public static bool DestroyIf(this UnityEngine.Object unityObject,
-        Func<bool> condition, float t = 0) =>
-        unityObject.DestroyIf(condition(), t);
     #endregion
 }

@@ -59,11 +59,11 @@ public class RangeDrawerUIE : PropertyDrawer
                     break;
                 case Range.RangePattern.Curves:
                     EditorGUI.PropertyField(value1Rect, property.FindPropertyRelative(nameof(Range.curve)));
-                    EditorGUI.PropertyField(value2Rect, property.FindPropertyRelative(nameof(Range.modifier)));
+                    EditorGUI.PropertyField(value2Rect, property.FindPropertyRelative(nameof(Range.modifer)));
                     break;
                 case Range.RangePattern.Perlin:
                     EditorGUI.PropertyField(value1Rect, property.FindPropertyRelative(nameof(Range.perlinCrawlSpeed)));
-                    EditorGUI.PropertyField(value2Rect, property.FindPropertyRelative(nameof(Range.modifier)));
+                    EditorGUI.PropertyField(value2Rect, property.FindPropertyRelative(nameof(Range.modifer)));
                     break;
             }
 

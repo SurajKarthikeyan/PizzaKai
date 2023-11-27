@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -16,6 +17,10 @@ public class BreadstickDeathModule : DeathModule
 
     [Tooltip("How many splits to do?")]
     public int size = 3;
+
+    [Tooltip("How many splits already happened?")]
+    [ReadOnly]
+    public int pastSplits = 0;
 
     [Tooltip("How many sticks to split into?")]
     public int stickSplit = 2;
@@ -41,6 +46,10 @@ public class BreadstickDeathModule : DeathModule
                 breadInst.transform.MatchOther(transform);
 
                 breadInst.RequireComponentInChildren(out BreadstickDeathModule breb);
+                breb.Master.maxHP = Mathf.CeilToInt(Master.maxHP * SIZE_CHANGE);
+                breb.size = size - 1;
+                breb.pastSplits = pastSplits + 1;
+                // breb.Master.r2d.mass = Master.r2d.mass / 2f;
                 breb.Master.transform.localScale = Master.transform.localScale * SIZE_CHANGE;
 
                 // Now add force.
@@ -48,8 +57,5 @@ public class BreadstickDeathModule : DeathModule
                 breb.Master.r2d.AddForce(force * breb.Master.r2d.mass);
             }
         }
-        
-        // Kill original.
-        Destroy(Master.gameObject);
     }
 }

@@ -16,6 +16,10 @@ public class WeaponMasterModule : Module
     [Tooltip("The weapons available to the weapon master.")]
     public List<WeaponModule> weapons;
 
+    [Tooltip("The weapons available to the player.")]
+    [ReadOnly]
+    public List<WeaponModule> availableWeapons;
+
     [Tooltip("Which weapon is the character holding?")]
     public int weaponIndex;
 
@@ -31,25 +35,32 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Properties
-    public WeaponModule CurrentWeapon => weapons[weaponIndex];
+    public WeaponModule CurrentWeapon => availableWeapons[weaponIndex];
     #endregion
 
     #region Methods
     #region Instantiation
     private void Awake()
     {
-        SetVars();
+        foreach(var weapon in weapons)
+        {
+            if (weapon.accessible)
+            {
+                availableWeapons.Add(weapon);
+            }
+        }
+        SetComponents();
     }
 
     private void OnValidate()
     {
-        SetVars();
+        SetComponents();
     }
 
     /// <summary>
     /// Sets components for master module
     /// </summary>
-    private void SetVars()
+    private void SetComponents()
     {
         GetComponentsInChildren(true, weapons);
     }
@@ -67,7 +78,7 @@ public class WeaponMasterModule : Module
             if (Input.GetMouseButton(0))
             {
                 // Firing.
-                PressWeaponTrigger();
+                TryFire();
             }
             else
             {
@@ -130,47 +141,45 @@ public class WeaponMasterModule : Module
     public void AimAt(Vector2 target)
     {
         Debug.DrawLine(target, transform.position, Color.blue);
-
-        if (isGrappling)
-            return;
-        
-        // Do some basic trig to get the weapons pointed at the target.
-        Vector2 disp = target - (Vector2)transform.position;
-        float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
+        if (!isGrappling)
+        {
+            // Do some basic trig to get the weapons pointed at the target.
+            Vector2 disp = target - (Vector2)transform.position;
+            float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
 
 
-        // Send data to the flip module.
+            // Send data to the flip module.
 
-        Master.SetLookAngle(zRot);
-        var scale = transform.localScale;
-        scale.x = Master.flipModule.FlipMultiplier;
-        scale.y = Master.flipModule.FlipMultiplier;
-        transform.localScale = scale;
+            Master.SetLookAngle(zRot);
+            var scale = transform.localScale;
+            scale.x = Master.flipModule.FlipMultiplier;
+            scale.y = Master.flipModule.FlipMultiplier;
+            transform.localScale = scale;
 
-        transform.eulerAngles = new(
-            0,
-            0,
-            zRot
-        );
+
+            Vector3 eulerAngles = new(
+                0,
+                0,
+                zRot
+            );
+
+            transform.eulerAngles = eulerAngles;
+        }
     }
     #endregion
 
     #region Firing
-    /// <inheritdoc cref="WeaponModule.PressTrigger"/>
-    public bool PressWeaponTrigger()
+    /// <summary>
+    /// Tries to fire the weapon
+    /// </summary>
+    /// <returns>true if able to fire, false if unable</returns>
+    public bool TryFire()
     {
-        bool success = isGrappling && CurrentWeapon.PressTrigger();
-
-        if (success)
-            ReleaseWeaponTrigger();
-
-        return success;
-    }
-
-    /// <inheritdoc cref="WeaponModule.ReleaseTrigger"/>
-    public void ReleaseWeaponTrigger()
-    {
-        CurrentWeapon.ReleaseTrigger();
+        if (!isGrappling)
+        {
+            return CurrentWeapon.TryFireWeapon();
+        }
+        return false;
     }
 
     /// <summary>
@@ -218,7 +227,7 @@ public class WeaponMasterModule : Module
     /// within range of <see cref="weapons"/>.</param>
     public void SwitchToWeapon(int index)
     {
-        weaponIndex = index.WrapAroundLength(weapons);
+        weaponIndex = index.WrapAroundLength(availableWeapons);
         EnableCurrentWeapon();
     }
 
@@ -227,7 +236,7 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void EnableCurrentWeapon()
     {
-        weapons.ForEach(weap => weap.gameObject.SetActive(false));
+        availableWeapons.ForEach(weap => weap.gameObject.SetActive(false));
 
         CurrentWeapon.gameObject.SetActive(true);
     }
@@ -241,8 +250,9 @@ public class WeaponMasterModule : Module
     public WeaponModule AddWeapon(WeaponModule weapon)
     {
         weapon.transform.Localize(transform);
-        weapons.Add(weapon);
-        SwitchToWeapon(weapons.Count - 1);
+        weapon.accessible = true;
+        availableWeapons.Add(weapon);
+        SwitchToWeapon(availableWeapons.Count - 1);
         return weapon;
     }
     #endregion

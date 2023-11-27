@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ using UnityEngine;
 /// Vertex used in graph. Weights are stored in the graph.
 /// </summary>
 /// <typeparam name="T">Any IEquatable type.</typeparam>
-[Serializable]
+[System.Serializable]
 public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> where T : IEquatable<T>
 {
     #region Fields
@@ -227,7 +228,7 @@ public class Vertex<T> : ISerializationCallbackReceiver, IEquatable<Vertex<T>> w
     #region Generic Overrides
     public override string ToString()
     {
-        return $"{id} [{sectionID}]";
+        return $"Vertex: {id}";
     }
     public override int GetHashCode()
     {

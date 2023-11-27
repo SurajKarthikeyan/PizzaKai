@@ -1,8 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace XnBugReport
-{
+namespace XnBugReport {
     public class XnTogglePosition : MonoBehaviour {
         public enum eState {
             pos0, pos1, moving0,

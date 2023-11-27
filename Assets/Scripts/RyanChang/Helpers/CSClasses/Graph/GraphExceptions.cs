@@ -1,14 +1,6 @@
 using System;
 
-/// <summary>
-/// The base exception relating to pathfinding.
-/// 
-/// <br/>
-/// 
-/// Authors: Ryan Chang (2023)
-/// </summary>
-[Serializable]
-public class PathfindingException : InvalidOperationException
+public class PathfindingException : System.InvalidOperationException
 {
     public PathfindingException(string message) : base(message)
     {
@@ -28,7 +20,6 @@ public class PathfindingException : InvalidOperationException
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
 public class VertexNotInAdjacentException : PathfindingException
 {
     public VertexNotInAdjacentException(object vertex, object adjacentID)
@@ -44,9 +35,7 @@ public class VertexNotInAdjacentException : PathfindingException
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
-public class VertexNotInGraphException : PathfindingException
-{
+public class VertexNotInGraphException : PathfindingException{
     public VertexNotInGraphException(object vertexID, object graph)
         : base($"Vertex {vertexID} cannot be found in graph {graph}.")
     {
@@ -60,25 +49,6 @@ public class VertexNotInGraphException : PathfindingException
     {
 
     }
-
-    public VertexNotInGraphException(string message, object vertexID,
-        object graph)
-        : base(
-            $"{message}: Vertex {vertexID} cannot be found in graph {graph}."
-        )
-    {
-
-    }
-
-    public VertexNotInGraphException(string message, object vertexID,
-        object graph, Exception innerException)
-        : base(
-            $"{message}: Vertex {vertexID} cannot be found in graph {graph}.",
-            innerException
-        )
-    {
-
-    }
 }
 
 /// <summary>
@@ -88,7 +58,6 @@ public class VertexNotInGraphException : PathfindingException
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
 public class EdgeNotInGraphException : PathfindingException
 {
     public EdgeNotInGraphException(object fromID, object toID, object graphValue)
@@ -107,53 +76,31 @@ public class EdgeNotInGraphException : PathfindingException
 }
 
 /// <summary>
-/// Thrown when the graph detects that it is disjoint, that is, it would be
+/// Called when the graph detects that it is disjoint, that is, it would be
 /// impossible to travel from vertex A to vertex B.
 ///
 /// <br/>
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
 public class DisjointGraphException : PathfindingException
 {
-    public DisjointGraphException(object vertexA, object vertexB)
-        : base(
-            "Graph is disjoint. Trying to navigate from " +
-            $"{vertexA} to {vertexB}."
-        ) { }
+    public DisjointGraphException(string message) : base(message)
+    {
+    }
 
-    public DisjointGraphException(object vertexA, object vertexB,
-        Exception innerException)
-        : base(
-            "Graph is disjoint. Trying to navigate from " +
-            $"{vertexA} to {vertexB}.",
-            innerException
-        ) { }
-
-    public DisjointGraphException(string message, object vertexA, object vertexB)
-        : base(
-            $"{message}: Graph is disjoint. Trying to navigate from " +
-            $"{vertexA} to {vertexB}."
-        ) { }
-
-    public DisjointGraphException(string message, object vertexA, object vertexB,
-        Exception innerException)
-        : base(
-            $"{message}: Graph is disjoint. Trying to navigate from " +
-            $"{vertexA} to {vertexB}.",
-            innerException
-        ) { }
+    public DisjointGraphException(string message, Exception innerException) : base(message, innerException)
+    {
+    }
 }
 
 /// <summary>
-/// Thrown when the graph runs out of vertices to iterate over.
+/// Called when the graph runs out of vertices to iterate over.
 /// 
 /// <br/>
 /// 
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
 public class RanOutOfVerticesException : PathfindingException
 {
     public RanOutOfVerticesException(object stuck, object end) :
@@ -173,55 +120,8 @@ public class RanOutOfVerticesException : PathfindingException
 /// </summary>
 public class StartIsEndVertexException : PathfindingException
 {
-    public StartIsEndVertexException(object startAndEnd) :
-    base(
-        $"Start and end vertices are both {startAndEnd}."
-    ) {}
-
-    public StartIsEndVertexException(string message, object startAndEnd) :
+    public StartIsEndVertexException(object startAndEnd, string message) :
     base(
         $"{message} : Start and end vertices are both {startAndEnd}."
     ) {}
-
-    public StartIsEndVertexException(object startAndEnd, Exception innerException) :
-    base(
-        $"Start and end vertices are both {startAndEnd}.",
-        innerException
-    ) {}
-    
-    public StartIsEndVertexException(string message, object startAndEnd, Exception innerException) :
-    base(
-        $"{message} : Start and end vertices are both {startAndEnd}.",
-        innerException
-    ) {}
-}
-
-/// <summary>
-/// Thrown when a vertex GUID has not be initialized from <see
-/// cref="Guid.Empty"/>.
-///
-/// <br/>
-///
-/// Authors: Ryan Chang (2023)
-/// </summary>
-public class GuidUnsetVertexException : PathfindingException
-{
-    public GuidUnsetVertexException(string message, object vertex) :
-        base($"{message}: GUID of {vertex} has not been initialized.") {}
-
-    public GuidUnsetVertexException(object vertex) :
-        base($"GUID of {vertex} has not been initialized.") {}
-
-    public GuidUnsetVertexException(string message, object vertex,
-        Exception innerException) :
-        base(
-            $"{message}: GUID of {vertex} has not been initialized.",
-            innerException
-        ) {}
-
-    public GuidUnsetVertexException(object vertex, Exception innerException) :
-        base(
-            $"GUID of {vertex} has not been initialized.",
-            innerException
-        ) {}
 }

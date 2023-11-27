@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class Range
@@ -39,10 +38,8 @@ public class Range
     private Vector2 crawlDir = RNGExt.OnCircle();
 
     // [Header("Common to Options 2 and 3")]
-    [Tooltip("Modifies the base range to include a multiplication " +
-        "followed by an addition.")]
-    [FormerlySerializedAs("modifer")]
-    public Modifier modifier = new(0, 1);
+    [Tooltip("Modifies the base range to include a multiplication followed by an addition.")]
+    public Modifier modifer = new(0, 1);
 
     /// <summary>
     /// If true, then the range is unfolded in the inspector.
@@ -128,10 +125,10 @@ public class Range
             case RangePattern.Linear:
                 return RNGExt.RandomFloat(scalarMin, scalarMax);
             case RangePattern.Curves:
-                return modifier.Modify(curve.Evaluate(RNGExt.RandomFloat()));
+                return modifer.Modify(curve.Evaluate(RNGExt.RandomFloat()));
             case RangePattern.Perlin:
                 crawlPos += crawlDir * perlinCrawlSpeed;
-                return modifier.Modify(Mathf.PerlinNoise(crawlPos.x, crawlPos.y));
+                return modifer.Modify(Mathf.PerlinNoise(crawlPos.x, crawlPos.y));
             default:
                 throw new ArgumentException("Developer needs to update Range Evaluate().");
         }

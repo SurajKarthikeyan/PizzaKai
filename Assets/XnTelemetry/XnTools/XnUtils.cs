@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Array = System.Array;
 
-namespace XnTools
-{
+namespace XnTools {
 
-    // These are actually OUTSIDE of the Utils Class
+	// These are actually OUTSIDE of the Utils Class
 
-    // TODO: Move Easing and XnHexGrid into their own classes. - 2022-06-28 JGB
-    // TODO: Create XnTools namespace - 2022-06-28 JGB
-    // TODO: Replace Bezier methods with much faster array versions
+	// TODO: Move Easing and XnHexGrid into their own classes. - 2022-06-28 JGB
+	// TODO: Create XnTools namespace - 2022-06-28 JGB
+	// TODO: Replace Bezier methods with much faster array versions
 
-    public enum BoundsTest {
+	public enum BoundsTest {
 		center,		// Is the center of the GameObject on screen
 		onScreen,	// Are the bounds entirely on screen
 		offScreen	// Are the bounds entirely off screen

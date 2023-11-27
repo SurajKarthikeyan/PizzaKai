@@ -5,13 +5,6 @@ using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-/// <summary>
-/// Represents a projectile that uses raycasting to move and deal damage.
-/// 
-/// <br/>
-/// 
-/// Authors: Ryan Chang (2023)
-/// </summary>
 public class SimpleProjectile : DamagingWeaponSpawn
 {
     #region Variables
@@ -88,7 +81,7 @@ public class SimpleProjectile : DamagingWeaponSpawn
 
         contactFilter = new()
         {
-            layerMask = CollisionMask,
+            layerMask = collisionMask,
             useLayerMask = true
         };
     }
@@ -132,12 +125,18 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
                     {
                         enemyBasic.TakeDamage(ActualDamage);
-                        hitCharacter = true;
                     }
-                    else if (collider.gameObject.HasComponent(out BurningScript burn) && CompareTag("PlayerFireBullet"))
+                    else if (collider.gameObject.HasComponent(out BurningScript burn)&& CompareTag("PlayerFireBullet"))
                     {
-                        burn.BurnBox();
-                        hitCharacter = true;
+                        if (gameObject.HasComponent<AltFlameProjectile>())
+                        {
+                            Destroy(collider.gameObject);
+                        }
+                        else
+                        {
+                            burn.BurnBox();
+                        }
+                        
                     }
                     
                     else if (collider.gameObject.HasComponent(out Lever lever))

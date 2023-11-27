@@ -2,13 +2,6 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Target token drawer.
-/// 
-/// <br/>
-/// 
-/// Authors: Ryan Chang (2023)
-/// </summary>
 [CustomPropertyDrawer(typeof(TargetToken))]
 public class TargetTokenDrawerUIE : PropertyDrawer
 {
@@ -32,11 +25,11 @@ public class TargetTokenDrawerUIE : PropertyDrawer
 
             // Display the target tile/transform.
             EditorGUI.indentLevel++;
-            EditorGUI.LabelField(position, "Target", $"{token.Position}");
+            EditorGUI.LabelField(position, "Target", $"{token.Target}");
             position.Translate(0, position.height);
             if (PathfindingManager.Instance)
             {
-                EditorGUI.LabelField(position, "Grid Target", $"{token.GridPosition}");
+                EditorGUI.LabelField(position, "Grid Target", $"{token.GridTarget}");
                 position.Translate(0, position.height);
             }
 
@@ -47,21 +40,17 @@ public class TargetTokenDrawerUIE : PropertyDrawer
                 out Transform dynamicTarget
             ) && dynamicTarget)
             {
-                position.Translate(0, position.height);
-
                 EditorGUI.LabelField(
                     position,
                     "Dynamic Target",
                     $"{dynamicTarget}"
                 );
             }
-            if (token.TryGetFieldValue(
+            else if (token.TryGetFieldValue(
                 "tileTarget",
                 BindingFlags.NonPublic | BindingFlags.Instance,
                 out Vector3 tileTarget))
             {
-                position.Translate(0, position.height);
-
                 EditorGUI.LabelField(
                     position,
                     "Tile Target",

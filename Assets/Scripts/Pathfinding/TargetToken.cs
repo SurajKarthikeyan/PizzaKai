@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 /// <summary>
@@ -9,46 +8,41 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
-public class TargetToken : IEquatable<TargetToken>
+[System.Serializable]
+public class TargetToken
 {
-    #region Member Variables
     /// <summary>
-    /// Tracking a static target.
+    /// The location of the targeted tile in world coordinates.
     /// </summary>
-    private readonly Vector3 staticPosition;
+    private readonly Vector3 tileTarget;
 
     /// <summary>
     /// Tracking a dynamic target.
     /// </summary>
     private readonly Transform dynamicTarget;
-    #endregion
 
-    #region Properties
     /// <summary>
     /// The target position in world coordinates.
     /// </summary>
-    public Vector3 Position => IsDynamic ? dynamicTarget.position : staticPosition;
+    public Vector3 Target => dynamicTarget ? dynamicTarget.position : tileTarget;
 
     /// <summary>
     /// The target position in grid coordinates.
     /// </summary>
-    public Vector3Int GridPosition => PathfindingManager.Instance.WorldToCell(Position);
+    public Vector3Int GridTarget => PathfindingManager.Instance.WorldToCell(Target);
 
-    /// <summary>
-    /// True if tracking a dynamic transform.
-    /// </summary>
-    public bool IsDynamic => dynamicTarget;
-    #endregion
+    public Vector3 GetHeading(Vector3 currentLocation)
+    {
+        return Target - currentLocation;
+    }
 
-    #region Constructors
     /// <summary>
     /// Creates a path token targeting a grid tile.
     /// </summary>
     /// <param name="gridPosition">The grid positions of the tile.</param>
     public TargetToken(Vector3Int gridPosition)
     {
-        staticPosition = PathfindingManager.Instance.CellToWorld(gridPosition);
+        tileTarget = PathfindingManager.Instance.CellToWorld(gridPosition);
     }
 
     /// <summary>
@@ -57,7 +51,7 @@ public class TargetToken : IEquatable<TargetToken>
     /// <param name="worldPosition"></param>
     public TargetToken(Vector3 worldPosition)
     {
-        staticPosition = worldPosition;
+        tileTarget = worldPosition;
     }
 
     /// <summary>
@@ -68,53 +62,4 @@ public class TargetToken : IEquatable<TargetToken>
     {
         dynamicTarget = tracking;
     }
-    #endregion
-
-    #region Getters/Setters
-    public Vector3 GetHeading(Vector3 currentLocation)
-    {
-        return Position - currentLocation;
-    }
-    #endregion
-
-    #region Object Overrides
-    public override string ToString()
-    {
-        return (IsDynamic ? "Dynamic" : "Fixed") + 
-            $" [at {Position}, grid {GridPosition}" +
-            (IsDynamic ? $", tracking {dynamicTarget}]" : "]");
-    }
-
-    public override bool Equals(object obj)
-    {
-        return obj is TargetToken tt && Equals(tt);
-    }
-
-    public bool Equals(TargetToken other)
-    {
-        if (IsDynamic != other.IsDynamic)
-            return false;
-        else
-        {
-            if (IsDynamic)
-            {
-                // Make sure dynamic targets match up.
-                return dynamicTarget == other.dynamicTarget;
-            }
-            else
-            {
-                // Make sure static targets match up.
-                return staticPosition == other.staticPosition;
-            }
-        }
-    }
-
-    public override int GetHashCode()
-    {
-        if (IsDynamic)
-            return HashCode.Combine(IsDynamic, dynamicTarget);
-        else
-            return HashCode.Combine(staticPosition, IsDynamic);
-    }
-    #endregion
 }

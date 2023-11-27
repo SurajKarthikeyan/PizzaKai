@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>

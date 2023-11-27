@@ -41,19 +41,23 @@ public class UIManager : MonoBehaviour
     [Tooltip("Boolean representing whether the game is paused or not")]
     public bool isPaused = false;
 
-    [Tooltip("GameObject representing the pause menu")]
+    [Tooltip("GameObject representing the pause menu")] 
     public GameObject pauseMenu;
 
     [Tooltip("Image containing the ammo UI element")]
     public Image ammoUI;
-    #endregion
 
-    #region Properties
-    private Character Player => GameManager.Instance.Player;
+    [Header("UI relevant player information")]
+    [Tooltip("Script containing UI relevant player information")]
+    public Character player;
 
-    private WeaponMasterModule WeaponMaster => GameManager.Instance.PlayerWeapons;
+    [Tooltip("bool telling if player is dying. (this needs to go/be fixed)")]
+    public bool isDying;
 
-    private WeaponModule CurrentWeapon => WeaponMaster.CurrentWeapon;
+    [Tooltip("Weapon master module to use for UI")]
+    public WeaponMasterModule weaponMaster;
+
+    private WeaponModule currWeapon;
     #endregion
 
     #region Init
@@ -67,51 +71,54 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         //Sets current scene variables
+
         Time.timeScale = 1;
 
         pauseMenu.SetActive(false);
 
-        ammoUI.sprite = CurrentWeapon.weaponUIImage;
+        currWeapon = weaponMaster.CurrentWeapon;
+
+        ammoUI.sprite = currWeapon.weaponUIImage;
     }
     #endregion
 
     #region Main Loop
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         //Check if instance is not null, if it is not, do update stuff
         if (instance != null)
         {
-            // //Caching the current weapon
-            // if (WeaponMaster.CurrentWeapon != CurrentWeapon)
-            // {
-            //     CurrentWeapon = WeaponMaster.CurrentWeapon;
-            //     //Sets weapon UI when weapon is re-cached
-            //     ammoUI.sprite = CurrentWeapon.weaponUIImage;
-            // }
+            //Caching the current weapon
+            if (weaponMaster.CurrentWeapon != currWeapon)
+            {
+                currWeapon = weaponMaster.CurrentWeapon;
+                //Sets weapon UI when weapon is re-cached
+                ammoUI.sprite = currWeapon.weaponUIImage;
+            }
 
             //Alt fire slider
-            if (CurrentWeapon.altFireDelay.IsDone)
+            if (currWeapon.altFireDelay.IsDone)
             {
                 altSlider.value = 1f;
             }
             else
             {
-                altSlider.value = CurrentWeapon.altFireDelay.elapsed / CurrentWeapon.altFireDelay.maxTime;
+                altSlider.value = currWeapon.altFireDelay.elapsed / currWeapon.altFireDelay.maxTime;
             }
 
 
             //Sets ammo count and health
 
-            healthSlider.value = Player.HP / (float)Player.maxHP;
+            healthSlider.value = (float)player.HP / (float)player.maxHP;
 
-            ammoCount.text = CurrentWeapon.currentAmmo.ToString() + "/" + CurrentWeapon.ammoCount.ToString();
+            ammoCount.text = currWeapon.currentAmmo.ToString() + "/" + currWeapon.ammoCount.ToString();
 
             if (healthSlider.value == 0)
             {
                 healthSlider.value = 1;
             }
-            if (!GameManager.Instance.PlayerMovement.dashCooldown.IsDone)
+            if(!player.GetComponent<CharacterMovementModule>().canDash)
             {
                 DashFill();
             }
@@ -125,18 +132,15 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Methods
-
+    
     /// <summary>
     /// Fills the dash meter
     /// </summary>
     public void DashFill()
     {
         //Fills the dash slider over times
-        dashSlider.value = Mathf.InverseLerp(
-            0,
-            GameManager.Instance.PlayerMovement.dashCooldown.maxTime,
-            GameManager.Instance.PlayerMovement.dashCooldown.elapsed
-        );
+        dashSlider.value = Mathf.InverseLerp(0, player.GetComponent<CharacterMovementModule>().dashCooldown,
+            Time.time - player.GetComponent<CharacterMovementModule>().dashTime);
     }
 
     /// <summary>
@@ -144,7 +148,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void PauseGame()
     {
-        if (pauseMenu.activeSelf)
+        if (pauseMenu.activeSelf == true)
         {
             //Unpauses game
             pauseMenu.SetActive(false);
@@ -152,7 +156,7 @@ public class UIManager : MonoBehaviour
             isPaused = false;
             Time.timeScale = 1;
         }
-        else
+        else if (pauseMenu.activeSelf == false)
         {
             //Pauses game
             pauseMenu.SetActive(true);

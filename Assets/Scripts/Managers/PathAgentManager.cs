@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NaughtyAttributes;
 using UnityEngine;
 
 /// <summary>
@@ -16,23 +15,29 @@ public class PathAgentManager : MonoBehaviour
     #region Structs
     public struct AgentThread
     {
+        private readonly PathfindingAgent agent;
         public Vector3Int current;
+
         public Vector3Int target;
 
-        public AgentThread(Vector3Int current, Vector3Int target)
+        public AgentThread(PathfindingAgent agent, Vector3Int current,
+            Vector3Int target)
         {
+            this.agent = agent;
             this.target = target;
             this.current = current;
         }
 
-        public readonly void ThreadProcess(out Path<Vector3Int> path)
+        public void ThreadProcess(out Path<Vector3Int> path)
         {
+            // if (!PathfindingManager.Instance.Pathfinding.PathExists(current, target))
+            //     throw new System.InvalidOperationException();
+
+
             path = PathfindingManager.Instance.AStarSearch(
                 current,
                 target
             );
-
-            path.PruneNodes();
         }
     }
     #endregion
@@ -57,33 +62,12 @@ public class PathAgentManager : MonoBehaviour
     }
 
     #region Variables
-    [BoxGroup("AI Timing")]
-    [Tooltip("How long will the path agent wait before recomputing the path " +
-        "after the agent arrives at its target?")]
-    public Range pathRecomputeDelay = new(0.2f, 1);
-
-    [BoxGroup("AI Timing")]
-    [Tooltip("How long between stuck checks?")]
-    public float stuckCheckDelay = 0.7f;
-
-    [BoxGroup("AI Timing")]
-    [Tooltip("How often to check for navigation updates?")]
-    [SerializeField]
-    private float baseAiUpdateRate = 0.4f;
-
-    [BoxGroup("Debug")]
     [Tooltip("If true, then use multithreading. Disable this if you want " +
         "to test pathfinding.")]
     public bool useThreads = true;
     #endregion
 
     #region Properties
-    /// <summary>
-    /// How often to check for navigation updates? Scales with
-    /// current performance.
-    /// </summary>
-    public float AIUpdateRate { get; private set; }
-
     /// <summary>
     /// Collection of currently active agents.
     /// </summary>
@@ -96,12 +80,6 @@ public class PathAgentManager : MonoBehaviour
     #endregion
 
     #region Main Logic
-    private void Update()
-    {
-        float t = Mathf.Clamp(Time.deltaTime, 0.5f, 1);
-        AIUpdateRate = baseAiUpdateRate * t;
-    }
-
     /// <summary>
     /// Schedules this agent to generate its path.
     /// </summary>
@@ -110,39 +88,27 @@ public class PathAgentManager : MonoBehaviour
     public void Schedule(PathfindingAgent agent, TargetToken target)
     {
         var current = agent.GridPosition;
-
-        // Make sure target valid.
-        var startV = PathfindingManager.Instance.GetClosestNeighbor(current);
-        var endV = PathfindingManager.Instance.GetClosestNeighbor(
-            target.GridPosition,
-            startV.sectionID
-        );
-
-        Pathfinding.ValidateStartEnd(true, startV, endV);
-
-        StartCoroutine(WaitForTask_CR(
-            agent,
-            target
+        StartCoroutine(WaitForTask_CR(agent, target,
+            new(
+                agent,
+                current,
+                target.GridTarget
+            )
         ));
     }
 
     private IEnumerator WaitForTask_CR(PathfindingAgent agent,
-        TargetToken token)
+        TargetToken token, AgentThread thread)
     {
         Path<Vector3Int> path = null;
-        AgentThread thread = new(agent.GridPosition, token.GridPosition);
-
         if (useThreads)
         {
             // Tasks are managed by C#'s ThreadPool, so you can create as many as
             // you want (I think).
             var task = Task.Run(() => thread.ThreadProcess(out path));
-
+    
             yield return new WaitUntil(() => task.IsCompleted);
-
-            // // Forces task to actually complete.
-            // task.Wait();
-
+    
             if (!task.IsCompletedSuccessfully)
             {
                 throw task.Exception;

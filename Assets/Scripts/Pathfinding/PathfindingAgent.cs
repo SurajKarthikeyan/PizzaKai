@@ -1,6 +1,5 @@
 using System.Collections;
-using NaughtyAttributes;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -43,69 +42,39 @@ public class PathfindingAgent : MonoBehaviour
     /// </summary>
     private EnemyControlModule enemyControl;
 
+    [Tooltip("How high can this thing jump?")]
+    public int maxJumpHeight = 4;
+
     [SerializeField]
     private Tracer<Vector3Int> visualizer;
+
+    [Tooltip("How often to check for navigation updates?")]
+    [SerializeField]
+    private float aiUpdateRate = 2f;
 
     [Tooltip("After how long after arriving at the previous node is this " +
         "agent considered stuck?")]
     [SerializeField]
-    [ReadOnly]
     private Duration stuckTimer = new(8);
 
     [Header("Debug")]
+    [SerializeField]
+    private TargetToken nextToken;
+
     private Coroutine navigationCR;
-    private NavigationState state;
+    private Coroutine checkTargetDistanceCR;
     #endregion
 
     #region Properties
     /// <summary>
     /// Current waiting state of the agent.
     /// </summary>
-    public NavigationState State
-    {
-        get => state;
-        set
-        {
-            if (state == value)
-                return;
-
-            switch (value)
-            {
-                case NavigationState.Idle:
-                    this.StopCoroutineIfExists(navigationCR);
-                    navigationCR = null;
-                    CurrentPath = null;
-                    FinalToken = null;
-                    break;
-
-                case NavigationState.WaitingForPath:
-                    stuckTimer.Reset();
-                    break;
-
-                case NavigationState.ArrivedAtDestination:
-                    NextNode = null;
-                    Debug.Log(
-                        "Arrived at final destination " + FinalToken,
-                        enemyControl
-                    );
-                    enemyControl.ArrivedAtDestination(FinalToken);
-                    visualizer.Clear();
-
-                    break;
-            }
-            state = value;
-        }
-    }
+    public NavigationState State { get; private set; }
 
     /// <summary>
-    /// Current path of the agent, if available. Otherwise, this is set to null.
+    /// Current path of the agent, if available.
     /// </summary>
     public Path<Vector3Int> CurrentPath { get; private set; }
-
-    /// <summary>
-    /// The final target token, if available. Otherwise, this is set to null.
-    /// </summary>
-    private TargetToken FinalToken { get; set; }
 
     /// <summary>
     /// Position of this agent in world coordinates.
@@ -119,16 +88,12 @@ public class PathfindingAgent : MonoBehaviour
         .WorldToCell(WorldPosition);
 
     public Vertex<Vector3Int> NextNode { get; private set; }
-
-    public Vector3 NextNodeWorldPosition => PathfindingManager.Instance
-        .CellToWorld(NextNode.Value);
     #endregion
 
     #region MonoBehavior Functions
     private void Awake()
     {
         this.RequireComponent(out enemyControl);
-        stuckTimer = new(PathAgentManager.Instance.stuckCheckDelay);
     }
 
     private void OnEnable()
@@ -139,11 +104,6 @@ public class PathfindingAgent : MonoBehaviour
     private void OnDisable()
     {
         PathAgentManager.Instance.ActiveAgents.Remove(this);
-    }
-
-    private void OnDestroy()
-    {
-        visualizer.Clear(true);
     }
 
     private void Update()
@@ -158,11 +118,6 @@ public class PathfindingAgent : MonoBehaviour
     #endregion
 
     #region Navigation
-    public void ResetTarget()
-    {
-        SetTarget(FinalToken);
-    }
-
     /// <inheritdoc cref="SetTarget(TargetToken, int)"/>
     public void SetTarget(TargetToken target)
     {
@@ -181,26 +136,23 @@ public class PathfindingAgent : MonoBehaviour
     {
         // Requesting a new path while one is already being generated may not be
         // desirable.
-        State = NavigationState.Idle;
+        if (State != NavigationState.Idle)
+            StopCurrentNavigation();
+
+        stuckTimer.Reset();
+
         State = NavigationState.WaitingForPath;
 
-        if (target.GridPosition == GridPosition)
+        if (target.GridTarget == GridPosition)
         {
             // We've already arrived. This avoids a StartIsEndVertexException.
-            State = NavigationState.ArrivedAtDestination;
+            ArrivedAtDestination();
             return;
         }
 
         try
         {
             PathAgentManager.Instance.Schedule(this, target);
-        }
-        catch (StartIsEndVertexException)
-        {
-            // We've already arrived. This may not be caught by the above if
-            // statement if start is interpolated to end (or vice versa).
-            State = NavigationState.ArrivedAtDestination;
-            return;
         }
         catch (PathfindingException e)
         {
@@ -216,10 +168,8 @@ public class PathfindingAgent : MonoBehaviour
     {
         if (recoverAttempts > 0)
         {
-            yield return new WaitForSecondsRealtime(
-                PathAgentManager.Instance.stuckCheckDelay
-            );
-            SetTarget(token, --recoverAttempts);
+            yield return new WaitForSeconds(recoverAttempts);
+            SetTarget(token);
         }
         else
         {
@@ -239,6 +189,21 @@ public class PathfindingAgent : MonoBehaviour
         SetTarget(new TargetToken(target));
     }
 
+    /// <summary>
+    /// Stops the current running navigation coroutines, allowing the agent to
+    /// compute a new path to the target.
+    /// </summary>
+    public void StopCurrentNavigation()
+    {
+        if (navigationCR != null)
+        {
+            StopCoroutine(navigationCR);
+            StopCoroutine(checkTargetDistanceCR);
+        }
+        navigationCR = null;
+        checkTargetDistanceCR = null;
+        State = NavigationState.Idle;
+    }
 
     /// <summary>
     /// Accepts the path generated by the <see cref="PathAgentManager"/>.
@@ -250,94 +215,121 @@ public class PathfindingAgent : MonoBehaviour
         if (enabled)
         {
             CurrentPath = path;
-            FinalToken = token;
             visualizer.Trace(
                 CurrentPath,
                 (vector) => PathfindingManager.Instance.CellToWorld(vector.Value),
                 $"Agent {gameObject.name}"
             );
-            navigationCR = StartCoroutine(Navigation_CR());
+            navigationCR = StartCoroutine(Navigation_CR(token));
         }
+        else
+            State = NavigationState.Idle;
     }
 
-    private IEnumerator Navigation_CR()
+    private IEnumerator Navigation_CR(TargetToken token)
     {
         yield return new WaitUntil(() => enemyControl);
 
         State = NavigationState.NavigatingToDestination;
+        checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         NextNode = CurrentPath.Start;
 
         while (NextNode != CurrentPath.End)
         {
-            while (!CheckAlongPath(NextNode))
+            NextNode = CurrentPath.Next(NextNode);
+            nextToken = new(NextNode.Value);
+            enemyControl.AcceptToken(nextToken);
+
+            int cnt = 0;
+            while (!CheckAlongPath())
             {
-                yield return new WaitForSecondsRealtime(
-                    PathAgentManager.Instance.AIUpdateRate
+                cnt++;
+                float waitTime = Mathf.Min(
+                    aiUpdateRate,
+                    cnt * Time.deltaTime
                 );
+
+                yield return new WaitForSecondsRealtime(waitTime);
             }
 
-            Debug.Log(
-                "Arrived at intermediate position " + NextNode,
-                enemyControl
-            );
+            print($"Arrived at {NextNode}");
             stuckTimer.Reset();
-
-            // Go to next node.
-            NextNode = CurrentPath.Next(NextNode);
+            StopCoroutine(checkTargetDistanceCR);
+            checkTargetDistanceCR = StartCoroutine(CheckTargetDistance_CR(token));
         }
 
+        ArrivedAtDestination();
+    }
+
+    private void ArrivedAtDestination()
+    {
+        NextNode = null;
         State = NavigationState.ArrivedAtDestination;
+        enemyControl.ArrivedAtDestination();
+        visualizer.Clear();
+
+        if (checkTargetDistanceCR != null)
+        {
+            StopCoroutine(checkTargetDistanceCR);
+            checkTargetDistanceCR = null;
+        }
+    }
+
+    private IEnumerator CheckTargetDistance_CR(TargetToken token)
+    {
+        Vector3 originalTargetPosition = token.Target;
+
+        // Makes sure the updates are staggered, rather than occurring all at
+        // once.
+        Range updateOffset = new(-aiUpdateRate, aiUpdateRate);
+        yield return new WaitForSecondsRealtime(updateOffset.Evaluate());
+
+        while (enabled)
+        {
+            // Would want to batch this somehow so this doesn't all run at the
+            // same time.
+            yield return new WaitForSecondsRealtime(aiUpdateRate);
+
+            if (Vector3.Distance(originalTargetPosition, token.Target) > 1 ||
+                stuckTimer.IsDone)
+            {
+                // Restart navigation.
+                if (enemyControl.CurrentTarget &&
+                    !PathfindingManager.Instance.InSameCell(
+                        enemyControl.CurrentTarget.position,
+                        enemyControl.transform.position
+                    ))
+                {
+                    print("Restarting nav");
+                    SetTarget(enemyControl.CurrentTarget);
+                }
+            }
+            else
+            {
+                // Resend the token again.
+                enemyControl.AcceptToken(token);
+            }
+        }
     }
 
     /// <summary>
     /// Check if we've arrived at a later node down the path.
     /// </summary>
     /// <returns></returns>
-    private bool CheckAlongPath(Vertex<Vector3Int> next)
+    private bool CheckAlongPath()
     {
         var currentGridPos = GridPosition;
-        currentGridPos.z = 0;
-
-        // Iterate through all nodes starting past NextNode.
-        foreach (var node in CurrentPath.GetVertices(next))
+        foreach (var node in CurrentPath.GetVertices(NextNode))
         {
             if (node.id == currentGridPos)
             {
                 // Found the node we need to be on.
-                return true;
-            }
-        }
-
-        // Same thing, but do a "close enough" check instead.
-        foreach (var node in CurrentPath.GetVertices(next))
-        {
-            if (node.id.TaxicabDistance(currentGridPos) <= 1)
-            {
-                // Found the node we need to be on.
+                NextNode = node;
                 return true;
             }
         }
 
         return false;
-    }
-    #endregion
-
-    #region Getters
-    public Vector2 GetHeading()
-    {
-        return State switch
-        {
-            NavigationState.NavigatingToDestination =>
-                GetNormalized(NextNodeWorldPosition),
-            NavigationState.ArrivedAtDestination =>
-                GetNormalized(FinalToken.Position),
-            _ => Vector2.zero
-        };
-
-        Vector3 GetNormalized(Vector3 position)
-        {
-            return (position - transform.position).normalized;
-        }
     }
     #endregion
 }

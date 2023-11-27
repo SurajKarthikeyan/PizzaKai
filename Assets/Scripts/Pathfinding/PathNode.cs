@@ -12,11 +12,11 @@ using static PathMarker;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[Serializable]
+[System.Serializable]
 public class PathNode : IEquatable<PathNode>
 {
     #region Enum
-    [Flags]
+    [System.Flags]
     public enum NodeFlags
     {
         /// <summary>
@@ -56,8 +56,8 @@ public class PathNode : IEquatable<PathNode>
     #region Variables
     #region Readonly and Const
     public static readonly LayerMask groundMask = LayerExt.CreateMask(
-        Platform,
-        Ground
+        LayersManager.Platform,
+        LayersManager.Ground
     );
     #endregion
 
@@ -101,9 +101,9 @@ public class PathNode : IEquatable<PathNode>
                 return Solidity.None;
             else if (flags.HasFlag(NodeFlags.Exists))
             {
-                if (mapLayer == Platform)
+                if (mapLayer == LayersManager.Platform)
                     return Solidity.Platform;
-                else if (mapLayer == Ground)
+                else if (mapLayer == LayersManager.Ground)
                     return Solidity.Solid;
                 else if (groundMask.ContainsLayer(mapLayer))
                     return Solidity.Solid;
@@ -180,7 +180,7 @@ public class PathNode : IEquatable<PathNode>
             tilemapName = "[None]";
             tilemapID = -1;
 
-            mapLayer = Invalid;
+            mapLayer = LayersManager.Invalid;
         }
     }
     #endregion
@@ -193,17 +193,6 @@ public class PathNode : IEquatable<PathNode>
             this.mapLayer.Equals(other.mapLayer) &&
             this.flags == other.flags;
     }
-    #endregion
-
-    #region ToString
-    public override string ToString()
-    {
-        return $"Node [at {gridPosition}, " +
-            $"flags {flags}, " +
-            $"map layer {mapLayer}, " +
-            $"collider type {colliderType}, " +
-            $"marker data {markerData}]";
-    } 
     #endregion
     #endregion
 }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Lever : MonoBehaviour
@@ -15,7 +17,7 @@ public class Lever : MonoBehaviour
 
     #endregion
 
-    #region Methods
+    #region PrivateMethods
 
     public void LeverArmActivate()
     {
@@ -25,10 +27,8 @@ public class Lever : MonoBehaviour
             StartCoroutine(EnabledTime());
         }
     }
-    #endregion
 
-    #region Member Methods
-    private IEnumerator EnabledTime()
+    IEnumerator EnabledTime()
     {
         //Active, unable to be shot again
         canBeShot = false;
@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour
         StartCoroutine(DisabledTime());
     }
 
-    private IEnumerator DisabledTime()
+    IEnumerator DisabledTime()
     {
         //Not active, unable to be shot again
         leverArm.GetComponent<SpriteRenderer>().color = Color.magenta;

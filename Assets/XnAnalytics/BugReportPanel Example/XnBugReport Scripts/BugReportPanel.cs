@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 using TMPro;
 
-namespace XnBugReport
-{
+namespace XnBugReport {
     public class BugReportPanel : MonoBehaviour {
         static public bool DEBUG = true;
 
