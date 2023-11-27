@@ -1,9 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Class that manages bosses, in this particular case Forky

@@ -32,6 +32,31 @@ public static class NumericalExt
     }
 
     /// <summary>
+    /// Evaluates if <paramref name="values"/> to determine if all members are
+    /// equal.
+    /// </summary>
+    /// <param name="values">The values to evaluate.</param>
+    /// <returns>True if all members of <paramref name="values"/>, or if there
+    /// are less than 2 values in <paramref name="values"/>. False
+    /// otherwise.</returns>
+    public static bool AllEqual<T>(params T[] values)
+        where T : IEquatable<T>
+    {
+        if (values.Length < 2)
+            return true;
+
+        T temp = values[0];
+        
+        for (int i = 1; i < values.Length; i++)
+        {
+            if (!temp.Equals(values[i]))
+                return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// Returns true if number is in between bounds A and B, inclusive
     /// </summary>
     /// <param name="number">The number to evaluate</param>
@@ -39,7 +64,8 @@ public static class NumericalExt
     /// <param name="boundsB">The upper bound</param>
     /// <param name="fixRange">Swaps bounds A and B if B < A</param>
     /// <returns></returns>
-    public static bool IsBetween(this float number, float boundsA, float boundsB, bool fixRange = true)
+    public static bool IsBetween(this float number, float boundsA,
+        float boundsB, bool fixRange = true)
     {
         if (fixRange)
         {

@@ -31,7 +31,7 @@ public class LayersManager : MonoBehaviour
         #region Variables
         [SerializeField]
         private string name;
-        
+
         [SerializeField]
         private int layer;
         #endregion
@@ -127,6 +127,13 @@ public class LayersManager : MonoBehaviour
     #endregion
 
     #region Variables
+    #region User Settings
+    public LayerMask playerBulletsCollision;
+
+    public LayerMask enemyBulletsCollision;
+    #endregion
+
+    #region Defined Layers
     public static readonly DefinedLayer Invalid = new("[Invalid]", -1);
 
     public static readonly DefinedLayer Default = new("Default");
@@ -156,6 +163,7 @@ public class LayersManager : MonoBehaviour
     public static readonly DefinedLayer Boundary = new("Boundary");
 
     public static readonly DefinedLayer Background = new("Background");
+    #endregion
 
     public IEnumerable<Collider2D> platformColliders;
     #endregion
@@ -180,7 +188,7 @@ public class LayersManager : MonoBehaviour
     {
         foreach (var platformCollider in platformColliders)
         {
-            if (platformCollider != null) 
+            if (platformCollider != null)
             {
                 Physics2D.IgnoreCollision(platformCollider, collider, ignore);
             }

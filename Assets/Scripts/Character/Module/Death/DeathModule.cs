@@ -17,8 +17,14 @@ public abstract class DeathModule : Module
 
     protected bool ranOnDeath = false;
 
-    protected override void OnLinked()
+    protected override void OnLinked(Character old)
     {
+        if (old)
+        {
+            old.onCharacterDeath.RemoveListener(StartDeath);
+            old.onCharacterRevive.RemoveListener(StartRevive);
+        }
+
         Master.onCharacterDeath.AddListener(StartDeath);
         Master.onCharacterRevive.AddListener(StartRevive);
         weaponMaster = Master.GetComponentInChildren<WeaponMasterModule>();

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -8,20 +10,41 @@ using UnityEngine;
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class Duration
 {
+    #region Enums
+    [Flags]
+    public enum Options
+    {
+        None = 0,
+        Repeat = 1,
+        UnscaledTime = 2,
+    }
+    #endregion
+
+    #region Variables
     [Tooltip("How long is this duration?")]
     public float maxTime = 1f;
 
     [HideInInspector]
     public float elapsed = 0f;
 
+    [HideInInspector]
+    private Coroutine callbackCR;
+
+    [HideInInspector]
+    private MonoBehaviour callbackMB;
+    #endregion
+
+    #region Constructors
     public Duration(float duration)
     {
         maxTime = duration;
     }
+    #endregion
 
+    #region Properties
     /// <summary>
     /// True if the elapsed time is greater than the maximal time.
     /// </summary>
@@ -31,6 +54,12 @@ public class Duration
     /// What percentage is this duration done by?
     /// </summary>
     public float Percent => IsDone ? 1 : elapsed / maxTime;
+
+    /// <summary>
+    /// Checks if a callback is currently running.
+    /// </summary>
+    public bool CallbackActive => callbackCR != null;
+    #endregion
 
     /// <summary>
     /// Increments <see cref="elapsed"/> by the specified <paramref
@@ -112,5 +141,67 @@ public class Duration
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Creates a coroutine on <paramref name="unityObject"/> that calls
+    /// <paramref name="callback"/> once <see cref="maxTime"/> has passed. This
+    /// does not affect any values within this <see cref="Duration"/>. Only one
+    /// callback is allowed to be running at a time.
+    /// </summary>
+    /// <param name="unityObject">The behavior to attach the coroutine
+    /// to.</param>
+    /// <param name="callback">The callback to perform.</param>
+    /// <param name="repeat">If true, keeps repeating the coroutine.</param>
+    /// <param name="unscaledTime">Whether or not to use unscaled time.</param>
+    /// <returns>False if another callback is running. True otherwise.</returns>
+    public bool CreateCallback(MonoBehaviour unityObject, Action callback,
+        Options options)
+    {
+        if (CallbackActive)
+            return false;
+
+        callbackMB = unityObject;
+        callbackCR = unityObject.StartCoroutine(WaitUntilDone_CR(
+            callback, options
+        ));
+
+        return true;
+    }
+
+    /// <summary>
+    /// Clears the callback.
+    /// </summary>
+    /// <returns>True if the callback existed and was removed, false
+    /// otherwise.</returns>
+    public bool ClearCallback()
+    {
+        if (CallbackActive)
+        {
+            callbackMB.StopCoroutine(callbackCR);
+            callbackCR = null;
+            callbackMB = null;
+            return true;
+        }
+
+        return false;
+    }
+
+    private IEnumerator WaitUntilDone_CR(Action callback, Options options)
+    {
+        do
+        {
+            if (options.HasFlag(Options.UnscaledTime))
+                yield return new WaitForSecondsRealtime(maxTime);
+            else
+                yield return new WaitForSeconds(maxTime);
+
+            if (callback == null)
+                yield break;
+
+            callback();
+        } while (options.HasFlag(Options.Repeat));
+
+        callbackCR = null;
     }
 }

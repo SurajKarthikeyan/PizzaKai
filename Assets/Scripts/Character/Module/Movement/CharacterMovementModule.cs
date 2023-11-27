@@ -59,8 +59,6 @@ public class CharacterMovementModule : Module
         "decelerate?")]
     [Range(0, 0.95f)]
     public float decelerationPercentage = 0.95f;
-
-    private readonly float originalGravityScale = 0.75f;
     #endregion
 
     #region Jumping
@@ -80,13 +78,10 @@ public class CharacterMovementModule : Module
     public float dashSpeed = 20;
 
     [Tooltip("The cooldown for dashing.")]
-    public float dashCooldown = 2;
+    public Duration dashCooldown = new(2);
 
     [Tooltip("The duration of dashing.")]
-    public float dashTimer = 0.5f;
-    public bool canDash = true;
-    private bool isDashing = false;
-    public float dashTime = -10f;
+    public Duration dashTimer = new(0.2f);
     #endregion
 
     #region Ground Check
@@ -134,10 +129,6 @@ public class CharacterMovementModule : Module
     [ReadOnly]
     public bool inputtedJump;
 
-    [Tooltip("If false, the player has jumped for one input.")]
-    [ReadOnly]
-    public bool oneJump;
-
     [Tooltip("The inputted dash. Will be normalized.")]
     [ReadOnly]
     public Vector2 inputtedDash;
@@ -181,6 +172,7 @@ public class CharacterMovementModule : Module
     #region Instantiation
     private void Start()
     {
+        dashTimer.Finish();
         numJumps = totalJumps;
 
         // Make sure max speed is positive.
@@ -284,10 +276,7 @@ public class CharacterMovementModule : Module
         jumpCooldown.IncrementFixedUpdate(false);
         coyoteTimer.IncrementFixedUpdate(false);
 
-        if (!inputtedJump && CanJump())
-            oneJump = true;
-
-        if (inputtedJump && CanJump() && oneJump)
+        if (inputtedJump && CanJump())
         {
             if(!TouchingGround)
             {
@@ -299,8 +288,6 @@ public class CharacterMovementModule : Module
             Master.r2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             groundedStatus = GroundedStatus.AirbornFromJump;
-
-            oneJump = false;
 
             coyoteTimer.Reset();
             jumpCooldown.Reset();
@@ -334,15 +321,13 @@ public class CharacterMovementModule : Module
     #region Dash
     private void UpdateDash()
     {
+        dashCooldown.IncrementFixedUpdate(false);
 
         if (movementStatus == MovementStatus.Dashing)
         {
-            if (isDashing)
+            if (dashTimer.IncrementFixedUpdate(false))
             {
-                Master.r2d.gravityScale = 0;
-
                 // We are dashing.
-
                 Master.r2d.velocity = lockedDashInput * dashSpeed;
                 return;
             }
@@ -350,43 +335,28 @@ public class CharacterMovementModule : Module
             {
                 // Is dash time done? (do NOT reset DashTimer)
                 Master.r2d.bodyType = RigidbodyType2D.Dynamic;
-                Master.r2d.gravityScale = originalGravityScale;
                 movementStatus = MovementStatus.Normal;
-
             }
         }
 
-        if (!inputtedDash.ApproxZero() && canDash)
+        if (!inputtedDash.ApproxZero() && dashCooldown.IsDone)
         {
             // Do dash here.
+            dashCooldown.Reset();
             inputtedDash.Normalize();
 
             // Now do dash.
-            isDashing = true;
-            canDash = false;
-            dashTime = Time.time;
-            Invoke(nameof(ResetDash), dashTimer);
-            Invoke(nameof(ResetDashTimer), dashCooldown);
+            dashTimer.Reset();
             lockedDashInput = inputtedDash;
             movementStatus = MovementStatus.Dashing;
 
             // Switch to a kinematic collider so the player is forced in one
             // direction. Also shoves all enemies out of the way.
-            Master.r2d.bodyType = RigidbodyType2D.Dynamic;
+            Master.r2d.bodyType = RigidbodyType2D.Kinematic;
             Master.r2d.velocity = inputtedDash * dashSpeed;
 
-            
+            // XnTelemetry.Telemetry_Cloud.DASHLOG("Dash");
         }
-    }
-
-    private void ResetDashTimer()
-    {
-        canDash = true;
-    }
-
-    private void ResetDash()
-    {
-        isDashing = false;
     }
 
     #endregion

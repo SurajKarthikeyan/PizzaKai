@@ -1,12 +1,12 @@
 //#define DEBUG_TEXT
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace XnBugReport {
+namespace XnBugReport
+{
     /// <summary>
     /// Allows a quick, static check on whether the mouse is over an element of the UI. 
     /// This can be used to prevent clicks on non-uGUI GameObjects in the scene.

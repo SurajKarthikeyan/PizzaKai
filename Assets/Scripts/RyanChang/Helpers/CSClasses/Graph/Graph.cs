@@ -89,60 +89,33 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         Vertices = new Dictionary<T, Vertex<T>>();
         foreach (var first in path.Keys)
         {
-            Add(path[first].id, first.id);
+            AddEdge(path[first].id, first.id);
         }
     }
     #endregion
 
     #region Methods
-    #region Addition of Vertices
+    #region Add Functions
+    #region Add Vertex
     /// <summary>
     /// Adds a new vertex directly, without any connections.
     /// </summary>
     /// <param name="newVertex">The new vertex to add.</param>
-    public void Add(Vertex<T> newVertex)
+    public void AddVertex(Vertex<T> newVertex)
     {
         Vertices[newVertex.id] = newVertex;
 
-        if (Root == null)
-        {
-            Root = newVertex;
-        }
-    }
-
-    /// <summary>
-    /// Adds an edge to the graph between <paramref name="from"/> and
-    /// <paramref name="to"/>.
-    /// </summary>
-    /// <param name="from">The starting vertex.</param>
-    /// <param name="to">The ending vertex.</param>
-    /// <param name="weight">Weight of edge.</param>
-    public void Add(Vertex<T> from, Vertex<T> to, float weight = 0)
-    {
-        T fromID = from.id;
-        T toID = to.id;
-
-        if (!Vertices.ContainsKey(fromID))
-        {
-            Add(from);
-        }
-
-        if (!Vertices.ContainsKey(toID))
-        {
-            Add(to);
-        }
-
-        from.Adjacent[toID] = weight;
+        Root ??= newVertex;
     }
 
     /// <summary>
     /// Creates a single vertex with no connections and no heuristic.
     /// </summary>
     /// <inheritdoc cref="Add(T, Vertex{T}.Heuristic)"/>
-    public Vertex<T> Add(T newId)
+    public Vertex<T> AddVertex(T newId)
     {
         var newV = new Vertex<T>(newId);
-        Add(newV);
+        AddVertex(newV);
         return newV;
     }
 
@@ -152,33 +125,60 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     /// <param name="newId">The new id to add.</param>
     /// <param name="heuristic">Heuristic to use for A*.</param>
     /// <returns>The created vertex.</returns>
-    public Vertex<T> Add(T newId, float heuristic)
+    public Vertex<T> AddVertex(T newId, float heuristic)
     {
         var newV = new Vertex<T>(newId, heuristic);
-        Add(newV);
+        AddVertex(newV);
         return newV;
+    }
+    #endregion
+
+    #region Add Edge
+    /// <summary>
+    /// Adds an one-directional edge to the graph between <paramref
+    /// name="from"/> and <paramref name="to"/>.
+    /// </summary>
+    /// <param name="from">The starting vertex.</param>
+    /// <param name="to">The ending vertex.</param>
+    /// <param name="weight">Weight of edge.</param>
+    public void AddEdge(Vertex<T> from, Vertex<T> to, float weight = 0)
+    {
+        T fromID = from.id;
+        T toID = to.id;
+
+        if (!Vertices.ContainsKey(fromID))
+        {
+            AddVertex(from);
+        }
+
+        if (!Vertices.ContainsKey(toID))
+        {
+            AddVertex(to);
+        }
+
+        from.Adjacent[toID] = weight;
     }
 
     /// <summary>
-    /// Adds an edge to the graph between fromId and toId. Inserts the vertices
-    /// as needed.
+    /// Adds an one-directional edge to the graph between fromId and toId.
+    /// Inserts the vertices as needed.
     /// </summary>
     /// <param name="fromId">The starting vertex.</param>
     /// <param name="toId">The ending vertex.</param>
-    /// <param name="weight">Weight of edge.</param>
-    /// <returns>A tuple containing the created vertices in the order of
-    /// (<paramref name="fromId"/>, <paramref name="toId"/>).</param>
-    public Tuple<Vertex<T>, Vertex<T>> Add(T fromId, T toId, float weight = 0)
+    /// <param name="weight">Weight of the edge.</param>
+    /// <returns>
+    /// A tuple containing the created vertices in the order of (<paramref
+    /// name="fromId"/>, <paramref name="toId"/>).
+    /// </returns>
+    public Tuple<Vertex<T>, Vertex<T>> AddEdge(T fromId, T toId, float weight = 0)
     {
-        Vertex<T> fromV, toV;
-
-        if (!Vertices.TryGetValue(fromId, out fromV))
+        if (!Vertices.TryGetValue(fromId, out Vertex<T> fromV))
         {
-            fromV = Add(fromId);
+            fromV = AddVertex(fromId);
         }
-        if (!Vertices.TryGetValue(toId, out toV))
+        if (!Vertices.TryGetValue(toId, out Vertex<T> toV))
         {
-            toV = Add(toId);
+            toV = AddVertex(toId);
         }
 
         Vertices[fromId].Adjacent[toId] = weight;
@@ -186,28 +186,65 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         return new(fromV, toV);
     }
 
-    /// <param name="fromHeuristic">Heuristic for <paramref
-    /// name="fromId"/>.</param>
-    /// <param name="toHeuristic">Heuristic for <paramref name="toId"/>.</param>
-    /// <inheritdoc cref="Add(T, T, float)"/>
-    public Tuple<Vertex<T>, Vertex<T>> Add(T fromId, T toId, float weight,
+    /// <param name="fromHeuristic">Heuristic of the starting vertex. Ignored if
+    /// that vertex already exists.</param>
+    /// <param name="toHeuristic">Heuristic of the ending vertex. Ignored if
+    /// that vertex already exists.</param>
+    /// <inheritdoc cref="AddEdge(T, T, float)"/>
+    public Tuple<Vertex<T>, Vertex<T>> AddEdge(T fromId, T toId, float weight,
             float fromHeuristic, float toHeuristic)
     {
-        Vertex<T> fromV, toV;
-
-        if (!Vertices.TryGetValue(fromId, out fromV))
+        if (!Vertices.TryGetValue(fromId, out Vertex<T> fromV))
         {
-            fromV = Add(fromId);
+            fromV = AddVertex(fromId, fromHeuristic);
         }
-        if (!Vertices.TryGetValue(toId, out toV))
+        if (!Vertices.TryGetValue(toId, out Vertex<T> toV))
         {
-            toV = Add(toId);
+            toV = AddVertex(toId, toHeuristic);
         }
 
         Vertices[fromId].Adjacent[toId] = weight;
 
         return new(fromV, toV);
     }
+    #endregion
+
+    #region Add Double Edge
+    /// <summary>
+    /// Adds an bi-directional edge to the graph between <paramref
+    /// name="vertexA"/> and <paramref name="vertexB"/>.
+    /// </summary>
+    /// <param name="vertexA">The starting vertex.</param>
+    /// <param name="vertexB">The ending vertex.</param>
+    /// <param name="a2bWeight">Weight of edge going from <paramref
+    /// name="vertexA"/> to <paramref name="vertexB"/>.</param>
+    /// <param name="b2aWeight">Weight of edge going from 
+    public void AddDoubleEdge(Vertex<T> vertexA, Vertex<T> vertexB,
+        float a2bWeight = 0, float b2aWeight = 0)
+    {
+        AddEdge(vertexA, vertexB, a2bWeight);
+        AddEdge(vertexB, vertexA, b2aWeight);
+    }
+
+    /// <summary>
+    /// Adds an bi-directional edge to the graph between <paramref
+    /// name="tA"/> and <paramref name="tB"/>. Inserts the vertices as
+    /// needed.
+    /// </summary>
+    /// <param name="tA">The id of the starting vertex.</param>
+    /// <param name="tB">The id of the ending vertex.</param>
+    /// <returns>
+    /// A tuple containing the created vertices in the order of (<paramref
+    /// name="tA"/>, <paramref name="tB"/>).
+    /// </returns>
+    /// <inheritdoc cref="AddDoubleEdge(Vertex{T}, Vertex{T}, float, float)"/>
+    public Tuple<Vertex<T>, Vertex<T>> AddDoubleEdge(T tA, T tB,
+        float a2bWeight = 0, float b2aWeight = 0)
+    {
+        AddEdge(tB, tA, b2aWeight);
+        return AddEdge(tA, tB, a2bWeight);
+    }
+    #endregion
     #endregion
 
     #region Visiting
@@ -262,18 +299,6 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public bool TryGetVertex(T key, out Vertex<T> vertex)
     {
         return Vertices.TryGetValue(key, out vertex);
-    }
-
-    /// <summary>
-    /// Attempts to get the vertex by its key, then attempts to cast it into the
-    /// specified vertex type.
-    /// </summary>
-    /// <inheritdoc cref="TryGetVertex(T, out Vertex{T})"/>
-    public bool TryGetVertex<TVertex>(T key, out TVertex vertex)
-        where TVertex : Vertex<T>
-    {
-        vertex = GetVertex(key) as TVertex;
-        return vertex != null;
     }
 
     /// <summary>
@@ -445,7 +470,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
                     Vertex<T> adjV = Vertices[adjP.Key];
 
                     q.Enqueue(adjV);
-                } 
+                }
             }
         }
 
@@ -821,26 +846,8 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public Path<T> AStarSearch(T startID, T endID,
         out float cost)
     {
-        if (!HasVertex(startID))
-            throw new VertexNotInGraphException(startID, this);
-        else if (!HasVertex(endID))
-            throw new VertexNotInGraphException(endID, this);
-        else if (Count < 2)
-            throw new PathfindingException("Cannot make graph with less than 2 vertices");
-        else if (startID.Equals(endID))
-            throw new StartIsEndVertexException(startID, "Cannot build graph.");
+        ValidateStartEnd(startID, endID, false, out Vertex<T> endV, out Vertex<T> startV);
 
-        var endV = Vertices[endID];
-        var startV = Vertices[startID];
-
-        if (endV.sectionID != startV.sectionID)
-        {
-            throw new DisjointGraphException(
-                "Graph is disjoint. Trying to navigate from section " +
-                $"{startV.sectionID} to section {endV.sectionID}."
-            );
-        }
-        
         PriorityQueue<Vertex<T>> unvisited = new();
 
         foreach (var v in Values)
@@ -951,6 +958,52 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public Path<T> AStarSearch(T startID, T endID)
     {
         return AStarSearch(startID, endID, out _);
+    }
+    #endregion
+
+    #region Validation
+    /// <summary>
+    /// Validates the start and end IDs on the graph, throwing errors if
+    /// required to.
+    /// </summary>
+    /// <exception cref="VertexNotInGraphException"></exception>
+    /// <exception cref="PathfindingException"></exception>
+    /// <exception cref="StartIsEndVertexException"></exception>
+    /// <exception cref="GuidUnsetVertexException"></exception>
+    /// <exception cref="DisjointGraphException"></exception>
+    public void ValidateStartEnd(T startID, T endID, bool fullValidation, out Vertex<T> endV, out Vertex<T> startV)
+    {
+        if (!HasVertex(startID))
+            throw new VertexNotInGraphException("Cannot build graph", startID, this);
+        else if (!HasVertex(endID))
+            throw new VertexNotInGraphException("Cannot build graph", endID, this);
+
+        endV = Vertices[endID];
+        startV = Vertices[startID];
+        
+        ValidateStartEnd(fullValidation, endV, startV);
+    }
+
+    public void ValidateStartEnd(bool fullValidation, Vertex<T> endV, Vertex<T> startV)
+    {
+        if (Count < 2)
+            throw new PathfindingException("Cannot make graph with less than 2 vertices");
+        else if (startV == endV)
+            throw new StartIsEndVertexException(startV);
+        else if (startV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("Start GUID not set", startV);
+        else if (endV.sectionID == Guid.Empty)
+            throw new GuidUnsetVertexException("End GUID not set", endV);
+        else if (startV.sectionID != endV.sectionID)
+            throw new DisjointGraphException(
+                "Start and end are in different sections",
+                startV, endV
+            );
+        else if (fullValidation && !VerticesConnected(startV, endV))
+            throw new DisjointGraphException(
+                "Start and end vertices are not connected",
+                startV, endV
+            );
     }
     #endregion
     #endregion

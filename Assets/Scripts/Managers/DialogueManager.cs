@@ -1,11 +1,12 @@
 using Cinemachine;
 using Fungus;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The manager controlling the Fungus dialog system.
+/// </summary>
 public class DialogueManager : MonoBehaviour
 {
     #region Instance
@@ -18,14 +19,15 @@ public class DialogueManager : MonoBehaviour
     /// The static reference to a UIManager instance.
     /// </summary>
     public static DialogueManager Instance => instance;
+
+    private void Awake()
+    {
+        this.InstantiateSingleton(ref instance);
+    }
     #endregion
 
     #region Variables
     public Flowchart levelFlowchart;
-
-    public CharacterMovementModule player;
-
-    public WeaponMasterModule weaponMasterModule;
 
     public TextMeshProUGUI toolTipText;
 
@@ -33,36 +35,27 @@ public class DialogueManager : MonoBehaviour
 
     //WHEN MANIPULATING/ACCESSING TRANSFORM OF SAY DIALOG DO IT THROUGH ITS PANEL
     public Transform saydialog;
-
     #endregion
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    #region Properties
+    private Character Player => GameManager.Instance.Player;
+    #endregion
+
 
     public void StopPlayer(bool stopPlayer)
-    {   
-        
+    {
+        var weaponMasterModule = GameManager.Instance.PlayerWeapons;
         if (stopPlayer)
         {
-            player.Master.r2d.velocity = new Vector2(0, player.Master.r2d.velocity.y);
-            player.characterAnimator.SetFloat("RightLeftMovement", 0f);
-            player.enabled = false;
+            Player.r2d.velocity = new Vector2(0, Player.r2d.velocity.y);
+            Player.characterAnimator.SetFloat("RightLeftMovement", 0f);
+            Player.enabled = false;
             weaponMasterModule.enabled = false;
         }
         else
         {
-            player.enabled = true;
+            Player.enabled = true;
             weaponMasterModule.enabled = true;
             weaponMasterModule.EnableCurrentWeapon();
         }

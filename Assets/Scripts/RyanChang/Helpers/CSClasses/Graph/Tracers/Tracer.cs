@@ -49,7 +49,8 @@ public class Tracer<T> where T : IEquatable<T>
             );
         }
 
-        Transform superContainer = GameObject.FindGameObjectWithTag("TraceContainer").transform;
+        Transform superContainer =
+            GameObject.FindGameObjectWithTag("TraceContainer").transform;
 
         if (!middleContainer)
         {
@@ -88,11 +89,17 @@ public class Tracer<T> where T : IEquatable<T>
         subcontainer.transform.Localize(middleContainer);
     }
 
-    public void Clear()
+    /// <summary>
+    /// Clears all traces.
+    /// </summary>
+    /// <param name="exit">If true, then also destroy the trace
+    /// container.</param>
+    public void Clear(bool exit = false)
     {
         if (middleContainer)
         {
             middleContainer.DestroyAllChildren(true);
+            middleContainer.gameObject.DestroyIf(exit);
         }
     }
 
@@ -140,7 +147,10 @@ public class Tracer<T> where T : IEquatable<T>
 
     protected void ValidateFields()
     {
-        tracerData.LoadIfMissing("Pathfinding/Visual/DefaultTracerData");
+        UnityObjectExt.LoadIfMissing(
+            ref tracerData,
+            "Pathfinding/Visual/DefaultTracerData"
+        );
     }
     #endregion
 }

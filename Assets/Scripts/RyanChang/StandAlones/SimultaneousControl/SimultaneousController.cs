@@ -58,6 +58,10 @@ public abstract class SimultaneousController : MonoBehaviour
     protected SimultaneousControl[] controls;
     #endregion
 
+    #region Properties
+    public bool HasBeenInitialized { get; private set; } = false;
+    #endregion
+
     #region Public Methods
     /// <summary>
     /// Starts the controller, allowing it to do whatever it needs to do.
@@ -67,6 +71,7 @@ public abstract class SimultaneousController : MonoBehaviour
         InitControlsList();
         ResetControls();
         StartCoroutine(RunController());
+        HasBeenInitialized = true;
     }
 
     /// <summary>
@@ -96,6 +101,7 @@ public abstract class SimultaneousController : MonoBehaviour
 
         foreach (var control in controls)
         {
+            control.Controller = this;
             control.Instantiate();
         }
     }
@@ -121,6 +127,14 @@ public abstract class SimultaneousController : MonoBehaviour
         }
 
         started = true;
+    }
+
+    protected void OnDisable()
+    {
+        foreach (var control in controls)
+        {
+            control.DisableControl();
+        }
     }
     #endregion
 

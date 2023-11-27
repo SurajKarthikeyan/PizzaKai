@@ -11,13 +11,14 @@ using static PathNode;
 using Vertex3Int = Vertex<UnityEngine.Vector3Int>;
 
 /// <summary>
-/// Manager aript that handles the creation and maintenance of the navigation
+/// Manager script that handles the creation and maintenance of the navigation
 /// graph.
 ///
 /// <br/>
 ///
 /// Authors: Ryan Chang (2023)
 /// </summary>
+[ExecuteAlways]
 public class PathfindingManager : MonoBehaviour
 {
     #region Instance
@@ -34,11 +35,14 @@ public class PathfindingManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) {
-            this.InstantiateSingleton(ref instance);
-            //InitializeData();
+        if (Application.isPlaying)
+        {
+            this.InstantiateSingleton(ref instance); 
         }
-        
+        else
+        {
+            InitData();
+        }
     }
 
     #region Variables
@@ -67,9 +71,9 @@ public class PathfindingManager : MonoBehaviour
     [SerializeField]
     private int platformCheckCeiling = 8;
 
-    [Tooltip("How far to check for neighboring vertices?")]
-    [SerializeField]
-    private int neighborCheckMaxDistance = 16;
+    // [Tooltip("How far to check for neighboring vertices?")]
+    // [SerializeField]
+    // private int neighborCheckMaxDistance = 16;
 
     [Header("Path Costs")]
     [Tooltip("The cost of jumping up one tile's worth of distance.")]
@@ -98,6 +102,10 @@ public class PathfindingManager : MonoBehaviour
     #region Instantiation
     private void Start()
     {
+        if (!Application.isPlaying)
+        // We don't want Start running in the editor, only Awake.
+            return;
+
         if (!grid)
         {
             throw new NullReferenceException("Value of grid not set! " +
@@ -117,21 +125,21 @@ public class PathfindingManager : MonoBehaviour
         CellBounds = cellBounds;
     }
 
-    //private void InitializeData()
-    //{
-    //    string sceneName = SceneManager.GetActiveScene().name;
+    private void InitData()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
 
-    //    if (!data || data.name != sceneName)
-    //    {
-    //        data = ScriptableObject.CreateInstance<PathfindingData>();
+        if (!Data || Data.name != sceneName)
+        {
+            data = ScriptableObject.CreateInstance<PathfindingData>();
 
-    //        string path = sceneName;
-    //        path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
-    //        // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
-    //        AssetDatabase.CreateAsset(data, path);
-    //        AssetDatabase.SaveAssets();
-    //    }
-    //}
+           string path = sceneName;
+           path = $"Assets/ScriptableObjects/LevelData/{path}.asset";
+           // path = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+           AssetDatabase.CreateAsset(data, path);
+           AssetDatabase.SaveAssets();
+       }
+    }
     #endregion
 
     #region Graph Instantiation
@@ -189,13 +197,13 @@ public class PathfindingManager : MonoBehaviour
             foreach (var pos in map.cellBounds.allPositionsWithin)
             {
                 // Create node + vertex.
-                if (!Pathfinding.TryGetVertex(pos, out Vertex<Vector3Int> vertex))
+                if (!Pathfinding.TryGetVertex(pos, out Vertex3Int vertex))
                 {
                     // Create vertex if we can't find one.
                     vertex = new(pos);
 
                     // Add vertex to graph.
-                    Pathfinding.Add(vertex);
+                    Pathfinding.AddVertex(vertex);
                 }
 
                 PathNode nodeCurrent = new(pos, map);
@@ -231,7 +239,7 @@ public class PathfindingManager : MonoBehaviour
 
             if (Pathfinding.TryGetVertex(
                 vertex.Value + Vector3Int.down,
-                out Vertex<Vector3Int> below))
+                out Vertex3Int below))
             {
                 // There exists a vertex below this one. Check if it is walkable
                 // ground.
@@ -277,7 +285,7 @@ public class PathfindingManager : MonoBehaviour
                         Vector3Int offset = neighbor.Value - vertex.Value;
                         float distMult = offset.magnitude;
                         float cost = defaultCost * distMult;
-                        Pathfinding.Add(vertex, neighbor, cost);
+                        Pathfinding.AddEdge(vertex, neighbor, cost);
                     }
                 }
             }
@@ -300,7 +308,7 @@ public class PathfindingManager : MonoBehaviour
                     Vector3Int pos = vertex.Value + new Vector3Int(0, y);
 
                     if (Pathfinding.TryGetVertex(
-                        pos, out Vertex<Vector3Int> ground
+                        pos, out Vertex3Int ground
                     ))
                     {
                         if (ground.Nodes.Exists(n => n.Solidity == Solidity.Solid))
@@ -315,10 +323,13 @@ public class PathfindingManager : MonoBehaviour
                             // above is walkable.
                             if (Pathfinding.TryGetVertex(
                                 pos + Vector3Int.up,
-                                out Vertex<Vector3Int> walkable
+                                out Vertex3Int walkable
                             ))
                             {
-                                AddEdge(vertex, walkable, jumpUpCost * y, jumpDownCost * y);
+                                Pathfinding.AddDoubleEdge(
+                                    vertex, walkable,
+                                    jumpUpCost * y, jumpDownCost * y
+                                );
                             }
 
                             break;
@@ -338,7 +349,7 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-    private void CheckDrop(Vertex<Vector3Int> vertex, Vector3Int from)
+    private void CheckDrop(Vertex3Int vertex, Vector3Int from)
     {
         if (Pathfinding.TryGetVertex(from, out var fromV))
         {
@@ -353,8 +364,8 @@ public class PathfindingManager : MonoBehaviour
                     if (SomeFlagsSet(vCheck, NodeFlags.Walkable))
                     {
                         // Found a solid tile to drop onto.
-                        AddEdge(fromV, vertex);
-                        AddEdge(
+                        Pathfinding.AddDoubleEdge(fromV, vertex);
+                        Pathfinding.AddDoubleEdge(
                             fromV, vCheck,
                             jumpDownCost * Mathf.Abs(y),
                             jumpUpCost * Mathf.Abs(y)
@@ -367,18 +378,6 @@ public class PathfindingManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void AddEdge(Vertex<Vector3Int> a, Vertex<Vector3Int> b)
-    {
-        AddEdge(a, b, defaultCost, defaultCost);
-    }
-
-    private void AddEdge(Vertex<Vector3Int> a, Vertex<Vector3Int> b,
-        float fromA2BCost, float fromB2ACost)
-    {
-        Pathfinding.Add(a, b, fromA2BCost);
-        Pathfinding.Add(b, a, fromB2ACost);
     }
 
     /// <summary>
@@ -422,22 +421,14 @@ public class PathfindingManager : MonoBehaviour
     public Path<Vector3Int> AStarSearch(Vector3Int start, Vector3Int end)
     {
         if (start == end)
-            throw new StartIsEndVertexException(start, "Cannot create graph");
+            throw new StartIsEndVertexException("Cannot create graph", start);
 
-        var startV = GetClosestNeighbor(start, Guid.Empty);
+        var startV = GetClosestNeighbor(start);
         var endV = GetClosestNeighbor(end, startV.sectionID);
 
-        string msg = "Assert failed: " +
-            $"[{startV} section {startV.sectionID}], " +
-            $"[{endV} section {endV.sectionID}]";
+        var path = Pathfinding.AStarSearch(startV.id, endV.id);
 
-        Debug.Assert(startV != endV, msg);
-        Debug.Assert(startV.sectionID != Guid.Empty, msg);
-        Debug.Assert(endV.sectionID != Guid.Empty, msg);
-        Debug.Assert(startV.sectionID == endV.sectionID, msg);
-        Debug.Assert(Pathfinding.VerticesConnected(startV, endV), msg);
-
-        return Pathfinding.AStarSearch(startV.id, endV.id);
+        return path;
     }
     #endregion
 
@@ -449,7 +440,9 @@ public class PathfindingManager : MonoBehaviour
 
     public Vector3Int WorldToCell(Vector3 worldPosition)
     {
-        return grid.WorldToCell(worldPosition);
+        var w2c = grid.WorldToCell(worldPosition);
+        w2c.z = 0;
+        return w2c;
     }
 
     /// <summary>
@@ -500,8 +493,18 @@ public class PathfindingManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the closest (or at least relatively closest) vertex to <paramref
-    /// name="position"/>.
+    /// Gets the closest vertex to <paramref name="position"/>, with no
+    /// preference to sectionID.
+    /// </summary>
+    /// <inheritdoc cref="GetClosestNeighbor(Vector3Int, Guid)"/>
+    public Vertex3Int GetClosestNeighbor(Vector3Int position)
+    {
+        return GetClosestNeighbor(position, Guid.Empty);
+    }
+
+    /// <summary>
+    /// Gets the closest vertex to <paramref name="position"/> within the same
+    /// section as <paramref name="section"/>.
     /// </summary>
     /// <param name="position">Where to being searching for neighbors.</param>
     /// <param name="section">The section of the graph to search in.</param>
@@ -509,27 +512,9 @@ public class PathfindingManager : MonoBehaviour
     /// found.</returns>
     public Vertex3Int GetClosestNeighbor(Vector3Int position, Guid section)
     {
-        if (section == Guid.Empty)
-        {
-            return Pathfinding.Values
-                .Aggregate((v1, v2) =>
-                    v1.id.TaxicabDistance(position) <
-                    v2.id.TaxicabDistance(position) ?
-                    v1 : v2
-                );
-        }
-        else
-        {
-            return Pathfinding.Values
-                .Where(v => v.sectionID == section)
-                .Aggregate((v1, v2) =>
-                    v1.id.TaxicabDistance(position) <
-                    v2.id.TaxicabDistance(position) ?
-                    v1 : v2
-                );
-        }
-
-        // Old, better performing code. Use again once it works.
+        // Old, better performing code. Use again once it works. However, make
+        // sure to keep the existing code.
+        #region Old
         // // First see if position contains what we are looking for.
         // if (Pathfinding.TryGetVertex(position, out var vertex) &&
         //     (section == Guid.Empty || section == vertex.sectionID))
@@ -561,23 +546,19 @@ public class PathfindingManager : MonoBehaviour
         //         }
         //     }
         // }
+        #endregion
 
-        // // Didn't find anything. Try expensive Linq.
-        // IEnumerable<Vertex3Int> linqSelect = section == Guid.Empty ?
-        //     Pathfinding.Values :
-        //     Pathfinding.Values.Where(v => v.sectionID == section);
+        var vertices = Pathfinding.Values.AsEnumerable();
 
-        // if (linqSelect.Any())
-        // {
-        //     return linqSelect.Aggregate((v1, v2) =>
-        //         v1.id.TaxicabDistance(position) <
-        //         v2.id.TaxicabDistance(position) ?
-        //         v1 : v2);
-        // }
-        // else
-        // {
-        //     return null;
-        // }
+        if (section != Guid.Empty)
+            vertices = vertices.Where(v => v.sectionID == section);
+
+        return vertices
+            .Aggregate((v1, v2) =>
+                v1.id.TaxicabDistance(position) <
+                v2.id.TaxicabDistance(position) ?
+                v1 : v2
+            );
     }
 
     private IEnumerable<Vector3Int> TFOffsets(int t, int i)
@@ -627,7 +608,7 @@ public class PathfindingManager : MonoBehaviour
 
     #region Private Helpers
     private bool SomeFlagsSet(
-        Vertex<Vector3Int> vertex,
+        Vertex3Int vertex,
         NodeFlags flags)
     {
         return vertex.Nodes.Any(n => n.flags.SomeFlagsSet(flags));

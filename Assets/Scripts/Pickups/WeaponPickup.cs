@@ -1,4 +1,3 @@
-using Fungus;
 using System.Linq;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class WeaponPickup : Pickup
         {
             try
             {
-                if (master.availableWeapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
+                if (master.weapons.Any(w => w.weaponID.Equals(weapon.weaponID)))
                 {
                     // Ensure that we don't already have this weapon.
                     return false;
@@ -27,15 +26,15 @@ public class WeaponPickup : Pickup
                 newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
                 character.HP = 999999;
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
-                return true;
             }
             catch (System.Exception e)
             {
                 // Must return true, even if an error occurs, to insure
                 // the game object is destroyed.
                 Debug.LogError(e.Message);
-                return true;
             }
+
+            return true;
         }
 
         return false;

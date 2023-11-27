@@ -1,13 +1,12 @@
 //#define ENABLED
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 
 
-namespace XnTelemetry {
+namespace XnTelemetry
+{
     /// <summary>
     /// The Telemetry_Local class is included here in case you want to implement
     /// a local solution in the future. It is no longer used.
