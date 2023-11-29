@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 5395050642720521562}
   - component: {fileID: 2628542111691346077}
   - component: {fileID: 5995662288810113911}
-  - component: {fileID: 2386113066977960107}
-  - component: {fileID: 1281893379899991702}
   m_Layer: 8
   m_Name: OilBarrel
   m_TagString: Box
@@ -150,44 +148,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2386113066977960107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970517308491692874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59fa785db5f392638e99ada759d57fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalScale: {x: 0, y: 0, z: 0}
-  negate: 0
-  flipped: 0
---- !u!114 &1281893379899991702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970517308491692874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 20
-  maxHP: 0
-  characterAnimator: {fileID: 0}
-  animParamDeath: 
-  r2d: {fileID: 0}
-  c2d: {fileID: 0}
-  sr: {fileID: 0}
-  flipModule: {fileID: 0}
-  audioSource: {fileID: 0}
-  damageInvulnerability:
-    maxTime: 0
-    elapsed: 0
-  knockbackMultiplier: 1
-  weaponMasterModule: {fileID: 0}
