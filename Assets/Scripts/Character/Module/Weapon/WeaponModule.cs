@@ -72,6 +72,9 @@ public class WeaponModule : Module
     [ReadOnly]
     [SerializeField]
     private WeaponInputState inputState;
+
+    [Tooltip("Bool stating whether this player has access to weapon or not")]
+    public bool accessible = false;
     #endregion
 
     #region Animation
