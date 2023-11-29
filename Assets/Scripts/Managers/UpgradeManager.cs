@@ -71,8 +71,8 @@ public class UpgradeManager : MonoBehaviour
                     //break;
             }
         }
-        shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
-        flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
+        //shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
+        //flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
         
 
         //these are for re-applying the upgrades to the new player in the scene

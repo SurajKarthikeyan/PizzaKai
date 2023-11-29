@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -27,17 +26,19 @@ public class Forky : MonoBehaviour
     [Tooltip("Is Forky Active")]
     public bool active = false;
 
+    public bool spawning = false;
+
     [Header("Spawn interval settings")]
 
-    [Tooltip("Minimum time for box to spawn")]
+    [Tooltip("Minimum time for forkyr2d to spawn")]
     [SerializeField]
     private float minBoxSpawnTime = 5f;
 
-    [Tooltip("Maximum time for box to spawn")]
+    [Tooltip("Maximum time for forkyr2d to spawn")]
     [SerializeField]
     private float maxBoxSpawnTime = 7f;
 
-    
+
     [Tooltip("Minimum time for a series of enemies to spawn")]
     [SerializeField]
     private float minEnemySpawnTime = 6f;
@@ -46,12 +47,12 @@ public class Forky : MonoBehaviour
     [SerializeField]
     private float maxEnemySpawnTime = 9f;
 
-    
+
     [Tooltip("Maximum number of enemies spawned at a time")]
     [SerializeField]
     private int maxEnemyCount = 2;
 
-    
+
     [Tooltip("Minimum height of boxes spawned at any given time")]
     [SerializeField]
     private int minBoxHeight = 1;
@@ -61,10 +62,10 @@ public class Forky : MonoBehaviour
     private int maxBoxHeight = 4;
 
     //Chance of oil spawning
-    private float oilChance = 0;
+    private float oilChance = 20;
 
     //Has an action been taken by Forky yet?
-    private bool actionTaken = false;
+    public bool actionTaken = false;
 
     [Header("EnemySpawnTransform")]
 
@@ -76,21 +77,28 @@ public class Forky : MonoBehaviour
     [Header("Breadstick enemy to spawn")]
     public GameObject breadstick;
 
-    [SerializeField] 
+    [SerializeField]
     private ConveyorBeltScript conveyorBelt;
 
     private int generators = 3;
+
 
     [Tooltip("Is Forky Dead")]
     [NaughtyAttributes.ReadOnly]
     public bool IsDead = false;
 
 
+    public GameObject pipes;
+
+    [SerializeField]
+    private LayerMask enemyLayer;
+
+    //Change to forky
+    public Rigidbody2D forkyr2d;
+
     public Tilemap tilemap;
 
-    public List<AnimatedTile> conveyorTiles;
-
-    private float animSpeed = 5.0f;
+    public GameObject dyingForky;
 
     #endregion
 
@@ -99,12 +107,6 @@ public class Forky : MonoBehaviour
     void Start()
     {
         crateSpawner = GetComponent<ForkyCrateSpawner>();
-        //foreach (AnimatedTile tile in conveyorTiles)
-        //{
-        //    tile.m_AnimationStartTime = (float)double.PositiveInfinity;
-        //    tile.m_MinSpeed = animSpeed;
-        //    tile.m_MaxSpeed = animSpeed;
-        //}
     }
     #endregion
 
@@ -117,26 +119,28 @@ public class Forky : MonoBehaviour
             if (IsDead)
             {
                 //Play Death Animation once and destroy object
-                //Going to Main Menu is temporary
-                active = false;
-                DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
+                spawning = false;
+                StopAllCoroutines();
+                StartCoroutine(KillForky());
             }
 
             //Logic for when the boss is alive
             else if (!actionTaken)
             {
-                float enemySpawnChance = Random.Range(0, 1f);
-                if (enemySpawnChance <= 0.25f)
+                if (spawning)
                 {
-                    //Start coroutine for spawning enemies after a certain amount of time
-                    StartCoroutine(IntervalSpawner(true));
+                    float enemySpawnChance = Random.Range(0, 1f);
+                    if (enemySpawnChance <= 0.15f)
+                    {
+                        //Start coroutine for spawning enemies after a certain amount of time
+                        StartCoroutine(IntervalSpawner(true));
+                    }
+                    else
+                    {
+                        //Start coroutine for spawning boxes
+                        StartCoroutine(IntervalSpawner(false));
+                    }
                 }
-                else
-                {
-                    //Start coroutine for spawning boxes
-                    StartCoroutine(IntervalSpawner(false));
-                }
-
             }
         }
     }
@@ -194,7 +198,7 @@ public class Forky : MonoBehaviour
             crateSpawner.SpawnCrate(boxNum, oil);
 
             //Increases oil chance if it is not spawned, of if spawned reset chance
-            if(!oil)
+            if (!oil)
             {
                 oilChance += 25;
             }
@@ -209,6 +213,64 @@ public class Forky : MonoBehaviour
     }
 
     /// <summary>
+    /// Coroutine that kills forky
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator KillForky()
+    {
+        //Makes pipes fall behind Forky
+        Rigidbody2D[] rigidBodies = pipes.GetComponentsInChildren<Rigidbody2D>();
+        for (int i = 0; i < rigidBodies.Length; i++)
+        {
+            Rigidbody2D rigidBody = rigidBodies[i];
+            rigidBody.gravityScale = 1;
+        }
+
+        //Kills all enemies
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 25, enemyLayer);
+        for (int i = 0; i < enemyColliders.Length; i++)
+        {
+            Destroy(enemyColliders[i].gameObject);
+        }
+        active = false;
+        yield return new WaitForSeconds(1.5f);
+        CinemachineCameraShake.instance.ShakeScreen(60f, 1f);
+        if (forkyr2d != null && forkyr2d.gameObject != null)
+        {
+            yield return new WaitForSeconds(0.3f);
+            forkyr2d.gameObject.GetComponent<Animator>().SetBool("Dying", true);
+            forkyr2d.gravityScale = 1f;
+            forkyr2d.velocity = Vector3.left * 7 + Vector3.up * 5;
+            yield return new WaitForSeconds(0.5f);
+            forkyr2d.velocity = Vector3.zero;
+            forkyr2d.gameObject.layer = 14;
+            BoxCollider2D boxCollider = forkyr2d.GetComponentInParent<BoxCollider2D>();
+            boxCollider.enabled = true;
+            forkyr2d.gravityScale = 10f;
+        }
+
+    }
+
+    public void HelpAfterForky()
+    {
+        StartCoroutine(AfterForkyDeath());
+    }
+
+    /// <summary>
+    /// After forky dies (RIP)
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator AfterForkyDeath()
+    {
+        tilemap.animationFrameRate = 0;
+        conveyorBelt.conveyorSpeed = 0;
+        Vector2 explosionPos = new(dyingForky.transform.position.x - 0.65f, gameObject.transform.position.y);
+        ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
+        yield return new WaitForSeconds(1f);
+        DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
+    }
+
+    /// <summary>
     /// A function that sets variables
     /// </summary>
     public void NextPhase()
@@ -217,10 +279,10 @@ public class Forky : MonoBehaviour
         //Changing dependent variables for spawning logic and remove the generator
         generators -= 1;
 
-        if(generators == 0)
+        if (generators == 0)
         {
-            tilemap.animationFrameRate = 0;
-            conveyorBelt.conveyorSpeed = 0;
+            tilemap.animationFrameRate = 2;
+            conveyorBelt.conveyorSpeed = -2;
             IsDead = true;
             return;
         }
@@ -235,12 +297,10 @@ public class Forky : MonoBehaviour
         conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
         if (generators == 1)
         {
-            
             tilemap.animationFrameRate = 3;
         }
         else
         {
-            
             tilemap.animationFrameRate = 2;
         }
     }
