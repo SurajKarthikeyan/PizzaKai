@@ -23,17 +23,14 @@ public class ForkyOven : MonoBehaviour
     {
         if (collision.gameObject.HasComponent(out Character character))
         {
-            if (character.IsPlayer)
-            {
-                // KILL
-                character.Kill();
-            }
-            else if (character.gameObject.CompareTag("BossForky"))
-            {
-                print("AfterForkyDeath");
-                forky.HelpAfterForky();
-                Destroy(collision.gameObject);
-            }
+            // KILL
+            character.Kill();
+        }
+        else if (collision.gameObject.CompareTag("BossForky"))
+        {
+            print("AfterForkyDeath");
+            forky.HelpAfterForky();
+            Destroy(collision.gameObject);
         }
         else
         {
