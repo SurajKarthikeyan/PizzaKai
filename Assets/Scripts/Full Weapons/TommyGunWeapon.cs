@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Fungus;
 using UnityEngine;
-using NaughtyAttributes;
 
 /// <summary>
 /// Represents the Tommy Gun, child class of WeaponModule

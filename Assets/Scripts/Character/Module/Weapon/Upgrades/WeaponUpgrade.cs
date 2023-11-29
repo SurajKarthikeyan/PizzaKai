@@ -1,5 +1,3 @@
-using UnityEngine;
-
 /// <summary>
 /// Represents an upgrade for a weapon.
 /// 

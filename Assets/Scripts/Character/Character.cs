@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using static CharacterMovementModule;
 
 /// <summary>
 /// A character is an enemy or a player, and contains references to variables

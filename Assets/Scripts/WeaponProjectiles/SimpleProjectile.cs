@@ -1,8 +1,4 @@
-using Fungus;
 using NaughtyAttributes;
-using System.Collections;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>

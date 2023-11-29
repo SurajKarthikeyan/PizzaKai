@@ -1,7 +1,3 @@
-using Mono.Cecil;
-using TMPro;
-using UnityEngine;
-
 /// <summary>
 /// An upgrade which increases the pellet count for multi-shot projectiles.
 /// 
