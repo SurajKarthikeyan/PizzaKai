@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,7 +57,7 @@ public class ExplosionManager : MonoBehaviour
         StartCoroutine(DeleteSparks(spark));
     }
 
-    IEnumerator DeleteSparks(GameObject pSystem)
+    private IEnumerator DeleteSparks(GameObject pSystem)
     {
         yield return new WaitForSeconds(3);
         Destroy(pSystem);
