@@ -21,10 +21,11 @@ public class WeaponPickup : Pickup
                     return false;
                 }
 
-                WeaponModule newweapon = master.AddWeapon(weapon);
-                newweapon.LinkToMaster(character);
-                newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
-                character.HP = 999999;
+                WeaponModule weaponInst = weapon.InstantiateComponent();
+                master.AddWeapon(weaponInst);
+                weaponInst.LinkToMaster(character);
+                //weaponInst.gameObject.transform.localScale = new Vector3(.6f, .6f);
+                //character.HP = 999999;
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
             }
             catch (System.Exception e)
