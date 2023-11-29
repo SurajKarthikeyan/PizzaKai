@@ -289,6 +289,11 @@ public sealed class Character : MonoBehaviour
         TakeDamage(int.MaxValue);
     }
 
+    /// <summary>
+    /// Alias for <see cref="Die()"/>
+    /// </summary>
+    public void Kill() => Die();
+
     private void PlayerKnockback()
     {
         Vector2 knockbackVector = new Vector2(r2d.velocity.x, r2d.velocity.y).normalized;

@@ -21,22 +21,24 @@ public class ForkyOven : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //If the player enters the oven, kill the player
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.HasComponent(out Character character))
         {
-            //There doesnt appear to be a way to get player maxhealth so I just picked a big number
-            collision.gameObject.GetComponent<Character>().TakeDamage(999999);
-        }
-        else if (collision.gameObject.CompareTag("BossForky"))
-        {
-            print("AfterForkyDeath");
-            forky.HelpAfterForky();
-            Destroy(collision.gameObject);
+            if (character.IsPlayer)
+            {
+                // KILL
+                character.Kill();
+            }
+            else if (character.gameObject.CompareTag("BossForky"))
+            {
+                print("AfterForkyDeath");
+                forky.HelpAfterForky();
+                Destroy(collision.gameObject);
+            }
         }
         else
         {
 
-            if(collision.gameObject.GetComponent<OilBarrel>() != null)
+            if(collision.gameObject.HasComponent<OilBarrel>())
             {
                 if (!destroyedOil && forky.active)
                 {
