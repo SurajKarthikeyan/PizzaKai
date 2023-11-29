@@ -33,6 +33,9 @@ public class SimpleProjectile : DamagingWeaponSpawn
     [Tooltip("[Optional] What to spawn on death?")]
     public GameObject spawnOnDeath;
 
+    [Tooltip("Which spark particle system to spawn when hitting a wall?")]
+    public GameObject sparkParticle;
+
     [SerializeField]
     [ReadOnly]
     private int currentRicochets = 0;
@@ -44,6 +47,8 @@ public class SimpleProjectile : DamagingWeaponSpawn
     private ContactFilter2D contactFilter;
 
     private bool collidingWithRichochetSurface;
+
+    
     #endregion
 
     #region Properties
@@ -158,6 +163,7 @@ public class SimpleProjectile : DamagingWeaponSpawn
                         else
                         {
                             // No more ricochets.
+                            ExplosionManager.Instance.MakeSparks(hit, gameObject.transform, sparkParticle);
                             DestroyProjectile();
                             return;
                         }
@@ -203,6 +209,9 @@ public class SimpleProjectile : DamagingWeaponSpawn
         {
             var inst = Instantiate(spawnOnDeath);
             inst.transform.MatchOther(transform);
+            //inst.transform.Rotate(0, 0, 180);
+
+
             inst.SetActive(true);
         }
 
