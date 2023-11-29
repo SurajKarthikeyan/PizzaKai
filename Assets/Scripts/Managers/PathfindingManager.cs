@@ -63,7 +63,6 @@ public class PathfindingManager : MonoBehaviour
     /// Scriptable object to store the data.
     /// </summary>
     [SerializeField]
-    [ReadOnly]
     private PathfindingData data;
 
     [Header("Maximum Iterations")]
