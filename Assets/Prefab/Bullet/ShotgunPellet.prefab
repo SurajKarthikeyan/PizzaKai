@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3a89a349d3321aa4991577e37a0eb7db, type: 3}
+    - target: {fileID: 859241716677527053, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be37b10f802edb543a84faa09a6ae68c, type: 2}
     - target: {fileID: 1991449090420892426, guid: e7fada3c3db48c5438ed775e9cdf24c2, type: 3}
       propertyPath: m_Name
       value: ShotgunPellet

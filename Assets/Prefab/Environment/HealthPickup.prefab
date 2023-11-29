@@ -103,6 +103,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   healthIncrease: 5
+  lifetime: 15
+  sRender: {fileID: 7464848099595743837}
 --- !u!61 &4882631454360775178
 BoxCollider2D:
   m_ObjectHideFlags: 0

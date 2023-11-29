@@ -22,6 +22,7 @@ public class ExplosionManager : MonoBehaviour
     }
 
     [SerializeField] private List<GameObject> explosionsList;
+ 
 
     /// <summary>
     /// Spawns a random explosion.
@@ -41,5 +42,23 @@ public class ExplosionManager : MonoBehaviour
         );
 
         return explosionChoice;
+    }
+
+    public void MakeSparks(RaycastHit2D bulletHit, Transform bulletTransform,GameObject bulletSpark)
+    {
+        Vector2 bulletPos = new Vector2(bulletTransform.position.x, bulletTransform.position.y);
+        var spark = Instantiate(bulletSpark);
+        spark.transform.MatchOther(bulletTransform);
+
+        spark.transform.right = Vector3.Reflect(bulletHit.point - bulletPos, bulletHit.normal.ToVector3());
+        
+
+        StartCoroutine(DeleteSparks(spark));
+    }
+
+    IEnumerator DeleteSparks(GameObject pSystem)
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(pSystem);
     }
 }
