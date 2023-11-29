@@ -3300,7 +3300,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 45.481842
     y: 501.83093
-    width: 149.77882
+    width: 145.98976
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3728,7 +3728,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 59.692352
     y: 367.62018
-    width: 143.40997
+    width: 139.86276
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3795,11 +3795,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 485.61307, y: -121.68142}
+  scrollPos: {x: 353.31805, y: -90.844635}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 305.75003
-  zoom: 0.7600002
+  blockViewHeight: 428.9748
+  zoom: 0.7900002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -3809,7 +3809,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 493893883}
   selectedCommands:
-  - {fileID: 493893902}
+  - {fileID: 493893906}
   variables:
   - {fileID: 493893821}
   description: 
@@ -4720,8 +4720,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 27.544693
-    y: 291.4182
-    width: 207.09857
+    y: 290.1524
+    width: 203.17516
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4777,7 +4777,7 @@ MonoBehaviour:
   itemId: 153
   indentLevel: 1
   description: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1056752399}
   targetComponentAssemblyName: WeaponMasterModule, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
@@ -4834,7 +4834,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 56.492035
     y: 433.52344
-    width: 142.34848
+    width: 139.86276
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5326,7 +5326,7 @@ MonoBehaviour:
   itemId: 178
   indentLevel: 1
   description: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 729290619}
   targetComponentAssemblyName: DefaultFlipModule, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
@@ -5518,8 +5518,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 52.672966
-    y: 193.14893
-    width: 181.62312
+    y: 190.51735
+    width: 176.62479
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -79630,6 +79630,11 @@ MonoBehaviour:
   Tommy: {fileID: 0}
   Shotgun: {fileID: 0}
   Flamethrower: {fileID: 0}
+--- !u!1 &729290619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206075540257416582, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+  m_PrefabInstance: {fileID: 1828664373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735513858
 GameObject:
   m_ObjectHideFlags: 0
@@ -80812,6 +80817,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1056752399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7850547928190316883, guid: ead3422747c2a4f96b02b24d7a766383, type: 3}
+  m_PrefabInstance: {fileID: 1828664373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1070428830 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4007303126458286565, guid: e488316967e2f294fae72563480034db, type: 3}
@@ -83036,6 +83046,10 @@ PrefabInstance:
       propertyPath: cineCamera
       value: 
       objectReference: {fileID: 1810763930}
+    - target: {fileID: 2074215629878164063, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: defaultRespawnPoint
+      value: 
+      objectReference: {fileID: 1722502512}
     - target: {fileID: 2929617964724522076, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -83088,6 +83102,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5033613679611491946, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: saydialog
+      value: 
+      objectReference: {fileID: 376943614}
     - target: {fileID: 5033613679611491946, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: conveyorBelt
       value: 
