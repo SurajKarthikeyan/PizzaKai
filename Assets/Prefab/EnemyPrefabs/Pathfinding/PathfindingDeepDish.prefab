@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Shoot Player
+  state: 0
   priority: 10
   targeting: {fileID: 6258865597649658031}
   decision: {fileID: 3241781020449857649}
@@ -388,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Follow Player
+  state: 0
   priority: 0
   targeting: {fileID: 2983886355987994139}
   decision: {fileID: 2635106269511430270}
@@ -670,7 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHP: 500
-  characterAnimator: {fileID: 0}
+  characterAnimator: {fileID: 879536357}
   animParamDeath: 
   r2d: {fileID: 7148419337918994596}
   c2d: {fileID: 7148419337918994599}
@@ -738,6 +740,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   groundedStatus: 0
   movementStatus: 0
+  totalJumps: 1
 --- !u!114 &4708559427818300093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2806ee2cccf24018db0e97b334908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpThreshold: 0.5
   movement: {fileID: 4216788931708193480}
   pathAgent: {fileID: 4708559427818300093}
   decisionTree: {fileID: 890056536857304926}

@@ -611,6 +611,8 @@ GameObject:
   - component: {fileID: 4588151809240339083}
   - component: {fileID: 1287220591596743552}
   - component: {fileID: 135092077515012477}
+  - component: {fileID: 5407477657684810626}
+  - component: {fileID: 1585072403216132101}
   m_Layer: 10
   m_Name: PathfindingChickenWing
   m_TagString: Enemy
@@ -800,6 +802,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   groundedStatus: 0
   movementStatus: 0
+  totalJumps: 1
 --- !u!114 &1287220591596743552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +837,47 @@ MonoBehaviour:
   movement: {fileID: 4588151809240339083}
   pathAgent: {fileID: 1287220591596743552}
   decisionTree: {fileID: 5383094313206243604}
+--- !u!114 &5407477657684810626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228773726619069321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59fa785db5f392638e99ada759d57fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  negate: 0
+  flipped: 0
+--- !u!114 &1585072403216132101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228773726619069321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  maxHP: 20
+  characterAnimator: {fileID: 2132993595}
+  animParamDeath: 
+  r2d: {fileID: 0}
+  c2d: {fileID: 0}
+  sr: {fileID: 0}
+  flipModule: {fileID: 0}
+  audioSource: {fileID: 0}
+  damageInvulnerability:
+    maxTime: 0
+    elapsed: 0
+  knockbackMultiplier: 1
+  weaponMasterModule: {fileID: 0}
 --- !u!1 &7453281119939966198
 GameObject:
   m_ObjectHideFlags: 0

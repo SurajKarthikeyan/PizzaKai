@@ -498,10 +498,12 @@ MonoBehaviour:
     maxTime: 0.5
     elapsed: 0
   dashSpeed: 20
-  dashCooldown: 2
-  dashTimer: 0.5
-  canDash: 1
-  dashTime: -10
+  dashCooldown:
+    maxTime: 2
+    elapsed: 0
+  dashTimer:
+    maxTime: 0.2
+    elapsed: 0
   groundCheck: {fileID: 6478255713251395455}
   characterAnimator: {fileID: 6478255713057580276}
   positiveAnimParamOnly: 1
@@ -510,7 +512,6 @@ MonoBehaviour:
   animParamJump: Jump
   inputtedMovement: {x: 0, y: 0}
   inputtedJump: 0
-  oneJump: 0
   inputtedDash: {x: 0, y: 0}
   touchingGroundColliders:
   - {fileID: 0}
@@ -530,6 +531,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   groundedStatus: 0
   movementStatus: 0
+  totalJumps: 1
 --- !u!114 &-6358471799411875562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHP: 20
+  characterAnimator: {fileID: 6478255713057580276}
+  animParamDeath: 
   r2d: {fileID: 6478255713057580278}
   c2d: {fileID: 6478255713057580277}
   sr: {fileID: 6478255713057580279}
