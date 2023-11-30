@@ -98,6 +98,41 @@ public class PathfindingManager : MonoBehaviour
     #endregion
 
     #region Methods
+    #region Sanity Checks
+    private bool SanityCheck()
+    {
+        // Step 1: Grid checking.
+        GameObject gridGO = GameObject.FindGameObjectWithTag("Grid");
+
+        if (!gridGO)
+        {
+            // Step 1.1: Check if a gameobject named Grid exists.
+            gridGO = GameObject.Find("Grid");
+
+            if (gridGO)
+            {
+                // Found it.
+                gridGO.tag = "Grid";
+                Debug.LogWarning(
+                    "Forgot to tag this as grid lmao.",
+                    gridGO
+                );
+            }
+            else
+            {
+                Debug.LogError(
+                    "Grid not found. Create a grid " +
+                    "object tagged with Grid.",
+                    this
+                );
+                return false;
+            }
+        }
+
+        return true;
+    }
+    #endregion
+
     #region Instantiation
     private void Start()
     {
@@ -147,9 +182,11 @@ public class PathfindingManager : MonoBehaviour
     private void BuildGraph()
     {
         InitData();
+        if (!SanityCheck())
+            return;
 
         if (!grid)
-            grid = GameObject.FindObjectOfType<Grid>();
+            GameObject.FindGameObjectWithTag("Grid").RequireComponent(out grid);
 
         tilemaps = grid.GetComponentsInChildren<Tilemap>()
             .Where(map => PathNode.groundMask.ContainsLayer(map.gameObject.layer))

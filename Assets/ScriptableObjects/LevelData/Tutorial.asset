@@ -15,6 +15,3284 @@ MonoBehaviour:
   pathData:
     serializedVertices:
       keyValuePairs:
+      - key: {x: 0, y: 0, z: 0}
+        value:
+          id: {x: 0, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 0, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: -1, y: 0, z: 0}
+              value: 0
+            - key: {x: 1, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 1, y: 0, z: 0}
+        value:
+          id: {x: 1, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 1, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 0, y: 0, z: 0}
+              value: 0
+            - key: {x: 2, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 2, y: 0, z: 0}
+        value:
+          id: {x: 2, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 2, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 1, y: 0, z: 0}
+              value: 0
+            - key: {x: 3, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 3, y: 0, z: 0}
+        value:
+          id: {x: 3, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 3, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 2, y: 0, z: 0}
+              value: 0
+            - key: {x: 4, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 4, y: 0, z: 0}
+        value:
+          id: {x: 4, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 4, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 3, y: 0, z: 0}
+              value: 0
+            - key: {x: 5, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 5, y: 0, z: 0}
+        value:
+          id: {x: 5, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 5, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 4, y: 0, z: 0}
+              value: 0
+            - key: {x: 6, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 6, y: 0, z: 0}
+        value:
+          id: {x: 6, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 6, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 5, y: 0, z: 0}
+              value: 0
+            - key: {x: 7, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 7, y: 0, z: 0}
+        value:
+          id: {x: 7, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 7, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 6, y: 0, z: 0}
+              value: 0
+            - key: {x: 8, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 8, y: 0, z: 0}
+        value:
+          id: {x: 8, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 8, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 7, y: 0, z: 0}
+              value: 0
+            - key: {x: 9, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 9, y: 0, z: 0}
+        value:
+          id: {x: 9, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 9, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 8, y: 0, z: 0}
+              value: 0
+            - key: {x: 10, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 10, y: 0, z: 0}
+        value:
+          id: {x: 10, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 10, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 9, y: 0, z: 0}
+              value: 0
+            - key: {x: 11, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 11, y: 0, z: 0}
+        value:
+          id: {x: 11, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 11, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 10, y: 0, z: 0}
+              value: 0
+            - key: {x: 12, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 12, y: 0, z: 0}
+        value:
+          id: {x: 12, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 12, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 11, y: 0, z: 0}
+              value: 0
+            - key: {x: 13, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 13, y: 0, z: 0}
+        value:
+          id: {x: 13, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 13, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 12, y: 0, z: 0}
+              value: 0
+            - key: {x: 14, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 14, y: 0, z: 0}
+        value:
+          id: {x: 14, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 14, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 13, y: 0, z: 0}
+              value: 0
+            - key: {x: 15, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 15, y: 0, z: 0}
+        value:
+          id: {x: 15, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 15, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 14, y: 0, z: 0}
+              value: 0
+            - key: {x: 16, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 16, y: 0, z: 0}
+        value:
+          id: {x: 16, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 16, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 15, y: 0, z: 0}
+              value: 0
+            - key: {x: 17, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 17, y: 0, z: 0}
+        value:
+          id: {x: 17, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 17, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 16, y: 0, z: 0}
+              value: 0
+            - key: {x: 18, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 18, y: 0, z: 0}
+        value:
+          id: {x: 18, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 18, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 17, y: 0, z: 0}
+              value: 0
+            - key: {x: 19, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 19, y: 0, z: 0}
+        value:
+          id: {x: 19, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 19, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 18, y: 0, z: 0}
+              value: 0
+            - key: {x: 20, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 20, y: 0, z: 0}
+        value:
+          id: {x: 20, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 20, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 19, y: 0, z: 0}
+              value: 0
+            - key: {x: 21, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 21, y: 0, z: 0}
+        value:
+          id: {x: 21, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 21, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 20, y: 0, z: 0}
+              value: 0
+            - key: {x: 22, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 22, y: 0, z: 0}
+        value:
+          id: {x: 22, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 22, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 21, y: 0, z: 0}
+              value: 0
+            - key: {x: 23, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 23, y: 0, z: 0}
+        value:
+          id: {x: 23, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 23, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 22, y: 0, z: 0}
+              value: 0
+            - key: {x: 24, y: 0, z: 0}
+              value: 0
+            - key: {x: 23, y: 2, z: 0}
+              value: 10
+            - key: {x: 23, y: 4, z: 0}
+              value: 20
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 24, y: 0, z: 0}
+        value:
+          id: {x: 24, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 24, y: 0, z: 0}
+            flags: 17
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 23, y: 0, z: 0}
+              value: 0
+            - key: {x: 25, y: 0, z: 0}
+              value: 0
+            - key: {x: 24, y: 2, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 25, y: 0, z: 0}
+        value:
+          id: {x: 25, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 25, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 0, z: 0}
+              value: 0
+            - key: {x: 26, y: 0, z: 0}
+              value: 0
+            - key: {x: 25, y: 2, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 26, y: 0, z: 0}
+        value:
+          id: {x: 26, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 26, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 0, z: 0}
+              value: 0
+            - key: {x: 27, y: 0, z: 0}
+              value: 0
+            - key: {x: 26, y: 2, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 27, y: 0, z: 0}
+        value:
+          id: {x: 27, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 27, y: 0, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 26, y: 0, z: 0}
+              value: 0
+            - key: {x: 28, y: 0, z: 0}
+              value: 0
+            - key: {x: 27, y: 2, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 28, y: 0, z: 0}
+        value:
+          id: {x: 28, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: 28, y: 0, z: 0}
+            flags: 17
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 27, y: 0, z: 0}
+              value: 0
+            - key: {x: 28, y: 2, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 23, y: 2, z: 0}
+        value:
+          id: {x: 23, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 23, y: 2, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 2, z: 0}
+              value: 0
+            - key: {x: 23, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 24, y: 2, z: 0}
+        value:
+          id: {x: 24, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 24, y: 2, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 2, z: 0}
+              value: 0
+            - key: {x: 24, y: 0, z: 0}
+              value: 0
+            - key: {x: 24, y: 4, z: 0}
+              value: 5
+            - key: {x: 23, y: 2, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 25, y: 2, z: 0}
+        value:
+          id: {x: 25, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 25, y: 2, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 2, z: 0}
+              value: 0
+            - key: {x: 26, y: 2, z: 0}
+              value: 0
+            - key: {x: 25, y: 0, z: 0}
+              value: 0
+            - key: {x: 25, y: 4, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 26, y: 2, z: 0}
+        value:
+          id: {x: 26, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 26, y: 2, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 2, z: 0}
+              value: 0
+            - key: {x: 27, y: 2, z: 0}
+              value: 0
+            - key: {x: 26, y: 0, z: 0}
+              value: 0
+            - key: {x: 26, y: 4, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 27, y: 2, z: 0}
+        value:
+          id: {x: 27, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 27, y: 2, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 26, y: 2, z: 0}
+              value: 0
+            - key: {x: 28, y: 2, z: 0}
+              value: 0
+            - key: {x: 27, y: 0, z: 0}
+              value: 0
+            - key: {x: 27, y: 4, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 28, y: 2, z: 0}
+        value:
+          id: {x: 28, y: 2, z: 0}
+          nodes:
+          - gridPosition: {x: 28, y: 2, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 27, y: 2, z: 0}
+              value: 0
+            - key: {x: 28, y: 0, z: 0}
+              value: 0
+            - key: {x: 28, y: 4, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 23, y: 4, z: 0}
+        value:
+          id: {x: 23, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 23, y: 4, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 4, z: 0}
+              value: 0
+            - key: {x: 23, y: 0, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 24, y: 4, z: 0}
+        value:
+          id: {x: 24, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 24, y: 4, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 4, z: 0}
+              value: 0
+            - key: {x: 24, y: 2, z: 0}
+              value: 0
+            - key: {x: 24, y: 6, z: 0}
+              value: 5
+            - key: {x: 23, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 25, y: 4, z: 0}
+        value:
+          id: {x: 25, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 25, y: 4, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 4, z: 0}
+              value: 0
+            - key: {x: 26, y: 4, z: 0}
+              value: 0
+            - key: {x: 25, y: 2, z: 0}
+              value: 0
+            - key: {x: 25, y: 6, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 26, y: 4, z: 0}
+        value:
+          id: {x: 26, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 26, y: 4, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 4, z: 0}
+              value: 0
+            - key: {x: 27, y: 4, z: 0}
+              value: 0
+            - key: {x: 26, y: 2, z: 0}
+              value: 0
+            - key: {x: 26, y: 6, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 27, y: 4, z: 0}
+        value:
+          id: {x: 27, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 27, y: 4, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 26, y: 4, z: 0}
+              value: 0
+            - key: {x: 28, y: 4, z: 0}
+              value: 0
+            - key: {x: 27, y: 2, z: 0}
+              value: 0
+            - key: {x: 27, y: 6, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 28, y: 4, z: 0}
+        value:
+          id: {x: 28, y: 4, z: 0}
+          nodes:
+          - gridPosition: {x: 28, y: 4, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 27, y: 4, z: 0}
+              value: 0
+            - key: {x: 28, y: 2, z: 0}
+              value: 0
+            - key: {x: 28, y: 6, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 24, y: 6, z: 0}
+        value:
+          id: {x: 24, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 24, y: 6, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 6, z: 0}
+              value: 0
+            - key: {x: 24, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 25, y: 6, z: 0}
+        value:
+          id: {x: 25, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 25, y: 6, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 24, y: 6, z: 0}
+              value: 0
+            - key: {x: 26, y: 6, z: 0}
+              value: 0
+            - key: {x: 25, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 26, y: 6, z: 0}
+        value:
+          id: {x: 26, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 26, y: 6, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 25, y: 6, z: 0}
+              value: 0
+            - key: {x: 27, y: 6, z: 0}
+              value: 0
+            - key: {x: 26, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 27, y: 6, z: 0}
+        value:
+          id: {x: 27, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 27, y: 6, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 26, y: 6, z: 0}
+              value: 0
+            - key: {x: 28, y: 6, z: 0}
+              value: 0
+            - key: {x: 27, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 28, y: 6, z: 0}
+        value:
+          id: {x: 28, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 28, y: 6, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 27, y: 6, z: 0}
+              value: 0
+            - key: {x: 29, y: 6, z: 0}
+              value: 0
+            - key: {x: 28, y: 4, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 29, y: 6, z: 0}
+        value:
+          id: {x: 29, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 29, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 28, y: 6, z: 0}
+              value: 0
+            - key: {x: 30, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 30, y: 6, z: 0}
+        value:
+          id: {x: 30, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 30, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 29, y: 6, z: 0}
+              value: 0
+            - key: {x: 31, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 31, y: 6, z: 0}
+        value:
+          id: {x: 31, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 31, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 30, y: 6, z: 0}
+              value: 0
+            - key: {x: 32, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 32, y: 6, z: 0}
+        value:
+          id: {x: 32, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 32, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 31, y: 6, z: 0}
+              value: 0
+            - key: {x: 33, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 33, y: 6, z: 0}
+        value:
+          id: {x: 33, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 33, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 32, y: 6, z: 0}
+              value: 0
+            - key: {x: 34, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 34, y: 6, z: 0}
+        value:
+          id: {x: 34, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 34, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 33, y: 6, z: 0}
+              value: 0
+            - key: {x: 35, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 35, y: 6, z: 0}
+        value:
+          id: {x: 35, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 35, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 34, y: 6, z: 0}
+              value: 0
+            - key: {x: 36, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 36, y: 6, z: 0}
+        value:
+          id: {x: 36, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 36, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 35, y: 6, z: 0}
+              value: 0
+            - key: {x: 37, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 37, y: 6, z: 0}
+        value:
+          id: {x: 37, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 37, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 36, y: 6, z: 0}
+              value: 0
+            - key: {x: 38, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 38, y: 6, z: 0}
+        value:
+          id: {x: 38, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 38, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 37, y: 6, z: 0}
+              value: 0
+            - key: {x: 39, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 39, y: 6, z: 0}
+        value:
+          id: {x: 39, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 39, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 38, y: 6, z: 0}
+              value: 0
+            - key: {x: 40, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 40, y: 6, z: 0}
+        value:
+          id: {x: 40, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 40, y: 6, z: 0}
+            flags: 17
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 39, y: 6, z: 0}
+              value: 0
+            - key: {x: 41, y: 6, z: 0}
+              value: 0
+            - key: {x: 40, y: 11, z: 0}
+              value: 20
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 41, y: 6, z: 0}
+        value:
+          id: {x: 41, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 41, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 40, y: 6, z: 0}
+              value: 0
+            - key: {x: 42, y: 6, z: 0}
+              value: 0
+            - key: {x: 42, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 41, y: 11, z: 0}
+              value: 20
+            - key: {x: 41, y: 7, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 42, y: 6, z: 0}
+        value:
+          id: {x: 42, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 42, y: 6, z: 0}
+            flags: 29
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 2
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 41, y: 6, z: 0}
+              value: 0
+            - key: {x: 42, y: 7, z: 0}
+              value: 1
+            - key: {x: 43, y: 6, z: 0}
+              value: 0
+            - key: {x: 43, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 42, y: 11, z: 0}
+              value: 20
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 43, y: 6, z: 0}
+        value:
+          id: {x: 43, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 43, y: 6, z: 0}
+            flags: 29
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 2
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 42, y: 6, z: 0}
+              value: 0
+            - key: {x: 42, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 43, y: 7, z: 0}
+              value: 1
+            - key: {x: 44, y: 6, z: 0}
+              value: 0
+            - key: {x: 44, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 43, y: 11, z: 0}
+              value: 20
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 44, y: 6, z: 0}
+        value:
+          id: {x: 44, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 44, y: 6, z: 0}
+            flags: 29
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 2
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 6, z: 0}
+              value: 0
+            - key: {x: 43, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 44, y: 7, z: 0}
+              value: 1
+            - key: {x: 45, y: 6, z: 0}
+              value: 0
+            - key: {x: 45, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 44, y: 9, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 45, y: 6, z: 0}
+        value:
+          id: {x: 45, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 45, y: 6, z: 0}
+            flags: 29
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 2
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 6, z: 0}
+              value: 0
+            - key: {x: 44, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 45, y: 7, z: 0}
+              value: 1
+            - key: {x: 46, y: 6, z: 0}
+              value: 0
+            - key: {x: 45, y: 9, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 46, y: 6, z: 0}
+        value:
+          id: {x: 46, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 46, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 45, y: 6, z: 0}
+              value: 0
+            - key: {x: 45, y: 7, z: 0}
+              value: 1.4142135
+            - key: {x: 47, y: 6, z: 0}
+              value: 0
+            - key: {x: 46, y: 9, z: 0}
+              value: 10
+            - key: {x: 46, y: 7, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 47, y: 6, z: 0}
+        value:
+          id: {x: 47, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 47, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 46, y: 6, z: 0}
+              value: 0
+            - key: {x: 48, y: 6, z: 0}
+              value: 0
+            - key: {x: 47, y: 9, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 48, y: 6, z: 0}
+        value:
+          id: {x: 48, y: 6, z: 0}
+          nodes:
+          - gridPosition: {x: 48, y: 6, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 47, y: 6, z: 0}
+              value: 0
+            - key: {x: 48, y: 9, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 41, y: 7, z: 0}
+        value:
+          id: {x: 41, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 41, y: 7, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 42, y: 7, z: 0}
+              value: 0
+            - key: {x: 41, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 42, y: 7, z: 0}
+        value:
+          id: {x: 42, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 42, y: 7, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 41, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 42, y: 6, z: 0}
+              value: 1
+            - key: {x: 43, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 43, y: 7, z: 0}
+              value: 0
+            - key: {x: 42, y: 11, z: 0}
+              value: 15
+            - key: {x: 41, y: 7, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 43, y: 7, z: 0}
+        value:
+          id: {x: 43, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 43, y: 7, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 42, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 42, y: 7, z: 0}
+              value: 0
+            - key: {x: 43, y: 6, z: 0}
+              value: 1
+            - key: {x: 44, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 44, y: 7, z: 0}
+              value: 0
+            - key: {x: 43, y: 11, z: 0}
+              value: 15
+            - key: {x: 43, y: 9, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 44, y: 7, z: 0}
+        value:
+          id: {x: 44, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 44, y: 7, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 43, y: 7, z: 0}
+              value: 0
+            - key: {x: 44, y: 6, z: 0}
+              value: 1
+            - key: {x: 45, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 45, y: 7, z: 0}
+              value: 0
+            - key: {x: 44, y: 9, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 45, y: 7, z: 0}
+        value:
+          id: {x: 45, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 45, y: 7, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 44, y: 7, z: 0}
+              value: 0
+            - key: {x: 45, y: 6, z: 0}
+              value: 1
+            - key: {x: 46, y: 6, z: 0}
+              value: 1.4142135
+            - key: {x: 45, y: 9, z: 0}
+              value: 5
+            - key: {x: 46, y: 7, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 46, y: 7, z: 0}
+        value:
+          id: {x: 46, y: 7, z: 0}
+          nodes:
+          - gridPosition: {x: 46, y: 7, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 45, y: 7, z: 0}
+              value: 0
+            - key: {x: 46, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 43, y: 9, z: 0}
+        value:
+          id: {x: 43, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 43, y: 9, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 9, z: 0}
+              value: 0
+            - key: {x: 43, y: 7, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 44, y: 9, z: 0}
+        value:
+          id: {x: 44, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 44, y: 9, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 45, y: 9, z: 0}
+              value: 0
+            - key: {x: 44, y: 6, z: 0}
+              value: 0
+            - key: {x: 44, y: 7, z: 0}
+              value: 0
+            - key: {x: 44, y: 11, z: 0}
+              value: 5
+            - key: {x: 43, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 45, y: 9, z: 0}
+        value:
+          id: {x: 45, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 45, y: 9, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 9, z: 0}
+              value: 0
+            - key: {x: 46, y: 9, z: 0}
+              value: 0
+            - key: {x: 45, y: 6, z: 0}
+              value: 0
+            - key: {x: 45, y: 7, z: 0}
+              value: 0
+            - key: {x: 45, y: 13, z: 0}
+              value: 15
+            - key: {x: 45, y: 11, z: 0}
+              value: 10
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 46, y: 9, z: 0}
+        value:
+          id: {x: 46, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 46, y: 9, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 45, y: 9, z: 0}
+              value: 0
+            - key: {x: 47, y: 9, z: 0}
+              value: 0
+            - key: {x: 46, y: 6, z: 0}
+              value: 0
+            - key: {x: 46, y: 13, z: 0}
+              value: 15
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 47, y: 9, z: 0}
+        value:
+          id: {x: 47, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 47, y: 9, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 46, y: 9, z: 0}
+              value: 0
+            - key: {x: 48, y: 9, z: 0}
+              value: 0
+            - key: {x: 47, y: 6, z: 0}
+              value: 0
+            - key: {x: 47, y: 13, z: 0}
+              value: 15
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 48, y: 9, z: 0}
+        value:
+          id: {x: 48, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 48, y: 9, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 47, y: 9, z: 0}
+              value: 0
+            - key: {x: 48, y: 6, z: 0}
+              value: 0
+            - key: {x: 48, y: 13, z: 0}
+              value: 15
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 58, y: 9, z: 0}
         value:
           id: {x: 58, y: 9, z: 0}
@@ -51,8 +3329,10 @@ MonoBehaviour:
             keyValuePairs:
             - key: {x: 59, y: 9, z: 0}
               value: 0
+            - key: {x: 58, y: 13, z: 0}
+              value: 15
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 59, y: 9, z: 0}
         value:
           id: {x: 59, y: 9, z: 0}
@@ -91,8 +3371,10 @@ MonoBehaviour:
               value: 0
             - key: {x: 60, y: 9, z: 0}
               value: 0
+            - key: {x: 59, y: 13, z: 0}
+              value: 15
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 60, y: 9, z: 0}
         value:
           id: {x: 60, y: 9, z: 0}
@@ -131,8 +3413,10 @@ MonoBehaviour:
               value: 0
             - key: {x: 61, y: 9, z: 0}
               value: 0
+            - key: {x: 60, y: 13, z: 0}
+              value: 15
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 61, y: 9, z: 0}
         value:
           id: {x: 61, y: 9, z: 0}
@@ -171,8 +3455,10 @@ MonoBehaviour:
               value: 0
             - key: {x: 62, y: 9, z: 0}
               value: 0
+            - key: {x: 61, y: 13, z: 0}
+              value: 15
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 62, y: 9, z: 0}
         value:
           id: {x: 62, y: 9, z: 0}
@@ -211,13 +3497,265 @@ MonoBehaviour:
               value: 0
             - key: {x: 63, y: 9, z: 0}
               value: 0
+            - key: {x: 62, y: 13, z: 0}
+              value: 15
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 63, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 40, y: 11, z: 0}
         value:
-          id: {x: 63, y: 9, z: 0}
+          id: {x: 40, y: 11, z: 0}
           nodes:
-          - gridPosition: {x: 63, y: 9, z: 0}
+          - gridPosition: {x: 40, y: 11, z: 0}
+            flags: 13
+            mapLayer:
+              name: Ground
+              layer: 3
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 1
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Ground_Pathfinder
+            tilemapID: 38444
+          adjacent:
+            keyValuePairs:
+            - key: {x: 40, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 41, y: 11, z: 0}
+        value:
+          id: {x: 41, y: 11, z: 0}
+          nodes:
+          - gridPosition: {x: 41, y: 11, z: 0}
+            flags: 13
+            mapLayer:
+              name: Ground
+              layer: 3
+            colliderType: 1
+            markerData:
+              heuristic: 0
+              solidity: 1
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Ground_Pathfinder
+            tilemapID: 38444
+          adjacent:
+            keyValuePairs:
+            - key: {x: 41, y: 6, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 42, y: 11, z: 0}
+        value:
+          id: {x: 42, y: 11, z: 0}
+          nodes:
+          - gridPosition: {x: 42, y: 11, z: 0}
+            flags: 33
+            mapLayer:
+              name: Platform
+              layer: 6
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: Shelf_Front
+            tilemapID: 38470
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 11, z: 0}
+              value: 0
+            - key: {x: 42, y: 6, z: 0}
+              value: 0
+            - key: {x: 42, y: 7, z: 0}
+              value: 0
+            - key: {x: 42, y: 13, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 43, y: 11, z: 0}
+        value:
+          id: {x: 43, y: 11, z: 0}
+          nodes:
+          - gridPosition: {x: 43, y: 11, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 42, y: 11, z: 0}
+              value: 0
+            - key: {x: 44, y: 11, z: 0}
+              value: 0
+            - key: {x: 43, y: 6, z: 0}
+              value: 0
+            - key: {x: 43, y: 7, z: 0}
+              value: 0
+            - key: {x: 43, y: 13, z: 0}
+              value: 5
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 44, y: 11, z: 0}
+        value:
+          id: {x: 44, y: 11, z: 0}
+          nodes:
+          - gridPosition: {x: 44, y: 11, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 11, z: 0}
+              value: 0
+            - key: {x: 44, y: 9, z: 0}
+              value: 0
+            - key: {x: 44, y: 13, z: 0}
+              value: 5
+            - key: {x: 45, y: 11, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 45, y: 11, z: 0}
+        value:
+          id: {x: 45, y: 11, z: 0}
+          nodes:
+          - gridPosition: {x: 45, y: 11, z: 0}
+            flags: 0
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 11, z: 0}
+              value: 0
+            - key: {x: 45, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -8, y: 0, z: 0}
+        value:
+          id: {x: -8, y: 0, z: 0}
+          nodes:
+          - gridPosition: {x: -8, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -247,17 +3785,15 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 62, y: 9, z: 0}
-              value: 0
-            - key: {x: 64, y: 9, z: 0}
+            - key: {x: -7, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 64, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -7, y: 0, z: 0}
         value:
-          id: {x: 64, y: 9, z: 0}
+          id: {x: -7, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 64, y: 9, z: 0}
+          - gridPosition: {x: -7, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -287,17 +3823,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 63, y: 9, z: 0}
+            - key: {x: -8, y: 0, z: 0}
               value: 0
-            - key: {x: 65, y: 9, z: 0}
+            - key: {x: -6, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 65, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -6, y: 0, z: 0}
         value:
-          id: {x: 65, y: 9, z: 0}
+          id: {x: -6, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 65, y: 9, z: 0}
+          - gridPosition: {x: -6, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -327,17 +3863,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 64, y: 9, z: 0}
+            - key: {x: -7, y: 0, z: 0}
               value: 0
-            - key: {x: 66, y: 9, z: 0}
+            - key: {x: -5, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 66, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -5, y: 0, z: 0}
         value:
-          id: {x: 66, y: 9, z: 0}
+          id: {x: -5, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 66, y: 9, z: 0}
+          - gridPosition: {x: -5, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -367,17 +3903,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 65, y: 9, z: 0}
+            - key: {x: -6, y: 0, z: 0}
               value: 0
-            - key: {x: 67, y: 9, z: 0}
+            - key: {x: -4, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 67, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -4, y: 0, z: 0}
         value:
-          id: {x: 67, y: 9, z: 0}
+          id: {x: -4, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 67, y: 9, z: 0}
+          - gridPosition: {x: -4, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -407,17 +3943,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 66, y: 9, z: 0}
+            - key: {x: -5, y: 0, z: 0}
               value: 0
-            - key: {x: 68, y: 9, z: 0}
+            - key: {x: -3, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 68, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -3, y: 0, z: 0}
         value:
-          id: {x: 68, y: 9, z: 0}
+          id: {x: -3, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 68, y: 9, z: 0}
+          - gridPosition: {x: -3, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -447,17 +3983,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 67, y: 9, z: 0}
+            - key: {x: -4, y: 0, z: 0}
               value: 0
-            - key: {x: 69, y: 9, z: 0}
+            - key: {x: -2, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 69, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -2, y: 0, z: 0}
         value:
-          id: {x: 69, y: 9, z: 0}
+          id: {x: -2, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 69, y: 9, z: 0}
+          - gridPosition: {x: -2, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -487,17 +4023,17 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 68, y: 9, z: 0}
+            - key: {x: -3, y: 0, z: 0}
               value: 0
-            - key: {x: 70, y: 9, z: 0}
+            - key: {x: -1, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 70, y: 9, z: 0}
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: -1, y: 0, z: 0}
         value:
-          id: {x: 70, y: 9, z: 0}
+          id: {x: -1, y: 0, z: 0}
           nodes:
-          - gridPosition: {x: 70, y: 9, z: 0}
+          - gridPosition: {x: -1, y: 0, z: 0}
             flags: 16
             mapLayer:
               name: '[Invalid]'
@@ -527,292 +4063,12 @@ MonoBehaviour:
             tilemapID: -1
           adjacent:
             keyValuePairs:
-            - key: {x: 69, y: 9, z: 0}
+            - key: {x: -2, y: 0, z: 0}
               value: 0
-            - key: {x: 71, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 71, y: 9, z: 0}
-        value:
-          id: {x: 71, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 71, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 70, y: 9, z: 0}
-              value: 0
-            - key: {x: 72, y: 9, z: 0}
+            - key: {x: 0, y: 0, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 72, y: 9, z: 0}
-        value:
-          id: {x: 72, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 72, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 71, y: 9, z: 0}
-              value: 0
-            - key: {x: 73, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 73, y: 9, z: 0}
-        value:
-          id: {x: 73, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 73, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 72, y: 9, z: 0}
-              value: 0
-            - key: {x: 74, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 74, y: 9, z: 0}
-        value:
-          id: {x: 74, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 74, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 73, y: 9, z: 0}
-              value: 0
-            - key: {x: 75, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 75, y: 9, z: 0}
-        value:
-          id: {x: 75, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 75, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 74, y: 9, z: 0}
-              value: 0
-            - key: {x: 76, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 76, y: 9, z: 0}
-        value:
-          id: {x: 76, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 76, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 75, y: 9, z: 0}
-              value: 0
-            - key: {x: 77, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
-      - key: {x: 77, y: 9, z: 0}
-        value:
-          id: {x: 77, y: 9, z: 0}
-          nodes:
-          - gridPosition: {x: 77, y: 9, z: 0}
-            flags: 16
-            mapLayer:
-              name: '[Invalid]'
-              layer: -1
-            colliderType: 0
-            markerData:
-              heuristic: 0
-              solidity: 0
-              movementData:
-                north:
-                  traversability: 0
-                northEast:
-                  traversability: 0
-                east:
-                  traversability: 0
-                southEast:
-                  traversability: 0
-                south:
-                  traversability: 0
-                southWest:
-                  traversability: 0
-                west:
-                  traversability: 0
-                northWest:
-                  traversability: 0
-            tilemapName: '[None]'
-            tilemapID: -1
-          adjacent:
-            keyValuePairs:
-            - key: {x: 76, y: 9, z: 0}
-              value: 0
-            - key: {x: 78, y: 9, z: 0}
-              value: 0
-          heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 81, y: 7, z: 0}
         value:
           id: {x: 81, y: 7, z: 0}
@@ -852,7 +4108,7 @@ MonoBehaviour:
             - key: {x: 81, y: 9, z: 0}
               value: 10
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 82, y: 7, z: 0}
         value:
           id: {x: 82, y: 7, z: 0}
@@ -892,7 +4148,7 @@ MonoBehaviour:
             - key: {x: 83, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 83, y: 7, z: 0}
         value:
           id: {x: 83, y: 7, z: 0}
@@ -932,7 +4188,7 @@ MonoBehaviour:
             - key: {x: 84, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 84, y: 7, z: 0}
         value:
           id: {x: 84, y: 7, z: 0}
@@ -972,7 +4228,7 @@ MonoBehaviour:
             - key: {x: 85, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 85, y: 7, z: 0}
         value:
           id: {x: 85, y: 7, z: 0}
@@ -1012,7 +4268,7 @@ MonoBehaviour:
             - key: {x: 86, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 86, y: 7, z: 0}
         value:
           id: {x: 86, y: 7, z: 0}
@@ -1052,7 +4308,7 @@ MonoBehaviour:
             - key: {x: 87, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 87, y: 7, z: 0}
         value:
           id: {x: 87, y: 7, z: 0}
@@ -1092,7 +4348,607 @@ MonoBehaviour:
             - key: {x: 87, y: 9, z: 0}
               value: 10
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 63, y: 9, z: 0}
+        value:
+          id: {x: 63, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 63, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 62, y: 9, z: 0}
+              value: 0
+            - key: {x: 64, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 64, y: 9, z: 0}
+        value:
+          id: {x: 64, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 64, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 63, y: 9, z: 0}
+              value: 0
+            - key: {x: 65, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 65, y: 9, z: 0}
+        value:
+          id: {x: 65, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 65, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 64, y: 9, z: 0}
+              value: 0
+            - key: {x: 66, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 66, y: 9, z: 0}
+        value:
+          id: {x: 66, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 66, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 65, y: 9, z: 0}
+              value: 0
+            - key: {x: 67, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 67, y: 9, z: 0}
+        value:
+          id: {x: 67, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 67, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 66, y: 9, z: 0}
+              value: 0
+            - key: {x: 68, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 68, y: 9, z: 0}
+        value:
+          id: {x: 68, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 68, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 67, y: 9, z: 0}
+              value: 0
+            - key: {x: 69, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 69, y: 9, z: 0}
+        value:
+          id: {x: 69, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 69, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 68, y: 9, z: 0}
+              value: 0
+            - key: {x: 70, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 70, y: 9, z: 0}
+        value:
+          id: {x: 70, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 70, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 69, y: 9, z: 0}
+              value: 0
+            - key: {x: 71, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 71, y: 9, z: 0}
+        value:
+          id: {x: 71, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 71, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 70, y: 9, z: 0}
+              value: 0
+            - key: {x: 72, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 72, y: 9, z: 0}
+        value:
+          id: {x: 72, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 72, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 71, y: 9, z: 0}
+              value: 0
+            - key: {x: 73, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 73, y: 9, z: 0}
+        value:
+          id: {x: 73, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 73, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 72, y: 9, z: 0}
+              value: 0
+            - key: {x: 74, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 74, y: 9, z: 0}
+        value:
+          id: {x: 74, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 74, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 73, y: 9, z: 0}
+              value: 0
+            - key: {x: 75, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 75, y: 9, z: 0}
+        value:
+          id: {x: 75, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 75, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 74, y: 9, z: 0}
+              value: 0
+            - key: {x: 76, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 76, y: 9, z: 0}
+        value:
+          id: {x: 76, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 76, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 75, y: 9, z: 0}
+              value: 0
+            - key: {x: 77, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 77, y: 9, z: 0}
+        value:
+          id: {x: 77, y: 9, z: 0}
+          nodes:
+          - gridPosition: {x: 77, y: 9, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 76, y: 9, z: 0}
+              value: 0
+            - key: {x: 78, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 78, y: 9, z: 0}
         value:
           id: {x: 78, y: 9, z: 0}
@@ -1132,7 +4988,7 @@ MonoBehaviour:
             - key: {x: 79, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 79, y: 9, z: 0}
         value:
           id: {x: 79, y: 9, z: 0}
@@ -1172,7 +5028,7 @@ MonoBehaviour:
             - key: {x: 80, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 80, y: 9, z: 0}
         value:
           id: {x: 80, y: 9, z: 0}
@@ -1212,7 +5068,7 @@ MonoBehaviour:
             - key: {x: 81, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 81, y: 9, z: 0}
         value:
           id: {x: 81, y: 9, z: 0}
@@ -1252,7 +5108,7 @@ MonoBehaviour:
             - key: {x: 81, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 87, y: 9, z: 0}
         value:
           id: {x: 87, y: 9, z: 0}
@@ -1292,7 +5148,7 @@ MonoBehaviour:
             - key: {x: 87, y: 7, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 88, y: 9, z: 0}
         value:
           id: {x: 88, y: 9, z: 0}
@@ -1332,7 +5188,7 @@ MonoBehaviour:
             - key: {x: 87, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 89, y: 9, z: 0}
         value:
           id: {x: 89, y: 9, z: 0}
@@ -1372,7 +5228,7 @@ MonoBehaviour:
             - key: {x: 90, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 90, y: 9, z: 0}
         value:
           id: {x: 90, y: 9, z: 0}
@@ -1412,7 +5268,7 @@ MonoBehaviour:
             - key: {x: 91, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 91, y: 9, z: 0}
         value:
           id: {x: 91, y: 9, z: 0}
@@ -1452,7 +5308,7 @@ MonoBehaviour:
             - key: {x: 92, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 92, y: 9, z: 0}
         value:
           id: {x: 92, y: 9, z: 0}
@@ -1492,7 +5348,7 @@ MonoBehaviour:
             - key: {x: 93, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 93, y: 9, z: 0}
         value:
           id: {x: 93, y: 9, z: 0}
@@ -1532,7 +5388,7 @@ MonoBehaviour:
             - key: {x: 94, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 94, y: 9, z: 0}
         value:
           id: {x: 94, y: 9, z: 0}
@@ -1572,7 +5428,7 @@ MonoBehaviour:
             - key: {x: 95, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 95, y: 9, z: 0}
         value:
           id: {x: 95, y: 9, z: 0}
@@ -1612,7 +5468,7 @@ MonoBehaviour:
             - key: {x: 96, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 96, y: 9, z: 0}
         value:
           id: {x: 96, y: 9, z: 0}
@@ -1652,7 +5508,7 @@ MonoBehaviour:
             - key: {x: 97, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 97, y: 9, z: 0}
         value:
           id: {x: 97, y: 9, z: 0}
@@ -1692,7 +5548,7 @@ MonoBehaviour:
             - key: {x: 98, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 98, y: 9, z: 0}
         value:
           id: {x: 98, y: 9, z: 0}
@@ -1732,7 +5588,7 @@ MonoBehaviour:
             - key: {x: 99, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 99, y: 9, z: 0}
         value:
           id: {x: 99, y: 9, z: 0}
@@ -1772,7 +5628,7 @@ MonoBehaviour:
             - key: {x: 100, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 100, y: 9, z: 0}
         value:
           id: {x: 100, y: 9, z: 0}
@@ -1812,7 +5668,7 @@ MonoBehaviour:
             - key: {x: 101, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 101, y: 9, z: 0}
         value:
           id: {x: 101, y: 9, z: 0}
@@ -1852,7 +5708,7 @@ MonoBehaviour:
             - key: {x: 102, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 102, y: 9, z: 0}
         value:
           id: {x: 102, y: 9, z: 0}
@@ -1892,7 +5748,7 @@ MonoBehaviour:
             - key: {x: 103, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
       - key: {x: 103, y: 9, z: 0}
         value:
           id: {x: 103, y: 9, z: 0}
@@ -1930,4 +5786,864 @@ MonoBehaviour:
             - key: {x: 102, y: 9, z: 0}
               value: 0
           heuristic: 0
-          sectionIDSerialized: 7be3cac5-d2b2-4bd7-90dd-d55ccfa42249
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 42, y: 13, z: 0}
+        value:
+          id: {x: 42, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 42, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 13, z: 0}
+              value: 0
+            - key: {x: 42, y: 11, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 43, y: 13, z: 0}
+        value:
+          id: {x: 43, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 43, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 42, y: 13, z: 0}
+              value: 0
+            - key: {x: 44, y: 13, z: 0}
+              value: 0
+            - key: {x: 43, y: 11, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 44, y: 13, z: 0}
+        value:
+          id: {x: 44, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 44, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 43, y: 13, z: 0}
+              value: 0
+            - key: {x: 45, y: 13, z: 0}
+              value: 0
+            - key: {x: 44, y: 11, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 45, y: 13, z: 0}
+        value:
+          id: {x: 45, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 45, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 44, y: 13, z: 0}
+              value: 0
+            - key: {x: 46, y: 13, z: 0}
+              value: 0
+            - key: {x: 45, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 46, y: 13, z: 0}
+        value:
+          id: {x: 46, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 46, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 45, y: 13, z: 0}
+              value: 0
+            - key: {x: 47, y: 13, z: 0}
+              value: 0
+            - key: {x: 46, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 47, y: 13, z: 0}
+        value:
+          id: {x: 47, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 47, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 46, y: 13, z: 0}
+              value: 0
+            - key: {x: 48, y: 13, z: 0}
+              value: 0
+            - key: {x: 47, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 48, y: 13, z: 0}
+        value:
+          id: {x: 48, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 48, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 47, y: 13, z: 0}
+              value: 0
+            - key: {x: 49, y: 13, z: 0}
+              value: 0
+            - key: {x: 48, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 49, y: 13, z: 0}
+        value:
+          id: {x: 49, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 49, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 48, y: 13, z: 0}
+              value: 0
+            - key: {x: 50, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 50, y: 13, z: 0}
+        value:
+          id: {x: 50, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 50, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 49, y: 13, z: 0}
+              value: 0
+            - key: {x: 51, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 51, y: 13, z: 0}
+        value:
+          id: {x: 51, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 51, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 50, y: 13, z: 0}
+              value: 0
+            - key: {x: 52, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 52, y: 13, z: 0}
+        value:
+          id: {x: 52, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 52, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 51, y: 13, z: 0}
+              value: 0
+            - key: {x: 53, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 53, y: 13, z: 0}
+        value:
+          id: {x: 53, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 53, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 52, y: 13, z: 0}
+              value: 0
+            - key: {x: 54, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 54, y: 13, z: 0}
+        value:
+          id: {x: 54, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 54, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 53, y: 13, z: 0}
+              value: 0
+            - key: {x: 55, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 55, y: 13, z: 0}
+        value:
+          id: {x: 55, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 55, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 54, y: 13, z: 0}
+              value: 0
+            - key: {x: 56, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 56, y: 13, z: 0}
+        value:
+          id: {x: 56, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 56, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 55, y: 13, z: 0}
+              value: 0
+            - key: {x: 57, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 57, y: 13, z: 0}
+        value:
+          id: {x: 57, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 57, y: 13, z: 0}
+            flags: 16
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 56, y: 13, z: 0}
+              value: 0
+            - key: {x: 58, y: 13, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 58, y: 13, z: 0}
+        value:
+          id: {x: 58, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 58, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 57, y: 13, z: 0}
+              value: 0
+            - key: {x: 59, y: 13, z: 0}
+              value: 0
+            - key: {x: 58, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 59, y: 13, z: 0}
+        value:
+          id: {x: 59, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 59, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 58, y: 13, z: 0}
+              value: 0
+            - key: {x: 60, y: 13, z: 0}
+              value: 0
+            - key: {x: 59, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 60, y: 13, z: 0}
+        value:
+          id: {x: 60, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 60, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 59, y: 13, z: 0}
+              value: 0
+            - key: {x: 61, y: 13, z: 0}
+              value: 0
+            - key: {x: 60, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 61, y: 13, z: 0}
+        value:
+          id: {x: 61, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 61, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 60, y: 13, z: 0}
+              value: 0
+            - key: {x: 62, y: 13, z: 0}
+              value: 0
+            - key: {x: 61, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
+      - key: {x: 62, y: 13, z: 0}
+        value:
+          id: {x: 62, y: 13, z: 0}
+          nodes:
+          - gridPosition: {x: 62, y: 13, z: 0}
+            flags: 32
+            mapLayer:
+              name: '[Invalid]'
+              layer: -1
+            colliderType: 0
+            markerData:
+              heuristic: 0
+              solidity: 0
+              movementData:
+                north:
+                  traversability: 0
+                northEast:
+                  traversability: 0
+                east:
+                  traversability: 0
+                southEast:
+                  traversability: 0
+                south:
+                  traversability: 0
+                southWest:
+                  traversability: 0
+                west:
+                  traversability: 0
+                northWest:
+                  traversability: 0
+            tilemapName: '[None]'
+            tilemapID: -1
+          adjacent:
+            keyValuePairs:
+            - key: {x: 61, y: 13, z: 0}
+              value: 0
+            - key: {x: 62, y: 9, z: 0}
+              value: 0
+          heuristic: 0
+          sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
