@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 public interface ITraceable<T> where T : IEquatable<T>
 {
-    public IEnumerator<GraphEdge<T>> GetTraces();
+    public IEnumerable<GraphEdge<T>> GetTraces();
 }

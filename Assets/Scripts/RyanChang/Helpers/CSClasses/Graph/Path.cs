@@ -3,15 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Represents a "flat" subsection of a graph that can be iterated like a
+/// singlely linked list. See <see cref="Graph{T}"/>.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2022)
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class Path<T> : IEnumerable<Vertex<T>>,
     IEnumerable<GraphEdge<T>>, ITraceable<T> where T : IEquatable<T>
 {
+    #region Variables
     private readonly Dictionary<Vertex<T>, Vertex<T>> path;
+    #endregion
 
+    #region Properties
+    /// <summary>
+    /// The start of the iteration.
+    /// </summary>
     public Vertex<T> Start { get; private set; }
+    /// <summary>
+    /// The end of the iteration.
+    /// </summary>
     public Vertex<T> End { get; private set; }
     public Graph<T> Graph { get; private set; }
+    #endregion
 
+    #region Constructors
     /// <summary>
     /// Creates a new path.
     /// </summary>
@@ -60,7 +80,8 @@ public class Path<T> : IEnumerable<Vertex<T>>,
                 path[next] = prev;
             }
         }
-    }
+    } 
+    #endregion
 
     /// <summary>
     /// Index by <typeparamref name="T"/>.
@@ -403,7 +424,8 @@ public class Path<T> : IEnumerable<Vertex<T>>,
         return max;
     }
 
-    public IEnumerator<GraphEdge<T>> GetTraces()
+    #region Enumeration
+    public IEnumerable<GraphEdge<T>> GetTraces()
     {
         var next = Start;
 
@@ -424,11 +446,12 @@ public class Path<T> : IEnumerable<Vertex<T>>,
 
     IEnumerator<GraphEdge<T>> IEnumerable<GraphEdge<T>>.GetEnumerator()
     {
-        return GetTraces();
+        return GetTraces().GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
-    }
+    } 
+    #endregion
 }

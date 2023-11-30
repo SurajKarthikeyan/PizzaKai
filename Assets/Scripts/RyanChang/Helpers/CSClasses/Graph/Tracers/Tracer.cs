@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -68,22 +69,12 @@ public class Tracer<T> where T : IEquatable<T>
             DateTime.Now.ToLongDateTimeString()
         ).transform;
 
-        float maxWeight = 0;
+        float maxWeight = target.GetTraces()
+            .Max(e => e.weight);
 
-        using (var edgeEnumerator = target.GetTraces())
+        foreach (var edge in target.GetTraces())
         {
-            while (edgeEnumerator.MoveNext())
-            {
-                maxWeight = Mathf.Max(edgeEnumerator.Current.weight, maxWeight);
-            }
-        }
-
-        using (var edgeEnumerator = target.GetTraces())
-        {
-            while (edgeEnumerator.MoveNext())
-            {
-                BuildRenderers(subcontainer, edgeEnumerator.Current, maxWeight);
-            }
+            BuildRenderers(subcontainer, edge, maxWeight);
         }
 
         subcontainer.transform.Localize(middleContainer);

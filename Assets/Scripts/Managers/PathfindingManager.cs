@@ -146,6 +146,8 @@ public class PathfindingManager : MonoBehaviour
     [Button]
     private void BuildGraph()
     {
+        InitData();
+
         if (!grid)
             grid = GameObject.FindObjectOfType<Grid>();
 
@@ -172,7 +174,7 @@ public class PathfindingManager : MonoBehaviour
         LinkPass3();
 
         // Trim graph.
-        Pathfinding.TrimVertices();
+        Pathfinding.Remove0Degree();
 
         // Remove self-edges.
         Pathfinding.RemoveSelfPaths();

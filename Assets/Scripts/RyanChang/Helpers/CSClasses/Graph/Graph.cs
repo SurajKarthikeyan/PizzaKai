@@ -6,6 +6,11 @@ using UnityEngine;
 
 /// <summary>
 /// A weighted, undirected graph data structure using adjacency map.
+/// It supports BFS, DFS, A* search, and other various functions.
+/// 
+/// <br/>
+/// 
+/// Authors: Ryan Chang (2022)
 /// </summary>
 /// <typeparam name="T">Any IEquatable type.</typeparam>
 [System.Serializable]
@@ -29,14 +34,33 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
     #region Properties
     /// <summary>
-    /// Selects the method of enumeration
+    /// Selects the method of enumeration. To actually enumerate, put this
+    /// graph into a foreach loop, or use the BFS or DFS functions. By default,
+    /// the graph is iterated over its vertices, but functions exist that allow
+    /// for traversal over edges as well.
     /// </summary>
     public EnumerationMethod EnumMethod { get; private set; }
 
     /// <summary>
     /// The root vertex. This determines where graph enumeration will begin.
+    /// For the most use cases, the root can be arbitrary.
     /// </summary>
-    public Vertex<T> Root { get; private set; }
+    public Vertex<T> Root
+    {
+        get
+        {
+            if (root == null || !HasVertex(root.id))
+            {
+                root = Vertices.Values.FirstOrDefault();
+            }
+            
+            return root;
+        }
+        set
+        {
+            root = value;
+        }
+    }
 
     /// <summary>
     /// Dictionary of vertices, <id, vertex>.
@@ -56,9 +80,13 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     }
     #endregion
 
+    #region Variables
     [SerializeField]
     // [HideInInspector]
     private UnityDictionary<T, Vertex<T>> serializedVertices;
+
+    private Vertex<T> root;
+    #endregion
 
 
     #region Constructors
@@ -104,8 +132,6 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     public void AddVertex(Vertex<T> newVertex)
     {
         Vertices[newVertex.id] = newVertex;
-
-        Root ??= newVertex;
     }
 
     /// <summary>
@@ -637,25 +663,17 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     /// <summary>
     /// Removes all vertices without any outgoing paths.
     /// </summary>
-    public void TrimVertices()
+    public void Remove0Degree()
     {
         var toRemove = Vertices
             .Where(kvp => kvp.Value.Degree <= 0)
             .Select(kvp => kvp.Key)
             .ToList();
 
-        bool reassignRoot = false;
-
         foreach (var rm in toRemove)
         {
-            if (rm.Equals(Root.id))
-                reassignRoot = true;
-
             Vertices.Remove(rm);
         }
-
-        if (reassignRoot)
-            Root = Values.FirstOrDefault();
     }
 
     /// <summary>
@@ -711,6 +729,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
 
         if (trim)
         {
+            // We can use aggregate to make a "actual" maximum LINQ query.
             Guid largest = sectionIDs
                 .Aggregate((s1, s2) =>
                     s1.Value.Count > s2.Value.Count ?
@@ -721,6 +740,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             {
                 if (sectionKVP.Key != largest)
                 {
+                    // What is tea? I have no clue.
                     foreach (var tea in sectionKVP.Value)
                     {
                         Vertices.Remove(tea);
@@ -1010,7 +1030,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     #endregion
 
     #region ITraceable Implementation
-    public IEnumerator<GraphEdge<T>> GetTraces() => BFS_Edge(Root, true).GetEnumerator();
+    public IEnumerable<GraphEdge<T>> GetTraces() => BFS_Edge(Root, true);
     #endregion
 
     #region ISerializationCallbackReceiver Implementation
