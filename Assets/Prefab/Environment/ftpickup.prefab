@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0034532547, y: -0.0863235}
+  m_Offset: {x: 0.035362244, y: -0.069895566}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9001751, y: 0.3338952}
+  m_Size: {x: 4.8075104, y: 0.30103934}
   m_EdgeRadius: 0
 --- !u!114 &774668653052079427
 MonoBehaviour:
@@ -128,5 +128,5 @@ MonoBehaviour:
   triggerMask:
     serializedVersion: 2
     m_Bits: 128
-  weapon: {fileID: 168762525088147260, guid: c6239bb9973c55942b1a32135aa83ce1, type: 3}
-  weaponTutorialBlock: 
+  weapon: {fileID: 0}
+  weaponTutorialBlock: FlamethrowerTutorial

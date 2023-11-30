@@ -887,6 +887,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+--- !u!114 &143270068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4442014443317022540, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 143270067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887413793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c72c340e8b64a4691037bf203ed5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &147273116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80013,7 +80024,7 @@ MonoBehaviour:
   maxBoxHeight: 4
   actionTaken: 0
   enemySpawnPoint: {fileID: 1390851105}
-  breadstick: {fileID: 8271343615121380462, guid: aa117d3d692d9408ba43c82b6d817342, type: 3}
+  breadstick: {fileID: 6478255713057580286, guid: 3663383d8a34a4e46a6a5de16015377f, type: 3}
   conveyorBelt: {fileID: 838185036}
   IsDead: 0
   pipes: {fileID: 414488621}
@@ -83207,6 +83218,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7418077980715241165, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: WMM
+      value: 
+      objectReference: {fileID: 143270068}
     - target: {fileID: 8396842951331332546, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: ammoUI
       value: 
