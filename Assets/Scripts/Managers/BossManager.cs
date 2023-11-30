@@ -9,10 +9,6 @@ public class BossManager : MonoBehaviour
 {
     public bool bossStart = false;
 
-    public GameObject mainCam;
-
-    public GameObject bossCamParent;
-
     public ConveyorBeltScript conveyorBelt;
 
     public Forky forky;
