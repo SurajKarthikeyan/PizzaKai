@@ -108,9 +108,12 @@ public class AIBranchModule : Module
             ", ",
             actions.Select(a => a.ToString())
         );
-        Debug.Log(
-            $"Actions [{actNames}] has ended."
-        );
+        if (PathAgentManager.Instance.isVerbose)
+        {
+            Debug.Log(
+                $"Actions [{actNames}] has ended."
+            );
+        }
 
         // Default case if nothing is selected.
         AIBranchModule selected = enemy.decisionTree.root;
@@ -133,13 +136,17 @@ public class AIBranchModule : Module
                             ? b1 : b2
                     );
 
-                Debug.Log(
-                    $"Switching to subbranch {selected}"
-                );
+                if (PathAgentManager.Instance.isVerbose)
+                {
+                    Debug.Log(
+                        $"Switching to subbranch {selected}"
+                    );
+                }
             }
         }
 
-        if (enemy.decisionTree.root == selected)
+        if (enemy.decisionTree.root == selected &&
+            PathAgentManager.Instance.isVerbose)
         {
             // No more valid branches. Return root.
             Debug.Log(
@@ -163,7 +170,11 @@ public class AIBranchModule : Module
             BranchState == State.Stopped,
             $"{this} StartAI called when state not Stopped!"
         );
-        print($"{this} StartAI.");
+
+        if (PathAgentManager.Instance.isVerbose)
+        {
+            print($"{this} StartAI.");
+        }
 #endif
 
         state = State.Starting;
@@ -182,7 +193,8 @@ public class AIBranchModule : Module
         if (state == State.Updating || state == State.Starting)
         {
 #if UNITY_EDITOR
-            if (state == State.Starting) print($"{this} UpdateAI.");
+            if (state == State.Starting && PathAgentManager.Instance.isVerbose)
+                print($"{this} UpdateAI.");
 #endif
 
             state = State.Updating;
@@ -191,7 +203,7 @@ public class AIBranchModule : Module
                 action.UpdateAI(enemy, target);
             }
         }
-        else if (state == State.Stopped)
+        else if (state == State.Stopped && PathAgentManager.Instance.isVerbose)
         {
 #if UNITY_EDITOR
             print($"{this} UpdateAI deferred. Running StartAI instead.");
@@ -212,7 +224,6 @@ public class AIBranchModule : Module
             $"State was {BranchState}"
         );
 
-        print($"{this} ExitAI.");
         state = State.Exiting;
         foreach (var action in actions)
         {

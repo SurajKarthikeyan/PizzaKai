@@ -85,10 +85,13 @@ public class PathfindingAgent : MonoBehaviour
 
                 case NavigationState.ArrivedAtDestination:
                     NextNode = null;
-                    Debug.Log(
-                        "Arrived at final destination " + FinalToken,
-                        enemyControl
-                    );
+                    if (PathAgentManager.Instance.isVerbose)
+                    {
+                        Debug.Log(
+                            "Arrived at final destination " + FinalToken,
+                            enemyControl
+                        );
+                    }
                     enemyControl.ArrivedAtDestination(FinalToken);
                     visualizer.Clear();
 
@@ -152,8 +155,6 @@ public class PathfindingAgent : MonoBehaviour
         if (State == NavigationState.NavigatingToDestination)
         {
             stuckTimer.IncrementUpdate(false);
-
-            // print($"{GridPosition} | {NextNode} | {GridPosition == NextNode.id}");
         }
     }
     #endregion
@@ -297,10 +298,14 @@ public class PathfindingAgent : MonoBehaviour
                 );
             }
 
-            Debug.Log(
-                "Arrived at intermediate position " + NextNode,
-                enemyControl
-            );
+            if (PathAgentManager.Instance.isVerbose)
+            {
+                Debug.Log(
+                    "Arrived at intermediate position " + NextNode,
+                    enemyControl
+                );
+            }
+
             stuckTimer.Reset();
 
             // Go to next node.

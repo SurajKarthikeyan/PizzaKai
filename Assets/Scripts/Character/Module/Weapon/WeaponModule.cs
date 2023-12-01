@@ -205,46 +205,31 @@ public class WeaponModule : Module
         {
             inputState = value;
 
-            if (weaponAnimator)
+            weaponAnimator.TrySetBool(
+                animReloadingBool,
+                InputState == WeaponInputState.Reloading
+            );
+            weaponAnimator.TrySetBool(
+                animFiringBool,
+                PrimaryTriggerDown
+            );
+
+            playerAnimator.TrySetBool(
+                animFiringBool,
+                PrimaryTriggerDown
+            );
+
+            bool hasAlting = weaponAnimator.TrySetBool(
+                animAltingBool,
+                InputState == WeaponInputState.Alting
+            );
+
+            if (!hasAlting)
             {
-                if (!string.IsNullOrEmpty(animReloadingBool))
-                {
-                    weaponAnimator.SetBool(
-                        animReloadingBool,
-                        InputState == WeaponInputState.Reloading
-                    );
-                }
-
-                if (!string.IsNullOrEmpty(animFiringBool))
-                {
-                    weaponAnimator.SetBool(
-                        animFiringBool,
-                        PrimaryTriggerDown
-                    );
-
-                    playerAnimator.SetBool(
-                        animFiringBool,
-                        PrimaryTriggerDown
-                    );
-                }
-
-                if (!string.IsNullOrEmpty(animAltingBool))
-                {
-                    weaponAnimator.SetBool(
-                        animAltingBool,
-                        InputState == WeaponInputState.Alting
-                    );
-                }
-                else if (!string.IsNullOrEmpty(animFiringBool))
-                {
-                    // No alting bool specified, but there is a firing bool.
-                    // Use it instead.
-                    weaponAnimator.SetBool(
-                        animFiringBool,
-                        PrimaryTriggerDown ||
-                        InputState == WeaponInputState.Alting
-                    );
-                }
+                weaponAnimator.SetBool(
+                    animFiringBool,
+                    InputState == WeaponInputState.Alting
+                );
             }
 
             //if (weaponAudio)

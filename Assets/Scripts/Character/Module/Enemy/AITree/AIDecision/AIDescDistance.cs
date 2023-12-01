@@ -50,7 +50,10 @@ public class AIDescDistance : AIDecision
                 .TaxicabDistance(target.GridPosition);
         }
 
-        print(dist + ", " + distanceToTarget);
+        if (PathAgentManager.Instance.isVerbose)
+        {
+            print(dist + ", " + distanceToTarget);
+        }
 
         return distanceToTarget.Evaluate(dist);
     }

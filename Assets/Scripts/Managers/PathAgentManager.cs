@@ -72,6 +72,10 @@ public class PathAgentManager : MonoBehaviour
     [Tooltip("If true, then use multithreading. Disable this if you want " +
         "to test pathfinding.")]
     public bool useThreads = true;
+
+    [BoxGroup("Debug")]
+    [Tooltip("If true, then print debug messages to the console.")]
+    public bool isVerbose = false;
     #endregion
 
     #region Properties
