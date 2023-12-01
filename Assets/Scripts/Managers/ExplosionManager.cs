@@ -18,8 +18,7 @@ public class ExplosionManager : MonoBehaviour
     
     private void Awake()
     {
-        if (instance == null)
-        this.InstantiateSingleton(ref instance);
+        this.InstantiateSingleton(ref instance, false);
     }
 
     [SerializeField] private List<GameObject> explosionsList;

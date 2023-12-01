@@ -35,17 +35,9 @@ public class DialogueManager : MonoBehaviour
     public Transform saydialog;
 
     #endregion
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        if (instance == null)
-            this.InstantiateSingleton(ref instance);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        this.InstantiateSingleton(ref instance, false);
     }
 
     public void StopPlayer(bool stopPlayer)

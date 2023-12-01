@@ -37,7 +37,7 @@ public class PathfindingManager : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            this.InstantiateSingleton(ref instance); 
+            this.InstantiateSingleton(ref instance, false); 
         }
         else
         {

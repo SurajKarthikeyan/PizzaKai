@@ -1042,7 +1042,7 @@ public static class UnityObjectExt
         if (singleton)
         {
             UnityEngine.Object.Destroy(self.gameObject);
-            Debug.LogError($"Multiple instances of {typeof(T)}.");
+            Debug.LogWarning($"Multiple instances of {typeof(T)}.");
         }
         else
         {

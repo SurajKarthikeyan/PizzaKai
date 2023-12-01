@@ -24,10 +24,7 @@ public class BossManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        this.InstantiateSingleton(ref instance, false);
     }
 
     private void Update()

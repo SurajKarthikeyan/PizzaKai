@@ -23,7 +23,7 @@ public class AIManager : MonoBehaviour
     
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance);
+        this.InstantiateSingleton(ref instance, false);
     }
 
     #region Variables

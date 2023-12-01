@@ -171,10 +171,8 @@ public class LayersManager : MonoBehaviour
     #region Instantiation
     private void Awake()
     {
-        
-        if (instance == null)
-        this.InstantiateSingleton(ref instance);
-        
+        this.InstantiateSingleton(ref instance, false);
+
         platformColliders = GameObject.FindObjectsOfType<Collider2D>()
                 .Where(c => c.gameObject.layer == Platform)
                 .ToList();

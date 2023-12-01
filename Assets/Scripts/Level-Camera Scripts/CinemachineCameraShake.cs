@@ -21,7 +21,6 @@ public class CinemachineCameraShake : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
         this.InstantiateSingleton(ref instance, false);
     }
 
