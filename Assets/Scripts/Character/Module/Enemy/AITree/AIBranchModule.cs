@@ -217,7 +217,7 @@ public class AIBranchModule : Module
     private void ExitAI(EnemyControlModule enemy)
     {
         Debug.Assert(
-            BranchState == State.Updating,
+            BranchState == State.Updating || BranchState == State.Starting,
             $"{this} ExitAI called when state not Updating! " +
             $"State was {BranchState}"
         );
