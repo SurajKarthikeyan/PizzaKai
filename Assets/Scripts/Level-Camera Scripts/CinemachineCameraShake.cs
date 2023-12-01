@@ -22,7 +22,7 @@ public class CinemachineCameraShake : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-        this.InstantiateSingleton(ref instance);
+        this.InstantiateSingleton(ref instance, false);
     }
 
     // Start is called before the first frame update
