@@ -46,14 +46,14 @@ public class UIManager : MonoBehaviour
 
     [Tooltip("Image containing the ammo UI element")]
     public Image ammoUI;
+
+    public WeaponMasterModule weaponMaster;
+
+    private WeaponModule currentWeapon;
     #endregion
 
     #region Properties
     private Character Player => GameManager.Instance.Player;
-
-    private WeaponMasterModule WeaponMaster => GameManager.Instance.PlayerWeapons;
-
-    private WeaponModule CurrentWeapon => WeaponMaster.CurrentWeapon;
     #endregion
 
     #region Init
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
 
         pauseMenu.SetActive(false);
 
-        ammoUI.sprite = CurrentWeapon.weaponUIImage;
+        ammoUI.sprite = currentWeapon.weaponUIImage;
     }
     #endregion
 
@@ -83,21 +83,21 @@ public class UIManager : MonoBehaviour
         if (instance != null)
         {
             // //Caching the current weapon
-            // if (WeaponMaster.CurrentWeapon != CurrentWeapon)
-            // {
-            //     CurrentWeapon = WeaponMaster.CurrentWeapon;
-            //     //Sets weapon UI when weapon is re-cached
-            //     ammoUI.sprite = CurrentWeapon.weaponUIImage;
-            // }
+            if (weaponMaster.CurrentWeapon != currentWeapon)
+            {
+                currentWeapon = weaponMaster.CurrentWeapon;
+                //Sets weapon UI when weapon is re-cached
+                ammoUI.sprite = currentWeapon.weaponUIImage;
+            }
 
             //Alt fire slider
-            if (CurrentWeapon.altFireDelay.IsDone)
+            if (currentWeapon.altFireDelay.IsDone)
             {
                 altSlider.value = 1f;
             }
             else
             {
-                altSlider.value = CurrentWeapon.altFireDelay.elapsed / CurrentWeapon.altFireDelay.maxTime;
+                altSlider.value = currentWeapon.altFireDelay.elapsed / currentWeapon.altFireDelay.maxTime;
             }
 
 
@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
 
             healthSlider.value = Player.HP / (float)Player.maxHP;
 
-            ammoCount.text = CurrentWeapon.currentAmmo.ToString() + "/" + CurrentWeapon.ammoCount.ToString();
+            ammoCount.text = currentWeapon.currentAmmo.ToString() + "/" + currentWeapon.ammoCount.ToString();
 
             if (healthSlider.value == 0)
             {
