@@ -37,16 +37,14 @@ public abstract class DeathModule : Module
         {
             if (delay > 0)
             {
-                Debug.Log("Invoking ondeath");
                 Master.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 DialogueManager.Instance.StopPlayer(true);
                 Invoke(nameof(OnDeath), delay);
             }
             else
             {
-                Debug.Log("First run");
-                weaponMaster.gameObject.SetActive(false);
-                Master.characterAnimator.Play("PlayerDeath");
+                if (Master.weaponMasterModule)
+                    Master.weaponMasterModule.gameObject.SetActive(false);
             }
         }   
         

@@ -1,4 +1,8 @@
+using System.Linq;
 using UnityEngine;
+using ACPType = UnityEngine.AnimatorControllerParameterType;
+using ACP = UnityEngine.AnimatorControllerParameter;
+using System.Collections.Generic;
 
 /// <summary>
 /// Contains extension methods for Animations and Animators.
@@ -11,6 +15,12 @@ public static class AnimationExt
 {
     #region Animator
     #region Set Variable
+    private static bool ParamMatches(this Animator animator,
+        string name, ACPType type)
+    {
+        return animator.parameters.Any(p => p.name == name && p.type == type);
+    }
+
     /// <summary>
     /// Tries to set the animation parameter with name <paramref name="name"/>.
     /// </summary>
@@ -21,13 +31,11 @@ public static class AnimationExt
     /// empty.</returns>
     public static bool TrySetBool(this Animator animator, string name, bool value)
     {
-        if (animator)
+        if (animator && !string.IsNullOrEmpty(name) &&
+            animator.ParamMatches(name, ACPType.Bool))
         {
-            if (!string.IsNullOrEmpty(name))
-            {
-                animator.SetBool(name, value);
-                return true;
-            }
+            animator.SetBool(name, value);
+            return true;
         }
 
         return false;
@@ -36,13 +44,11 @@ public static class AnimationExt
     /// <inheritdoc cref="TrySetBool(Animator, string, bool)"/>
     public static bool TrySetFloat(this Animator animator, string name, float value)
     {
-        if (animator)
+        if (animator && !string.IsNullOrEmpty(name) &&
+            animator.ParamMatches(name, ACPType.Float))
         {
-            if (!string.IsNullOrEmpty(name))
-            {
-                animator.SetFloat(name, value);
-                return true;
-            }
+            animator.SetFloat(name, value);
+            return true;
         }
 
         return false;
@@ -51,13 +57,11 @@ public static class AnimationExt
     /// <inheritdoc cref="TrySetBool(Animator, string, bool)"/>
     public static bool TrySetInt(this Animator animator, string name, int value)
     {
-        if (animator)
+        if (animator && !string.IsNullOrEmpty(name) &&
+            animator.ParamMatches(name, ACPType.Int))
         {
-            if (!string.IsNullOrEmpty(name))
-            {
-                animator.SetInteger(name, value);
-                return true;
-            }
+            animator.SetInteger(name, value);
+            return true;
         }
 
         return false;
@@ -66,13 +70,11 @@ public static class AnimationExt
     /// <inheritdoc cref="TrySetBool(Animator, string, bool)"/>
     public static bool TrySetTrigger(this Animator animator, string name)
     {
-        if (animator)
+        if (animator && !string.IsNullOrEmpty(name) &&
+            animator.ParamMatches(name, ACPType.Trigger))
         {
-            if (!string.IsNullOrEmpty(name))
-            {
-                animator.SetTrigger(name);
-                return true;
-            }
+            animator.SetTrigger(name);
+            return true;
         }
 
         return false;
@@ -81,13 +83,24 @@ public static class AnimationExt
     /// <inheritdoc cref="TrySetBool(Animator, string, bool)"/>
     public static bool TryUnsetTrigger(this Animator animator, string name)
     {
+        if (animator && !string.IsNullOrEmpty(name) &&
+            animator.ParamMatches(name, ACPType.Trigger))
+        {
+            animator.ResetTrigger(name);
+            return true;
+        }
+
+        return false;
+    }
+    #endregion
+    
+    #region Play/Pause
+    public static bool TryPlay(this Animator animator, string state, int layer = -1)
+    {
         if (animator)
         {
-            if (!string.IsNullOrEmpty(name))
-            {
-                animator.ResetTrigger(name);
-                return true;
-            }
+            animator.Play(state, layer);
+            return true;
         }
 
         return false;
