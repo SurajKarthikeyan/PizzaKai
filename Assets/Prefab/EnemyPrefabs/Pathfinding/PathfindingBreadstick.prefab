@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 6478255713057580272}
   - component: {fileID: 6478255713057580265}
   - component: {fileID: -6358471799411875562}
+  - component: {fileID: 6292609743432553759}
   m_Layer: 10
   m_Name: PathfindingBreadstick
   m_TagString: Enemy
@@ -558,6 +559,23 @@ MonoBehaviour:
     elapsed: 0
   knockbackMultiplier: 1
   weaponMasterModule: {fileID: 0}
+--- !u!114 &6292609743432553759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478255713057580286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145b9ff1b0e9e6e81a043332765a7efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 128
+  damage:
+    initialValue: 5
 --- !u!1 &6478255713251395454
 GameObject:
   m_ObjectHideFlags: 0
