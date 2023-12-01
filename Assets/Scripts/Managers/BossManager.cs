@@ -13,10 +13,6 @@ public class BossManager : MonoBehaviour
 
     public Forky forky;
 
-    public AudioSource music;
-
-    public AudioClip bossTheme;
-
     [ReadOnly]
     public int bulletsReflected;
     
@@ -50,9 +46,6 @@ public class BossManager : MonoBehaviour
         forky.spawning = true;
         forky.tilemap.animationFrameRate = 1;
         conveyorBelt.conveyorSpeed = -1;
-        music.Stop();
-        music.PlaySound(bossTheme, 1);
-        music.loop = true;
         foreach(BoxCollider2D collider in generatorColliders)
         {
             collider.enabled = true;
