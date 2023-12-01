@@ -898,11 +898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c72c340e8b64a4691037bf203ed5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &143270069 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 600141815034802691, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-  m_PrefabInstance: {fileID: 143270067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &143270070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1837027089846068719, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
@@ -3896,9 +3891,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 493893883}
+  - {fileID: 493893797}
   selectedCommands:
-  - {fileID: 493893905}
+  - {fileID: 493893870}
   variables:
   - {fileID: 493893821}
   description: 
@@ -81615,8 +81610,6 @@ MonoBehaviour:
   bossStart: 0
   conveyorBelt: {fileID: 838185036}
   forky: {fileID: 821852786}
-  music: {fileID: 143270069}
-  bossTheme: {fileID: 8300000, guid: 385c24d7fbef3654fb01bd51783d0c5b, type: 3}
   bulletsReflected: 0
   generatorColliders:
   - {fileID: 1932903899}
