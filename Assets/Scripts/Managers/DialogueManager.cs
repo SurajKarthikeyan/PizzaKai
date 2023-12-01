@@ -37,7 +37,10 @@ public class DialogueManager : MonoBehaviour
     #endregion
     private void Awake()
     {
-        this.InstantiateSingleton(ref instance, false);
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     public void StopPlayer(bool stopPlayer)
