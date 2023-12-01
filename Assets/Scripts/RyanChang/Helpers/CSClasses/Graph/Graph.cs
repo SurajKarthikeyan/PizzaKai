@@ -982,16 +982,11 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
     #endregion
 
     #region Validation
-    /// <summary>
-    /// Validates the start and end IDs on the graph, throwing errors if
-    /// required to.
-    /// </summary>
-    /// <exception cref="VertexNotInGraphException"></exception>
-    /// <exception cref="PathfindingException"></exception>
-    /// <exception cref="StartIsEndVertexException"></exception>
-    /// <exception cref="GuidUnsetVertexException"></exception>
-    /// <exception cref="DisjointGraphException"></exception>
-    public void ValidateStartEnd(T startID, T endID, bool fullValidation, out Vertex<T> endV, out Vertex<T> startV)
+    /// <remarks>This checks if the start and end IDs are in the
+    /// graph.</remarks>
+    /// <inheritdoc cref="ValidateStartEnd(bool, Vertex{T}, Vertex{T})"/>
+    public void ValidateStartEnd(T startID, T endID, bool fullValidation,
+        out Vertex<T> endV, out Vertex<T> startV)
     {
         if (!HasVertex(startID))
             throw new VertexNotInGraphException("Cannot build graph", startID, this);
@@ -1004,6 +999,18 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
         ValidateStartEnd(fullValidation, endV, startV);
     }
 
+    /// <summary>
+    /// Does some quick sanity checks on the start and end vertices. Throws
+    /// errors if any check fails.
+    /// </summary>
+    /// <param name="fullValidation">If true, check for graph continuity between
+    /// <paramref name="startV"/> and <see cref="endV"/>.</param>
+    /// <param name="endV">Ending vertex.</param>
+    /// <param name="startV">Starting vertex.</param>
+    /// <exception cref="PathfindingException"></exception>
+    /// <exception cref="StartIsEndVertexException"></exception>
+    /// <exception cref="GuidUnsetVertexException"></exception>
+    /// <exception cref="DisjointGraphException"></exception>
     public void ValidateStartEnd(bool fullValidation, Vertex<T> endV, Vertex<T> startV)
     {
         if (Count < 2)
