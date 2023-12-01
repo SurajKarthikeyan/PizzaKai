@@ -208,7 +208,8 @@ public class AIBranchModule : Module
     {
         Debug.Assert(
             BranchState == State.Updating,
-            $"{this} ExitAI called when state not Updating!"
+            $"{this} ExitAI called when state not Updating! " +
+            $"State was {BranchState}"
         );
 
         print($"{this} ExitAI.");

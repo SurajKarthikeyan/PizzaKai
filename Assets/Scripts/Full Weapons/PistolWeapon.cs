@@ -12,7 +12,6 @@ using UnityEngine;
 public class PistolWeapon : WeaponModule
 {
     #region Variables
-    [SerializeField] private Camera realCamera;
     [SerializeField] private float grappleDistance;
     [SerializeField] private float grappleForce;
     private Vector2 hitPoint;
@@ -20,8 +19,6 @@ public class PistolWeapon : WeaponModule
     private bool isGrappling = false;
     private float grappleMultiplier = 0f;
     [SerializeField] private LineRenderer lineRend;
-
-    private WeaponMasterModule parent;
     #endregion
 
     #region Init
@@ -31,7 +28,6 @@ public class PistolWeapon : WeaponModule
         base.Start();
         weaponName = WeaponAudioStrings.PistolName;
         rb = Master.r2d;
-        parent = GetComponentInParent<WeaponMasterModule>();
         AltFireKeyUp();
     }
     #endregion
@@ -66,14 +62,13 @@ public class PistolWeapon : WeaponModule
         {
             RaycastHit2D hit;
             LayerMask mask = LayerMask.GetMask("Ground", "Box");
-            hit = Physics2D.Raycast(gameObject.transform.position + Vector3.up, realCamera.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, grappleDistance, mask);
+            hit = Physics2D.Raycast(gameObject.transform.position + Vector3.up, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, grappleDistance, mask);
 
             hitPoint = hit.point;
 
             if (hit.collider != null)
             {
                 isGrappling = true;
-                parent.isGrappling = isGrappling;
             }
         }
     }
@@ -81,7 +76,6 @@ public class PistolWeapon : WeaponModule
     public override void AltFireKeyUp()
     {
         isGrappling = false;
-        parent.isGrappling = isGrappling;
     }
 
     #endregion

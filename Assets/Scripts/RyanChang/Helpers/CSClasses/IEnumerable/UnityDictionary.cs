@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -67,9 +68,9 @@ public class UnityDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     private List<InspectorKeyValuePair> keyValuePairs;
     private int prevKVPsHash;
 
-    private Dictionary<TKey, TValue> internalDict;
+    private ConcurrentDictionary<TKey, TValue> internalDict;
 
-    private Dictionary<TKey, TValue> BufferedDict
+    private ConcurrentDictionary<TKey, TValue> BufferedDict
     {
         get
         {

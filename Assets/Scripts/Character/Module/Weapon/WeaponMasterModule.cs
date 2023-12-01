@@ -26,8 +26,6 @@ public class WeaponMasterModule : Module
     [AnimatorParam(nameof(characterAnimator), AnimatorControllerParameterType.Bool)]
     [SerializeField]
     private string animParamFire;
-
-    public bool isGrappling = false;
     #endregion
 
     #region Properties
@@ -130,9 +128,6 @@ public class WeaponMasterModule : Module
     public void AimAt(Vector2 target)
     {
         Debug.DrawLine(target, transform.position, Color.blue);
-
-        if (isGrappling)
-            return;
         
         // Do some basic trig to get the weapons pointed at the target.
         Vector2 disp = target - (Vector2)transform.position;
@@ -159,7 +154,7 @@ public class WeaponMasterModule : Module
     /// <inheritdoc cref="WeaponModule.PressTrigger"/>
     public bool PressWeaponTrigger()
     {
-        bool success = isGrappling && CurrentWeapon.PressTrigger();
+        bool success = CurrentWeapon.PressTrigger();
 
         if (success)
             ReleaseWeaponTrigger();
