@@ -39,9 +39,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         if (instance == null)
-        {
-            instance = this;
-        }
+            this.InstantiateSingleton(ref instance);
     }
 
     // Update is called once per frame
