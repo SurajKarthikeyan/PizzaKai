@@ -206,14 +206,14 @@ public class PathfindingAgent : MonoBehaviour
         }
         catch (PathfindingException e)
         {
-            Debug.LogException(e);
+            Debug.LogError(e);
             print("Attempting to recover from pathfinding error.");
 
             StartCoroutine(RecoverFromError_CR(target, recoverAttempts));
         }
         catch (AggregateException e)
         {
-            Debug.LogException(e);
+            Debug.LogError(e);
 
             if (e.InnerExceptions.Any(inner => inner is PathfindingException))
                 print("Attempting to recover from aggregate error " +
@@ -225,7 +225,7 @@ public class PathfindingAgent : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogException(e);
+            Debug.LogError(e);
 
             print("Attempting to recover from unknown error");
 
