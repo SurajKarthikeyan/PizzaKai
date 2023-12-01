@@ -166,14 +166,9 @@ public class AIBranchModule : Module
     private void StartAI(EnemyControlModule enemy, TargetToken target)
     {
 #if UNITY_EDITOR
-        Debug.Assert(
-            BranchState == State.Stopped,
-            $"{this} StartAI called when state not Stopped!"
-        );
-
-        if (PathAgentManager.Instance.isVerbose)
+        if (PathAgentManager.Instance.isVerbose && BranchState == State.Stopped)
         {
-            print($"{this} StartAI.");
+            print($"Starting from stop for {this} ...");
         }
 #endif
 
@@ -203,10 +198,13 @@ public class AIBranchModule : Module
                 action.UpdateAI(enemy, target);
             }
         }
-        else if (state == State.Stopped && PathAgentManager.Instance.isVerbose)
+        else if (state == State.Stopped)
         {
 #if UNITY_EDITOR
-            print($"{this} UpdateAI deferred. Running StartAI instead.");
+            if (PathAgentManager.Instance.isVerbose)
+            {
+                print($"{this} UpdateAI deferred. Running StartAI instead.");
+            }
 #endif
             // Start has not been called yet. Do that now.
             StartAI(enemy, target);
