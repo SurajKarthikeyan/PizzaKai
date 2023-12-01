@@ -69,12 +69,17 @@ public class Tracer<T> where T : IEquatable<T>
             DateTime.Now.ToLongDateTimeString()
         ).transform;
 
-        float maxWeight = target.GetTraces()
-            .Max(e => e.weight);
+        var traces = target.GetTraces();
 
-        foreach (var edge in target.GetTraces())
+        if (traces.Any())
         {
-            BuildRenderers(subcontainer, edge, maxWeight);
+            float maxWeight = traces
+                .Max(e => e.weight);
+
+            foreach (var edge in target.GetTraces())
+            {
+                BuildRenderers(subcontainer, edge, maxWeight);
+            }
         }
 
         subcontainer.transform.Localize(middleContainer);
