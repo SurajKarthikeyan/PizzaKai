@@ -137,8 +137,14 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     }
                     else if (collider.gameObject.HasComponent(out BurningScript burn) && CompareTag("PlayerFireBullet"))
                     {
-                        burn.BurnBox();
-                        hitCharacter = true;
+                        if (gameObject.HasComponent<AltFlameProjectile>())
+                        {
+                            Destroy(collider.gameObject);
+                        }
+                        else
+                        {
+                            burn.BurnBox();
+                        }
                     }
                     
                     else if (collider.gameObject.HasComponent(out Lever lever))
