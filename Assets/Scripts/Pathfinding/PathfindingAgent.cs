@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -203,8 +205,28 @@ public class PathfindingAgent : MonoBehaviour
         }
         catch (PathfindingException e)
         {
-            Debug.LogError(e);
-            print("Attempting to recover");
+            Debug.LogException(e);
+            print("Attempting to recover from pathfinding error.");
+
+            StartCoroutine(RecoverFromError_CR(target, recoverAttempts));
+        }
+        catch (AggregateException e)
+        {
+            Debug.LogException(e);
+
+            if (e.InnerExceptions.Any(inner => inner is PathfindingException))
+                print("Attempting to recover from aggregate error " +
+                    "containing at least one pathfinding error.");
+            else
+                print("Attempting to recover from unknown aggregate error.");
+
+            StartCoroutine(RecoverFromError_CR(target, recoverAttempts));
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+
+            print("Attempting to recover from unknown error");
 
             StartCoroutine(RecoverFromError_CR(target, recoverAttempts));
         }

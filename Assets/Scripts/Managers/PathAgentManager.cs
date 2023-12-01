@@ -103,7 +103,8 @@ public class PathAgentManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Schedules this agent to generate its path.
+    /// Schedules this agent to generate its path. All errors thrown by the
+    /// pathfinder threads bubble up to here.
     /// </summary>
     /// <param name="agent">The pathfinding agent.</param>
     /// <param name="target">The TargetToken to target.</param>

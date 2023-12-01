@@ -907,7 +907,7 @@ public class Graph<T> : ISerializationCallbackReceiver, IEnumerable<Vertex<T>>,
             var currentID = currentV.id;
 
             if (!float.IsFinite(currentPQE.priority))
-                throw new RanOutOfVerticesException(currentID, endID);
+                throw new RanOutOfVerticesException(currentID, endID, startID);
 
             // Current cost of traversal, from startV to currentV.
             float currentCostTotal;

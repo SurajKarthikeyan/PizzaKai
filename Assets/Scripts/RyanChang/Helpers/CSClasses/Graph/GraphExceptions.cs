@@ -162,6 +162,13 @@ public class RanOutOfVerticesException : PathfindingException
             $"Iteration stuck at {stuck}. Cannot get to {end}. " +
             "Is graph disjoint?"
         ) {}
+    
+    public RanOutOfVerticesException(object stuck, object end, object start) :
+        base(
+            "Ran out of vertices during iteration. " +
+            $"Iteration stuck at {stuck}. Cannot get to {end} from {start}. " +
+            "Is graph disjoint?"
+        ) {}
 }
 
 /// <summary>
