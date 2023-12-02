@@ -71,6 +71,8 @@ public class UIManager : MonoBehaviour
 
         pauseMenu.SetActive(false);
 
+        currentWeapon = weaponMaster.CurrentWeapon;
+
         ammoUI.sprite = currentWeapon.weaponUIImage;
     }
     #endregion

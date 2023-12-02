@@ -56,24 +56,31 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         WMM = FindObjectOfType<WeaponMasterModule>();
-        foreach(WeaponModule weaponM in WMM.weapons)
+        if (WMM == null)
         {
-            switch (weaponM.weaponID)
-            {
-                case "SMG":
-                    tommygun = weaponM;
-                    break;
-                case "Shotgun":
-                    shotgun = weaponM;
-                    break;
-                case "Flamethrower":
-                    flamethrower = weaponM;
-                    break;
-                //case "Sniper":
-                    //sniper = weaponM;
-                    //break;
-            }
+            Debug.LogWarning("No Weapon Master Module in Scene");
         }
+        else
+        {
+            foreach (WeaponModule weaponM in WMM.weapons)
+            {
+                switch (weaponM.weaponID)
+                {
+                    case "SMG":
+                        tommygun = weaponM;
+                        break;
+                    case "Shotgun":
+                        shotgun = weaponM;
+                        break;
+                    case "Flamethrower":
+                        flamethrower = weaponM;
+                        break;
+                        //case "Sniper":
+                        //sniper = weaponM;
+                        //break;
+                }
+            }
+        }        
         //shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
         //flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
         

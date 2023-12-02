@@ -16,7 +16,15 @@ public class LevelAnalytics : MonoBehaviour
         levelName = SceneManager.GetActiveScene().name;
         startTime = Time.fixedTime;
         WMM = FindObjectOfType<WeaponMasterModule>();
-        currentWeapon = WMM.CurrentWeapon;
+        if (WMM == null)
+        {
+            Debug.LogWarning("No Weapon Master Module in Scene");
+        }
+        else
+        {
+            currentWeapon = WMM.CurrentWeapon;
+        }
+        
     }
 
     private void FixedUpdate()

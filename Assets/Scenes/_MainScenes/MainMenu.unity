@@ -327,6 +327,70 @@ PrefabInstance:
       propertyPath: levelFlowchart
       value: 
       objectReference: {fileID: 1789506107}
+    - target: {fileID: 5095121614625249599, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121614625249599, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121614625249599, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121614775200472, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121614775200472, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121614775200472, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615064197174, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615064197174, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615160478802, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615160478802, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615192296348, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121615192296348, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121616339308466, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121616501854537, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121616501854537, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095121616501854537, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7581203168070266453, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -560,26 +624,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "SHOOTING - https://www.youtube.com/watch?v=-bkmPm_Besk\r\n\r\nSHOOTING
-    ALT FIRES - https://stackoverflow.com/questions/36316398/unity3d-how-to-make-object-go-away-form-mouse-click-position-2d,
-    https://answers.unity.com/questions/1255001/all-objects-currently-seen-by-the-camera.html\r\n\r\nMOVEMENT
-    - https://youtu.be/n4N9VEA2GFo, https://youtu.be/2kFGmuPHiA0, https://youtu.be/K1xZ-rycYY8,
-    https://youtu.be/RFix_Kg2Di0\r\n\r\nCHECKPOINT SYSTEM - \r\nhttps://www.youtube.com/watch?v=VtbHjGcsXLE&t=386s&ab_channel=MoreBBlakeyyy\r,\nhttps://www.youtube.com/watch?v=WB4zwffCRog\n\r\nUI
-    FONT - https://www.dafont.com/bitmap.php \r\n\r\nONE WAY PLATFORMS - https://www.youtube.com/watch?v=BkPVUvLld4I\r\n\r\nCAMERA
-    - https://www.youtube.com/watch?v=BQGTdRhGmE4&ab_channel=ThomasFriday, https://www.youtube.com/watch?v=3qfbJ-JSrOc&ab_channel=MaxHealthStudios\r\n\nDELAYED
-    RESPAWN - https://www.youtube.com/watch?v=WB4zwffCRog\n\r\nSFX - https://soundbible.com/1371-Uzi-Shooting.html,
-    https://pixabay.com/sound-effects/shotgun-sounds-6464/, https://mixkit.co/free-sound-effects/click/,
-    https://pixabay.com/sound-effects/chicken-46803/, https://pixabay.com/sound-effects/whoosh-6316/,
-    https://www.soundjay.com/nature/sounds/fire-2.mp3,\r\nhttps://www.fesliyanstudios.com/royalty-free-sound-effects-download/glass-shattering-and-breaking-124,
-    \r\nhttps://mixkit.co/free-sound-effects/fire/,\r\nhttps://pixabay.com/sound-effects/1911-reload-6248/,
-    https://mixkit.co/free-sound-effects/explosion/,\r\nhttps://pixabay.com/sound-effects/steam-burst-6822/\r,\nhttps://pixabay.com/sound-effects/short-whoosh-13x-14526/,\nhttps://pixabay.com/sound-effects/mag-in-82094/,\nhttps://pixabay.com/sound-effects/reload-123781/\n\r\nMUSIC
-    - https://www.youtube.com/watch?v=XW0W7j04iRQ&list=PPSV\r,\nhttps://pixabay.com/music/electronic-cyberpunk-2099-10701/\n"
+  m_Text: CONTROLS HERE
 --- !u!222 &683218439
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1155,40 +1206,40 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e8e48b23e825f984095414aeefc6eba2, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_BestFit: 1
+    m_MinSize: 14
+    m_MaxSize: 300
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.33
-  m_Text: 'SURAJ KARTHIKEYAN - Engineer & Producer
+  m_Text: 'Suraj Karthikeyan - Engineer & Producer
 
-    ZANE O''DELL - Engineer &
+    Zane O''Dell - Engineer &
     Producer
 
-    ELI MCARDLE - Engineer
+    Eli Mcardle - Engineer
 
-    MATTHEW DEBOER - Engineer
+    Matthew DeBoer - Engineer
 
-    RYAN
-    CHANG - Engineer
+    Ryan
+    Chang - Engineer
 
-    ANDREW TRAN - Designer
+    Andrew Tran - Designer
 
-    CONNOR MILLER - Designer
+    Connor Miller - Designer
 
-    FARHAN
-    PAREKH - Artist
+    Farhan
+    Parekh - Artist
 
-    ELEX MCCOY - Writer
+    Elex McCoy - Writer
 
-    LYNDSAY MOHR - Audio SFX
+    Lynsay Mohr - Audio SFX
 
-    CHARI
-    BAYAR - Audio Soundtrack'
+    Chari
+    Bayar- Audio Soundtrack'
 --- !u!222 &974094050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5240,6 +5291,10 @@ PrefabInstance:
     - target: {fileID: 7689767610199429282, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689767610199429282, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689767610199429283, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
       propertyPath: m_Name
