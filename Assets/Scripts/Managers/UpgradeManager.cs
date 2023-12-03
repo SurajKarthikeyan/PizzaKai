@@ -161,7 +161,6 @@ public class UpgradeManager : MonoBehaviour
     public void RememberWeapon()
     {
         endingWeapon = WMM.weaponIndex;
-        print(endingWeapon);
     }
     
 }
