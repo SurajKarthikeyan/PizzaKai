@@ -41,13 +41,14 @@ public class AudioDictionary : MonoBehaviour
     #region UnityMethods
     private void Awake()
     {
-        if(aDict == null)
+        if (aDict == null)
         {
             aDict = this;
         }
         else
         {
-            Debug.LogError("You done goofed and made two audio Dictionaries in the scene");  
+            Debug.LogError("You done goofed and made two audio Dictionaries in the scene");
+            Destroy(gameObject);
         }
     }
     #endregion

@@ -40,7 +40,7 @@ public class TommyGunWeapon : WeaponModule
         
     }
 
-    IEnumerator TommyRapidFire()
+    private IEnumerator TommyRapidFire()
     {
         ReloadWeapon();
         yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);

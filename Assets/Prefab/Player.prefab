@@ -4274,18 +4274,6 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 8206075540257416576}
-    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: altWaitBetweenShots
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: reloadDelay.maxTime
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760646953299787125, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: altFireDelay.maxTime
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2741532492258955962, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.06200006
@@ -4301,18 +4289,6 @@ PrefabInstance:
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_LocalPosition.x
