@@ -56,6 +56,8 @@ public class CollisionProjectile : DamagingWeaponSpawn
 
     [ShowIf(nameof(Event_ShowIf))]
     public UnityEvent<CollisionProjectile> projectileEvent;
+
+    public float force = 15;
     #endregion
 
     #region Editor Functions
@@ -84,7 +86,11 @@ public class CollisionProjectile : DamagingWeaponSpawn
     #region Weapon Spawn Implementation
     protected override void FireInternal()
     {
-        throw new System.NotImplementedException();
+        // Yeet.
+        if (gameObject.HasComponent(out Rigidbody2D r2d))
+        {
+            r2d.AddRelativeForce(new Vector2(force, 0), ForceMode2D.Impulse);
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D other)

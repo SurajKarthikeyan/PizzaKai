@@ -44,7 +44,14 @@ public class WeaponMasterModule : Module
     #endregion
 
     #region Properties
-    public WeaponModule CurrentWeapon => weapons[weaponIndex];
+    public WeaponModule CurrentWeapon
+    {
+        get
+        {
+            weaponIndex = weaponIndex.WrapAroundLength(weapons);
+            return weapons[weaponIndex];
+        }
+    }
     #endregion
 
     #region Methods
@@ -150,7 +157,6 @@ public class WeaponMasterModule : Module
 
 
         // Send data to the flip module.
-
         Master.SetLookAngle(zRot);
         var scale = transform.localScale;
         scale.x = Master.flipModule.FlipMultiplier;
