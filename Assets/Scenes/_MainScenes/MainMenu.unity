@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 21.15, y: 0.62, z: 20.77, w: 55.82}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4659,6 +4659,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1512443957728232100, guid: c5026767630540945b53da6e018fa941, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 55.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512443957728232100, guid: c5026767630540945b53da6e018fa941, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 20.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512443957728232100, guid: c5026767630540945b53da6e018fa941, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 21.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1555671378816883093, guid: c5026767630540945b53da6e018fa941, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
@@ -4951,6 +4963,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8479607737511057721, guid: 2c090510d2079414e862402e062cc787, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 55.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479607737511057721, guid: 2c090510d2079414e862402e062cc787, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 20.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479607737511057721, guid: 2c090510d2079414e862402e062cc787, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 20.31
+      objectReference: {fileID: 0}
     - target: {fileID: 8929106444638702374, guid: 2c090510d2079414e862402e062cc787, type: 3}
       propertyPath: m_Name
       value: Credits Button
@@ -5120,6 +5144,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6906253391031437735, guid: d42a604b2e953964884d9763e487ee71, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 55.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906253391031437735, guid: d42a604b2e953964884d9763e487ee71, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 20.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906253391031437735, guid: d42a604b2e953964884d9763e487ee71, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 20.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d42a604b2e953964884d9763e487ee71, type: 3}
 --- !u!224 &3108517579771829724 stripped
@@ -5152,6 +5188,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6684956ef9c84364088195f0af593d77, type: 3}
+    - target: {fileID: 7689767610199429280, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 53.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689767610199429280, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 20.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689767610199429280, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 20.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7689767610199429281, guid: fe6cee4ac16d4ce42875f1cbbf4b1b8d, type: 3}
       propertyPath: m_Interactable
       value: 1
