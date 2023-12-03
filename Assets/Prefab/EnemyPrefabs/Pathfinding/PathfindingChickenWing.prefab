@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToTarget:
     mode: 0
-    min: 8
+    min: 4
     max: 12
 --- !u!1 &1555724273637378154
 GameObject:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToTarget:
     mode: 2
-    min: 12
+    min: 10
     max: 5
 --- !u!1 &1931218078166290807
 GameObject:
@@ -239,7 +239,7 @@ MonoBehaviour:
   distanceToTarget:
     mode: 3
     min: 0
-    max: 8
+    max: 6
 --- !u!1 &2623344497766838220
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -915,7 +915,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7228773726619069321}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 55fd7bc495189466aa121dcb1e868f30, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -954,8 +954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87618cd6f0814479110d9243d2ba55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: {x: 10, y: 0}
-  moveAcceleration: {x: 1, y: 0}
+  maxMoveSpeed: {x: 2, y: 0}
+  moveAcceleration: {x: 10, y: 0}
   decelerationPercentage: 0.95
   jumpForce: 12
   jumpCooldown:

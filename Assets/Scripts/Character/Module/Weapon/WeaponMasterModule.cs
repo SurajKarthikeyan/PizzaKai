@@ -150,14 +150,41 @@ public class WeaponMasterModule : Module
     public void AimAt(Vector2 target)
     {
         Debug.DrawLine(target, transform.position, Color.blue);
-        
+
         // Do some basic trig to get the weapons pointed at the target.
-        Vector2 disp = target - (Vector2)transform.position;
-        float zRot = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
+        float theta;
+        float lookTheta;
+
+        if (CurrentWeapon.bullet is CollisionProjectile cp)
+        {
+            Vector2 from = CurrentWeapon.firePoint.position;
+
+            lookTheta = VectorExt.ProjectileMotionAngle2D(
+                from,
+                target,
+                cp.force
+            ) * Mathf.Rad2Deg;
+
+            if (from.x > target.x)
+            {
+                // Switch theta.
+                theta = 180 - lookTheta;
+            }
+            else
+            {
+                theta = lookTheta;
+            }
+        }
+        else
+        {
+            Vector2 disp = target - (Vector2)transform.position;
+            theta = Mathf.Atan2(disp.y, disp.x) * Mathf.Rad2Deg;
+            lookTheta = theta;
+        }
 
 
         // Send data to the flip module.
-        Master.SetLookAngle(zRot);
+        Master.SetLookAngle(lookTheta);
         var scale = transform.localScale;
         scale.x = Master.flipModule.FlipMultiplier;
         scale.y = Master.flipModule.FlipMultiplier;
@@ -166,8 +193,11 @@ public class WeaponMasterModule : Module
         transform.eulerAngles = new(
             0,
             0,
-            zRot
+            theta
         );
+
+        DebugExt.UseDebug(Color.red);
+        Debug.DrawRay(transform.position, transform.right);
     }
     #endregion
 

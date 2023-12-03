@@ -179,6 +179,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   force: 15
+  randomInitialTorque:
+    rangePattern: 1
+    singleValue: 0
+    scalarMin: -10
+    scalarMax: 10
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    perlinCrawlSpeed: 0.1
+    modifier:
+      addition: 0
+      multiplier: 1
+    unfoldedInInspector: 1
+    fixedSelectionInInspector: 0
 --- !u!114 &6470781767325147832
 MonoBehaviour:
   m_ObjectHideFlags: 0

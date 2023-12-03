@@ -33,7 +33,7 @@ public class AIDescDistance : AIDecision
                 // If it does, use the path length to calculate the
                 // distance.
                 dist = enemy.pathAgent.CurrentPath.GetLength(
-                    enemy.pathAgent.NextNode
+                    enemy.pathAgent.FinalNode
                 );
             }
             catch (System.Exception)

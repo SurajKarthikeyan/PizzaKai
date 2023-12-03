@@ -20,12 +20,6 @@ public class AIActShoot : AIAction
 
         if (wmm)
         {
-            if (wmm.CurrentWeapon.bullet is CollisionProjectile cp)
-            {
-                float v_0_2 = cp.force * cp.force;
-                
-            }
-
             StartCoroutine(Aiming_CR(enemy, target));
 
             wmm.PressWeaponTrigger();

@@ -24,15 +24,11 @@ public class TargetToken : IEquatable<TargetToken>
     private readonly Transform dynamicTarget;
     #endregion
 
-    #region Variables
-    public Vector3 offset = Vector3.zero;
-    #endregion
-
     #region Properties
     /// <summary>
     /// The target position in world coordinates.
     /// </summary>
-    public Vector3 Position => (IsDynamic ? dynamicTarget.position : staticPosition) + offset;
+    public Vector3 Position => (IsDynamic ? dynamicTarget.position : staticPosition);
 
     /// <summary>
     /// The target position in grid coordinates.

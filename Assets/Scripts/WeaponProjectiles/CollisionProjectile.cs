@@ -56,8 +56,9 @@ public class CollisionProjectile : DamagingWeaponSpawn
 
     [ShowIf(nameof(Event_ShowIf))]
     public UnityEvent<CollisionProjectile> projectileEvent;
-
     public float force = 15;
+
+    public Range randomInitialTorque = new(0f);
     #endregion
 
     #region Editor Functions
@@ -90,6 +91,7 @@ public class CollisionProjectile : DamagingWeaponSpawn
         if (gameObject.HasComponent(out Rigidbody2D r2d))
         {
             r2d.AddRelativeForce(new Vector2(force, 0), ForceMode2D.Impulse);
+            r2d.AddTorque(randomInitialTorque.Evaluate());
         }
     }
     

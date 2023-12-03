@@ -767,4 +767,50 @@ public static class VectorExt
     }
     #endregion
     #endregion
+
+    #region Calculations
+    /// <summary>
+    /// Calculate the theta required to hit a object located at <paramref
+    /// name="target"/>. Output is in radians.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="target"></param>
+    /// <param name="initialSpeed"></param>
+    /// <param name="useHighAngle"></param>
+    /// <returns></returns>
+    /// <exception cref="System.ArgumentException"></exception>
+    public static float ProjectileMotionAngle2D(Vector2 from, Vector2 target,
+        float initialSpeed, bool useHighAngle = false)
+    {
+        float v = initialSpeed, g = -Physics2D.gravity.y;
+        float x = from.x - target.x;
+        float y = from.y - target.y;
+
+        float v2 = v * v;
+        float at2 = Mathf.Sqrt(Mathf.Pow(v, 4) - g * (g * x * x + 2 * y * v * v));
+        float gx = g * x;
+
+        float theta;
+
+        if (useHighAngle)
+        {
+            theta = Mathf.Atan((v2 + at2) / gx); 
+        }
+        else
+        {
+            theta = Mathf.Atan((v2 - at2) / gx);
+        }
+
+        //Debug.Log($"t1: {theta}     t2: {theta2}");
+
+        if (float.IsNaN(theta))
+        {
+            return x > 0 ? Mathf.PI / 4 : 3 * Mathf.PI / 4;
+        }
+        else
+        {
+            return theta;
+        }
+    }
+    #endregion
 }

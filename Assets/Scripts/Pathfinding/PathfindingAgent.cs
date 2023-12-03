@@ -126,6 +126,8 @@ public class PathfindingAgent : MonoBehaviour
 
     public Vector3 NextNodeWorldPosition => PathfindingManager.Instance
         .CellToWorld(NextNode.Value);
+
+    public Vertex<Vector3Int> FinalNode => CurrentPath[FinalToken.GridPosition];
     #endregion
 
     #region MonoBehavior Functions
