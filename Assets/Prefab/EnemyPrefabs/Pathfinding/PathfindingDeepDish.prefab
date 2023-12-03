@@ -338,7 +338,6 @@ MonoBehaviour:
   weaponIndex: 0
   characterAnimator: {fileID: 879536357}
   animParamFire: 
-  isGrappling: 0
 --- !u!1 &4655716731726255398
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +490,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41c3ddcf45ddc58a6fbfc0ff74140c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6765523511792413516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5140571993268861221}
+  - component: {fileID: 3675858071722865303}
+  - component: {fileID: 2394432042801294290}
+  m_Layer: 10
+  m_Name: Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5140571993268861221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765523511792413516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -54.345734, y: -4.034124, z: 0}
+  m_LocalScale: {x: 0.616, y: 0.616, z: 1.232}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7148419337918994598}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3675858071722865303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765523511792413516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f8375e61b610969a9fa4060cd04f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  dropTable:
+    elements:
+    - selection: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
+      probability: 0.25
+  maxForce: 2
+--- !u!114 &2394432042801294290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765523511792413516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32143a7c91d3e451cb4f3ec1f2c52bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
 --- !u!1 &7148419337918994584
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +594,7 @@ Transform:
   - {fileID: 8518071697341318912}
   - {fileID: 4055369042958954585}
   - {fileID: 6919027893201886674}
+  - {fileID: 5140571993268861221}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
