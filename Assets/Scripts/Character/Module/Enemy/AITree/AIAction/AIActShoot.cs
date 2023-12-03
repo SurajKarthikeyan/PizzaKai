@@ -6,7 +6,11 @@ public class AIActShoot : AIAction
     #region Variables
     [SerializeField]
     [Tooltip("If true, start reloading when exiting the action.")]
-    private bool reloadOnExit; 
+    private bool reloadOnExit;
+
+    [SerializeField]
+    [Tooltip("If true, consider gravity.")]
+    private bool projectilesHaveGravity;
     #endregion
 
     #region Action Implementation
@@ -16,6 +20,12 @@ public class AIActShoot : AIAction
 
         if (wmm)
         {
+            if (wmm.CurrentWeapon.bullet is CollisionProjectile cp)
+            {
+                float v_0_2 = cp.force * cp.force;
+                
+            }
+
             StartCoroutine(Aiming_CR(enemy, target));
 
             wmm.PressWeaponTrigger();

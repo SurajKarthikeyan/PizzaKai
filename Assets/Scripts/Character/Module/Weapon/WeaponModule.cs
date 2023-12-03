@@ -223,7 +223,7 @@ public class WeaponModule : Module
 
             if (!hasAlting)
             {
-                weaponAnimator.SetBool(
+                weaponAnimator.TrySetBool(
                     animFiringBool,
                     InputState == WeaponInputState.Alting
                 );

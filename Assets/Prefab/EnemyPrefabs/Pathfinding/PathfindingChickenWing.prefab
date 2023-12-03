@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   reloadOnExit: 1
+  projectilesHaveGravity: 1
 --- !u!1 &1195072301350445198
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4570836332380975504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.76825, y: 9.62875, z: 0}
+  m_LocalPosition: {x: -0.216, y: 0.321, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -654,7 +655,6 @@ MonoBehaviour:
   weaponID: Molotov
   inputState: 0
   weaponAnimator: {fileID: 0}
-  playerAnimator: {fileID: 0}
   animFiringBool: 
   animAltingBool: 
   animReloadingBool: 
@@ -662,7 +662,7 @@ MonoBehaviour:
   firingClip: {fileID: 0}
   altingClip: {fileID: 0}
   reloadClip: {fileID: 0}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 8414278677506830547}
   autofire: 1
   firstShotAccurate: 1
   firingDelay:

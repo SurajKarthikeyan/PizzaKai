@@ -42,21 +42,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public Character Player
     {
-        get => player;
-        set
+        get
         {
+            if (player && player)
+                return player;
+
+            // Find player.
+            player = null;
+            var pcm = FindObjectOfType<PlayerControlModule>();
+
+            if (pcm)
+                player = pcm.Master;
+
             if (player)
             {
-                throw new System.InvalidOperationException(
-                    "Cannot have multiple players!"
-                );
-            }
-            else
-            {
-                player = value;
                 player.RequireComponentInChildren(out playerWeaponMaster);
                 player.RequireComponent(out playerMovement);
             }
+
+            return player;
         }
     }
 
