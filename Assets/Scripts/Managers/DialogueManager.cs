@@ -23,9 +23,9 @@ public class DialogueManager : MonoBehaviour
     #region Variables
     public Flowchart levelFlowchart;
 
-    public CharacterMovementModule player;
+    private CharacterMovementModule player;
 
-    public WeaponMasterModule weaponMasterModule;
+    private WeaponMasterModule weaponMasterModule;
 
     public TextMeshProUGUI toolTipText;
 
@@ -41,6 +41,8 @@ public class DialogueManager : MonoBehaviour
         {
             instance = this;
         }
+        player = GameManager.Instance.Player.gameObject.GetComponent<CharacterMovementModule>();
+        weaponMasterModule = player.gameObject.transform.GetComponentInChildren<WeaponMasterModule>();
     }
 
     public void StopPlayer(bool stopPlayer)
