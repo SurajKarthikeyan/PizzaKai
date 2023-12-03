@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Controls weapon switching, aiming, etc for the player.
@@ -26,6 +27,20 @@ public class WeaponMasterModule : Module
     [AnimatorParam(nameof(characterAnimator), AnimatorControllerParameterType.Bool)]
     [SerializeField]
     private string animParamFire;
+    #endregion
+
+    #region Events
+    /// <summary>
+    /// Called when the master module switches to the provided weapon. This is
+    /// called after <see cref="onSwitchFromWeapon"/>.
+    /// </summary>
+    public UnityEvent<WeaponModule> onSwitchToWeapon = new();
+
+    /// <summary>
+    /// Called when the master module switches from the provided weapon. This is
+    /// called before <see cref="onSwitchToWeapon"/>.
+    /// </summary>
+    public UnityEvent<WeaponModule> onSwitchFromWeapon = new();
     #endregion
 
     #region Properties
@@ -213,8 +228,10 @@ public class WeaponMasterModule : Module
     /// within range of <see cref="weapons"/>.</param>
     public void SwitchToWeapon(int index)
     {
+        onSwitchFromWeapon.Invoke(CurrentWeapon);
         weaponIndex = index.WrapAroundLength(weapons);
         EnableCurrentWeapon();
+        onSwitchToWeapon.Invoke(CurrentWeapon);
     }
 
     /// <summary>

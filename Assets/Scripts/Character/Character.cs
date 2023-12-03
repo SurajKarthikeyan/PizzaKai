@@ -107,6 +107,8 @@ public sealed class Character : MonoBehaviour
         }
     }
 
+    public float HPPercent => (float)HP / maxHP;
+
     private List<Module> Modules { get; set; } = new();
     #endregion
 
