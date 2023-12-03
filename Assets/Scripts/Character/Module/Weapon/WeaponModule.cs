@@ -80,9 +80,6 @@ public class WeaponModule : Module
     [Tooltip("The animator for the weapon")]
     public Animator weaponAnimator;
 
-    [Tooltip("The animator for the player")]
-    public Animator playerAnimator;
-
     [Tooltip("The name of the animation parameter that controls firing.")]
     [AnimatorParam(nameof(weaponAnimator), AnimatorControllerParameterType.Bool)]
     public string animFiringBool;
@@ -214,7 +211,7 @@ public class WeaponModule : Module
                 PrimaryTriggerDown
             );
 
-            playerAnimator.TrySetBool(
+            Master.characterAnimator.TrySetBool(
                 animFiringBool,
                 PrimaryTriggerDown
             );
