@@ -41,6 +41,7 @@ public abstract class DeathModule : Module
 
             if (delay > 0)
             {
+                Master.characterAnimator.SetBool("Death", true);
                 Invoke(nameof(OnDeath), delay);
             }
             else
