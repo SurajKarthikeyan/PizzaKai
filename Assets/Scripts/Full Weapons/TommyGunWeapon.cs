@@ -14,14 +14,8 @@ public class TommyGunWeapon : WeaponModule
 {
     #region Variables
     [Header("Alt Fire Settings")]
-    [Tooltip("Point from which tommy flash starts")]
-    public Transform playerTransform;
-
     [Tooltip("Time between alt fire shots")] [SerializeField]
     private float altWaitBetweenShots;
-
-    [Tooltip("Damage done by the tommy alt flash")]
-    public int altFireDamage = 20;
 
     #endregion
 

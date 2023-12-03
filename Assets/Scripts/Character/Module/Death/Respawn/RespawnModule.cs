@@ -48,11 +48,6 @@ public class RespawnModule : DeathModule
             weaponMaster.gameObject.SetActive(true);
         }
         
-    } 
-
-    protected override void StartDeath()
-    {
-        base.StartDeath();
     }
     #endregion
 }
