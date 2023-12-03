@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2770841203617395347}
   - component: {fileID: 2770841203617395345}
   - component: {fileID: 2770841203617395344}
+  - component: {fileID: 821339433412322537}
   m_Layer: 7
   m_Name: PlayerFlameRightArm
   m_TagString: PlayerArm
@@ -311,7 +312,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 647b218be81d9ec4281a899afed099a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -363,3 +364,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &821339433412322537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770841203617395346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18786d415c8044e4bb1686c3475bd6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flamethrowerHand: {fileID: 2100000, guid: 647b218be81d9ec4281a899afed099a9, type: 2}
+  shootIdleEmission: {fileID: 2800000, guid: 86f3b840a3093be499702057d69b8d96, type: 3}
+  reloadEmission: {fileID: 2800000, guid: 0e713df66ce66c244b88b8513a3463dd, type: 3}

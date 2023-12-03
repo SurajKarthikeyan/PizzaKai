@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4342418668238935988}
   - component: {fileID: 4342418668238935986}
   - component: {fileID: 4342418668238935989}
+  - component: {fileID: 288040970141274395}
   m_Layer: 7
   m_Name: PlayerShotgunLeftArm
   m_TagString: Untagged
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &288040970141274395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342418668238935991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotgunRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
+  idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!1 &4342418669355325832
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +303,7 @@ GameObject:
   - component: {fileID: 4342418669709362197}
   - component: {fileID: 4342418669316601403}
   - component: {fileID: 5164988763456788806}
+  - component: {fileID: 5255994677955076806}
   m_Layer: 7
   m_Name: PlayerShotgunRightArm
   m_TagString: Untagged
@@ -328,7 +346,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -392,6 +410,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be31a49bcf9d33d73a0c809132f4d2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5255994677955076806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342418669709362199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4e454062f61cc46a734764d7d92be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotgunRightHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shotgunLeftHand: {fileID: 2100000, guid: 63a52a92c0ad46340b5b480d68ce1e2d, type: 2}
+  shootEmission: {fileID: 2800000, guid: 88765d3495023114c9f56373c24a09e6, type: 3}
+  idleEmission: {fileID: 2800000, guid: 510f43669d167a54196444b8b9736051, type: 3}
 --- !u!1 &4342418669924086010
 GameObject:
   m_ObjectHideFlags: 0
