@@ -79,4 +79,12 @@ public class GameManager : MonoBehaviour
     {
         this.InstantiateSingleton(ref instance, false);
     }
+
+    private void Start()
+    {
+        if (player)
+        {
+            player.transform.position = GameObject.Find("StartingRespawnPoint").transform.position;
+        }
+    }
 }
