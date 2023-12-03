@@ -46,14 +46,14 @@ public class UIManager : MonoBehaviour
 
     [Tooltip("Image containing the ammo UI element")]
     public Image ammoUI;
-
-    public WeaponMasterModule weaponMaster;
-
-    private WeaponModule currentWeapon;
     #endregion
 
     #region Properties
     private Character Player => GameManager.Instance.Player;
+
+    public WeaponMasterModule WeaponMaster => GameManager.Instance.PlayerWeapons;
+
+    public WeaponModule CurrentWeapon => WeaponMaster.CurrentWeapon;
     #endregion
 
     #region Init
@@ -64,18 +64,19 @@ public class UIManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //Sets current scene variables
         Time.timeScale = 1;
-
         pauseMenu.SetActive(false);
-
-        currentWeapon = weaponMaster.CurrentWeapon;
-
-        ammoUI.sprite = currentWeapon.weaponUIImage;
+        WeaponMaster.onSwitchToWeapon.AddListener(OnSwitchWeapon);
     }
     #endregion
+
+    private void OnSwitchWeapon(WeaponModule weapon)
+    {
+        ammoUI.sprite = weapon.weaponUIImage;
+    }
 
     #region Main Loop
     // Update is called once per frame
@@ -84,35 +85,20 @@ public class UIManager : MonoBehaviour
         //Check if instance is not null, if it is not, do update stuff
         if (instance != null)
         {
-            // //Caching the current weapon
-            if (weaponMaster.CurrentWeapon != currentWeapon)
-            {
-                currentWeapon = weaponMaster.CurrentWeapon;
-                //Sets weapon UI when weapon is re-cached
-                ammoUI.sprite = currentWeapon.weaponUIImage;
-            }
+            // Alt fire slider
+            altSlider.value = CurrentWeapon.altFireDelay.Percent;
 
-            //Alt fire slider
-            if (currentWeapon.altFireDelay.IsDone)
-            {
-                altSlider.value = 1f;
-            }
-            else
-            {
-                altSlider.value = currentWeapon.altFireDelay.elapsed / currentWeapon.altFireDelay.maxTime;
-            }
+            // Health
+            healthSlider.value = Player.HPPercent;
 
-
-            //Sets ammo count and health
-
-            healthSlider.value = Player.HP / (float)Player.maxHP;
-
-            ammoCount.text = currentWeapon.currentAmmo.ToString() + "/" + currentWeapon.ammoCount.ToString();
+            // Sets ammo count
+            ammoCount.text = CurrentWeapon.currentAmmo.ToString() + "/" + CurrentWeapon.ammoCount.ToString();
 
             if (healthSlider.value == 0)
             {
                 healthSlider.value = 1;
             }
+            
             if (!GameManager.Instance.PlayerMovement.dashCooldown.IsDone)
             {
                 DashFill();

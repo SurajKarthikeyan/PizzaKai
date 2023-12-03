@@ -45,7 +45,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StopPlayer(bool stopPlayer)
     {
-
         if (stopPlayer)
         {
             player.Master.r2d.velocity = new Vector2(0, player.Master.r2d.velocity.y);

@@ -48,10 +48,6 @@ public class SimpleProjectile : DamagingWeaponSpawn
     private Duration lifetime;
 
     private ContactFilter2D contactFilter;
-
-    private bool collidingWithRichochetSurface;
-
-    
     #endregion
 
     #region Properties
