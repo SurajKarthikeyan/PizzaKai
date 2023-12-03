@@ -8,7 +8,7 @@ public class RespawnModule : DeathModule
     [ReadOnly]
     public Transform lastRespawnPoint;
 
-    private Vector3 initialPosition; 
+    private Vector3 initialPosition;
     #endregion
 
     #region Properties
@@ -35,19 +35,17 @@ public class RespawnModule : DeathModule
         initialPosition = transform.position;
     }
 
+    protected override void StartDeath()
+    {
+        // Need to play the death animation here.
+        Master.characterAnimator.Play("PizzaGuy_Idle");
+        base.StartDeath();
+    }
+
     protected override void OnDeath()
     {
-        if (!ranDeathAction)
-        {
-            Debug.Log("Hey You're in respawnOnDeath");
-            ranDeathAction = true;
-            Master.transform.position = RespawnPosition;
-            Master.Revive();
-            Master.characterAnimator.Play("PizzaGuy_Idle");
-            DialogueManager.Instance.StopPlayer(false);
-            weaponMaster.gameObject.SetActive(true);
-        }
-        
+        Debug.Log("Hey You're in respawnOnDeath");
+        Master.Revive(RespawnPosition);
     }
     #endregion
 }

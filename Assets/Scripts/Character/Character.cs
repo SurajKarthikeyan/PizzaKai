@@ -283,6 +283,13 @@ public sealed class Character : MonoBehaviour
         onCharacterRevive.Invoke();
     }
 
+    /// <inheritdoc cref="Revive()"/>
+    public void Revive(Vector3 position)
+    {
+        Revive();
+        transform.position = position;
+    }
+
     /// <summary>
     /// Kills the character by dealing maximum damage.
     /// </summary>

@@ -30,7 +30,7 @@ public abstract class DeathModule : Module
         weaponMaster = Master.weaponMasterModule;
     }
 
-    protected void StartDeath()
+    protected virtual void StartDeath()
     {
         if (!ranDeathAction)
         {
@@ -56,7 +56,7 @@ public abstract class DeathModule : Module
     /// </summary>
     protected abstract void OnDeath();
 
-    protected void StartRevive()
+    protected virtual void StartRevive()
     {
         if (ranDeathAction)
         {

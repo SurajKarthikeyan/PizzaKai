@@ -76675,7 +76675,8 @@ PrefabInstance:
       propertyPath: animParamDeath
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8019257334451026239, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
 --- !u!82 &944532966 stripped
 AudioSource:
@@ -94042,6 +94043,16 @@ MonoBehaviour:
       - key: {x: 6, y: 0, z: 0}
         value: 0
       - key: {x: 8, y: 0, z: 0}
+        value: 0
+      - key: {x: -2, y: 0, z: 0}
+        value: 0
+      - key: {x: 0, y: 0, z: 0}
+        value: 0
+      - key: {x: 11, y: 0, z: 0}
+        value: 0
+      - key: {x: 12, y: 0, z: 0}
+        value: 0
+      - key: {x: 16, y: 0, z: 0}
         value: 0
     heuristic: 0
     sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
