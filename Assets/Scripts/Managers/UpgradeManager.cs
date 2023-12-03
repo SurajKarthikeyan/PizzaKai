@@ -21,7 +21,7 @@ public class UpgradeManager : MonoBehaviour
 
     private static int endingWeapon;
 
-    private WeaponMasterModule WMM;
+    private static WeaponMasterModule WMM;
 
     [Header("Upgrade Values")]
     [Tooltip("the amount of extra bullets the upgrade adds to the tommygun's magazine")]
@@ -55,10 +55,14 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
-        WMM = FindObjectOfType<WeaponMasterModule>();
+        
         if (WMM == null)
         {
-            Debug.LogWarning("No Weapon Master Module in Scene");
+            WMM = GameManager.Instance.Player.weaponMasterModule;
+            if(WMM == null)
+            {
+                Debug.LogWarning("No Weapon Master Module on the Player");
+            }
         }
         else
         {
@@ -157,6 +161,7 @@ public class UpgradeManager : MonoBehaviour
     public void RememberWeapon()
     {
         endingWeapon = WMM.weaponIndex;
+        print(endingWeapon);
     }
     
 }
