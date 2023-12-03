@@ -48,7 +48,7 @@ public class TommyGunWeapon : WeaponModule
         altFireDelay.Reset();
         PlayAudio();
         yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
-        Duration savedDelay = new Duration(firingDelay.maxTime);
+        Duration savedDelay = new(firingDelay.maxTime);
         firingDelay.maxTime = altWaitBetweenShots;
         //yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
