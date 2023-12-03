@@ -145,11 +145,6 @@ public sealed class Character : MonoBehaviour
 
         IsPlayer = this.HasComponentInChildren(out PlayerControlModule player);
 
-        if (IsPlayer)
-        {
-            GameManager.Instance.Player = player.Master;
-        }
-
         HP = maxHP;
     }
 

@@ -26,6 +26,7 @@ public class PlayerControlModule : Module
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         SetComponents();
     }
 

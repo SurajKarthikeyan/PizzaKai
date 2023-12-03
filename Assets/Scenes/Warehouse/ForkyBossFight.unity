@@ -916,6 +916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8206075540257416582, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
 --- !u!114 &143270068 stripped
@@ -5530,7 +5534,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 493893797}
   selectedCommands:
-  - {fileID: 493893870}
+  - {fileID: 493893865}
   variables:
   - {fileID: 493893821}
   description: 
