@@ -406,6 +406,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+--- !u!1 &4570836332380975504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5976570412651360954}
+  - component: {fileID: 5543245896995102778}
+  m_Layer: 7
+  m_Name: WeaponsMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5976570412651360954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570836332380975504}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.76825, y: 9.62875, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 8414278677506830547}
+  m_Father: {fileID: 7228773726619069323}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5543245896995102778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570836332380975504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c72c340e8b64a4691037bf203ed5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6717455336344610784}
+  weaponIndex: 0
+  characterAnimator: {fileID: 2132993595}
+  animParamFire: 
+  onSwitchToWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+  onSwitchFromWeapon:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4681998802287641549
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +607,80 @@ MonoBehaviour:
   - {fileID: 8576509585858642917}
   branches: []
   tree: {fileID: 0}
+--- !u!1 &6196909134821062503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8414278677506830547}
+  - component: {fileID: 6717455336344610784}
+  m_Layer: 7
+  m_Name: MolotovEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8414278677506830547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196909134821062503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5976570412651360954}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6717455336344610784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196909134821062503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c8f9f2fd1be3b409c231f9e2d435ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponID: Molotov
+  inputState: 0
+  weaponAnimator: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  animFiringBool: 
+  animAltingBool: 
+  animReloadingBool: 
+  weaponAudio: {fileID: 0}
+  firingClip: {fileID: 0}
+  altingClip: {fileID: 0}
+  reloadClip: {fileID: 0}
+  firePoint: {fileID: 0}
+  autofire: 1
+  firstShotAccurate: 1
+  firingDelay:
+    maxTime: 1
+    elapsed: 0
+  altFireDelay:
+    maxTime: 1
+    elapsed: 0
+  ammoCount: 10
+  currentAmmo: 0
+  reloadDelay:
+    maxTime: 1
+    elapsed: 0
+  bullet: {fileID: 6623532801780059504, guid: a2fb29c0441a458b78b598870d658478, type: 3}
+  weaponName: 
+  weaponAction: 
+  weaponUIImage: {fileID: 0}
+  altWaitBetweenShots: 0
 --- !u!1 &6388695323189409098
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +829,7 @@ Transform:
   - {fileID: 7228773726610405255}
   - {fileID: 1041364613841006779}
   - {fileID: 4907789597273526714}
+  - {fileID: 5976570412651360954}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
