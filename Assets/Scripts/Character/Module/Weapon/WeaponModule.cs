@@ -354,9 +354,11 @@ public class WeaponModule : Module
         // Reset timer.
         firingDelay.Reset();
 
+        weaponAction = WeaponAudioStrings.Shoot;
+
         PlayAudio();
 
-        weaponAction = WeaponAudioStrings.Shoot;
+        
         burstCount++;
         currentAmmo -= 1;
         bullet.Spawn(this);
@@ -391,7 +393,7 @@ public class WeaponModule : Module
     {
         InputState = WeaponInputState.Reloading;
         weaponAction = WeaponAudioStrings.Reload;
-
+        
         PlayAudio();
     }
 
@@ -414,7 +416,7 @@ public class WeaponModule : Module
     /// </summary>
     public virtual void PlayAudio()
     {
-        //AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);
+        AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);
     }
     #endregion
 
