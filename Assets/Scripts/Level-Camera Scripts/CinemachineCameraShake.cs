@@ -30,28 +30,26 @@ public class CinemachineCameraShake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraTransform = Camera.main.gameObject.transform;
         if (cineCamera == null)
         {
             cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
-            if (cineCamera != null)
+            if(cineCamera != null)
             {
                 cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
                 cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-
-                cameraTransform = Camera.main.gameObject.transform;
             }
         }
         else
         {
             cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-            cameraTransform = Camera.main.gameObject.transform;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cineCamera != null)
+        if (cineCamera != null && CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera != null)
         {
             if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
             {
