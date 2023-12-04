@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         weaponMaster = Player.gameObject.transform.GetComponentInChildren<WeaponMasterModule>();
         weaponMaster.onSwitchToWeapon.AddListener(OnSwitchWeapon);
+        ammoUI.sprite = weaponMaster.CurrentWeapon.weaponUIImage;
     }
     #endregion
 

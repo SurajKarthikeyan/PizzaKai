@@ -46,6 +46,7 @@ public class RespawnModule : DeathModule
     {
         Debug.Log("Hey You're in respawnOnDeath");
         Master.Revive(RespawnPosition);
+        Master.characterAnimator.SetBool("Death", false);
     }
     #endregion
 }

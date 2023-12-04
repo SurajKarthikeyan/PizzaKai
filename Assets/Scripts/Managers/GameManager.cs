@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,10 +84,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
-        if (playerGO)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            playerGO.transform.position = GameObject.Find("StartingRespawnPoint").transform.position;
+            GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+            if (playerGO)
+            {
+                playerGO.transform.position = GameObject.Find("StartingRespawnPoint").transform.position;
+            }
         }
     }
 }

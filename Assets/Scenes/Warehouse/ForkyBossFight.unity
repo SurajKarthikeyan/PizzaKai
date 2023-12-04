@@ -927,7 +927,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4442014443317022540, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_PrefabInstance: {fileID: 143270067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887413793}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2c72c340e8b64a4691037bf203ed5bf, type: 3}
@@ -5534,7 +5534,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 493893797}
   selectedCommands:
-  - {fileID: 493893865}
+  - {fileID: 493893885}
   variables:
   - {fileID: 493893821}
   description: 
@@ -6502,13 +6502,13 @@ MonoBehaviour:
   itemId: 153
   indentLevel: 1
   description: 
-  targetObject: {fileID: 887413793}
-  targetComponentAssemblyName: WeaponMasterModule, Assembly-CSharp, Version=0.0.0.0,
+  targetObject: {fileID: 1466162964}
+  targetComponentAssemblyName: DialogueManager, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: WeaponMasterModule
-  targetMethod: TryReload
-  targetMethodText: 'TryReload (): Void'
+  targetComponentText: DialogueManager
+  targetMethod: ReloadWeapon
+  targetMethodText: 'ReloadWeapon (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -7051,13 +7051,13 @@ MonoBehaviour:
   itemId: 178
   indentLevel: 1
   description: 
-  targetObject: {fileID: 1334946434}
-  targetComponentAssemblyName: DefaultFlipModule, Assembly-CSharp, Version=0.0.0.0,
+  targetObject: {fileID: 1466162964}
+  targetComponentAssemblyName: DialogueManager, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: DefaultFlipModule
-  targetMethod: SetFacingAngle
-  targetMethodText: 'SetFacingAngle (Single): Void'
+  targetComponentText: DialogueManager
+  targetMethod: SetPeppyFacing
+  targetMethodText: 'SetPeppyFacing (Single): Void'
   methodParameters:
   - objValue:
       typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
@@ -82702,11 +82702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1d6dd89c2df4e4bab64a0fb6a44d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &887413793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7850547928190316883, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-  m_PrefabInstance: {fileID: 143270067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919527827
 GameObject:
   m_ObjectHideFlags: 0
@@ -85816,17 +85811,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1334946434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8206075540257416582, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
-  m_PrefabInstance: {fileID: 143270067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1334946437 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6979568082248114104, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_PrefabInstance: {fileID: 143270067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334946434}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c87618cd6f0814479110d9243d2ba55, type: 3}

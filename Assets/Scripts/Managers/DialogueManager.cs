@@ -84,4 +84,14 @@ public class DialogueManager : MonoBehaviour
     {
         camera.GetComponent<CinemachineVirtualCamera>().enabled = activateCam;
     }
+
+    public void SetPeppyFacing(float theta)
+    {
+        player.gameObject.GetComponent<DefaultFlipModule>().SetFacingAngle(theta);
+    }
+
+    public void ReloadWeapon()
+    {
+        weaponMasterModule.TryReload();
+    }
 }
