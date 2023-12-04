@@ -225,7 +225,7 @@ public class WeaponModule : Module
             {
                 weaponAnimator.TrySetBool(
                     animFiringBool,
-                    InputState == WeaponInputState.Alting
+                    InputState == WeaponInputState.Alting || PrimaryTriggerDown
                 );
             }
 
@@ -278,6 +278,8 @@ public class WeaponModule : Module
             // Done reloading.
             RefillAmmo();
         }
+
+
     }
     #endregion
 
@@ -298,7 +300,8 @@ public class WeaponModule : Module
             WeaponInputState.FiringHeld :
             WeaponInputState.FiringSingle;
 
-        return TryFireProjectile();
+
+            return TryFireProjectile();
     }
 
     /// <summary>
@@ -379,7 +382,7 @@ public class WeaponModule : Module
 
     public virtual void AltFireKeyUp()
     {
-
+        
     }
 
     #endregion
