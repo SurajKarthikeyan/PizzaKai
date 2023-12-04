@@ -209,7 +209,7 @@ public class WeaponModule : Module
             weaponAnimator.TrySetBool(
                 animFiringBool,
                 PrimaryTriggerDown
-            );
+            ) ;
 
             Master.characterAnimator.TrySetBool(
                 animFiringBool,
@@ -220,8 +220,8 @@ public class WeaponModule : Module
                 animAltingBool,
                 InputState == WeaponInputState.Alting
             );
-
-            if (!hasAlting)
+           
+            if (!hasAlting && InputState == WeaponInputState.Alting)
             {
                 weaponAnimator.TrySetBool(
                     animFiringBool,
@@ -382,7 +382,11 @@ public class WeaponModule : Module
 
     public virtual void AltFireKeyUp()
     {
+<<<<<<< Updated upstream
         
+=======
+        InputState = WeaponInputState.Idle;
+>>>>>>> Stashed changes
     }
 
     #endregion
