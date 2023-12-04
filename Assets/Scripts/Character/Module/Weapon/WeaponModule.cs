@@ -382,11 +382,8 @@ public class WeaponModule : Module
 
     public virtual void AltFireKeyUp()
     {
-<<<<<<< Updated upstream
-        
-=======
         InputState = WeaponInputState.Idle;
->>>>>>> Stashed changes
+
     }
 
     #endregion
