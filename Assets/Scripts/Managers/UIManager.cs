@@ -46,14 +46,20 @@ public class UIManager : MonoBehaviour
 
     [Tooltip("Image containing the ammo UI element")]
     public Image ammoUI;
+
+    private Character Player => GameManager.Instance.Player;
+
+    private WeaponMasterModule weaponMaster;
+
+    public WeaponModule CurrentWeapon => weaponMaster.CurrentWeapon;
     #endregion
 
     #region Properties
-    private Character Player => GameManager.Instance.Player;
+    //private Character Player => GameManager.Instance.Player;
 
-    public WeaponMasterModule WeaponMaster => GameManager.Instance.PlayerWeapons;
+    //public WeaponMasterModule WeaponMaster => GameManager.Instance.PlayerWeapons;
 
-    public WeaponModule CurrentWeapon => WeaponMaster.CurrentWeapon;
+    //public WeaponModule CurrentWeapon => WeaponMaster.CurrentWeapon;
     #endregion
 
     #region Init
@@ -69,7 +75,8 @@ public class UIManager : MonoBehaviour
         //Sets current scene variables
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
-        WeaponMaster.onSwitchToWeapon.AddListener(OnSwitchWeapon);
+        weaponMaster = Player.gameObject.transform.GetComponentInChildren<WeaponMasterModule>();
+        weaponMaster.onSwitchToWeapon.AddListener(OnSwitchWeapon);
     }
     #endregion
 

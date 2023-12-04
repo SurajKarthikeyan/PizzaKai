@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 4216788931708193480}
   - component: {fileID: 4708559427818300093}
   - component: {fileID: 5774588144130074580}
+  - component: {fileID: 3830462360191178971}
   m_Layer: 10
   m_Name: PathfindingDeepDish
   m_TagString: Enemy
@@ -845,6 +846,23 @@ MonoBehaviour:
   movement: {fileID: 4216788931708193480}
   pathAgent: {fileID: 4708559427818300093}
   decisionTree: {fileID: 890056536857304926}
+--- !u!114 &3830462360191178971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148419337918994584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145b9ff1b0e9e6e81a043332765a7efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 128
+  damage:
+    initialValue: 10
 --- !u!1 &7172342250406939978
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   reloadOnExit: 0
+  projectilesHaveGravity: 0
 --- !u!1001 &1517439603524695395
 PrefabInstance:
   m_ObjectHideFlags: 0
