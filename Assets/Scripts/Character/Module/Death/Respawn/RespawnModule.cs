@@ -37,16 +37,22 @@ public class RespawnModule : DeathModule
 
     protected override void StartDeath()
     {
-        // Need to play the death animation here.
-        Master.characterAnimator.Play("PizzaGuy_Idle");
         base.StartDeath();
     }
 
     protected override void OnDeath()
     {
-        Debug.Log("Hey You're in respawnOnDeath");
-        Master.Revive(RespawnPosition);
-        Master.characterAnimator.SetBool("Death", false);
+        if (!ranDeathAction)
+        {
+            Debug.Log("Hey You're in respawnOnDeath");
+            ranDeathAction = true;
+            Master.transform.position = RespawnPosition;
+            Master.Revive();
+            Master.characterAnimator.Play("PizzaGuy_Idle");
+            DialogueManager.Instance.StopPlayer(false);
+            weaponMaster.gameObject.SetActive(true);
+        }
+
     }
     #endregion
 }

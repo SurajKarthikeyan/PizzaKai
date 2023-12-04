@@ -27,28 +27,59 @@ public abstract class DeathModule : Module
 
         Master.onCharacterDeath.AddListener(StartDeath);
         Master.onCharacterRevive.AddListener(StartRevive);
-        weaponMaster = Master.weaponMasterModule;
+        if (Master.gameObject.CompareTag("Player"))
+        {
+            weaponMaster = Master.gameObject.transform.GetComponentInChildren<WeaponMasterModule>();
+        }
+        else
+        {
+            weaponMaster = Master.weaponMasterModule;
+        }
+            
     }
 
     protected virtual void StartDeath()
     {
-        if (!ranDeathAction)
+        if (Master.gameObject.CompareTag("Player"))
         {
-            ranDeathAction = true;
-
-            if (Master.weaponMasterModule)
-                Master.weaponMasterModule.gameObject.SetActive(false);
-
-            if (delay > 0)
+            if (!ranDeathAction)
             {
-                Master.characterAnimator.SetBool("Death", true);
-                Invoke(nameof(OnDeath), delay);
-            }
-            else
-            {
-                OnDeath();
+                if (delay > 0)
+                {
+                    //Debug.Log("Invoking ondeath");
+                    Master.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    DialogueManager.Instance.StopPlayer(true);
+                    Invoke(nameof(OnDeath), delay);
+                }
+                else
+                {
+                    //Debug.Log("First run");
+                    weaponMaster.gameObject.SetActive(false);
+                    Master.characterAnimator.Play("PlayerDeath");
+                }
             }
         }
+        else
+        {
+            if (!ranDeathAction)
+            {
+                ranDeathAction = true;
+
+                if (Master.weaponMasterModule)
+                    Master.weaponMasterModule.gameObject.SetActive(false);
+
+                if (delay > 0)
+                {
+                    Master.characterAnimator.SetBool("Death", true);
+                    Invoke(nameof(OnDeath), delay);
+                }
+                else
+                {
+                    OnDeath();
+                }
+            }
+        }
+        
     }
 
     /// <summary>
