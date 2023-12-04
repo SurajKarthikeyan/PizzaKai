@@ -76625,11 +76625,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 95.8
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 8206075540257416576, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -80014,7 +80014,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 71.010025
     y: 205.41623
-    width: 135.41768
+    width: 140.88391
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -81012,8 +81012,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 64
-    y: -6.060149
-    width: 138.26492
+    y: -7.3259716
+    width: 144.9686
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -81443,7 +81443,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 64.71869
     y: 275.64615
-    width: 161.04297
+    width: 169.47662
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -81532,7 +81532,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 64.52053
     y: 57.69777
-    width: 139.21402
+    width: 145.98976
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -81575,11 +81575,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 191.67276, y: 130.91771}
+  scrollPos: {x: 118.878265, y: -174.91463}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 347.9748
-  zoom: 0.85000014
+  zoom: 0.7900002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -81587,8 +81587,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 993676683}
-  selectedCommands: []
+  - {fileID: 993676658}
+  selectedCommands:
+  - {fileID: 993676642}
   variables:
   - {fileID: 993676664}
   - {fileID: 993676646}
@@ -81645,7 +81646,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 58.276764
     y: 131.8434
-    width: 159.1448
+    width: 165.39194
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -82245,7 +82246,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 76.09541
     y: 344.79514
-    width: 118.33414
+    width: 123.52407
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -94039,16 +94040,6 @@ MonoBehaviour:
       - key: {x: 6, y: 0, z: 0}
         value: 0
       - key: {x: 8, y: 0, z: 0}
-        value: 0
-      - key: {x: -2, y: 0, z: 0}
-        value: 0
-      - key: {x: 0, y: 0, z: 0}
-        value: 0
-      - key: {x: 11, y: 0, z: 0}
-        value: 0
-      - key: {x: 12, y: 0, z: 0}
-        value: 0
-      - key: {x: 16, y: 0, z: 0}
         value: 0
     heuristic: 0
     sectionIDSerialized: 4280c972-aad2-4e9e-9908-3e4ff4c1af5b
@@ -117417,7 +117408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de156963cf5c4b45b9baf4f149729f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBlock: TommyGunTutorial
+  dialogueBlock: WeaponTutorial
 --- !u!4 &1938000227
 Transform:
   m_ObjectHideFlags: 0
@@ -120335,7 +120326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de156963cf5c4b45b9baf4f149729f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBlock: TommyGunTutorial
+  dialogueBlock: DropThroughTutorial
 --- !u!4 &2032003760
 Transform:
   m_ObjectHideFlags: 0

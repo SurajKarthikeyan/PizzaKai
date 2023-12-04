@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
         {
             instance = this;
         }
-        player = GameManager.Instance.Player.gameObject.GetComponent<CharacterMovementModule>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovementModule>();
         weaponMasterModule = player.gameObject.transform.GetComponentInChildren<WeaponMasterModule>();
     }
 
