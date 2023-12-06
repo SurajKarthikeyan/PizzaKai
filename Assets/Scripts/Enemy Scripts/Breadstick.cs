@@ -11,6 +11,9 @@ public class Breadstick : EnemyBasic
     public float sizeScale = 0.5f;
     public int stickSplit = 2;
 
+    //a bool to keep the cript from running death methods multiple times before actually deleting itself
+    private bool actuallyDead;
+
     public AudioSource breadDead;
 
     public AudioSource breadAttack;
@@ -40,6 +43,8 @@ public class Breadstick : EnemyBasic
         }
         */
 
+        if (actuallyDead)
+            return;
         if (currentHP <= 0)
         {
             deathState = true;
@@ -59,6 +64,7 @@ public class Breadstick : EnemyBasic
                     stick.originalPos = originalPos + new Vector3(i, 0, 0);
                     stick.size--;
                 }
+                actuallyDead = true;
             }
             else
             {
@@ -76,6 +82,7 @@ public class Breadstick : EnemyBasic
                         hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
                     }
                 }
+                actuallyDead = true;
             }
             hasSpawned = true;
             Destroy(gameObject, 0.5f);
