@@ -205,7 +205,7 @@ public class EnemyBasic : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Character player = col.gameObject.GetComponent<Character>();
-            player.TakeDamage(enemyDamage);
+            player.TakeDamage(enemyDamage, col.GetContact(0).point);
   
         }
     }

@@ -193,22 +193,26 @@ public sealed class Character : MonoBehaviour
             HP -= damage;
             damageInvulnerability.Reset();
         }
-
-        if (IsPlayer)
-        {
-            PlayerKnockback();
-        }
     }
-
     /// <summary>
     /// Take damage with knockback.
     /// </summary>
     /// <inheritdoc cref="TakeConstantDamage(int, Vector2, string)"/>
-    public void TakeDamage(int damage, Vector2 knockback)
+    public void TakeDamage(int damage, Vector2 damageFrom)
     {
-        TakeDamage(damage);
-        r2d.AddForce(knockback * knockbackMultiplier, ForceMode2D.Impulse);
+        if (damageInvulnerability.IsDone)
+        {
+            HP -= damage;
+            damageInvulnerability.Reset();
+        }
+
+        if (IsPlayer && HP > 0)
+        {
+            Vector2 knockbackDir = c2d.bounds.center.ToVector2() - damageFrom;
+            PlayerKnockback(knockbackDir.normalized);
+        }
     }
+    
 
     /// <summary>
     /// Heals the character by a specific amount.
@@ -236,10 +240,10 @@ public sealed class Character : MonoBehaviour
         TakeDamage(int.MaxValue);
     }
 
-    private void PlayerKnockback()
+    private void PlayerKnockback(Vector2 knockbackVector)
     {
-        Vector2 knockbackVector = new Vector2(r2d.velocity.x, r2d.velocity.y).normalized;
-        r2d.velocity *= knockbackVector;
+        knockbackVector.y *= 0.5f;
+        r2d.AddForce( knockbackVector * knockbackMultiplier, ForceMode2D.Impulse);
     }
 
     private void UpdateDeathAnim()
