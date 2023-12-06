@@ -31,9 +31,6 @@ public class DialogueManager : MonoBehaviour
 
     public Image toolTipImage;
 
-    //WHEN MANIPULATING/ACCESSING TRANSFORM OF SAY DIALOG DO IT THROUGH ITS PANEL
-    public Transform saydialog;
-
     #endregion
     // Start is called before the first frame update
     void Start()
