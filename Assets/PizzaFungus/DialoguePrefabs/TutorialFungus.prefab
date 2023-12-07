@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 1451473468515931848}
   - component: {fileID: 1451473468515931863}
   - component: {fileID: 1451473468515931861}
-  - component: {fileID: 1451473468515931860}
   - component: {fileID: 1451473468515931866}
   - component: {fileID: 1451473468515931853}
   - component: {fileID: 1451473468515931851}
@@ -231,7 +230,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1451473468515931806}
   selectedCommands:
-  - {fileID: 1451473468515931807}
+  - {fileID: 0}
   variables:
   - {fileID: 1451473468515931648}
   - {fileID: 1451473468515931678}
@@ -3251,7 +3250,7 @@ MonoBehaviour:
   - {fileID: 1451473468515931863}
   - {fileID: 1451473468515931861}
   - {fileID: 1451473468515931822}
-  - {fileID: 1451473468515931860}
+  - {fileID: 0}
   - {fileID: 1451473468515931809}
   - {fileID: 1451473468515931804}
   - {fileID: 1451473468515931803}
@@ -3758,34 +3757,6 @@ MonoBehaviour:
   indentLevel: 1
   storyText: Getting over this gap may be difficult without sustaining massive damage.
     Peppy my boy, try dashing over it!
-  description: 
-  character: {fileID: 638782977480594021}
-  portrait: {fileID: 21300000, guid: 19d1dcb881c7a284d9929b9086e356bb, type: 3}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 0
-  waitForClick: 0
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1451473468515931860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451473468515931709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 145
-  indentLevel: 1
-  storyText: 'You can dash with the left shift key. Simply press it while moving
-    in a direction and you will gain a burst of speed while your dash gauge is full. '
   description: 
   character: {fileID: 638782977480594021}
   portrait: {fileID: 21300000, guid: 19d1dcb881c7a284d9929b9086e356bb, type: 3}

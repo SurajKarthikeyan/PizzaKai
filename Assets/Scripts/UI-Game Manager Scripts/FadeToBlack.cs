@@ -35,7 +35,7 @@ public class FadeToBlack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.CompareTag("Player"))
             contact = true;
     }
 
@@ -77,5 +77,12 @@ public class FadeToBlack : MonoBehaviour
         {
             fadeDone = true;
         }
+    }
+
+    public void Reset(bool fadingIn)
+    {
+        contact = false;
+        fadeIn = fadingIn;
+        fadeDone = false;
     }
 }
