@@ -158,6 +158,7 @@ public class SimpleProjectile : DamagingWeaponSpawn
                             if (collider.gameObject.CompareTag("BossForky"))
                             {
                                 BossManager.instance.bulletsReflected++;
+                                AudioDictionary.aDict.PlayAudioClip("forkyDeflect", AudioDictionary.Source.Deflect);
                             }
                         }
                         else
