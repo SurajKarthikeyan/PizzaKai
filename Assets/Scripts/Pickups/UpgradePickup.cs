@@ -1,15 +1,20 @@
 using UnityEngine;
 public class UpgradePickup : Pickup
 {
+
+    #region Vars
     public enum eUpgrade
     {
         Tommygun, Shotgun, Flamethrower, Sniper, none
     }
 
     public eUpgrade upgradeType = eUpgrade.none;
+    #endregion
 
+    #region Methods
     protected override bool ReceiveCharacter(Character character)
     {
+        AudioDictionary.aDict.PlayAudioClip("upgradePickup", AudioDictionary.Source.Pickup);
         switch (upgradeType)
         {
             case eUpgrade.Tommygun:
@@ -29,4 +34,5 @@ public class UpgradePickup : Pickup
                 return false;
         }
     }
+    #endregion
 }

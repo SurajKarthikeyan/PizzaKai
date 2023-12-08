@@ -524,6 +524,134 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &884402921168305001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2901788867098057573}
+  - component: {fileID: 1212692183401869021}
+  m_Layer: 7
+  m_Name: deflectSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2901788867098057573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884402921168305001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9177489923707052550}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1212692183401869021
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884402921168305001}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &980473026079681235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1152,7 @@ Transform:
   - {fileID: 89754691081242292}
   - {fileID: 3905400795491991811}
   - {fileID: 44131891}
+  - {fileID: 2901788867098057573}
   m_Father: {fileID: 8206075540257416576}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1074,7 +1203,7 @@ MonoBehaviour:
     - key: flamethrowerAlt
       value: {fileID: 8300000, guid: efad69f58f143f540b66ec34e3453ad2, type: 3}
     - key: pistolShoot
-      value: {fileID: 8300000, guid: 3b5cae9bea1455b4caffb6cd6c860e08, type: 3}
+      value: {fileID: 8300000, guid: a079ea45ba984b04a964aa748a59911e, type: 3}
     - key: pistolAlt
       value: {fileID: 8300000, guid: 87e171d9ac7446f41937546e879348bb, type: 3}
     - key: pistolReload
@@ -1103,12 +1232,17 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: af4e0e896ffe33c43bf6e6ca892b3f91, type: 3}
     - key: leverSwitch
       value: {fileID: 8300000, guid: 1593c34d03c726440a11cbd0eaf14aef, type: 3}
+    - key: forkyDeflect
+      value: {fileID: 8300000, guid: 291800c3be92bc64c910627f7b5a02cf, type: 3}
+    - key: upgradePickup
+      value: {fileID: 8300000, guid: 0687e59bb22b9f749833e5eb0d4671bd, type: 3}
   source: 0
   testSource: {fileID: 6426834763429577237}
   gunSource: {fileID: 0}
   playerSource: {fileID: 5820612418667071524}
   generatorSource: {fileID: 6012301424274913978}
   leverSource: {fileID: 44131892}
+  deflectSource: {fileID: 1212692183401869021}
 --- !u!1 &2329069706715759474
 GameObject:
   m_ObjectHideFlags: 0

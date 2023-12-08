@@ -24,7 +24,8 @@ public class AudioDictionary : MonoBehaviour
         Player,
         Generator,
         Lever,
-        Deflect
+        Deflect,
+        Pickup
     };
     public UnityDictionary<string, AudioClip> audioDict;
     public Source source;
@@ -41,6 +42,8 @@ public class AudioDictionary : MonoBehaviour
     [SerializeField] public AudioSource leverSource;
     [Tooltip("Audio Source for deflecting bullets SFX")] 
     [SerializeField] public AudioSource deflectSource;
+    [Tooltip("Audio Source for picking up upgrades")] 
+    [SerializeField] public AudioSource pickupSource;
     public static AudioDictionary aDict;
     #endregion
 
@@ -88,6 +91,10 @@ public class AudioDictionary : MonoBehaviour
             case Source.Deflect:
                 deflectSource.clip = tempClip;
                 deflectSource.Play();
+                break;
+            case Source.Pickup:
+                pickupSource.clip = tempClip;
+                pickupSource.Play();
                 break;
         }
     }
