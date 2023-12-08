@@ -1237,9 +1237,11 @@ MonoBehaviour:
     - key: forkyDeflect
       value: {fileID: 8300000, guid: 291800c3be92bc64c910627f7b5a02cf, type: 3}
     - key: upgradePickup
-      value: {fileID: 8300000, guid: 0687e59bb22b9f749833e5eb0d4671bd, type: 3}
+      value: {fileID: 8300000, guid: 361c4b68ab872e24087a58195d75023e, type: 3}
     - key: enemyHit
       value: {fileID: 8300000, guid: 6777797a3e5ebf84ba50474d7a430df5, type: 3}
+    - key: healthPickup
+      value: {fileID: 8300000, guid: 48b0f281b9d8c9d4791d9bcac1b5d3bd, type: 3}
   source: 0
   testSource: {fileID: 6426834763429577237}
   gunSource: {fileID: 0}
@@ -1584,6 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
 --- !u!114 &2004946441184968110
 MonoBehaviour:
@@ -2960,6 +2963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.9
+  tommyGunRef: {fileID: 995613533016112330}
   lastRespawnPoint: {fileID: 0}
 --- !u!1 &5489093577870500295
 GameObject:
@@ -4692,7 +4696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462794, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2741532492343462805, guid: e5c3fd4e5c04c4f41bf5efaa17a54773, type: 3}
       propertyPath: m_RootOrder
