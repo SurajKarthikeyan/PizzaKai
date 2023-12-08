@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class CinemachineCameraShake : MonoBehaviour
 {
@@ -22,69 +23,76 @@ public class CinemachineCameraShake : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-        this.InstantiateSingleton(ref instance);
+            instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (cineCamera == null)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
-            if (cineCamera != null)
+            if (cineCamera == null)
             {
-                cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
-                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+                cineCamera = FindObjectOfType<CinemachineVirtualCamera>();
+                if (cineCamera != null)
+                {
+                    cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                    cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
 
+                    cameraTransform = Camera.main.gameObject.transform;
+                }
+            }
+            else
+            {
+                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
                 cameraTransform = Camera.main.gameObject.transform;
             }
         }
-        else
-        {
-            cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-            cameraTransform = Camera.main.gameObject.transform;
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cameraTransform == null)
-            cameraTransform = Camera.main.gameObject.transform;
-
-        if (cineCamera != null)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (CinemachineCore.Instance.GetActiveBrain(0))
+            if (cameraTransform == null)
+                cameraTransform = Camera.main.gameObject.transform;
+
+            if (cineCamera != null)
             {
-                if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
+                if (CinemachineCore.Instance.GetActiveBrain(0))
+                {
+                    if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
+                    {
+                        cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                        cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
+                    }
+
+                }
+
+                if (duration > 0)
+                {
+                    duration -= Time.deltaTime;
+
+                    cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
+                }
+                else
+                {
+                    cmBasicPerlin.m_AmplitudeGain = 0f;
+                    cameraTransform.eulerAngles = Vector3.zero;
+                }
+
+            }
+            else
+            {
+                if (CinemachineCore.Instance.GetActiveBrain(0))
                 {
                     cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
                     cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
                 }
-                
             }
-
-            if (duration > 0)
-            {
-                duration -= Time.deltaTime;
-
-                cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
-            }
-            else
-            {
-                cmBasicPerlin.m_AmplitudeGain = 0f;
-                cameraTransform.eulerAngles = Vector3.zero;
-            }
-                
-        }
-        else
-        {
-            if (CinemachineCore.Instance.GetActiveBrain(0))
-            {
-                cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
-                cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-            }
-        }
+        }   
     }
 
     public void ShakeScreen()

@@ -30,7 +30,6 @@ public class ForkyOven : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("BossForky"))
         {
-            print("AfterForkyDeath");
             forky.HelpAfterForky();
             Destroy(collision.gameObject);
         }
