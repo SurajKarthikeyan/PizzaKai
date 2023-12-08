@@ -38,7 +38,10 @@ public class Pickup : MonoBehaviour
         {
             // Destroy if some character has picked up the pickup.
             if (ReceiveCharacter(character))
+            {
+                AudioDictionary.aDict.PlayAudioClip("healthPickup", AudioDictionary.Source.Pickup);
                 Destroy(gameObject);
+            }
         }
     }
 
