@@ -67,7 +67,15 @@ public class DialogueManager : MonoBehaviour
 
     public void CallDialogueBlock(string blockName)
     {
-        levelFlowchart.ExecuteBlock(blockName);
+        try
+        {
+            levelFlowchart.ExecuteBlock(blockName);
+        }
+        catch
+        {
+            Debug.LogError("Block not found");
+        }
+        
     }
 
     public void SetToolTipImage(string text, Sprite weaponImage)
