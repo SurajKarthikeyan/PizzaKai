@@ -49,6 +49,9 @@ public class CinemachineCameraShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cameraTransform == null)
+            cameraTransform = Camera.main.gameObject.transform;
+
         if (cineCamera != null)
         {
             if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
