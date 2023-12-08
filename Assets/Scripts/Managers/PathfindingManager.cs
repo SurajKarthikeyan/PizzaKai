@@ -98,23 +98,23 @@ public class PathfindingManager : MonoBehaviour
     #region Instantiation
     private void Start()
     {
-        if (!grid)
-        {
-            throw new NullReferenceException("Value of grid not set! " +
-                "Press the Build Graph button (Managers > PathfindingManager).");
-        }
+        //if (!grid)
+        //{
+        //    throw new NullReferenceException("Value of grid not set! " +
+        //        "Press the Build Graph button (Managers > PathfindingManager).");
+        //}
 
-        BoundsInt cellBounds = new();
-        cellBounds.SetMinMax(
-            VectorExt.WithMinComponents(
-                tilemaps.Select(tm => tm.cellBounds.min).ToArray()
-            ),
-            VectorExt.WithMaxComponents(
-                tilemaps.Select(tm => tm.cellBounds.max).ToArray()
-            )
-        );
+        //BoundsInt cellBounds = new();
+        //cellBounds.SetMinMax(
+        //    VectorExt.WithMinComponents(
+        //        tilemaps.Select(tm => tm.cellBounds.min).ToArray()
+        //    ),
+        //    VectorExt.WithMaxComponents(
+        //        tilemaps.Select(tm => tm.cellBounds.max).ToArray()
+        //    )
+        //);
 
-        CellBounds = cellBounds;
+        //CellBounds = cellBounds;
     }
 
     //private void InitializeData()

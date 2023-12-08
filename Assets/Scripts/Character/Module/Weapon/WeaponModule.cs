@@ -420,7 +420,11 @@ public class WeaponModule : Module
     /// </summary>
     public virtual void PlayAudio()
     {
-        AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);
+        if (weaponName != "")
+        {
+            AudioDictionary.aDict.PlayAudioClip(weaponName + weaponAction, AudioDictionary.Source.Player);
+        }
+        
     }
     #endregion
 

@@ -69,7 +69,10 @@ public class DialogueManager : MonoBehaviour
     {
         try
         {
-            levelFlowchart.ExecuteBlock(blockName);
+            if (levelFlowchart.FindBlock(blockName).State != ExecutionState.Executing)
+            {
+                levelFlowchart.ExecuteBlock(blockName);
+            }
         }
         catch
         {
