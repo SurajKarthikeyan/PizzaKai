@@ -20,7 +20,7 @@ public class HealthPickup : Pickup
     {
         if (character.HP == character.maxHP)
             return false;
-
+        AudioDictionary.aDict.PlayAudioClip("healthPickup", AudioDictionary.Source.Pickup);
         character.Heal(healthIncrease);
         return true;
     }

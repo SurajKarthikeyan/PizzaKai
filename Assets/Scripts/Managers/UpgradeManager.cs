@@ -21,10 +21,10 @@ public class UpgradeManager : MonoBehaviour
     private WeaponModule flamethrower;
     private WeaponModule sniper;
 
-    private static int tommyUPNum;
-    private static int shotgunUPNum;
-    private static int flamethrowerUPNum;
-    private static int sniperUPNum;
+    private static int tommyUPNum = 1;
+    private static int shotgunUPNum = 1;
+    private static int flamethrowerUPNum = 1;
+    private static int sniperUPNum = 1;
 
     private static int endingWeapon;
 

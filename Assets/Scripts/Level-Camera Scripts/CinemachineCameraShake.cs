@@ -59,17 +59,16 @@ public class CinemachineCameraShake : MonoBehaviour
             if (cameraTransform == null)
                 cameraTransform = Camera.main.gameObject.transform;
 
+            if (CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera == null)
+                return;
             if (cineCamera != null)
             {
-                if (CinemachineCore.Instance.GetActiveBrain(0))
+                if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
                 {
-                    if (cineCamera.Name != CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Name)
-                    {
-                        cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
-                        cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
-                    }
-
+                   cineCamera = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+                   cineCamera.RequireComponentInChildren(out cmBasicPerlin, "CinemachineBasicMultiChannelPerlin", true, false);
                 }
+
 
                 if (duration > 0)
                 {
