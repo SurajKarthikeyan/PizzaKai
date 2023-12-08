@@ -78548,6 +78548,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207740851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7664800405275352073, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+  m_PrefabInstance: {fileID: 1266274628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836197033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1207740852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7664800405275352076, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+  m_PrefabInstance: {fileID: 1266274628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836197033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1207740853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7664800405275352091, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+  m_PrefabInstance: {fileID: 1266274628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836197033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1207740854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7664800405275352090, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+  m_PrefabInstance: {fileID: 1266274628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836197033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1232469311
 GameObject:
   m_ObjectHideFlags: 0
@@ -78921,6 +78965,22 @@ PrefabInstance:
       propertyPath: nodeRect.y
       value: 310.90387
       objectReference: {fileID: 0}
+    - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+      propertyPath: commandList.Array.data[24]
+      value: 
+      objectReference: {fileID: 1207740853}
+    - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+      propertyPath: commandList.Array.data[25]
+      value: 
+      objectReference: {fileID: 1207740852}
+    - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+      propertyPath: commandList.Array.data[26]
+      value: 
+      objectReference: {fileID: 1207740851}
+    - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
+      propertyPath: commandList.Array.data[27]
+      value: 
+      objectReference: {fileID: 1207740854}
     - target: {fileID: 7664800405275352149, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
       propertyPath: storyText
       value: Well, I see you are making good friends with this leader of the H.U.T.
