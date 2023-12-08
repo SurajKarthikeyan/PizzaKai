@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
 --- !u!4 &18514707
 Transform:
@@ -1483,6 +1484,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1669755eaffaa4348aa6cb1904f4bf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &324817127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 995613533016112330, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 821936445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc36dd84854980429bd207a3d806b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &346786994
@@ -76448,6 +76460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
 --- !u!114 &724517015
 MonoBehaviour:
@@ -76987,6 +77000,10 @@ PrefabInstance:
       propertyPath: accessible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1837027089846068719, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+      propertyPath: tommyGunRef
+      value: 
+      objectReference: {fileID: 324817127}
     - target: {fileID: 2407071942407806261, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
       propertyPath: m_IsActive
       value: 0

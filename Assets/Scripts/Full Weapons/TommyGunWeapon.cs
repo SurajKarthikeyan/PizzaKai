@@ -54,6 +54,12 @@ public class TommyGunWeapon : WeaponModule
         
     }
 
+    public void ResetAltFire()
+    {
+        StopAllCoroutines();
+        isAlting = false;
+    }
+
     IEnumerator TommyRapidFire()
     {
         if (!isAlting)

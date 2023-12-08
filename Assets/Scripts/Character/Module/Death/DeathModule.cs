@@ -15,6 +15,8 @@ public abstract class DeathModule : Module
     /// </summary>
     protected WeaponMasterModule weaponMaster;
 
+    [SerializeField] private TommyGunWeapon tommyGunRef;
+
     protected bool ranOnDeath = false;
 
     protected override void OnLinked()
@@ -29,6 +31,11 @@ public abstract class DeathModule : Module
         
         if (!ranDeathAction)
         {
+            if (tommyGunRef)
+            {
+                tommyGunRef.ResetAltFire();
+            }
+            
             if (delay > 0)
             {
                 Debug.Log("Invoking ondeath");
