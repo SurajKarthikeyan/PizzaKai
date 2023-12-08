@@ -20,6 +20,8 @@ public class Forky : MonoBehaviour
     public AudioSource forkyAudioSource;
     [Tooltip("Audio Source for forky walkie talkie")]
     public AudioSource walkieTalkieSource;
+    [Tooltip("Audio Source for forky")]
+    public AudioSource forkyDeathAudioSource;
 
     [Header("Forky Boss Logic")]
 
@@ -266,6 +268,7 @@ public class Forky : MonoBehaviour
         conveyorBelt.conveyorSpeed = 0;
         Vector2 explosionPos = new(dyingForky.transform.position.x - 0.65f, gameObject.transform.position.y);
         ExplosionManager.Instance.SelectExplosionRandom(explosionPos, -90);
+        AudioDictionary.aDict.PlayAudioClip("explosionBalanced", AudioDictionary.Source.Player);
         yield return new WaitForSeconds(1f);
         DialogueManager.Instance.CallDialogueBlock("Post-Forky Fight");
     }

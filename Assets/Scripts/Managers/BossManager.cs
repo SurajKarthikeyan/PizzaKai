@@ -10,19 +10,9 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public class BossManager : MonoBehaviour
 {
-    public bool bossStart = false;
-
-    public GameObject mainCam;
-
-    public GameObject bossCamParent;
-
     public ConveyorBeltScript conveyorBelt;
 
     public Forky forky;
-
-    public AudioSource music;
-
-    public AudioClip bossTheme;
 
     [ReadOnly]
     public int bulletsReflected;
@@ -43,7 +33,7 @@ public class BossManager : MonoBehaviour
 
     private void Update()
     {
-        if ( bulletsReflected > 0 && bulletsReflected % 15 == 0)
+        if ( bulletsReflected > 0 && bulletsReflected % 15 == 0 && forky.active)
         {
             //Play some dialogue of Forky saying that the player can't shoot him or something
             DialogueManager.Instance.CallDialogueBlock("Forky Invincible Block");
@@ -57,9 +47,6 @@ public class BossManager : MonoBehaviour
         forky.spawning = true;
         forky.tilemap.animationFrameRate = 1;
         conveyorBelt.conveyorSpeed = -1;
-        music.Stop();
-        music.PlaySound(bossTheme, 1);
-        music.loop = true;
         foreach(BoxCollider2D collider in generatorColliders)
         {
             collider.enabled = true;
