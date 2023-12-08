@@ -120,6 +120,10 @@ public class SimpleProjectile : DamagingWeaponSpawn
 
                     if (collider.gameObject.HasComponent(out Character character))
                     {
+                        if (!AudioDictionary.aDict.hitmarkerSource.isPlaying)
+                        {
+                            AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
+                        }
                         // Deal damage.
                         character.TakeDamage(
                             ActualDamage,
@@ -129,10 +133,18 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     }
                     else if (collider.gameObject.HasComponent(out EnemyBasic enemyBasic))
                     {
+                        if (!AudioDictionary.aDict.hitmarkerSource.isPlaying)
+                        {
+                            AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
+                        }
                         enemyBasic.TakeDamage(ActualDamage);
                     }
                     else if (collider.gameObject.HasComponent(out BurningScript burn)&& CompareTag("PlayerFireBullet"))
                     {
+                        if (!AudioDictionary.aDict.hitmarkerSource.isPlaying)
+                        {
+                            AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
+                        }
                         if (gameObject.HasComponent<AltFlameProjectile>())
                         {
                             Destroy(collider.gameObject);
@@ -146,6 +158,7 @@ public class SimpleProjectile : DamagingWeaponSpawn
                     
                     else if (collider.gameObject.HasComponent(out Lever lever))
                     {
+                        AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
                         lever.LeverArmActivate();
                     }
                     if (!gameObject.HasComponent<AltFlameProjectile>())

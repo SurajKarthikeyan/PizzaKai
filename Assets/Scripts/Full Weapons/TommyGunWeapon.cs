@@ -26,6 +26,8 @@ public class TommyGunWeapon : WeaponModule
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 20;
 
+    [Tooltip("Checks if Tommy is alting")] 
+    [SerializeField] private bool isAlting;
     #endregion
 
     #region Init
@@ -54,22 +56,32 @@ public class TommyGunWeapon : WeaponModule
 
     IEnumerator TommyRapidFire()
     {
-        ReloadWeapon();
-        yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
-        weaponAction = WeaponAudioStrings.Alt;
-        altFireDelay.Reset();
-        PlayAudio();
-        yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
-        Duration savedDelay = new Duration(firingDelay.maxTime);
-        firingDelay.maxTime = altWaitBetweenShots;
-        //yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
+        if (!isAlting)
         {
-            TryFireWeapon();
-            yield return new WaitForSeconds(altWaitBetweenShots);
+            isAlting = true;
+            ReloadWeapon();
+            yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
+            weaponAction = WeaponAudioStrings.Alt;
+            altFireDelay.Reset();
+            PlayAudio();
+            yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
+            Duration savedDelay = new Duration(firingDelay.maxTime);
+            firingDelay.maxTime = altWaitBetweenShots;
+            //yield return new WaitForSeconds(0.5f);
+            while (currentAmmo > 0)
+            {
+                TryFireWeapon();
+                yield return new WaitForSeconds(altWaitBetweenShots);
+            }
+            /*for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
+            {
+                TryFireWeapon();
+                yield return new WaitForSeconds(altWaitBetweenShots);
+            }*/
+            ReloadWeapon();
+            firingDelay = savedDelay;
+            isAlting = false;
         }
-        //ReloadWeapon();
-        firingDelay = savedDelay;
     }
     #endregion
 }
