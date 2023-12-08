@@ -21,6 +21,11 @@ public class UpgradeManager : MonoBehaviour
     private WeaponModule flamethrower;
     private WeaponModule sniper;
 
+    private static int tommyUPNum;
+    private static int shotgunUPNum;
+    private static int flamethrowerUPNum;
+    private static int sniperUPNum;
+
     private static int endingWeapon;
 
     private WeaponMasterModule WMM;
@@ -36,7 +41,7 @@ public class UpgradeManager : MonoBehaviour
     public float decreaseSniperReload;
 
     //whether or not a weapon has it's upgrade
-    [Header("Enable before playing for testing")]
+    [Header("Enable before playing for testing, only give one level")]
     [SerializeField]
     private bool tommyUP;
     [SerializeField]
@@ -111,10 +116,17 @@ public class UpgradeManager : MonoBehaviour
     //these are called by the upgrade pickup once picked up, and this script to re-apply the upgrades in a new scene
     public void UpgradeTommyGun()
     {
+        //for re-applying upgrades in new scene, same format for other upgrade calls
         if (!tommyUP)
         {
-            tommygun.ammoCount += extraTommyAmmo;
+            tommygun.ammoCount += extraTommyAmmo * tommyUPNum;
             tommyUP = true;
+        }
+        //for adding more upgrade
+        else 
+        {
+            tommyUPNum++;
+            tommygun.ammoCount += extraTommyAmmo;
         }
     }
 
@@ -122,8 +134,13 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!shotgunUP)
         {
-            shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = extraShotgunPellets;
+            shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount += extraShotgunPellets * shotgunUPNum;
             shotgunUP = true;
+        }
+        else
+        {
+            shotgunUPNum++;
+            shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount += extraShotgunPellets;
         }
     }
 
@@ -131,8 +148,13 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!flamethrowerUP)
         {
-            flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = extraFlamethrowerRange;
+            flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange += extraFlamethrowerRange * flamethrowerUPNum;
             flamethrowerUP = true;
+        }
+        else
+        {
+            flamethrowerUPNum++;
+            flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange += extraFlamethrowerRange;
         }
     }
 
@@ -142,6 +164,11 @@ public class UpgradeManager : MonoBehaviour
         {
 
             sniperUP = true;
+        }
+        else
+        {
+            sniperUPNum++;
+
         }
     }
 
