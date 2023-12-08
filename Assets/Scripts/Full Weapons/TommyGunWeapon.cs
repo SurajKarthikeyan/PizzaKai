@@ -73,11 +73,6 @@ public class TommyGunWeapon : WeaponModule
                 TryFireWeapon();
                 yield return new WaitForSeconds(altWaitBetweenShots);
             }
-            /*for (int i = 0; i < 24; i++)    //Had to make it 22 because at 20 there were 2 bullets left??
-            {
-                TryFireWeapon();
-                yield return new WaitForSeconds(altWaitBetweenShots);
-            }*/
             ReloadWeapon();
             firingDelay = savedDelay;
             isAlting = false;
