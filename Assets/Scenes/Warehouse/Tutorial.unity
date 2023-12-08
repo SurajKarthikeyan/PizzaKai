@@ -32894,6 +32894,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: nodeRect.x
+      value: 64.61815
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: nodeRect.width
       value: 142.01675
       objectReference: {fileID: 0}
@@ -33027,7 +33031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931874, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: nodeRect.x
-      value: 53.32013
+      value: 48.63263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931874, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: nodeRect.y
+      value: 272.61417
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931874, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: nodeRect.width
@@ -33110,6 +33118,10 @@ PrefabInstance:
       value: 108.69033
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931879, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: selectedBlocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931879, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: selectedCommands.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -33121,6 +33133,17 @@ PrefabInstance:
       propertyPath: selectedCommands.Array.data[0]
       value: 
       objectReference: {fileID: 813152625}
+    - target: {fileID: 1451473468515931883, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: storyText
+      value: I suppose a slice is best when just fresh out of the oven, as you are.
+        We can make this quick. Let us begin immediately.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931884, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: storyText
+      value: No need to be so hasty, Peppy. Before my special instructions are passed
+        on to you, would you not agree that it is important to become accustomed
+        to this slice of life?
+      objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931891, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: nodeRect.y
       value: -10.154293
@@ -35403,7 +35426,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &2100304171
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -35417,7 +35440,7 @@ MonoBehaviour:
   indentLevel: 0
 --- !u!114 &2100304172
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
