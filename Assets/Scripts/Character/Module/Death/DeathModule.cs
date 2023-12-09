@@ -33,7 +33,7 @@ public abstract class DeathModule : Module
         {
             if (tommyGunRef)
             {
-                tommyGunRef.ResetAltFire();
+                tommyGunRef.ResetAlt();
             }
             
             if (delay > 0)
