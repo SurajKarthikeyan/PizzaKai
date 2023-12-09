@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class UpgradeManager : MonoBehaviour
 
     private static int endingWeapon;
 
-    private WeaponMasterModule WMM;
+    [SerializeField] private WeaponMasterModule WMM;
 
     [Header("Upgrade Values")]
     [Tooltip("the amount of extra bullets the upgrade adds to the tommygun's magazine")]
@@ -58,6 +59,7 @@ public class UpgradeManager : MonoBehaviour
         this.InstantiateSingleton(ref instance);
     }
 
+    
     private void Start()
     {
         WMM = FindObjectOfType<WeaponMasterModule>();
@@ -110,6 +112,15 @@ public class UpgradeManager : MonoBehaviour
             WMM.SwitchToWeapon(endingWeapon);
         }
     }
+
+    private void Update()
+    {
+        if (WMM == null)
+        {
+            WMM = FindObjectOfType<WeaponMasterModule>();
+        }
+    }
+
     #endregion
 
     #region UpgradeCalls
