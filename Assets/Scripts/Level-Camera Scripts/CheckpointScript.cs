@@ -16,7 +16,9 @@ public class CheckpointScript : MonoBehaviour
 
     [SerializeField]
     [AnimatorParam(nameof(flagAnimator), AnimatorControllerParameterType.Bool)]
-    private string flagActiveAnimKey = "Activated"; 
+    private string flagActiveAnimKey = "Activated";
+
+    [SerializeField] private AudioSource checkpointAudioSource;
     #endregion
 
     #region Instantiation
@@ -43,6 +45,7 @@ public class CheckpointScript : MonoBehaviour
     {
         if (other.gameObject.HasComponentInChildren(out RespawnModule respawn))
         {
+            AudioDictionary.aDict.PlayAudioClipRemote("checkpointFlag", checkpointAudioSource);
             flagAnimator.SetBool(flagActiveAnimKey, true);
             respawn.lastRespawnPoint = transform;
             trigger.enabled = false;

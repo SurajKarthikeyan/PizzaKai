@@ -7,6 +7,6 @@ public class MainMenuSceneManager : MonoBehaviour
 {
     public void LoadFirstScene()
     {
-        SceneManager.LoadScene("PeppyFirstSteps");
+        SceneManager.LoadScene("Tutorial");
     }
 }
