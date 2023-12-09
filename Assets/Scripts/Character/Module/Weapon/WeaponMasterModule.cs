@@ -213,12 +213,20 @@ public class WeaponMasterModule : Module
     /// <summary>
     /// Switches to the next weapon.
     /// </summary>
-    public void NextWeapon() => SwitchToWeapon(++weaponIndex);
+    public void NextWeapon()
+    {
+        CurrentWeapon.ResetAlt();
+        SwitchToWeapon(++weaponIndex);
+    }
 
     /// <summary>
     /// Switches to the previous weapon.
     /// </summary>
-    public void PrevWeapon() => SwitchToWeapon(--weaponIndex);
+    public void PrevWeapon()
+    {
+        CurrentWeapon.ResetAlt();
+        SwitchToWeapon(--weaponIndex);
+    }
 
     /// <summary>
     /// Switches to the specified weapon index.
@@ -237,7 +245,7 @@ public class WeaponMasterModule : Module
     public void EnableCurrentWeapon()
     {
         availableWeapons.ForEach(weap => weap.gameObject.SetActive(false));
-
+        CurrentWeapon.ResetAlt();
         CurrentWeapon.gameObject.SetActive(true);
     }
     #endregion

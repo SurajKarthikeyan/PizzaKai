@@ -54,7 +54,7 @@ public class TommyGunWeapon : WeaponModule
         
     }
 
-    public void ResetAltFire()
+    public override void ResetAlt()
     {
         StopAllCoroutines();
         isAlting = false;

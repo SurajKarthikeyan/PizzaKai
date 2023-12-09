@@ -413,6 +413,13 @@ public class WeaponModule : Module
     }
     #endregion
 
+    #region Weapon Switching
+    /// <summary>
+    /// Function that resets all alt fire behaviors
+    /// </summary>
+    public virtual void ResetAlt(){ }
+    #endregion
+
     #region Weapon Audio
 
     /// <summary>
