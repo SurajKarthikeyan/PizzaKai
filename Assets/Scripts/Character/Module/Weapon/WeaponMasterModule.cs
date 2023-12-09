@@ -103,10 +103,14 @@ public class WeaponMasterModule : Module
             if (Input.mouseScrollDelta.y >= 1f)
             {
                 NextWeapon();
+                Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
+                Master.gameObject.layer = 7;
             }
             if (Input.mouseScrollDelta.y <= -1f)
             {
                 PrevWeapon();
+                Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
+                Master.gameObject.layer = 7;
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
@@ -187,8 +191,12 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void TryAltFire()
     {
-        if (CurrentWeapon.altFireDelay.IsDone)
+        if (CurrentWeapon.altFireDelay.IsDone || CurrentWeapon.dashReset)
         {
+            if(CurrentWeapon.dashReset)
+            {
+                CurrentWeapon.dashReset = false;
+            }
             CurrentWeapon.AltFire();
         }
     }

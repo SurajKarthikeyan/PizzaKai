@@ -162,6 +162,7 @@ public class CharacterMovementModule : Module
     [SerializeField] private int totalJumps = 1; //Number of additional jumps the player can perform
 
     private int numJumps = 0; //current jumps available
+    public bool isShotgunDashing = false;
     #endregion
     #endregion
 
@@ -201,6 +202,12 @@ public class CharacterMovementModule : Module
         // Set up variables first.
         inputtedMovement.Normalize();
         Vector2 velocity = Master.r2d.velocity;
+
+        if(Master.r2d.velocity.magnitude <= 10 && isShotgunDashing)
+        {
+            isShotgunDashing = false;
+            Master.gameObject.layer = 7;
+        }
 
         UpdateOWPCollision();
         UpdateWalk(velocity);
