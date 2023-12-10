@@ -161,6 +161,11 @@ public class SimpleProjectile : DamagingWeaponSpawn
                         AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
                         lever.LeverArmActivate();
                     }
+
+                    else if (collider.gameObject.HasComponent<ChickenMolotov>())
+                    {
+                        collider.gameObject.GetComponent<ChickenMolotov>().Explode();
+                    }
                     if (!gameObject.HasComponent<AltFlameProjectile>())
                     {
                         if (currentRicochets < ricochets || collider.gameObject.CompareTag("BossForky"))

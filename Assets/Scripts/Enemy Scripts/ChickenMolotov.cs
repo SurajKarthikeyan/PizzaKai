@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChickenMolotov : MonoBehaviour
@@ -34,13 +32,35 @@ public class ChickenMolotov : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyProjectile") return;
+        Debug.LogWarning("I am in OnTriggerEnter and colliding with " + collision.gameObject.name.ToString());
+        if (collision.CompareTag("Enemy")  || collision.CompareTag("EnemyProjectile")) return;
 
-        if (collision.gameObject.tag == "Ground")
+        //if (collision.gameObject.layer == 7)
+        //{
+        //    Debug.Log("Player collision");
+        //}
+
+        if (collision.CompareTag("Ground") || collision.CompareTag("Player") ||
+            collision.CompareTag("PlayerBullet") || collision.CompareTag("PlayerFireBullet"))
         {
-            Vector3 flamePoint = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
-            Instantiate(firePillar, flamePoint, Quaternion.Euler(0,0,0));
-            Destroy(this.gameObject);
+            Explode();
         }
+    }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("I am in OnCollisionEnter and colliding with " + collision.gameObject.name.ToString());
+    //    if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player") ||
+    //        collision.collider.CompareTag("PlayerBullet") || collision.collider.CompareTag("PlayerFireBullet"))
+    //    {
+    //        Explode();
+    //    }
+    //}
+
+    public void Explode()
+    {
+        Vector3 firePoint = new(transform.position.x, transform.position.y + 1.3f, 0);
+        Instantiate(firePillar, firePoint, Quaternion.Euler(0, 0, 0));
+        Destroy(gameObject);
     }
 }

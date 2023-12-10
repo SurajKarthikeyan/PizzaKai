@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5840914834457005505}
   - component: {fileID: -7565446466923520707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Solid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,5 +47,20 @@ MonoBehaviour:
   markerData:
     heuristic: 0
     solidity: 1
-  heuristic: 0
-  solidity: 1
+    movementData:
+      north:
+        traversability: 0
+      northEast:
+        traversability: 0
+      east:
+        traversability: 0
+      southEast:
+        traversability: 0
+      south:
+        traversability: 0
+      southWest:
+        traversability: 0
+      west:
+        traversability: 0
+      northWest:
+        traversability: 0
