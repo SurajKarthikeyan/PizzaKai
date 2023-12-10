@@ -41,7 +41,13 @@ public class CharacterMovementModule : Module
 
     #region Variables
     #region User Settings
+
     [Header("Movement Settings")]
+
+    #region Global Movement Toggle
+    [Tooltip("Variable to turn the ability to read inputs on or off from the player")]
+    public bool canInput;
+    #endregion
     #region General Movement
     [InfoBox("NOTE: maxMoveSpeed.y is NOT the max jump speed! Jumping is " +
             "controlled by jumpForce.")]
@@ -183,7 +189,7 @@ public class CharacterMovementModule : Module
     private void Start()
     {
         numJumps = totalJumps;
-
+        canInput = true;
         // Make sure max speed is positive.
         maxMoveSpeed = maxMoveSpeed.Abs();
 
@@ -199,20 +205,23 @@ public class CharacterMovementModule : Module
     #region Main Loop
     private void FixedUpdate()
     {
-        // Set up variables first.
-        inputtedMovement.Normalize();
-        Vector2 velocity = Master.r2d.velocity;
-
-        if(Master.r2d.velocity.magnitude <= 10 && isShotgunDashing)
+        if (canInput)
         {
-            isShotgunDashing = false;
-            Master.gameObject.layer = 7;
-        }
+            // Set up variables first.
+            inputtedMovement.Normalize();
+            Vector2 velocity = Master.r2d.velocity;
 
-        UpdateOWPCollision();
-        UpdateWalk(velocity);
-        UpdateDash();
-        UpdateJumping();
+            if(Master.r2d.velocity.magnitude <= 10 && isShotgunDashing)
+            {
+                isShotgunDashing = false;
+                Master.gameObject.layer = 7;
+            }
+
+            UpdateOWPCollision();
+            UpdateWalk(velocity);
+            UpdateDash();
+            UpdateJumping();
+        }
     }
 
     #region One Way Collision

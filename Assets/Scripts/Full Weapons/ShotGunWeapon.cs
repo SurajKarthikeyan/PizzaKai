@@ -48,6 +48,9 @@ public class ShotGunWeapon : WeaponModule
     /// </summary>
     private void PushPlayer()
     {
+        playerAnimator.SetTrigger("ShotgunDash");
+        Master.r2d.velocity = new Vector2(0,0);
+        Master.gameObject.GetComponent<CharacterMovementModule>().canInput = false;
         // Gets the player mouse position and sends the player in the opposite
         // direction.
         Vector3 dir = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
