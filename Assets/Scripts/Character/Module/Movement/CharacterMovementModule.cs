@@ -100,6 +100,9 @@ public class CharacterMovementModule : Module
         "grounded.")]
     [Required]
     public Collider2D groundCheck;
+
+    [Tooltip("The collider responsible for checking if the player is touching grass for the shotgun dash")]
+    public Collider2D touchGrass;
     #endregion
 
     #region Animation
@@ -179,7 +182,11 @@ public class CharacterMovementModule : Module
     /// cref="GameManager.canJumpLayers"/>. The coyote timer is NOT factored
     /// into this.
     /// </summary>
-    public bool TouchGrass => groundCheck.OverlapCollider(
+    public bool GroundCheck => groundCheck.OverlapCollider(
+        groundCheckCF2D, touchingGroundColliders
+    ) > 0;
+    
+    public bool TouchGrass => touchGrass.OverlapCollider(
         groundCheckCF2D, touchingGroundColliders
     ) > 0;
     #endregion
@@ -305,7 +312,7 @@ public class CharacterMovementModule : Module
 
         if (inputtedJump && CanJump() && oneJump)
         {
-            if(!TouchGrass)
+            if(!GroundCheck)
             {
                 numJumps -= 1;
             }
@@ -321,7 +328,7 @@ public class CharacterMovementModule : Module
             coyoteTimer.Reset();
             jumpCooldown.Reset();
         }
-        else if (TouchGrass)
+        else if (GroundCheck)
         {
             numJumps = totalJumps;
             groundedStatus = GroundedStatus.Grounded;
@@ -412,7 +419,7 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            (TouchGrass || numJumps > 0) && Master.r2d.velocity.y <= 0.1f;
+            (GroundCheck || numJumps > 0) && Master.r2d.velocity.y <= 0.1f;
     }
 
     private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
