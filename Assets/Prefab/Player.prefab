@@ -4202,6 +4202,7 @@ MonoBehaviour:
   groundedStatus: 0
   movementStatus: 0
   totalJumps: 1
+  isShotgunDashing: 0
 --- !u!114 &3245470669006060296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5022,15 +5023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.55
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.55
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.55
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4342418669924086011, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_LocalPosition.x
