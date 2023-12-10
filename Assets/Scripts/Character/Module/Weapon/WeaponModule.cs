@@ -169,6 +169,8 @@ public class WeaponModule : Module
     /// </summary>
     protected virtual void Start()
     {
+        shotgunDashing = false;
+        inputState = WeaponInputState.Idle;
         currentAmmo = ammoCount;
         if (weaponID == "[Not Set]")
         {
