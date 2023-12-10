@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6340183618619529471}
   - component: {fileID: 4579004919795914104}
   m_Layer: 0
-  m_Name: FlameBulletSparks
+  m_Name: ShotgunSlamDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 3
+        scalar: 20
         minScalar: 3
         maxCurve:
           serializedVersion: 2
@@ -4819,7 +4819,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eddeb1330c1144845b8cdbd8a8b31411, type: 2}
+  - {fileID: 2100000, guid: ffa5eaee0dd0c85468c5552e7375df51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4839,7 +4839,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
