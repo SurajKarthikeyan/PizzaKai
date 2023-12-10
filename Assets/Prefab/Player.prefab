@@ -2460,6 +2460,54 @@ MonoBehaviour:
   - target: {fileID: 6520382722505347044}
     weight: 0.5
     radius: 1
+--- !u!1 &4602974517832636180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8653365110024886398}
+  - component: {fileID: 7024243487534380400}
+  m_Layer: 7
+  m_Name: TouchGrass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8653365110024886398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602974517832636180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.039682, y: -0.11535, z: 0}
+  m_LocalScale: {x: 2.317, y: 2.317, z: 2.317}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8206075540257416576}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &7024243487534380400
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602974517832636180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.030130794, y: -0.018061703}
+  m_Size: {x: 0.20982954, y: 0.4211192}
+  m_Direction: 0
 --- !u!1 &4765276636219742572
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,6 +4213,7 @@ Transform:
   - {fileID: 3559792830331064504}
   - {fileID: 4382846289714297309}
   - {fileID: 5289103248789938557}
+  - {fileID: 8653365110024886398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4274,7 +4323,7 @@ MonoBehaviour:
   canDash: 1
   dashTime: -10
   groundCheck: {fileID: 1061556619110042102}
-  touchGrass: {fileID: 3708352193173067832}
+  touchGrass: {fileID: 7024243487534380400}
   characterAnimator: {fileID: 948621413}
   positiveAnimParamOnly: 1
   animParamSpeedX: RightLeftMovement
