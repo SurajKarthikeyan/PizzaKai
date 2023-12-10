@@ -26,8 +26,8 @@ public class TommyGunWeapon : WeaponModule
     [Tooltip("Damage done by the tommy alt flash")]
     public int altFireDamage = 20;
 
-    [Tooltip("Checks if Tommy is alting")] 
-    [SerializeField] private bool isAlting;
+    [Tooltip("Checks if Tommy is alting")]
+    [SerializeField] public bool isAlting { get;  private set; }
     #endregion
 
     #region Init

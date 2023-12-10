@@ -62,7 +62,13 @@ public abstract class WeaponSpawn : MonoBehaviour
             weapon.firePoint.position,
             weapon.firePoint.rotation
         );
-        CinemachineCameraShake.instance.ShakeScreen();
+        //this is for the screen shake of the tommy primary fire
+        if (weapon.weaponID == "SMG" && !weapon.GetComponent<TommyGunWeapon>().isAlting)
+        {
+            CinemachineCameraShake.instance.ShakeScreen(.2f, 0.1f);
+        }
+        else
+            CinemachineCameraShake.instance.ShakeScreen();
 
         spawned.gameObject.SetActive(true);
         
