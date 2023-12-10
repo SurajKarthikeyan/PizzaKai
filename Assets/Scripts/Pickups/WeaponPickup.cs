@@ -24,7 +24,15 @@ public class WeaponPickup : Pickup
 
                 WeaponModule newweapon = master.AddWeapon(weapon);
                 newweapon.LinkToMaster(character);
-                newweapon.gameObject.transform.localScale = new Vector3(.6f, .6f);
+                if (newweapon.weaponID == "Shotgun")
+                {
+                    newweapon.gameObject.transform.localScale = new Vector3(.5f, .5f);
+                }
+                else if (newweapon.weaponID == "Flamethrower")
+                {
+                    newweapon.gameObject.transform.localScale = new Vector3(.55f, .55f);
+                }
+                
                 character.HP = 999999;
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
                 return true;
