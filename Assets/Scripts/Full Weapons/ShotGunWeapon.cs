@@ -18,7 +18,6 @@ public class ShotGunWeapon : WeaponModule
     [Tooltip("Power with which the player is sent flying")]
     [SerializeField]
     private float pushPower = 20f;
-    private bool isDashing = false;
     [SerializeField] private int dashDamage = 3;
     private CharacterMovementModule character;
     #endregion
@@ -42,7 +41,7 @@ public class ShotGunWeapon : WeaponModule
         base.AltFire();
         PushPlayer();
     }
-
+    
     /// <summary>
     /// Sends the player flying as part of the alt fire
     /// </summary>

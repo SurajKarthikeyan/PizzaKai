@@ -7,13 +7,16 @@ using UnityEngine.Rendering.Universal;
 public class PlayerAnimationEvents : MonoBehaviour
 {
     public CharacterMovementModule playerCharacterMovementModule;
+    public ShotGunWeapon playerShotGunWeapon;
     public void DisableInputs()
     {
         playerCharacterMovementModule.canInput = false;
+        playerShotGunWeapon.shotgunDashing = true;
     }
 
     public void EnableInput()
     {
         playerCharacterMovementModule.canInput = true;
+        playerShotGunWeapon.shotgunDashing = false;
     }
 }
