@@ -32787,7 +32787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.size
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.data[7]
@@ -32832,17 +32832,21 @@ PrefabInstance:
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.data[17]
       value: 
-      objectReference: {fileID: 2100304056}
+      objectReference: {fileID: 2100304174}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.data[18]
       value: 
-      objectReference: {fileID: 2100304096}
+      objectReference: {fileID: 2100304056}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.data[19]
       value: 
-      objectReference: {fileID: 2100304042}
+      objectReference: {fileID: 2100304096}
     - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: commandList.Array.data[20]
+      value: 
+      objectReference: {fileID: 2100304042}
+    - target: {fileID: 1451473468515931658, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: commandList.Array.data[21]
       value: 
       objectReference: {fileID: 2100304053}
     - target: {fileID: 1451473468515931673, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
@@ -32884,6 +32888,10 @@ PrefabInstance:
     - target: {fileID: 1451473468515931836, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: targetComponentAssemblyName
       value: FadeToBlack, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931838, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: storyText
+      value: A gun? I'm packing heat! I guess this world's a bit spicier than I thought!
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931844, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: targetObject
@@ -33961,6 +33969,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1298496375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2122703154539474470, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+  m_PrefabInstance: {fileID: 813152617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1299192436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35547,7 +35566,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &2100304173
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -35564,6 +35583,33 @@ MonoBehaviour:
   description: 
   character: {fileID: 813152620}
   portrait: {fileID: 21300000, guid: 19d1dcb881c7a284d9929b9086e356bb, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2100304174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100303996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 215
+  indentLevel: 1
+  storyText: Oh well, I'm hot 'n ready now!
+  description: 
+  character: {fileID: 1298496375}
+  portrait: {fileID: 21300000, guid: 35b06f2ac9aec904bb00f7fcf839692d, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
