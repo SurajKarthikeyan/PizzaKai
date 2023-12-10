@@ -47,6 +47,7 @@ MonoBehaviour:
   cineCamera: {fileID: 0}
   durationTotal: 0.1
   intensity: 1.5
+  cmBasicPerlin: {fileID: 0}
 --- !u!1 &520746502911827385
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +97,6 @@ MonoBehaviour:
   weaponMasterModule: {fileID: 0}
   toolTipText: {fileID: 0}
   toolTipImage: {fileID: 0}
-  saydialog: {fileID: 0}
 --- !u!1 &672629396907353863
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,9 +375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2070d6be6df69d64fb1e4e7b0a4c4d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraTommyAmmo: 0
-  extraShotgunPellets: 0
-  extraFlamethrowerRange: 0
+  WMM: {fileID: 0}
+  extraTommyAmmo: 3
+  extraShotgunPellets: 1
+  extraFlamethrowerRange: 5
   decreaseSniperReload: 0
   tommyUP: 0
   shotgunUP: 0

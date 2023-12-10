@@ -119,6 +119,28 @@ public class UpgradeManager : MonoBehaviour
         {
             WMM = FindObjectOfType<WeaponMasterModule>();
         }
+        else if(  tommygun == null || shotgun == null || flamethrower == null)
+        {
+            foreach (WeaponModule weaponM in WMM.weapons)
+            {
+                switch (weaponM.weaponID)
+                {
+                    case "SMG":
+                        tommygun = weaponM;
+                        break;
+                    case "Shotgun":
+                        shotgun = weaponM;
+                        break;
+                    case "Flamethrower":
+                        flamethrower = weaponM;
+                        break;
+                        //case "Sniper":
+                        //sniper = weaponM;
+                        //break;
+                }
+            }
+
+        }
     }
 
     #endregion
