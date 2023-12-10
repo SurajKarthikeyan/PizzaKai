@@ -52,6 +52,7 @@ public class MenuButtons : MonoBehaviour
     {
         //the way this is set rn it may just set the button to false not the whole menu
         Time.timeScale = 1;
+        DialogueManager.Instance.StopPlayer(false);
         UIScript.isPaused = false;
         pauseMenu.SetActive(false);
     }
