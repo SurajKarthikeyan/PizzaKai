@@ -1,8 +1,11 @@
+using TreeEditor;
 using UnityEngine;
 
 public class ChickenMolotov : MonoBehaviour
 {
     public GameObject firePillar;
+
+    public GameObject explosion;
 
     public Vector3 startPos;
     public float arcHeight;
@@ -30,37 +33,54 @@ public class ChickenMolotov : MonoBehaviour
         transform.position = new Vector3(p1, p2, 0);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.LogWarning("I am in OnTriggerEnter and colliding with " + collision.gameObject.name.ToString());
-        if (collision.CompareTag("Enemy")  || collision.CompareTag("EnemyProjectile")) return;
-
-        //if (collision.gameObject.layer == 7)
-        //{
-        //    Debug.Log("Player collision");
-        //}
-
-        if (collision.CompareTag("Ground") || collision.CompareTag("Player") ||
-            collision.CompareTag("PlayerBullet") || collision.CompareTag("PlayerFireBullet"))
-        {
-            Explode();
-        }
-    }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
+    //void OnTriggerEnter2D(Collider2D collision)
     //{
-    //    Debug.Log("I am in OnCollisionEnter and colliding with " + collision.gameObject.name.ToString());
-    //    if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player") ||
-    //        collision.collider.CompareTag("PlayerBullet") || collision.collider.CompareTag("PlayerFireBullet"))
+    //    Debug.LogWarning("I am in OnTriggerEnter and colliding with " + collision.gameObject.name.ToString());
+    //    if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyProjectile")) return;
+
+    //    if (collision.gameObject.layer == 7)
+    //    {
+    //        Debug.Log("Player collision");
+    //    }
+
+    //    if (collision.CompareTag("Ground") || collision.CompareTag("Player") ||
+    //        collision.CompareTag("PlayerBullet") || collision.CompareTag("PlayerFireBullet"))
     //    {
     //        Explode();
     //    }
     //}
 
-    public void Explode()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 firePoint = new(transform.position.x, transform.position.y + 1.3f, 0);
-        Instantiate(firePillar, firePoint, Quaternion.Euler(0, 0, 0));
+        Debug.Log("I am in OnCollisionEnter and colliding with " + collision.gameObject.name.ToString());
+        if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player"))
+        {
+            Explode(true);
+        }
+        else if (
+            collision.collider.CompareTag("PlayerBullet") || collision.collider.CompareTag("PlayerFireBullet"))
+        {
+            Explode(false);
+        }
+    }
+
+    public void Explode(bool onGround)
+    {
+        GameObject fireType;
+        float offset = 0;
+        if (onGround)
+        {
+            fireType = firePillar;
+            offset = 1.5f;
+        }
+        else
+        {
+            fireType = explosion;
+            fireType.transform.localScale = new Vector3(0.5f, 0.5f);
+            offset = 0.6f;
+        }
+        Vector3 firePoint = new(transform.position.x, transform.position.y + offset, 0);
+        Instantiate(fireType, firePoint, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
 }

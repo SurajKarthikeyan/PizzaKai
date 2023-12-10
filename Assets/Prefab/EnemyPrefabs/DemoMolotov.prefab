@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2036092049310882222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePillar: {fileID: 3726359714984970032, guid: 8505e4ec636734c23b46c723c1203f9e, type: 3}
+  explosion: {fileID: 3846609746406069671, guid: 7fe5e87816fe25041ad3975808c93b4f, type: 3}
   startPos: {x: 0, y: 0, z: 0}
   arcHeight: 1
   arcLength: 3
@@ -136,9 +137,9 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003836982, y: 1.3}
+  m_Offset: {x: 0.003836982, y: 0.85}
   m_Size: {x: 0.09936729, y: 0.28847718}
   m_Direction: 0
