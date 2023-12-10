@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using Update = Unity.VisualScripting.Update;
 
 /// <summary>
 /// Represents the Shotgun, child class of WeaponModule
@@ -22,7 +25,7 @@ public class ShotGunWeapon : WeaponModule
     private CharacterMovementModule character;
     #endregion
 
-    #region Init
+    #region UnityMethods
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -30,6 +33,13 @@ public class ShotGunWeapon : WeaponModule
         weaponName = WeaponAudioStrings.ShotgunName;
         character = Master.GetComponent<CharacterMovementModule>();
     }
+
+    public override void Update()
+    {
+        playerAnimator.SetBool("TouchGrass", character.TouchGrass);
+        base.Update();
+    }
+
     #endregion
 
     #region Methods
@@ -61,7 +71,7 @@ public class ShotGunWeapon : WeaponModule
         // !IMPORTANT! NEVER set velocity directly. Instead, use AddForce with
         // !ForceMode2D.Impulse. Setting velocity directly causes a race
         // !condition with other things that may be modifying velocity.
-        Master.r2d.AddForce(dir * pushPower, ForceMode2D.Impulse);
+        Master.r2d.AddForce(-dir * pushPower, ForceMode2D.Impulse);
 
         character.isShotgunDashing = true;
         Master.gameObject.layer = 21;

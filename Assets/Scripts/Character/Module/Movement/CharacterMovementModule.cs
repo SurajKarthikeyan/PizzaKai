@@ -179,7 +179,7 @@ public class CharacterMovementModule : Module
     /// cref="GameManager.canJumpLayers"/>. The coyote timer is NOT factored
     /// into this.
     /// </summary>
-    public bool TouchingGround => groundCheck.OverlapCollider(
+    public bool TouchGrass => groundCheck.OverlapCollider(
         groundCheckCF2D, touchingGroundColliders
     ) > 0;
     #endregion
@@ -305,7 +305,7 @@ public class CharacterMovementModule : Module
 
         if (inputtedJump && CanJump() && oneJump)
         {
-            if(!TouchingGround)
+            if(!TouchGrass)
             {
                 numJumps -= 1;
             }
@@ -321,7 +321,7 @@ public class CharacterMovementModule : Module
             coyoteTimer.Reset();
             jumpCooldown.Reset();
         }
-        else if (TouchingGround)
+        else if (TouchGrass)
         {
             numJumps = totalJumps;
             groundedStatus = GroundedStatus.Grounded;
@@ -412,7 +412,7 @@ public class CharacterMovementModule : Module
     private bool CanJump()
     {
         return jumpCooldown.IsDone &&
-            (TouchingGround || numJumps > 0) && Master.r2d.velocity.y <= 0.1f;
+            (TouchGrass || numJumps > 0) && Master.r2d.velocity.y <= 0.1f;
     }
 
     private bool CanMoveInDirection(float input, float velocity, float maxSpeed)
