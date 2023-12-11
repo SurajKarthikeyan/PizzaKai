@@ -85,7 +85,7 @@ public class Breadstick : EnemyBasic
                 actuallyDead = true;
             }
             hasSpawned = true;
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 1.2f);
             breadCollider.enabled = false;
             rigid.gravityScale= 0;
             return;
