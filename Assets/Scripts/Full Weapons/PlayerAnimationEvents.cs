@@ -28,7 +28,7 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void SetSlamEmission()
     {
-        playerMat.SetTexture(GlowTex, playerDefault);
+        playerMat.SetTexture(GlowTex, glowTexDashSlam);
     }
 
     public void RemoveGlowTex()
