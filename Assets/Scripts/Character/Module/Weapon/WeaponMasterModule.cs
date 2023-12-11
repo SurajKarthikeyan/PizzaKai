@@ -34,8 +34,8 @@ public class WeaponMasterModule : Module
 
     public bool isGrappling = false;
 
-    [SerializeField]
-    private bool weaponsAvailable;
+    [ReadOnly]
+    public bool weaponsAvailable;
     #endregion
 
     #region Properties

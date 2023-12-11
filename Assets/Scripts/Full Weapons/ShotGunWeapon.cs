@@ -57,6 +57,7 @@ public class ShotGunWeapon : WeaponModule
     /// </summary>
     private void PushPlayer()
     {
+        weaponMaster.weaponsAvailable = false;
         playerAnimator.SetTrigger("ShotgunDash");
         Master.r2d.velocity = new Vector2(0,0);
         Master.gameObject.GetComponent<CharacterMovementModule>().canInput = false;
