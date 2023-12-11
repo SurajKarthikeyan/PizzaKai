@@ -17,6 +17,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     public Texture2D glowTexDashStart;
     public Texture2D glowTexDashSlam;
     public Texture2D playerDefault;
+    public AudioSource shotgunSlamSource;
     private static readonly int GlowTex = Shader.PropertyToID("_GlowTex");
     public void DisableInputs()
     {
@@ -29,6 +30,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void SetSlamEmission()
     {
         playerMat.SetTexture(GlowTex, glowTexDashSlam);
+        AudioDictionary.aDict.PlayAudioClipRemote("shotgunSlam", shotgunSlamSource);
     }
 
     public void RemoveGlowTex()
