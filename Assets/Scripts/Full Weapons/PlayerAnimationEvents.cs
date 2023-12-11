@@ -39,6 +39,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void EnableInput()
     {
         playerCharacterMovementModule.canInput = true;
+        transform.GetComponentInParent<Character>().transform.GetComponentInChildren<WeaponMasterModule>().weaponsAvailable = true;
         playerShotGunWeapon.shotgunDashing = false;
         shotgunSpriteRenderer.enabled = true;
         playerMat.SetTexture(GlowTex, playerDefault);
