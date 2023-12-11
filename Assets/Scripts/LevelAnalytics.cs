@@ -17,8 +17,11 @@ public class LevelAnalytics : MonoBehaviour
     {
         levelName = SceneManager.GetActiveScene().name;
         startTime = Time.fixedTime;
-        WMM = FindObjectOfType<WeaponMasterModule>();
-        currentWeapon = WMM.CurrentWeapon;
+        if (levelName != "MainMenu")
+        {
+            WMM = FindObjectOfType<WeaponMasterModule>();
+            currentWeapon = WMM.CurrentWeapon;
+        }
     }
 
     private void FixedUpdate()

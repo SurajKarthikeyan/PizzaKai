@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -62,54 +63,57 @@ public class UpgradeManager : MonoBehaviour
     
     private void Start()
     {
-        WMM = FindObjectOfType<WeaponMasterModule>();
-        foreach(WeaponModule weaponM in WMM.weapons)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            switch (weaponM.weaponID)
+            WMM = FindObjectOfType<WeaponMasterModule>();
+            foreach (WeaponModule weaponM in WMM.weapons)
             {
-                case "SMG":
-                    tommygun = weaponM;
-                    break;
-                case "Shotgun":
-                    shotgun = weaponM;
-                    break;
-                case "Flamethrower":
-                    flamethrower = weaponM;
-                    break;
-                //case "Sniper":
-                    //sniper = weaponM;
-                    //break;
+                switch (weaponM.weaponID)
+                {
+                    case "SMG":
+                        tommygun = weaponM;
+                        break;
+                    case "Shotgun":
+                        shotgun = weaponM;
+                        break;
+                    case "Flamethrower":
+                        flamethrower = weaponM;
+                        break;
+                        //case "Sniper":
+                        //sniper = weaponM;
+                        //break;
+                }
             }
-        }
-        shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
-        flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
-        
+            shotgun.bullet.gameObject.GetComponent<Multishot>().upAmount = 0;
+            flamethrower.bullet.gameObject.GetComponent<FlameProjectile>().upRange = 0;
 
-        //these are for re-applying the upgrades to the new player in the scene
-        if (tommyUP)
-        {
-            tommyUP = false;
-            UpgradeTommyGun();
-        }
-        if (shotgunUP)
-        {
-            shotgunUP = false;
-            UpgradeShotgun();
-        }
-        if (flamethrowerUP)
-        {
-            flamethrowerUP = false;
-            UpgradeFlamethrower();
-        }
-        if (sniperUP)
-        {
-            sniperUP = false;
-            UpgradeSniper();
-        }
 
-        if(WMM.weaponIndex != endingWeapon)
-        {
-            WMM.SwitchToWeapon(endingWeapon);
+            //these are for re-applying the upgrades to the new player in the scene
+            if (tommyUP)
+            {
+                tommyUP = false;
+                UpgradeTommyGun();
+            }
+            if (shotgunUP)
+            {
+                shotgunUP = false;
+                UpgradeShotgun();
+            }
+            if (flamethrowerUP)
+            {
+                flamethrowerUP = false;
+                UpgradeFlamethrower();
+            }
+            if (sniperUP)
+            {
+                sniperUP = false;
+                UpgradeSniper();
+            }
+
+            if (WMM.weaponIndex != endingWeapon)
+            {
+                WMM.SwitchToWeapon(endingWeapon);
+            }
         }
     }
 
