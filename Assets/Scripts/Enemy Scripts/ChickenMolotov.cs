@@ -1,4 +1,3 @@
-using TreeEditor;
 using UnityEngine;
 
 public class ChickenMolotov : MonoBehaviour
@@ -76,7 +75,6 @@ public class ChickenMolotov : MonoBehaviour
         else
         {
             fireType = explosion;
-            fireType.transform.localScale = new Vector3(0.5f, 0.5f);
             offset = 0.6f;
         }
         Vector3 firePoint = new(transform.position.x, transform.position.y + offset, 0);
