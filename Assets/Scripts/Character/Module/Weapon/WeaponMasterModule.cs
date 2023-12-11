@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Controls weapon switching, aiming, etc for the player.
@@ -32,6 +33,9 @@ public class WeaponMasterModule : Module
     private string animParamFire;
 
     public bool isGrappling = false;
+
+    [SerializeField]
+    private bool weaponsAvailable;
     #endregion
 
     #region Properties
@@ -50,6 +54,19 @@ public class WeaponMasterModule : Module
             }
         }
         SetComponents();
+    }
+
+    private void Start()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex != 0 && sceneIndex != 1)
+        {
+            weaponsAvailable = true;
+        }
+        else
+        {
+            weaponsAvailable = false;
+        }
     }
 
     private void OnValidate()
@@ -75,63 +92,66 @@ public class WeaponMasterModule : Module
             Vector2 mousePos = Input.mousePosition;
             AimAt(Camera.main.ScreenToWorldPoint(mousePos));
 
-            if (Input.GetMouseButton(0))
+            if (weaponsAvailable)
             {
-                // Firing.
-                TryFire();
-            }
-            else
-            {
-                CurrentWeapon.ReleaseTrigger();
-            }
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                //Alt fire
-                TryAltFire();
-            }
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                TryAltFireUp();
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                //Reload Current Weapon
-                TryReload();
-            }
+                if (Input.GetMouseButton(0))
+                {
+                    // Firing.
+                    TryFire();
+                }
+                else
+                {
+                    CurrentWeapon.ReleaseTrigger();
+                }
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    //Alt fire
+                    TryAltFire();
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1))
+                {
+                    TryAltFireUp();
+                }
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    //Reload Current Weapon
+                    TryReload();
+                }
 
-            //Next two if blocks cycle through weapons
-            if (Input.mouseScrollDelta.y >= 1f)
-            {
-                NextWeapon();
-                Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
-                Master.gameObject.layer = 7;
-            }
-            if (Input.mouseScrollDelta.y <= -1f)
-            {
-                PrevWeapon();
-                Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
-                Master.gameObject.layer = 7;
-            }
+                //Next two if blocks cycle through weapons
+                if (Input.mouseScrollDelta.y >= 1f)
+                {
+                    NextWeapon();
+                    Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
+                    Master.gameObject.layer = 7;
+                }
+                if (Input.mouseScrollDelta.y <= -1f)
+                {
+                    PrevWeapon();
+                    Master.GetComponent<CharacterMovementModule>().isShotgunDashing = false;
+                    Master.gameObject.layer = 7;
+                }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-            {
-                SwitchToWeapon(0);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-            {
-                SwitchToWeapon(1);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-            {
-                SwitchToWeapon(2);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-            {
-                SwitchToWeapon(3);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
-            {
-                SwitchToWeapon(4);
+                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+                {
+                    SwitchToWeapon(0);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+                {
+                    SwitchToWeapon(1);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+                {
+                    SwitchToWeapon(2);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+                {
+                    SwitchToWeapon(3);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    SwitchToWeapon(4);
+                }
             }
         }
     }
@@ -270,6 +290,11 @@ public class WeaponMasterModule : Module
         availableWeapons.Add(weapon);
         SwitchToWeapon(availableWeapons.Count - 1);
         return weapon;
+    }
+
+    public void SetWeaponsAvailable(bool available)
+    {
+        weaponsAvailable = available;
     }
     #endregion
     #endregion
