@@ -46,8 +46,6 @@ public class SimpleProjectile : DamagingWeaponSpawn
 
     private ContactFilter2D contactFilter;
 
-    private bool collidingWithRichochetSurface;
-
     
     #endregion
 
@@ -113,6 +111,11 @@ public class SimpleProjectile : DamagingWeaponSpawn
             {
                 var hit = hits[i];
 
+                if (hit.transform.gameObject.HasComponent(out ChickenMolotov molotov))
+                {
+                    molotov.Explode(false);
+                }
+
                 if (hit.collider)
                 {
                     bool hitCharacter = false;
@@ -161,6 +164,8 @@ public class SimpleProjectile : DamagingWeaponSpawn
                         AudioDictionary.aDict.PlayAudioClip("enemyHit", AudioDictionary.Source.Hitmarker);
                         lever.LeverArmActivate();
                     }
+
+                    
                     if (!gameObject.HasComponent<AltFlameProjectile>())
                     {
                         if (currentRicochets < ricochets || collider.gameObject.CompareTag("BossForky"))

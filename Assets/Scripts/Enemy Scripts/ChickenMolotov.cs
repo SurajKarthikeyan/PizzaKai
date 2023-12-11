@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChickenMolotov : MonoBehaviour
 {
     public GameObject firePillar;
+
+    public GameObject explosion;
 
     public Vector3 startPos;
     public float arcHeight;
@@ -32,15 +32,53 @@ public class ChickenMolotov : MonoBehaviour
         transform.position = new Vector3(p1, p2, 0);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyProjectile") return;
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Debug.LogWarning("I am in OnTriggerEnter and colliding with " + collision.gameObject.name.ToString());
+    //    if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyProjectile")) return;
 
-        if (collision.gameObject.tag == "Ground")
+    //    if (collision.gameObject.layer == 7)
+    //    {
+    //        Debug.Log("Player collision");
+    //    }
+
+    //    if (collision.CompareTag("Ground") || collision.CompareTag("Player") ||
+    //        collision.CompareTag("PlayerBullet") || collision.CompareTag("PlayerFireBullet"))
+    //    {
+    //        Explode();
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("I am in OnCollisionEnter and colliding with " + collision.gameObject.name.ToString());
+        if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player"))
         {
-            Vector3 flamePoint = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
-            Instantiate(firePillar, flamePoint, Quaternion.Euler(0,0,0));
-            Destroy(this.gameObject);
+            Explode(true);
         }
+        else if (
+            collision.collider.CompareTag("PlayerBullet") || collision.collider.CompareTag("PlayerFireBullet"))
+        {
+            Explode(false);
+        }
+    }
+
+    public void Explode(bool onGround)
+    {
+        GameObject fireType;
+        float offset = 0;
+        if (onGround)
+        {
+            fireType = firePillar;
+            offset = 1.5f;
+        }
+        else
+        {
+            fireType = explosion;
+            offset = 0.6f;
+        }
+        Vector3 firePoint = new(transform.position.x, transform.position.y + offset, 0);
+        Instantiate(fireType, firePoint, Quaternion.Euler(0, 0, 0));
+        Destroy(gameObject);
     }
 }

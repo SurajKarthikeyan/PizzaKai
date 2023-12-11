@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2036092049310882222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.04, y: 2.04, z: 2.04}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePillar: {fileID: 3726359714984970032, guid: 8505e4ec636734c23b46c723c1203f9e, type: 3}
-  startPos: {x: -28.03394, y: -4.485001, z: 0}
+  explosion: {fileID: 1897531875605467889, guid: 030bef8dd77716c4eb151d05b6e53277, type: 3}
+  startPos: {x: 0, y: 0, z: 0}
   arcHeight: 1
   arcLength: 3
-  duration: 2
+  duration: 1.5
   startTime: 0
 --- !u!50 &2036092049310882209
 Rigidbody2D:
@@ -136,9 +137,9 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0048020305, y: 0.046314914}
-  m_Size: {x: 0.16078575, y: 0.36468974}
+  m_Offset: {x: 0.003836982, y: 0.85}
+  m_Size: {x: 0.09936729, y: 0.28847718}
   m_Direction: 0

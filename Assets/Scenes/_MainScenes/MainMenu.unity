@@ -1628,6 +1628,7 @@ GameObject:
   - component: {fileID: 974094048}
   - component: {fileID: 974094050}
   - component: {fileID: 974094049}
+  - component: {fileID: 974094051}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -1652,7 +1653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.1081, y: 9.3671}
+  m_AnchoredPosition: {x: -8.1081, y: -8}
   m_SizeDelta: {x: 544.326, y: 219.1042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974094049
@@ -1688,31 +1689,31 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.33
-  m_Text: 'SURAJ KARTHIKEYAN - Engineer & Producer
+  m_Text: 'Suraj Karthikeyan - Engineer & Producer
 
-    ZANE O''DELL - Engineer &
+    Zane O''Dell - Engineer &
     Producer
 
-    ELI MCARDLE - Engineer
+    Eli Mcardle - Engineer
 
-    MATTHEW DEBOER - Engineer
+    Matthew DeBoer - Engineer
 
-    RYAN
-    CHANG - Engineer
+    Ryan
+    Chang - Engineer
 
-    ANDREW TRAN - Designer
+    Andrew Tran - Designer
 
-    CONNOR MILLER - Designer
+    Connor Miller - Designer
 
-    FARHAN
-    PAREKH - Artist
+    Farhan
+    Parekh - Artist
 
-    ELEX MCCOY - Writer
+    Elex McCoy - Writer
 
-    LYNDSAY MOHR - Audio SFX
+    Lyndsay Mohr - Audio SFX
 
-    CHARI
-    BAYAR - Audio Soundtrack'
+    Chari
+    Bayar - Audio Soundtrack'
 --- !u!222 &974094050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1721,6 +1722,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974094047}
   m_CullTransparentMesh: 1
+--- !u!114 &974094051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974094047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.3490566, g: 0.33423817, b: 0.33423817, a: 0.5}
+  m_EffectDistance: {x: 2.15, y: -2.23}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1077496398
 GameObject:
   m_ObjectHideFlags: 0
