@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -102,6 +103,8 @@ public class Forky : MonoBehaviour
 
     public GameObject dyingForky;
 
+    public GameObject invincibleSayDialog;
+
     #endregion
 
     #region Init
@@ -123,6 +126,8 @@ public class Forky : MonoBehaviour
                 //Play Death Animation once and destroy object
                 spawning = false;
                 StopAllCoroutines();
+                invincibleSayDialog.SetActive(false);
+                DialogueManager.Instance.levelFlowchart.StopAllBlocks();
                 StartCoroutine(KillForky());
             }
 
