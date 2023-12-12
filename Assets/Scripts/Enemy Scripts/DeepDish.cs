@@ -5,6 +5,9 @@ using UnityEngine;
 public class DeepDish : EnemyBasic
 {
     public float haltRadius = 4f;
+    public float patrolDist = 2f;
+    private float startPosX;
+    private Vector2 rememberPatrolDir;
 
     public GameObject bullets;
     public List<Transform> bulletPoints;
@@ -21,6 +24,12 @@ public class DeepDish : EnemyBasic
     {
         base.Start();
         DeepDishShot.clip = AudioDictionary.aDict.audioDict["deepDishShot"];
+
+        startPosX = transform.position.x;
+        rememberPatrolDir = Vector2.left * speed;
+        Idle = 0;
+        Moving = -1;
+
     }
 
     public override void Update()
@@ -47,11 +56,13 @@ public class DeepDish : EnemyBasic
             DeepDishShot.Play();
         }
         ShootShot();
+        //Debug.DrawRay(bltPointToUse.position,  playerPos - bltPointToUse.position);
 
     }
 
     override public void EnemyMovement()
     {
+        //if player inside haltRadius
         if ((playerPos.x >= enemyPos.x - haltRadius) && (playerPos.x <= haltRadius + enemyPos.x))
         {
             if (playerPos.y > enemyPos.y + detRadius/2 || playerPos.y < enemyPos.y - detRadius/2) return;
@@ -80,8 +91,11 @@ public class DeepDish : EnemyBasic
         }
         else
         {
+            Idle = 0;
+            SwitchPatrolPoint();
+            
+            enemyPos = transform.position;
             isMoving = true;
-            base.EnemyMovement();
         }
     }
 
@@ -102,14 +116,10 @@ public class DeepDish : EnemyBasic
             Debug.LogError("Could not find DDSGBullet Script");
         }
         DDSGBullet deepBullet = bulletGO.GetComponent<DDSGBullet>();
-        if (fireRight)
-        {
-            deepBullet.shotDir = new Vector3(-1, 0, 0); 
-        }
-        else
-        {
-            deepBullet.shotDir = new Vector3(1, 0, 0);
-        }
+        
+        deepBullet.shotDir = player.GetComponent<Collider2D>().bounds.center - bltPointToUse.position;
+        
+        
         canFire = false;
         
         shotAtTime = Time.time;
@@ -121,5 +131,43 @@ public class DeepDish : EnemyBasic
         {
             transform.position = originalPos;
         }
+    }
+
+    public void SwitchPatrolPoint()
+    {
+        if (rigid.velocity.x >= 0 && transform.position.x >= startPosX + patrolDist)
+        {
+            rigid.velocity = Vector2.left * speed;
+            rememberPatrolDir = rigid.velocity;
+            Moving = -1;
+        }
+        else if (rigid.velocity.x <= 0 && transform.position.x <= startPosX - patrolDist)
+        {
+            rigid.velocity = Vector2.right * speed;
+            rememberPatrolDir = rigid.velocity;
+            Moving = 1;
+        }
+        //return to partol after stopping
+        else if (!isMoving)
+        { 
+            rigid.velocity = rememberPatrolDir;
+            if (rememberPatrolDir.x > 0)
+                Moving = 1;
+            else
+                Moving = -1;
+        }
+
+
+        //if stuck not moving, turn around
+        else if (rigid.velocity == Vector2.zero)
+        {
+            rigid.velocity = -rememberPatrolDir;
+            rememberPatrolDir = rigid.velocity;
+            Moving = -Moving;
+        }
+
+        else
+            rigid.velocity = rememberPatrolDir;
+            
     }
 }

@@ -22,8 +22,8 @@ public class DDSGBullet : MonoBehaviour
         // Random vector for directional spread
         Vector3 randomVector = new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread),0);
 
-        Vector3 direction = shotDir - (transform.position + randomVector);
-        direction = new Vector3(direction.x * shotDir.x, direction.y, 0);
+        Vector3 direction = shotDir + randomVector;
+        //direction = new Vector3(direction.x * Mathf.Abs(shotDir.x), direction.y, 0);
         Vector3 rotation = (transform.position + randomVector);
 
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
