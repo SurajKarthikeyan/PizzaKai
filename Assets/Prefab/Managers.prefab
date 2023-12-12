@@ -380,7 +380,6 @@ MonoBehaviour:
   extraShotgunPellets: 1
   extraFlamethrowerRange: 5
   decreaseSniperReload: 0
-  tommyUP: 0
   shotgunUP: 0
   flamethrowerUP: 0
   sniperUP: 0
@@ -739,7 +738,10 @@ MonoBehaviour:
   damageTickRate: 0.5
   canJumpLayers:
     serializedVersion: 2
-    m_Bits: 329
+    m_Bits: 5243209
+  touchGrassLayers:
+    serializedVersion: 2
+    m_Bits: 5243209
   defaultRespawnPoint: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &9196742206444863517
