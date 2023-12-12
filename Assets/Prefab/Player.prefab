@@ -4426,6 +4426,7 @@ MonoBehaviour:
   dashCooldown: 2
   dashTimer: 0.2
   canDash: 1
+  isDashing: 0
   dashTime: -10
   groundCheck: {fileID: 1061556619110042102}
   touchGrass: {fileID: 7024243487534380400}
@@ -5227,6 +5228,10 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animReloadingBool
       value: Reload
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: dashDownwardSpeed
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: reloadDelay.maxTime

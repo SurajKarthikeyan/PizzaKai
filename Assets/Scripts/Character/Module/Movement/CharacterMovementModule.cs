@@ -91,7 +91,7 @@ public class CharacterMovementModule : Module
     [Tooltip("The duration of dashing.")]
     public float dashTimer = 0.5f;
     public bool canDash = true;
-    private bool isDashing = false;
+    public bool isDashing = false;
     public float dashTime = -10f;
     #endregion
 
@@ -218,11 +218,11 @@ public class CharacterMovementModule : Module
             inputtedMovement.Normalize();
             Vector2 velocity = Master.r2d.velocity;
 
-            if(Master.r2d.velocity.magnitude <= 10 && isShotgunDashing)
+            /*if(Master.r2d.velocity.magnitude <= 10 && isShotgunDashing)
             {
                 isShotgunDashing = false;
                 Master.gameObject.layer = 7;
-            }
+            }*/
 
             UpdateOWPCollision();
             UpdateWalk(velocity);
@@ -362,7 +362,7 @@ public class CharacterMovementModule : Module
         {
             if (isDashing)
             {
-                Master.r2d.gravityScale = 0;
+                //Master.r2d.gravityScale = 0;
 
                 // We are dashing.
 

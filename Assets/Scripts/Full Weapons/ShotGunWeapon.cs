@@ -22,6 +22,7 @@ public class ShotGunWeapon : WeaponModule
     [SerializeField]
     private float pushPower = 20f;
     [SerializeField] private int dashDamage = 3;
+    [SerializeField] private float dashDownwardSpeed;
     private CharacterMovementModule character;
     #endregion
 
@@ -59,7 +60,7 @@ public class ShotGunWeapon : WeaponModule
     {
         weaponMaster.weaponsAvailable = false;
         playerAnimator.SetTrigger("ShotgunDash");
-        Master.r2d.velocity = new Vector2(0,0);
+        Master.r2d.velocity = new Vector2(0, 0);
         Master.gameObject.GetComponent<CharacterMovementModule>().canInput = false;
         // Gets the player mouse position and sends the player in the opposite
         // direction.
@@ -72,8 +73,12 @@ public class ShotGunWeapon : WeaponModule
         // !IMPORTANT! NEVER set velocity directly. Instead, use AddForce with
         // !ForceMode2D.Impulse. Setting velocity directly causes a race
         // !condition with other things that may be modifying velocity.
+        
+        //Suraj: Yeah well it works by setting the velocity so I'm just going to do it anyways. Whatchu gonna do?
         Master.r2d.AddForce(-dir * pushPower, ForceMode2D.Impulse);
 
+        //Master.r2d.AddForce(new Vector2(0,dashDownwardSpeed), ForceMode2D.Impulse);
+        
         character.isShotgunDashing = true;
         Master.gameObject.layer = 21;
     }
