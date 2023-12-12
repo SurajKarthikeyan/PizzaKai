@@ -57,7 +57,7 @@ public class ChickenWing : EnemyBasic
                     hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
                 }
             }
-            Invoke("CWDeath", 1.1f );
+            Invoke("CWDeath", 0.6f );
             
         }
 
