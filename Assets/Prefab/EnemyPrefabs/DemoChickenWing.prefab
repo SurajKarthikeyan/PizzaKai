@@ -498,7 +498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3cc5fc1ead0724d890aa7615897930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenWingMaterial: {fileID: 2100000, guid: 919f07ef897bc1d42a4fe34aa004f9a1, type: 2}
+  chickenWingMaterial: {fileID: 0}
+  copyThis: {fileID: 2100000, guid: 919f07ef897bc1d42a4fe34aa004f9a1, type: 2}
   deathEmission: {fileID: 2800000, guid: 9452f9744562155498651621d4930735, type: 3}
   leftIdleEmission: {fileID: 2800000, guid: 24ffb8e23d4214942a9a9ccf8cd3cbd3, type: 3}
   rightIdleEmission: {fileID: 2800000, guid: e528cc64394376d429d1480e12d6e4bd, type: 3}

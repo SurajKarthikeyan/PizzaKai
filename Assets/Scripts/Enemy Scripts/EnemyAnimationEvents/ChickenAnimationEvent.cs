@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class ChickenAnimationEvent : MonoBehaviour
 {
     public Material chickenWingMaterial;
+    public Material copyThis;
 
     public Texture2D deathEmission;
     public Texture2D leftIdleEmission;
@@ -12,6 +14,14 @@ public class ChickenAnimationEvent : MonoBehaviour
     public Texture2D leftWalkingEmission;
     public Texture2D rightWalkingEmission;
     private static readonly int GlowTex = Shader.PropertyToID("_GlowTex");
+
+    private void Awake()
+    {
+        chickenWingMaterial = new Material(copyThis);
+        this.gameObject.GetComponent<SpriteRenderer>().material = chickenWingMaterial;
+
+    }
+
     public void DeathEmission()
     {
         chickenWingMaterial.SetTexture(GlowTex, deathEmission);
