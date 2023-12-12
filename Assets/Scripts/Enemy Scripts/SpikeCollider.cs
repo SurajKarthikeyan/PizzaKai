@@ -14,6 +14,8 @@ public class SpikeCollider : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private CapsuleCollider2D playerCollider;
     private CharacterMovementModule character;
+
+    public int spikeDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,17 +44,20 @@ public class SpikeCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col == playerCollider)
+        if (player.gameObject.GetComponent<CharacterMovementModule>().isShotgunDashing &&(
+                     col.gameObject == shotgunObject || col.gameObject == player.gameObject))
         {
-            player.GetComponent<Character>().TakeDamage(5);
-            isKnockedBack = true;
-        }
-        else if (player.gameObject.GetComponent<CharacterMovementModule>().isShotgunDashing &&(
-                 col.gameObject == shotgunObject || col.gameObject == player.gameObject))
-        {
-            player.GetComponent<Character>().TakeDamage(5);
+            player.GetComponent<Character>().TakeDamage(spikeDamage);
             isKnockedBack = true;
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider == playerCollider)
+        {
+            player.GetComponent<Character>().TakeDamage(spikeDamage);
+            isKnockedBack = true;
+        }
+    }
 }

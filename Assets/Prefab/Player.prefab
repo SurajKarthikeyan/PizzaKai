@@ -1592,6 +1592,7 @@ MonoBehaviour:
   delay: 0
   tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
+  playeraAnimEvent: {fileID: 0}
 --- !u!114 &2004946441184968110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3168,6 +3169,7 @@ MonoBehaviour:
   delay: 0.9
   tommyGunRef: {fileID: 995613533016112330}
   lastRespawnPoint: {fileID: 0}
+  playeraAnimEvent: {fileID: 0}
 --- !u!1 &5489093577870500295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4455,9 +4457,23 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  touchGrassCheckCF2D:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   groundedStatus: 0
   movementStatus: 0
-  totalJumps: 1
+  totalJumps: 2
   isShotgunDashing: 0
 --- !u!114 &3245470669006060296
 MonoBehaviour:
@@ -5212,6 +5228,10 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: accessible
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: dashDamage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
