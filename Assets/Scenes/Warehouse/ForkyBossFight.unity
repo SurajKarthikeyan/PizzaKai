@@ -261,6 +261,7 @@ MonoBehaviour:
   delay: 0
   tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
+  playeraAnimEvent: {fileID: 0}
 --- !u!4 &18514707
 Transform:
   m_ObjectHideFlags: 0
@@ -76510,10 +76511,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1640268360257188953, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: UIScript
+      value: 
+      objectReference: {fileID: 223702635}
     - target: {fileID: 2321966642924401466, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: UIScript
       value: 
       objectReference: {fileID: 223702635}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 223702635}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2321966643706681203, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: UIScript
       value: 
@@ -76605,6 +76622,18 @@ PrefabInstance:
     - target: {fileID: 2321966644967012517, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 223702635}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
@@ -76913,6 +76942,7 @@ MonoBehaviour:
   delay: 0
   tommyGunRef: {fileID: 0}
   lastRespawnPoint: {fileID: 0}
+  playeraAnimEvent: {fileID: 0}
 --- !u!114 &724517015
 MonoBehaviour:
   m_ObjectHideFlags: 0
