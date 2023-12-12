@@ -45,7 +45,7 @@ public class UpgradeManager : MonoBehaviour
     //whether or not a weapon has it's upgrade
     [Header("Enable before playing for testing, only give one level")]
     [SerializeField]
-    private bool tommyUP;
+    private static bool tommyUP;
     [SerializeField]
     private bool shotgunUP, flamethrowerUP, sniperUP;
 
