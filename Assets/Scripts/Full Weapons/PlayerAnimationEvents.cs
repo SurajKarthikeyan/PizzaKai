@@ -36,13 +36,14 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void RemoveGlowTex()
     {
         playerMat.SetTexture(GlowTex, playerDefault);
-        playerCharacterMovementModule.Master.gameObject.layer = 7;
-        playerCharacterMovementModule.isShotgunDashing = false;
+
     }
 
     public void EnableInput()
     {
         playerCharacterMovementModule.canInput = true;
+        playerCharacterMovementModule.Master.gameObject.layer = 7;
+        playerCharacterMovementModule.isShotgunDashing = false;
         transform.GetComponentInParent<Character>().transform.GetComponentInChildren<WeaponMasterModule>().weaponsAvailable = true;
         playerShotGunWeapon.shotgunDashing = false;
         shotgunSpriteRenderer.enabled = true;
