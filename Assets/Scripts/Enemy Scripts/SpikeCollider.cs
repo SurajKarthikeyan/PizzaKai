@@ -12,7 +12,7 @@ public class SpikeCollider : MonoBehaviour
     [SerializeField] private GameObject shotgunObject;
     public float knockbackDuration = 1f;
     [SerializeField] private Animator playerAnimator;
-
+    [SerializeField] private CapsuleCollider2D playerCollider;
     private CharacterMovementModule character;
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class SpikeCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject == player.gameObject)
+        if (col == playerCollider)
         {
             player.GetComponent<Character>().TakeDamage(5);
             isKnockedBack = true;
