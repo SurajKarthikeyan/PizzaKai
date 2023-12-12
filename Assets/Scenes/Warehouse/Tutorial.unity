@@ -33016,6 +33016,10 @@ PrefabInstance:
       propertyPath: _targetGameObject.gameObjectVal
       value: 
       objectReference: {fileID: 2078927400}
+    - target: {fileID: 1451473468515931829, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: storyText
+      value: 'Use the A and D keys to move left and right, respectively. '
+      objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931836, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: targetObject
       value: 
@@ -34316,6 +34320,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227258400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8396842951331332546, guid: 7a49bca9383b27f3399a15ddb67f89a8, type: 3}
+  m_PrefabInstance: {fileID: 1299192436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b7a717fd6a7c344a0526333b4a3c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1263220530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34323,6 +34338,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1640268360257188953, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: UIScript
+      value: 
+      objectReference: {fileID: 1227258400}
+    - target: {fileID: 2321966642924401466, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: UIScript
+      value: 
+      objectReference: {fileID: 1227258400}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1227258400}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321966642924401467, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321966643706681203, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: UIScript
+      value: 
+      objectReference: {fileID: 1227258400}
     - target: {fileID: 2321966644967012513, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -34410,6 +34449,18 @@ PrefabInstance:
     - target: {fileID: 2321966644967012517, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1227258400}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
