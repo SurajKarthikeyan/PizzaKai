@@ -49,6 +49,7 @@ public class Breadstick : EnemyBasic
         {
             deathState = true;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             breadDead.Play();
             breadVanish.SetBool("Death", deathState);
             if (size > 1 && !hasSpawned)
