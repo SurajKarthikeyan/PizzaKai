@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 7228773726619069326}
   - component: {fileID: 7228773726619069325}
   - component: {fileID: 2132993595}
+  - component: {fileID: 3810932643721599929}
   m_Layer: 10
   m_Name: DemoChickenWing
   m_TagString: Enemy
@@ -346,7 +347,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 919f07ef897bc1d42a4fe34aa004f9a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -484,3 +485,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3810932643721599929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228773726619069321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3cc5fc1ead0724d890aa7615897930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chickenWingMaterial: {fileID: 2100000, guid: 919f07ef897bc1d42a4fe34aa004f9a1, type: 2}
+  deathEmission: {fileID: 2800000, guid: 9452f9744562155498651621d4930735, type: 3}
+  leftIdleEmission: {fileID: 2800000, guid: 24ffb8e23d4214942a9a9ccf8cd3cbd3, type: 3}
+  rightIdleEmission: {fileID: 2800000, guid: e528cc64394376d429d1480e12d6e4bd, type: 3}
+  leftWalkingEmission: {fileID: 2800000, guid: 67f599e9c1abb0e40914e2af93ec5556, type: 3}
+  rightWalkingEmission: {fileID: 2800000, guid: 962dfd1b1e8f9b14885fadb7e8cfdab5, type: 3}
