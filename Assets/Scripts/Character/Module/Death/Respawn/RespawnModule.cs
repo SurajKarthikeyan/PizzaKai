@@ -10,6 +10,7 @@ public class RespawnModule : DeathModule
     [ReadOnly]
     public Transform lastRespawnPoint;
 
+    public PlayerAnimationEvents playeraAnimEvent;
     private Vector3 initialPosition; 
     #endregion
 
@@ -39,8 +40,10 @@ public class RespawnModule : DeathModule
 
     protected override void OnDeath()
     {
+        weaponMaster.weaponsAvailable = true;
         if (!ranDeathAction)
         {
+            playeraAnimEvent.RemoveGlowTex();
             Debug.Log("Hey You're in respawnOnDeath");
             ranDeathAction = true;
             Master.transform.position = RespawnPosition;

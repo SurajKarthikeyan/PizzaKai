@@ -160,6 +160,10 @@ public class CharacterMovementModule : Module
     [SerializeField]
     private ContactFilter2D groundCheckCF2D;
 
+    [ReadOnly] 
+    [SerializeField] 
+    private ContactFilter2D touchGrassCheckCF2D;
+
     [ReadOnly]
     public GroundedStatus groundedStatus;
 
@@ -187,7 +191,7 @@ public class CharacterMovementModule : Module
     ) > 0;
     
     public bool TouchGrass => touchGrass.OverlapCollider(
-        groundCheckCF2D, touchingGroundColliders
+        touchGrassCheckCF2D, touchingGroundColliders
     ) > 0;
     #endregion
 
@@ -206,6 +210,14 @@ public class CharacterMovementModule : Module
             layerMask = GameManager.Instance.canJumpLayers,
             useLayerMask = true
         };
+        
+        touchGrassCheckCF2D = new()
+        {
+            layerMask = GameManager.Instance.touchGrassLayers,
+            useLayerMask = true
+        };
+        
+        
     }
     #endregion
 

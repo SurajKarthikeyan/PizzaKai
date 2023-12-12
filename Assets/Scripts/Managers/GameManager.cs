@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("The layers where characters can jump off of.")]
     public LayerMask canJumpLayers;
+    
+    [Tooltip("The layers where characters can jump off of.")]
+    public LayerMask touchGrassLayers;
 
     [Tooltip("The first respawn point for the player. If not set, Respawn " +
         "will use its initial position.")]
