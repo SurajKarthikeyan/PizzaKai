@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class SpikeCollider : MonoBehaviour
     private bool isKnockedBack = false;
 
     private Rigidbody2D player;
-
+    [SerializeField] private GameObject shotgunObject;
     public float knockbackDuration = 1f;
 
 
@@ -28,12 +29,22 @@ public class SpikeCollider : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == player.gameObject)
         {
             player.GetComponent<Character>().TakeDamage(5);
             isKnockedBack=true;
         }
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject == player.gameObject || (player.gameObject.GetComponent<CharacterMovementModule>().isShotgunDashing && col.gameObject == shotgunObject))
+        {
+            player.GetComponent<Character>().TakeDamage(5);
+            isKnockedBack = true;
+        }
     }
+
 }
