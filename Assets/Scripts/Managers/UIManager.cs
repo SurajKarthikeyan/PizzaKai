@@ -127,6 +127,27 @@ public class UIManager : MonoBehaviour
             {
                 PauseGame();
             }
+
+            //This check should not be here but frankly I don't care rn
+            if (!DialogueManager.Instance.levelFlowchart.HasExecutingBlocks() && pauseMenu.activeSelf == false)
+            {
+                
+                if (!weaponMaster.weaponsAvailable)
+                {
+                    DialogueManager.Instance.StopPlayer(false);
+                    weaponMaster.enabled = false;
+                    weaponMaster.CurrentWeapon.gameObject.SetActive(false);
+                }
+                else
+                {
+                    if (!weaponMaster.enabled)
+                    {
+                        weaponMaster.enabled = true;
+                        weaponMaster.CurrentWeapon.gameObject.SetActive(true);
+                    }
+                }
+            }
+
         }
     }
     #endregion
@@ -146,13 +167,20 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Pauses and unpauses the game
     /// </summary>
-    private void PauseGame()
+    public void PauseGame()
     {
         if (pauseMenu.activeSelf == true)
         {
             //Unpauses game
             pauseMenu.SetActive(false);
-            DialogueManager.Instance.StopPlayer(false);
+            if (!DialogueManager.Instance.levelFlowchart.HasExecutingBlocks())
+            {
+                DialogueManager.Instance.StopPlayer(false);
+            }
+            if (!weaponMaster.weaponsAvailable)
+            {
+                weaponMaster.CurrentWeapon.gameObject.SetActive(false);
+            }
             isPaused = false;
             Time.timeScale = 1;
         }
