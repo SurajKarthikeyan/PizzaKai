@@ -9,6 +9,8 @@ public class ForkySoloAnimationEvents : MonoBehaviour
     public Texture2D forkyIdleEmission;
     public Texture2D forkyCheekedUpEmission;
     private static readonly int GlowTex = Shader.PropertyToID("_GlowTex");
+    public GameObject TouchGrass0;
+    public GameObject TouchGrass1;
 
 
     public void IdleEmission()
@@ -19,5 +21,7 @@ public class ForkySoloAnimationEvents : MonoBehaviour
     public void CheekedUpEmission()
     {
         forkyMaterial.SetTexture(GlowTex, forkyCheekedUpEmission);
+        TouchGrass0.SetActive(false);
+        TouchGrass1.SetActive(false);
     }
 }

@@ -255,6 +255,10 @@ public class Forky : MonoBehaviour
             boxCollider.enabled = true;
             forkyr2d.gravityScale = 10f;
         }
+        
+        /*BoxCollider2D boxCollider1 = forkyr2d.GetComponentInParent<BoxCollider2D>();
+        boxCollider1.enabled = false;
+        forkyr2d.gravityScale = 0;*/
 
     }
 

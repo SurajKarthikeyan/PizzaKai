@@ -77369,6 +77369,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7850547928190316883, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_PrefabInstance: {fileID: 821936445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &821936448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6855915888575707648, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 821936445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &821936449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4602974517832636180, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 821936445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -81025,7 +81035,7 @@ Tilemap:
       - {fileID: -210593151, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: -1726844845, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: 285132504, guid: 410d6cda03978974585513d951059580, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -2, y: -1, z: 0}
@@ -82856,6 +82866,8 @@ MonoBehaviour:
   forkyMaterial: {fileID: 2100000, guid: 2fac6c44d331a834e8b97d8fb7951a7c, type: 2}
   forkyIdleEmission: {fileID: 2800000, guid: 7f80c03adeb02c24aa376f33fcccb206, type: 3}
   forkyCheekedUpEmission: {fileID: 2800000, guid: 71865b0012f366942b0ac3f286504c90, type: 3}
+  TouchGrass0: {fileID: 821936449}
+  TouchGrass1: {fileID: 821936448}
 --- !u!1 &1658846927
 GameObject:
   m_ObjectHideFlags: 0
