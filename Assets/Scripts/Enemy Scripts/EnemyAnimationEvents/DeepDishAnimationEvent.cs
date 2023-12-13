@@ -15,6 +15,7 @@ public class DeepDishAnimationEvent : MonoBehaviour
     public Texture2D rightIdleEmission;
     public Texture2D leftWalkingEmission;
     public Texture2D rightWalkingEmission;
+    public AudioSource deepDishSource;
     private static readonly int GlowTex = Shader.PropertyToID("_GlowTex");
 
     private void Awake()
@@ -37,6 +38,7 @@ public class DeepDishAnimationEvent : MonoBehaviour
     }
     public void DeathEmission()
     {
+        AudioDictionary.aDict.PlayAudioClipRemote("deepDishDeath", deepDishSource);
         deepDishMaterial.SetTexture(GlowTex, deathEmission);
     }
 
