@@ -18,13 +18,13 @@ public class ShotgunTriggerDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && character.isShotgunDashing)
         {
-            Debug.Log(collision.gameObject);
             EnemyBasic enemy = collision.gameObject.GetComponent<EnemyBasic>();
             if (enemy != null)
             {
                 if (enemy.currentHP <= shotgun.dashDamage)
                 {
                     shotgun.dashReset = true;
+                    shotgun.altFireDelay.Finish();
                 }
                 enemy.TakeDamage(shotgun.dashDamage);
             }

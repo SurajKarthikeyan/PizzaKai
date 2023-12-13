@@ -7,6 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
+    public Character playerCharacter;
     public CharacterMovementModule playerCharacterMovementModule;
     public ShotGunWeapon playerShotGunWeapon;
     public SpriteRenderer shotgunSpriteRenderer;
@@ -21,10 +22,12 @@ public class PlayerAnimationEvents : MonoBehaviour
     private static readonly int GlowTex = Shader.PropertyToID("_GlowTex");
     public void DisableInputs()
     {
+        playerCharacter.damageInvulnerability.Reset();
         playerMat.SetTexture(GlowTex, glowTexDashStart);
         playerCharacterMovementModule.canInput = false;
         playerShotGunWeapon.shotgunDashing = true;
         shotgunSpriteRenderer.enabled = false;
+
     }
 
     public void SetSlamEmission()
