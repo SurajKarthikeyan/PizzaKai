@@ -61,7 +61,7 @@ public sealed class Character : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private Duration damageInvulnerability;
+    public Duration damageInvulnerability;
 
     [SerializeField]
     private float knockbackMultiplier = 1;

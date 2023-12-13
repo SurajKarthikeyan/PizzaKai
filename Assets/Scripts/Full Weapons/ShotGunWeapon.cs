@@ -21,9 +21,10 @@ public class ShotGunWeapon : WeaponModule
     [Tooltip("Power with which the player is sent flying")]
     [SerializeField]
     private float pushPower = 20f;
-    [SerializeField] private int dashDamage = 3;
+    [SerializeField] public int dashDamage = 3;
     [SerializeField] private float dashDownwardSpeed;
     private CharacterMovementModule character;
+    public Collider2D damagecollider;
     #endregion
 
     #region UnityMethods
@@ -58,6 +59,7 @@ public class ShotGunWeapon : WeaponModule
     /// </summary>
     private void PushPlayer()
     {
+        damagecollider.enabled = true;
         weaponMaster.weaponsAvailable = false;
         playerAnimator.SetTrigger("ShotgunDash");
         Master.r2d.velocity = new Vector2(0, 0);
@@ -81,20 +83,9 @@ public class ShotGunWeapon : WeaponModule
         
         character.isShotgunDashing = true;
         Master.gameObject.layer = 21;
+        gameObject.layer = 8;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if ((collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Breadstick") && character.isShotgunDashing)
-        {
-            if(collision.gameObject.GetComponent<EnemyBasic>().currentHP <= dashDamage)
-            {
-                dashReset = true;
-            }
-            collision.gameObject.GetComponent<EnemyBasic>().TakeDamage(dashDamage);
-        }
-    }
 
     /*
     /// <summary>

@@ -92,7 +92,6 @@ public class EnemyBasic : MonoBehaviour
                 }
             }
 
-            Destroy(this.gameObject);
         }
 
         // Handles Flashing on Hit
@@ -161,8 +160,11 @@ public class EnemyBasic : MonoBehaviour
 
     virtual public void EnemyJump()
     {
-        rigid.velocity = new Vector2(0, jumpSpeed);
-        rigid.gravityScale = 0;
+        if (rigid != null)
+        {
+            rigid.velocity = new Vector2(0, jumpSpeed);
+            rigid.gravityScale = 0;
+        }
     }
 
     // Makes sure can only be hit by player bullets, deals damage

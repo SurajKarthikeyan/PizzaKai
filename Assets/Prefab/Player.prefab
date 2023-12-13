@@ -2463,6 +2463,78 @@ MonoBehaviour:
   - target: {fileID: 6520382722505347044}
     weight: 0.5
     radius: 1
+--- !u!1 &4579863209799756324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593290739819311866}
+  - component: {fileID: 6724011615394411028}
+  - component: {fileID: 5242276797479018103}
+  m_Layer: 8
+  m_Name: ShotgunDashCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1593290739819311866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579863209799756324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8206075540257416576}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6724011615394411028
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579863209799756324}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.038024023, y: 0.37812755}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.66200876, y: 0.7084823}
+  m_EdgeRadius: 0
+--- !u!114 &5242276797479018103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579863209799756324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b98e0f5474d6124c9428f51686ab789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotgun: {fileID: 3213876410492947914}
 --- !u!1 &4602974517832636180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,6 +2960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c1bb3578f43a7448d4511efe2d9365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCharacter: {fileID: 8853080664221168347}
   playerCharacterMovementModule: {fileID: 6979568082248114104}
   playerShotGunWeapon: {fileID: 3213876410492947914}
   shotgunSpriteRenderer: {fileID: 893394011}
@@ -4321,6 +4394,7 @@ Transform:
   - {fileID: 8653365110024886398}
   - {fileID: 4382846289714297309}
   - {fileID: 5289103248789938557}
+  - {fileID: 1593290739819311866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5231,12 +5305,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: dashDamage
-      value: 30
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: damagecollider
+      value: 
+      objectReference: {fileID: 6724011615394411028}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: playerAnimator
       value: 
@@ -5256,6 +5334,18 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: reloadDelay.maxTime
       value: 2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: altFireDelay.maxTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078998324694353012, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.599227
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078998324694353012, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.20841262
       objectReference: {fileID: 0}
     - target: {fileID: 4342418668238935986, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_SortingOrder
