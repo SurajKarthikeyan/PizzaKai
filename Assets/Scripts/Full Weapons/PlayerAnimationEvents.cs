@@ -42,7 +42,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         playerCharacterMovementModule.isShotgunDashing = false;
         playerShotGunWeapon.shotgunDashing = false;
         shotgunSpriteRenderer.enabled = true;
-
+        playerShotGunWeapon.damagecollider.enabled = false;
     }
 
     public void EnableInput()

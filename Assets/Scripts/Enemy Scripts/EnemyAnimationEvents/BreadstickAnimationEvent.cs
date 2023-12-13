@@ -26,20 +26,20 @@ public class BreadstickAnimationEvent : MonoBehaviour
     public void DeathEmission()
     {
         breadStickMaterial.SetTexture(GlowTex, deathEmission);
-        Debug.Log("Switched to death");
+        //Debug.Log("Switched to death");
     }
 
     public void JumpingEmission()
     {
         breadStickMaterial.SetTexture(GlowTex, jumpingUpEmission);
-        Debug.Log("Switched to jump");
+        //Debug.Log("Switched to jump");
 
     }
     
     public void LeftIdleEmission()
     {
         breadStickMaterial.SetTexture(GlowTex, leftIdleEmission);
-        Debug.Log("Switched to idle");
+        //Debug.Log("Switched to idle");
 
     }
     
@@ -47,14 +47,14 @@ public class BreadstickAnimationEvent : MonoBehaviour
     public void LeftWalkingEmission()
     {
         breadStickMaterial.SetTexture(GlowTex, leftWalkingEmission);
-        Debug.Log("Switched to left walk");
+        //Debug.Log("Switched to left walk");
 
     }
 
     public void RightWalkingEmission()
     {
         breadStickMaterial.SetTexture(GlowTex, rightWalkingEmission);
-        Debug.Log("Switched to right walk");
+        //Debug.Log("Switched to right walk");
 
     }
 }
