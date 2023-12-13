@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -191,6 +192,10 @@ public sealed class Character : MonoBehaviour
         if (damageInvulnerability.IsDone)
         {
             HP -= damage;
+            if (HP > 0)
+            {
+                StartCoroutine(DamageFlash());
+            }
             damageInvulnerability.Reset();
         }
     }
@@ -203,6 +208,10 @@ public sealed class Character : MonoBehaviour
         if (damageInvulnerability.IsDone)
         {
             HP -= damage;
+            if (HP > 0)
+            {
+                StartCoroutine(DamageFlash());
+            }
             damageInvulnerability.Reset();
         }
 
@@ -212,7 +221,34 @@ public sealed class Character : MonoBehaviour
             PlayerKnockback(knockbackDir.normalized);
         }
     }
-    
+
+    /// <summary>
+    /// Flashes the player character
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator DamageFlash()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+    }
 
     /// <summary>
     /// Heals the character by a specific amount.

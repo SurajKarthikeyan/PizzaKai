@@ -44,6 +44,7 @@ public class DeepDish : EnemyBasic
         base.Update();
         if (deathState)
         {
+            sRend.color = Color.white;
             this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
             Destroy(this.gameObject.GetComponent<Collider2D>());
             this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;

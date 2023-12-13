@@ -48,6 +48,7 @@ public class Breadstick : EnemyBasic
         if (currentHP <= 0)
         {
             deathState = true;
+            sRend.color = Color.white;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             breadDead.Play();

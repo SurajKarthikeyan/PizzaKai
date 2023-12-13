@@ -39,6 +39,7 @@ public class ChickenWing : EnemyBasic
         // Handles Death and Drops
         if(currentHP <= 0)
         {
+            sRend.color = Color.white;
             this.gameObject.GetComponent<Animator>().SetBool("Death", true);
             deathState = true;
 
