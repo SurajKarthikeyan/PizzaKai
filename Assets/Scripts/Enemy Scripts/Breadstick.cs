@@ -65,6 +65,9 @@ public class Breadstick : EnemyBasic
                     GameObject stickGO = Instantiate<GameObject>(gameObject);
                     Breadstick stick = stickGO.GetComponent<Breadstick>();
                     stickGO.transform.position = new Vector3(transform.position.x + (i - 0), transform.position.y, transform.position.z);
+
+                    stickGO.transform.rotation = Quaternion.identity;
+
                     stickGO.GetComponent<Rigidbody2D>().gravityScale = gravStore;
                     stick.sticked = true;
                     stick.originalPos = originalPos + new Vector3(i, 0, 0);

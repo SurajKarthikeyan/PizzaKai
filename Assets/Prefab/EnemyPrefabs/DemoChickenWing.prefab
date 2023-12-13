@@ -368,9 +368,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 336279440, guid: 283a9cef92ce06847be9f1f780428f00, type: 3}
+  m_Sprite: {fileID: -1463740001, guid: 40d0e0def0175a2429f540844eef3175, type: 3}
   m_Color: {r: 0.7169812, g: 0.459524, b: 0.064257726, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -405,10 +405,12 @@ MonoBehaviour:
   guaranteedDrop: {fileID: 0}
   healthDrop: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
   dropChance: 0.25
+  hasDropped: 0
   EnemyAnim: {fileID: 2132993595}
   Moving: 0
   Fired: 0
   Idle: 0
+  facingRight: 0
   chickenProj: {fileID: 2036092049310882222, guid: 84f7d642681ef45a69b4ef106fe9d48c, type: 3}
   projSpawn: {fileID: 7228773726610405254}
   isFleeing: 0
@@ -418,7 +420,6 @@ MonoBehaviour:
   ChickenRun: {fileID: 3205347358559424685}
   MolotovThrow: {fileID: 2573314730349767482}
   Counter: 0
-  hasDropped: 0
 --- !u!50 &7228773726619069326
 Rigidbody2D:
   serializedVersion: 4
@@ -456,8 +457,8 @@ BoxCollider2D:
   m_Offset: {x: -0.04, y: 0.26918787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4141675, y: 0}
-    oldSize: {x: 0.52, y: 0.55}
+    pivot: {x: 0.5, y: 0.033333335}
+    oldSize: {x: 0.75, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

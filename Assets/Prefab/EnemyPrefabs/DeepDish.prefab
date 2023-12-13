@@ -271,9 +271,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 1346726454, guid: 8be1ed9a297793e4fb3b869746d9d487, type: 3}
+  m_Sprite: {fileID: 1633208193, guid: d71361ec6aba82e42a0dd5edd5b46ff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.85, y: 0.74}
@@ -316,8 +316,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0022535853, y: 0.36072364}
-  m_Size: {x: 0.84746265, y: 0.73161745}
+  m_Offset: {x: 0, y: 0.37724906}
+  m_Size: {x: 0.76467514, y: 0.76467514}
   m_Direction: 1
 --- !u!114 &7148419337918994597
 MonoBehaviour:
@@ -345,10 +345,12 @@ MonoBehaviour:
   guaranteedDrop: {fileID: 0}
   healthDrop: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
   dropChance: 0.3
+  hasDropped: 0
   EnemyAnim: {fileID: 879536357}
   Moving: 0
   Fired: 0
   Idle: 0
+  facingRight: 0
   haltRadius: 4
   patrolDist: 2
   bullets: {fileID: 1991449090420892426, guid: 078538f6b13c94940b8c9c71523c6596, type: 3}
@@ -400,3 +402,4 @@ MonoBehaviour:
   rightIdleEmission: {fileID: 2800000, guid: d9942b1589e1f1e4c9c0535ce5e423fb, type: 3}
   leftWalkingEmission: {fileID: 2800000, guid: a2f5b7fc95b4c184e8062a097b497cc4, type: 3}
   rightWalkingEmission: {fileID: 2800000, guid: 8cb120c23f0d33e4b81a84c0ffb1b52a, type: 3}
+  deepDishSource: {fileID: 0}
