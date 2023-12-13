@@ -39,6 +39,7 @@ public class Pickup : MonoBehaviour
             // Destroy if some character has picked up the pickup.
             if (ReceiveCharacter(character))
             {
+                Debug.Log("received character");
                 Destroy(gameObject);
             }
         }

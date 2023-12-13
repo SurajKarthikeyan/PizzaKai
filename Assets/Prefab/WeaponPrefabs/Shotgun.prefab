@@ -407,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 4342418669924086010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4342418669661374407}
@@ -462,6 +462,8 @@ MonoBehaviour:
   shotgunDashing: 0
   pushPower: 20
   dashDamage: 3
+  dashDownwardSpeed: 0
+  damagecollider: {fileID: 0}
 --- !u!82 &-4717194129262909025
 AudioSource:
   m_ObjectHideFlags: 0
