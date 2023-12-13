@@ -49,6 +49,10 @@ public class Breadstick : EnemyBasic
         {
             deathState = true;
             sRend.color = Color.white;
+            if (Moving > 0)
+            {
+                sRend.flipX = true;
+            }
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             breadDead.Play();
@@ -107,7 +111,15 @@ public class Breadstick : EnemyBasic
 
         EnemyAnim.SetFloat("Movement", Moving);
         EnemyAnim.SetFloat("Attack", Fired);
-
+        if (!facingRight && Moving > 0)
+        {
+            facingRight = true;
+        }
+        else if (facingRight && Moving < 0)
+        {
+            facingRight = false;
+        }
+        EnemyAnim.SetBool("FacingRight", facingRight);
         playerPos = player.transform.position;
         EnemyMovement();
     }
