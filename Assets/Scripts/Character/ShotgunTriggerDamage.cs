@@ -24,6 +24,7 @@ public class ShotgunTriggerDamage : MonoBehaviour
                 if (enemy.currentHP <= shotgun.dashDamage)
                 {
                     shotgun.dashReset = true;
+                    shotgun.altFireDelay.Finish();
                 }
                 enemy.TakeDamage(shotgun.dashDamage);
             }
