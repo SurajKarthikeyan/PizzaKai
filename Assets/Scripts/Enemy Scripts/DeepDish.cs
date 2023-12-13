@@ -42,7 +42,12 @@ public class DeepDish : EnemyBasic
         */
 
         base.Update();
-
+        if (deathState)
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Invoke("DDDeath", 1f);
+        }
         if (!isMoving && (Time.time >= shotAtTime + timeBetweenShot)) canFire = true;
 
         if (canFire == true && fireRight)
@@ -60,6 +65,12 @@ public class DeepDish : EnemyBasic
 
     }
 
+
+    public void DDDeath()
+    {
+        Debug.Log("Goodbye");
+        Destroy(this.gameObject);
+    }
     override public void EnemyMovement()
     {
         //if player inside haltRadius

@@ -92,7 +92,6 @@ public class EnemyBasic : MonoBehaviour
                 }
             }
 
-            Destroy(this.gameObject);
         }
 
         // Handles Flashing on Hit
