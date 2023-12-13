@@ -1246,6 +1246,8 @@ MonoBehaviour:
       value: {fileID: 8300000, guid: 48b0f281b9d8c9d4791d9bcac1b5d3bd, type: 3}
     - key: shotgunSlam
       value: {fileID: 8300000, guid: e12cef260de2bb8439c1ee6d79e345b6, type: 3}
+    - key: deepDishDeath
+      value: {fileID: 8300000, guid: 2fb8e68935ef0134898bc758396ecb4a, type: 3}
   source: 0
   testSource: {fileID: 6426834763429577237}
   gunSource: {fileID: 0}
@@ -4475,7 +4477,6 @@ MonoBehaviour:
     maxTime: 1
     elapsed: 0
   knockbackMultiplier: 20
-  sRend: {fileID: 1661574810468894446}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
