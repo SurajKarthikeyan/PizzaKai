@@ -319,6 +319,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &231064954 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 948621413, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 2078927396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435804328
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,11 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92aa31dccf69655409f956de472d35c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgunObject: {fileID: 0}
+  shotgunObject: {fileID: 1888797706}
   knockbackDuration: 1
-  playerAnimator: {fileID: 0}
-  playerCollider: {fileID: 0}
-  spikeDamage: 0
+  playerAnimator: {fileID: 231064954}
+  playerCollider: {fileID: 2078927409}
+  spikeDamage: 5
 --- !u!19719996 &556198840
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -36314,6 +36319,10 @@ PrefabInstance:
         in the air. Try dashing over this gap. '
       objectReference: {fileID: 0}
     - target: {fileID: 1451473468515931865, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
+      propertyPath: nodeRect.y
+      value: 130.2809
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451473468515931865, guid: b286f6c2e7dfe414eb2dc049a109359e, type: 3}
       propertyPath: nodeRect.width
       value: 161.97787
       objectReference: {fileID: 0}
@@ -38920,6 +38929,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7850547928190316883, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_PrefabInstance: {fileID: 2078927396}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1888797706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 966027444, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 2078927396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1938000224
 GameObject:
   m_ObjectHideFlags: 0
@@ -39373,6 +39387,11 @@ GameObject:
 --- !u!1 &2078927401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8206075540257416582, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
+  m_PrefabInstance: {fileID: 2078927396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &2078927409 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3726116736307325435, guid: cec210d2ac4db88469521b97299ff7fa, type: 3}
   m_PrefabInstance: {fileID: 2078927396}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100303996 stripped
