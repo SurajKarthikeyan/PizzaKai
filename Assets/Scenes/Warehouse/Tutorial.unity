@@ -34362,6 +34362,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95026574557559042, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 95026574557559042, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95026574557559042, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 95026575271667953, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 95026575271667953, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1640268360257188953, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: UIScript
       value: 
@@ -34389,6 +34409,10 @@ PrefabInstance:
     - target: {fileID: 2321966644967012513, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321966644967012513, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2321966644967012517, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_Pivot.x
@@ -34475,22 +34499,39 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1227258400}
+      objectReference: {fileID: 1263220532}
     - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 2916190557883588188, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189473704242453747, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_Name
+      value: ControlsButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527042881884211278, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+      propertyPath: m_Name
+      value: BackgroundControl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
 --- !u!1 &1263220531 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2321966644967012513, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
+  m_PrefabInstance: {fileID: 1263220530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1263220532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 878433140224715704, guid: 69123a8aab195ed498e05b1c92a1f6ab, type: 3}
   m_PrefabInstance: {fileID: 1263220530}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1298496375 stripped
@@ -34955,7 +34996,7 @@ SpriteRenderer:
   m_Size: {x: 5.5, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1374112978
