@@ -4475,6 +4475,7 @@ MonoBehaviour:
     maxTime: 1
     elapsed: 0
   knockbackMultiplier: 20
+  sRend: {fileID: 1661574810468894446}
 --- !u!114 &6979568082248114104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5337,7 +5338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: altFireDelay.maxTime
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2078998324694353012, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_Size.x

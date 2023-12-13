@@ -44,6 +44,7 @@ public class RespawnModule : DeathModule
         if (!ranDeathAction)
         {
             playeraAnimEvent.RemoveGlowTex();
+            StopCoroutine(Master.DamageFlash());
             Debug.Log("Hey You're in respawnOnDeath");
             ranDeathAction = true;
             Master.transform.position = RespawnPosition;
