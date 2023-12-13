@@ -135,7 +135,6 @@ public class UIManager : MonoBehaviour
                 if (!weaponMaster.weaponsAvailable)
                 {
                     DialogueManager.Instance.StopPlayer(false);
-                    weaponMaster.enabled = false;
                     weaponMaster.CurrentWeapon.gameObject.SetActive(false);
                 }
                 else
