@@ -23,6 +23,7 @@ public class DeepDish : EnemyBasic
     public override void Start()
     {
         base.Start();
+        facingRight = true;
         DeepDishShot.clip = AudioDictionary.aDict.audioDict["deepDishShot"];
 
         startPosX = transform.position.x;

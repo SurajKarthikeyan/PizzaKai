@@ -78,6 +78,15 @@ public class ChickenWing : EnemyBasic
         EnemyAnim.SetFloat("Movement", Moving);
         EnemyAnim.SetFloat("Attack", Fired);
         EnemyAnim.SetFloat("Idle", Idle);
+        if (!facingRight && Moving > 0)
+        {
+            facingRight = true;
+        }
+        else if (facingRight && Moving < 0)
+        {
+            facingRight = false;
+        }
+        EnemyAnim.SetBool("FacingRight", facingRight);
         playerPos = player.transform.position;
         EnemyMovement();
         

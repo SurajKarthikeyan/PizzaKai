@@ -42,6 +42,7 @@ public class EnemyBasic : MonoBehaviour
     public float Moving;
     public float Fired;
     public float Idle;
+    public bool facingRight;
 
     // Enemy's Position, rigid and sRend
     protected Vector3 enemyPos;
@@ -57,7 +58,7 @@ public class EnemyBasic : MonoBehaviour
     {
         currentHP = maxHP;
         deathState = false;
-
+        facingRight = false;
         enemyPos = transform.position;
         if (!sticked) originalPos = enemyPos;
         rigid = GetComponent<Rigidbody2D>();
@@ -110,6 +111,15 @@ public class EnemyBasic : MonoBehaviour
         EnemyAnim.SetFloat("Movement", Moving);
         EnemyAnim.SetFloat("Attack", Fired);
         EnemyAnim.SetFloat("Idle", Idle);
+        if (!facingRight && Moving > 0)
+        {
+            facingRight = true;
+        }
+        else if (facingRight && Moving < 0)
+        {
+            facingRight = false;
+        }
+        EnemyAnim.SetBool("FacingRight", facingRight);
         playerPos = player.transform.position;
         EnemyMovement();
         
