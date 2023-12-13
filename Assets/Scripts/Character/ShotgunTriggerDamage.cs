@@ -18,7 +18,6 @@ public class ShotgunTriggerDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && character.isShotgunDashing)
         {
-            Debug.Log(collision.gameObject);
             EnemyBasic enemy = collision.gameObject.GetComponent<EnemyBasic>();
             if (enemy != null)
             {

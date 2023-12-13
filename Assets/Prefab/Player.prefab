@@ -2960,6 +2960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c1bb3578f43a7448d4511efe2d9365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCharacter: {fileID: 8853080664221168347}
   playerCharacterMovementModule: {fileID: 6979568082248114104}
   playerShotGunWeapon: {fileID: 3213876410492947914}
   shotgunSpriteRenderer: {fileID: 893394011}
@@ -5304,7 +5305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: dashDamage
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: animFiringBool
@@ -5333,6 +5334,10 @@ PrefabInstance:
     - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: reloadDelay.maxTime
       value: 2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214464832145560964, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
+      propertyPath: altFireDelay.maxTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2078998324694353012, guid: 19724e01708024a458c2dbf0f615e3f2, type: 3}
       propertyPath: m_Size.x
