@@ -31,6 +31,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         playerMat.SetTexture(GlowTex, glowTexDashSlam);
         AudioDictionary.aDict.PlayAudioClipRemote("shotgunSlam", shotgunSlamSource);
+        CinemachineCameraShake.instance.ShakeScreen(10f, 0.5f);
     }
 
     public void RemoveGlowTex()
