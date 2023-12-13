@@ -337,7 +337,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: -1760003900, guid: 89f7673f54be6e34bb74a3c76c1a43e5, type: 3}
+  m_Sprite: {fileID: 84148081, guid: 9423becc7d8bd1a479d607a12c460c24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -395,10 +395,12 @@ MonoBehaviour:
   guaranteedDrop: {fileID: 0}
   healthDrop: {fileID: 4386287598845906938, guid: 073752c10d23d214a9a15eaedd84b639, type: 3}
   dropChance: 0.25
+  hasDropped: 0
   EnemyAnim: {fileID: 5140613757828590973}
   Moving: 0
   Fired: 0
   Idle: 0
+  facingRight: 0
   size: 2
   sizeScale: 1.25
   stickSplit: 2
@@ -438,8 +440,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.041780222, y: 0.31998718}
-  m_Size: {x: 0.61985487, y: 0.63651484}
+  m_Offset: {x: 0, y: 0.3312141}
+  m_Size: {x: 0.48139003, y: 0.6589687}
   m_Direction: 0
 --- !u!61 &1599926709
 BoxCollider2D:
@@ -457,8 +459,8 @@ BoxCollider2D:
   m_Offset: {x: 0.055171132, y: 0.295}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4048774, y: 0}
-    oldSize: {x: 0.58, y: 0.59}
+    pivot: {x: 0.5, y: 0.013333334}
+    oldSize: {x: 0.75, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
