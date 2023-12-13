@@ -31,6 +31,8 @@ public class DialogueManager : MonoBehaviour
 
     public Image toolTipImage;
 
+    public List<EnemyBasic> enemyList = new List<EnemyBasic>();
+
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -79,6 +81,31 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("Block not found");
         }
         
+    }
+
+    public void DisableEnemies()
+    {
+        foreach(Collider2D gameObject in Physics2D.OverlapCircleAll(player.gameObject.transform.position, 50))
+        {
+            if (gameObject.GetComponent<EnemyBasic>() != null)
+            {
+                EnemyBasic enemy = gameObject.GetComponent<EnemyBasic>();
+                enemyList.Add(enemy);
+                enemy.enabled = false;
+            }
+        }
+    }
+
+    public void EnableEnemies()
+    {
+        if(enemyList.Count > 0)
+        {
+            foreach(EnemyBasic enemy in enemyList)
+            {
+                enemy.GetComponent<EnemyBasic>().enabled = true;
+                enemyList.Remove(enemy);
+            }
+        }
     }
 
     public void SetToolTipImage(string text, Sprite weaponImage)
