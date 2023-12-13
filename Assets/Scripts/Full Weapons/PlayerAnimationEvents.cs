@@ -57,6 +57,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         playerShotGunWeapon.shotgunDashing = false;
         shotgunSpriteRenderer.enabled = true;
         playerMat.SetTexture(GlowTex, playerDefault);
+        playerShotGunWeapon.gameObject.SetActive(true);
     }
     public void SpawnDebris()
     {

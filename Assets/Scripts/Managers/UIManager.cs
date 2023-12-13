@@ -142,7 +142,6 @@ public class UIManager : MonoBehaviour
                     if (!weaponMaster.enabled)
                     {
                         weaponMaster.enabled = true;
-                        weaponMaster.CurrentWeapon.gameObject.SetActive(true);
                     }
                 }
             }
