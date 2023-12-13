@@ -22,7 +22,6 @@ public class ChickenWing : EnemyBasic
     public AudioSource ChickenRun;
     public AudioSource MolotovThrow;
     public float Counter;
-    public bool hasDropped = false;
 
 
     public override void Start()
@@ -42,21 +41,24 @@ public class ChickenWing : EnemyBasic
             sRend.color = Color.white;
             this.gameObject.GetComponent<Animator>().SetBool("Death", true);
             deathState = true;
-
-            if (guaranteedDrop != null)
+            if (!hasDropped)
             {
-                GameObject gDrop = Instantiate(guaranteedDrop);
-                gDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
-            }
-            else if(!hasDropped)
-            {
-                hasDropped = true;
-                float randomChance = Random.Range(0f, 1f);
-                if (randomChance <= dropChance)
+                if (guaranteedDrop != null)
                 {
-                    GameObject hDrop = Instantiate(healthDrop);
-                    hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
+                    GameObject gDrop = Instantiate(guaranteedDrop);
+                    gDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
                 }
+                else
+                {
+                    hasDropped = true;
+                    float randomChance = Random.Range(0f, 1f);
+                    if (randomChance <= dropChance)
+                    {
+                        GameObject hDrop = Instantiate(healthDrop);
+                        hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
+                    }
+                }
+                hasDropped = true;
             }
             Invoke("CWDeath", 0.6f );
             

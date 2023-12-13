@@ -74,20 +74,25 @@ public class Breadstick : EnemyBasic
             }
             else
             {
-                if (guaranteedDrop != null)
+                if (!hasDropped)
                 {
-                    GameObject gDrop = Instantiate(guaranteedDrop);
-                    gDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
-                }
-                else
-                {
-                    float randomChance = Random.Range(0f, 1f);
-                    if (randomChance <= dropChance)
+                    if (guaranteedDrop != null)
                     {
-                        GameObject hDrop = Instantiate(healthDrop);
-                        hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
+                        GameObject gDrop = Instantiate(guaranteedDrop);
+                        gDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
                     }
+                    else
+                    {
+                        float randomChance = Random.Range(0f, 1f);
+                        if (randomChance <= dropChance)
+                        {
+                            GameObject hDrop = Instantiate(healthDrop);
+                            hDrop.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, 0);
+                        }
+                    }
+                    hasDropped = true;
                 }
+                
                 actuallyDead = true;
             }
             hasSpawned = true;

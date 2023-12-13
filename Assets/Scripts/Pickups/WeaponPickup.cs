@@ -35,6 +35,9 @@ public class WeaponPickup : Pickup
                 
                 character.HP = 999999;
                 DialogueManager.Instance.CallDialogueBlock(weaponTutorialBlock);
+                Debug.Log("Made it to return in receivecharacter");
+                weapon.gameObject.SetActive(false);
+                newweapon.gameObject.SetActive(false);
                 return true;
             }
             catch (System.Exception e)
