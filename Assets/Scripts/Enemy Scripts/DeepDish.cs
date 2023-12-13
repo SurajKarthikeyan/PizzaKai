@@ -45,6 +45,8 @@ public class DeepDish : EnemyBasic
         if (deathState)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            Destroy(this.gameObject.GetComponent<Collider2D>());
+            this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Invoke("DDDeath", 1f);
         }
