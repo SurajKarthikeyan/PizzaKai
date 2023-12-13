@@ -49,10 +49,6 @@ public class Breadstick : EnemyBasic
         {
             deathState = true;
             sRend.color = Color.white;
-            if (Moving > 0)
-            {
-                sRend.flipX = true;
-            }
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             breadDead.Play();
@@ -61,14 +57,11 @@ public class Breadstick : EnemyBasic
             {
                 for (int i = 0; i < stickSplit; i++)
                 {
-
                     GameObject stickGO = Instantiate<GameObject>(gameObject);
                     Breadstick stick = stickGO.GetComponent<Breadstick>();
                     stickGO.transform.position = new Vector3(transform.position.x + (i - 0), transform.position.y, transform.position.z);
-
-                    stickGO.transform.rotation = Quaternion.identity;
-
                     stickGO.GetComponent<Rigidbody2D>().gravityScale = gravStore;
+                    stick.facingRight = facingRight;
                     stick.sticked = true;
                     stick.originalPos = originalPos + new Vector3(i, 0, 0);
                     stick.size--;
