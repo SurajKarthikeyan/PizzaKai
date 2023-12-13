@@ -79094,7 +79094,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ba57f6776fe8a1b42a06e5a480edaef3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81819,7 +81819,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &1436778783
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -82575,6 +82575,7 @@ GameObject:
   - component: {fileID: 1597334379}
   - component: {fileID: 1597334378}
   - component: {fileID: 1597334380}
+  - component: {fileID: 1597334381}
   m_Layer: 14
   m_Name: (NEW) Forky Solo
   m_TagString: BossForky
@@ -82622,7 +82623,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2fac6c44d331a834e8b97d8fb7951a7c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82812,6 +82813,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1597334381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597334374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca27cb6dfe33c024ca7b77d8eb0b1bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forkyMaterial: {fileID: 2100000, guid: 2fac6c44d331a834e8b97d8fb7951a7c, type: 2}
+  forkyIdleEmission: {fileID: 2800000, guid: 7f80c03adeb02c24aa376f33fcccb206, type: 3}
+  forkyCheekedUpEmission: {fileID: 2800000, guid: 71865b0012f366942b0ac3f286504c90, type: 3}
 --- !u!1 &1658846927
 GameObject:
   m_ObjectHideFlags: 0
