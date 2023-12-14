@@ -55,11 +55,14 @@ public class Breadstick : EnemyBasic
             breadVanish.SetBool("Death", deathState);
             if (size > 1 && !hasSpawned)
             {
+                float spawnOffset;
                 for (int i = 0; i < stickSplit; i++)
                 {
+                    if (i == 0) spawnOffset = -0.5f;
+                    else spawnOffset = 0.5f;
                     GameObject stickGO = Instantiate<GameObject>(gameObject);
                     Breadstick stick = stickGO.GetComponent<Breadstick>();
-                    stickGO.transform.position = new Vector3(transform.position.x + (i - 0), transform.position.y, transform.position.z);
+                    stickGO.transform.position = new Vector3(transform.position.x + spawnOffset, transform.position.y, transform.position.z);
                     stickGO.GetComponent<Rigidbody2D>().gravityScale = gravStore;
                     stick.facingRight = facingRight;
                     stick.sticked = true;
