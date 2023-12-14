@@ -47,7 +47,6 @@ public class DeepDish : EnemyBasic
         if (deathState && !hasDied)
         {
             hasDied = true;
-            Debug.Log(facingRight);
             sRend.color = Color.white;
             this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
             Destroy(this.gameObject.GetComponent<Collider2D>());
@@ -79,7 +78,6 @@ public class DeepDish : EnemyBasic
 
     public void DDDeath()
     {
-        Debug.Log("Goodbye");
         Destroy(this.gameObject);
     }
     override public void EnemyMovement()
