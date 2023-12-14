@@ -25,6 +25,7 @@ public class ChickenAnimationEvent : MonoBehaviour
     public void DeathEmission()
     {
         chickenWingMaterial.SetTexture(GlowTex, deathEmission);
+        AudioDictionary.aDict.PlayAudioClip("chickenDead", AudioDictionary.Source.Chicken);
     }
 
     public void LeftIdleEmission()

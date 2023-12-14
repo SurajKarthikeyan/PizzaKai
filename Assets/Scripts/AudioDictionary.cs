@@ -26,7 +26,8 @@ public class AudioDictionary : MonoBehaviour
         Lever,
         Deflect,
         Pickup,
-        Hitmarker
+        Hitmarker,
+        Chicken
     };
     public UnityDictionary<string, AudioClip> audioDict;
     public Source source;
@@ -47,6 +48,8 @@ public class AudioDictionary : MonoBehaviour
     [SerializeField] public AudioSource pickupSource;
     [Tooltip("Audio Source for hitmarkers")] 
     [SerializeField] public AudioSource hitmarkerSource;
+    [Tooltip("Audio Source for hitmarkers")] 
+    [SerializeField] public AudioSource chickenSource;
     public static AudioDictionary aDict;
     #endregion
 
@@ -102,6 +105,10 @@ public class AudioDictionary : MonoBehaviour
             case Source.Hitmarker:
                 hitmarkerSource.clip = tempClip;
                 hitmarkerSource.Play();
+                break;
+            case Source.Chicken:
+                chickenSource.clip = tempClip;
+                chickenSource.Play();
                 break;
         }
     }
