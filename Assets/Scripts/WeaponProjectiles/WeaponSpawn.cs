@@ -63,7 +63,7 @@ public abstract class WeaponSpawn : MonoBehaviour
             weapon.firePoint.rotation
         );
         
-        CinemachineCameraShake.instance.ShakeScreen(0, 0.1f);
+        CinemachineCameraShake.instance.ShakeScreen(0.2f, 0.1f);
         
         spawned.gameObject.SetActive(true);
         

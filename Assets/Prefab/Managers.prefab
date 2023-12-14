@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cineCamera: {fileID: 0}
   durationTotal: 0.1
-  intensity: 1.5
+  intensity: 0.5
   cmBasicPerlin: {fileID: 0}
 --- !u!1 &520746502911827385
 GameObject:
@@ -97,6 +97,7 @@ MonoBehaviour:
   weaponMasterModule: {fileID: 0}
   toolTipText: {fileID: 0}
   toolTipImage: {fileID: 0}
+  enemyList: []
 --- !u!1 &672629396907353863
 GameObject:
   m_ObjectHideFlags: 0
