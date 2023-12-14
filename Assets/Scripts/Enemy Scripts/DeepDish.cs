@@ -17,6 +17,7 @@ public class DeepDish : EnemyBasic
     private float shotAtTime;
     private Transform bltPointToUse;
     public bool fireRight;
+    public bool hasDied = false;
 
     public AudioSource DeepDishShot;
 
@@ -43,8 +44,10 @@ public class DeepDish : EnemyBasic
         */
 
         base.Update();
-        if (deathState)
+        if (deathState && !hasDied)
         {
+            hasDied = true;
+            Debug.Log(facingRight);
             sRend.color = Color.white;
             this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
             Destroy(this.gameObject.GetComponent<Collider2D>());
@@ -52,20 +55,24 @@ public class DeepDish : EnemyBasic
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Invoke("DDDeath", 1f);
         }
-        if (!isMoving && (Time.time >= shotAtTime + timeBetweenShot)) canFire = true;
 
-        if (canFire == true && fireRight)
+        else
         {
-            Fired = 1;
-            DeepDishShot.Play();
+            if (!isMoving && (Time.time >= shotAtTime + timeBetweenShot)) canFire = true;
+
+            if (canFire == true && fireRight)
+            {
+                Fired = 1;
+                DeepDishShot.Play();
+            }
+            else if (canFire == true && !fireRight)
+            {
+                Fired = -1;
+                DeepDishShot.Play();
+            }
+            ShootShot();
+            //Debug.DrawRay(bltPointToUse.position,  playerPos - bltPointToUse.position);
         }
-        else if (canFire == true && !fireRight)
-        {
-            Fired = -1;
-            DeepDishShot.Play();
-        }
-        ShootShot();
-        //Debug.DrawRay(bltPointToUse.position,  playerPos - bltPointToUse.position);
 
     }
 
