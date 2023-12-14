@@ -34,6 +34,8 @@ public class WeaponMasterModule : Module
 
     public bool isGrappling = false;
 
+    public bool canReload = true;
+
     [ReadOnly]
     public bool weaponsAvailable;
     #endregion
@@ -233,7 +235,10 @@ public class WeaponMasterModule : Module
     /// </summary>
     public void TryReload()
     {
-        CurrentWeapon.ReloadWeapon();
+        if (canReload)
+        {
+            CurrentWeapon.ReloadWeapon();
+        }
     }
     #endregion
 
