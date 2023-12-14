@@ -22,7 +22,7 @@ public class DeepDishAnimationEvent : MonoBehaviour
     {
         deepDishMaterial = new Material(copyThis);
         this.gameObject.GetComponent<SpriteRenderer>().material = deepDishMaterial;
-
+        
     }
 
     public void ShootRight()

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlamethrowerLitMat
-  m_Shader: {fileID: -6465566751694194690, guid: 3ceeffed80f84d9449cfe4a936159ac8, type: 3}
+  m_Name: GeneratorMat
+  m_Shader: {fileID: -6465566751694194690, guid: c85a578dfe785e940bb136209da09f8f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _GlowTex:
-        m_Texture: {fileID: 2800000, guid: 86f3b840a3093be499702057d69b8d96, type: 3}
+        m_Texture: {fileID: 2800000, guid: 84e611a8873f3f54ab54c2c5031bd1c6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -43,5 +43,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _GlowColor: {r: 0, g: 28.21772, b: 0.5324098, a: 0}
+    - _GlowColor: {r: 111.43049, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
