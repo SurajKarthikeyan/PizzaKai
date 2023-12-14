@@ -112,6 +112,7 @@ public class Breadstick : EnemyBasic
 
         EnemyAnim.SetFloat("Movement", Moving);
         EnemyAnim.SetFloat("Attack", Fired);
+        EnemyAnim.SetBool("Jump", jumping);
         if (!facingRight && Moving > 0)
         {
             facingRight = true;

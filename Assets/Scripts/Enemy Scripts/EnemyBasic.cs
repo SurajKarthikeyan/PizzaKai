@@ -114,6 +114,7 @@ public class EnemyBasic : MonoBehaviour
         EnemyAnim.SetFloat("Movement", Moving);
         EnemyAnim.SetFloat("Attack", Fired);
         EnemyAnim.SetFloat("Idle", Idle);
+        EnemyAnim.SetBool("Jump", jumping);
         if (!facingRight && Moving > 0)
         {
             facingRight = true;

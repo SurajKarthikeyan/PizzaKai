@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
 
     public Image toolTipImage;
 
-    public List<EnemyBasic> enemyList = new List<EnemyBasic>();
+    public List<GameObject> enemyList = new List<GameObject>();
 
     #endregion
     // Start is called before the first frame update
@@ -85,24 +85,35 @@ public class DialogueManager : MonoBehaviour
 
     public void DisableEnemies()
     {
-        foreach(Collider2D gameObject in Physics2D.OverlapCircleAll(player.gameObject.transform.position, 50))
+        foreach(Collider2D collider in Physics2D.OverlapCircleAll(player.gameObject.transform.position, 25))
         {
-            if (gameObject.GetComponent<EnemyBasic>() != null)
+            EnemyBasic enemy = collider.gameObject.GetComponent<EnemyBasic>();
+            ChickenMolotov molotov = collider.gameObject.GetComponent<ChickenMolotov>();
+            if (enemy != null)
             {
-                EnemyBasic enemy = gameObject.GetComponent<EnemyBasic>();
-                enemyList.Add(enemy);
+                enemyList.Add(enemy.gameObject);
                 enemy.enabled = false;
+            }
+            else if (molotov != null)
+            {
+                Destroy(molotov.gameObject);
             }
         }
     }
 
     public void EnableEnemies()
     {
+        List<GameObject> toRemove = new List<GameObject>();
         if(enemyList.Count > 0)
         {
-            foreach(EnemyBasic enemy in enemyList)
+            Debug.Log("Enemies in enemy list");
+            foreach(GameObject enemy in enemyList)
             {
                 enemy.GetComponent<EnemyBasic>().enabled = true;
+                toRemove.Add(enemy);
+            }
+            foreach (GameObject enemy in toRemove)
+            {
                 enemyList.Remove(enemy);
             }
         }
