@@ -66,7 +66,6 @@ public class TommyGunWeapon : WeaponModule
         {
             isAlting = true;
             ReloadWeapon();
-            weaponMaster.canReload = false;
             yield return new WaitForSeconds(AudioDictionary.aDict.playerSource.clip.length);
             weaponAction = WeaponAudioStrings.Alt;
             altFireDelay.Reset();
@@ -82,7 +81,6 @@ public class TommyGunWeapon : WeaponModule
             }
             ReloadWeapon();
             firingDelay = savedDelay;
-            weaponMaster.canReload = true;
             isAlting = false;
         }
     }
