@@ -82,40 +82,44 @@ public class DeepDish : EnemyBasic
     }
     override public void EnemyMovement()
     {
-        //if player inside haltRadius
-        if ((playerPos.x >= enemyPos.x - haltRadius) && (playerPos.x <= haltRadius + enemyPos.x))
+        if (!deathState)
         {
-            if (playerPos.y > enemyPos.y + detRadius/2 || playerPos.y < enemyPos.y - detRadius/2) return;
+            //if player inside haltRadius
+            if ((playerPos.x >= enemyPos.x - haltRadius) && (playerPos.x <= haltRadius + enemyPos.x))
+            {
+                if (playerPos.y > enemyPos.y + detRadius/2 || playerPos.y < enemyPos.y - detRadius/2) return;
 
-            if (playerPos.x >= enemyPos.x - haltRadius && playerPos.x <= enemyPos.x)
-            {
-                //Debug.Log("Player in from left");
-                fireRight = false;
-                Idle = -1;
-                Moving = 0;
-                rigid.velocity = Vector2.zero;
-                enemyPos = transform.position;
-                bltPointToUse = bulletPoints[0];
+                if (playerPos.x >= enemyPos.x - haltRadius && playerPos.x <= enemyPos.x)
+                {
+                    //Debug.Log("Player in from left");
+                    fireRight = false;
+                    Idle = -1;
+                    Moving = 0;
+                    rigid.velocity = Vector2.zero;
+                    enemyPos = transform.position;
+                    bltPointToUse = bulletPoints[0];
+                }
+                if (playerPos.x <= enemyPos.x + haltRadius && playerPos.x >= enemyPos.x)
+                {
+                    //Debug.Log("Player in from right");
+                    fireRight = true;
+                    Idle = 1;
+                    Moving = 0;
+                    rigid.velocity = Vector2.zero;
+                    enemyPos = transform.position;
+                    bltPointToUse = bulletPoints[1];
+                }
+                isMoving = false;
             }
-            if (playerPos.x <= enemyPos.x + haltRadius && playerPos.x >= enemyPos.x)
+            else
             {
-                //Debug.Log("Player in from right");
-                fireRight = true;
-                Idle = 1;
-                Moving = 0;
-                rigid.velocity = Vector2.zero;
+                Idle = 0;
+                SwitchPatrolPoint();
+                
                 enemyPos = transform.position;
-                bltPointToUse = bulletPoints[1];
+                isMoving = true;
             }
-            isMoving = false;
-        }
-        else
-        {
-            Idle = 0;
-            SwitchPatrolPoint();
             
-            enemyPos = transform.position;
-            isMoving = true;
         }
     }
 
