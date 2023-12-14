@@ -96,7 +96,7 @@ public class CinemachineCameraShake : MonoBehaviour
 
     public void ShakeScreen()
     {
-        cmBasicPerlin.m_AmplitudeGain = intensity;
+        cmBasicPerlin.m_AmplitudeGain = intensity/2;
 
         duration = durationTotal;
         currentTotalDuration = durationTotal;
