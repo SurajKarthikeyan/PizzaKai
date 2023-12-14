@@ -77187,7 +77187,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 134144
   forkyr2d: {fileID: 1597334379}
-  tilemap: {fileID: 705232846}
+  tilemap: {fileID: 1308701227}
   dyingForky: {fileID: 1597334374}
   invincibleSayDialog: {fileID: 1353591609}
 --- !u!4 &821852787
@@ -77595,7 +77595,7 @@ PrefabInstance:
     - target: {fileID: 750827787, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
       propertyPath: conveyorTilemap
       value: 
-      objectReference: {fileID: 705232846}
+      objectReference: {fileID: 1308701227}
     - target: {fileID: 1440533379178733808, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -81209,7 +81209,7 @@ Tilemap:
       - {fileID: -1431427488, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: 1430317221, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: 1404059311, guid: 410d6cda03978974585513d951059580, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
