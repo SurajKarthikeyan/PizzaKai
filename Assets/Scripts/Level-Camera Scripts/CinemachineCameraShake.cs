@@ -75,6 +75,7 @@ public class CinemachineCameraShake : MonoBehaviour
                     duration -= Time.deltaTime;
 
                     cmBasicPerlin.m_AmplitudeGain = Mathf.Lerp(intensity, 0f, duration / currentTotalDuration);
+                    cmBasicPerlin.m_AmplitudeGain /= 2;
                 }
                 else
                 {
