@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 139619954}
   - component: {fileID: 139619953}
   - component: {fileID: 139619952}
+  - component: {fileID: 139619955}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -794,7 +795,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e934e1a3dcae0da44a98af2db6fbaebf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -841,6 +842,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139619955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139619951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd97fe3f0b7db8644acbc854360d9116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovenMaterial: {fileID: 2100000, guid: e934e1a3dcae0da44a98af2db6fbaebf, type: 2}
+  idleEmission: {fileID: 2800000, guid: af0af733f2d633640ab754bf387a4f47, type: 3}
 --- !u!1001 &147273116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79243,6 +79258,7 @@ GameObject:
   - component: {fileID: 1232469314}
   - component: {fileID: 1232469313}
   - component: {fileID: 1232469312}
+  - component: {fileID: 1232469315}
   m_Layer: 0
   m_Name: Oven (1)
   m_TagString: Untagged
@@ -79290,7 +79306,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e934e1a3dcae0da44a98af2db6fbaebf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79337,6 +79353,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1232469315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232469311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd97fe3f0b7db8644acbc854360d9116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovenMaterial: {fileID: 2100000, guid: e934e1a3dcae0da44a98af2db6fbaebf, type: 2}
+  idleEmission: {fileID: 2800000, guid: af0af733f2d633640ab754bf387a4f47, type: 3}
 --- !u!1001 &1266274628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81179,7 +81209,7 @@ Tilemap:
       - {fileID: -1431427488, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: 1430317221, guid: 410d6cda03978974585513d951059580, type: 3}
       - {fileID: 1404059311, guid: 410d6cda03978974585513d951059580, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
