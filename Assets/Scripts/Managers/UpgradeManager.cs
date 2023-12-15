@@ -47,7 +47,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField]
     private static bool tommyUP;
     [SerializeField]
-    private bool shotgunUP, flamethrowerUP, sniperUP;
+    private static bool shotgunUP, flamethrowerUP, sniperUP;
 
     
 
@@ -114,6 +114,15 @@ public class UpgradeManager : MonoBehaviour
             {
                 WMM.SwitchToWeapon(endingWeapon);
             }
+        }
+        else
+        {
+            tommyUPNum = 1;
+            shotgunUPNum = 1;
+            flamethrowerUPNum = 1;
+            tommyUP = false;
+            shotgunUP = false;
+            flamethrowerUP = false;
         }
     }
 
