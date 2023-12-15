@@ -869,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692872, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.22
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 970517308491692872, guid: 7e67c669ba184684ba68f785a534d141, type: 3}
       propertyPath: m_LocalPosition.y
@@ -77590,7 +77590,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 750827787, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
       propertyPath: conveyorSpeed
-      value: -1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 750827787, guid: e3697c1fdd8cb8545a3543b13d884e24, type: 3}
       propertyPath: conveyorTilemap
@@ -79653,7 +79653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
       propertyPath: nodeRect.y
-      value: 308.37225
+      value: 307.10645
       objectReference: {fileID: 0}
     - target: {fileID: 7664800405275352145, guid: 5615d8542dbf99340814e1c208251fbc, type: 3}
       propertyPath: commandList.Array.size
@@ -81796,7 +81796,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 7.5
+    floatVal: 6
   durationOLD: 0
 --- !u!114 &1436778753
 MonoBehaviour:
@@ -81919,7 +81919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 37.512543
+    x: 36.24672
     y: 240.53978
     width: 203.17516
     height: 40
@@ -82655,7 +82655,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009999037, y: 2.3697438}
+  m_Offset: {x: -0.10271573, y: 2.3697438}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -82666,7 +82666,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5800462, y: 5.819478}
+  m_Size: {x: 0.8054757, y: 5.819478}
   m_EdgeRadius: 0
 --- !u!4 &1559789344
 Transform:
@@ -82676,7 +82676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559789342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.65, y: 3.78, z: -0.06556384}
+  m_LocalPosition: {x: 6.68, y: 3.78, z: -0.06556384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

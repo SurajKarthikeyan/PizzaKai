@@ -46,7 +46,7 @@ public class BossManager : MonoBehaviour
         forky.active = true;
         forky.spawning = true;
         forky.tilemap.animationFrameRate = 1;
-        conveyorBelt.conveyorSpeed = -1;
+        conveyorBelt.conveyorSpeed = -1.5f;
         foreach(BoxCollider2D collider in generatorColliders)
         {
             collider.enabled = true;

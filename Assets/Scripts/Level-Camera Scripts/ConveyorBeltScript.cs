@@ -18,7 +18,7 @@ public class ConveyorBeltScript : MonoBehaviour
     {
         col2D = gameObject.GetComponent<Collider2D>();
         conveyorTilemap.animationFrameRate = 1;
-        conveyorSpeed = -1f;
+        conveyorSpeed = -1.5f;
     }
 
     private void Update()

@@ -304,16 +304,20 @@ public class Forky : MonoBehaviour
         minBoxSpawnTime -= 1;
         maxEnemySpawnTime -= 1;
         minEnemySpawnTime -= 1;
-
-        //Add or subtract 1 to the conveyor speed depending on if the conveyorbelt has a negative or positive speed
-        conveyorBelt.conveyorSpeed = (Mathf.Abs(conveyorBelt.conveyorSpeed) + 1) * conveyorBelt.conveyorSpeed / Mathf.Abs(conveyorBelt.conveyorSpeed);
         if (generators == 1)
         {
-            tilemap.animationFrameRate = 3;
+            tilemap.animationFrameRate = 1.5f;
+            conveyorBelt.conveyorSpeed = -2.5f;
+        }
+        else if (generators == 2)
+        {
+            tilemap.animationFrameRate = 1.25f;
+            conveyorBelt.conveyorSpeed = -2f;
         }
         else
         {
-            tilemap.animationFrameRate = 2;
+            tilemap.animationFrameRate = 1;
+            conveyorBelt.conveyorSpeed = -1.5f;
         }
     }
     #endregion
